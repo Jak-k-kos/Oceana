@@ -1,15 +1,15 @@
 {
-  "name": "@jackyzha0/quartz",
+  "name": "@Jak-k-kos/Oceana",
   "description": "🌱 publish your digital garden and notes as a website",
   "private": true,
   "version": "5.0.0",
   "type": "module",
-  "author": "jackyzha0 <j.zhao2k19@gmail.com>",
+  "author": "Jakkos <jdudejjj@gmail.com>",
   "license": "MIT",
-  "homepage": "https://quartz.jzhao.xyz",
+  "homepage": "https://Jak-k-kos.github.io/Oceana",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jackyzha0/quartz.git"
+    "url": "https://github.com/Jak-k-kos/Oceana.git"
   },
   "scripts": {
     "quartz": "./quartz/bootstrap-cli.mjs",
