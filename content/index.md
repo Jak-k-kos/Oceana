@@ -1,6 +1,16 @@
 ---
-title: Welcome to Quartz
+title: Oceana
 ---
+Welcome to the world of Oceana
+# Quick Links
+- [[Ship upgrades]]
+- [[Ship equipment]]
 
-This is a blank Quartz installation.
-See the [documentation](https://quartz.jzhao.xyz) for how to get started.
+# Session Notes
+- [[Session 1]]
+# Characters 
+- [[Austin|TBD (Austin)]]
+- [[Rouge Bellball|Rouge Bellball (Zadia)]]
+- [[Scubby Wellfleet|Scubby Wellfleet (Asper)]]
+- [[Shady Bellball|Shady Bellball (Henry)]]
+- [[Torin|TBD (Torin)]]
