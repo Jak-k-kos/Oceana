@@ -7,7 +7,7 @@ configuration:
   analytics:
     provider: plausible
   locale: en-US
-  baseUrl: Jak-k-kos.github.io/quartz
+  baseUrl: Jak-k-kos.github.io
   ignorePatterns:
     - private
     - templates
