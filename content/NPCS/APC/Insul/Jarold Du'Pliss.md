@@ -1,8 +1,6 @@
 ---
 tags:
   - NPC
-draft:
-  - "false"
 lastname: Du'Pliss
 ---
 %%
