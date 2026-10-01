@@ -5,6 +5,7 @@ Welcome to the world of Oceana
 # Quick Links
 - [[Ship upgrades]]
 - [[Ship equipment]]
+- [[Site/NPCS/APC/Insul/index|index]]
 
 # Session Notes
 - [[Session 1]]

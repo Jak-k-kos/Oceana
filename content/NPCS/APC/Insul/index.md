@@ -1,17 +1,31 @@
 ---
 title: Insul
 ---
+
 %%
 
 %%
 # Insul
-- [[Drekta Wellfleet]]
-- [[Vhallen Wellfleet]]
+- [[anna Du'pliss]]
+- [[Arint Scaleskin]]
 - [[Azria Wellfleet]]
-- [[Tina 'ty' Wellfleet]]
+- [[Charles Bellball]]
+- [[Dahlia Fiore]]
+- [[Drekta Wellfleet]]
 - [[Elisa Faranz]]
 - [[Emilio Faranz]]
+- [[Halina Scaleskin]]
+- [[Janna Du'pliss]]
+- [[Jarold Du'Pliss]]
+- [[John Bellball]]
 - [[Kayla Vergate]]
+- [[Lilly Fiore]]
 - [[Mr. Ferguson]]
-- [[Charles Bellball]]
+- [[Orchid Fiore]]
+- [[sortspec]]
+- [[Tabatha Bellball]]
+- [[Tamra 'Tam' Wellfleet]]
+- [[Tina 'ty' Wellfleet]]
+- [[Torin's dad]]
+- [[Vhallen Wellfleet]]
 
