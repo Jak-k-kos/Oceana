@@ -2,7 +2,7 @@
 tags:
   - NPC
 draft:
-  - "true"
+  - "false"
 lastname: Du'Pliss
 ---
 %%
