@@ -7,7 +7,7 @@ configuration:
   analytics:
     provider: plausible
   locale: en-US
-  baseUrl: Jak-k-kos.github.io
+  baseUrl: Jak-k-kos.github.io/Oceana
   ignorePatterns:
     - private
     - templates
