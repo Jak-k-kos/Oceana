@@ -17,7 +17,7 @@ Accent: french
 Current Location: [[Insul]]
 Relationships: 
 - identical twin sister of [[Janna Du'pliss]]
-- married to either [[]] or [[]]
+- married to either [[Jarold Du'Pliss]] or [[]]
 %%
 Gender: F
 Appearance: A large burly green skinned orc. She is either wearing her thick work pants and red flannel shirt, or a blue flower print sundress. She has a small scar running from her left ear to the middle of her cheek

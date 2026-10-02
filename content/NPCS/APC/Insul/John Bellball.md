@@ -20,7 +20,7 @@ Relationships:
 %%
 Gender: Male
 Appearance: He has a large beer gut, dirty grey fur, a growing bald spot on the top of his head, and a deformed left paw.
-Who: He is the drunk, abusive, uncle to [[Shady Bellball|Shady]] and [[Rouge Bellball|Rogue]]. He owns _Uncle Johns_ pub, where he employees the [[Tabatha Bellball|Tabatha]], the mother of the two Bellball children and ex-wife to his brother. 
+Who: He is the drunk, abusive, uncle to [[Shady Bellball|Shady]] and [[Rouge Bellball|Rogue]]. He owns _Uncle Johns_, a popular pub on the island, where he employees [[Tabatha Bellball|Tabatha]], the mother of the two Bellball children and ex-wife to his brother. 
 known relationships:
 - [[Charles Bellball]] - Brother
 - [[Rouge Bellball]] - Niece

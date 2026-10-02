@@ -18,7 +18,7 @@ Current Location: Insul
 Relationships: 
 - 
 %%
-Gender: 
+Gender: Male
 Appearance: 
 Who: He is the owner of the _Fiore Lumber Company_. He oversees all shipments of lumber off the island and is one of, if not the richest men on the island. 
 known relationships:
