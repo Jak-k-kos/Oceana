@@ -1,6 +1,7 @@
 ---
 tags:
   - character
+player: Aster
 ---
-
-10 year old
+![[Scubby.png]]
+This ^^^

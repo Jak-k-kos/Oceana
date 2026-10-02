@@ -1,4 +1,5 @@
 ---
 tags:
   - character
+player: Torin
 ---
