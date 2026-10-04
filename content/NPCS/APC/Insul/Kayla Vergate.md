@@ -1,8 +1,7 @@
 ---
 tags:
   - NPC
-draft:
-  - "false"
+draft: true
 lastname: Vergate
 ---
 %%

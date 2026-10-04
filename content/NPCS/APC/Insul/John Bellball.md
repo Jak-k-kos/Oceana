@@ -1,14 +1,9 @@
 ---
 tags:
   - NPC
-draft:
-  - "true"
+draft: true
 lastname: Bellball
 ---
----
-draft: true
----   
-
 
 
 %%

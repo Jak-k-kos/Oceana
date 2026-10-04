@@ -1,6 +1,7 @@
 ---
 tags:
   - NPC
+draft: true
 lastname: Du'Pliss
 ---
 %%

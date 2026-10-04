@@ -1,8 +1,7 @@
 ---
 tags:
   - NPC
-draft:
-  - "true"
+draft: true
 lastname: Scaleskin
 ---
 %%
