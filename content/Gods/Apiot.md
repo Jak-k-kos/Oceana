@@ -1,7 +1,14 @@
-![[Gemini_Generated_Image_o8pivno8pivno8pi.jpg]]
+![[db28cb77-ea2b-487e-9cbd-61186ca39d8d.png]]
 
 Goddess of nature and fertility. Patron of farmers and mothers.
 
+## Titles
+
+- The Green Mother
+- Lady of the Harvest
+- Mother of Fields
+- The Reef Gardener
+- She Who Remembers the Land
 ## The Green of the World  
 Apiot shaped the green of the world: the first seeds, the forests, the fields and meadows, and every living thing that rises from the soil. In doing so, she took on the aspect of all she had made, and wherever her hand passed, things grew.
 

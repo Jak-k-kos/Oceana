@@ -57,6 +57,6 @@ Goddess of stars. Patron of travelers. The young moon.
 
 ## Deceased Gods
 - [[Arkaius]]
-Dead god of magic.
+The dead god of magic. Once head of the pantheon.
 
 

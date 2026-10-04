@@ -1,11 +1,9 @@
 ---
 tags:
   - NPC
-draft: true
+draft: false
 lastname: Bellball
 ---
-
-
 %%
 DM Notes:
 ------------------------------------

@@ -3,11 +3,8 @@ title: NPCS
 ---
 
 # NPCS
-## APC
-
-
+## [[APC|]]
 
 ## Kingdom
-
-- [[z's mom]]
+\
 

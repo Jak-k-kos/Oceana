@@ -1,5 +1,14 @@
+![[66629450-eb25-40e4-b376-aa1da66148ce.png]]
+
 Goddess of water. Patron of sailors and fishermen.
 
+## Titles
+
+- The Cold Tide
+- Mistress of the Deep
+- Lady of the Drowned World
+- The Still Sea
+- The Rising Tide
 ## The Still Waters  
 Aquilla shaped the waters of the world: the seas, the rivers and lakes, and the deep, cold places no light has ever reached. In doing so, she took on their aspect, and she has been as changeable as the sea ever since.
 

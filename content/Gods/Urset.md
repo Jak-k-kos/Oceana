@@ -2,6 +2,13 @@
 
 The new god of magic. Patron of mages and the greedy.
 
+## Titles
+
+- The Hoarder
+- The Usurper
+- The Crippled God
+- The Miser of the Lower Halls
+- Mortimer (used only as an insult, and never where he might hear it)
 ## Pre-Divinity  
 Urset was born Mortimer Greenbe in 107 PAC in Veygard, a nation long since lost to the waves and remembered now only as his birthplace. Mortimer was the eighth prince of the Veygard royal family. Generations of inbreeding among the nobility, and his mother's heavy drug and alcohol use while she carried him, left him horribly deformed. Barely able to walk or complete simple tasks, and shunned by his family and the court, he spent his early life in a hidden wing of the castle under the constant care of servants.
 

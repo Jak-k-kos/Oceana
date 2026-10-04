@@ -1,7 +1,7 @@
 ---
 tags:
   - NPC
-draft: true
+draft: false
 lastname:
 ---
 %%
