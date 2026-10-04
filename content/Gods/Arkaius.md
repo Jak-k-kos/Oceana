@@ -1,1 +1,1 @@
-Dead god of magic
+Dead god of magic.

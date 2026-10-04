@@ -1,0 +1,1 @@
+God of fortune and luck. Paton of merchants, adventurers, and pirates.

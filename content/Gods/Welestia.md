@@ -1,0 +1,1 @@
+The goddess of storms. Patron of none, Scourge of the skies.

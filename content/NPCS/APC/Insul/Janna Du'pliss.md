@@ -10,9 +10,9 @@ DM Notes:
 ------------------------------------
 species: Orc
 Unique Trait: expert bakers, the whole village dies just to get one of their muffins
-Motivation: to give quality in everything they do
-Occupation: lumberer
-Belief: familiar ties are most important
+Motivation: to give quality in everything they do, she is a perfectionist and can't handle anything less than.
+Occupation: lumberjill 
+Belief: familial ties are most important, and without them you become week and meaningless
 Accent: french
 Current Location: [[Insul]]
 Relationships: 

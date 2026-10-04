@@ -1,0 +1,1 @@
+god of death and fate. Patron of graves men and the forgotton.

@@ -1,0 +1,1 @@
+Goddess of stars. Patron of travelers. The young moon.

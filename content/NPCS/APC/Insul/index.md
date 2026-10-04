@@ -15,6 +15,7 @@ title: Insul
 - [[Elisa Faranz]]
 - [[Emilio Faranz]]
 - [[Halina Scaleskin]]
+- [[Harold Du'Pliss]]
 - [[Janna Du'pliss]]
 - [[Jarold Du'Pliss]]
 - [[John Bellball]]

@@ -1,1 +1,1 @@
-God of sea creatures
+God of sea creatures. Patron of sea folk.

@@ -1,6 +1,6 @@
 # Special Symbols
 - [[#Bars|Bars (Sizes)]]
-- [[#Chevron|Cheveron (Instruction)]]
+- [[#Chevron|Chevron (Instruction)]]
 - [[#Cross|Cross (Response Flags)]]
 - [[#Direction]]
 - [[#Star|Star (types / groups)]]
@@ -8,17 +8,17 @@
 - [[#X|X (Firing Instructions)]]
 # General Flags
 
-|        | Square                          | Dot                       | Triangle            |
-| ------ | ------------------------------- | ------------------------- | ------------------- |
-| Red    | Hostile, Force                  | Many,                     | Attacking           |
-| Orange | Storm, Hazard                   | Sinking, Dieing, critical | heading, fleeing    |
-| Yellow | Cargo, Goods, Supplies          | weapons                   | In need             |
-| Green  | civilian ship                   | Near, Close               | Aproaching          |
-| Blue   | Us/ours                         | friendly                  | Safe, All Clear     |
-| Purple | Unknown ship/entity, other ship | Dangerous                 | Capture, Taken      |
-| Brown  | Land, Port                      | Far, Distant              | Stranded, Aground   |
-| Black  | Pirates                         | Hidden, Disguised         | Destroyed, Dead     |
-| White  | You                             | One, Single               | Question, 2x=unkown |
+|        | Square                          | Dot                      | Triangle             |
+| ------ | ------------------------------- | ------------------------ | -------------------- |
+| Red    | Hostile, Force                  | Many,                    | Attacking            |
+| Orange | Storm, Hazard                   | Sinking, Dying, critical | heading, fleeing     |
+| Yellow | Cargo, Goods, Supplies          | weapons                  | In need              |
+| Green  | civilian ship                   | Near, Close              | Approaching          |
+| Blue   | Us/ours                         | friendly                 | Safe, All Clear      |
+| Purple | Unknown ship/entity, other ship | Dangerous                | Capture, Taken       |
+| Brown  | Land, Port                      | Far, Distant             | Stranded, Aground    |
+| Black  | Pirates                         | Hidden, Disguised        | Destroyed, Dead      |
+| White  | You                             | One, Single              | Question, 2x=unknown |
 # Information
 ## general rules 
 the first flag is always the subject and is modified by the ones after it.
@@ -27,6 +27,8 @@ a subject followed by a orange triangle then white triangle asks for direction a
 a direction followed by a white triangle asks what's in that direction
 one bar followed by a white triangle asks for size
 without a new subject the last subject is inferred
+as one may assume, a white flag replacing the ensign means surrender
+repeating a message or part of it followed by a yellow cross can be used to show what specifically is not understood in a previous message
 clarification- red square can mean military ship when the blue dot is added.
 
 ## Counting with flags
@@ -51,13 +53,13 @@ large
 huge
 # Chevron
 ### Red Chevron
-Surrender immediatly
+Surrender immediately
 ## Orange Chevron
 Maintain Distance, Approach with caution
 ## Yellow Chevron
 Prepare to be boarded
 ## Green Chevron
-Welcome to approach
+Welcome to approach/ proceed
 ## Blue Chevron
 Follow us
 ## Purple Chevron
@@ -72,7 +74,7 @@ DANGER FLEE IMMEDIATLY
 ## Green Cross
 Yes, Affirmative, Will comply
 ## Red Cross
-No, We Refuse, not/negitive
+No, We Refuse, not/negative
 ## Yellow Cross
 Unclear, Repeat last signal, clarify.
 
@@ -87,7 +89,7 @@ South
 West
 
 # Star
-##  Yellow Star
+## Yellow Star
 Dragons
 ## Blue Star
 Sea Folk
