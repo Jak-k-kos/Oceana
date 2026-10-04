@@ -2,11 +2,13 @@
 title: Gods
 ---
 ## Champions  
-Each god may name only one champion at a time: a single mortal chosen to carry their divine power into the world. Most are paladins or clerics, but not all. 
+Each god may name only one champion: a single mortal chosen to carry their divine power into the world. Most are paladins or clerics, but not all. A god may choose a new champion whenever they wish, as long as they do not already have one.
+
+A champion is the only true channel between a god and the mortal world. The gods may hear the prayers of the faithful, and now and then they may answer, but nothing is certain. Only through a champion can a god be sure to hear and be heard. The champion can reach out to their god, and the god can reach back.
 
 Champions are among the rarest and most powerful mortals alive. Many gods keep their champion's identity a closely guarded secret, known only through rumor, while a few let their champions shine openly.
 
-A champion is also one of a god's few weaknesses, though only a small one. It is a path to make a god feel pain. When a champion dies, their god loses a piece of themselves with them.
+A champion is also one of a god's few weaknesses, though only a small one. It is a path to make a god feel pain. When a champion dies, their god loses a piece of themselves with them, a wound that heals only with time.
 
 # Upper Gods
 - [[Apiot]]

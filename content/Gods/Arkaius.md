@@ -28,7 +28,7 @@ In 1 PAC, Arkaius died. On that same day his champion fell as well, a mortal who
 
 As his soul unraveled, a mortal mage named Mortimer Greenbe gathered up its fraying threads and bound them to himself, and rose as the god [[Urset]]. Yet a few threads slipped through his grasping fingers and drifted up to the three moons, so that a little of their father lives on in each of them. Within the year came the Arcanus Collapse, as Urset drank the magic of the world dry.
 
-The throne of the gods passed to [[Ellehwin]]. She was among the weakest of the pantheon, but she was the only one every god would suffer to sit there.
+The throne of the gods passed to [[Ellehwin]], for of all the gods she was the only one every other would suffer to sit there.
 
 ### Whispers of the Guilty  
 The rumors of his murder have never died, though not one has ever been proven.

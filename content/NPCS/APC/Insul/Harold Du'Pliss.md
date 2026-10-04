@@ -15,7 +15,7 @@ Belief: That every person has a special talent hidden inside them, and they only
 Accent: irish
 Current Location: [[Insul]]
 Relationships: 
-- identical twin brother of (harold)
+- identical twin brother of [[Jarold Du'Pliss]]
 - married to either [[anna Du'pliss]] or [[Janna Du'pliss]]
 %%
 Gender: M

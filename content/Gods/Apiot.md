@@ -1,4 +1,4 @@
-![[db28cb77-ea2b-487e-9cbd-61186ca39d8d.png]]
+![[e1d36eb0-bf67-4ae8-8e16-00df9a5df852.png]]
 
 Goddess of nature and fertility. Patron of farmers and mothers.
 

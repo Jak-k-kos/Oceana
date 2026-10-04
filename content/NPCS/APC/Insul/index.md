@@ -2,9 +2,6 @@
 title: Insul
 ---
 
-%%
-
-%%
 # Insul
 - [[anna Du'pliss]]
 - [[Arint Scaleskin]]
@@ -19,11 +16,8 @@ title: Insul
 - [[Janna Du'pliss]]
 - [[Jarold Du'Pliss]]
 - [[John Bellball]]
-- [[Kayla Vergate]]
 - [[Lilly Fiore]]
-- [[Mr. Ferguson]]
 - [[Orchid Fiore]]
-- [[sortspec]]
 - [[Tabatha Bellball]]
 - [[Tamra 'Tam' Wellfleet]]
 - [[Tina 'ty' Wellfleet]]
