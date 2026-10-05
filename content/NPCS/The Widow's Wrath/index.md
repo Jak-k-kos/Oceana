@@ -5,4 +5,4 @@ draft: true
 # The Widows Wrath
 
 
-# [[Locations/The Widows Wrath/index|Locations]]
+# [[Locations/The Widow's Wrath/index|Locations]]

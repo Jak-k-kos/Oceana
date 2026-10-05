@@ -5,7 +5,7 @@ A yearly festival celebrating the end of the flood, held in the name of [[Aquill
 **First held:** 2574-3-12
 
 ## Overview  
-For more than two thousand years, the seas rose. Then, on approximately 2574-2-8, they stopped. Word of the victory won by [[The Tidebreakers]] took more than a month to cross the world, and when it finally reached the islands on 2574-3-12, harbors erupted in celebration. That day became the first festival of Aquilla's Mercy, and it celebrates the beginning of a new age: the [[Era of Aquilla's Mercy]].
+For more than two thousand years, the seas rose. Then, on approximately 2574-2-8, they stopped. Word of the victory won by [[The Tidebreakers]] took more than a month to cross the world, and when it finally reached the islands on 2574-3-12, harbors erupted in celebration. That day became the first festival of Aquilla's Mercy, and it celebrates the beginning of a new age: the [[Aquilla's Mercy Era|Era of Aquilla's Mercy]].
 
 It is the first holiday [[Aquilla]] has ever had, and it is a festival of pure, unbridled joy. The long drowning of the world is over, and the islands celebrate as they never have before.
 

@@ -5,4 +5,4 @@ title: Capital
 
 
 
-# [[Locations/Kingdom of Albryn/captial/index|Location]]
+# [[Locations/Kingdom of Albryn/Capital/index|Location]]

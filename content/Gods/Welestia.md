@@ -37,7 +37,7 @@ Yet even the longest storm must one day change.
 
 Of late, sailors and fishermen have begun to notice something they never thought they would see. Welestia's storms have calmed, if only a little. The hurricanes come less often, the gales blow a little less fiercely, and here and there, a fair wind fills the sails where once there would have been only rain. No one knows why. Some say her grief is finally beginning to fade. Others say it is only the calm before something worse.
 
-Only one place remains unchanged. The [[Widow's Wrath]] is as deadly as it has ever been
+Only one place remains unchanged. The [[Locations/The Widow's Wrath/index|Widow's Wrath]] is as deadly as it has ever been
 
 ## The Prospect of Change  
 Welestia is the fury of nature, and she is feared by nearly everyone who has ever lived beneath her sky. Yet she is more than destruction. A storm tears down what is old and rotten, scours the land clean and leaves the air fresh behind it. Welestia is change itself: change that cannot be stopped, bargained with or controlled.
@@ -60,7 +60,7 @@ No one knows why Welestia's fury gathers there more fiercely than anywhere else 
 
 %%  
 ## Rayskaya  
-At the heart of the [[Widow's Wrath]], hidden deep within its storms and dead calms, lies the island of Rayskaya. Rayskaya sits in the very eye of the storm: the calm at the center of Welestia's fury, and the one place in all her domain that lightning never touches. Beyond its shores the Wrath either rages or lies deathly still, but on Rayskaya the skies are clear, the breezes are gentle and the island is lush and green. 
+At the heart of the [[Locations/The Widow's Wrath/index|Widow's Wrath]], hidden deep within its storms and dead calms, lies the island of Rayskaya. Rayskaya sits in the very eye of the storm: the calm at the center of Welestia's fury, and the one place in all her domain that lightning never touches. Beyond its shores the Wrath either rages or lies deathly still, but on Rayskaya the skies are clear, the breezes are gentle and the island is lush and green. 
 
 Upon the highest peak above the island's cove stands the last temple of Welestia, a weathered place of dark stone with a great statue of the goddess at its heart. When she chooses to speak to the mortal world, it is through this statue that she speaks.
 

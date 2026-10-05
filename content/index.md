@@ -5,7 +5,7 @@ Welcome to the world of Oceana
 # Quick Links
 - [[Ship upgrades]]
 - [[Ship equipment]]
-- [[NPCS/APC/Insul/index|index]]
+- [[NPCS/Azure Plains Coalition/Insul/index|Insul]]
 
 # Session Notes
 - [[Session 1]]
@@ -15,3 +15,14 @@ Welcome to the world of Oceana
 - [[Scubby Wellfleet|Scubby Wellfleet (Asper)]]
 - [[Shady Bellball|Shady Bellball (Henry)]]
 - [[Torin|TBD (Torin)]]
+
+
+# Sections
+* [[Characters/index|Characters]]
+* [[Locations/index|Locations]]
+* [[NPCS/index|NPCs]]
+* [[Gods/index|Gods]]
+* [[Sails and seas/index|Sails & Seas]]
+* [[World Events/index|Word Events & Dates]]
+* [[Session Notes/index|Session Notes]]
+* [[Creatures/index| Creatures]]

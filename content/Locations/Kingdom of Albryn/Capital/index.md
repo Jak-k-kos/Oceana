@@ -1,5 +1,5 @@
 ---
-title: captial
+title: Capital
 ---
 # Capital
 

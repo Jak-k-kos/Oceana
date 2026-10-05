@@ -5,5 +5,5 @@ draft: false
 # The Widows Wrath
 
 %%
-# [[NPCS/The Widows Wrath/index|NPCs]]
-&&
+# [[NPCS/The Widow's Wrath/index|NPCs]]
+%%

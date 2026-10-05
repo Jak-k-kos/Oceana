@@ -8,5 +8,5 @@ title: Locations
 - [[Locations/The Draconic Conclave/index|The Draconic Conclave]]
 - [[Locations/The Black Tide/index|The Black Tide]]
 - [[Locations/Smuggler's Reach/index|Smugglers Reach]]
-- [[Locations/The Widows Wrath/index|The Widows Wrath]]
+- [[Locations/The Widow's Wrath/index|The Widows Wrath]]
 - [[Sea Folk Waters]]

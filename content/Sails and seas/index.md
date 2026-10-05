@@ -1,5 +1,5 @@
 ---
-title: Sails and seas
+title: Sails & Seas
 ---
 
 # Sails and seas
