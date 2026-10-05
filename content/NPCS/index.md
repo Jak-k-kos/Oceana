@@ -8,6 +8,7 @@ title: NPCs
 - [[NPCS/Kingdom Of Albryn/index|The Kingdom of Albryn]]
 - [[NPCS/The Black Tide/index|The Black Tide]]
 - [[NPCS/The Draconic Conclave/index|The Draconic Conclave]]
+
 %%
 - [[NPCS/The Widow's Wrath/index|The Widows Wrath]]
 comment
