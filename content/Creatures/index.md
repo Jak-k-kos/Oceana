@@ -1,0 +1,6 @@
+---
+title: Creatures
+draft:
+---
+
+# Creatures
