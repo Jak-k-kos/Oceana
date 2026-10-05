@@ -1,9 +1,10 @@
 ---
 title: NPCs
+hideFolderContent: true
 ---
+# NPCs
 
-
-# Countries
+## Countries
 - [[NPCS/Azure Plains Coalition/index|The Azure Plains Coalition]]
 - [[NPCS/Kingdom Of Albryn/index|The Kingdom of Albryn]]
 - [[NPCS/The Black Tide/index|The Black Tide]]
@@ -12,7 +13,7 @@ title: NPCs
 %%
 - [[NPCS/The Widow's Wrath/index|The Widows Wrath]]
 %%
-# Regions
+## Regions
 - [[NPCS/Smuggler's Reach/index|Smuggler's Reach]]
 - [[The Tidebreakers]]
 
