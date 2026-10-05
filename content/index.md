@@ -25,4 +25,4 @@ Welcome to the world of Oceana
 * [[Sails and seas/index|Sails & Seas]]
 * [[World Events/index|Word Events & Dates]]
 * [[Session Notes/index|Session Notes]]
-* [[Creatures/index| Creatures]]
+* [[Creatures/index|Creatures]]

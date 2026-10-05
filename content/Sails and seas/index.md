@@ -4,8 +4,9 @@ title: Sails & Seas
 
 # Sails and seas
 - [[Flag Code]]
-- [[Ship equipment]]
-- [[Ship upgrades]]
+- [[Ship Equipment]]
+- [[Ship Upgrades]]
+- [[Sails and seas/Ship types/index|Ship Types]]
 
 ## Ship types
 
