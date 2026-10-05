@@ -1,5 +1,7 @@
 ---
 title: World Events
+draft:
+hideFolderContent:
 ---
 
 # Holidays

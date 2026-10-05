@@ -1,5 +1,6 @@
 ---
 title: Locations
+hideFolderContent: true
 ---
 
 # Contries
