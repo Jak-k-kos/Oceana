@@ -10,6 +10,7 @@ title: NPCs
 - [[NPCS/The Draconic Conclave/index|The Draconic Conclave]]
 %%
 - [[NPCS/The Widow's Wrath/index|The Widows Wrath]]
+comment
 %%
 # Regions
 - [[NPCS/Smuggler's Reach/index|Smuggler's Reach]]
