@@ -21,12 +21,12 @@ It was Arkaius who spoke the law that binds the gods still: that no god may lay 
 ## The Storm and the Eye  
 Where the other gods took mortal lovers and scattered demigod children across the world, Arkaius gave his heart once, and to one of his own. He wed [[Welestia]], the storm, and theirs remains the only marriage the heavens have ever known. From their union came three children, the moons [[Ellehwin]], [[Ostin]] and [[Winstra]], the only gods ever born of gods.
 
-Welestia was never gentle by nature. The hurricanes are older than his death, and many whispered that she was as mad as the skies she ruled. Arkaius never tried to tame her. He was the eye of her storm, the stillness at its heart, and for love of him she held her fury in check. In those days she sent soft rains to the fields and fair winds to the sails. Since he fell, there has been nothing left to hold her.
+[[Welestia]] was never gentle by nature. The hurricanes are older than his death, and many whispered that she was a little mad, and they were not entirely wrong. Arkaius never tried to tame her. He was the eye of her storm, the stillness at its heart, and for love of him she held her fury in check. In those days she sent soft rains to the fields and fair winds to the sails. Since he fell, there has been nothing left to hold her.
 
 ## The Fall of the Weaver  
 In 1 PAC, Arkaius died. On that same day his champion fell as well, a mortal whose name the ages have since swallowed, and no one knows which of the two fell first. How a god may die at all is a mystery that has never been answered, and the hand that struck him down, if hand it was, has never been found.
 
-As his soul unraveled, a mortal mage named Mortimer Greenbe gathered up its fraying threads and bound them to himself, and rose as the god [[Urset]]. Yet a few threads slipped through his grasping fingers and drifted up to the three moons, so that a little of their father lives on in each of them. Within the year came the Arcanus Collapse, as Urset drank the magic of the world dry.
+As his soul unraveled, a mortal mage named Mortimer Greenbe gathered up its fraying threads and bound them to himself, and rose as the god [[Urset]]. Yet a few threads slipped through his grasping fingers and drifted up to the three moons, so that a little of their father lives on in each of them. Within the year came the [[Arcanus Collapse]], as [[Urset]] drank the magic of the world dry.
 
 The throne of the gods passed to [[Ellehwin]], for of all the gods she was the only one every other would suffer to sit there.
 

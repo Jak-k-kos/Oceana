@@ -24,13 +24,21 @@ Now she has been forced to make her old pastime her purpose. The goddess of the 
 ## The Gods' Children  
 Apiot holds little patience for the flagrant dalliances of the other gods. They take mortal lovers, often their own champions, and leave demigod children in their wake with little thought for what becomes of them. Apiot cannot abide it, and in her own ways she watches over the children the other gods leave behind.
 
+### Temples  
+Apiot's temples are gardens. Each is a walled orchard or garden, open to anyone who wishes to walk in it, with her shrine at its heart. In an island world where every acre of dry land is precious, a temple that grows food is a treasured thing, and the harvest of Apiot's gardens is shared freely with those in need.
+
+Her priests are gardeners and midwives, and many of her temples double as birthing houses, where mothers come to bring their children into the world beneath the Green Mother's care. It is here that new mothers receive their blessing at [[Apiot's Promise]].
+
+Each temple also keeps the Promise seed. From [[Apiot's Boon]] until [[Apiot's Promise]], the finest seeds of the harvest are stored safely within its walls, waiting for the spring.
+
+Along the coasts, her temples reach out into the shallows, where her priests tend kelp beds and reef gardens just beyond the shore.
 ## Worship  
 Apiot is the patron of farmers and mothers, and her worship is woven into the rhythm of island life. Farmers, midwives, mothers and kelp-tenders keep her shrines, and few island homes are without some small token of her.
 
 Her faithful celebrate two festivals each year:
 
-- **Apiot's Promise**, held just before the fields are sown, a prayer for the harvest to come.
-- **Apiot's Boon**, held just before the harvest, in thanks for what she has given.
+- **[[Apiot's Promise]]**, held on the 15th of Macis, just before the fields are sown, a prayer for the harvest to come.
+- **[[Apiot's Boon]]**, held on the 5th of Osca, just before the harvest, in thanks for what she has given.
 
 Before any family eats from the year's harvest, the first fruits are set aside as an offering to Apiot.
 
@@ -42,6 +50,6 @@ Apiot is one of the few gods who lets her champion shine openly. Known only as t
 - **[[Welestia]]**: Once her closest partner, the rain to her harvest. Since the death of [[Arkaius]] the storms have driven them apart, and the distance between them grows with every flattened field.
 - **[[Roktra]]**: He holds up the land and she grows upon it. Theirs is a quiet, steady alliance, and with so little land left, they guard it together.
 - **[[Ruthala]]**: The mother and the hunter. They respect one another, but they have never agreed on what nature is for.
-- **[[Aquilla]]&[[Caruilla]]**: Apiot needs [[Aquilla|Aquilla's]] waters for her new gardens and [[Caruilla|Caruilla's]] creatures fill her reefs. yet [[Aquilla|Aquilla's]] waters swallowed her forests and [[Caruilla|Caruilla's]] sea folk resent every reef she plants, even as they feed on the life it shelters. Uneasy but necessary neighbors.
+- **[[Aquilla]] & [[Caruilla]]**: Apiot needs [[Aquilla]]'s waters for her new gardens and [[Caruilla]]'s creatures to fill her reefs. Yet [[Aquilla]]'s waters swallowed her forests, and [[Caruilla]]'s sea folk resent every reef she plants, even as they feed on the life it shelters. Uneasy but necessary neighbors.
 - **[[Morvaine]]**: Apiot accepts death as part of the natural cycle, the end that makes room for new growth, so long as it comes in its proper season.
 - **[[Urset]]**: A mortal who clawed his way into godhood breaks every natural law she holds dear. She will never forgive it.

@@ -25,7 +25,7 @@ She is stern and confident, tough but fair, and she does her best to do what is 
 ## The Law That Binds  
 Ellehwin believes the law exists to protect, and that every law should be an act of justice. That belief was tested as no god's has ever been.
 
-Through all the long centuries of Aquilla's Wrath, Ellehwin watched the world drown and could do nothing. The cauldron lay in [[Aquilla]]'s waters, beyond Ellehwin's domain, and so it was beyond her reach. Neither could she force [[Aquilla]] to act, for the law asks the gods only to keep within their bounds, not to do good within them. The law her father made to protect the world was the very thing that held her back while it sank. It is a wound she carries still.
+Through all the long centuries of [[Aquilla's Wrath]], Ellehwin watched the world drown and could do nothing. The cauldron lay in [[Aquilla]]'s waters, beyond Ellehwin's domain, and so it was beyond her reach. Neither could she force [[Aquilla]] to act, for the law asks the gods only to keep within their bounds, not to do good within them. The law her father made to protect the world was the very thing that held her back while it sank. It is a wound she carries still.
 
 ## Her First Judgment  
 Her first act as head of the pantheon was to pass judgment on [[Urset]]. After [[Welestia]]'s wrath had burned and crippled him, he was too broken to be counted among the upper gods, and Ellehwin sentenced him to the lower Halls of Divinity. [[Urset]] has never forgiven her. To him, the girl who took his throne is the same one who cast him down.
@@ -42,6 +42,10 @@ No law commands it, and no temple has made it a holy day, but across the islands
 
 On rare occasions, more than an eye is drawn. A mortal who swears a true oath beneath the full green moon may find that oath answered with power. Such oath-sworn are the rare paladins of the world who are not champions. Their power is a pale thing beside a champion's, but it is real, and it lasts only as long as the oath is kept.
 
+### Temples  
+Ellehwin's temples are rarely buildings of their own. Most are a single hall within a magistrate's court or council house, where the work of law and the worship of its goddess sit side by side. It is here that oaths are sworn beneath the full green moon.
+
+Her priests are mediators more than lawmen. They help people settle their disputes before those disputes ever reach a judge, seeking a fair agreement rather than a winner and a loser. Mediation is heavily encouraged before any case is brought to trial, and most magistrates will send a dispute to Ellehwin's priests first. Some matters, however, cannot wait, and when justice must be swift, the courts may act without them.
 ## Worship  
 Ellehwin is the patron of judges, lawkeepers, legislators and leaders, and of all who believe that the law should protect the weak. Her shrines stand in courthouses and council halls, and few rulers take their seats without first seeking her blessing.
 

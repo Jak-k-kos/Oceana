@@ -11,54 +11,58 @@ Champions are among the rarest and most powerful mortals alive. Many gods keep t
 A champion is also one of a god's few weaknesses, though only a small one. It is a path to make a god feel pain. When a champion dies, their god loses a piece of themselves with them, a wound that heals only with time.
 
 # Upper Gods
-- [[Apiot]]
+- **[[Apiot]]**
 Goddess of nature and fertility. Patron of farmers and mothers.
 
-- [[Aquilla]]
+- **[[Aquilla]]**
 Goddess of water. Patron of sailors and fishermen.
 
-- [[Flaris]]
+- **[[Flaris]]**
 God of fire. Patron of the hospitable and tavern and inn keepers
 
-- [[Koruk]]
+- **[[Koruk]]**
 God of dragons, Ruler of the Draconic Conclave. patron of all things draconic.
 
-- [[Morvaine]]
+- **[[Morvaine]]**
 Goddess of death and fate. Patron of graves men and the forgotten.
 
-- [[Roktra]]
+- **[[Roktra]]**
 God of Earth. Patron of miners and the land born races.
 
-- [[Welestia]]
+- **[[Welestia]]**
 The goddess of storms. Patron of none, Scourge of the skies.
 ## Lower Gods
-- [[Caruilla]]
+
+- **[[Lyandris]]**
+God of music. Patron of bards, musicians and lovers.
+
+- **[[Caruilla]]**
 Goddess of sea creatures. Patron of sea folk.
 
-- [[Fennara]]
+- **[[Fennara]]**
 God of fortune and luck. Paton of merchants, adventurers, and pirates.
 
-- [[Ruthala]]
+- **[[Ruthala]]**
 Goddess of beasts. Patron of hunters.
 
-- [[Tarrakus]]
+- **[[Tarrakus]]**
 God of war. Patron of warriors and generals.
 
-- [[Urset]]
+- **[[Urset]]**
 The new God of magic. Patron of mages and and the greedy.
 
 ## The Three Moons
-- [[Ellehwin]]
+- **[[Ellehwin]]**
 Goddess of law and order. Patron of judges, law enforcement, legislators, and leaders. The oldest moon
 
-- [[Ostin]]
-God of technology and progress. Patron of craftsmen, researchers and scientists. The middle moon
+- **[[Ostin]]**
+God of technology and progress. Patron of craftsmen, researchers, scientists and artificers. The middle moon.
 
-- [[Winstra]]
+- **[[Winstra]]**
 Goddess of stars. Patron of travelers. The young moon.
 
 ## Deceased Gods
-- [[Arkaius]]
+- **[[Arkaius]]**
 The dead god of magic. Once head of the pantheon.
 
 

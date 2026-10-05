@@ -23,7 +23,7 @@ He may well be the most prayed-to god in the world. Sailors, merchants, gamblers
 ## A Seat Among the Lesser  
 Luck touches every roll of the dice, every voyage and every bargain struck, and Fennara could likely have claimed a seat among the upper gods had he wanted one. The upper gods are glad that he never has, for they would rather keep his chaos as far from their councils as they can. Fennara could not be happier with the arrangement.
 
-He wants no part in the politics of the heavens. He wants only a good seat for the show. He watches the quarrels of the gods the way a gambler watches a game of cards, and it is said that he keeps wagers going on all of them: on [[Urset]]'s schemes, on [[Ellehwin]]'s search for her father's killer, and on how long [[Caruilla]] will keep asking for a seat she will never be given. 
+He wants no part in the politics of the heavens. He wants only a good seat for the show. He watches the quarrels of the gods the way a gambler watches a game of cards, and it is said that he keeps wagers going on all of them: on [[Urset]]'s schemes, on [[Ellehwin]]'s search for her father's killer, and on how long [[Caruilla]] will keep asking for a seat she will never be given.
 ## Worship  
 Fennara's worship is everywhere and nowhere, woven into the small habits of daily life rather than kept in temples.
 
@@ -39,9 +39,9 @@ Fennara's champion is hidden, and likely always will be. Whoever they are, they 
 
 ## Relationships
 
-- **[[Morvaine]]**: Fate and chance, the written and the rolled. Morvaine can hardly stand him, and Fennara adores her for it. Of all the gods, she is the one he finds most interesting, and he has never stopped trying to make her laugh.
+- **[[Morvaine]]**: Fate and chance, the written and the rolled. [[Morvaine]] can hardly stand him, and Fennara adores her for it. Of all the gods, she is the one he finds most interesting, and he has never stopped trying to make her laugh.
+- **[[Flaris]]**: The dice and the hearth, two halves of every good tavern. [[Flaris]] is one of his dearest friends, and Fennara's favorite seat in all the heavens is at [[Flaris]]'s table, cards in hand and cup never empty.
+- **[[Lyandris]]**: Fennara is friendly with nearly everyone and close to almost no one, but [[Lyandris]] is the exception. He is the one god Fennara might truly call family, and the only one he would never bet against.
 - **[[Aquilla]]**: Sailors pray to them both, and [[Aquilla]] finds his worship beneath her. Fennara finds her dreadfully dull, and tells her so.
 - **[[Ellehwin]]**: Law and chance make poor bedfellows, and [[Ellehwin]] has no love for a god whose champion robs the rich. Fennara thinks she could use a good game of cards.
-- **[[Flaris]]**: The dice and the hearth, two halves of every good tavern. [[Flaris]] is one of the only people he would truly call a dear friend, and Fennara's favorite seat in all the heavens is at Flaris's table, cards in hand and cup never empty.
-- [[Lyandris]]: Fennara is friendly with nearly everyone and close to almost no one, but [[Lyandris]] is the exception. He is the one god Fennara might truly call family, and the only one he would never bet against.
 - **The Upper Gods**: They would rather keep his chaos as far from their councils as they can, and he would rather watch than sit at the table. Both sides are perfectly happy.
