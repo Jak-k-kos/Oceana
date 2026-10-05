@@ -2,5 +2,5 @@
 title: APC
 ---
 
-# APC
-## Insul
+# The Azure Plains Coalition
+- [[NPCS/APC/Insul/index|Insul]]

@@ -2,25 +2,43 @@
 title: Insul
 ---
 
-# Insul
-- [[anna Du'pliss]]
-- [[Arint Scaleskin]]
-- [[Azria Wellfleet]]
-- [[Charles Bellball]]
-- [[Dahlia Fiore]]
-- [[Drekta Wellfleet]]
+# The Faranz Family
 - [[Elisa Faranz]]
 - [[Emilio Faranz]]
-- [[Halina Scaleskin]]
+
+# The Du'Pliss Family
+- [[anna Du'pliss]]
 - [[Harold Du'Pliss]]
 - [[Janna Du'pliss]]
 - [[Jarold Du'Pliss]]
-- [[John Bellball]]
-- [[Lilly Fiore]]
-- [[Orchid Fiore]]
-- [[Tabatha Bellball]]
+
+# The Scaleskin Family
+- [[Arint Scaleskin]]
+- [[Halina Scaleskin]]
+
+# The Wellfleet Family
+- [[Drekta Wellfleet]]
+- [[Vhallen Wellfleet]]
+- [[Azria Wellfleet]]
+- [[Scubby Wellfleet|Scubby Wellfleet(Aster)]]
 - [[Tamra 'Tam' Wellfleet]]
 - [[Tina 'ty' Wellfleet]]
+
+# The Bellball Family
+- [[Charles Bellball]]
+- [[John Bellball]]
+- [[Tabatha Bellball]]
+- [[Shady Bellball| Shady Bellball(Henry)]]
+- [[Rouge Bellball|Rouge Bellball(Z)]]
+
+# The Fiore Family
+- [[Dahlia Fiore]]
+- [[Lilly Fiore]]
+- [[Orchid Fiore]]
+
+
+# Others
 - [[Torin's dad]]
-- [[Vhallen Wellfleet]]
+- [[]]
+
 
