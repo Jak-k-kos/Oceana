@@ -3,7 +3,7 @@ title: Insul
 ---
 %%
 # DM Notes
-- Leader: [[Elisa Faranz]]
+- Leader: [[Emilio Faranz]]
 - Food:  
 - Trade: Lumber
 - extra: 
@@ -12,4 +12,8 @@ title: Insul
 - [[Fiore Lumber Company]]
 - [[Uncle Johns]]
 - [[Wellfleet oyster farm]]
+
+
+# [[NPCS/Azure Plains Coalition/Insul/index|NPCs]]
+
 

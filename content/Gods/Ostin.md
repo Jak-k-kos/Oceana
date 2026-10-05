@@ -28,7 +28,7 @@ Ostin cannot simply hand the world its inventions. The First Law binds him as it
 The great ships of the age, the cannons upon their decks and every new craft that has spread across the islands are mortal-made things, built by mortal hands. Yet those who make them often say they are expressions of Ostin's insight, shaped by a guiding hand they could feel but never see.
 
 ## His Era  
-Now the flood is over, and Ostin means to make the [[Era of Aquilla's Mercy]] his own. Not out of greed, for he wants nothing for himself, but for all. He believes that this age, at long last, can be one of progress, and that the mortals of the world can build something greater than anything they lost. He has waited a very long time for it, and he does not intend to wait any longer.
+Now the flood is over, and Ostin means to make the [[Aquilla's Mercy Era]] his own. Not out of greed, for he wants nothing for himself, but for all. He believes that this age, at long last, can be one of progress, and that the mortals of the world can build something greater than anything they lost. He has waited a very long time for it, and he does not intend to wait any longer.
 
 ## Artificers  
 Artificers are Ostin's most devoted faithful, craftsmen like any other, only more magical in nature. Through the sliver of [[Arkaius]] that rests in his moon, Ostin grants them the power to weave a thread of magic into their work, blending craft and magic as only he can.
@@ -48,7 +48,7 @@ Ostin is the patron of craftsmen, researchers, scientists and artificers, and of
 ### Champion  
 Ostin is one of the few gods who has always kept his champions in the open, and every one of them has spent their life pushing to rebuild the lost craft and learning of the world. Some succeeded beyond anyone's hopes, and their work is still in use today. Others aimed too high or too soon, and are remembered more for their failures than their triumphs. One is still honored for the great lenses that light the lighthouses of the islands; another is best remembered for an engine that took half of his workshop with it when it failed. Yet every one of them moved the world a little further forward than they found it.
 
-His current champion is [[Chief Artificer Lady Beatrix Thorncast]] of the [[Kingdom of Albryn]], whose workshops are said to be the finest in the world.
+His current champion is [[Chief Artificer Lady Beatrix Thorncast]] of the [[Locations/Kingdom of Albryn/index|Kingdom of Albryn]], whose workshops are said to be the finest in the world.
 
 ## Relationships
 
