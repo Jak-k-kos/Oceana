@@ -2,10 +2,22 @@
 title: Azure Plains Coalition (APC)
 ---
 # Azure Plains Coalition (APC)
+The Azure Plains Coalition is not a nation, though outsiders often mistake it for one. It is a loose alliance of well over a hundred island city-states scattered across the northwestern shallows, each ruling itself in its own way. Some elect an archon, some bow to a hereditary don, some are ruled by a temple, a guild, or a council of old families, and a few are held by a single strong hand. What they share is a love of the sea, a stubborn pride in their own island, and a culture of whitewashed hill towns and old temples, sun-bright harbors, rum, and guitars in the plazas. Their faith is as varied as their people. [[Flaris]], [[Roktra]], [[Ruthala]], and [[Fennara]] are the most widely worshipped, but outside their own temples and shrines, few islanders pray to only one god. The coalition takes its name from the shallow turquoise waters between the islands, so bright and clear that sailors say you can see the old drowned plains shining below.
 
-### Large Island States
+The coalition is older than the [[Locations/Kingdom of Albryn/index|Kingdom of Albryn]] as the world knows it today. More than fifteen hundred years ago, as the waters rose during [[Aquilla's Wrath]], a handful of island towns banded together against the sea folk and against the bandits who were quickly becoming pirates as the land disappeared beneath them. The alliance began small and grew, island by island, for centuries. It stopped growing only when the expanding [[Locations/Kingdom of Albryn/index|Kingdom]] reached its borders and there were no free city-states left to join.
 
-### Small Island States
+The coalition has no capital and no king. Its only shared body is the coalition council: a handfull of the most influential people in the islands, meeting in turn on the great islands or aboard grand ships. Hosting the council is a point of pride. The council has little real power. It cannot tax, command, or overrule any island; it settles disputes between them and keeps a small army of its own. Every city-state is expected to send a few draftees to that army, which patrols the northern coasts against the sea folk and the southern waters against the pirates of the [[Locations/The Black Tide/index|Black Tide]], and holds lonely posts like [[Locations/Azure Plains Coalition (APC)/Cabo Del Thalos/index|Cabo Del Thalos]]. The council pays for its soldiers and its few stipends with the fees islands pay to have their disputes heard, the tributes of its members, and the sale of whatever its patrols bring in: captured sea monsters, pirate ships, and other prizes. Even so, most of the coalition's strength belongs to the islands themselves, in their own guard forces and their own ships.
+
+Only a few laws bind every member: answer the council's draft, honor [[flaris|Flaris's guest-right]], keep [[Tarrakus|Tarrakus's]] Rules of War when fighting a fellow island, never turn pirate, and bring every quarrel to mediation before it becomes a war. Beyond that, the islands keep each other in check far more than the council ever could, and an island that grows too bold soon finds its neighbors lined up against it. Now and then, when mediation fails entirely, two city-states do go to war. These wars are small and short, fought by rules everyone understands, and never as ruthless as the wars the islands fight against outsiders, let alone the long, bitter war between the [[Locations/Kingdom of Albryn/index|Kingdom]] and the [[Locations/The Black Tide/index|Black Tide]].
+
+Every coalition ship and harbor flies the coalition's flag, a white ring of rope on an azure field, for the bond between the islands. The greatest city-states fly a banner of their own beneath it, but most islands are content with the ring alone.
+
+The coalition's neighbors keep it honest. To the north, the [[Sea Folk Waters|sea folk waters]] press close, and the sea folk have grown restless since the flood stopped. To the southwest lie the dragons of the [[Locations/The Draconic Conclave/index|Draconic Conclave]]. To the south, the pirates of the [[Locations/The Black Tide/index|Black Tide]] prowl the waters between the Conclave and the deadly calms and storms of the [[Locations/The Widow's Wrath/index|Widow's Wrath]]. To the east and southeast stretches the [[Locations/Kingdom of Albryn/index|Kingdom of Albryn]], the coalition's greatest trading partner and its greatest worry, vast and orderly where the coalition is free and quarrelsome. Few islanders would trade their independence for the Kingdom's order, but more than a few city-states have begun to wonder what the coalition would do if the Kingdom ever decided to stop trading and start taking.
+
+
+# Large Island States
+
+# Small Island States
 - [[Locations/Azure Plains Coalition (APC)/Insul/index|Insul]]
 
 # [[NPCS/Azure Plains Coalition/index|NPCs]]
