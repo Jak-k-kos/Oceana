@@ -14,4 +14,4 @@ Nauvela is a cold, remote island on the far northern edge of the coalition, home
 
 
 
-# [[NPCS/Azure Plains Coalition/Nauvela/index|NPCs]]
+%%# [[NPCS/Azure Plains Coalition/Nauvela/index|NPCs]]%%

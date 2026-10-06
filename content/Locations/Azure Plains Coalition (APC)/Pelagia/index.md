@@ -14,4 +14,4 @@ Pelagia sits alone on the far western edge of the coalition, a steep green hump 
 
 
 
-# [[NPCS/Azure Plains Coalition/Pelagia/index|NPCs]]
+%%# [[NPCS/Azure Plains Coalition/Pelagia/index|NPCs]]%%

@@ -14,4 +14,4 @@ Korifas is a single sharp peak rising out of the northern chain, its slopes too 
 
 
 
-# [[NPCS/Azure Plains Coalition/Korifas/index|NPCs]]
+%%# [[NPCS/Azure Plains Coalition/Korifas/index|NPCs]]%%

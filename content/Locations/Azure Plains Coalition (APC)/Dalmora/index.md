@@ -16,4 +16,4 @@ Dalmora is three islands and one great vineyard. Dalmora Mayor, the largest, is 
 - [[Dalmora Norte]]
 
 
-# [[NPCS/Azure Plains Coalition/Dalmora/index|NPCs]]
+%%# [[NPCS/Azure Plains Coalition/Dalmora/index|NPCs]]%%
