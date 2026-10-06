@@ -14,4 +14,4 @@ Cabo Del Thalos is a bare rock fortress at the northernmost tip of the coalition
 
 
 
-# [[NPCS/Azure Plains Coalition/Cabo Del Thalos/index|NPCs]]
+%%# [[NPCS/Azure Plains Coalition/Cabo Del Thalos/index|NPCs]]%%
