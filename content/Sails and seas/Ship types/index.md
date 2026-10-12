@@ -4,5 +4,5 @@ draft:
 ---
 
 # Ship types
-- [[Sails and seas/Ship types/Untitled]]
+- [[Sails and Seas/Ship types/Untitled]]
 

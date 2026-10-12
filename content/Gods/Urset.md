@@ -39,7 +39,7 @@ Not every caster has struck a bargain with him, however. A rare few rangers, bar
 Few cities will raise a temple to the shamed god, so his worship is a private affair: a locked room, a hidden shrine, a prayer muttered over a counting table. His followers are mages, moneylenders, ambitious nobles, and anyone scheming to take what is not theirs. Offerings must be something of real value to the giver, such as gold, rare relics, or secrets. It is said he answers most readily those who offer what they can least afford to lose.
 
 ### Champion  
-Sailors whisper that Urset's champion is the Dread Pirate King[[]], and that the god who gives nothing freely has poured his power into a single mortal. If the rumors are true, the god who failed to take a throne by force may have found someone to take one for him.
+Sailors whisper that Urset's champion is the [[Dread Pirate King Vask]], and that the god who gives nothing freely has poured his power into a single mortal. If the rumors are true, the god who failed to take a throne by force may have found someone to take one for him.
 
 ## Relationships
 

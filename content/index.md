@@ -14,7 +14,7 @@ Welcome to the world of Oceana
 - [[Rouge Bellball|Rouge Bellball (Zadia)]]
 - [[Scubby Wellfleet|Scubby Wellfleet (Asper)]]
 - [[Shady Bellball|Shady Bellball (Henry)]]
-- [[Torin|TBD (Torin)]]
+- [[Tryknin Goldenroar|Tryknin Goldenroar(Torin)]]
 
 
 # Sections
@@ -22,7 +22,7 @@ Welcome to the world of Oceana
 * [[Locations/index|Locations]]
 * [[NPCS/index|NPCs]]
 * [[Gods/index|Gods]]
-* [[Sails and seas/index|Sails & Seas]]
+* [[Sails and Seas/index|Sails & Seas]]
 * [[World Events/index|Word Events & Dates]]
 * [[Session Notes/index|Session Notes]]
 * [[Creatures/index|Creatures]]

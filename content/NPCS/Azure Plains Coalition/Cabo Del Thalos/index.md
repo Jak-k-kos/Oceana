@@ -2,6 +2,7 @@
 title: Cabo Del Thalos
 draft: true
 ---
+
 # Leadership
 - [[Andrea Vasquero]]
 

@@ -9,13 +9,13 @@ DM Notes:
 ------------------------------------
 species: Human
 Unique Trait: Climbs the switchbacks at a run
-Motivation: Leave Korifas and see the world, without letting the fire go out
+Motivation: Leave [[Locations/Azure Plains Coalition (APC)/Korifas/index|Korifas]] and see the world, without letting the fire go out
 Occupation: Fire-tender, heir to the beacon
 Belief: Someone else could keep the fire just as well
 Accent: Quick and blunt
 Current Location: [[Locations/Azure Plains Coalition (APC)/Korifas/index|Korifas]]
 Relationships: 
-- [[Lázaro Kefalas]]: grandfather
+- [[Lazaro Kefalas]]: grandfather
 %%
 Gender: Female
 Appearance: Seventeen. Wiry, soot on her hands, a goat-hair cloak

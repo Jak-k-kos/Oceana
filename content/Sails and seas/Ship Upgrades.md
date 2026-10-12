@@ -1,3 +1,8 @@
+* [[#Railing|Railing Upgrades]]
+* [[#Plating|Plating Upgrades]]
+* [[#Structural|Structural Upgrades]]
+* [[#Light Mods|Light Upgrades]]
+
 # Ship Upgrades
 ***
 ***
@@ -144,20 +149,3 @@ Desc: Gain advantage to survival checks to fish while at sea. creatures and ship
 ### Hot Rod Paint
 Market Value: 500SH
 Desc: You'll feel like your going a lot faster with this paint. only one paint may be used on a ship at a time
-
-# Weapon Upgrades
-## Ranged Weapons
----
-### Weapon
-AC:
-HP: 
-DMG Immunities:
-Weapon Slots:
-Market Price: SH
-#### Amunition:
-* aa:
-
-
-
-## Melee Weapons
----

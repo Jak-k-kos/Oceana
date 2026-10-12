@@ -7,5 +7,5 @@ These
 - [[Rouge Bellball|Rouge Bellball(Z)]]
 - [[Scubby Wellfleet|Scubby Wellfleet(Aster)]]
 - [[Shady Bellball|Shady Bellball(Henry)]]
-- [[Torin]]
+- [[Tryknin Goldenroar|Tryknin Goldenroar(Torin)]]
 

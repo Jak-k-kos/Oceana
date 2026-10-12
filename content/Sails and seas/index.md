@@ -4,10 +4,12 @@ title: Sails & Seas
 
 # Sails and seas
 - [[Flag Code]]
-- [[Ship Equipment]]
+- [[Ship equipment]]
 - [[Ship Upgrades]]
-- [[Sails and seas/Ship types/index|Ship Types]]
+- [[Ship Weapons]]
+- [[Sails and Seas/Ship types/index|Ship Types]]
+- [[Sails and Seas/Ship Rules/index|Ship Rules]]
 
-## Ship types
+# Survival
 
 

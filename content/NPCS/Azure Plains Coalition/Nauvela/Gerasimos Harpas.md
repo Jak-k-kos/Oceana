@@ -9,7 +9,7 @@ DM Notes:
 ------------------------------------
 species: Human
 Unique Trait: Counts every whale he has ever killed on a knotted cord
-Motivation: Keep Nauvela whaling, because without it the island dies
+Motivation: Keep [[Locations/Azure Plains Coalition (APC)/Nauvela/index|Nauvela]] whaling, because without it the island dies
 Occupation: Eldest captain and head of the whaling council
 Belief: The sea feeds those brave enough to take from her
 Accent: Gruff, few words
@@ -19,6 +19,6 @@ Relationships:
 %%
 Gender: Male
 Appearance: Early sixties. Weathered and broad, a white beard stiff with salt, one hand missing two fingers to a harpoon line
-Who: The oldest whaling captain on Nauvela and head of the captains' council.
+Who: The oldest whaling captain on [[Locations/Azure Plains Coalition (APC)/Nauvela/index|Nauvela]] and head of the captains' council.
 known relationships:
 - 

@@ -1,8 +1,18 @@
 ---
 title: The Black Tide
-draft:
+draft: false
 ---
-# The Black Tide
 
+# Leadership
+- [[Dread Pirate King Vask]]
 
-# [[Locations/The Black Tide/index|Location]] 
+# Ex-Leadership
+- [[Dread Pirate King Gromon Spritroar]]
+
+%%
+
+# Notable Residents
+- [[De'Soto]]
+
+%%
+# [[Locations/The Black Tide/index|Location]]

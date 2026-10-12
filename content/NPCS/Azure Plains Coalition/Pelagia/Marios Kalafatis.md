@@ -10,7 +10,7 @@ DM Notes:
 species: Human
 Unique Trait: Still dives every morning before council
 Motivation: Shut down the salvage of Old Pelagia before the sea folk retaliate, without breaking the guild that feeds the island
-Occupation: Archon of Pelagia
+Occupation: Archon of [[Locations/Azure Plains Coalition (APC)/Pelagia/index|Pelagia]]
 Belief: The sea lets you take from her only if you know when to stop
 Accent: Clipped, a little breathless
 Current Location: [[Locations/Azure Plains Coalition (APC)/Pelagia/index|Pelagia]]

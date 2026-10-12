@@ -9,7 +9,7 @@ DM Notes:
 ------------------------------------
 species: Half-Orc
 Unique Trait: Counts the waves at night
-Motivation: Make the coalition council believe the sea folk are massing before it's too late
+Motivation: Make the [[Locations/Azure Plains Coalition (APC)/index|coalition]] council believe the sea folk are massing before it's too late
 Occupation: Garrison commander
 Belief: Peace with the sea folk is a lie we tell ourselves
 Accent: Blunt and military

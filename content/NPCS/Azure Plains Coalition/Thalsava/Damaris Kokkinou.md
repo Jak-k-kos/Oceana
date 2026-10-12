@@ -19,6 +19,6 @@ Relationships:
 %%
 Gender: Female
 Appearance: Late seventies. Bent and thin, hands stained purple to the elbow
-Who: The only person who knows the full recipe for Thalsava purple.
+Who: The only person who knows the full recipe for [[Locations/Azure Plains Coalition (APC)/Thalsava/index|Thalsava]] purple.
 known relationships:
 - 

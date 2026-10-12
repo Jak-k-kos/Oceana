@@ -4,14 +4,10 @@ draft: false
 ---
 
 # Leadership
-- [[Elías Thermidor]]
+- [[Elias Thermidor]]
 
-%%
-
-# Notable Residents
-- [[Nikandros Vellis]]
-
-%%
+%%# Notable Residents%%
+%%- [[Nikandros Vellis]]%%
 
 
 # [[Locations/Azure Plains Coalition (APC)/Ostrakia/index|Location]]

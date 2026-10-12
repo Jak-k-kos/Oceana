@@ -8,10 +8,10 @@ draft: true
 
 # Notable Residents
 - [[Catalina Vintaros]]
-- [[Teodora Gallis]]
+- [[Gaspar Montalban]]
 - [[Lydia Kouris]]
-- [[Gaspar Montalbán]]
 - [[Nestor Arvelo]]
+- [[Teodora Gallis]]
 
 
 # [[Locations/Azure Plains Coalition (APC)/Dalmora/index|Location]]

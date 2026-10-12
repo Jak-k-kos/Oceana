@@ -2,6 +2,7 @@
 tags:
   - character
 player: Aster
+furry?: true
 ---
 ![[Scubby.png]]
 This ^^^

@@ -3,7 +3,7 @@ shipsize: "0"
 tags:
   - ship
 ---
-## boat type
+# Boat type
  Ship size: s/m/l/h (X' by Y')
 ***
 Armor Class: 
@@ -20,7 +20,7 @@ Crew Members: X/X
 Passengers: 
 Tonnage: 
 Market Value: 
-### Properties
+# Properties
 ***
 
 ### Agile
@@ -39,3 +39,17 @@ A ship with Independent Propulsion has a propulsion method that requires nothing
 
 ### Cumbersome
 Ships with the Cumbersome trait are particularly difficult to sail. The base DC threshold to perform a successful Sail Crew Action is raised by 5, and attempting to turn requires the ship move forward two Speed Units worth of distance instead of one.
+
+# Installed Weapons
+***
+## Bow Weapons
+
+
+## Stern Weapons
+
+
+## Port Weapons 
+
+
+## Starboard Weapons
+

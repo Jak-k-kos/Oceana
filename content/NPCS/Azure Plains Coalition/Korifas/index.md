@@ -4,7 +4,7 @@ draft: true
 ---
 
 # Leadership
-- [[Lázaro Kefalas]]
+- [[Lazaro Kefalas]]
 
 # Notable Residents
 - [[Agni Kefalas]]
