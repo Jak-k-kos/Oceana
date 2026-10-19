@@ -1,6 +1,6 @@
 A yearly festival celebrating the end of the flood, held in the name of [[Aquilla]].
 
-**Date:** The 12th of falris
+**Date:** The 12th of Calra
 **Honors:** [[Aquilla]], and [[The Tidebreakers]]  
 **First held:** 2574-3-12
 

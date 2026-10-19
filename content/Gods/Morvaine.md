@@ -63,7 +63,7 @@ Fortune-tellers and seers of every kind claim her blessing, reading the shape of
 
 ## The Night of Names
 
-Once each year, on the 22nd of Falris, comes the [[Night of Names]], when the islands honor their dead.
+Once each year, on the 22nd of Calra, comes the [[Night of Names]], when the islands honor their dead.
 
 The day is spent in preparation. Families build small lantern boats, one for each loved one they have lost, and write the names of the dead upon them. Meanwhile, the leaders of every town build one great lantern boat together. It bears no names at all, for it is made in honor of all the forgotten, and of Morvaine, the shepherd of souls herself.
 
