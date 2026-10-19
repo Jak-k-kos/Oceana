@@ -9,6 +9,7 @@ Back to [[Sails and Seas/Ship Rules/index|Ship Rules]]
 - [[#Repairing Damage]]
 - [[#Long-Term Repairs]]
 - [[#Crew Members]]
+- [[#Fire]]
 
 # Hull Points
 Hull Points work like a creature's Hit Points, with two big differences.
@@ -34,8 +35,8 @@ A ship is an object, so healing magic doesn't work on it. Repairs take labor and
 
 # Long-Term Repairs
 Field patches won't hold forever. Proper repairs need the ship docked somewhere with room to house it and the facilities to fix it, from a beach shed for a rowboat to a city dry dock for a bigger ship. The DM decides whether a location is suitable.
-- A skilled laborer works 8 hours a day for **13 gold** a day.
-- Using free labor (like a crew member already on your payroll) costs **10 gold** a day for materials.
+- A skilled laborer works 8 hours a day for **1300 SH** a day.
+- Using free labor (like a crew member already on your payroll) costs **1000 SH** a day for materials.
 - Each day a skilled laborer works, the ship regains either Hull Points equal to the maximum roll of one Hull Die, or one spent Hull Die.
 
 # Crew Members
@@ -44,3 +45,19 @@ Battle takes its toll on the crew as well as the ship.
 - Other effects can stop crew from taking Crew Actions, even briefly: being knocked prone by wind, charmed, frightened, and so on. Effects in these rules say how they affect crew; for anything else, the DM decides.
 - The Repair action doesn't help crew. They're restored with normal healing for creatures. For example, Lay on Hands can restore one crew member, and Mass Healing Word can restore up to six.
 - Back in port, you can hire new crew to replace those who were lost.
+
+# Fire
+A wooden or otherwise flammable ship can catch fire. A ship made of metal or stone can't, unless its description says otherwise.
+- **Catching fire:** the weapon or item that sets the fire says how big it starts, measured in d6s (a flaming bolt starts a 2d6 fire, a fire pot 1d6).
+- **Burning:** at the start of each of its turns, a burning ship rolls its fire dice and takes that much fire damage. This damage ignores the ship's Damage Threshold. After that, the fire grows by 1d6, so it deals 1d6 more damage every turn until it's put out.
+- **Feeding the fire:** when a fire weapon hits a ship that's already burning, the fire grows by 1d6 instead of starting a new one.
+- **Rain:** in heavy rain, a fire shrinks by 1d6 at the end of each of the ship's turns.
+
+## Fighting Fires
+During the Character Phase, a creature aboard can use its action to fight the fire with buckets, wet sail and sand. Like Repair, this is not a Crew Action, so it happens immediately.
+- **Each creature fighting it** shrinks the fire by 1d6.
+- **With [[Ship Upgrades#Fire Troughs|Fire Troughs]]**, it shrinks by 2d6 instead.
+- **With a bucket of [[Ship Supplies#Boarding and Defense|fire sand]]**, it shrinks by 2d6, or 3d6 with Fire Troughs. The sand is used up.
+- **When the fire reaches 0 dice,** it goes out.
+
+Fire damage hurts the ship's Hull Points. It doesn't harm the crew unless an effect says it does.

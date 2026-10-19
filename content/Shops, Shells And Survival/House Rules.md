@@ -12,6 +12,8 @@ draft: false
 - [[#Spoilage]]
 - [[#Eating Spoiled Supplies]]
 - [[#Diseases]]
+- [[#Armor in the Water]]
+- [[#Coinage]]
 
 # Inspiration
 You earn Inspiration for good roleplay. You can only hold one Inspiration at a time.
@@ -22,12 +24,12 @@ Food and water are tracked. Each creature needs 1 food ration and 1 water ration
 ## Water
 - A water ration is 1 gallon.
 - A barrel holds 40 water rations. Beer, wine and watered grog count the same as water.
-- A full barrel weighs about 400 lb, so 5 barrels take up 1 ton of a ship's Tonnage.
-- A waterskin holds half a water ration.
+- A full barrel weighs about 1/5 of a Ton, so 5 barrels take up 1 ton of a ship's Tonnage.
+- A waterskin holds one water ration.
 
 ## Food
 - A food ration weighs 2 lb.
-- A barrel of dried or salted food holds 50 food rations (about 100 lb).
+- A barrel of dried or salted food holds 150 food rations (about 1/5 Ton).
 
 # Healing
 **Healer's Kit Dependency:** You can't spend Hit Dice at the end of a short rest unless someone uses one use of a healer's kit to tend to you.
@@ -40,22 +42,24 @@ Food and water are tracked. Each creature needs 1 food ration and 1 water ration
 When you finish a short rest, you can recover spent spell slots. The slots can have a combined level equal to or less than half your character level (rounded up), and none of them can be 6th level or higher.
 
 # Exhaustion
-When you finish a short rest, you lose 1 level of exhaustion caused by hunger, thirst or weather, as long as you have eaten and drunk that day. Exhaustion from any other source still needs a long rest to remove.
+When you finish a short rest, you lose 1 level of exhaustion caused by hunger, thirst, lack of sleep or weather, as long as you have eaten and drunk that day. Exhaustion from any other source still needs a long rest to remove.
 
 # Spoilage
-Food and drink are tracked in **lots**. All of one kind of supply bought in the same port is one lot. A **unit** is one barrel of cargo, or one ration or item for anything carried loose.
+Food and drink are tracked in **lots**. All of one kind of supply at the same Keep Die is one lot, but loose supplies and cargo are always separate lots, even at the same die. A **unit** is one cargo unit for cargo, or one ration or item for anything carried loose.
 
-Every edible item in the [[Bazaar]] has a **Keep Die** and properties that say how it spoils and what it does when spoiled.
+Every edible item in [[The Bazaar]] has a **Keep Die** and properties that say how it spoils and what it does when spoiled.
 
-**Every morning**, roll the Keep Die for every lot aboard. On a 1, the die steps down: d20 > d12 > d10 > d8 > d6 > d4.
-- **Turning:** Once a lot reaches d4, it's turning. Each 1 on the d4 loses 1d4 units, and the die stays at d4.
-- **Damage:** If the hold floods or the ship is badly damaged, every lot aboard steps down one die.
+**Every morning**, roll the Keep Die for every lot aboard. On a 1, the die steps down: d20 > d12 > d10 > d8 > d6 > d4 > Turning.
+- **Losses:** When a lot loses units to spoilage, it loses 1d4 × 5% of what's left, rounded up (minimum 1 unit).
+- **Turning:** A turning lot no longer rolls a Keep Die or Loss Die. Every morning it loses 1d4 × 10% of what's left, rounded up (minimum 1 unit), until it's gone.
+- **Damage:** If the hold floods or the ship is badly damaged, every lot aboard steps down one die. A turning lot loses its morning's share again.
+- **Opening cargo:** When you take loose supplies out of a cargo unit, they join the loose lot of that supply at the same Keep Die, or start a new one.
 
 Lost units are spoiled, not gone. They can be thrown overboard, or eaten and drunk at a risk.
 
 ## How It Spoils
-- **Hardy:** When the lot steps down, roll a d6. On a 5-6, lose 1d4 units.
-- **Delicate:** When the lot steps down, roll a d4. On a 3-4, lose 1d4 units.
+- **Hardy:** When the lot steps down, roll a d6 Loss Die. On a 5-6, lose units to spoilage.
+- **Delicate:** When the lot steps down, roll a d4 Loss Die. On a 3-4, lose units to spoilage.
 - **Preserved:** Loses nothing when it steps down.
 - **Perishable:** Has no Keep Die. Spoils at the end of the next day.
 
@@ -64,6 +68,9 @@ Lost units are spoiled, not gone. They can be thrown overboard, or eaten and dru
 - **Rancid:** DC 12 Constitution save, or catch Rot Gut.
 - **Fishy:** DC 14 Constitution save, or catch Fish Fever.
 - **Sour:** DC 10 Constitution save, or be poisoned. No disease.
+
+## Optional Rule: Shared Dice
+If the hold is crowded, the players can roll one of each Keep Die currently in the hold instead of one per lot. Every lot at that die shares the roll, so a 1 steps all of them down together. Loss Dice are still rolled for each lot that steps down. It's faster, but swingier, since lots on the same die spoil together.
 
 # Eating Spoiled Supplies
 Spoiled food or water still counts as a ration. When you eat or drink it, make the Constitution saving throw for its property. On a failure, you're poisoned for 24 hours and catch the listed disease.
@@ -92,3 +99,36 @@ Caught from Fishy supplies. Tingling, numb hands, and hot things feel cold.
 - At the end of each short rest, make a DC 14 Constitution saving throw.
   - On a failure by 5 or more, you gain 1 level of exhaustion.
   - After two successes, you recover.
+
+
+# Armor in the Water
+- In medium armor, you have disadvantage on Strength (Athletics) checks to swim.
+- In heavy armor, you can't swim, and you sink 30 feet at the end of each of your turns.
+- Taking off armor in the water takes the normal time to doff it, and you keep sinking while you do.
+
+# Coinage 
+Every coin in Oceana is a shell, struck by the licensed mints overseen from [[Locations/Azure Plains Coalition (APC)/Ostrakia/index|Ostrakia]]. Prices are always written in shells (SH). All shells are ordinary round coins. Each denomination is told apart by its metal and by the shell stamped on its face. 
+
+| Coin     | Value        | Metal                                   |
+| -------- | ------------ | --------------------------------------- |
+| Scallop  | 1 SH         | Copper                                  |
+| Whelk    | 10 SH        | Bronze                                  |
+| Cowrie   | 100 SH       | Silver                                  |
+| Abalone  | 1,000 SH     | Gold                                    |
+| Conch    | 10,000 SH    | Gold with a silver ring around the edge |
+| Nautilus | 1,000,000 SH | Mithral                                 |
+
+### **Scallop.** 
+A copper coin stamped with a fan-shaped shell, its ribs spreading out from a small hinge at the bottom like the folds of a lady's fan. A ring of tiny waves runs around the edge. It's the coin of every market stall and dockside tavern, and most are worn smooth from passing through a thousand hands. 
+### **Whelk.** 
+A bronze coin stamped with a tall, pointed shell that winds up into a sharp tip, like a twisted horn. Fine lines curl around it to show the turns of the spiral. Sailors call them "horns," and a sailor's pay is counted out in them. 
+### **Cowrie.** 
+A silver coin stamped with a smooth, egg-shaped shell, rounded on top, with a narrow toothed slit running down its underside like a closed mouth. Small dots ring the shell to show its glossy speckled pattern. A handful of cowries is a good week's work. 
+### **Abalone.**
+A gold coin stamped with a broad, flat, ear-shaped shell, with a curving row of small holes along one side. Rippling lines across the face show the shell's rainbow shine. Merchants and ship's captains carry them, and few others need to. 
+### **Conch.** 
+A gold coin with a silver ring around its edge, stamped with a great spiral shell with a flared lip and a crown of short spikes around its top. The back bears the Ostrakia mint mark. The ring makes it hard to forge, and it is the coin of cargo, ships and other large deals. Most people never hold one. 
+### The Nautilus 
+A coin of mithral, worth 1,000,000 SH. The coin is lighter than it looks, and its pale silver never dulls, even after years at sea. It is stamped with a perfectly coiled shell, smooth and round, its spiral winding inward chamber by chamber to a single point at the heart. Each nautilus is struck only on Ostrakia, under the eye of the master of the mint, and each is numbered and recorded. It trades between governments, mints and the very richest families, usually to settle debts between nations. Most people live their whole lives without seeing one, and many doubt they exist at all. 
+
+%%DM: Plot hooks for the nautilus. - A nautilus has gone missing between Ostrakia and the Kingdom, and its number has never turned up in the mint's records since. - Someone has a forged nautilus. A coin that valuable is never spent, only held and recorded, so a forgery could sit unnoticed in a treasury for years. - An old nautilus from before the flood, struck by a mint that no longer exists, surfaces in a drowned wreck. Is it still worth anything, and who has the right to claim it? %%

@@ -1,7 +1,7 @@
 ---
 tags:
   - NPC
-draft: true
+draft: false
 lastname:
 ---
 %%
@@ -17,7 +17,7 @@ Current Location:
 Relationships: 
 - 
 %%
-Gender: 
+Gender: F
 Appearance: 
 Who: 
 known relationships:

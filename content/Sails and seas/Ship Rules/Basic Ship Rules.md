@@ -58,6 +58,15 @@ Many ships have properties that change how they're handled.
 
 **Mixed Propulsion (XX):** Uses sails in wind, with a backup way of moving in calm weather (listed in parentheses). With sails unfurled, it counts as Sail Powered. With sails furled or in a Dead Wind, it keeps its normal Speed Unit.
 
+**Fuel Powered:** The ship has furnaces or engines that burn [[Ship Supplies#Fuel|kelp charcoal]]. It burns fuel for every day it travels under power. A ship that runs out can't use its engines: any Sail Stations that are engines can't be used, and it loses any Independent Propulsion, until it takes on more fuel. Wet charcoal won't burn until it's dried out on deck for a day.
+
+| Size | Fuel per Day |
+| --- | --- |
+| Small | 2 sacks |
+| Medium | 1 cargo unit |
+| Large | 2 cargo units |
+| Huge | 4 cargo units |
+
 **Sail Powered:** Moves by wind in its sails. In a Dead Wind its Speed Unit is 0, and other wind conditions can give penalties or bonuses.
 - **Furling:** On its turn, a Sail Powered ship that had at least half its Sail Stations successfully used that round can furl its sails instead of using its movement. While furled, it isn't Sail Powered and its Speed Unit is 0.
 - **Unfurling:** Requires half the ship's Sail Stations to have been successfully used that round.

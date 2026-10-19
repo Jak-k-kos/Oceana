@@ -118,6 +118,10 @@ Desc: a gnomish far seer is added to your crows nest giving advantage to all per
 Market Value: 500 SH per lifeline
 Desc: Sturdy ropes are tied along the masts and railings. a creature can use an action to tie themselves or another to a life line making them immune to being thrown overboard. while tied down a creature cannot move more than 20' away from the tie down point
 
+### Diving Bell
+Market Value: 15000 SH
+Desc: A heavy bronze bell with glass ports, lowered from a winch on deck. It holds up to 4 Medium creatures, who can breathe normally inside it. The ship must be anchored or holding still to use it. A crew member at the winch can take the Operate Crew Action to lower or raise the bell up to 30 ft, to a maximum depth of 200 ft. Creatures can swim out of the bell to explore and come back inside to breathe. The air lasts 2 hours with 1 creature inside, or 30 minutes with 4. Raising the bell to the surface refreshes it. Medium or larger ships only. Bell: AC 17, 40 HP. Chain: AC 15, 20 HP. If the chain breaks, the bell sinks to the bottom.
+
 ### Dazzle Paint 
 Market Value: 5000 SH
 Desc: The first ship weapon attack from every new enemy ship in a combat is made at disadvantage. only one paint may be used on a ship at a time.

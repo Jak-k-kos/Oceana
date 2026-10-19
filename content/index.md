@@ -4,7 +4,6 @@ title: Oceana
 Welcome to the world of Oceana
 # Quick Links
 - [[Ship Upgrades]]
-- [[Ship equipment]]
 - [[NPCS/Azure Plains Coalition/Insul/index|Insul]]
 
 # Session Notes

@@ -4,8 +4,6 @@
 ***
 All ship weapons are martial weapons. Each weapon is mounted on a side of the ship (bow, port, starboard or stern) and can only target things in that side's quadrant, marked by lines drawn at 45 degrees from the ship's corners. The bow and stern can each hold only one weapon, no matter how many slots it uses. Port and starboard can hold as many as fit in the ship's Weapon Slots.
 
-Fire: Fire damage from a burning ship ignores Damage Threshold. When a fire weapon hits a ship that is already burning, the fire grows by 1d6 instead. A crew member can use their action to reduce the fire by 1d6. When the fire reaches 0 dice, it goes out.
-
 ## Ranged Weapons
 ---
 ### Cannon
@@ -54,7 +52,7 @@ Market Price: 5000 SH
 Desc: Large object. A giant crossbow that fires heavy bolts, the budget choice for ships that can't afford cannons. Loading and aiming it takes one action before it can be fired with the Operate Crew Action.
 #### Ammunition:
 * Bolt: Ranged Weapon Attack: range 120/480 ft., one target. Hit: 17 (3d10) piercing damage.
-* Flaming Bolt: Ranged Weapon Attack: range 120/480 ft., one target. Hit: A wooden or otherwise flammable ship catches fire. At the start of its turn it takes 7 (2d6) fire damage, and the fire grows by 1d6 each turn after that.
+* Flaming Bolt: Ranged Weapon Attack: range 120/480 ft., one target. Hit: A wooden or otherwise flammable ship catches fire. At the start of its turn it takes 7 (2d6) fire damage, and the fire grows by 1d6 each turn after that. See [[Damage and Repair#Fire|Fire]].
 
 ### Harpoon Gun
 AC: 15
@@ -105,7 +103,7 @@ Weapon Slots: 1 (bow only)
 Market Price: 30000 SH
 Desc: Large object. A bronze salamander head on the bow, fed by an oil pump, that sprays a stream of fire. One crew member working the pump fires it with the Operate Crew Action. It has 3 uses, and refueling takes 10 minutes.
 #### Ammunition:
-* Salamander Fuel (3 uses): A 40 ft. cone of fire. Each creature in it takes 28 (8d6) fire damage, or half as much on a successful DC 14 Dexterity saving throw. A wooden or otherwise flammable ship in the cone doesn't take this damage. Instead it automatically catches fire with no save, taking 7 (2d6) fire damage at the start of its turn.
+* Salamander Fuel (3 uses): A 40 ft. cone of fire. Each creature in it takes 28 (8d6) fire damage, or half as much on a successful DC 14 Dexterity saving throw. A wooden or otherwise flammable ship in the cone doesn't take this damage. Instead it automatically catches fire with no save, taking 7 (2d6) fire damage at the start of its turn. See [[Damage and Repair#Fire|Fire]].
 
 ### Dragon Head
 AC: 17
@@ -115,7 +113,7 @@ Weapon Slots: 2 (bow only)
 Market Price: 45000 SH
 Desc: Huge object. A larger, cast-iron version of the salamander. Its bigger pumps need two crew members taking the Operate Crew Action to fire it. It has 3 uses, and refueling takes 10 minutes.
 #### Ammunition:
-* Dragon Head Fuel (3 uses): A 60 ft. cone of fire. Each creature in it takes 42 (12d6) fire damage, or half as much on a successful DC 16 Dexterity saving throw. A wooden or otherwise flammable ship in the cone doesn't take this damage. Instead it automatically catches fire with no save, taking 10 (3d6) fire damage at the start of its turn.
+* Dragon Head Fuel (3 uses): A 60 ft. cone of fire. Each creature in it takes 42 (12d6) fire damage, or half as much on a successful DC 16 Dexterity saving throw. A wooden or otherwise flammable ship in the cone doesn't take this damage. Instead it automatically catches fire with no save, taking 10 (3d6) fire damage at the start of its turn. See [[Damage and Repair#Fire|Fire]].
 
 ## Melee Weapons
 ---

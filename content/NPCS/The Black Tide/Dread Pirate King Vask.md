@@ -18,6 +18,7 @@ Relationships:
 - [[Gaknin Goldenroar]]: Once Dread Pirate King Gromon Spritroar. Vask took the throne from him, and Gromon fled into hiding with his son. Killed in [[De'Soto|Captain De'Soto's]] raid on [[Locations/Azure Plains Coalition (APC)/Insul/index|Insul]], and De'Soto brought his head back to Vask
 - [[Tryknin Goldenroar]]: Gromon's son, who survived the raid. A loose end
 - [[De'Soto]]: The captain he sent to [[Locations/Azure Plains Coalition (APC)/Insul/index|Insul]], who delivered Gromon's head
+
 %%
 Gender: Male
 Appearance (rumored): Every sailor tells it differently. Some say he stands near eight feet tall, others that his face was burned away and he wears an iron mask. Some say he wears a crown of drowned men's teeth.
@@ -28,6 +29,7 @@ Rumors:
 - He killed the last king with his bare hands and took the throne the same night
 - He has no shadow
 - He hears his name whenever it's spoken aboard a ship, so sailors call him "the King" and never "Vask"
+
 %%
 Full Description:
 Appearance: Looks about fifty. Tall and broad, but nothing like the stories. Close-cropped grey hair and beard, plain dark clothes, no jewelry but a single iron ring.
@@ -35,4 +37,7 @@ Who: Vask was once one of Gromon Spritroar's dread pirate lords. Under Gromon, t
 %%
 known relationships:
 - 
-%%- [[Gaknin Goldenroar]]: After the attack on [[Locations/Azure Plains Coalition (APC)/Insul/index|Insul]], [[De'Soto|Captain De'Soto]] brought Gromon Spritroar's head back to Vask%%
+%%
+- [[Gaknin Goldenroar]]: After the attack on [[Locations/Azure Plains Coalition (APC)/Insul/index|Insul]], [[De'Soto|Captain De'Soto]] brought Gromon Spritroar's head back to Vask
+
+%%
