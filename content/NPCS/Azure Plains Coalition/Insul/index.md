@@ -38,7 +38,7 @@ title: Insul
 
 
 # Others
-- [[Torin's dad]]
+- [[Gaknin Goldenroar]]
 - [[Mr. Ferguson]]
 
 

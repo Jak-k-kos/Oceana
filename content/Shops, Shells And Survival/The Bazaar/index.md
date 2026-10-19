@@ -2,10 +2,6 @@
 title: The Bazaar
 draft:
 ---
----
-title: The Bazaar
-draft: false
----
 # The Bazaar
 - [[#Shops]]
 - [[#Coinage]]
@@ -36,7 +32,7 @@ If a price seems too high, haggle. Talk the merchant down: point out a flaw, off
 
 Deception and Intimidation can work too. Merchants talk to each other, though, and a cheated merchant remembers your face.
 
-%%DM: Start from the market price and adjust for the merchant's mood and stock. A successful haggle usually moves the price about 10%. A strong argument and a high roll can reach 20-25%. Merchants rarely go below 3/4 of market price. Suggested DCs: friendly 10, indifferent 15, hostile or busy 20. Failing by 5 or more ends haggling with that merchant for the day. A merchant cheated with Deception or bullied with Intimidation counts as h`ostile next time.%%
+%%DM: Start from the market price and adjust for the merchant's mood and stock. A successful haggle usually moves the price about 10%. A strong argument and a high roll can reach 20-25%. Merchants rarely go below 3/4 of market price. Suggested DCs: friendly 10, indifferent 15, hostile or busy 20. Failing by 5 or more ends haggling with that merchant for the day. A merchant cheated with Deception or bullied with Intimidation counts as hostile next time.%%
 
 # Selling
 - **Used gear** (weapons, armor, tools and equipment) sells for half its price.

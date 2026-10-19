@@ -17,9 +17,10 @@ Relationships:
 - 
 %%
 Gender:
-Apperence:
+Appearance:
 family:
-- 
+- [[Rouge Bellball|Rouge Bellball's]] mother
+
 %%
 
 | HP  | AC  | SPD |

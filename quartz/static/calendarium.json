@@ -1,0 +1,442 @@
+{
+  "autoParse": false,
+  "calendars": [
+    {
+      "name": "Unified Oceana Calendar",
+      "description": null,
+      "id": "ID_a8097969383a",
+      "showIntercalarySeparately": true,
+      "static": {
+        "incrementDay": false,
+        "firstWeekDay": 0,
+        "overflow": true,
+        "weekdays": [
+          {
+            "type": "day",
+            "name": "Day of Aquilla",
+            "id": "ID_f8bad9eb6b99",
+            "number": null,
+            "abbreviation": "AQU"
+          },
+          {
+            "type": "day",
+            "name": "Day of Roktra",
+            "id": "ID_d85818c95bcb",
+            "number": null,
+            "abbreviation": "ROK"
+          },
+          {
+            "type": "day",
+            "name": "Day of Welestia",
+            "id": "ID_2ae8b85aeb2b",
+            "number": null,
+            "abbreviation": "WEL"
+          },
+          {
+            "type": "day",
+            "name": "Day of Flaris",
+            "id": "ID_7be8d9585ae8",
+            "number": null,
+            "abbreviation": "FLA"
+          },
+          {
+            "type": "day",
+            "name": "Day of Apiot",
+            "id": "ID_a9dba838c869",
+            "number": null,
+            "abbreviation": "API"
+          }
+        ],
+        "months": [
+          {
+            "name": "Desca",
+            "type": "month",
+            "length": 25,
+            "id": "ID_5bda686988db",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "name": "Macis",
+            "type": "month",
+            "length": 25,
+            "id": "ID_3918fa2b9a6a",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "name": "Calra",
+            "type": "month",
+            "length": 25,
+            "id": "ID_2a69692aeb0b",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "name": "Osca",
+            "type": "month",
+            "length": 25,
+            "id": "ID_bada28fa5b19",
+            "interval": 1,
+            "offset": 0
+          }
+        ],
+        "moons": [
+          {
+            "name": "Ellehwin",
+            "cycle": 92,
+            "offset": 86,
+            "faceColor": "#02d12a",
+            "shadowColor": "#292b4a",
+            "id": "ID_7ae8e83b7afb"
+          },
+          {
+            "name": "Ostin",
+            "cycle": 42,
+            "offset": "3",
+            "faceColor": "#e28a33",
+            "shadowColor": "#292b4a",
+            "id": "ID_1be97ab98aaa"
+          },
+          {
+            "name": "Winstra",
+            "cycle": 18,
+            "offset": "9",
+            "faceColor": "#a450eb",
+            "shadowColor": "#292b4a",
+            "id": "ID_997be829c8f9"
+          }
+        ],
+        "displayMoons": true,
+        "displayDayNumber": false,
+        "leapDays": [],
+        "eras": [
+          {
+            "id": "ID_ab898bea5b3b",
+            "isEvent": false,
+            "isStartingEra": true,
+            "name": "Pre Arcanus Collapse (PAC)",
+            "description": "",
+            "format": "Year {{year}} - {{era_name}}",
+            "date": {
+              "year": 2574,
+              "month": 2,
+              "day": 12
+            },
+            "type": "era",
+            "category": null
+          },
+          {
+            "id": "ID_6bc989a99bd9",
+            "isEvent": false,
+            "isStartingEra": false,
+            "name": "Aquila's Slumber",
+            "description": "",
+            "format": "{{era_name}} {{era_year}} {{year}}",
+            "date": {
+              "year": 0,
+              "month": 0,
+              "day": 1
+            },
+            "type": "era",
+            "category": null
+          },
+          {
+            "id": "ID_7b6a0818cb2a",
+            "isEvent": false,
+            "isStartingEra": false,
+            "name": "Aquilla's Wrath",
+            "description": "",
+            "format": "{{era_name}} {{era_year}} {{year}}",
+            "date": {
+              "year": 257,
+              "month": 3,
+              "day": 8
+            },
+            "type": "era",
+            "category": null
+          },
+          {
+            "id": "ID_89498bcb1969",
+            "endsYear": false,
+            "isEvent": false,
+            "isStartingEra": false,
+            "name": "Aquilla's Mercy",
+            "description": "",
+            "format": "{{era_name}} {{era_year}} {{year}}",
+            "date": {
+              "year": 2574,
+              "month": 2,
+              "day": 12
+            },
+            "type": "era",
+            "category": ""
+          }
+        ],
+        "padMonths": 1,
+        "padDays": 2
+      },
+      "seasonal": {
+        "seasons": [
+          {
+            "id": "ID_e9fb0a382bfb",
+            "name": "Glas",
+            "type": "Periodic",
+            "kind": "Custom",
+            "duration": 30,
+            "peak": 0,
+            "color": "#4ddaec",
+            "weatherOffset": 56,
+            "weatherPeak": 5,
+            "weather": {
+              "tempRange": [
+                -31,
+                2.2
+              ],
+              "precipitationChance": 0.63,
+              "precipitationIntensity": 0.46,
+              "cloudy": 0.82,
+              "windy": 0.42
+            }
+          },
+          {
+            "id": "ID_bb7b784a58e8",
+            "name": "Grandi",
+            "type": "Periodic",
+            "kind": "Custom",
+            "duration": 25,
+            "peak": 0,
+            "color": "#00e02d",
+            "weatherOffset": 56,
+            "weatherPeak": 5,
+            "weather": {
+              "tempRange": [
+                9.4,
+                21
+              ],
+              "precipitationChance": 0.75,
+              "precipitationIntensity": 0.25,
+              "cloudy": 0.55,
+              "windy": 0.25
+            }
+          },
+          {
+            "id": "ID_eaebfa4929c8",
+            "name": "Dife",
+            "type": "Periodic",
+            "kind": "Custom",
+            "duration": 20,
+            "peak": 0,
+            "color": "#f22121",
+            "weatherOffset": 56,
+            "weatherPeak": 5,
+            "weather": {
+              "tempRange": [
+                22,
+                41
+              ],
+              "precipitationChance": 0.43,
+              "precipitationIntensity": 0.65,
+              "cloudy": 0.15,
+              "windy": 0.25
+            }
+          },
+          {
+            "id": "ID_1859594969f9",
+            "name": "Fre",
+            "type": "Periodic",
+            "kind": "Autumn",
+            "duration": 25,
+            "peak": 0,
+            "color": "#d6c724",
+            "weatherOffset": 56,
+            "weatherPeak": 5
+          }
+        ],
+        "offset": 0,
+        "type": "Periodic",
+        "displayColors": true,
+        "interpolateColors": true,
+        "weather": {
+          "enabled": true,
+          "seed": 1434045209,
+          "tempUnits": "Imperial",
+          "windUnits": "Imperial",
+          "primaryWindDirection": "E",
+          "freezingPoint": 0
+        }
+      },
+      "locations": {
+        "locations": [],
+        "defaultLocation": ""
+      },
+      "current": {
+        "day": 12,
+        "month": 2,
+        "year": 2574
+      },
+      "events": [
+        {
+          "name": "Aquilla's Mercy",
+          "description": "",
+          "date": {
+            "day": 12,
+            "month": 2,
+            "year": [
+              2574,
+              null
+            ]
+          },
+          "id": "ID_7a5a4a28d8eb",
+          "note": "World Events/Aquilla's Mercy.md",
+          "category": "ID_5b58681b7bba",
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Recurring"
+        },
+        {
+          "name": "HearthFire's Glow",
+          "description": "first day of hearthfires glow",
+          "date": {
+            "month": 3,
+            "day": 25,
+            "year": [
+              null,
+              null
+            ]
+          },
+          "id": "ID_5879da397b48",
+          "note": "World Events/HearthFire's Glow.md",
+          "category": "ID_5b58681b7bba",
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Recurring"
+        },
+        {
+          "name": "HearthFire's Blaze",
+          "description": null,
+          "date": {
+            "month": 0,
+            "day": 1,
+            "year": [
+              null,
+              null
+            ]
+          },
+          "id": "ID_4a487818bb68",
+          "note": "World Events/HearthFire's Blaze.md",
+          "category": "ID_5b58681b7bba",
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Recurring"
+        },
+        {
+          "name": "Apiot's Boon",
+          "description": null,
+          "date": {
+            "month": 3,
+            "day": 5,
+            "year": [
+              null,
+              null
+            ]
+          },
+          "id": "ID_a99a1b393928",
+          "note": "World Events/Apiot's Boon.md",
+          "category": "ID_5b58681b7bba",
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Recurring"
+        },
+        {
+          "name": "Apiot's Promise",
+          "description": null,
+          "date": {
+            "month": 1,
+            "day": 15,
+            "year": [
+              null,
+              null
+            ]
+          },
+          "id": "ID_a98b39394839",
+          "note": "World Events/Apiot's Promise.md",
+          "category": "ID_5b58681b7bba",
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Recurring"
+        },
+        {
+          "name": "Night Of Names",
+          "description": "the night of names",
+          "date": {
+            "month": 2,
+            "day": 22,
+            "year": [
+              null,
+              null
+            ]
+          },
+          "id": "ID_58885b398b8a",
+          "note": "World Events/Night Of Names.md",
+          "category": "ID_5b58681b7bba",
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Recurring"
+        }
+      ],
+      "categories": [
+        {
+          "id": "ID_5b58681b7bba",
+          "color": "#dda442",
+          "name": "holidays"
+        }
+      ],
+      "path": [],
+      "supportInlineEvents": false,
+      "inlineEventTag": "#inline-events"
+    }
+  ],
+  "configDirectory": null,
+  "dailyNotes": false,
+  "dateFormat": "YYYY-MM-DD",
+  "defaultCalendar": "ID_a8097969383a",
+  "eventPreview": false,
+  "exit": {
+    "saving": false,
+    "event": false,
+    "calendar": false,
+    "savingEvent": false
+  },
+  "eventFrontmatter": false,
+  "parseDates": false,
+  "version": {
+    "major": 2,
+    "minor": 1,
+    "patch": 0,
+    "beta": null
+  },
+  "debug": false,
+  "askedToMoveFC": false,
+  "askedAboutSync": true,
+  "syncBehavior": "Always",
+  "inlineEventsTag": null,
+  "paths": [
+    [
+      "/",
+      "DEFAULT"
+    ]
+  ]
+}

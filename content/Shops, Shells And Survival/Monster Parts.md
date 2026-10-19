@@ -10,92 +10,110 @@ draft: true
 - [[#Monstrosities]]
 - [[#Dragons]]
 - [[#Sea Folk Loot]]
+- [[#Pirate Loot]]
 
 Creatures of the coasts, swamps and seas, and what their parts sell for. Parts are trade goods, so they sell at their market price at [[Raw Goods]], and can be haggled like anything else. The [[Apothecary]] pays best for venom, ink, glands and eyes, and [[Arms and Armor]] for hide, shell, chitin and scales.
 
-%%DM: Draft for review. Creature list from D&D Beyond (habitats: Coastal, Swamp, Underwater, Elemental Plane of Water), plus a few sea creatures from other official books. Stat block links go to AideDD or the D&D 5e Wiki on Fandom, both free. A dash means neither site has a free stat block. Parts, values and crafted items come from the Harvest Index (Paper Druid Publishing): Beasts, Aberrations and Monstrosities. Values are the Index's gp x95, rounded. Creatures marked * aren't in the Index, so their parts and prices are Claude's estimates in the same style. Crafted items are listed by name only; see the Index PDFs for their rules. Dragon parts are the same for every color; a breath gland makes an oil of the dragon's own damage type.
-Books: MM = Monster Manual, MM 2024 = 2024 Monster Manual only, MPMM = Monsters of the Multiverse (also in Volo's or Mordenkainen's), FTD = Fizban's Treasury of Dragons, GoS = Ghosts of Saltmarsh, ToA = Tomb of Annihilation, TftYP = Tales from the Yawning Portal, SKT = Storm King's Thunder, OotA = Out of the Abyss, WBtW = The Wild Beyond the Witchlight, LR = Locathah Rising, MOoT = Mythic Odysseys of Theros.%%
+%%DM: Draft for review. Creature list from D&D Beyond's official monsters: every creature in the Coastal, Swamp, Underwater and Elemental Plane of Water habitats, plus every creature with a swim speed, cut down to ones that can be harvested. Third-party books are not included. Stat block links go to AideDD or the D&D 5e Wiki on Fandom, both free. A dash means neither site has a free stat block. Parts, values and crafted items come from the Harvest Index (Paper Druid Publishing): Beasts, Aberrations and Monstrosities. Values are the Index's gp x95, rounded. Creatures marked * aren't in the Index, so their parts and prices are Claude's estimates in the same style. Crafted items are listed by name only; see the Index PDFs for their rules. Dragon parts are the same for every color; a breath gland makes an oil of the dragon's own damage type.
+Books: MM = Monster Manual, MM 2024 = 2024 Monster Manual only, MPMM = Monsters of the Multiverse (also in Volo's or Mordenkainen's), FTD = Fizban's Treasury of Dragons, GoS = Ghosts of Saltmarsh, ToA = Tomb of Annihilation, TftYP = Tales from the Yawning Portal, SKT = Storm King's Thunder, OotA = Out of the Abyss, WBtW = The Wild Beyond the Witchlight, LR = Locathah Rising, MOoT = Mythic Odysseys of Theros, IDRotF = Icewind Dale: Rime of the Frostmaiden, BGG = Bigby Presents: Glory of the Giants, JtRC = Journeys through the Radiant Citadel, MCv4 = Monstrous Compendium Vol. 4, TP = The Tortle Package, HotB = Heroes of the Borderlands.%%
 
 # Creatures
-| Creature                                              | Type        | CR    | Size       | Book    | Stat Block                                                                 |     |
-| ----------------------------------------------------- | ----------- | ----- | ---------- | ------- | -------------------------------------------------------------------------- | --- |
-| [[#Archelon\|Archelon]] *                             | Beast       | 4     | Huge       | MM 2024 | [AideDD](https://www.aidedd.org/monster/archelon)                          |     |
-| [[#Blood Hawk\|Blood Hawk]]                           | Beast       | 1/8   | Small      | MM      | [AideDD](https://www.aidedd.org/monster/blood-hawk)                        |     |
-| [[#Constrictor Snake\|Constrictor Snake]]             | Beast       | 1/4   | Large      | MM      | [AideDD](https://www.aidedd.org/monster/constrictor-snake)                 |     |
-| [[#Crab\|Crab]] *                                     | Beast       | 0     | Tiny       | MM      | [AideDD](https://www.aidedd.org/monster/crab)                              |     |
-| [[#Crocodile\|Crocodile]]                             | Beast       | 1/2   | Large      | MM      | [AideDD](https://www.aidedd.org/monster/crocodile)                         |     |
-| [[#Dimetrodon\|Dimetrodon]] *                         | Beast       | 1/4   | Medium     | MPMM    | [5e Wiki](https://dnd-5e.fandom.com/wiki/Dimetrodon)                       |     |
-| [[#Dolphin\|Dolphin]] *                               | Beast       | 1/8   | Medium     | MPMM    | [5e Wiki](https://dnd-5e.fandom.com/wiki/Dolphin)                          |     |
-| [[#Eagle\|Eagle]]                                     | Beast       | 0     | Small      | MM      | [AideDD](https://www.aidedd.org/monster/eagle)                             |     |
-| [[#Giant Constrictor Snake\|Giant Constrictor Snake]] | Beast       | 2     | Huge       | MM      | [AideDD](https://www.aidedd.org/monster/giant-constrictor-snake)           |     |
-| [[#Giant Crab\|Giant Crab]]                           | Beast       | 1/8   | Medium     | MM      | [AideDD](https://www.aidedd.org/monster/giant-crab)                        |     |
-| [[#Giant Crocodile\|Giant Crocodile]]                 | Beast       | 5     | Huge       | MM      | [AideDD](https://www.aidedd.org/monster/giant-crocodile)                   |     |
-| [[#Giant Frog\|Giant Frog]] *                         | Beast       | 1/4   | Medium     | MM      | [AideDD](https://www.aidedd.org/monster/giant-frog)                        |     |
-| [[#Giant Lightning Eel\|Giant Lightning Eel]] *       | Beast       | 3     | Large      | TftYP   | [5e Wiki](https://dnd-5e.fandom.com/wiki/Giant_Lightning_Eel)              |     |
-| [[#Giant Lizard\|Giant Lizard]]                       | Beast       | 1/4   | Large      | MM      | [AideDD](https://www.aidedd.org/monster/giant-lizard)                      |     |
-| [[#Giant Octopus\|Giant Octopus]]                     | Beast       | 1     | Large      | MM      | [AideDD](https://www.aidedd.org/monster/giant-octopus)                     |     |
-| [[#Giant Seahorse\|Giant Seahorse]] *                 | Beast       | 1/2   | Large      | MM      | [AideDD](https://www.aidedd.org/monster/giant-seahorse)                    |     |
-| [[#Giant Shark\|Giant Shark]]                         | Beast       | 5     | Huge       | MM      | [AideDD](https://www.aidedd.org/monster/giant-shark)                       |     |
-| [[#Giant Snapping Turtle\|Giant Snapping Turtle]]     | Beast       | 3     | Large      | ToA     | [5e Wiki](https://dnd-5e.fandom.com/wiki/Giant_Snapping_Turtle)            |     |
-| [[#Giant Spider\|Giant Spider]]                       | Beast       | 1     | Large      | MM      | [AideDD](https://www.aidedd.org/monster/giant-spider)                      |     |
-| [[#Giant Squid\|Giant Squid]] *                       | Beast       | 6     | Huge       | MM 2024 | [AideDD](https://www.aidedd.org/monster/giant-squid)                       |     |
-| [[#Giant Swan\|Giant Swan]] *                         | Beast       | 1     | Large      | WBtW    | [5e.tools](https://5e.tools/bestiary.html#giant%20swan_wbtw)               |     |
-| [[#Giant Toad\|Giant Toad]] *                         | Beast       | 1     | Large      | MM      | [AideDD](https://www.aidedd.org/monster/giant-toad)                        |     |
-| [[#Giant Venomous Snake\|Giant Venomous Snake]]       | Beast       | 1/4   | Medium     | MM      | [AideDD](https://www.aidedd.org/monster/giant-venomous-snake)              |     |
-| [[#Giant White Moray Eel\|Giant White Moray Eel]] *   | Beast       | 2     | Huge       | GoS     | [5e Wiki](https://dnd-5e.fandom.com/wiki/Giant_White_Moray_Eel)            |     |
-| [[#Hadrosaurus\|Hadrosaurus]] *                       | Beast       | 1/4   | Large      | MPMM    | [5e Wiki](https://dnd-5e.fandom.com/wiki/Hadrosaurus)                      |     |
-| [[#Hawk\|Hawk]]                                       | Beast       | 0     | Tiny       | MM      | [AideDD](https://www.aidedd.org/monster/hawk)                              |     |
-| [[#Hippopotamus\|Hippopotamus]] *                     | Beast       | 4     | Large      | MM 2024 | [AideDD](https://www.aidedd.org/monster/hippopotamus)                      |     |
-| [[#Huge Giant Crab\|Huge Giant Crab]] *               | Beast       | 8     | Huge       | TftYP   | [5e Wiki](https://dnd-5e.fandom.com/wiki/Huge_Giant_Crab)                  |     |
-| [[#Hulking Crab\|Hulking Crab]]                       | Beast       | 5     | Huge       | SKT     | [5e Wiki](https://dnd-5e.fandom.com/wiki/Hulking_Crab)                     |     |
-| [[#Hunter Shark\|Hunter Shark]] *                     | Beast       | 2     | Large      | MM      | [AideDD](https://www.aidedd.org/monster/hunter-shark)                      |     |
-| [[#Killer Whale\|Killer Whale]] *                     | Beast       | 3     | Huge       | MM      | [AideDD](https://www.aidedd.org/monster/killer-whale)                      |     |
-| [[#Octopus\|Octopus]]                                 | Beast       | 0     | Small      | MM      | [AideDD](https://www.aidedd.org/monster/octopus)                           |     |
-| [[#Piranha\|Piranha]] *                               | Beast       | 0     | Tiny       | MM 2024 | [AideDD](https://www.aidedd.org/monster/piranha)                           |     |
-| [[#Plesiosaurus\|Plesiosaurus]] *                     | Beast       | 2     | Large      | MM      | [AideDD](https://www.aidedd.org/monster/plesiosaurus)                      |     |
-| [[#Pteranodon\|Pteranodon]] *                         | Beast       | 1/4   | Medium     | MM      | [AideDD](https://www.aidedd.org/monster/pteranodon)                        |     |
-| [[#Quetzalcoatlus\|Quetzalcoatlus]] *                 | Beast       | 2     | Huge       | MPMM    | [5e Wiki](https://dnd-5e.fandom.com/wiki/Quetzalcoatlus)                   |     |
-| [[#Quipper\|Quipper]] *                               | Beast       | 0     | Tiny       | MM      | [AideDD](https://www.aidedd.org/dnd/monstres.php?vo=quipper)               |     |
-| [[#Reef Shark\|Reef Shark]] *                         | Beast       | 1/2   | Medium     | MM      | [AideDD](https://www.aidedd.org/monster/reef-shark)                        |     |
-| [[#Seahorse\|Seahorse]] *                             | Beast       | 0     | Tiny       | MM 2024 | [AideDD](https://www.aidedd.org/monster/seahorse)                          |     |
-| [[#Shell Shark\|Shell Shark]] *                       | Beast       | 2     | Medium     | GoS     | [5e tools](https://5e.tools/bestiary.html#shell%20shark_gos)               |     |
-| [[#Swarm of Piranhas\|Swarm of Piranhas]] *           | Beast       | 1     | Medium     | MM 2024 | [AideDD](https://www.aidedd.org/monster/swarm-of-piranhas)                 |     |
-| [[#Swarm of Quippers\|Swarm of Quippers]] *           | Beast       | 1     | Medium     | MM      | [AideDD](https://www.aidedd.org/dnd/monstres.php?vo=swarm-of-quippers)     |     |
-| [[#Venomous Snake\|Venomous Snake]]                   | Beast       | 1/8   | Tiny       | MM      | [AideDD](https://www.aidedd.org/monster/venomous-snake)                    |     |
-| [[#Aboleth\|Aboleth]]                                 | Aberration  | 10    | Large      | MM      | [AideDD](https://www.aidedd.org/monster/aboleth)                           |     |
-| [[#Balhannoth\|Balhannoth]]                           | Aberration  | 11    | Large      | MPMM    | [5e Wiki](https://dnd-5e.fandom.com/wiki/Balhannoth)                       |     |
-| [[#Chuul\|Chuul]]                                     | Aberration  | 4     | Large      | MM      | [AideDD](https://www.aidedd.org/monster/chuul)                             |     |
-| [[#Ixitxachitl\|Ixitxachitl]]                         | Aberration  | 1/4   | Small      | OotA    | [5e Wiki](https://dnd-5e.fandom.com/wiki/Ixitxachitl)                      |     |
-| [[#Morkoth\|Morkoth]]                                 | Aberration  | 11    | Large      | MPMM    | [5e Wiki](https://dnd-5e.fandom.com/wiki/Morkoth)                          |     |
-| [[#Amphisbaena\|Amphisbaena]] *                       | Monstrosity | 3     | Huge       | TftYP   | [5e Wiki](https://dnd-5e.fandom.com/wiki/Amphisbaena)                      |     |
-| [[#Catoblepas\|Catoblepas]]                           | Monstrosity | 5     | Large      | MPMM    | [5e tools](https://5e.tools/bestiary.html#catoblepas_mpmm)                 |     |
-| [[#Froghemoth\|Froghemoth]]                           | Monstrosity | 10    | Huge       | MPMM    | [5e tools](https://5e.tools/bestiary.html#froghemoth_mpmm)                 |     |
-| [[#Griffon\|Griffon]]                                 | Monstrosity | 2     | Large      | MM      | [AideDD](https://www.aidedd.org/monster/griffon)                           |     |
-| [[#Harpy\|Harpy]]                                     | Monstrosity | 1     | Medium     | MM      | [AideDD](https://www.aidedd.org/monster/harpy)                             |     |
-| [[#Hydra\|Hydra]]                                     | Monstrosity | 8     | Huge       | MM      | [AideDD](https://www.aidedd.org/monster/hydra)                             |     |
-| [[#Juvenile Kraken\|Juvenile Kraken]] *               | Monstrosity | 14    | Huge       | GoS     | [5e tools]()                                                               |     |
-| [[#Kraken\|Kraken]]                                   | Monstrosity | 23    | Gargantuan | MM      | [AideDD](https://www.aidedd.org/monster/kraken)                            |     |
-| [[#Manticore\|Manticore]]                             | Monstrosity | 3     | Large      | MM      | [AideDD](https://www.aidedd.org/monster/manticore)                         |     |
-| [[#Merrow\|Merrow]]                                   | Monstrosity | 2     | Large      | MM      | [AideDD](https://www.aidedd.org/monster/merrow)                            |     |
-| [[#Monstrous Peryton\|Monstrous Peryton]] *           | Monstrosity | 11    | Large      | GoS     | [5e tools](https://5e.tools/bestiary.html#peryton_xmm)                     |     |
-| [[#Roc\|Roc]]                                         | Monstrosity | 11    | Gargantuan | MM      | [AideDD](https://www.aidedd.org/monster/roc)                               |     |
-| [[#Sea Lion\|Sea Lion]]                               | Monstrosity | 5     | Large      | TftYP   | [5e tools](https://5e.tools/bestiary.html#sea%20lion_tftyp)                |     |
-| [[#Shadow Mastiff\|Shadow Mastiff]]                   | Monstrosity | 2     | Medium     | MPMM    | [5E tools](https://5e.tools/bestiary.html#shadow%20mastiff_mpmm)           |     |
-| [[#Lonely Sorrowsworn\|Lonely Sorrowsworn]]           | Monstrosity | 9     | Medium     | MPMM    | [5e tools](https://5e.tools/bestiary.html#lonely%20sorrowsworn_mpmm)       |     |
-| [[#Lost Sorrowsworn\|Lost Sorrowsworn]]               | Monstrosity | 7     | Medium     | MPMM    | [5e tools](https://5e.tools/bestiary.html#lost%20sorrowsworn_mpmm)         |     |
-| [[#Wretched Sorrowsworn\|Wretched Sorrowsworn]]       | Monstrosity | 1/4   | Small      | MPMM    | [5e tools](https://5e.tools/bestiary.html#wretched%20sorrowsworn_mpmm)     |     |
-| [[#Young Kraken\|Young Kraken]] *                     | Monstrosity | 14    | Huge       | LR      | [5e tools](https://5e.tools/bestiary.html#young%20kraken_lr)               |     |
-| [[#Dragon Wyrmling\|Dragon Wyrmling]] *               | Dragon      | 1-4   | Medium     | MM      |                                                                            |     |
-| [[#Young Dragon\|Young Dragon]] *                     | Dragon      | 4-10  | Large      | MM      |                                                                            |     |
-| [[#Adult Dragon\|Adult Dragon]] *                     | Dragon      | 13-17 | Huge       | MM      |                                                                            |     |
-| [[#Ancient Dragon\|Ancient Dragon]] *                 | Dragon      | 20-24 | Gargantuan | MM      |                                                                            |     |
-| [[#Dragon Turtle Wyrmling\|Dragon Turtle Wyrmling]] * | Dragon      | 4     | Medium     | FTD     | [5e tools ](https://5e.tools/bestiary.html#dragon%20turtle%20wyrmling_ftd) |     |
-| [[#Young Dragon Turtle\|Young Dragon Turtle]] *       | Dragon      | 10    | Large      | FTD     | [5e tools](https://5e.tools/bestiary.html#young%20dragon%20turtle_ftd)     |     |
-| [[#Dragon Turtle\|Dragon Turtle]] *                   | Dragon      | 17    | Gargantuan | MM      | [AideDD](https://www.aidedd.org/monster/dragon-turtle)                     |     |
-| [[#Ancient Dragon Turtle\|Ancient Dragon Turtle]] *   | Dragon      | 24    | Gargantuan | FTD     | [5e tools](https://5e.tools/bestiary.html#ancient%20dragon%20turtle_ftd)   |     |
-| [[#Guard Drake\|Guard Drake]] *                       | Dragon      | 2     | Medium     | MPMM    | [5e Wiki](https://dnd-5e.fandom.com/wiki/Guard_Drake)                      |     |
-| [[#Young Sea Serpent\|Young Sea Serpent]] *           | Dragon      | 8     | Large      | FTD     | [5e tools](https://5e.tools/bestiary.html#young%20sea%20serpent_ftd)       |     |
-| [[#Ancient Sea Serpent\|Ancient Sea Serpent]] *       | Dragon      | 14    | Gargantuan | FTD     | [5e tools](https://5e.tools/bestiary.html#ancient%20sea%20serpent_ftd)     |     |
+| Creature | Type | CR | Size | Book | Stat Block |
+| --- | --- | --- | --- | --- | --- |
+| [[#Archelon\|Archelon]] * | Beast | 4 | Huge | MM 2024 | [AideDD](https://www.aidedd.org/monster/archelon) |
+| [[#Blood Hawk\|Blood Hawk]] | Beast | 1/8 | Small | MM | [AideDD](https://www.aidedd.org/monster/blood-hawk) |
+| [[#Constrictor Snake\|Constrictor Snake]] | Beast | 1/4 | Large | MM | [AideDD](https://www.aidedd.org/monster/constrictor-snake) |
+| [[#Crab\|Crab]] * | Beast | 0 | Tiny | MM | [AideDD](https://www.aidedd.org/monster/crab) |
+| [[#Crocodile\|Crocodile]] | Beast | 1/2 | Large | MM | [AideDD](https://www.aidedd.org/monster/crocodile) |
+| [[#Dimetrodon\|Dimetrodon]] * | Beast | 1/4 | Medium | MPMM | [5e Wiki](https://dnd-5e.fandom.com/wiki/Dimetrodon) |
+| [[#Dolphin\|Dolphin]] * | Beast | 1/8 | Medium | MPMM | [5e Wiki](https://dnd-5e.fandom.com/wiki/Dolphin) |
+| [[#Eagle\|Eagle]] | Beast | 0 | Small | MM | [AideDD](https://www.aidedd.org/monster/eagle) |
+| [[#Giant Constrictor Snake\|Giant Constrictor Snake]] | Beast | 2 | Huge | MM | [AideDD](https://www.aidedd.org/monster/giant-constrictor-snake) |
+| [[#Giant Coral Snake\|Giant Coral Snake]] * | Beast | 4 | Large | GoS | [5e Wiki](https://dnd-5e.fandom.com/wiki/Giant_Coral_Snake) |
+| [[#Giant Crab\|Giant Crab]] | Beast | 1/8 | Medium | MM | [AideDD](https://www.aidedd.org/monster/giant-crab) |
+| [[#Giant Crayfish\|Giant Crayfish]] | Beast | 2 | Large | TftYP | [5e Wiki](https://dnd-5e.fandom.com/wiki/Giant_Crayfish) |
+| [[#Giant Crocodile\|Giant Crocodile]] | Beast | 5 | Huge | MM | [AideDD](https://www.aidedd.org/monster/giant-crocodile) |
+| [[#Giant Frog\|Giant Frog]] * | Beast | 1/4 | Medium | MM | [AideDD](https://www.aidedd.org/monster/giant-frog) |
+| [[#Giant Lightning Eel\|Giant Lightning Eel]] * | Beast | 3 | Large | TftYP | [5e Wiki](https://dnd-5e.fandom.com/wiki/Giant_Lightning_Eel) |
+| [[#Giant Lizard\|Giant Lizard]] | Beast | 1/4 | Large | MM | [AideDD](https://www.aidedd.org/monster/giant-lizard) |
+| [[#Giant Octopus\|Giant Octopus]] | Beast | 1 | Large | MM | [AideDD](https://www.aidedd.org/monster/giant-octopus) |
+| [[#Giant Seahorse\|Giant Seahorse]] * | Beast | 1/2 | Large | MM | [AideDD](https://www.aidedd.org/monster/giant-seahorse) |
+| [[#Giant Sea Eel\|Giant Sea Eel]] * | Beast | 1/2 | Large | GoS | [5e Wiki](https://dnd-5e.fandom.com/wiki/Giant_Sea_Eel) |
+| [[#Giant Shark\|Giant Shark]] | Beast | 5 | Huge | MM | [AideDD](https://www.aidedd.org/monster/giant-shark) |
+| [[#Giant Snapping Turtle\|Giant Snapping Turtle]] | Beast | 3 | Large | ToA | [5e Wiki](https://dnd-5e.fandom.com/wiki/Giant_Snapping_Turtle) |
+| [[#Giant Spider\|Giant Spider]] | Beast | 1 | Large | MM | [AideDD](https://www.aidedd.org/monster/giant-spider) |
+| [[#Giant Squid\|Giant Squid]] * | Beast | 6 | Huge | MM 2024 | [AideDD](https://www.aidedd.org/monster/giant-squid) |
+| [[#Giant Swan\|Giant Swan]] * | Beast | 1 | Large | WBtW | - |
+| [[#Giant Toad\|Giant Toad]] * | Beast | 1 | Large | MM | [AideDD](https://www.aidedd.org/monster/giant-toad) |
+| [[#Giant Venomous Snake\|Giant Venomous Snake]] | Beast | 1/4 | Medium | MM | [AideDD](https://www.aidedd.org/monster/giant-venomous-snake) |
+| [[#Giant Walrus\|Giant Walrus]] * | Beast | 4 | Huge | IDRotF | - |
+| [[#Giant White Moray Eel\|Giant White Moray Eel]] * | Beast | 2 | Huge | GoS | [5e Wiki](https://dnd-5e.fandom.com/wiki/Giant_White_Moray_Eel) |
+| [[#Hadrosaurus\|Hadrosaurus]] * | Beast | 1/4 | Large | MPMM | [5e Wiki](https://dnd-5e.fandom.com/wiki/Hadrosaurus) |
+| [[#Hawk\|Hawk]] | Beast | 0 | Tiny | MM | [AideDD](https://www.aidedd.org/monster/hawk) |
+| [[#Hippopotamus\|Hippopotamus]] * | Beast | 4 | Large | MM 2024 | [AideDD](https://www.aidedd.org/monster/hippopotamus) |
+| [[#Huge Giant Crab\|Huge Giant Crab]] * | Beast | 8 | Huge | TftYP | [5e Wiki](https://dnd-5e.fandom.com/wiki/Huge_Giant_Crab) |
+| [[#Hulking Crab\|Hulking Crab]] | Beast | 5 | Huge | SKT | [5e Wiki](https://dnd-5e.fandom.com/wiki/Hulking_Crab) |
+| [[#Hunter Shark\|Hunter Shark]] * | Beast | 2 | Large | MM | [AideDD](https://www.aidedd.org/monster/hunter-shark) |
+| [[#Killer Whale\|Killer Whale]] * | Beast | 3 | Huge | MM | [AideDD](https://www.aidedd.org/monster/killer-whale) |
+| [[#Octopus\|Octopus]] | Beast | 0 | Small | MM | [AideDD](https://www.aidedd.org/monster/octopus) |
+| [[#Polar Bear\|Polar Bear]] * | Beast | 2 | Large | MM | [5e Wiki](https://dnd-5e.fandom.com/wiki/Polar_Bear) |
+| [[#Piranha\|Piranha]] * | Beast | 0 | Tiny | MM 2024 | [AideDD](https://www.aidedd.org/monster/piranha) |
+| [[#Plesiosaurus\|Plesiosaurus]] * | Beast | 2 | Large | MM | [AideDD](https://www.aidedd.org/monster/plesiosaurus) |
+| [[#Pteranodon\|Pteranodon]] * | Beast | 1/4 | Medium | MM | [AideDD](https://www.aidedd.org/monster/pteranodon) |
+| [[#Quetzalcoatlus\|Quetzalcoatlus]] * | Beast | 2 | Huge | MPMM | [5e Wiki](https://dnd-5e.fandom.com/wiki/Quetzalcoatlus) |
+| [[#Quipper\|Quipper]] * | Beast | 0 | Tiny | MM | [AideDD](https://www.aidedd.org/dnd/monstres.php?vo=quipper) |
+| [[#Seal\|Seal]] * | Beast | 0 | Medium | IDRotF | - |
+| [[#Reef Shark\|Reef Shark]] * | Beast | 1/2 | Medium | MM | [AideDD](https://www.aidedd.org/monster/reef-shark) |
+| [[#Seahorse\|Seahorse]] * | Beast | 0 | Tiny | MM 2024 | [AideDD](https://www.aidedd.org/monster/seahorse) |
+| [[#Shell Shark\|Shell Shark]] * | Beast | 2 | Medium | GoS | - |
+| [[#Sperm Whale\|Sperm Whale]] * | Beast | 8 | Gargantuan | IDRotF | - |
+| [[#Swarm of Piranhas\|Swarm of Piranhas]] * | Beast | 1 | Medium | MM 2024 | [AideDD](https://www.aidedd.org/monster/swarm-of-piranhas) |
+| [[#Swarm of Quippers\|Swarm of Quippers]] * | Beast | 1 | Medium | MM | [AideDD](https://www.aidedd.org/dnd/monstres.php?vo=swarm-of-quippers) |
+| [[#Two-Headed Plesiosaurus\|Two-Headed Plesiosaurus]] * | Beast | 4 | Large | TP | - |
+| [[#Venomous Snake\|Venomous Snake]] | Beast | 1/8 | Tiny | MM | [AideDD](https://www.aidedd.org/monster/venomous-snake) |
+| [[#Walrus\|Walrus]] * | Beast | 1/4 | Large | IDRotF | - |
+| [[#Aboleth\|Aboleth]] | Aberration | 10 | Large | MM | [AideDD](https://www.aidedd.org/monster/aboleth) |
+| [[#Balhannoth\|Balhannoth]] | Aberration | 11 | Large | MPMM | [5e Wiki](https://dnd-5e.fandom.com/wiki/Balhannoth) |
+| [[#Chuul\|Chuul]] | Aberration | 4 | Large | MM | [AideDD](https://www.aidedd.org/monster/chuul) |
+| [[#Ixitxachitl\|Ixitxachitl]] | Aberration | 1/4 | Small | OotA | [5e Wiki](https://dnd-5e.fandom.com/wiki/Ixitxachitl) |
+| [[#Morkoth\|Morkoth]] | Aberration | 11 | Large | MPMM | [5e Wiki](https://dnd-5e.fandom.com/wiki/Morkoth) |
+| [[#Amphisbaena\|Amphisbaena]] * | Monstrosity | 3 | Huge | TftYP | [5e Wiki](https://dnd-5e.fandom.com/wiki/Amphisbaena) |
+| [[#Catoblepas\|Catoblepas]] | Monstrosity | 5 | Large | MPMM | - |
+| [[#Froghemoth\|Froghemoth]] | Monstrosity | 10 | Huge | MPMM | - |
+| [[#Griffon\|Griffon]] | Monstrosity | 2 | Large | MM | [AideDD](https://www.aidedd.org/monster/griffon) |
+| [[#Harpy\|Harpy]] | Monstrosity | 1 | Medium | MM | [AideDD](https://www.aidedd.org/monster/harpy) |
+| [[#Hippocamp\|Hippocamp]] * | Monstrosity | 1/2 | Large | MOoT | - |
+| [[#Hydra\|Hydra]] | Monstrosity | 8 | Huge | MM | [AideDD](https://www.aidedd.org/monster/hydra) |
+| [[#Ironscale Hydra\|Ironscale Hydra]] * | Monstrosity | 12 | Gargantuan | MOoT | - |
+| [[#Juvenile Kraken\|Juvenile Kraken]] * | Monstrosity | 14 | Huge | GoS | - |
+| [[#Kraken\|Kraken]] | Monstrosity | 23 | Gargantuan | MM | [AideDD](https://www.aidedd.org/monster/kraken) |
+| [[#Malformed Kraken\|Malformed Kraken]] * | Monstrosity | 10 | Huge | TftYP | - |
+| [[#Manticore\|Manticore]] | Monstrosity | 3 | Large | MM | [AideDD](https://www.aidedd.org/monster/manticore) |
+| [[#Merrow\|Merrow]] | Monstrosity | 2 | Large | MM | [AideDD](https://www.aidedd.org/monster/merrow) |
+| [[#Monstrous Peryton\|Monstrous Peryton]] * | Monstrosity | 11 | Large | GoS | - |
+| [[#Roc\|Roc]] | Monstrosity | 11 | Gargantuan | MM | [AideDD](https://www.aidedd.org/monster/roc) |
+| [[#Sea Lion\|Sea Lion]] | Monstrosity | 5 | Large | TftYP | - |
+| [[#Snapping Hydra\|Snapping Hydra]] * | Monstrosity | 11 | Huge | MCv4 | - |
+| [[#Shadow Mastiff\|Shadow Mastiff]] | Monstrosity | 2 | Medium | MPMM | - |
+| [[#Storm Crab\|Storm Crab]] * | Monstrosity | 11 | Gargantuan | BGG | - |
+| [[#Thousand Teeth\|Thousand Teeth]] * | Monstrosity | 6 | Large | GoS | - |
+| [[#Lonely Sorrowsworn\|Lonely Sorrowsworn]] | Monstrosity | 9 | Medium | MPMM | - |
+| [[#Lost Sorrowsworn\|Lost Sorrowsworn]] | Monstrosity | 7 | Medium | MPMM | - |
+| [[#Wretched Sorrowsworn\|Wretched Sorrowsworn]] | Monstrosity | 1/4 | Small | MPMM | - |
+| [[#Young Kraken\|Young Kraken]] * | Monstrosity | 14 | Huge | LR | - |
+| [[#Dragon Wyrmling\|Dragon Wyrmling]] * | Dragon | 1-4 | Medium | MM | - |
+| [[#Young Dragon\|Young Dragon]] * | Dragon | 4-10 | Large | MM | - |
+| [[#Adult Dragon\|Adult Dragon]] * | Dragon | 13-17 | Huge | MM | - |
+| [[#Ancient Dragon\|Ancient Dragon]] * | Dragon | 20-24 | Gargantuan | MM | - |
+| [[#Greatwyrm\|Greatwyrm]] * | Dragon | 26-28 | Gargantuan | FTD | - |
+| [[#Bakunawa\|Bakunawa]] * | Dragon | 12 | Gargantuan | JtRC | - |
+| [[#Dragon Turtle Wyrmling\|Dragon Turtle Wyrmling]] * | Dragon | 4 | Large | FTD | - |
+| [[#Young Dragon Turtle\|Young Dragon Turtle]] * | Dragon | 10 | Huge | FTD | - |
+| [[#Dragon Turtle\|Dragon Turtle]] * | Dragon | 17 | Gargantuan | MM | [AideDD](https://www.aidedd.org/monster/dragon-turtle) |
+| [[#Ancient Dragon Turtle\|Ancient Dragon Turtle]] * | Dragon | 24 | Gargantuan | FTD | - |
+| [[#Guard Drake\|Guard Drake]] * | Dragon | 2 | Medium | MPMM | [5e Wiki](https://dnd-5e.fandom.com/wiki/Guard_Drake) |
+| [[#Young Sea Serpent\|Young Sea Serpent]] * | Dragon | 8 | Huge | FTD | - |
+| [[#Ancient Sea Serpent\|Ancient Sea Serpent]] * | Dragon | 14 | Gargantuan | FTD | - |
 
 # Harvesting
 Harvesting takes a Wisdom (Survival) check with skinner's tools. A character proficient with leatherworker's tools is proficient with skinner's tools. One check covers the creature's meat, hide, teeth and claws.
@@ -199,12 +217,28 @@ CR 2, Huge beast. MM. [AideDD](https://www.aidedd.org/monster/giant-constrictor-
 | Fangs | 86 SH | Trophy | - |
 | Eggs | 95 SH | Practical | - |
 
+## Giant Coral Snake
+CR 4, Large beast. GoS. [5e Wiki](https://dnd-5e.fandom.com/wiki/Giant_Coral_Snake). Prices are estimates. Harvest: DC 20, 1 hour.
+
+| Part | Price | Use | Crafted Into |
+| --- | --- | --- | --- |
+| Large snakeskin | 670 SH | Trophy, Practical | - |
+| Fangs | 57 SH | Trophy | - |
+| Venom | 9,500 SH | Practical | - |
+
 ## Giant Crab
 CR 1/8, Medium beast. MM. [AideDD](https://www.aidedd.org/monster/giant-crab). Harvest: DC 15, 45 minutes.
 
 | Part | Price | Use | Crafted Into |
 | --- | --- | --- | --- |
 | Medium chitin fragments | 290 SH | Trophy, Practical | Carapace Breastplate |
+
+## Giant Crayfish
+CR 2, Large beast. TftYP. [5e Wiki](https://dnd-5e.fandom.com/wiki/Giant_Crayfish). Harvest: DC 20, 1 hour.
+
+| Part | Price | Use | Crafted Into |
+| --- | --- | --- | --- |
+| Large chitin fragments | 570 SH | Trophy, Practical | - |
 
 ## Giant Crocodile
 CR 5, Huge beast. MM. [AideDD](https://www.aidedd.org/monster/giant-crocodile). Harvest: DC 25, 8 hours.
@@ -253,6 +287,14 @@ CR 1/2, Large beast. MM. [AideDD](https://www.aidedd.org/monster/giant-seahorse)
 | Part | Price | Use | Crafted Into |
 | --- | --- | --- | --- |
 | Large skin | 190 SH | Trophy, Practical | - |
+
+## Giant Sea Eel
+CR 1/2, Large beast. GoS. [5e Wiki](https://dnd-5e.fandom.com/wiki/Giant_Sea_Eel). Prices are estimates. Harvest: DC 20, 1 hour.
+
+| Part | Price | Use | Crafted Into |
+| --- | --- | --- | --- |
+| Large skin | 670 SH | Trophy, Practical | - |
+| Teeth | 57 SH | Trophy | - |
 
 ## Giant Shark
 CR 5, Huge beast. MM. [AideDD](https://www.aidedd.org/monster/giant-shark). Harvest: DC 25, 8 hours.
@@ -313,6 +355,15 @@ CR 1/4, Medium beast. MM. [AideDD](https://www.aidedd.org/monster/giant-venomous
 | Fangs | 57 SH | Trophy | - |
 | Venom | 9,500 SH | Practical | - |
 | Eggs | 290 SH | Practical | - |
+
+## Giant Walrus
+CR 4, Huge beast. IDRotF. -. Prices are estimates. Harvest: DC 25, 8 hours.
+
+| Part | Price | Use | Crafted Into |
+| --- | --- | --- | --- |
+| Ivory tusks | 1,100 SH | Trophy, Practical | - |
+| Huge hide | 480 SH | Trophy, Practical | - |
+| Blubber (about 2 barrels of whale oil) | 1,700 SH | Practical | - |
 
 ## Giant White Moray Eel
 CR 2, Huge beast. GoS. [5e Wiki](https://dnd-5e.fandom.com/wiki/Giant_White_Moray_Eel). Prices are estimates. Harvest: DC 25, 8 hours.
@@ -384,6 +435,14 @@ CR 0, Small beast. MM. [AideDD](https://www.aidedd.org/monster/octopus). Harvest
 | Tentacle | 190 SH | Trophy, Practical | - |
 | Ink sac | 76 SH | Practical | - |
 
+## Polar Bear
+CR 2, Large beast. MM. [5e Wiki](https://dnd-5e.fandom.com/wiki/Polar_Bear). Prices are estimates. Harvest: DC 20, 1 hour.
+
+| Part | Price | Use | Crafted Into |
+| --- | --- | --- | --- |
+| Large pelt | 290 SH | Trophy, Practical | - |
+| Claws | 57 SH | Trophy | - |
+
 ## Piranha
 CR 0, Tiny beast. MM 2024. [AideDD](https://www.aidedd.org/monster/piranha). Prices are estimates. Harvest: DC 10, 15 minutes.
 
@@ -422,6 +481,14 @@ CR 0, Tiny beast. MM. [AideDD](https://www.aidedd.org/dnd/monstres.php?vo=quippe
 | --- | --- | --- | --- |
 | Teeth | 10 SH | Trophy | - |
 
+## Seal
+CR 0, Medium beast. IDRotF. -. Prices are estimates. Harvest: DC 15, 45 minutes.
+
+| Part | Price | Use | Crafted Into |
+| --- | --- | --- | --- |
+| Medium pelt | 95 SH | Trophy, Practical | - |
+| Blubber (a few flasks of oil) | 29 SH | Practical | - |
+
 ## Reef Shark
 CR 1/2, Medium beast. MM. [AideDD](https://www.aidedd.org/monster/reef-shark). Prices are estimates. Harvest: DC 15, 45 minutes.
 
@@ -445,6 +512,16 @@ CR 2, Medium beast. GoS. -. Prices are estimates. Harvest: DC 15, 45 minutes.
 | Shell plates | 570 SH | Trophy, Practical | - |
 | Teeth | 57 SH | Trophy | Sharktooth Choker |
 
+## Sperm Whale
+CR 8, Gargantuan beast. IDRotF. -. Prices are estimates. Harvest: DC 30, 1 week.
+
+| Part | Price | Use | Crafted Into |
+| --- | --- | --- | --- |
+| Teeth (ivory) | 380 SH | Trophy, Practical | - |
+| Gargantuan hide | 1,400 SH | Trophy, Practical | - |
+| Blubber (about 10 barrels of whale oil) | 8,600 SH | Practical | - |
+| Spermaceti (about 200 lb) | 4,800 SH | Practical | - |
+
 ## Swarm of Piranhas
 CR 1, Medium beast. MM 2024. [AideDD](https://www.aidedd.org/monster/swarm-of-piranhas). Prices are estimates. Harvest: DC 15, 45 minutes.
 
@@ -459,6 +536,14 @@ CR 1, Medium beast. MM. [AideDD](https://www.aidedd.org/dnd/monstres.php?vo=swar
 | --- | --- | --- | --- |
 | Teeth (a handful) | 48 SH | Trophy | - |
 
+## Two-Headed Plesiosaurus
+CR 4, Large beast. TP. -. Prices are estimates. Harvest: DC 20, 1 hour.
+
+| Part | Price | Use | Crafted Into |
+| --- | --- | --- | --- |
+| Teeth | 95 SH | Trophy | - |
+| Large skin | 950 SH | Trophy, Practical | - |
+
 ## Venomous Snake
 CR 1/8, Tiny beast. MM. [AideDD](https://www.aidedd.org/monster/venomous-snake). Harvest: DC 10, 15 minutes.
 
@@ -467,6 +552,15 @@ CR 1/8, Tiny beast. MM. [AideDD](https://www.aidedd.org/monster/venomous-snake).
 | Tiny snakeskin | 67 SH | Trophy, Practical | - |
 | Venom | 7,100 SH | Practical | - |
 | Eggs | 76 SH | Practical | - |
+
+## Walrus
+CR 1/4, Large beast. IDRotF. -. Prices are estimates. Harvest: DC 20, 1 hour.
+
+| Part | Price | Use | Crafted Into |
+| --- | --- | --- | --- |
+| Tusks | 290 SH | Trophy, Practical | - |
+| Large hide | 190 SH | Trophy, Practical | - |
+| Blubber (about 1 barrel of whale oil) | 860 SH | Practical | - |
 
 # Aberrations
 
@@ -564,6 +658,14 @@ CR 1, Medium monstrosity. MM. [AideDD](https://www.aidedd.org/monster/harpy). Ha
 | Tongue | 38 SH | Trophy, Practical | - |
 | Feathers | 76 SH | Trophy | - |
 
+## Hippocamp
+CR 1/2, Large monstrosity. MOoT. -. Prices are estimates. Harvest: DC 20, 1 hour.
+
+| Part | Price | Use | Crafted Into |
+| --- | --- | --- | --- |
+| Large hide | 290 SH | Trophy, Practical | - |
+| Mane | 95 SH | Trophy | - |
+
 ## Hydra
 CR 8, Huge monstrosity. MM. [AideDD](https://www.aidedd.org/monster/hydra). Harvest: DC 25, 8 hours.
 
@@ -572,6 +674,14 @@ CR 8, Huge monstrosity. MM. [AideDD](https://www.aidedd.org/monster/hydra). Harv
 | Teeth | 190 SH | Trophy, Practical | - |
 | Claws | 480 SH | Trophy, Practical | - |
 | Huge skin | 3,300 SH | Trophy, Practical | - |
+
+## Ironscale Hydra
+CR 12, Gargantuan monstrosity. MOoT. -. Prices are estimates. Harvest: DC 30, 1 week.
+
+| Part | Price | Use | Crafted Into |
+| --- | --- | --- | --- |
+| Teeth | 290 SH | Trophy | - |
+| Gargantuan scales | 4,800 SH | Trophy, Practical | - |
 
 ## Juvenile Kraken
 CR 14, Huge monstrosity. GoS. -. Prices are estimates. Harvest: DC 25, 8 hours.
@@ -592,6 +702,16 @@ CR 23, Gargantuan monstrosity. MM. [AideDD](https://www.aidedd.org/monster/krake
 | Tentacles | 2,400 SH | Trophy, Practical | - |
 | Eyes | 950 SH | Practical | Elixir of the Storm |
 | Ink sac | 2,400 SH | Practical | - |
+
+## Malformed Kraken
+CR 10, Huge monstrosity. TftYP. -. Prices are estimates. Harvest: DC 25, 8 hours.
+
+| Part | Price | Use | Crafted Into |
+| --- | --- | --- | --- |
+| Teeth | 190 SH | Trophy | - |
+| Tentacles | 1,100 SH | Trophy, Practical | - |
+| Eyes | 480 SH | Practical | Elixir of the Storm |
+| Ink sac | 1,100 SH | Practical | - |
 
 ## Manticore
 CR 3, Large monstrosity. MM. [AideDD](https://www.aidedd.org/monster/manticore). Harvest: DC 20, 1 hour.
@@ -641,6 +761,14 @@ CR 5, Large monstrosity. TftYP. -. Harvest: DC 20, 1 hour.
 | Claws | 190 SH | Trophy | - |
 | Medium hide | 570 SH | Trophy, Practical | - |
 
+## Snapping Hydra
+CR 11, Huge monstrosity. MCv4. -. Prices are estimates. Harvest: DC 25, 8 hours.
+
+| Part | Price | Use | Crafted Into |
+| --- | --- | --- | --- |
+| Teeth | 190 SH | Trophy | - |
+| Huge shell | 3,300 SH | Trophy, Practical | - |
+
 ## Shadow Mastiff
 CR 2, Medium monstrosity. MPMM. -. Harvest: DC 15, 45 minutes.
 
@@ -649,6 +777,22 @@ CR 2, Medium monstrosity. MPMM. -. Harvest: DC 15, 45 minutes.
 | Medium hide | 570 SH | Trophy, Practical | - |
 | Teeth | 76 SH | Trophy | - |
 | Claws | 190 SH | Trophy | - |
+
+## Storm Crab
+CR 11, Gargantuan monstrosity. BGG. -. Prices are estimates. Harvest: DC 30, 1 week.
+
+| Part | Price | Use | Crafted Into |
+| --- | --- | --- | --- |
+| Gargantuan chitin fragments | 3,800 SH | Trophy, Practical | - |
+| Elemental gland | 7,100 SH | Practical | Elemental Weapon Oil (lightning) |
+
+## Thousand Teeth
+CR 6, Large monstrosity. GoS. -. Prices are estimates. Harvest: DC 20, 1 hour.
+
+| Part | Price | Use | Crafted Into |
+| --- | --- | --- | --- |
+| Teeth (hundreds) | 290 SH | Trophy | Sharktooth Choker |
+| Large skin | 760 SH | Trophy, Practical | - |
 
 ## Lonely Sorrowsworn
 CR 9, Medium monstrosity. MPMM. -. Harvest: DC 15, 45 minutes.
@@ -723,22 +867,39 @@ CR 20-24, Gargantuan dragon. MM. -. Prices are estimates. Harvest: DC 30, 1 week
 | Gargantuan scales | 14,000 SH | Trophy, Practical | - |
 | Breath gland | 7,100 SH | Practical | Elemental Weapon Oil |
 
+## Greatwyrm
+CR 26-28, Gargantuan dragon. FTD. -. Prices are estimates. Harvest: DC 30, 1 week.
+
+| Part | Price | Use | Crafted Into |
+| --- | --- | --- | --- |
+| Teeth | 1,400 SH | Trophy | - |
+| Gargantuan scales | 29,000 SH | Trophy, Practical | - |
+| Breath gland | 14,000 SH | Practical | Elemental Weapon Oil |
+
+## Bakunawa
+CR 12, Gargantuan dragon. JtRC. -. Prices are estimates. Harvest: DC 30, 1 week.
+
+| Part | Price | Use | Crafted Into |
+| --- | --- | --- | --- |
+| Teeth | 570 SH | Trophy | - |
+| Gargantuan scales | 14,000 SH | Trophy, Practical | - |
+
 ## Dragon Turtle Wyrmling
-CR 4, Medium dragon. FTD. -. Prices are estimates. Harvest: DC 15, 45 minutes.
+CR 4, Large dragon. FTD. -. Prices are estimates. Harvest: DC 20, 1 hour.
 
 | Part | Price | Use | Crafted Into |
 | --- | --- | --- | --- |
 | Teeth | 95 SH | Trophy | - |
-| Medium shell | 760 SH | Trophy, Practical | - |
+| Large shell | 760 SH | Trophy, Practical | - |
 | Breath gland | 2,900 SH | Practical | Elemental Weapon Oil (fire) |
 
 ## Young Dragon Turtle
-CR 10, Large dragon. FTD. -. Prices are estimates. Harvest: DC 20, 1 hour.
+CR 10, Huge dragon. FTD. -. Prices are estimates. Harvest: DC 25, 8 hours.
 
 | Part | Price | Use | Crafted Into |
 | --- | --- | --- | --- |
 | Teeth | 190 SH | Trophy | - |
-| Large shell | 3,800 SH | Trophy, Practical | - |
+| Huge shell | 3,800 SH | Trophy, Practical | - |
 | Breath gland | 7,100 SH | Practical | Elemental Weapon Oil (fire) |
 
 ## Dragon Turtle
@@ -768,12 +929,12 @@ CR 2, Medium dragon. MPMM. [5e Wiki](https://dnd-5e.fandom.com/wiki/Guard_Drake)
 | Medium scales | 380 SH | Trophy, Practical | - |
 
 ## Young Sea Serpent
-CR 8, Large dragon. FTD. -. Prices are estimates. Harvest: DC 20, 1 hour.
+CR 8, Huge dragon. FTD. -. Prices are estimates. Harvest: DC 25, 8 hours.
 
 | Part | Price | Use | Crafted Into |
 | --- | --- | --- | --- |
 | Teeth | 190 SH | Trophy | - |
-| Large hide | 1,900 SH | Trophy, Practical | - |
+| Huge hide | 1,900 SH | Trophy, Practical | - |
 
 ## Ancient Sea Serpent
 CR 14, Gargantuan dragon. FTD. -. Prices are estimates. Harvest: DC 30, 1 week.
@@ -799,9 +960,9 @@ Few sea folk carry shell coins. Most of what they own is pearls, coral, shell an
 
 | People | Members |
 | --- | --- |
-| [[#Sahuagin\|Sahuagin]] | Sahuagin Warrior, Sahuagin Priest, Sahuagin Baron |
+| [[#Sahuagin\|Sahuagin]] | Sahuagin Warrior, Sahuagin Coral Smasher, Sahuagin Priest, Sahuagin Champion, Sahuagin Deep Diver, Sahuagin Baron, Sahuagin High Priestess, Sahuagin Wave Shaper, Sahuagin Blademaster |
 | [[#Merfolk\|Merfolk]] | Merfolk Skirmisher, Merfolk Scout, Merfolk Salvager, Merfolk Wavebender |
-| [[#Kuo-toa\|Kuo-toa]] | Kuo-toa, Kuo-toa Whip, Kuo-toa Monitor, Kuo-toa Archpriest |
+| [[#Kuo-toa\|Kuo-toa]] | Kuo-toa, Kuo-toa Marauder, Kuo-toa Whip, Kuo-toa Monitor, Kuo-toa Archpriest |
 | [[#Locathah\|Locathah]] | Locathah, Locathah Hunter |
 | [[#Tritons\|Tritons]] | Triton Shorestalker, Triton Master of Waves |
 | [[#Sea Elves\|Sea Elves]] | Sea Elf |
@@ -815,8 +976,14 @@ Raiders and slavers sworn to the shark god. They take what they want from ships 
 | Member | CR | Book | Stat Block |
 | --- | --- | --- | --- |
 | Sahuagin Warrior | 1/2 | MM | [AideDD](https://www.aidedd.org/monster/sahuagin-warrior) |
+| Sahuagin Coral Smasher | 1 | GoS | - |
 | Sahuagin Priest | 2 | MM | [AideDD](https://www.aidedd.org/monster/sahuagin-priest) |
+| Sahuagin Champion | 3 | GoS | - |
+| Sahuagin Deep Diver | 4 | GoS | - |
 | Sahuagin Baron | 5 | MM | [AideDD](https://www.aidedd.org/monster/sahuagin-baron) |
+| Sahuagin High Priestess | 5 | GoS | - |
+| Sahuagin Wave Shaper | 5 | GoS | - |
+| Sahuagin Blademaster | 6 | GoS | - |
 
 | d6 | Carried As |
 | --- | --- |
@@ -852,6 +1019,7 @@ Mad fish-folk who worship whatever they found last. Their treasures are often no
 | Member | CR | Book | Stat Block |
 | --- | --- | --- | --- |
 | Kuo-toa | 1/4 | MM | [AideDD](https://www.aidedd.org/monster/kuo-toa) |
+| Kuo-toa Marauder | 1/2 | HotB | - |
 | Kuo-toa Whip | 1 | MM | [AideDD](https://www.aidedd.org/monster/kuo-toa-whip) |
 | Kuo-toa Monitor | 3 | MM | [AideDD](https://www.aidedd.org/monster/kuo-toa-monitor) |
 | Kuo-toa Archpriest | 6 | MM | [AideDD](https://www.aidedd.org/monster/kuo-toa-archpriest) |
@@ -966,3 +1134,57 @@ Hags of the drowned places, who trade in curses and bargains.
 | 6 | A lock of hair or a written promise. Worthless, but someone will pay to get it back |
 
 %%DM: Carried values are close to the DMG's individual treasure, converted to shells (1 gp is about 100 SH). The "Carried As" entries are flavor for whatever value was rolled; a worthless item means that creature carried nothing else of value. Leaders like a sahuagin baron, kuo-toa archpriest, triton master of waves or kraken priest guard a lair hoard on top of this, rolled on the DMG's hoard tables. Lizardfolk and tortles are surface dwellers in Oceana, so they aren't here.%%
+
+# Pirate Loot
+Pirates carry their wealth on them too, and in coin far more often than sea folk do. Roll carried value on the [[#Sea Folk Loot|same table]] by CR, then roll a d8 below to see what form it takes.
+
+| Crew | Members |
+| --- | --- |
+| [[#Pirate Crew\|Pirate Crew]] | Bandit, Pirate Bosun, Pirate, Pirate First Mate, Pirate Deck Wizard, Swashbuckler |
+| [[#Pirate Captains\|Pirate Captains]] | Bandit Captain, Pirate Captain (GoS), Pirate Captain, Pirate Admiral |
+
+## Pirate Crew
+Deckhands, gunners and boarders. Most carry their whole share of the last prize on them, because a sea chest can be stolen.
+
+| Member | CR | Book | Stat Block |
+| --- | --- | --- | --- |
+| Bandit | 1/8 | MM | [AideDD](https://www.aidedd.org/monster/bandit) |
+| Pirate Bosun | 1/2 | GoS | - |
+| Pirate | 1 | MM | [AideDD](https://www.aidedd.org/monster/pirate) |
+| Pirate First Mate | 1 | GoS | - |
+| Pirate Deck Wizard | 1 | GoS | - |
+| Swashbuckler | 3 | MPMM | - |
+
+| d8 | Carried As |
+| --- | --- |
+| 1 | Shell coins knotted in a sock or kerchief |
+| 2 | Dice and cards, with the night's winnings |
+| 3 | A gold earring |
+| 4 | A fine pipe and a twist of tobacco |
+| 5 | A silver ring taken from a merchant |
+| 6 | A bottle of good rum |
+| 7 | A share token for the ship's next prize |
+| 8 | A scrap of a treasure map, the DM's choice |
+
+## Pirate Captains
+Captains and admirals keep the ship's money close, and the ship's secrets closer.
+
+| Member | CR | Book | Stat Block |
+| --- | --- | --- | --- |
+| Bandit Captain | 2 | MM | [AideDD](https://www.aidedd.org/monster/bandit-captain) |
+| Pirate Captain (GoS) | 2 | GoS | - |
+| Pirate Captain | 6 | MM | [AideDD](https://www.aidedd.org/monster/pirate-captain) |
+| Pirate Admiral | 12 | MM | [AideDD](https://www.aidedd.org/monster/pirate-admiral) |
+
+| d8 | Carried As |
+| --- | --- |
+| 1 | A purse of cowries and abalones |
+| 2 | An engraved pistol or a jeweled cutlass hilt |
+| 3 | Letters of marque, real or forged |
+| 4 | The ship's log, with routes and hidden caches |
+| 5 | A captain's coat with gold buttons |
+| 6 | A gem pried from a prize ship's cargo |
+| 7 | The key to the captain's strongbox |
+| 8 | A treasure map, the DM's choice |
+
+%%DM: A captured pirate ship's hold is cargo, priced at [[Raw Goods]] and [[Provisions]], and the captain's strongbox is a hoard, rolled on the DMG's hoard tables by the captain's CR. A share token is worth a crew member's cut of the next prize, which other pirates may honor or may not.%%

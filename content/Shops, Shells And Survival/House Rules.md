@@ -47,7 +47,7 @@ When you finish a short rest, you lose 1 level of exhaustion caused by hunger, t
 # Spoilage
 Food and drink are tracked in **lots**. All of one kind of supply at the same Keep Die is one lot, but loose supplies and cargo are always separate lots, even at the same die. A **unit** is one cargo unit for cargo, or one ration or item for anything carried loose.
 
-Every edible item in [[The Bazaar]] has a **Keep Die** and properties that say how it spoils and what it does when spoiled.
+Every edible item in [[Shops, Shells And Survival/The Bazaar/index|The Bazaar]] has a **Keep Die** and properties that say how it spoils and what it does when spoiled.
 
 **Every morning**, roll the Keep Die for every lot aboard. On a 1, the die steps down: d20 > d12 > d10 > d8 > d6 > d4 > Turning.
 - **Losses:** When a lot loses units to spoilage, it loses 1d4 × 5% of what's left, rounded up (minimum 1 unit).

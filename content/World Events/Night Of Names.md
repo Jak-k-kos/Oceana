@@ -1,10 +1,10 @@
 A yearly festival honoring the dead, held in the name of [[Morvaine]].
 
-**Date:** The 22nd of Falris
+**Date:** The 22nd of Calra.
 **Honors:** [[Morvaine]], the Shepherd of Souls
 
 ## Overview  
-Once each year, on the 22nd of Osca, the islands pause to remember their dead. The Night of Names is a night of lanterns and of mourning, but it is not a night of sorrow alone. It begins with the dead and ends with the living, and by the time the sun rises, the harbors that were silent at dusk are ringing with music and laughter.
+Once each year, on the 22nd of Calra, the islands pause to remember their dead. The Night of Names is a night of lanterns and of mourning, but it is not a night of sorrow alone. It begins with the dead and ends with the living, and by the time the sun rises, the harbors that were silent at dusk are ringing with music and laughter.
 
 ## The Day of Preparation  
 The day is spent in quiet work. In homes and on docks across the islands, families build small lantern boats, one for each loved one they have lost, and on each one they write the name of the dead. Some boats are simple things of driftwood and paper, others are carved and painted with great care, but every one bears a name. Carpenters do some of their best business of the year in the days leading up to the festival, selling plain little boats for families to paint and carve themselves.
