@@ -27,10 +27,10 @@
           },
           {
             "type": "day",
-            "name": "Day of Welestia",
+            "name": "Day of Westria",
             "id": "ID_2ae8b85aeb2b",
             "number": null,
-            "abbreviation": "WEL"
+            "abbreviation": "WES"
           },
           {
             "type": "day",
@@ -41,10 +41,10 @@
           },
           {
             "type": "day",
-            "name": "Day of Apiot",
+            "name": "Day of Apoti",
             "id": "ID_a9dba838c869",
             "number": null,
-            "abbreviation": "API"
+            "abbreviation": "APO"
           }
         ],
         "months": [
@@ -57,7 +57,7 @@
             "offset": 0
           },
           {
-            "name": "Macis",
+            "name": "macis",
             "type": "month",
             "length": 25,
             "id": "ID_3918fa2b9a6a",
@@ -65,7 +65,7 @@
             "offset": 0
           },
           {
-            "name": "Calra",
+            "name": "Falris",
             "type": "month",
             "length": 25,
             "id": "ID_2a69692aeb0b",
@@ -73,7 +73,7 @@
             "offset": 0
           },
           {
-            "name": "Osca",
+            "name": "osca",
             "type": "month",
             "length": 25,
             "id": "ID_bada28fa5b19",
@@ -85,7 +85,7 @@
           {
             "name": "Ellehwin",
             "cycle": 92,
-            "offset": 86,
+            "offset": 89,
             "faceColor": "#02d12a",
             "shadowColor": "#292b4a",
             "id": "ID_7ae8e83b7afb"
@@ -93,7 +93,7 @@
           {
             "name": "Ostin",
             "cycle": 42,
-            "offset": 16,
+            "offset": 19,
             "faceColor": "#e28a33",
             "shadowColor": "#292b4a",
             "id": "ID_1be97ab98aaa"
@@ -101,7 +101,7 @@
           {
             "name": "Winstra",
             "cycle": 18,
-            "offset": 10,
+            "offset": 13,
             "faceColor": "#a450eb",
             "shadowColor": "#292b4a",
             "id": "ID_997be829c8f9"
@@ -130,7 +130,7 @@
             "id": "ID_6bc989a99bd9",
             "isEvent": false,
             "isStartingEra": false,
-            "name": "Aquilla's Slumber",
+            "name": "Aquila's Slumber",
             "description": "",
             "format": "{{era_name}} {{era_year}} {{year}}",
             "date": {
@@ -139,12 +139,7 @@
               "day": 1
             },
             "type": "era",
-            "category": null,
-            "end": {
-              "year": 257,
-              "month": 3,
-              "day": 25
-            }
+            "category": null
           },
           {
             "id": "ID_7b6a0818cb2a",
@@ -154,17 +149,12 @@
             "description": "",
             "format": "{{era_name}} {{era_year}} {{year}}",
             "date": {
-              "year": 258,
-              "month": 0,
-              "day": 1
+              "year": 257,
+              "month": 3,
+              "day": 8
             },
             "type": "era",
-            "category": null,
-            "end": {
-              "year": 2574,
-              "month": 3,
-              "day": 25
-            }
+            "category": null
           },
           {
             "id": "ID_89498bcb1969",
@@ -175,9 +165,9 @@
             "description": "",
             "format": "{{era_name}} {{era_year}} {{year}}",
             "date": {
-              "year": 2575,
-              "month": 0,
-              "day": 1
+              "year": 2574,
+              "month": 2,
+              "day": 12
             },
             "type": "era",
             "category": ""
@@ -216,7 +206,7 @@
             "kind": "Custom",
             "duration": 25,
             "peak": 0,
-            "color": "#00e02d",
+            "color": "#000000",
             "weatherOffset": 56,
             "weatherPeak": 5,
             "weather": {
@@ -237,7 +227,7 @@
             "kind": "Custom",
             "duration": 20,
             "peak": 0,
-            "color": "#f22121",
+            "color": "#21f22f",
             "weatherOffset": 56,
             "weatherPeak": 5,
             "weather": {
@@ -258,7 +248,7 @@
             "kind": "Autumn",
             "duration": 25,
             "peak": 0,
-            "color": "#d6c724",
+            "color": "#12a3f7",
             "weatherOffset": 56,
             "weatherPeak": 5
           }
@@ -319,7 +309,7 @@
           },
           "id": "ID_5879da397b48",
           "note": "World Events/HearthFire's Glow.md",
-          "category": "ID_b869d8081878",
+          "category": "ID_5b58681b7bba",
           "sort": {
             "timestamp": 5e-324,
             "order": ""
@@ -339,7 +329,7 @@
           },
           "id": "ID_4a487818bb68",
           "note": "World Events/HearthFire's Blaze.md",
-          "category": "ID_b869d8081878",
+          "category": "ID_5b58681b7bba",
           "sort": {
             "timestamp": 5e-324,
             "order": ""
@@ -359,7 +349,7 @@
           },
           "id": "ID_a99a1b393928",
           "note": "World Events/Apiot's Boon.md",
-          "category": "ID_7969999b295b",
+          "category": "ID_5b58681b7bba",
           "sort": {
             "timestamp": 5e-324,
             "order": ""
@@ -379,7 +369,7 @@
           },
           "id": "ID_a98b39394839",
           "note": "World Events/Apiot's Promise.md",
-          "category": "ID_7969999b295b",
+          "category": "ID_5b58681b7bba",
           "sort": {
             "timestamp": 5e-324,
             "order": ""
@@ -399,7 +389,7 @@
           },
           "id": "ID_58885b398b8a",
           "note": "World Events/Night Of Names.md",
-          "category": "ID_4ac82b995968",
+          "category": "ID_5b58681b7bba",
           "sort": {
             "timestamp": 5e-324,
             "order": ""
@@ -410,23 +400,8 @@
       "categories": [
         {
           "id": "ID_5b58681b7bba",
-          "color": "#061e93",
-          "name": "Aquilla's Mercy"
-        },
-        {
-          "id": "ID_b869d8081878",
-          "color": "#b00303",
-          "name": "Hearthfire"
-        },
-        {
-          "id": "ID_7969999b295b",
-          "color": "#b0ea43",
-          "name": "Apiot"
-        },
-        {
-          "id": "ID_4ac82b995968",
-          "color": "#26016a",
-          "name": "Morvaine"
+          "color": "#dda442",
+          "name": "holidays"
         }
       ],
       "path": [],

@@ -13,9 +13,9 @@ Welcome to the world of Oceana. The waters rose, the sea folk claimed the deep, 
 - [[Shops, Shells And Survival/House Rules|House Rules]]
 
 # The Crew
-- [[Characters/Austin|TBD (Austin)]]
+- [[Silk|Silk (Austin)]]
 - [[Characters/Rouge Bellball|Rouge Bellball (Zadia)]]
-- [[Characters/Scubby Wellfleet|Scubby Wellfleet (Asper)]]
+- [[Characters/Scubby Wellfleet|Scubby Wellfleet (Aster)]]
 - [[Characters/Shady Bellball|Shady Bellball (Henry)]]
 - [[Characters/Tryknin Goldenroar|Tryknin Goldenroar (Torin)]]
 - [[Characters/Owned Ships/index|Our Ships]]

@@ -3,7 +3,7 @@ title: Characters
 ---
 These 
 # Characters
-- [[Austin]]
+- [[Silk|Silk(Austin)]]
 - [[Rouge Bellball|Rouge Bellball(Z)]]
 - [[Scubby Wellfleet|Scubby Wellfleet(Aster)]]
 - [[Shady Bellball|Shady Bellball(Henry)]]
