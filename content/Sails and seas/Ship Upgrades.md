@@ -124,32 +124,31 @@ Desc: A heavy bronze bell with glass ports, lowered from a winch on deck. It hol
 
 ### Dazzle Paint 
 Market Value: Small 24,000 SH | Medium 48,000 SH | Large 96,000 SH | Huge 192,000 SH
-Desc: The first ship weapon attack from every new enemy ship in a combat is made at disadvantage. only one paint may be used on a ship at a time.
+Desc: Jagged stripes of black, white and sea-grey break up the hull's lines, so it's hard to tell which way the ship is heading, how big it is, or how far off it sits. The first ship weapon attack from every new enemy ship in a combat is made at disadvantage. only one paint may be used on a ship at a time.
 
 ### Dusk Paint
 Market Value: Small 19,000 SH | Medium 38,000 SH | Large 76,000 SH | Huge 152,000 SH
-Desc: Gain advantage on stealth checks in fog, rain, or darkness. only one paint may be used on a ship at a time.
+Desc: A deep blue-grey wash, flat and dull, that drinks in lantern light and melts into fog and rain. The first thing most crews see of a dusk-painted ship is its wake. Gain advantage on stealth checks in fog, rain, or darkness. only one paint may be used on a ship at a time.
 
 ### Sea Glass Paint
 Market Value: Small 19,000 SH | Medium 38,000 SH | Large 76,000 SH | Huge 152,000 SH
-Desc: Gain advantage on stealth checks while in broad daylight. only one paint may be used on a ship at a time.
+Desc: A pale, shifting green-blue, mixed with crushed sea glass so it catches the sun the way the water does. On a bright day the hull seems to fade into the glare off the waves. Gain advantage on stealth checks while in broad daylight. only one paint may be used on a ship at a time.
 
 ### Dread Seekers Paint
 Market Value: Small 12,000 SH | Medium 24,000 SH | Large 48,000 SH | Huge 96,000 SH
-Desc: all crew of this ship gain advantage on intimidation checks against non crew members while on or next to this ship, any intimidation checks made using flag code are made with advantage. only one paint may be used on a ship at a time
-
+Desc: A black hull with bone-white trim, with skulls, teeth or grasping hands painted along the bow. No honest ship would be caught wearing it. all crew of this ship gain advantage on intimidation checks against non crew members while on or next to this ship, any intimidation checks made using flag code are made with advantage. only one paint may be used on a ship at a time.
 ### Bitter Wash Paint
 Market Value: Small 15,000 SH | Medium 29,000 SH | Large 58,000 SH | Huge 116,000 SH
-Desc: Creatures that attempt to Bite or use another natural weapon on the ship make a DC 12 Constitution save, taking 3d4 Poision damage on a failed save and half as much on a success. only one paint may be used on a ship at a time
+Desc: A muddy yellow-brown coat that smells sharply of tar and rot, brewed with poisons sea beasts learn to hate. It stains anything it touches, and sailors complain about the taste in the air for weeks. Creatures that attempt to Bite or use another natural weapon on the ship make a DC 12 Constitution save, taking 3d4 Poision damage on a failed save and half as much on a success. only one paint may be used on a ship at a time.
 
 ### Harbor Livery Paint
 Market Value: Small 12,000 SH | Medium 24,000 SH | Large 48,000 SH | Huge 96,000 SH
-Desc: Crew Members gain advantage on persuasion checks while on or next to their boat. only one paint may be used on a ship at a time
+Desc: Clean white and navy with polished gold leaf on the name board and trim, the look of an honest merchant house. Harbor masters and dock agents treat a ship like this as if it already paid its fees. Crew Members gain advantage on persuasion checks while on or next to their boat. only one paint may be used on a ship at a time.
 
 ### Glow Line Paint
 Market Value: Small 7,000 SH | Medium 14,000 SH | Large 28,000 SH | Huge 56,000 SH
-Desc: Gain advantage to survival checks to fish while at sea. creatures and ships gain disadvantage while trying to sneak up to the hull of the ship. the ship gains disadvantage to stealth checks. only one paint may be used on a ship at a time
+Desc: Thin stripes of pale green mixed with glowing deep-sea algae, painted along the waterline. At night the hull glows softly, which draws fish up from below and lights up anything trying to creep alongside. Gain advantage to survival checks to fish while at sea. creatures and ships gain disadvantage while trying to sneak up to the hull of the ship. the ship gains disadvantage to stealth checks. only one paint may be used on a ship at a time
 
 ### Hot Rod Paint
 Market Value: Small 240 SH | Medium 480 SH | Large 960 SH | Huge 1,920 SH
-Desc: You'll feel like your going a lot faster with this paint. only one paint may be used on a ship at a time
+Desc: Bright red, with yellow and orange flames running from the bow down both sides. Every sailor in the harbor will have an opinion about it. You'll feel like your going a lot faster with this paint... even if your not. only one paint may be used on a ship at a time

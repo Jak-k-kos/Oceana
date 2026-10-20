@@ -93,7 +93,7 @@
           {
             "name": "Ostin",
             "cycle": 42,
-            "offset": "3",
+            "offset": 16,
             "faceColor": "#e28a33",
             "shadowColor": "#292b4a",
             "id": "ID_1be97ab98aaa"
@@ -101,7 +101,7 @@
           {
             "name": "Winstra",
             "cycle": 18,
-            "offset": "9",
+            "offset": 10,
             "faceColor": "#a450eb",
             "shadowColor": "#292b4a",
             "id": "ID_997be829c8f9"
@@ -271,7 +271,7 @@
         "defaultLocation": ""
       },
       "current": {
-        "day": 18,
+        "day": 12,
         "month": 2,
         "year": 2574
       },
