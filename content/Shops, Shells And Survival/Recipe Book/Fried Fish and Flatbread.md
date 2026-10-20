@@ -11,6 +11,8 @@ The day's catch, fried hot in oil and folded into bread still blistered from the
 
 **Cook time:** 30 minutes
 
+**Properties:** Perishable, Fishy
+
 ## Ingredients
 1) 2 rations of fish
 2) 1 ration of flour

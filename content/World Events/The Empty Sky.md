@@ -16,6 +16,11 @@ It is the night [[Urset|Urset's]] faithful are feared most. Mages, moneylenders 
 ## Locked Doors
 As the sun sets, the islands shut themselves in. Doors are barred, shutters are latched, and lamps are kept burning until dawn. Ships stay in harbor, children are kept close, and the watch walks the streets in double strength. Old sailors swear the [[Locations/Sea Folk Waters|sea folk]] rise when the moons are dark, and even those who laugh at the tale keep away from the water's edge.
 
+The workshops are shut tightest of all. [[Urset]] hates [[Ostin]] above all his siblings, and his faithful are said to settle old grudges on this night against the workshops that have made magic less needed. Forges are banked before sundown, workshops are locked, and shipwrights keep watch over their yards until dawn.
+
+## The Empty Bench
+With [[Ellehwin|Ellehwin's]] eye gone from the sky, her priests will not leave the law without a keeper. In every court and council hall, they keep a vigil through the night beside the empty bench, and no judgment is given and no oath is sworn until the first moon returns. An oath made on the Empty Sky is held to be worth nothing at all.
+
 ## The Stars Remain
 Yet the sky is never truly empty. When every moon is gone, [[Winstra|Winstra's]] stars still shine, just as they did on the night she first hung them so that no traveler would be lost in the dark. On the Empty Sky, the Wayfinder halls are the only doors in the islands left open, and anyone caught out in the dark may shelter inside until morning. Sailors at sea steer by starlight alone.
 

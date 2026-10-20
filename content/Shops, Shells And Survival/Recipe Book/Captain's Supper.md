@@ -11,6 +11,8 @@ Salted ham, cave-aged cheese, amber slabs of roe and sweet dried figs, served wi
 
 **Cook time:** 3 hours
 
+**Properties:** Perishable, Fishy
+
 ## Ingredients
 1) 2 rations of salted ham
 2) 1 lb of cave-aged cheese

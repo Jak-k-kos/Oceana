@@ -11,6 +11,8 @@ When the biscuit is too hard to bite, sailors crush it with a belaying pin and b
 
 **Cook time:** 30 minutes
 
+**Properties:** Perishable, Rancid
+
 ## Ingredients
 1) 2 rations of ship's biscuit
 2) 1 jar of molasses

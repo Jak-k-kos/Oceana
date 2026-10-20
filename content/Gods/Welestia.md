@@ -37,7 +37,7 @@ Yet even the longest storm must one day change.
 
 Of late, sailors and fishermen have begun to notice something they never thought they would see. Welestia's storms have calmed, if only a little. The hurricanes come less often, the gales blow a little less fiercely, and here and there, a fair wind fills the sails where once there would have been only rain. No one knows why. Some say her grief is finally beginning to fade. Others say it is only the calm before something worse.
 
-Only one place remains unchanged. The [[Locations/The Widow's Wrath/index|Widow's Wrath]] is as deadly as it has ever been
+Only one place remains unchanged. The [[Locations/The Widow's Wrath/index|Widow's Wrath]] is as deadly as it has ever been.
 
 ## The Prospect of Change  
 Welestia is the fury of nature, and she is feared by nearly everyone who has ever lived beneath her sky. Yet she is more than destruction. A storm tears down what is old and rotten, scours the land clean and leaves the air fresh behind it. Welestia is change itself: change that cannot be stopped, bargained with or controlled.

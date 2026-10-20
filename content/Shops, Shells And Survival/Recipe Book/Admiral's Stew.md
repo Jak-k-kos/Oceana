@@ -11,6 +11,8 @@ A stew of fresh fish and shellfish, cooked in white wine with citrus and a pinch
 
 **Cook time:** 3 hours
 
+**Properties:** Perishable, Fishy
+
 ## Ingredients
 1) 2 rations of fish
 2) 1 ration of shellfish

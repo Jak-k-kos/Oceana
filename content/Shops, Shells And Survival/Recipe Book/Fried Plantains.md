@@ -11,6 +11,8 @@ Ripe plantains sliced thick and fried in oil until the edges blacken and the mid
 
 **Cook time:** 30 minutes
 
+**Properties:** Perishable, Rancid
+
 ## Ingredients
 1) 8 plantains
 2) 1 flask of olive oil

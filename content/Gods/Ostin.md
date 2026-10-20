@@ -30,13 +30,13 @@ The great ships of the age, the cannons upon their decks and every new craft tha
 ## His Era  
 Now the flood is over, and Ostin means to make the [[Aquilla's Mercy Era]] his own. Not out of greed, for he wants nothing for himself, but for all. He believes that this age, at long last, can be one of progress, and that the mortals of the world can build something greater than anything they lost. He has waited a very long time for it, and he does not intend to wait any longer.
 
+## The Orange Moon  
+Roughly twice each year, the orange moon swells to fullness, and by long custom those nights, known as [[The Maker's Moon]], belong to Ostin's faithful. No law demands it and no temple declares it, but it is beneath the full orange moon that new inventions are unveiled, new workshops are opened, new ship designs are first set upon the water, and new artificers receive their gift.
+
 ## Artificers  
 Artificers are Ostin's most devoted faithful, craftsmen like any other, only more magical in nature. Through the sliver of [[Arkaius]] that rests in his moon, Ostin grants them the power to weave a thread of magic into their work, blending craft and magic as only he can.
 
-That power can only be granted beneath his full moon. No one becomes an artificer on any other night.
-
-## The Orange Moon  
-Roughly twice each year, the orange moon swells to fullness, and by long custom those nights belong to Ostin's faithful. No law demands it and no temple declares it, but it is beneath the full orange moon that new inventions are unveiled, new workshops are opened, new ship designs are first set upon the water, and new artificers receive their gift.
+That power can only be granted beneath [[The Maker's Moon]]. No one becomes an artificer on any other night.
 
 ## Worship  
 Ostin is the patron of craftsmen, researchers, scientists and artificers, and of all who believe the world can be made better than it is. His shrines stand in workshops, shipyards, forges and studies across the islands.
@@ -44,6 +44,11 @@ Ostin is the patron of craftsmen, researchers, scientists and artificers, and of
 - **The first piece.** The first thing any new craftsman or apprentice makes is dedicated to Ostin.
 - **The maker's mark.** Craftsmen carve a small orange moon onto their finest work as a mark of pride and a quiet prayer.
 - **Prayers for insight.** Those who pray to Ostin ask not for luck but for understanding. Luck, his faithful say, is only progress no one has understood yet.
+
+### The Siblings' Dance and the Empty Sky
+On [[The Siblings' Dance]], Ostin and his eldest sister set aside the oldest quarrel in the heavens, tradition against change, and for one night neither tries to win it. His faithful hold that no invention is ever unveiled on the Dance, so that nothing new can outshine the moons.
+
+[[The Empty Sky]] is the night Ostin's faithful dread most. [[Urset]] hates Ostin above all his siblings, and with every moon dark, his faithful are said to settle old grudges against the workshops that have made magic less needed. On that night the forges are banked, the workshops are locked, and the shipyards keep watch until dawn.
 
 ### Champion  
 Ostin is one of the few gods who has always kept his champions in the open, and every one of them has spent their life pushing to rebuild the lost craft and learning of the world. Some succeeded beyond anyone's hopes, and their work is still in use today. Others aimed too high or too soon, and are remembered more for their failures than their triumphs. One is still honored for the great lenses that light the lighthouses of the islands; another is best remembered for an engine that took half of his workshop with it when it failed. Yet every one of them moved the world a little further forward than they found it.

@@ -11,6 +11,8 @@ Thick, creamy and peppery, full of chewy conch pounded tender with a mallet. Div
 
 **Cook time:** 2 hours
 
+**Properties:** Perishable, Fishy
+
 ## Ingredients
 1) 2 rations of dried conch
 2) 1 ration of vegetables

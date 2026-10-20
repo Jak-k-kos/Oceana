@@ -13,33 +13,33 @@ draft: false
 
 Market prices in shells (SH). What you actually pay is down to haggling, and prices run higher or lower from island to island.
 
-- **Single:** one loose unit. Recipes use these units, and each ingredient uses up one.
+- **Single:** one loose unit. Recipes use these units.
 - **Rations:** a ration is one creature's food for a day. Items marked 0 rations add flavor, not food.
 - **Cargo:** goods shipped in the hold are bought by the cargo unit. Every cargo unit takes up 1/5 ton of a ship's Tonnage (5 per ton). Loose supplies don't count toward Tonnage until they add up to a full cargo unit.
 - **Keep and Properties** are explained under [[House Rules#Spoilage|Spoilage]].
 
 # Fresh Food
-| Item | Single | Price | Cargo (1/5 ton) | Cargo Price | Keep | Properties |
-| --- | --- | --- | --- | --- | --- | --- |
-| Fish | 2 lb (1 ration) | 4 SH | Crate (150 rations) | 540 SH | - | Perishable, Fishy |
-| Shellfish | 2 dozen (1 ration) | 6 SH | Crate (150 rations) | 810 SH | - | Perishable, Fishy |
-| Chicken | 2 lb (1 ration) | 10 SH | Crate (150 rations) | 1,350 SH | - | Perishable, Fishy |
-| Pork | 2 lb (1 ration) | 10 SH | Crate (150 rations) | 1,350 SH | - | Perishable, Fishy |
-| Goat | 2 lb (1 ration) | 10 SH | Crate (150 rations) | 1,350 SH | - | Perishable, Fishy |
-| Mutton | 2 lb (1 ration) | 12 SH | Crate (150 rations) | 1,620 SH | - | Perishable, Fishy |
-| Beef | 2 lb (1 ration) | 16 SH | Crate (150 rations) | 2,160 SH | - | Perishable, Fishy |
-| Sea turtle | 2 lb (1 ration) | 40 SH | Crate (150 rations) | 5,400 SH | - | Perishable, Fishy |
-| Eggs | Dozen (1 ration) | 10 SH | Crate (100 dozen) | 900 SH | d8 | Delicate, Rancid |
-| Vegetables | 3 lb (1 ration) | 3 SH | Crate (100 rations) | 270 SH | d6 | Delicate, Rancid |
-| Fruit | 1 piece (1/8 ration) | 1 SH | Crate (800 pieces) | 720 SH | d4 | Delicate, Rancid |
-| Apple | 1 apple (1/8 ration) | 1 SH | Crate (800 apples) | 720 SH | d10 | Hardy, Rancid |
-| Citrus | 1 fruit (1/8 ration) | 2 SH | Crate (800 fruit) | 1,440 SH | d10 | Hardy, Rancid |
-| Plantain | 1 plantain (1/4 ration) | 1 SH | Crate (400 plantains) | 360 SH | d6 | Delicate, Rancid |
-| Bread | Loaf (1/2 ration) | 2 SH | Crate (200 loaves) | 360 SH | d4 | Delicate, Rancid |
-| Seaweed bread | Loaf (1/2 ration) | 2 SH | Crate (200 loaves) | 360 SH | d4 | Delicate, Rancid |
-| Fresh cheese | 1 lb (1 ration) | 8 SH | Crate (300 lb) | 2,160 SH | d8 | Delicate, Rancid |
-| Sea fennel | Bundle (1/4 ration) | 1 SH | Bale (600 bundles) | 540 SH | d4 | Delicate, Rancid |
-| Firecap peppers | Handful (0 rations) | 2 SH | Bale (1,000 handfuls) | 1,800 SH | d10 | Hardy, Rancid |
+| Item            | Single                  | Price | Cargo (1/5 ton)       | Cargo Price | Keep | Properties        |
+| --------------- | ----------------------- | ----- | --------------------- | ----------- | ---- | ----------------- |
+| Fish            | 2 lb (1 ration)         | 4 SH  | Crate (150 rations)   | 540 SH      | -    | Perishable, Fishy |
+| Shellfish       | 2 dozen (1 ration)      | 6 SH  | Crate (150 rations)   | 810 SH      | -    | Perishable, Fishy |
+| Chicken         | 2 lb (1 ration)         | 10 SH | Crate (150 rations)   | 1,350 SH    | -    | Perishable, Fishy |
+| Pork            | 2 lb (1 ration)         | 10 SH | Crate (150 rations)   | 1,350 SH    | -    | Perishable, Fishy |
+| Goat            | 2 lb (1 ration)         | 10 SH | Crate (150 rations)   | 1,350 SH    | -    | Perishable, Fishy |
+| Mutton          | 2 lb (1 ration)         | 12 SH | Crate (150 rations)   | 1,620 SH    | -    | Perishable, Fishy |
+| Beef            | 2 lb (1 ration)         | 16 SH | Crate (150 rations)   | 2,160 SH    | -    | Perishable, Fishy |
+| Sea turtle      | 2 lb (1 ration)         | 40 SH | Crate (150 rations)   | 5,400 SH    | -    | Perishable, Fishy |
+| Eggs            | Dozen (1 ration)        | 10 SH | Crate (100 dozen)     | 900 SH      | d8   | Delicate, Rancid  |
+| Vegetables      | 3 lb (1 ration)         | 3 SH  | Crate (100 rations)   | 270 SH      | d6   | Delicate, Rancid  |
+| Fruit           | 1 piece (1/8 ration)    | 1 SH  | Crate (800 pieces)    | 720 SH      | d4   | Delicate, Rancid  |
+| Apple           | 1 apple (1/8 ration)    | 1 SH  | Crate (800 apples)    | 720 SH      | d10  | Hardy, Rancid     |
+| Citrus          | 1 fruit (1/8 ration)    | 2 SH  | Crate (800 fruit)     | 1,440 SH    | d10  | Hardy, Rancid     |
+| Plantain        | 1 plantain (1/4 ration) | 1 SH  | Crate (400 plantains) | 360 SH      | d6   | Delicate, Rancid  |
+| Bread           | Loaf (1/2 ration)       | 2 SH  | Crate (200 loaves)    | 360 SH      | d4   | Delicate, Rancid  |
+| Seaweed bread   | Loaf (1/2 ration)       | 2 SH  | Crate (200 loaves)    | 360 SH      | d4   | Delicate, Rancid  |
+| Fresh cheese    | 1 lb (1 ration)         | 8 SH  | Crate (300 lb)        | 2,160 SH    | d8   | Delicate, Rancid  |
+| Sea fennel      | Bundle (1/4 ration)     | 1 SH  | Bale (600 bundles)    | 540 SH      | d4   | Delicate, Rancid  |
+| Firecap peppers | Handful (0 rations)     | 2 SH  | Bale (1,000 handfuls) | 1,800 SH    | d10  | Hardy, Rancid     |
 
 # Stores
 | Item | Single | Price | Cargo (1/5 ton) | Cargo Price | Keep | Properties |

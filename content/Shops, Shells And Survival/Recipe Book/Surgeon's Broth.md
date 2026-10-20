@@ -11,6 +11,8 @@ Bones boiled for hours with garlic and herbs until the broth turns golden. Every
 
 **Cook time:** 1 hour
 
+**Properties:** Perishable, Fishy
+
 ## Ingredients
 1) 1 ration of salted beef or fish
 2) 1 ration of vegetables

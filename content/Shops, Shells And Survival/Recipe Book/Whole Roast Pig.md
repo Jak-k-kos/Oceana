@@ -11,6 +11,8 @@ A whole pig, roasted all day over the coals, glazed with molasses and citrus. It
 
 **Cook time:** 6 hours
 
+**Properties:** Perishable, Fishy
+
 ## Ingredients
 1) 1 pig (60 rations of meat)
 2) 2 jars of molasses

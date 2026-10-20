@@ -11,6 +11,8 @@ Thick cuts of fresh tuna rolled in cracked pepper and seared fast in a smoking-h
 
 **Cook time:** 1 hour
 
+**Properties:** Perishable, Fishy
+
 ## Ingredients
 1) 2 rations of fish
 2) 1 pinch of pepper

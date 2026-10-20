@@ -13,7 +13,7 @@ God of fire. Patron of the hospitable, of tavern and inn keepers, and of all who
 ## The Gift of Fire  
 Flaris shaped the fire of the world, and in doing so took on its aspect. Yet of all the faces fire can wear, it is the hearth that he loves best: the crackling fireplace, the lantern in the window, the galley stove and the warm bowl of stew. He is no god of the inferno, but of the merry hearth.
 
-TGreatest of all his works is the sun, the great hearth of the heavens, which Flaris kindled and hung high to warm the whole world and dry the sailor's clothes. It is his symbol to this day, and beneath it, every fire lit in a home is a small piece of the same gift. When [[Winstra]] longed to light the darkness of the night, it was Flaris who gave his blessing for her to take the heart of the sun and remake it into the stars, so that his fire burns even in the night sky.
+Greatest of all his works is the sun, the great hearth of the heavens, which Flaris kindled and hung high to warm the whole world and dry the sailor's clothes. It is his symbol to this day, and beneath it, every fire lit in a home is a small piece of the same gift. When [[Winstra]] longed to light the darkness of the night, it was Flaris who gave his blessing for her to take the heart of the sun and remake it into the stars, so that his fire burns even in the night sky.
 
 To Flaris, fire was always meant as a gift, and every gift carries a responsibility. When fire is turned to cruelty, when cities burn and ships are set ablaze, it grieves him deeply, but the blame lies with the hand that held the torch, not the god who gave the flame. Even then, fire has another gift to give. Ash makes rich soil, and from what burns, something new can grow.
 
@@ -53,7 +53,7 @@ If Flaris has a champion, they are hidden, perhaps the keeper of some great tave
 
 - **[[Aquilla]]**: Fire and water. Flaris holds the same warmth for [[Aquilla]] that he holds for all, but [[Aquilla]] has never cared much for him.
 - **[[Fennara]]**: The hearth and the dice, two halves of every good tavern. They are fast friends, and the liveliest evenings in the heavens are spent at Flaris's table with [[Fennara]] dealing the cards.
-- **[[Lyandris]]** The third seat at the tavern table. Where Flaris keeps the fire and [[Fennara]] deals the cards, [[Lyandris]] brings the song, and no evening at Flaris's table is complete without all three.
+- **[[Lyandris]]**: The third seat at the tavern table. Where Flaris keeps the fire and [[Fennara]] deals the cards, [[Lyandris]] brings the song, and no evening at Flaris's table is complete without all three.
 - **[[Koruk]]**: The dragons breathe Flaris's fire. Flaris respects their flame, though he cared far less for [[Koruk]] in the days when the dragon god was cruel.
 - **[[Welestia]]**: When her storms drive sailors from the sea, it is Flaris's fires that take them in. He bears her no ill will. Someone has to keep the lights on.
 - **[[Apiot]]**: The harvest and the hearth. Every feast at [[Apiot's Boon]] is cooked over his fire, and the two have always been easy friends.

@@ -11,6 +11,8 @@ Salt beef, crushed biscuit and onion, stewed down into a brown hash thick enough
 
 **Cook time:** 1 hour
 
+**Properties:** Perishable, Fishy
+
 ## Ingredients
 1) 2 rations of salted beef
 2) 1 ration of ship's biscuit

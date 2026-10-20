@@ -36,7 +36,7 @@ Sailors and navigators learn the constellations as their charts, and the oldest 
 The stars guide sailors through the dark, and dreams guide everyone else. Winstra is the patron of dreamers of every kind: the child who longs to sail past the edge of the map, the young captain with nothing but a leaky ship and a great ambition, the inventor scribbling plans late into the night. It is said that every great dream has a little of her starlight in it, and that those who dream boldly enough sometimes find the stars themselves seem to point the way.
 
 ## The Purple Moon  
-Winstra's moon comes full more often than either of her siblings', five or six times every year. Sailors hold that there is no luckier time to begin a long voyage than beneath the full purple moon, and many captains will wait days in harbor for it before setting out into the unknown.
+Winstra's moon comes full more often than either of her siblings', five or six times every year. Sailors hold that there is no luckier time to begin a long voyage than beneath the full purple moon, and many captains will wait days in harbor for it before setting out into the unknown. Those nights are known as [[The Wayfarer's Moon]].
 
 ## The Wayfinders  
 Winstra's church is known as the Wayfinders, and it is as much a guild as a faith. Its halls are filled with maps and star charts, and its priests are mapmakers, navigators and explorers, who spend their lives charting the drowned world and teaching others to find their way across it.
@@ -51,7 +51,12 @@ Winstra is the patron of travelers, explorers, mapmakers and dreamers.
 - **The first star.** Before any long journey, travelers speak a short prayer to the first star of the night.
 - **Blessed charts.** Every navigator keeps a star chart blessed in Winstra's name in their cabin.
 - **The mapmaker's mark.** Mapmakers draw a small purple moon in the corner of every chart they make.
-- **Sailing under the purple moon.** Long voyages are begun beneath the full purple moon whenever possible.
+- **Sailing under the purple moon.** Long voyages are begun beneath the full purple moon, on [[The Wayfarer's Moon]], whenever possible.
+
+### The Siblings' Dance and the Empty Sky
+It is said that Winstra leads the dance. On [[The Siblings' Dance]], the youngest moon pulls her elder brother and sister away from their quarrels and out across the sky, and for one night even [[Ellehwin]] lets herself be led.
+
+On [[The Empty Sky]], Winstra's moon is as dark as her siblings', but her stars are not. They are her promise that no traveler will ever be truly lost, and it is why the Wayfinder halls stay open while every other door is barred. "The stars remain," the blessing of that night, is a prayer to Winstra above all.
 
 ### Champion  
 Winstra's champion is hidden, though most likely not by design. Whoever they are, they are far more likely to be off exploring the unknown edges of the world than doing anything the rest of the world would notice.

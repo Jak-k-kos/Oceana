@@ -11,6 +11,8 @@ Fresh goat braised with olives and red wine, the way the hill herders make it. I
 
 **Cook time:** 2 hours
 
+**Properties:** Perishable, Fishy
+
 ## Ingredients
 1) 2 rations of goat
 2) 1 jar of olives

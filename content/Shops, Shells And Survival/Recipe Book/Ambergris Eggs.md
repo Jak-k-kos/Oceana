@@ -11,6 +11,8 @@ Soft eggs, scrambled slow in butter with a shaving of ambergris worth more than 
 
 **Cook time:** 1 hour
 
+**Properties:** Perishable, Rancid
+
 ## Ingredients
 1) 1 dozen eggs
 2) 1 ounce of ambergris

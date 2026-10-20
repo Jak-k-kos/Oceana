@@ -6,8 +6,8 @@ lastname:
 ---
 The band of adventurers who ended the flood.
 
-**Known for:** Destroying the cauldron of Magnus the Magnificent and ending [[Aquilla's Wrath]]  
-**Deed accomplished:** Approximately 2574-2-8  
+**Known for:** Destroying the cauldron of Magnus the Magnificent and ending the flood of [[Aquilla's Wrath]]  
+**Deed accomplished:** Approximately 2574-Macis-8  
 ## **Members:** 
 
 - **Captain Isolde Varrow**: Human fighter. Captain of the Tidebreakers' ship and the leader of the band.
@@ -17,7 +17,7 @@ The band of adventurers who ended the flood.
 - **Seren Ashveil**: Half-elf bard. One of the rare bards who can sing true magic loose from [[Urset]]'s hoard, and the first to write a song about their deeds.
 - **Tibbet Gearwhistle**: Gnome artificer. The one who worked out how to break the cauldron, though the ballads rarely give her the credit.
 ## The Heroes of the Age  
-On the far side of the world, a band of adventurers did what no one had managed in more than two thousand years. They found the cauldron of Magnus the Magnificent, sunk deep beneath the sea and pouring endlessly into it, fought their way past the sea folk who had guarded it for centuries, and destroyed it. On approximately 2574-2-8, the seas stopped rising, and the [[Aquilla's Mercy Era]] began.
+On the far side of the world, a band of adventurers did what no one had managed in more than two thousand years. They found the cauldron of Magnus the Magnificent, sunk deep beneath the sea and pouring endlessly into it, fought their way past the sea folk who had guarded it for centuries, and destroyed it. On approximately 2574-Macis-8, the seas stopped rising, and the flood was over.
 
 ## Fame  
 Word of their victory took more than a month to cross the world, but when it arrived, it spread like wildfire. Today, the Tidebreakers' names are known in every harbor, and their deeds are sung in every tavern. They are toasted alongside [[Aquilla]] herself at every festival of [[Aquilla's Mercy]], and children across the islands play at being Tidebreakers on the docks.

@@ -11,6 +11,8 @@ Common wine warmed slowly with honey and a little pepper until the whole galley 
 
 **Cook time:** 20 minutes
 
+**Properties:** Perishable, Sour
+
 Counts as a water ration.
 
 ## Ingredients

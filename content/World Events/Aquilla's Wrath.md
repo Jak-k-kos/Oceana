@@ -1,6 +1,6 @@
 The long age of the flood, when the seas rose and the world drowned.
 
-**Dates:** 257-4-8 to 2574-3-12  
+**Dates:** 258-Desca-1 to 2574-Osca-25
 **Preceded by:** [[Aquilla's Slumber]]  
 **Followed by:** [[Aquilla's Mercy Era]]
 
@@ -29,6 +29,8 @@ As the land shrank, the world changed with it.
 The flood changed the gods as well as the world. [[Apiot]] watched her forests and fields drown and turned, reluctantly, to the gardens of the sea. [[Caruilla]]'s domain swelled with every drowned mile, and she began to demand a seat among the upper gods. And [[Koruk]], once the most feared of all the gods, grew quiet, though whether from grief, guilt or something else, no one can say.
 
 ## The End of the Wrath  
-At long last, a band of adventurers known as [[The Tidebreakers]], on the far side of the world, fought their way past the cauldron's sea folk guardians and ended the flooding. On approximately 2574-2-8, the seas stopped rising for the first time in all of living memory, and the [[Aquilla's Mercy Era]] began.
+At long last, a band of adventurers known as [[The Tidebreakers]], on the far side of the world, fought their way past the cauldron's sea folk guardians and ended the flooding. On approximately 2574-Macis-8, the seas stopped rising for the first time in all of living memory.
 
-The news took weeks to cross the world, and it did not reach most of the islands until 2574-3-12. That is the day the first festival of [[Aquilla's Mercy]] was held, and it is the day the festival is still celebrated, though the flood itself had ended more than a month before.
+The news took weeks to cross the world, and it did not reach most of the islands until 2574-Calra-12. That is the day the first festival of [[Aquilla's Mercy]] was held, and it is the day the festival is still celebrated, though the flood itself had ended more than a month before.
+
+Yet by the old custom of the record-keepers, an age ends only with the turning of a year, and so the Wrath did not end with the flood. In name, it lasted until the last night of 2574, when the hearths of the world were banked for [[Hearthfire's Glow]]. The months between, when the seas stood still but the old age lingered on, are called the Turning Year in common speech, though no chart or record counts it as an age of its own. The [[Aquilla's Mercy Era]] began the next morning.

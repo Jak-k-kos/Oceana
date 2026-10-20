@@ -5,6 +5,7 @@ tags:
 ---
 # Boat type
  Ship size: s/m/l/h (X' by Y')
+ Desc:
 ***
 Armor Class: 
 Hull Points: 

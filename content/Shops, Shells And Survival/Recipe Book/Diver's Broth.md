@@ -11,6 +11,8 @@ A thin, salty broth of fish heads and dried kelp, drunk by pearl divers before t
 
 **Cook time:** 1 hour
 
+**Properties:** Perishable, Fishy
+
 ## Ingredients
 1) 2 rations of fish
 2) 1 bundle of dried kelp

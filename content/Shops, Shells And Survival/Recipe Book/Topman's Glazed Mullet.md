@@ -11,6 +11,8 @@ Mullet glazed in bitter-orange liqueur and honey, roasted until the skin crackle
 
 **Cook time:** 1 hour
 
+**Properties:** Perishable, Fishy
+
 ## Ingredients
 1) 2 rations of fish
 2) 1 bottle of bitter-orange liqueur

@@ -37,15 +37,15 @@ Medicines, remedies and the tools of the healing trade. Their ingredients come f
 | Poppy tincture | 480 SH | For 8 hours, ignore the effects of your highest level of exhaustion. You have disadvantage on Wisdom (Perception) checks for the duration. |
 
 # Disease and Poison
-| Item | Price | Effect |
-| --- | --- | --- |
-| Chalk and ginger draught | 140 SH | Eases Bilge Flux. You need only 1 water ration a day until your next short rest. |
-| Bitter mint tonic | 140 SH | Eases Rot Gut. Food you eat counts as a ration until your next short rest. You still can't spend Hit Dice. |
-| Warming oil | 190 SH | Eases Fish Fever. You lose its disadvantage until your next short rest. |
-| Theriac | 4,800 SH | A famous cure-all of dozens of ingredients. You automatically succeed on your next save against a disease. |
-| Cure-all pills | 24 SH | Sold as a cure for anything that ails you. |
-| Leech jar | 48 SH | Ten minutes with the leeches ends the poisoned condition, but you take 1d4 damage. |
-| Antitoxin | 950 SH | Advantage on saving throws against poison for 1 hour. |
+| Item                     | Price    | Effect                                                                                                     |
+| ------------------------ | -------- | ---------------------------------------------------------------------------------------------------------- |
+| Chalk and ginger draught | 140 SH   | Eases Bilge Flux. You need only 1 water ration a day until your next short rest.                           |
+| Bitter mint tonic        | 140 SH   | Eases Rot Gut. Food you eat counts as a ration until your next short rest. You still can't spend Hit Dice. |
+| Warming oil              | 190 SH   | Eases Fish Fever. You lose its disadvantage until your next short rest.                                    |
+| Theriac                  | 4,800 SH | A famous cure-all of dozens of ingredients. You automatically succeed on your next save against a disease. |
+| Cure-all pills           | 24 SH    | Sold as a cure for anything that ails you.                                                                 |
+| Leech jar                | 48 SH    | Ten minutes with the leeches ends the poisoned condition, but you take 1d4 damage.                         |
+| Antitoxin                | 950 SH   | Advantage on saving throws against poison for 1 hour.                                                      |
 
 The disease remedies don't cure anything. They hold off the symptoms so you can keep working while you fight it off. See [[House Rules#Diseases|Diseases]].
 
@@ -140,4 +140,5 @@ A ship's surgeon hired at [[Port of Call#Hirelings|Port of Call]] uses your heal
 | Potion of healing   | 1,000,000 SH | Restores you to your hit point maximum.                                                                                                                                        |
 | Drowned man's tears | 140,000 SH   | Ingested. Tasteless and slow. DC 17 Constitution save at the next midnight, taking 31 (9d6) poison damage on a failure or half as much on a success. Nothing shows until then. |
 | Leviathan venom     | 190,000 SH   | Injury. Milked from the deep monsters, at great cost in lives. DC 19 Constitution save. The target takes 42 (12d6) poison damage on a failure, or half as much on a success.   |
+
 Few apothecaries ever hold these, and none keeps one on a shelf, only sold by private arrangement.

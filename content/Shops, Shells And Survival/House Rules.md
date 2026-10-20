@@ -9,11 +9,13 @@ draft: false
 - [[#Resting]]
 - [[#Spell Recovery]]
 - [[#Exhaustion]]
+- [[#Training]]
 - [[#Spoilage]]
 - [[#Eating Spoiled Supplies]]
 - [[#Diseases]]
 - [[#Armor in the Water]]
 - [[#Coinage]]
+
 
 # Inspiration
 You earn Inspiration for good roleplay. You can only hold one Inspiration at a time.
@@ -43,6 +45,50 @@ When you finish a short rest, you can recover spent spell slots. The slots can h
 
 # Exhaustion
 When you finish a short rest, you lose 1 level of exhaustion caused by hunger, thirst, lack of sleep or weather, as long as you have eaten and drunk that day. Exhaustion from any other source still needs a long rest to remove.
+
+# Training
+During downtime, you can learn new proficiencies from a teacher.
+
+## What You Can Learn
+- A tool or vehicle
+- A language
+- A weapon (just that weapon, like "cutlass," not "all martial weapons")
+- Armor, in order: light, then medium, then heavy
+- A skill
+
+| What                            | Training Days |
+| ------------------------------- | ------------- |
+| A single weapon                 | 15            |
+| A tool, language or vehicle     | 20            |
+| Light armor                     | 20            |
+| Medium armor (need light first) | 30            |
+| Heavy armor (need medium first) | 40            |
+| A skill                         | 50            |
+
+You train one thing at a time. If you switch, you keep your progress on the old one.
+
+## Who Can Teach
+Only an expert can teach.
+- An NPC is an expert if the DM says so. Not everyone who knows a trade can teach it.
+- A player character counts as an expert in a skill or tool if they have expertise in it.
+- A native speaker counts as an expert in their language.
+- Among hirelings, navigators and captains are experts in water vehicles, and specialists are experts in their trade. Ordinary and able sailors are not.
+
+## Training in Port
+- Each day you spend in port with a teacher counts as 1 training day.
+- Training doesn't interrupt a long rest.
+- Teachers charge by the day, at market price:
+
+| Teacher                                                                                      | Fee per Day |
+| -------------------------------------------------------------------------------------------- | ----------- |
+| Common (simple weapons, everyday tools, common languages)                                    | 50 SH       |
+| Specialist (martial weapons, armor, navigator's, vehicles or thieves' tools, rare languages) | 100 SH      |
+| Master (skills)                                                                              | 200 SH      |
+
+## Training at Sea
+- Each day at sea with an expert aboard counts as half a training day.
+- The day only counts if both the teacher and the student have the day free. If either one is needed for a watch, a fight or repairs, that day doesn't count.
+- **Vehicles (water):** each day spent sailing the ship under an expert counts as a full training day.
 
 # Spoilage
 Food and drink are tracked in **lots**. All of one kind of supply at the same Keep Die is one lot, but loose supplies and cargo are always separate lots, even at the same die. A **unit** is one cargo unit for cargo, or one ration or item for anything carried loose.
@@ -128,7 +174,5 @@ A silver coin stamped with a smooth, egg-shaped shell, rounded on top, with a na
 A gold coin stamped with a broad, flat, ear-shaped shell, with a curving row of small holes along one side. Rippling lines across the face show the shell's rainbow shine. Merchants and ship's captains carry them, and few others need to. 
 ### **Conch.** 
 A gold coin with a silver ring around its edge, stamped with a great spiral shell with a flared lip and a crown of short spikes around its top. The back bears the Ostrakia mint mark. The ring makes it hard to forge, and it is the coin of cargo, ships and other large deals. Most people never hold one. 
-### The Nautilus 
-A coin of mithral, worth 1,000,000 SH. The coin is lighter than it looks, and its pale silver never dulls, even after years at sea. It is stamped with a perfectly coiled shell, smooth and round, its spiral winding inward chamber by chamber to a single point at the heart. Each nautilus is struck only on Ostrakia, under the eye of the master of the mint, and each is numbered and recorded. It trades between governments, mints and the very richest families, usually to settle debts between nations. Most people live their whole lives without seeing one, and many doubt they exist at all. 
-
-%%DM: Plot hooks for the nautilus. - A nautilus has gone missing between Ostrakia and the Kingdom, and its number has never turned up in the mint's records since. - Someone has a forged nautilus. A coin that valuable is never spent, only held and recorded, so a forgery could sit unnoticed in a treasury for years. - An old nautilus from before the flood, struck by a mint that no longer exists, surfaces in a drowned wreck. Is it still worth anything, and who has the right to claim it? %%
+### Nautilus 
+A coin of mithral, worth 1,000,000 SH. The coin is lighter than it looks, and its pale silver never dulls, even after years at sea. It is stamped with a perfectly coiled shell, smooth and round, its spiral winding inward chamber by chamber to a single point at the heart. Each nautilus is struck only on Ostrakia, under the eye of the master of the mint. It trades between governments, mints and the very richest families, usually to settle debts between nations. Most people live their whole lives without seeing one, and many doubt they exist at all. 

@@ -24,7 +24,7 @@ God of fire. Patron of the hospitable and tavern and inn keepers
 God of dragons, Ruler of the Draconic Conclave. patron of all things draconic.
 
 - **[[Morvaine]]**
-Goddess of death and fate. Patron of graves men and the forgotten.
+Goddess of death and fate. Patron of gravesmen and the forgotten.
 
 - **[[Roktra]]**
 God of Earth. Patron of miners and the land born races.
@@ -40,7 +40,7 @@ God of music. Patron of bards, musicians and lovers.
 Goddess of sea creatures. Patron of sea folk.
 
 - **[[Fennara]]**
-God of fortune and luck. Paton of merchants, adventurers, and pirates.
+God of fortune and luck. Patron of merchants, adventurers and pirates.
 
 - **[[Ruthala]]**
 Goddess of beasts. Patron of hunters.
@@ -49,17 +49,17 @@ Goddess of beasts. Patron of hunters.
 God of war. Patron of warriors and generals.
 
 - **[[Urset]]**
-The new God of magic. Patron of mages and and the greedy.
+The new god of magic. Patron of mages and the greedy.
 
 ## The Three Moons
 - **[[Ellehwin]]**
-Goddess of law and order. Patron of judges, law enforcement, legislators, and leaders. The oldest moon
+Goddess of law and order. Patron of judges, lawkeepers, legislators and leaders. The eldest moon.
 
 - **[[Ostin]]**
 God of technology and progress. Patron of craftsmen, researchers, scientists and artificers. The middle moon.
 
 - **[[Winstra]]**
-Goddess of stars. Patron of travelers. The young moon.
+Goddess of stars and dreams. Patron of travelers, explorers, mapmakers and dreamers. The youngest moon.
 
 ## Deceased Gods
 - **[[Arkaius]]**

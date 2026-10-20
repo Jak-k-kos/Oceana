@@ -11,6 +11,8 @@ Raw fish cured in citrus and salt, then buried in sliced firecap peppers until t
 
 **Cook time:** 1 hour
 
+**Properties:** Perishable, Fishy
+
 No fire needed.
 
 ## Ingredients

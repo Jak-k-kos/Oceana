@@ -11,6 +11,8 @@ Every sailor's first drink and most sailors' last. Watering the rum stretches it
 
 **Cook time:** 10 minutes
 
+**Properties:** Perishable, Stagnant
+
 Counts as a water ration.
 
 ## Ingredients
@@ -23,5 +25,5 @@ Makes 4 servings.
 
 ## Effects
 1) +1 to saving throws against being frightened. (10-14)
-2) Advantage on saving throws against being frightened. (15-18)
+2) Also advantage on saving throws against being frightened. (15-18)
 3) Also +1 to Wisdom saving throws. (19-21)

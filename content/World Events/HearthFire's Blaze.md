@@ -16,7 +16,7 @@ As the bonfire catches, the town's lighthouse is put out for a single moment, th
 ## The Boasts  
 When the fire is roaring, the boasting begins. One by one, townsfolk step up before the bonfire with a drink in hand and declare, as loudly and as grandly as they can, what they will accomplish in the year to come.
 
-No boast is ever meant to be kept. The grander and more impossible, the better. One might swear to beat [[Tarrakus]] himself at his own war games, another to win the hand of a god, to breach the mountain with their bare hands, or to face the Dread Pirate King and send him to the bottom of the sea. The crowd cheers each one, and each boast is grander than the last, not to win anything, but because the Blaze deserves nothing less.
+No boast is ever meant to be kept. The grander and more impossible, the better. One might swear to beat [[Tarrakus]] himself at his own war games, another to win the hand of a god, to split a mountain with their bare hands, or to face the Dread Pirate King and send him to the bottom of the sea. The crowd cheers each one, and each boast is grander than the last, not to win anything, but because the Blaze deserves nothing less.
 
 The children always go first, and their boasts are often the most beloved of the day.
 

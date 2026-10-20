@@ -1,6 +1,6 @@
 The age between the Arcanus Collapse and the coming of the flood.
 
-**Dates:** 0-1-1 to 257-4-8  
+**Dates:** 0-Desca-1 to 257-Osca-25  
 **Preceded by:** [[Arcanus Collapse]]  
 **Followed by:** [[Aquilla's Wrath]]
 
@@ -19,4 +19,6 @@ Near the end of the Slumber, a mage named Magnus the Magnificent set out to solv
 Something went wrong. What exactly happened has been lost, but before anyone realized the danger, the cauldron had slipped beneath the waves, still pouring, endlessly, into the sea.
 
 ## The End of the Slumber  
-On 257-4-8, the age came to an end, though no one living at the time knew it. The waters had begun to rise. They rose so slowly that no one noticed for generations, and by the time the world understood what was happening, [[Aquilla's Wrath]] had already begun.
+On 257-Osca-8, the waters began to rise, though no one living at the time knew it. They rose so slowly that no one noticed for generations, and by the time the world understood what was happening, the flood was already centuries old.
+
+When the scholars of later ages looked back to mark where the Slumber ended, they followed the oldest custom of the record-keepers: an age begins and ends only with the turning of a year. And so the Slumber is reckoned to have ended with the close of 257, and [[Aquilla's Wrath]] to have begun on the first day of the year after.

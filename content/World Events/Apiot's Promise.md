@@ -1,6 +1,6 @@
 A yearly festival of sowing and new beginnings, held in the name of [[Apiot]].
 
-**Date:** The 15th of Macis  
+**Date:** The 15th of Macis 
 **Honors:** [[Apiot]], the Green Mother  
 **Paired with:** [[Apiot's Boon]]
 

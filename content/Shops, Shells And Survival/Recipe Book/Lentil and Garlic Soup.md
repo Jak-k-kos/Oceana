@@ -11,6 +11,8 @@ A thick, peppery soup heavy with garlic. Every ship's surgeon swears by it, and 
 
 **Cook time:** 1 hour
 
+**Properties:** Perishable, Rancid
+
 ## Ingredients
 1) 2 rations of dried lentils
 2) 1 ration of vegetables
@@ -21,4 +23,4 @@ Makes 3 servings.
 ## Effects
 1) +1 to saving throws against disease. (12-15)
 2) Also +1 to Constitution saving throws. (16-19)
-3) Advantage on saving throws against disease and being poisoned. (20-21)
+3) Also advantage on saving throws against disease and being poisoned. (20-21)

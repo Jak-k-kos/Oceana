@@ -11,6 +11,8 @@ Brined grape leaves rolled tight around rice, herbs and a little oil. They're sm
 
 **Cook time:** 1 hour
 
+**Properties:** Perishable, Rancid
+
 ## Ingredients
 1) 1 jar of grape leaves
 2) 1 ration of rice

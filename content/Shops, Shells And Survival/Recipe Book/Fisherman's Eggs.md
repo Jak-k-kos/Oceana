@@ -11,6 +11,8 @@ Eggs scrambled with flaked salt fish and a pinch of herbs, eaten standing up in 
 
 **Cook time:** 30 minutes
 
+**Properties:** Perishable, Fishy
+
 ## Ingredients
 1) 1 dozen eggs
 2) 1 ration of salted or smoked fish

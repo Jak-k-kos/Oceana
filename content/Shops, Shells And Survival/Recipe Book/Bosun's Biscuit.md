@@ -11,6 +11,8 @@ Ship's biscuit split, soaked in honey and toasted on the galley stove until it c
 
 **Cook time:** 10 minutes
 
+**Properties:** Perishable, Rancid
+
 ## Ingredients
 1) 2 rations of ship's biscuit
 2) 1 lb of honey

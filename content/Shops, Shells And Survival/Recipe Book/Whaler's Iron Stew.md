@@ -11,6 +11,8 @@ A dark, heavy stew of smoked whale meat, salt beef and firecap peppers, cooked d
 
 **Cook time:** 5 hours
 
+**Properties:** Perishable, Fishy
+
 ## Ingredients
 1) 2 rations of smoked whale meat
 2) 2 rations of salted beef

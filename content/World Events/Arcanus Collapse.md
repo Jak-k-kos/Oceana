@@ -23,9 +23,10 @@ Soon after the Collapse, Urset sought to claim the widowed [[Welestia]] as his b
 Yet magic did not vanish entirely. A little still trickles into the world:
 
 - **Mages** draw what power they can from [[Urset]] himself, bargaining for every spell.
-- **The three moons** hold a sliver of their father's soul, and grant a measure of power to a rare few.
+- **The three moons** hold a sliver of their father's soul, and grant a measure of power to a rare few: oath-sworn paladins beneath [[The Oathmoon]], artificers beneath [[The Maker's Moon]], and others the moons alone choose.
 - **Bards** learned from [[Lyandris]] how to sing a thread of magic loose from Urset's hoard.
-- **Dragons** steal their magic back with the aid of [[Koruk]].
-- **A rare few rangers, druids and artificers** have found ways of their own to steal from the hoard.
+- **Dragons** steal their magic back with the aid of [[Koruk]], and the rare sorcerer with dragon's blood draws on that same stolen magic.
+- **A rare few rangers, druids and other wielders** have found ways of their own to steal from the hoard.
+- **Darker rumors** speak of those who cast with their own blood, paying for their magic in pain rather than in Urset's favor. None have ever been proven to exist.
 
 Magic items from the age before still exist, but they are rare beyond measure, and most are worth a fortune.

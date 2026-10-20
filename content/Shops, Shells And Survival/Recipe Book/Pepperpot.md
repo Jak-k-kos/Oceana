@@ -11,6 +11,8 @@ A black, fiery stew of salt beef, vegetables and firecap peppers, kept going on 
 
 **Cook time:** 2 hours
 
+**Properties:** Perishable, Fishy
+
 ## Ingredients
 1) 2 rations of salted beef
 2) 1 ration of vegetables

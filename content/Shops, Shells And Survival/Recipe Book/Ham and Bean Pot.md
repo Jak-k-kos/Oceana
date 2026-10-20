@@ -11,6 +11,8 @@ Salted ham and beans, slow-baked under molasses until the beans fall apart and t
 
 **Cook time:** 2 hours
 
+**Properties:** Perishable, Fishy
+
 ## Ingredients
 1) 2 rations of salted ham
 2) 2 rations of dried beans

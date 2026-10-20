@@ -18,7 +18,7 @@ Recipes are learned on your travels: taught, traded, found or bought. Each one y
 - **When you stop,** your total decides the meal's effect, using the ranges for its difficulty. Each higher effect includes the ones below it unless it says "instead."
 - **A short or busted dish** is still perfectly edible. It counts as a ration but gives no effect.
 - **Servings:** each serving counts as 1 food ration, or 1 water ration for drinks.
-- **Cooked food is Perishable.** It needs to be eaten the same day.
+- **Cooked food is Perishable.** It needs to be eaten by the end of the next day.
 - **One meal at a time:** you can only benefit from one meal's effect at a time. A new meal replaces the old effect.
 - **Duration:** unless a recipe says otherwise, effects last until the end of your next short rest.
 

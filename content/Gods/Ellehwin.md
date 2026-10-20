@@ -38,18 +38,24 @@ That love is what makes the truth so unbearable. As keeper of the law, Ellehwin 
 ## The Green Moon  
 Once in each long turn, the green moon swells to fullness. For four days it rises toward full, for three days it shines full, and for four days it falls away again.
 
-No law commands it, and no temple has made it a holy day, but across the islands it has become custom to save the weightiest matters for those days. Oaths are sworn, judgments are given, and bargains are sealed beneath the full green moon. An oath sworn in its light is held to be the most binding of all, and it is said that one who breaks such an oath draws Ellehwin's eye.
+No law commands it, and no temple has made it a holy day, but across the islands it has become custom to save the weightiest matters for those days. Oaths are sworn, judgments are given, and bargains are sealed beneath the full green moon. These three nights are known as [[The Oathmoon]]. An oath sworn in its light is held to be the most binding of all, and it is said that one who breaks such an oath draws Ellehwin's eye. When it wanes, the green moon is dark for three nights, and those nights are counted the poorest of all for swearing anything.
 
 On rare occasions, more than an eye is drawn. A mortal who swears a true oath beneath the full green moon may find that oath answered with power. Such oath-sworn are the rare paladins of the world who are not champions. Their power is a pale thing beside a champion's, but it is real, and it lasts only as long as the oath is kept.
 
 ### Temples  
-Ellehwin's temples are rarely buildings of their own. Most are a single hall within a magistrate's court or council house, where the work of law and the worship of its goddess sit side by side. It is here that oaths are sworn beneath the full green moon.
+Ellehwin's temples are rarely buildings of their own. Most are a single hall within a magistrate's court or council house, where the work of law and the worship of its goddess sit side by side. It is here that oaths are sworn beneath [[The Oathmoon]].
 
 Her priests are mediators more than lawmen. They help people settle their disputes before those disputes ever reach a judge, seeking a fair agreement rather than a winner and a loser. Mediation is heavily encouraged before any case is brought to trial, and most magistrates will send a dispute to Ellehwin's priests first. Some matters, however, cannot wait, and when justice must be swift, the courts may act without them.
+
 ## Worship  
 Ellehwin is the patron of judges, lawkeepers, legislators and leaders, and of all who believe that the law should protect the weak. Her shrines stand in courthouses and council halls, and few rulers take their seats without first seeking her blessing.
 
 She will grant a measure of her power to mortals, but only within the bounds of her laws, and those who receive it are expected to uphold them.
+
+### The Siblings' Dance and the Empty Sky
+Once in a generation, all three moons come full together, and Ellehwin sets the law aside for a single night to dance with her brother and sister. It is the eldest moon's peace that is kept across the world on [[The Siblings' Dance]]: no blade is drawn and no cannon fired until the moons part. Of all the truces made in her name, it is the one most faithfully kept.
+
+Once in a lifetime, all three moons go dark together. On [[The Empty Sky]], Ellehwin's eye is absent from the world, and her priests keep watch in the courts until dawn so that the law is never wholly without a keeper.
 
 ### Champion  
 Ellehwin's champion is hidden. Whoever they are, they are said to fight injustice at every turn, wherever they find it, caring more for justice done than for wounds healed.

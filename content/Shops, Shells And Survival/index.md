@@ -7,6 +7,6 @@ The sea doesn't care how brave you are. It cares whether you brought enough wate
 - [[Shops, Shells And Survival/House Rules|House Rules]]: rations, resting, spoilage, disease, coinage and armor in the water.
 - [[Shops, Shells And Survival/The Bazaar/index|The Bazaar]]: every shop in port, plus haggling, selling and trade.
 - [[Shops, Shells And Survival/Recipe Book/index|Recipe Book]]: cooking, techniques, brews and every recipe you've learned.
-- [[Calendar]]: The days months weeks and years. A punctual sailor, is a wealthy sailor.
+- [[Calendar]]: the days, weeks, months and years. A punctual sailor is a wealthy sailor.
 
 %%- [[Shops, Shells And Survival/Monster Parts|Monster Parts]]: harvesting, sea folk loot and pirate loot (draft).%%

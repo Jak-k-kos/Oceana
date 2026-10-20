@@ -10,7 +10,7 @@ A night when all three moons come full together, and the children of [[Arkaius]]
 The three moons are rarely of one mind. [[Ellehwin]] would keep the world as it is, [[Ostin]] would remake it, and [[Winstra]] would rather be off exploring its edges. Their quarrels are as old as the moons themselves. But once in a generation, all three come full on the same night, and the green, orange and purple moons hang together in the sky. On that night, it is said, the siblings set their quarrels aside and dance. It is a festival of reconciliation, and across the world people follow their example.
 
 ## The Truce of the Moons
-The Siblings' Dance belongs to no nation. The gods are real, and every people beneath the sky knows the moons by name. By a custom older than any power still afloat, no blade is drawn and no cannon fired while the moons dance, and the peace is kept by faith, not by treaty.
+All hold to the dancing moons. Older than any nation still afloat, the faith asks only one thing of the night: that no blade be drawn and no cannon fired until the moons part. It has never needed a treaty to be kept.
 
 The islands of the [[Locations/Azure Plains Coalition (APC)/index|coalition]] set aside their feuds. The ships of the [[Locations/Kingdom of Albryn/index|Kingdom]] and the [[Locations/The Black Tide/index|Black Tide]] lie still on the water, and even the pirates of [[Locations/Smuggler's Reach/index|Smuggler's Reach]] keep their guns quiet. Sailors tell of enemy crews rowing out to meet in the middle of contested waters, sharing drink and songs beneath the three moons, then rowing home at dawn to take up the fight again.
 

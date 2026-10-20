@@ -130,7 +130,7 @@
             "id": "ID_6bc989a99bd9",
             "isEvent": false,
             "isStartingEra": false,
-            "name": "Aquila's Slumber",
+            "name": "Aquilla's Slumber",
             "description": "",
             "format": "{{era_name}} {{era_year}} {{year}}",
             "date": {
@@ -139,7 +139,12 @@
               "day": 1
             },
             "type": "era",
-            "category": null
+            "category": null,
+            "end": {
+              "year": 257,
+              "month": 3,
+              "day": 25
+            }
           },
           {
             "id": "ID_7b6a0818cb2a",
@@ -149,12 +154,17 @@
             "description": "",
             "format": "{{era_name}} {{era_year}} {{year}}",
             "date": {
-              "year": 257,
-              "month": 3,
-              "day": 8
+              "year": 258,
+              "month": 0,
+              "day": 1
             },
             "type": "era",
-            "category": null
+            "category": null,
+            "end": {
+              "year": 2574,
+              "month": 3,
+              "day": 25
+            }
           },
           {
             "id": "ID_89498bcb1969",
@@ -165,9 +175,9 @@
             "description": "",
             "format": "{{era_name}} {{era_year}} {{year}}",
             "date": {
-              "year": 2574,
-              "month": 2,
-              "day": 12
+              "year": 2575,
+              "month": 0,
+              "day": 1
             },
             "type": "era",
             "category": ""
@@ -309,7 +319,7 @@
           },
           "id": "ID_5879da397b48",
           "note": "World Events/HearthFire's Glow.md",
-          "category": "ID_5b58681b7bba",
+          "category": "ID_b869d8081878",
           "sort": {
             "timestamp": 5e-324,
             "order": ""
@@ -329,7 +339,7 @@
           },
           "id": "ID_4a487818bb68",
           "note": "World Events/HearthFire's Blaze.md",
-          "category": "ID_5b58681b7bba",
+          "category": "ID_b869d8081878",
           "sort": {
             "timestamp": 5e-324,
             "order": ""
@@ -349,7 +359,7 @@
           },
           "id": "ID_a99a1b393928",
           "note": "World Events/Apiot's Boon.md",
-          "category": "ID_5b58681b7bba",
+          "category": "ID_7969999b295b",
           "sort": {
             "timestamp": 5e-324,
             "order": ""
@@ -369,7 +379,7 @@
           },
           "id": "ID_a98b39394839",
           "note": "World Events/Apiot's Promise.md",
-          "category": "ID_5b58681b7bba",
+          "category": "ID_7969999b295b",
           "sort": {
             "timestamp": 5e-324,
             "order": ""
@@ -389,7 +399,7 @@
           },
           "id": "ID_58885b398b8a",
           "note": "World Events/Night Of Names.md",
-          "category": "ID_5b58681b7bba",
+          "category": "ID_4ac82b995968",
           "sort": {
             "timestamp": 5e-324,
             "order": ""
@@ -400,8 +410,23 @@
       "categories": [
         {
           "id": "ID_5b58681b7bba",
-          "color": "#dda442",
-          "name": "holidays"
+          "color": "#061e93",
+          "name": "Aquilla's Mercy"
+        },
+        {
+          "id": "ID_b869d8081878",
+          "color": "#b00303",
+          "name": "Hearthfire"
+        },
+        {
+          "id": "ID_7969999b295b",
+          "color": "#b0ea43",
+          "name": "Apiot"
+        },
+        {
+          "id": "ID_4ac82b995968",
+          "color": "#26016a",
+          "name": "Morvaine"
         }
       ],
       "path": [],

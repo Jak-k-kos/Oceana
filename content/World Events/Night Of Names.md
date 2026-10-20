@@ -1,6 +1,6 @@
 A yearly festival honoring the dead, held in the name of [[Morvaine]].
 
-**Date:** The 22nd of Calra.
+**Date:** The 22nd of Calra
 **Honors:** [[Morvaine]], the Shepherd of Souls
 
 ## Overview  

@@ -1,6 +1,6 @@
 A yearly festival of family and thanksgiving, held in the name of [[Flaris]].
 
-**Date:** The 25th of osca
+**Date:** The 25th of Osca
 **Honors:** [[Flaris]], the Hearthfather  
 **Followed by:** [[Hearthfire's Blaze]]
 

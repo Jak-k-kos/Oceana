@@ -3,13 +3,15 @@ tags:
   - food
 draft: true
 ---
-# Lotus Custard
+# Mead Custard
 ## Description
 A pale, wobbling custard of eggs and sugar, set with a splash of honey mead. It's calming, sweet and a little dreamy, a rich family's dessert. Those who eat it find their thoughts settle and stay put.
 
 **Difficulty:** Hard
 
 **Cook time:** 2 hours
+
+**Properties:** Perishable, Rancid
 
 ## Ingredients
 1) 1 dozen eggs
@@ -21,4 +23,4 @@ Makes 3 servings.
 ## Effects
 1) +1 to Constitution saving throws to keep concentration. (17-18)
 2) Also +1 to Wisdom saving throws. (19-20)
-3) Advantage on Constitution saving throws to keep concentration. (21)
+3) Also advantage on Constitution saving throws to keep concentration. (21)

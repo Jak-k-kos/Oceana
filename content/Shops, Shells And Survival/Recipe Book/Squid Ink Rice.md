@@ -11,6 +11,8 @@ Rice cooked black in squid ink with strips of dried squid. It stains the teeth a
 
 **Cook time:** 1 hour
 
+**Properties:** Perishable, Fishy
+
 ## Ingredients
 1) 2 rations of rice
 2) 1 ration of dried squid

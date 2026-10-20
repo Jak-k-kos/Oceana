@@ -1,27 +1,36 @@
 ---
 title: Oceana
 ---
-Welcome to the world of Oceana
-# Quick Links
-- [[Ship Upgrades]]
-- [[NPCS/Azure Plains Coalition/Insul/index|Insul]]
+Welcome to the world of Oceana. The waters rose, the sea folk claimed the deep, and what remains of the surface world clings to islands, shallows and the decks of ships.
+
+# Start Here
+- [[Shops, Shells And Survival/The Bazaar/index|The Bazaar]]
+- [[Sails and Seas/Flag Code|Flag Code]]
+- [[Shops, Shells And Survival/Calendar|Calendar]]
+- [[Sails and Seas/Ship Rules/index|Ship Rules]]
+- [[Locations/Azure Plains Coalition (APC)/index|Azure Plains Coalition]]
+- [[Locations/Kingdom of Albryn/index|Kingdom of Albryn]]
+- [[Shops, Shells And Survival/House Rules|House Rules]]
+
+# The Crew
+- [[Characters/Austin|TBD (Austin)]]
+- [[Characters/Rouge Bellball|Rouge Bellball (Zadia)]]
+- [[Characters/Scubby Wellfleet|Scubby Wellfleet (Asper)]]
+- [[Characters/Shady Bellball|Shady Bellball (Henry)]]
+- [[Characters/Tryknin Goldenroar|Tryknin Goldenroar (Torin)]]
+- [[Characters/Owned Ships/index|Our Ships]]
+
+# The World
+- [[Locations/index|Locations]]
+- [[NPCS/index|NPCs]]
+- [[Gods/index|Gods]]
+- [[Creatures/index|Creatures]]
+- [[World Events/index|World Events & Dates]]
+
+# Rules and Resources
+- [[Sails and Seas/index|Sails & Seas]]
+- [[Shops, Shells And Survival/index|Shops, Shells & Survival]]
+- [[Shops, Shells And Survival/Recipe Book/index|Recipe Book]]
 
 # Session Notes
-- [[Session 1]]
-# Characters 
-- [[Austin|TBD (Austin)]]
-- [[Rouge Bellball|Rouge Bellball (Zadia)]]
-- [[Scubby Wellfleet|Scubby Wellfleet (Asper)]]
-- [[Shady Bellball|Shady Bellball (Henry)]]
-- [[Tryknin Goldenroar|Tryknin Goldenroar(Torin)]]
-
-
-# Sections
-* [[Characters/index|Characters]]
-* [[Locations/index|Locations]]
-* [[NPCS/index|NPCs]]
-* [[Gods/index|Gods]]
-* [[Sails and Seas/index|Sails & Seas]]
-* [[World Events/index|Word Events & Dates]]
-* [[Session Notes/index|Session Notes]]
-* [[Creatures/index|Creatures]]
+- [[Session Notes/index|All Session Notes]]

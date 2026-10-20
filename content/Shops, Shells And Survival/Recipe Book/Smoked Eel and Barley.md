@@ -11,6 +11,8 @@ Smoked eel, flaked into a pot of barley, slow-cooked thick and smoky. It's a nav
 
 **Cook time:** 1 hour
 
+**Properties:** Perishable, Fishy
+
 ## Ingredients
 1) 2 rations of salted or smoked fish
 2) 2 rations of barley

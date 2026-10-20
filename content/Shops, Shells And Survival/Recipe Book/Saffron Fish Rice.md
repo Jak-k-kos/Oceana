@@ -11,6 +11,8 @@ Golden rice, slow-cooked in fish broth with a pinch of saffron worth more than t
 
 **Cook time:** 2 hours
 
+**Properties:** Perishable, Fishy
+
 ## Ingredients
 1) 2 rations of fish
 2) 2 rations of rice

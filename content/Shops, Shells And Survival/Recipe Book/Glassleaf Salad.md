@@ -11,6 +11,8 @@ Dried glassleaf soaked until it's clear and supple again, then tossed with sea f
 
 **Cook time:** 1 hour
 
+**Properties:** Perishable, Fishy
+
 ## Ingredients
 1) 2 rations of glassleaf
 2) 1 bundle of sea fennel
