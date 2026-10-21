@@ -72,14 +72,56 @@ textarea{width:100%;min-height:110px;font:13px/1.3 monospace}
 .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 16px;border-radius:999px;opacity:0;transition:opacity .3s;pointer-events:none;max-width:90vw}
 .toast.on{opacity:.95}
 @media (max-width:640px){h1{font-size:1.6rem} td,th{padding:5px 4px}}
+[hidden]{display:none!important}
+.snark{font-family:"IM Fell English",Georgia,serif;font-size:1.08rem;line-height:1.5;margin:10px 0 4px}
+.kicker{font-family:"IM Fell English SC",serif;color:var(--accent);letter-spacing:.06em;font-size:1rem}
+.keeperrow{justify-content:flex-end;margin-top:4px}
+#shipList table td,#trashList table td,#chestList table td{padding:8px 6px}
 </style>
 </head>
 <body>
-<div class="wrap">
+<!-- ======================= THE HARBOR ======================= -->
+<div class="wrap" id="harborView" hidden>
   <div class="titlerow">
-    <h1>The Ship's Larder</h1>
+    <h1>The Harbor Register</h1>
+    <div class="row">
+      <span class="status" id="hStatus">Kept on this device</span>
+      <button class="sm" id="keeperBtn">DM's Access</button>
+    </div>
+  </div>
+  <p class="note" id="keeperNote" style="text-align:right;margin:0"></p>
+  <p class="sub">Every vessel that sails these drowned waters is written here, each with a hold of its own. Choose your ship, step aboard, and go below.</p>
+
+  <div class="card">
+    <h2>Ships at Anchor</h2>
+    <div id="shipList"></div>
+  </div>
+
+  <div class="card">
+    <h2>Christen a New Ship</h2>
+    <div class="row">
+      <input type="text" id="newShipName" placeholder="The ship's name" style="min-width:240px">
+      <button id="newShipBtn">Break the Bottle on Her Bow</button>
+    </div>
+    <p class="note">A ship made for testing is welcome here. Only the Keeper of the Register may scuttle one.</p>
+  </div>
+
+  <div class="card" id="trashCard">
+    <h2>The Keeper's Chest: Scuttled Ships</h2>
+    <p class="sub">Ships sent to the bottom are not lost at once. They rest here, hold and all, until the Keeper raises them or gives them to the deep forever.</p>
+    <div id="trashList"></div>
+  </div>
+
+</div>
+
+<!-- ======================= THE HOLD ======================= -->
+<div class="wrap" id="holdView" hidden>
+  <div class="row" style="justify-content:space-between;margin-bottom:6px">
+    <button class="sm" id="harborBtn">&larr; The Harbor</button>
     <span class="status" id="status">Kept on this device</span>
   </div>
+  <div class="kicker">The Ship's Larder</div>
+  <h1 id="shipTitle">A Ship</h1>
   <p class="sub">Wherein every barrel, crate and humble loaf is counted, and the slow, patient hunger of the sea is reckoned each morning.</p>
 
   <div class="card">
@@ -136,18 +178,31 @@ textarea{width:100%;min-height:110px;font:13px/1.3 monospace}
     </div>
     <div class="log" id="log"></div>
   </div>
+
+  <div class="card" id="chestCard">
+    <div class="row" style="justify-content:space-between">
+      <h2>The Keeper's Chest: Saved Holds</h2>
+      <div class="row">
+        <button class="sm" id="chestBtn">Open the Chest</button>
+        <button class="sm danger" id="pruneBtn">Keep Only the Newest 30</button>
+      </div>
+    </div>
+    <p class="sub">Before every dawn, every emptying and every uncorked bottle, the hold is copied and laid away here, so that no single misfortune need be the last word.</p>
+    <div id="chestList"></div>
+  </div>
 </div>
 
 <dialog id="dlg"><form method="dialog" id="dlgForm"></form></dialog>
 <div class="toast" id="toast"></div>
-
 <script>
 /* =====================================================================
-   THE LIVE LEDGER (optional)
-   Paste your Firebase web config here to share one hold across every
-   device. Leave apiKey empty and the larder simply keeps its hold on
-   whatever device it is opened on.
+   THE LIVE LEDGER
+   Your Firebase web config. With apiKey left empty, the larder keeps
+   every ship on whatever device it is opened on instead.
    ===================================================================== */
+/* The DM's account: a made-up address that only ever pairs with your password.
+   Create it in Firebase (Authentication > Users > Add user) with this exact email. */
+const KEEPER_EMAIL = "dm@oceana-ad350.firebaseapp.com";
 const FIREBASE_CONFIG = {
   apiKey: "AIzaSyB4HT_DyuZdUkYlXXGJA3OXxOTcSC161PA",
   authDomain: "oceana-ad350.firebaseapp.com",
@@ -155,9 +210,6 @@ const FIREBASE_CONFIG = {
   projectId: "oceana-ad350",
   appId: "1:985719043072:web:4911dae8ca70a8978314e5"
 };
-/* Which ship's hold to open. The page address can choose one with
-   ?ship=name (for example ?ship=santa-curla); otherwise this is used. */
-const DEFAULT_SHIP = "santa-curla";
 
 /* ---------------- Theme: follow the Quartz site's light/dark toggle ---------------- */
 (function(){
@@ -280,52 +332,308 @@ const DAWNS=[
 ];
 
 
-/* ---------------- State ---------------- */
-const SHIP=(()=>{try{const v=new URLSearchParams(location.search).get("ship");if(v)return v.toLowerCase().replace(/[^a-z0-9-]+/g,"-");}catch(e){}return DEFAULT_SHIP;})();
-const KEY="oceana-larder-v1"+(SHIP===DEFAULT_SHIP?"":"-"+SHIP);
-let S=fresh();
-let HIST=[];
-let REMOTE=null;          // set when the live ledger is connected
-let lastCustomKeys="";
+/* ---------------- The two ledgers: this device, or the shared one ---------------- */
+const clone=v=>v==null?null:JSON.parse(JSON.stringify(v));
+const LocalDB=(()=>{
+  const K="oceana-larder-db";let tree={};
+  try{tree=JSON.parse(localStorage.getItem(K)||"{}")||{};}catch(e){}
+  const subs=new Set();
+  const keys=p=>p.split("/").filter(Boolean);
+  function getP(p){let o=tree;for(const k of keys(p)){if(o==null||typeof o!=="object")return null;o=o[k];}return o===undefined?null:clone(o);}
+  function setP(p,v){const ks=keys(p);let o=tree;for(let i=0;i<ks.length-1;i++){if(typeof o[ks[i]]!=="object"||o[ks[i]]===null)o[ks[i]]={};o=o[ks[i]];}if(v==null)delete o[ks[ks.length-1]];else o[ks[ks.length-1]]=clone(v);}
+  function fire(){for(const s of subs)s.f(getP(s.p));}
+  function persist(){try{localStorage.setItem(K,JSON.stringify(tree));}catch(e){}fire();}
+  window.addEventListener("storage",e=>{if(e.key===K){try{tree=JSON.parse(e.newValue||"{}")||{};}catch(x){}fire();}});
+  return {
+    local:true,
+    on(p,f){const s={p,f};subs.add(s);setTimeout(()=>{if(subs.has(s))f(getP(p));},0);return()=>subs.delete(s);},
+    async get(p){return getP(p);},
+    async set(p,v){setP(p,v);persist();},
+    async update(o){for(const k in o)setP(k,o[k]);persist();},
+    async tx(p,fn){const nv=fn(getP(p));if(nv===undefined)return {committed:false,val:getP(p)};setP(p,nv);persist();return {committed:true,val:getP(p)};},
+    connected(cb){cb(true);},
+  };
+})();
+let DB=LocalDB;
+let KEEPER=false, AUTH=null;
+
+async function connectFirebase(){
+  if(!FIREBASE_CONFIG.apiKey||!FIREBASE_CONFIG.databaseURL)return false;
+  try{
+    const V="10.12.2";
+    const app=await import(`https://www.gstatic.com/firebasejs/${V}/firebase-app.js`);
+    const d=await import(`https://www.gstatic.com/firebasejs/${V}/firebase-database.js`);
+    const fb=app.initializeApp(FIREBASE_CONFIG);
+    const db=d.getDatabase(fb);
+    DB={
+      local:false,
+      on(p,f){return d.onValue(d.ref(db,p),s=>f(s.val()),e=>{console.error(e);setStatus("The ledger refused us","off");});},
+      get(p){return d.get(d.ref(db,p)).then(s=>s.val());},
+      set(p,v){return d.set(d.ref(db,p),v);},
+      update(o){return d.update(d.ref(db),o);},
+      tx(p,fn){return d.runTransaction(d.ref(db,p),fn).then(r=>({committed:r.committed,val:r.snapshot.val()}));},
+      connected(cb){d.onValue(d.ref(db,".info/connected"),s=>cb(!!s.val()));},
+    };
+    try{
+      const a=await import(`https://www.gstatic.com/firebasejs/${V}/firebase-auth.js`);
+      const auth=a.getAuth(fb);
+      AUTH={
+        signIn(pw){return a.signInWithEmailAndPassword(auth,KEEPER_EMAIL,pw);},
+        signOut(){return a.signOut(auth);},
+        onChange(cb){a.onAuthStateChanged(auth,cb);},
+      };
+    }catch(e){console.error(e);AUTH=null;}
+    return true;
+  }catch(e){
+    console.error(e);DB=LocalDB;return false;
+  }
+}
+
+/* ---------------- Little helpers ---------------- */
+const r=n=>1+Math.floor(Math.random()*n);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt=n=>{const v=Math.round(n*100)/100;return Number.isInteger(v)?v.toLocaleString():v.toLocaleString(undefined,{maximumFractionDigits:2});};
+function pl(n,w){return fmt(n)+" "+w+(n===1?"":"s");}
+const $=id=>document.getElementById(id);
+let tt;function toast(m){const t=$("toast");t.textContent=m;t.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("on"),2800);}
+function setStatus(text,cls){for(const id of ["status","hStatus"]){const s=$(id);s.textContent=text;s.className="status"+(cls?" "+cls:"");}}
+const DEVICE=Math.random().toString(36).slice(2,10); // one per open page
+const when=ts=>{try{return new Date(+ts).toLocaleString(undefined,{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"});}catch(e){return "";}};
+
+/* ---------------- Dialogs (in-page, so they work even where pop-ups are blocked) ---------------- */
+const dlg=$("dlg"),dform=$("dlgForm");
+let onDlgOk=null;
+dform.addEventListener("submit",e=>{
+  e.preventDefault();
+  const v=e.submitter?e.submitter.value:"ok";
+  const cb=onDlgOk;onDlgOk=null;
+  const fd=new FormData(dform);
+  dlg.close();
+  if(v==="ok"&&cb)cb(fd);
+});
+dlg.addEventListener("cancel",()=>{onDlgOk=null;});
+// Enter in a field means the dialog's main button, never "Never mind".
+dform.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.tagName==="INPUT"){e.preventDefault();const p=dform.querySelector("button.primary");if(p)p.click();}});
+function ask(html,onOk,okText,noCancel){
+  dform.innerHTML=html+`<div class="row" style="justify-content:flex-end;margin-top:10px">${noCancel?"":'<button value="cancel" formnovalidate>Never mind</button>'}<button class="primary" value="ok">${okText||"So be it"}</button></div>`;
+  onDlgOk=onOk;
+  if(dlg.open)dlg.close();
+  try{dlg.showModal();}catch(e){dlg.setAttribute("open","");}
+  const first=dform.querySelector("input:not([type=checkbox]):not([readonly]),select");if(first)first.focus();
+}
+function confirmBox(title,text,yes,onYes){ask(`<h2>${esc(title)}</h2><p class="sub">${esc(text)}</p>`,()=>onYes(),yes);}
+
+/* ---------------- For shipmates who reach for what is the DM's alone ---------------- */
+const SNARK={
+  scuttle:[
+    "You lay your hand upon the scuttling axe, and the whole crew turns to stare. Mutiny is a hanging offense, sailor. Only the God Above Gods (your virtuous DM) sends ships to the bottom.",
+    "Bold of you to try to sink a ship you merely sail upon. The sea takes its orders from the Tide-Maker Eternal (your benevolent DM), not from you.",
+    "The hull is quite content without a hole in it, thank you. Petition the Sovereign of All Waters (your gracious DM), if you dare.",
+    "A ship is a sacred thing, sailor, and only the Unsinkable Admiral of the Firmament (your magnificent DM) may decide when she sleeps beneath the waves.",
+    "You raise the axe. The deck creaks a warning. Somewhere far above, the Most Exalted Weaver of Fates (your humble DM) shakes their head in quiet disappointment.",
+    "Scuttling a ship requires a writ signed by the Lord High Keeper of the Register, Warden of Every Keel (your splendid DM). You do not appear to have one.",
+    "The barnacles have unionized, and they will only take orders from the Grand Architect of the Drowned World (your esteemed DM).",
+    "You swing. The axe bounces off the hull with a sad little ‘bonk’. It seems the ship answers only to the Celestial Quartermaster of Destiny (your radiant DM).",
+    "Sink her? On whose authority? Surely not that of the Thrice-Blessed Master of Dice and Doom (your beloved DM), who has not been consulted.",
+    "The sea folk below look up, hopeful. They will be disappointed, for only the Supreme Arbiter of Wind and Wave (your flawless DM) may feed them a ship today.",
+    "This deed is reserved for the Undying Monarch of the Map (your merciful DM). Kindly unhand the axe before it is used on you.",
+    "Even the storms of the Widow's Wrath ask permission before sinking a ship. Ask the Heavenly Steward of Every Shell and Sail (your noble DM).",
+    "The axe bites the hull. Water rushes in. The ship groans, lists, and slips beneath the waves with all hands aboard. Everyone is dead. Roll up new characters. ...Not really. The ship is fine, because only the Omnipotent Overlord of Oceana (your infallible DM) can do that.",
+    "Rocks fall. Your ship dies. Your crew dies. Your parrot dies. ...Just kidding, the parrot lives. So does everyone else, because only the Almighty Hand That Moves the Minis (your unquestionable DM) gets to drop the rocks.",
+  ],
+  chest:[
+    "The chest is locked, the lock is enchanted, and the enchantment answers only to the Keeper Above All Keepers (your virtuous DM). It also bites.",
+    "You rattle the lid. Something inside rattles back. Perhaps leave this to the Ancient Guardian of Forgotten Things (your wise DM).",
+    "The Keeper's Chest is for the Keeper. You are not the Keeper. You are, at best, the cabin boy of the Eternal Steward of Stores (your generous DM).",
+    "A small brass plaque on the lid reads: ‘Property of the Most Radiant Hoarder of Holds (your glorious DM). Thieves will be keelhauled.’",
+    "You pry at the latch. The latch pries back. Only the Grand Lockmaster of the Seven Seas (your incorruptible DM) holds the key, and they keep it somewhere you will never find.",
+    "The chest whispers, ‘Not you.’ It is saving itself for the Exalted Custodian of What Was Lost (your gracious DM).",
+    "Inside lie the bones of every ship's hold that ever was. They are not for mortal eyes, only for the Archivist of Every Morning (your all-seeing DM).",
+    "You reach for the chest, and a voice like rolling thunder declares: ‘THAT IS NOT YOURS.’ It was the Sovereign of Second Chances (your patient DM). Probably.",
+    "The chest is warded with a curse of mild inconvenience. Only the High Hierophant of Backups and Do-Overs (your thoughtful DM) is immune.",
+    "This chest has a lock, a chain, a guard parrot and a very strongly worded note from the Lord of Ledgers and Lost Causes (your majestic DM). The parrot is staring at you.",
+    "Rummaging through the past is the privilege of the Timeless Warden of Yesterday's Bread (your benevolent DM). Today's bread is your concern.",
+    "The chest opens a crack, sees who you are, and slams shut. It recognizes only the Most Excellent Master of Rations and Ruin (your stunning DM).",
+    "The lid springs open, a mimic's tongue lashes out, and you are swallowed whole. Your adventure ends here. Please hand in your character sheet. ...Not really. The chest was only pretending, on the orders of the Dread Sovereign of Character Sheets (your kind and loving DM), who alone may open it.",
+    "A trap triggers. Rocks fall. You die. Roll a new character. ...Fine, you live. This time. But the chest remains the sole domain of the Supreme Dispenser of Doom and Second Chances (your forgiving DM).",
+  ],
+};
+/* Lines are dealt like cards from a shuffled deck, so none repeats until all have been seen. */
+const SNARK_DECKS={};
+function snark(kind){
+  if(!SNARK_DECKS[kind]||!SNARK_DECKS[kind].length){
+    const d=SNARK[kind].map((_,i)=>i);
+    for(let i=d.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[d[i],d[j]]=[d[j],d[i]];}
+    if(SNARK_DECKS.last&&SNARK_DECKS.last[kind]===d[d.length-1])d.unshift(d.pop());
+    SNARK_DECKS[kind]=d;
+  }
+  const i=SNARK_DECKS[kind].pop();
+  SNARK_DECKS.last=Object.assign(SNARK_DECKS.last||{},{[kind]:i});
+  ask(`<h2>${kind==="scuttle"?"Avast, Sailor!":"Hands Off the Chest!"}</h2><p class="snark">${esc(SNARK[kind][i])}</p>`,()=>{},kind==="scuttle"?"I unhand the axe":"I back away slowly",true);
+}
+
+/* =====================================================================
+   THE HARBOR
+   ===================================================================== */
+let SHIPS={}, harborUnsub=null, trashUnsub=null, migrated=false;
+const shipName=id=>(SHIPS[id]&&SHIPS[id].name)||id.replace(/-/g," ").replace(/\b\w/g,c=>c.toUpperCase());
+const shipSlug=s=>s.toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")||"ship";
+
+function showHarbor(){
+  closeHold();
+  $("holdView").hidden=true;$("harborView").hidden=false;
+  if(!harborUnsub)harborUnsub=DB.on("ships",v=>{SHIPS=v||{};renderShips();});
+  if(!migrated&&!DB.local){
+    migrated=true;
+    // Holds from before the Register existed get an entry, so none are stranded.
+    DB.get("holds").then(h=>{if(!h)return;const up={};for(const id in h)if(!SHIPS[id])up["ships/"+id]={name:shipName(id),created:Date.now()};if(Object.keys(up).length)DB.update(up);}).catch(()=>{});
+  }
+  renderKeeper();
+}
+function renderShips(){
+  const ids=Object.keys(SHIPS).sort((a,b)=>(SHIPS[a].created||0)-(SHIPS[b].created||0));
+  $("shipList").innerHTML=ids.length?`<table><tbody>${ids.map(id=>`<tr><td><b>${esc(shipName(id))}</b><div class="tag">christened ${esc(when(SHIPS[id].created))}</div></td><td style="text-align:right"><div class="acts" style="justify-content:flex-end"><button class="sm" data-board="${esc(id)}">Go Aboard</button><button class="sm danger" data-scuttle="${esc(id)}">Scuttle</button></div></td></tr>`).join("")}</tbody></table>`
+    :`<p class="note">No ship rides at anchor yet. Christen the first below.</p>`;
+}
+$("shipList").onclick=e=>{
+  const b=e.target.closest("button");if(!b)return;
+  if(b.dataset.board)go(b.dataset.board);
+  if(b.dataset.scuttle&&!KEEPER){snark("scuttle");return;}
+  if(b.dataset.scuttle){const id=b.dataset.scuttle;confirmBox("Scuttle "+shipName(id),"Send "+shipName(id)+" to the bottom? Her hold goes down with her, but both rest in the Keeper's Chest until raised or given to the deep forever.","Scuttle her",()=>scuttle(id));}
+};
+$("newShipBtn").onclick=async()=>{
+  const name=$("newShipName").value.trim();if(!name){toast("A ship must have a name.");return;}
+  let id=shipSlug(name),n=2;while(SHIPS[id])id=shipSlug(name)+"-"+(n++);
+  try{
+    await DB.update({["ships/"+id]:{name,created:Date.now()},["holds/"+id]:fresh()});
+    $("newShipName").value="";toast(name+" is christened!");go(id);
+  }catch(e){console.error(e);toast("The Register would not take her name. Try again.");}
+};
+$("newShipName").addEventListener("keydown",e=>{if(e.key==="Enter")$("newShipBtn").click();});
+
+async function scuttle(id){
+  try{
+    const [ship,hold]=await Promise.all([DB.get("ships/"+id),DB.get("holds/"+id)]);
+    await DB.set("trash/"+id,{ship:ship||{name:shipName(id)},hold:hold||null,deletedAt:Date.now()});
+    await DB.update({["ships/"+id]:null,["holds/"+id]:null});
+    toast(shipName(id)+" slips beneath the waves.");
+  }catch(e){console.error(e);toast("Only the Keeper may scuttle a ship.");}
+}
+function renderTrash(v){
+  const t=v||{};const ids=Object.keys(t).sort((a,b)=>(t[b].deletedAt||0)-(t[a].deletedAt||0));
+  $("trashList").innerHTML=ids.length?`<table><tbody>${ids.map(id=>`<tr><td><b>${esc((t[id].ship&&t[id].ship.name)||id)}</b><div class="tag">scuttled ${esc(when(t[id].deletedAt))}</div></td><td style="text-align:right"><div class="acts" style="justify-content:flex-end"><button class="sm" data-raise="${esc(id)}">Raise Her</button><button class="sm danger" data-forever="${esc(id)}">Give to the Deep</button></div></td></tr>`).join("")}</tbody></table>`
+    :`<p class="note">The chest is empty. No ship lies waiting below.</p>`;
+}
+$("trashList").onclick=async e=>{
+  const b=e.target.closest("button");if(!b)return;
+  if(!KEEPER){snark("chest");return;}
+  if(b.dataset.raise){
+    const id=b.dataset.raise;
+    try{
+      const t=await DB.get("trash/"+id);if(!t)return;
+      let nid=id,n=2;while(SHIPS[nid])nid=id+"-raised"+(n>2?"-"+n:""),n++;
+      await DB.update({["ships/"+nid]:t.ship,["holds/"+nid]:t.hold||fresh(),["trash/"+id]:null});
+      toast(((t.ship&&t.ship.name)||id)+" rises dripping from the deep!");
+    }catch(e){console.error(e);toast("The chest would not open.");}
+  }
+  if(b.dataset.forever){
+    const id=b.dataset.forever;
+    confirmBox("Give Her to the Deep","This ship, her hold and every saved copy of it will be gone for good. There is no raising her after this.","Farewell",async()=>{
+      try{await DB.update({["trash/"+id]:null,["backups/"+id]:null});toast("She is gone, and the sea keeps her.");}catch(e){toast("Only the Keeper may do this.");}
+    });
+  }
+};
+
+/* ---------------- The Keeper ---------------- */
+function renderKeeper(){
+  if(!KEEPER){
+    $("trashList").innerHTML=`<button class="sm" data-locked="1">Open the Chest</button>`;
+    $("chestList").innerHTML="";
+  }
+  if(KEEPER&&!trashUnsub)trashUnsub=DB.on("trash",renderTrash);
+  if(!KEEPER&&trashUnsub){trashUnsub();trashUnsub=null;}
+  if(KEEPER&&trashUnsub&&/data-locked/.test($("trashList").innerHTML))DB.get("trash").then(renderTrash).catch(()=>{});
+  if(DB.local){$("keeperBtn").hidden=true;$("keeperNote").textContent="Kept on this device alone, so you hold every key.";}
+  else if(!AUTH){$("keeperBtn").hidden=true;$("keeperNote").textContent="";}
+  else{$("keeperBtn").hidden=false;$("keeperBtn").textContent=KEEPER||signedIn?"Leave DM's Access":"DM's Access";
+    $("keeperNote").textContent=KEEPER?"The Keeper of the Register is aboard.":(signedIn?"Signed in, but the ledger does not know you as the Keeper.":"");}
+  renderShips();
+}
+let signedIn=false;
+$("keeperBtn").onclick=async()=>{
+  if(!AUTH)return;
+  if(signedIn){await AUTH.signOut();return;}
+  ask(`<h2>The Keeper's Word</h2><p class="sub">Speak the password, and the Register will know its Keeper.</p><div class="grid"><label>Password</label><input type="password" name="pw" autocomplete="current-password" required></div>`,async fd=>{
+    try{await AUTH.signIn(String(fd.get("pw")||""));toast("Welcome aboard, Keeper.");}
+    catch(e){console.error(e);const c=e&&e.code||"";
+      toast(c==="auth/too-many-requests"?"Too many wrong words. The Register will listen again shortly."
+        :c==="auth/operation-not-allowed"?"Password sign-in is not switched on in Firebase yet."
+        :c==="auth/network-request-failed"?"The ledger could not be reached."
+        :"That is not the Keeper's word.");}
+  },"Enter");
+};
+async function checkKeeper(user){
+  signedIn=!!user;
+  if(!user){KEEPER=false;renderKeeper();return;}
+  try{await DB.get("trash");KEEPER=true;}catch(e){KEEPER=false;}
+  renderKeeper();
+}
+
+/* =====================================================================
+   THE HOLD
+   ===================================================================== */
+let SHIPID=null, S=fresh(), HIST=[], holdUnsub=null, nameUnsub=null, holdSeen=false, lastCustomKeys="";
 function fresh(){return {day:1,crew:6,shared:false,lots:[],custom:{},log:[],seq:1};}
 const toArr=x=>Array.isArray(x)?x:(x?Object.values(x):[]);
 function normalize(v){const s=Object.assign(fresh(),v||{});s.lots=toArr(s.lots).filter(Boolean);s.log=toArr(s.log).filter(Boolean);s.custom=s.custom||{};return s;}
-const clean=s=>JSON.parse(JSON.stringify(s));
 function item(id){return CAT[id]||S.custom[id]||{id,name:id,cat:"Custom",single:"Unit",rat:0,keep:"never"};}
-function saveLocal(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
-function loadLocal(){try{const t=localStorage.getItem(KEY);if(t)S=normalize(JSON.parse(t));}catch(e){}}
+const holdPath=()=>"holds/"+SHIPID;
 
-/* Every change to the hold goes through act(). Locally it just runs;
-   on the live ledger it runs inside a transaction, so two shipmates
-   pressing buttons at once never trample each other's work. */
+function closeHold(){if(holdUnsub){holdUnsub();holdUnsub=null;}if(nameUnsub){nameUnsub();nameUnsub=null;}SHIPID=null;}
+function showHold(id){
+  closeHold();
+  SHIPID=id;S=fresh();HIST=[];holdSeen=false;lastCustomKeys="~";
+  $("harborView").hidden=true;$("holdView").hidden=false;
+  $("shipTitle").textContent=shipName(id);
+  nameUnsub=DB.on("ships/"+id,v=>{if(v&&v.name){SHIPS[id]=v;$("shipTitle").textContent=v.name;document.title=v.name+" | The Ship's Larder";}});
+  holdUnsub=DB.on(holdPath(),v=>{
+    if(v===null){
+      if(holdSeen){toast("This ship has gone to the bottom.");go(null);return;}
+      // A ship named in the address that was never christened: christen it now.
+      DB.update({["ships/"+id]:{name:shipName(id),created:Date.now()},[holdPath()]:fresh()});return;
+    }
+    holdSeen=true;S=normalize(v);render();
+  });
+  fillCats();fillItems(false);render();renderKeeper();
+}
+
+/* Every change to the hold goes through act(): a transaction, so two
+   shipmates pressing buttons at once never trample each other's work. */
 function act(fn,after){
+  if(!SHIPID)return;
   const before=JSON.stringify(S);
-  if(!REMOTE){
-    if(fn()===false){S=normalize(JSON.parse(before));return;}
-    merge();HIST.push(before);if(HIST.length>30)HIST.shift();
-    saveLocal();render();if(after)after();return;
-  }
-  REMOTE.runTransaction(REMOTE.ref,cur=>{
+  DB.tx(holdPath(),cur=>{
+    if(cur===null)return; // the ship is gone
     S=normalize(cur);
-    if(fn()===false)return; // abort
-    merge();return clean(S);
+    if(fn()===false)return;
+    merge();return clone(S);
   }).then(res=>{
-    S=normalize(res.snapshot.val());saveLocal();render();
+    S=normalize(res.val);render();
     if(res.committed){HIST.push(before);if(HIST.length>30)HIST.shift();if(after)after();}
   }).catch(e=>{toast("The ledger could not be reached. Try again in a moment.");console.error(e);});
 }
 function undo(){
   if(!HIST.length){toast("Nothing left to unmake.");return;}
   const prev=HIST.pop();
-  if(!REMOTE){S=normalize(JSON.parse(prev));saveLocal();render();toast("The last deed is undone.");return;}
-  REMOTE.set(REMOTE.ref,JSON.parse(prev)).then(()=>toast("The last deed is undone.")).catch(()=>toast("The ledger could not be reached."));
+  DB.set(holdPath(),JSON.parse(prev)).then(()=>toast("The last deed is undone.")).catch(()=>toast("The ledger could not be reached."));
+}
+function backup(reason){
+  if(!SHIPID||(!S.lots.length&&!S.log.length))return Promise.resolve();
+  return DB.set(`backups/${SHIPID}/${Date.now()}`,{at:Date.now(),reason,day:S.day,hold:clone(S)}).catch(e=>console.error(e));
 }
 
-const r=n=>1+Math.floor(Math.random()*n);
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const fmt=n=>{const v=Math.round(n*100)/100;return Number.isInteger(v)?v.toLocaleString():v.toLocaleString(undefined,{maximumFractionDigits:2});};
-function pl(n,w){return fmt(n)+" "+w+(n===1?"":"s");}
 function unitWord(l){const it=item(l.item);return l.form==="cargo"?(it.cargo||"unit").toLowerCase():(it.single||"unit").toLowerCase();}
+function singleWord(it){return (it.single||"unit").toLowerCase();}
 function lotName(l){const it=item(l.item);return it.name+(l.form==="cargo"?" ("+(it.cargo||"cargo")+"s)":"");}
 function logLine(text,bad,flour){S.log.push({d:S.day,t:text,b:!!bad,f:!!flour});if(S.log.length>400)S.log=S.log.slice(-400);}
 function lotById(id){return S.lots.find(l=>l.id===+id);}
@@ -357,12 +665,32 @@ function merge(){
   }
   S.lots=out;
 }
+function addLot(id,form,qty,die,silent,spoiled,spoilsOn){
+  const it=item(id);
+  const l={id:S.seq++,item:id,form,units:qty,spoiled:spoiled||0,die};
+  if(die==="perish")l.spoilsOn=spoilsOn||S.day+2;
+  S.lots.push(l);
+  if(!silent)logLine(`Stowed ${pl(qty,form==="cargo"?(it.cargo||"unit").toLowerCase():singleWord(it))} of ${it.name} below${die==="perish"?", fresh until the end of tomorrow":""}.`);
+  merge();
+}
+/* Take n single units (loaves, gallons, rations...) from a lot, sound or spoiled.
+   From cargo, just enough crates are pried open; what is left over joins the
+   loose stores at the same Keep. */
+function take(l,n,fromSpoiled){
+  const it=item(l.item);
+  if(l.form!=="cargo"||!it.per){if(fromSpoiled)l.spoiled-=n;else l.units-=n;return 0;}
+  const k=Math.ceil(n/it.per);
+  if(fromSpoiled)l.spoiled-=k;else l.units-=k;
+  const left=k*it.per-n;
+  if(left>0){const nl={id:S.seq++,item:l.item,form:"loose",units:fromSpoiled?0:left,spoiled:fromSpoiled?left:0,die:l.die};if(l.die==="perish")nl.spoilsOn=l.spoilsOn;S.lots.push(nl);}
+  return k;
+}
+const avail=(l,sp)=>(sp?l.spoiled:l.units)*(l.form==="cargo"?(item(l.item).per||1):1);
 
 /* ---------------- Dawn ---------------- */
-const DEVICE=Math.random().toString(36).slice(2,10); // one per open page
 function dawn(){
   const ld=S.lastDawn;
-  if(REMOTE&&ld&&ld.by!==DEVICE&&Date.now()-ld.at<120000&&ld.day===S.day){
+  if(!DB.local&&ld&&ld.by!==DEVICE&&Date.now()-ld.at<120000&&ld.day===S.day){
     confirmBox("Dawn Has Already Broken","A shipmate greeted this very dawn only moments ago, and the dice have been cast for day "+S.day+". Roll yet another day?","Another day",dawnNow);
     return;
   }
@@ -370,8 +698,9 @@ function dawn(){
 }
 function dawnNow(){
   const seen=S.day;
+  backup("Before dawn on day "+(seen+1));
   act(()=>{
-    if(S.day!==seen)return false; // a shipmate already greeted this dawn
+    if(S.day!==seen)return false;
     S.day++;
     S.lastDawn={at:Date.now(),by:DEVICE,day:S.day};
     logLine(DAWNS[r(DAWNS.length)-1],false,true);
@@ -405,23 +734,14 @@ function damage(){
   }));
 }
 
-/* ---------------- Stowing ---------------- */
-function addLot(id,form,qty,die,silent){
-  const it=item(id);
-  const l={id:S.seq++,item:id,form,units:qty,spoiled:0,die};
-  if(die==="perish")l.spoilsOn=S.day+2;
-  S.lots.push(l);
-  if(!silent)logLine(`Stowed ${pl(qty,form==="cargo"?(it.cargo||"unit").toLowerCase():(it.single||"unit").toLowerCase())} of ${it.name} below${die==="perish"?", fresh until the end of tomorrow":""}.`);
-  merge();
-}
-
-/* ---------------- Rendering ---------------- */
+/* ---------------- Rendering the hold ---------------- */
 function rationsOf(l,n){const it=item(l.item);return n*(l.form==="cargo"?(it.per||1)*it.rat:it.rat);}
 function setIfIdle(el,v){if(document.activeElement!==el)el.value=v;}
 function render(){
-  setIfIdle(document.getElementById("dayIn"),S.day);
-  setIfIdle(document.getElementById("crewIn"),S.crew);
-  document.getElementById("sharedIn").checked=!!S.shared;
+  if(!SHIPID)return;
+  setIfIdle($("dayIn"),S.day);
+  setIfIdle($("crewIn"),S.crew);
+  $("sharedIn").checked=!!S.shared;
   const ck=Object.keys(S.custom).sort().join("|");
   if(ck!==lastCustomKeys){lastCustomKeys=ck;fillItems(true);}
   let food=0,water=0,sfood=0,swater=0,cargoUnits=0,looseTons=0,live=0;
@@ -436,7 +756,7 @@ function render(){
   const crew=Math.max(0,S.crew|0);
   const days=v=>crew?Math.floor(v/crew):"-";
   const tons=(cargoUnits+looseTons)/5;
-  document.getElementById("stats").innerHTML=[
+  $("stats").innerHTML=[
     [fmt(food),"food rations, sound"+(sfood?` <span class="spoiled">(+${fmt(sfood)} spoiled)</span>`:"")],
     [fmt(water),"water rations, sound"+(swater?` <span class="spoiled">(+${fmt(swater)} spoiled)</span>`:"")],
     [days(food),"days of food for "+pl(crew,"mouth")],
@@ -445,11 +765,11 @@ function render(){
     ...(live?[[live,"living beasts aboard"]]:[]),
   ].map(([b,s])=>`<div class="stat"><b>${b}</b><span>${s}</span></div>`).join("");
 
-  const body=document.getElementById("holdBody");
+  const body=$("holdBody");
   if(!S.lots.length){body.innerHTML=`<tr class="empty"><td colspan="7">The hold lies empty and echoing. Not a crumb, not a cask.</td></tr>`;}
   else{
     const order={"Fresh Food":0,"Stores":1,"Delicacies":2,"Pantry":3,"Drink":4,"Livestock":5,"Custom":6};
-    const lots=[...S.lots].sort((a,b)=>(order[item(a.item).cat]??9)-(order[item(b.item).cat]??9)||item(a.item).name.localeCompare(item(b.item).name));
+    const lots=[...S.lots].sort((a,b)=>(order[item(a.item).cat]??9)-(order[item(b.item).cat]??9)||item(a.item).name.localeCompare(item(b.item).name)||(a.form>b.form?1:-1));
     body.innerHTML=lots.map(l=>{
       const it=item(l.item);
       let keep;
@@ -458,10 +778,10 @@ function render(){
       else if(l.die==="turning")keep=`<span class="die turn">Turning</span>`;
       else keep=`<span class="die">${l.die}</span>`;
       const nature=[it.how,it.spoil].filter(Boolean).join(", ")||"";
-      const stowed=l.form==="cargo"?`${esc(it.cargo||"Cargo")} <span class="tag">(${fmt(it.per)} ${esc((it.single||"").toLowerCase())} each)</span>`:`Loose <span class="tag">${esc(it.single||"")}</span>`;
+      const stowed=l.form==="cargo"?`${esc(it.cargo||"Cargo")} <span class="tag">(${fmt(it.per)} ${esc(singleWord(it))} each)</span>`:`Loose <span class="tag">${esc(it.single||"")}</span>`;
       const acts=[];
       if(l.units>0)acts.push(`<button class="sm" data-a="eat" data-id="${l.id}">${it.live?"Butcher":(it.water?"Drink":"Eat")}</button>`);
-      if(l.form==="cargo"&&l.units>0&&it.per&&!it.live)acts.push(`<button class="sm" data-a="open" data-id="${l.id}">Open</button>`);
+      if(l.form==="cargo"&&it.per&&!it.live&&(l.units>0||l.spoiled>0))acts.push(`<button class="sm" data-a="open" data-id="${l.id}">Open</button>`);
       if(l.spoiled>0)acts.push(`<button class="sm" data-a="spoil" data-id="${l.id}">Spoiled...</button>`);
       acts.push(`<button class="sm" data-a="edit" data-id="${l.id}">Amend</button>`);
       return `<tr><td>${esc(it.name)}${it.cat==="Custom"?' <span class="tag">(custom)</span>':""}</td><td>${stowed}</td><td>${fmt(l.units)}</td><td class="${l.spoiled?"spoiled":""}">${fmt(l.spoiled)}</td><td>${keep}</td><td class="tag">${esc(nature)}</td><td><div class="acts">${acts.join("")}</div></td></tr>`;
@@ -474,12 +794,12 @@ function render(){
     html+=`<div class="day">Day ${groups[i].d}</div>`;
     for(const e of groups[i].es)html+=e.f?`<div class="flour">${esc(e.t)}</div>`:`<p class="${e.b?"bad":""}">${esc(e.t)}</p>`;
   }
-  document.getElementById("log").innerHTML=html||`<p class="note">The log's pages are clean and waiting for ink.</p>`;
+  $("log").innerHTML=html||`<p class="note">The log's pages are clean and waiting for ink.</p>`;
 }
 
-/* ---------------- Add panel ---------------- */
-const catSel=document.getElementById("catSel"),itemSel=document.getElementById("itemSel"),formSel=document.getElementById("formSel"),dieSel=document.getElementById("dieSel");
-function fillCats(){catSel.innerHTML=["Fresh Food","Stores","Delicacies","Pantry","Drink","Livestock","Custom"].map(c=>`<option>${c}</option>`).join("");}
+/* ---------------- Stowing panel ---------------- */
+const catSel=$("catSel"),itemSel=$("itemSel"),formSel=$("formSel"),dieSel=$("dieSel");
+function fillCats(){if(!catSel.options.length)catSel.innerHTML=["Fresh Food","Stores","Delicacies","Pantry","Drink","Livestock","Custom"].map(c=>`<option>${c}</option>`).join("");}
 function fillItems(keep){
   const c=catSel.value,was=itemSel.value;
   const list=Object.values(CAT).concat(Object.values(S.custom)).filter(i=>i.cat===c);
@@ -490,51 +810,60 @@ function fillItems(keep){
 }
 function fillItem(quiet){
   const id=itemSel.value;
-  if(id==="__new"){if(!quiet)newCustom();document.getElementById("itemNote").textContent="Write a provision of your own, for the catch of the day or a recipe's fruits.";dieSel.innerHTML="";return;}
+  if(id==="__new"){if(!quiet)newCustom();$("itemNote").textContent="Write a provision of your own, for the catch of the day or a recipe's fruits.";dieSel.innerHTML="";return;}
   const it=CAT[id]||S.custom[id];
-  if(!it){document.getElementById("itemNote").textContent="";dieSel.innerHTML="";return;}
+  if(!it){$("itemNote").textContent="";dieSel.innerHTML="";return;}
   const co=formSel.querySelector('[value="cargo"]');
   co.disabled=!it.per;if(!it.per)formSel.value="loose";
   co.textContent=it.per?`Cargo (${it.cargo} of ${fmt(it.per)})`:"Cargo";
   formSel.querySelector('[value="loose"]').textContent=`Loose (${it.single})`;
-  const opts=it.keep==="never"?[["never",it.live?"Alive":"Never spoils"]]:it.keep==="perish"?[["perish","Perishable"]]:DICE.slice(DICE.indexOf(it.keep)).map(d=>[d,d]).concat([["turning","Turning"]]);
+  const opts=it.keep==="never"?[["never",it.live?"Alive":"Never spoils"]]:it.keep==="perish"?[["perish","Perishable"]]:DICE.slice(Math.max(0,DICE.indexOf(it.keep))).map(d=>[d,d]).concat([["turning","Turning"]]);
   dieSel.innerHTML=opts.map(([v,t])=>`<option value="${v}">${t}</option>`).join("");
-  const rat=it.rat?`${fmt(it.rat)} ${it.water?"water ":""}ration${it.rat===1?"":"s"} per ${it.single.toLowerCase()}`:(it.live?`${fmt(it.meat)} rations of meat each when butchered`:"adds flavor, not food");
+  const rat=it.rat?`${fmt(it.rat)} ${it.water?"water ":""}ration${it.rat===1?"":"s"} per ${singleWord(it)}`:(it.live?`${fmt(it.meat)} rations of meat each when butchered`:"adds flavor, not food");
   const sp=it.spoil?` Spoiled, it is ${it.spoil}: DC ${SPOIL[it.spoil].dc} Constitution${SPOIL[it.spoil].dis?", or catch "+SPOIL[it.spoil].dis:", or be poisoned"}.`:"";
-  document.getElementById("itemNote").textContent=`${it.name}: ${rat}.${sp}${opts.length>1?" Bought already aging? Choose a lower Keep.":""}`;
+  $("itemNote").textContent=`${it.name}: ${rat}.${sp}${opts.length>1?" Bought already aging? Choose a lower Keep.":""}`;
 }
 catSel.onchange=()=>fillItems(false);
 itemSel.onchange=()=>fillItem(false);
-document.getElementById("addBtn").onclick=()=>{
+$("addBtn").onclick=()=>{
   const id=itemSel.value;
   if(id==="__new"){newCustom();return;}
   if(!(CAT[id]||S.custom[id]))return;
-  const q=Math.max(1,parseInt(document.getElementById("qtyIn").value)||1),form=formSel.value,die=dieSel.value;
+  const q=Math.max(1,parseInt($("qtyIn").value)||1),form=formSel.value,die=dieSel.value;
   act(()=>{addLot(id,form,q,die);});
 };
 
-/* ---------------- Dialogs (in-page, so they work even where pop-ups are blocked) ---------------- */
-const dlg=document.getElementById("dlg"),dform=document.getElementById("dlgForm");
-let onDlgOk=null;
-dform.addEventListener("submit",e=>{
-  e.preventDefault();
-  const v=e.submitter?e.submitter.value:"ok";
-  const cb=onDlgOk;onDlgOk=null;
-  const fd=new FormData(dform);
-  dlg.close();
-  if(v==="ok"&&cb)cb(fd);
-});
-dlg.addEventListener("cancel",()=>{onDlgOk=null;});
-function ask(html,onOk,okText,noCancel){
-  dform.innerHTML=html+`<div class="row" style="justify-content:flex-end;margin-top:10px">${noCancel?"":'<button value="cancel" formnovalidate>Never mind</button>'}<button class="primary" value="ok">${okText||"So be it"}</button></div>`;
-  onDlgOk=onOk;
-  if(dlg.open)dlg.close();
-  try{dlg.showModal();}catch(e){dlg.setAttribute("open","");}
-  const first=dform.querySelector("input:not([type=checkbox]),textarea,select");if(first)first.focus();
+/* ---------------- Eating, drinking and tossing, by the ration ---------------- */
+function portionDialog(lid,spoiledMode){
+  const l=lotById(lid);if(!l)return;const it=item(l.item);
+  const max=avail(l,spoiledMode);
+  const byRation=it.rat>0;
+  const maxR=byRation?max*it.rat:max;
+  const def=spoiledMode?maxR:Math.min(maxR,Math.max(1,S.crew||1));
+  const each=byRation?`Each ${esc(singleWord(it))} is ${fmt(it.rat)} ${it.water?"water ":""}ration${it.rat===1?"":"s"}; a part-eaten one is used up whole.`:"";
+  const opening=l.form==="cargo"?` Crates are opened only as needed, and the rest join the loose stores.`.replace("Crates",esc(it.cargo||"Crate")+"s"):"";
+  const sp=it.spoil&&SPOIL[it.spoil];
+  const risk=spoiledMode&&sp?`<p>Whoever eats or drinks it must make a <b>DC ${sp.dc} Constitution save</b>, or be poisoned for 24 hours${sp.dis?" and catch <b>"+sp.dis+"</b>":""}.</p>`:"";
+  const head=spoiledMode?`<h2>The Spoiled Portion</h2><p class="sub">${fmt(maxR)} spoiled ${byRation?(it.water?"water rations":"rations"):esc(singleWord(it))+"s"} of ${esc(it.name.toLowerCase())}, sour-smelling and sorry. It still counts as a ration, at a price.</p>${risk}`
+    :`<h2>${it.water?"Drawing from the Cask":"To the Galley"}</h2><p class="sub">${esc(lotName(l))}: ${fmt(maxR)} sound ${byRation?(it.water?"water rations":"rations"):esc(singleWord(it))+"s"} on hand.</p>`;
+  ask(`${head}<div class="grid"><label>${byRation?(it.water?"Water rations":"Rations"):esc(it.single)+"s"}</label><input type="number" name="n" min="${byRation?Math.min(it.rat,1):1}" step="${byRation?it.rat<1?it.rat:1:1}" max="${maxR}" value="${def}">${spoiledMode?`<label>Fate</label><select name="how"><option value="toss">Cast overboard</option><option value="eat">${it.water?"Drink":"Eat"} it anyway</option></select>`:""}</div><p class="note">${each}${opening}</p>`,fd=>{
+    const amt=Math.max(0,parseFloat(fd.get("n"))||0);if(!amt)return;
+    const how=spoiledMode?fd.get("how"):"eat";
+    act(()=>{
+      const l=lotById(lid);if(!l)return false;
+      const have=avail(l,spoiledMode);if(have<=0)return false;
+      const n=Math.min(have,byRation?Math.ceil(amt/it.rat-1e-9):Math.ceil(amt));
+      const opened=take(l,n,spoiledMode);
+      const open=opened?`Pried open ${pl(opened,(it.cargo||"crate").toLowerCase())}. `:"";
+      const ration=it.rat?` (${fmt(n*it.rat)} ${it.water?"water ":""}rations)`:"";
+      if(spoiledMode&&how==="toss")logLine(`${open}${pl(n,singleWord(it))} of spoiled ${it.name.toLowerCase()} given to the sea and the grateful fish.`);
+      else if(spoiledMode)logLine(`${open}${pl(n,singleWord(it))} of spoiled ${it.name.toLowerCase()} ${it.water?"drunk":"eaten"} by brave or desperate souls${ration}. ${sp?`Each must save: DC ${sp.dc} Con${sp.dis?", or "+sp.dis:", or poisoned"}.`:""}`,true);
+      else logLine(`${open}${pl(n,singleWord(it))} of ${it.name.toLowerCase()} ${it.water?"drunk":"eaten"}${ration}.`);
+    });
+  },spoiledMode?"Done":(it.water?"Drink":"Eat"));
 }
-function confirmBox(title,text,yes,onYes){ask(`<h2>${esc(title)}</h2><p class="sub">${esc(text)}</p>`,()=>onYes(),yes);}
 
-document.getElementById("holdBody").onclick=e=>{
+$("holdBody").onclick=e=>{
   const b=e.target.closest("button");if(!b)return;
   const lid=+b.dataset.id;const l=lotById(lid);if(!l)return;const it=item(l.item);
   const a=b.dataset.a;
@@ -543,44 +872,30 @@ document.getElementById("holdBody").onclick=e=>{
     ask(`<h2>To the Butcher's Block</h2><p class="sub">How many of the ${esc(it.name.toLowerCase())} meet their end today?</p><div class="grid"><label>Beasts</label><input type="number" name="n" min="1" max="${max}" value="1"></div><p class="note">Each yields ${fmt(it.meat)} rations of fresh, perishable meat, sound until the end of tomorrow.</p>`,fd=>{
       const want=Math.max(1,parseInt(fd.get("n"))||1);
       act(()=>{
-        const l=lotById(lid);if(!l)return false;let n;
-        if(l.form==="cargo"){let total=l.units*it.per;n=Math.min(want,total);total-=n;l.units=Math.floor(total/it.per);const rem=total%it.per;if(rem)addLot(l.item,"loose",rem,"never",true);}
-        else{n=Math.min(want,l.units);l.units-=n;}
+        const l=lotById(lid);if(!l)return false;
+        const n=Math.min(want,avail(l,false));if(n<=0)return false;
+        take(l,n,false);
         addLot(it.meatOf,"loose",n*it.meat,"perish",true);
-        logLine(`${pl(n,it.single.toLowerCase())} butchered, giving ${fmt(n*it.meat)} rations of fresh ${CAT[it.meatOf].name.toLowerCase()}.`);
+        logLine(`${pl(n,singleWord(it))} butchered, giving ${fmt(n*it.meat)} rations of fresh ${CAT[it.meatOf].name.toLowerCase()}.`);
       });
     },"Butcher");
   }
-  else if(a==="eat"){
-    ask(`<h2>${it.water?"Drawing from the Cask":"To the Galley"}</h2><p class="sub">${esc(lotName(l))}: ${fmt(l.units)} sound ${esc(unitWord(l))}${l.units===1?"":"s"} remain.</p><div class="grid"><label>Take</label><input type="number" name="n" min="1" max="${l.units}" value="${Math.min(l.units,Math.max(1,S.crew||1))}"></div>`,fd=>{
-      const want=Math.max(1,parseInt(fd.get("n"))||1);
-      act(()=>{
-        const l=lotById(lid);if(!l||l.units<=0)return false;const n=Math.min(l.units,want);l.units-=n;
-        logLine(`${pl(n,unitWord(l))} of ${lotName(l)} ${it.water?"drunk":"eaten"} (${fmt(rationsOf(l,n))} ${it.water?"water ":""}rations).`);
-      });
-    },it.water?"Drink":"Eat");
-  }
+  else if(a==="eat")portionDialog(lid,false);
+  else if(a==="spoil")portionDialog(lid,true);
   else if(a==="open"){
-    ask(`<h2>Breaking the Seal</h2><p class="sub">Pry open ${esc(it.cargo.toLowerCase())}s of ${esc(it.name.toLowerCase())}, and their contents join the loose stores at the same Keep.</p><div class="grid"><label>${esc(it.cargo)}s to open</label><input type="number" name="n" min="1" max="${l.units}" value="1"></div>`,fd=>{
-      const want=Math.max(1,parseInt(fd.get("n"))||1);
+    const cw=esc((it.cargo||"Crate").toLowerCase());
+    ask(`<h2>Breaking the Seal</h2><p class="sub">Pry open ${cw}s of ${esc(it.name.toLowerCase())}, and their contents spill into the loose stores at the same Keep. Spoiled ${cw}s stay spoiled once opened.</p><div class="grid">${l.units>0?`<label>Sound ${cw}s</label><input type="number" name="n" min="0" max="${l.units}" value="1">`:""}${l.spoiled>0?`<label>Spoiled ${cw}s</label><input type="number" name="s" min="0" max="${l.spoiled}" value="${l.units>0?0:1}">`:""}</div>`,fd=>{
+      const wn=Math.max(0,parseInt(fd.get("n"))||0),ws=Math.max(0,parseInt(fd.get("s"))||0);
+      if(!wn&&!ws)return;
       act(()=>{
-        const l=lotById(lid);if(!l||l.units<=0)return false;const n=Math.min(l.units,want);l.units-=n;
-        const nl={id:S.seq++,item:l.item,form:"loose",units:n*it.per,spoiled:0,die:l.die};if(l.die==="perish")nl.spoilsOn=l.spoilsOn;S.lots.push(nl);
-        logLine(`Opened ${pl(n,it.cargo.toLowerCase())} of ${it.name}: ${fmt(n*it.per)} ${it.single.toLowerCase()} now lie loose.`);
+        const l=lotById(lid);if(!l)return false;
+        const n=Math.min(l.units,wn),s=Math.min(l.spoiled,ws);if(!n&&!s)return false;
+        l.units-=n;l.spoiled-=s;
+        addLot(l.item,"loose",n*it.per,l.die,true,s*it.per,l.spoilsOn);
+        const parts=[];if(n)parts.push(`${fmt(n*it.per)} sound`);if(s)parts.push(`${fmt(s*it.per)} spoiled`);
+        logLine(`Opened ${pl(n+s,(it.cargo||"crate").toLowerCase())} of ${it.name}: ${parts.join(" and ")} ${singleWord(it)}${n*it.per+s*it.per===1?"":"s"} now lie loose.`);
       });
     },"Open");
-  }
-  else if(a==="spoil"){
-    const sp=it.spoil&&SPOIL[it.spoil];
-    const risk=sp?`Whoever eats or drinks it must make a <b>DC ${sp.dc} Constitution save</b>, or be poisoned for 24 hours${sp.dis?" and catch <b>"+sp.dis+"</b>":""}.`:"";
-    ask(`<h2>The Spoiled Portion</h2><p class="sub">${fmt(l.spoiled)} spoiled ${esc(unitWord(l))}${l.spoiled===1?"":"s"} of ${esc(it.name.toLowerCase())}, sour-smelling and sorry. It still counts as a ration, at a price.</p><p>${risk}</p><div class="grid"><label>How many</label><input type="number" name="n" min="1" max="${l.spoiled}" value="${l.spoiled}"><label>Fate</label><select name="how"><option value="toss">Cast overboard</option><option value="eat">${it.water?"Drink":"Eat"} it anyway</option></select></div>`,fd=>{
-      const want=Math.max(1,parseInt(fd.get("n"))||1),how=fd.get("how");
-      act(()=>{
-        const l=lotById(lid);if(!l||l.spoiled<=0)return false;const n=Math.min(l.spoiled,want);l.spoiled-=n;
-        if(how==="toss")logLine(`${pl(n,unitWord(l))} of spoiled ${it.name.toLowerCase()} given to the sea and the grateful fish.`);
-        else logLine(`${pl(n,unitWord(l))} of spoiled ${it.name.toLowerCase()} ${it.water?"drunk":"eaten"} by brave or desperate souls (${fmt(rationsOf(l,n))} rations). ${sp?`Each must save: DC ${sp.dc} Con${sp.dis?", or "+sp.dis:", or poisoned"}.`:""}`,true);
-      });
-    },"Done");
   }
   else if(a==="edit"){
     const keepOpts=(it.keep==="never"?["never"]:it.keep==="perish"?["perish"]:DICE.concat(["turning"])).map(d=>`<option value="${d}" ${d===l.die?"selected":""}>${d==="never"?(it.live?"Alive":"Never spoils"):d==="perish"?"Perishable":d==="turning"?"Turning":d}</option>`).join("");
@@ -618,84 +933,84 @@ function newCustom(){
   },"Add to the Catalog");
 }
 
-/* ---------------- Sharing by bottle ---------------- */
+/* ---------------- Bottles, the log, and emptying ---------------- */
 function encode(){return btoa(unescape(encodeURIComponent(JSON.stringify(S))));}
 function decode(t){return JSON.parse(decodeURIComponent(escape(atob(t.trim().replace(/^.*#hold=/,"")))));}
-document.getElementById("shareBtn").onclick=()=>{
+$("shareBtn").onclick=()=>{
   const code=encode();
   const link=location.href.split("#")[0]+"#hold="+code;
-  ask(`<h2>A Message in a Bottle</h2><p class="sub">Cork the state of the hold into this bottle and cast it to your shipmates, or keep it safe as a record. Whoever opens it beholds the larder just as you left it.</p><p><b>The link</b> opens the larder with this hold already loaded:</p><textarea readonly>${esc(link)}</textarea><p><b>Or the code alone</b>, for pasting into "Receive a Bottle":</p><textarea readonly>${esc(code)}</textarea>`,()=>{},"Close",true);
+  ask(`<h2>A Message in a Bottle</h2><p class="sub">Cork the state of the hold into this bottle and keep it safe, or cast it to a shipmate. Whoever opens it beholds the larder just as you left it.</p><p><b>The link</b> opens this ship with the hold already loaded:</p><textarea readonly>${esc(link)}</textarea><p><b>Or the code alone</b>, for pasting into "Receive a Bottle":</p><textarea readonly>${esc(code)}</textarea>`,()=>{},"Close",true);
   dform.querySelectorAll("textarea").forEach(t=>t.addEventListener("focus",()=>t.select()));
   try{navigator.clipboard.writeText(link).then(()=>toast("The link is copied, corked and ready."),()=>{});}catch(e){}
 };
-document.getElementById("loadBtn").onclick=()=>{
-  ask(`<h2>Receive a Bottle</h2><p class="sub">Paste the code or the whole link a shipmate sent. It will replace the hold you see now${REMOTE?", for everyone aboard":""}. Undo can bring the old one back.</p><textarea name="code"></textarea>`,fd=>{
+function uncork(n){backup("Before a bottle was uncorked").then(()=>act(()=>{const keepDawn=S.lastDawn;S=n;if(keepDawn)S.lastDawn=keepDawn;},()=>toast("The bottle is opened; the hold is restored.")));}
+$("loadBtn").onclick=()=>{
+  ask(`<h2>Receive a Bottle</h2><p class="sub">Paste the code or the whole link from a bottle. It will replace this ship's hold${DB.local?"":" for everyone aboard"}; the hold as it is now is laid away in the Keeper's Chest first.</p><textarea name="code"></textarea>`,fd=>{
     let n;try{n=normalize(decode(String(fd.get("code")||"")));}catch(e){toast("The message is smudged beyond reading. Check the code.");return;}
-    act(()=>{S=n;},()=>toast("The bottle is opened; the hold is restored."));
+    uncork(n);
   },"Uncork");
 };
-document.getElementById("clearLogBtn").onclick=()=>confirmBox("Clear the Log","Tear every page from the Quartermaster's Log? The hold itself is untouched.","Tear them out",()=>act(()=>{S.log=[];}));
-document.getElementById("wipeBtn").onclick=()=>confirmBox("Empty the Hold","Empty the hold entirely and begin anew at day 1? Custom provisions are kept.","Empty it",()=>act(()=>{const c=S.custom;S=fresh();S.custom=c;}));
+$("clearLogBtn").onclick=()=>confirmBox("Clear the Log","Tear every page from the Quartermaster's Log? The hold itself is untouched.","Tear them out",()=>act(()=>{S.log=[];}));
+$("wipeBtn").onclick=()=>confirmBox("Empty the Hold","Empty the hold entirely and begin anew at day 1? Custom provisions are kept, and the hold as it is now is laid away in the Keeper's Chest.","Empty it",()=>backup("Before the hold was emptied").then(()=>act(()=>{const c=S.custom;S=fresh();S.custom=c;})));
 
-/* ---------------- Wiring ---------------- */
-document.getElementById("dawnBtn").onclick=dawn;
-document.getElementById("dmgBtn").onclick=damage;
-document.getElementById("undoBtn").onclick=undo;
-document.getElementById("dayIn").onchange=e=>{const v=Math.max(1,parseInt(e.target.value)||1);act(()=>{S.day=v;});};
-document.getElementById("crewIn").onchange=e=>{const v=Math.max(0,parseInt(e.target.value)||0);act(()=>{S.crew=v;});};
-document.getElementById("sharedIn").onchange=e=>{const v=e.target.checked;act(()=>{S.shared=v;});};
-let tt;function toast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("on"),2600);}
-function setStatus(text,cls){const s=document.getElementById("status");s.textContent=text;s.className="status"+(cls?" "+cls:"");}
-
-/* ---------------- The live ledger ---------------- */
-async function connectRemote(){
-  if(!FIREBASE_CONFIG.apiKey||!FIREBASE_CONFIG.databaseURL)return false;
-  setStatus("Reaching the ledger...");
-  try{
-    const V="10.12.2";
-    const app=await import(`https://www.gstatic.com/firebasejs/${V}/firebase-app.js`);
-    const db=await import(`https://www.gstatic.com/firebasejs/${V}/firebase-database.js`);
-    const fb=app.initializeApp(FIREBASE_CONFIG);
-    const database=db.getDatabase(fb);
-    const ref=db.ref(database,"holds/"+SHIP);
-    let first=true;
-    await new Promise((res,rej)=>{
-      db.onValue(ref,snap=>{
-        const v=snap.val();
-        if(first){
-          first=false;
-          REMOTE={ref,runTransaction:db.runTransaction,set:db.set};
-          // First voyage on the live ledger: carry this device's hold aboard.
-          if(v===null&&S.lots.length){db.set(ref,clean(S));}
-          else{S=normalize(v);saveLocal();render();}
-          res();return;
-        }
-        S=normalize(v);saveLocal();render();
-      },err=>{if(first){first=false;rej(err);}else setStatus("The ledger is out of reach","off");});
-    });
-    db.onValue(db.ref(database,".info/connected"),s=>{
-      if(s.val())setStatus("Shared ledger: "+SHIP,"live");
-      else setStatus("Ledger out of reach, retrying","off");
-    });
-    return true;
-  }catch(e){
-    console.error(e);REMOTE=null;
-    setStatus("Ledger unreachable, kept on this device","off");
-    return false;
-  }
+/* ---------------- The Keeper's Chest of saved holds ---------------- */
+let CHEST={};
+function loadChest(){
+  if(!SHIPID)return;
+  $("chestList").innerHTML=`<p class="note">Lifting the lid...</p>`;
+  DB.get("backups/"+SHIPID).then(v=>{
+    CHEST=v||{};const ks=Object.keys(CHEST).sort((a,b)=>b-a);
+    $("chestList").innerHTML=ks.length?`<p class="note">${ks.length} saved hold${ks.length===1?"":"s"}.</p><table><tbody>${ks.slice(0,60).map(k=>{const b=CHEST[k];const h=normalize(b.hold);return `<tr><td>${esc(when(b.at))}<div class="tag">${esc(b.reason||"")}, day ${b.day}, ${h.lots.length} lot${h.lots.length===1?"":"s"}</div></td><td style="text-align:right"><button class="sm" data-restore="${k}">Restore</button></td></tr>`;}).join("")}</tbody></table>`
+      :`<p class="note">Nothing has been laid away for this ship yet.</p>`;
+  }).catch(()=>{$("chestList").innerHTML=`<p class="note">The chest would not open.</p>`;});
 }
+$("chestBtn").onclick=()=>{if(!KEEPER){snark("chest");return;}loadChest();};
+$("chestList").onclick=e=>{
+  const b=e.target.closest("button");if(!b||!b.dataset.restore)return;
+  const k=b.dataset.restore,bk=CHEST[k];if(!bk)return;
+  confirmBox("Restore a Saved Hold","Return this ship's hold to how it stood on "+when(bk.at)+" (day "+bk.day+")? The hold as it is now is laid away first, so this too can be undone.","Restore it",()=>backup("Before restoring a saved hold").then(()=>act(()=>{S=normalize(bk.hold);},()=>{toast("The hold is restored.");loadChest();})));
+};
+$("pruneBtn").onclick=()=>!KEEPER?snark("chest"):confirmBox("Thin the Chest","Keep only the newest 30 saved holds of this ship, and let the older ones go?","Thin it",async()=>{
+  try{const v=(await DB.get("backups/"+SHIPID))||{};const ks=Object.keys(v).sort((a,b)=>b-a).slice(30);if(!ks.length){toast("There are 30 or fewer already.");return;}const up={};ks.forEach(k=>up[`backups/${SHIPID}/${k}`]=null);await DB.update(up);toast(ks.length+" old copies let go.");loadChest();}
+  catch(e){toast("Only the Keeper may do this.");}
+});
+
+/* ---------------- Wiring and routing ---------------- */
+$("dawnBtn").onclick=dawn;
+$("dmgBtn").onclick=damage;
+$("undoBtn").onclick=undo;
+$("harborBtn").onclick=()=>go(null);
+$("dayIn").onchange=e=>{const v=Math.max(1,parseInt(e.target.value)||1);act(()=>{S.day=v;});};
+$("crewIn").onchange=e=>{const v=Math.max(0,parseInt(e.target.value)||0);act(()=>{S.crew=v;});};
+$("sharedIn").onchange=e=>{const v=e.target.checked;act(()=>{S.shared=v;});};
+
+const shipParam=()=>{try{const v=new URLSearchParams(location.search).get("ship");return v?shipSlug(v):null;}catch(e){return null;}};
+function go(id){
+  try{const u=new URL(location.href);u.hash="";if(id)u.searchParams.set("ship",id);else u.searchParams.delete("ship");history.pushState(null,"",u.toString());}catch(e){}
+  route();
+}
+function route(){const id=shipParam();if(id){if(id!==SHIPID)showHold(id);}else showHarbor();}
+window.addEventListener("popstate",route);
 
 /* ---------------- Setting sail ---------------- */
-loadLocal();
-let bottle=null;
-if(location.hash.startsWith("#hold=")){
-  try{bottle=normalize(decode(location.hash));}catch(e){}
-  try{history.replaceState(null,"",location.href.split("#")[0]);}catch(e){}
-}
-fillCats();fillItems(false);render();
-connectRemote().then(()=>{
-  if(bottle)confirmBox("A Message in a Bottle","A bottle has washed ashore with a shipmate's hold corked inside. Open it, replacing the hold"+(REMOTE?" everyone aboard sees":" you have here")+"?","Uncork it",()=>act(()=>{S=bottle;}));
-});
+(async()=>{
+  let bottle=null;
+  if(location.hash.startsWith("#hold=")){
+    try{bottle=normalize(decode(location.hash));}catch(e){}
+    try{history.replaceState(null,"",location.href.split("#")[0]);}catch(e){}
+  }
+  if(FIREBASE_CONFIG.apiKey)setStatus("Reaching the ledger...");
+  const live=await connectFirebase();
+  if(live){
+    DB.connected(ok=>setStatus(ok?"Shared ledger":"Ledger out of reach, retrying",ok?"live":"off"));
+    if(AUTH)AUTH.onChange(checkKeeper);
+  }else{
+    setStatus(FIREBASE_CONFIG.apiKey?"Ledger unreachable, kept on this device":"Kept on this device",FIREBASE_CONFIG.apiKey?"off":"");
+    KEEPER=true;
+  }
+  route();
+  if(bottle&&SHIPID)setTimeout(()=>confirmBox("A Message in a Bottle","A bottle has washed ashore with a hold corked inside. Open it, replacing the hold of "+shipName(SHIPID)+"? The hold as it is now is laid away first.","Uncork it",()=>uncork(bottle)),500);
+})();
 </script>
 </body>
 </html>

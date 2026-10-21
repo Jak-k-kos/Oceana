@@ -8,9 +8,9 @@ Below the creaking deck, past the ladder worn smooth by a hundred hurried hands,
 
 This is the quartermaster's ledger for that quiet war. It knows every provision sold in [[Shops, Shells And Survival/The Bazaar/Provisions|Provisions]], its Keep Die and its nature, and it follows the rules of [[House Rules#Spoilage|Spoilage]] to the letter.
 
-<iframe src="https://jak-k-kos.github.io/Oceana/static/larder.html?ship=santa-curla" width="100%" height="1400" style="border:none;border-radius:10px;" title="The Ship's Larder"></iframe>
+<iframe src="https://jak-k-kos.github.io/Oceana/static/larder.html" width="100%" height="1400" style="border:none;border-radius:10px;" title="The Ship's Larder"></iframe>
 
-If the ledger will not open here, it waits for you on [its own page](https://jak-k-kos.github.io/Oceana/static/larder.html?ship=santa-curla).
+If the ledger will not open here, it waits for you on [its own page](https://jak-k-kos.github.io/Oceana/static/larder.html).
 
 # How the Ledger Is Kept
 
@@ -20,7 +20,7 @@ If the ledger will not open here, it waits for you on [its own page](https://jak
 
 **When the hold is struck.** If the hold floods or the ship is badly wounded, press *The Hold Is Struck*, and every lot steps down a die together.
 
-**Eating, drinking and opening.** *Eat* or *Drink* draws rations from a lot. *Open* pries the lid from a cargo unit and spills its contents into the loose stores at the same Keep. *Butcher* turns living beasts into fresh, perishable meat.
+**Eating, drinking and opening.** *Eat* or *Drink* draws rations from a lot, measured by the ration. If the stores are still sealed in cargo, the quartermaster pries open only as many barrels or crates as the meal requires, and whatever is left joins the loose stores. *Open* breaks the seal on cargo by hand, sound or spoiled alike. *Butcher* turns living beasts into fresh, perishable meat.
 
 **The spoiled portion.** Spoiled food is not gone, only ruined. Cast it overboard, or eat it anyway, and the ledger will remind you of the saving throw and the sickness that waits within.
 
@@ -30,10 +30,18 @@ If the ledger will not open here, it waits for you on [its own page](https://jak
 
 **Mistakes and mercies, shared.** When the whole crew keeps one ledger, *Undo* returns the hold to just before your own last deed, and so it may also sweep away whatever a shipmate did in the moments between.
 
-# Sharing the Hold Among the Crew
+# The Harbor Register
 
-There is but one hold aboard [[Characters/Owned Ships/The Santa Curla|The Santa Curla]], and so there is but one ledger. Whoever opens this page, on whatever device, at whatever hour, looks upon the very same barrels and the very same crates. When one shipmate eats, the others see the ration gone; when the quartermaster greets the dawn, every page turns together. A small light in the ledger's corner tells whether it is bound to the shared hold or, should the winds of the world fail, kept only on the device in your hands.
+The ledger opens upon the Harbor Register, where every vessel is written with a hold of her own. Choose a ship and go aboard, or christen a new one with nothing but a name. A ship built only for testing is as welcome here as the proudest galleon.
+
+There is but one hold to each ship, and so there is but one ledger. Whoever opens a ship, on whatever device, at whatever hour, looks upon the very same barrels and the very same crates. When one shipmate eats, the others see the ration gone; when the quartermaster greets the dawn, every page turns together. A small light in the ledger's corner tells whether it is bound to the shared ledger or, should the winds of the world fail, kept only on the device in your hands.
 
 Dawn is best greeted by one hand alone. Should two shipmates press it within moments of each other, the ledger will pause and ask whether a second day has truly passed.
 
-A *Message in a Bottle* still serves as a keepsake: cork the hold at the close of a session, and it can be uncorked again should ever the ledger need mending.
+# The Keeper of the Register
+
+Only the Keeper may send a ship to the bottom. The Keeper makes themself known through *DM's Access* at the top of the Harbor, speaking a password that the ledger itself guards, and remains known on that device until they choose to leave. Even then she is not lost at once, for scuttled ships rest in the Keeper's Chest, hold and all, until they are raised again or given to the deep forever.
+
+The sea is careless, and so are crews. Before every dawn, every emptying of the hold and every uncorked bottle, the ledger quietly lays a copy of the hold away. Aboard any ship, the Keeper may open the chest and return the hold to how it stood on any of those days.
+
+A *Message in a Bottle* still serves as a keepsake of your own: cork the hold at the close of a session, and it can be uncorked again should ever the ledger need mending.
