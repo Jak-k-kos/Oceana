@@ -65,7 +65,7 @@
             "offset": 0
           },
           {
-            "name": "Falris",
+            "name": "Calra",
             "type": "month",
             "length": 25,
             "id": "ID_2a69692aeb0b",
@@ -151,7 +151,7 @@
             "date": {
               "year": 257,
               "month": 3,
-              "day": 8
+              "day": 25
             },
             "type": "era",
             "category": null
@@ -165,9 +165,9 @@
             "description": "",
             "format": "{{era_name}} {{era_year}} {{year}}",
             "date": {
-              "year": 2574,
-              "month": 2,
-              "day": 12
+              "year": 2575,
+              "month": 0,
+              "day": 1
             },
             "type": "era",
             "category": ""

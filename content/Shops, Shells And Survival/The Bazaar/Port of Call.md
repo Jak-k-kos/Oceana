@@ -60,17 +60,17 @@ Lotus wine and aged reserve wine give their effects as described under [[Provisi
 
 
 # Lodging
-| Lodging (per night) | Price |
-| --- | --- |
-| Common room floor | 2 SH |
-| Hammock in a shared room | 5 SH |
-| Shared room with a bed | 10 SH |
-| Private room | 20 SH |
-| Good room | 40 SH |
-| Wealthy suite | 100 SH |
-| Aristocratic quarters | 300 SH |
-| Hot bath | 3 SH |
-| Laundry | 1 SH |
+| Lodging (per night)      | Price  | Effects |
+| ------------------------ | ------ | ------- |
+| Common room floor        | 2 SH   |         |
+| Hammock in a shared room | 5 SH   |         |
+| Shared room with a bed   | 10 SH  |         |
+| Private room             | 20 SH  |         |
+| Good room                | 40 SH  |         |
+| Wealthy suite            | 100 SH |         |
+| Aristocratic quarters    | 300 SH |         |
+| Hot bath                 | 3 SH   |         |
+| Laundry                  | 1 SH   |         |
 
 # Harbor
 Docking includes the harbor's night watch. While a ship is docked, the harbor is responsible for it.

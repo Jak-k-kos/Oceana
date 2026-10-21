@@ -110,9 +110,9 @@ Lost units are spoiled, not gone. They can be thrown overboard, or eaten and dru
 - **Perishable:** Has no Keep Die. Spoils at the end of the next day.
 
 ## What It Does When Spoiled
-- **Stagnant:** DC 13 Constitution save, or catch Bilge Flux.
-- **Rancid:** DC 12 Constitution save, or catch Rot Gut.
-- **Fishy:** DC 14 Constitution save, or catch Fish Fever.
+- **Stagnant:** DC 13 Constitution save, or catch [[#Bilge Flux]].
+- **Rancid:** DC 12 Constitution save, or catch [[#Rot Gut]].
+- **Fishy:** DC 14 Constitution save, or catch [[#Fish Fever]].
 - **Sour:** DC 10 Constitution save, or be poisoned. No disease.
 
 ## Optional Rule: Shared Dice

@@ -34,6 +34,9 @@ Of late, sailors across the islands have noticed that [[Welestia|Welestia's]] st
 
 Ships that sail into the Widow's Wrath are rarely seen again. Those few that do find their way back out tell of endless storms or endless stillness, and of drifting wrecks glimpsed on the horizon, ships that sailed in long ago and never sailed out. No one has ever crossed it, and no one has ever learned what lies at its heart.
 
+## Voices in the Water
+Sailors who have skirted the Wrath tell of shapes in the waves: pale figures watching from the swells, and singing on nights when the sea lies dead and still. Some swear the sea folk live inside the Wrath itself. No one who has gone looking has come back to say for certain.
+
 %%
 ## Rayskaya
 

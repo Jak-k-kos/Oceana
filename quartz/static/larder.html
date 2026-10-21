@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Ship's Larder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Crimson+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --bg:#f3e9d2; --card:#fbf5e6; --ink:#2f2416; --muted:#7a6648; --line:#d8c7a2;
+  --accent:#1f5a6b; --accent-ink:#fbf5e6; --warn:#9a3b1f; --gold:#a7781f; --good:#3f6b2f;
+  --shadow:0 1px 0 rgba(0,0,0,.04),0 6px 18px rgba(60,40,10,.10);
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#161618; --card:#1f1d1b; --ink:#efe3c8; --muted:#a8946f; --line:#3d3326;
+  --accent:#5fa7b8; --accent-ink:#161618; --warn:#e07a55; --gold:#d9a94a; --good:#8fbf72;
+  --shadow:0 6px 18px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{margin:0;color:var(--ink);font:17px/1.45 "Crimson Pro",Georgia,serif}
+.wrap{max-width:1100px;margin:0 auto;padding:18px 16px 40px}
+h1,h2,h3{font-family:"IM Fell English SC","IM Fell English",Georgia,serif;font-weight:400;margin:0}
+h1{font-size:2.1rem;letter-spacing:.02em}
+h2{font-size:1.35rem;margin-bottom:8px}
+.sub{font-family:"IM Fell English",Georgia,serif;font-style:italic;color:var(--muted);margin:2px 0 14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;box-shadow:var(--shadow);margin-bottom:14px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.titlerow{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px}
+.status{font-size:.9rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:2px 10px;white-space:nowrap}
+.status.live{color:var(--good);border-color:var(--good)}
+.status.off{color:var(--warn);border-color:var(--warn)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.stat{border:1px dashed var(--line);border-radius:8px;padding:8px 10px}
+.stat b{display:block;font-size:1.45rem;font-family:"IM Fell English",serif;font-weight:400}
+.stat span{color:var(--muted);font-size:.9rem}
+button,select,input{font:inherit;color:var(--ink)}
+button{background:transparent;border:1px solid var(--line);border-radius:7px;padding:5px 11px;cursor:pointer}
+button:hover{border-color:var(--accent);color:var(--accent)}
+button.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-family:"IM Fell English SC",serif;font-size:1.15rem;padding:7px 18px}
+button.primary:hover{filter:brightness(1.08);color:var(--accent-ink)}
+button.danger{color:var(--warn)} button.danger:hover{border-color:var(--warn)}
+button.sm{padding:2px 8px;font-size:.88rem}
+select,input[type=number],input[type=text],textarea{background:var(--bg);border:1px solid var(--line);border-radius:7px;padding:5px 8px;max-width:100%}
+input[type=number]{width:90px}
+label.inline{display:flex;gap:6px;align-items:center;color:var(--muted)}
+.tablewrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.97rem}
+th{font-family:"IM Fell English SC",serif;font-weight:400;text-align:left;color:var(--muted);border-bottom:1px solid var(--line);padding:6px}
+td{border-bottom:1px solid var(--line);padding:6px;vertical-align:middle}
+tr.empty td{color:var(--muted);font-style:italic;text-align:center;padding:18px}
+.die{display:inline-block;min-width:44px;text-align:center;border:1px solid var(--gold);color:var(--gold);border-radius:999px;padding:0 8px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.die.turn{border-color:var(--warn);color:var(--warn)}
+.die.never{border-color:var(--good);color:var(--good)}
+.die.perish{border-color:var(--warn);color:var(--warn);border-style:dashed}
+.spoiled{color:var(--warn)}
+.tag{color:var(--muted);font-size:.88rem}
+.acts{display:flex;flex-wrap:wrap;gap:4px}
+.log{max-height:360px;overflow:auto;font-size:.95rem}
+.log .day{font-family:"IM Fell English SC",serif;margin:10px 0 2px;color:var(--accent)}
+.log .flour{font-family:"IM Fell English",serif;font-style:italic;color:var(--muted);margin-bottom:4px}
+.log p{margin:2px 0 2px 10px}
+.log p.bad{color:var(--warn)}
+dialog{border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);max-width:min(520px,94vw);box-shadow:var(--shadow)}
+dialog::backdrop{background:rgba(20,12,4,.45)}
+dialog .grid{display:grid;grid-template-columns:auto 1fr;gap:8px 12px;align-items:center;margin:12px 0}
+textarea{width:100%;min-height:110px;font:13px/1.3 monospace}
+.note{color:var(--muted);font-size:.9rem;font-style:italic}
+.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 16px;border-radius:999px;opacity:0;transition:opacity .3s;pointer-events:none;max-width:90vw}
+.toast.on{opacity:.95}
+@media (max-width:640px){h1{font-size:1.6rem} td,th{padding:5px 4px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="titlerow">
+    <h1>The Ship's Larder</h1>
+    <span class="status" id="status">Kept on this device</span>
+  </div>
+  <p class="sub">Wherein every barrel, crate and humble loaf is counted, and the slow, patient hunger of the sea is reckoned each morning.</p>
+
+  <div class="card">
+    <div class="row" style="justify-content:space-between">
+      <div class="row">
+        <button class="primary" id="dawnBtn" title="Roll every lot's Keep Die and advance the day">Dawn Breaks</button>
+        <button class="danger" id="dmgBtn" title="Hold flooded or ship badly damaged: every lot steps down one die">The Hold Is Struck</button>
+        <button id="undoBtn" title="Undo the last change you made">Undo</button>
+      </div>
+      <div class="row">
+        <label class="inline">Day of the voyage <input type="number" id="dayIn" min="1"></label>
+        <label class="inline">Mouths aboard <input type="number" id="crewIn" min="0"></label>
+        <label class="inline" title="Optional rule: one roll per Keep Die size, shared by every lot on that die"><input type="checkbox" id="sharedIn"> Shared dice</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="stats" id="stats"></div>
+  </div>
+
+  <div class="card">
+    <h2>Stow New Provisions</h2>
+    <div class="row">
+      <select id="catSel"></select>
+      <select id="itemSel" style="min-width:220px"></select>
+      <select id="formSel"><option value="loose">Loose</option><option value="cargo">Cargo</option></select>
+      <label class="inline">Quantity <input type="number" id="qtyIn" min="1" value="1"></label>
+      <label class="inline">Keep <select id="dieSel"></select></label>
+      <button id="addBtn">Stow It Below</button>
+    </div>
+    <p class="note" id="itemNote"></p>
+  </div>
+
+  <div class="card">
+    <h2>The Hold</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Provision</th><th>Stowed</th><th>Sound</th><th>Spoiled</th><th>Keep</th><th>Nature</th><th></th></tr></thead>
+        <tbody id="holdBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="row" style="justify-content:space-between">
+      <h2>The Quartermaster's Log</h2>
+      <div class="row">
+        <button class="sm" id="shareBtn">Send a Message in a Bottle</button>
+        <button class="sm" id="loadBtn">Receive a Bottle</button>
+        <button class="sm danger" id="clearLogBtn">Clear Log</button>
+        <button class="sm danger" id="wipeBtn">Empty the Hold</button>
+      </div>
+    </div>
+    <div class="log" id="log"></div>
+  </div>
+</div>
+
+<dialog id="dlg"><form method="dialog" id="dlgForm"></form></dialog>
+<div class="toast" id="toast"></div>
+
+<script>
+/* =====================================================================
+   THE LIVE LEDGER (optional)
+   Paste your Firebase web config here to share one hold across every
+   device. Leave apiKey empty and the larder simply keeps its hold on
+   whatever device it is opened on.
+   ===================================================================== */
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyB4HT_DyuZdUkYlXXGJA3OXxOTcSC161PA",
+  authDomain: "oceana-ad350.firebaseapp.com",
+  databaseURL: "https://oceana-ad350-default-rtdb.firebaseio.com",
+  projectId: "oceana-ad350",
+  appId: "1:985719043072:web:4911dae8ca70a8978314e5"
+};
+/* Which ship's hold to open. The page address can choose one with
+   ?ship=name (for example ?ship=santa-curla); otherwise this is used. */
+const DEFAULT_SHIP = "santa-curla";
+
+/* ---------------- Theme: follow the Quartz site's light/dark toggle ---------------- */
+(function(){
+  const root=document.documentElement;
+  function parentTheme(){try{if(window.parent!==window)return window.parent.document.documentElement.getAttribute("saved-theme");}catch(e){}return null;}
+  function siteTheme(){try{return localStorage.getItem("theme");}catch(e){return null;}}
+  function apply(){
+    const t=parentTheme()||siteTheme()||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+    root.setAttribute("data-theme",t==="dark"?"dark":"light");
+  }
+  apply();
+  try{if(window.parent!==window)new MutationObserver(apply).observe(window.parent.document.documentElement,{attributes:true,attributeFilter:["saved-theme"]});}catch(e){}
+  try{matchMedia("(prefers-color-scheme: dark)").addEventListener("change",apply);}catch(e){}
+  window.addEventListener("storage",e=>{if(e.key==="theme")apply();});
+})();
+
+
+/* ---------------- The catalog, drawn from the Bazaar's Provisions ----------------
+   row: [name, category, single, rations per single, isWater, cargo label, singles per cargo unit, keep, how, spoilsAs] */
+const RAW = [
+ ["Fish","Fresh Food","2 lb",1,0,"Crate",150,"perish","Perishable","Fishy"],
+ ["Shellfish","Fresh Food","2 dozen",1,0,"Crate",150,"perish","Perishable","Fishy"],
+ ["Chicken","Fresh Food","2 lb",1,0,"Crate",150,"perish","Perishable","Fishy"],
+ ["Pork","Fresh Food","2 lb",1,0,"Crate",150,"perish","Perishable","Fishy"],
+ ["Goat","Fresh Food","2 lb",1,0,"Crate",150,"perish","Perishable","Fishy"],
+ ["Mutton","Fresh Food","2 lb",1,0,"Crate",150,"perish","Perishable","Fishy"],
+ ["Beef","Fresh Food","2 lb",1,0,"Crate",150,"perish","Perishable","Fishy"],
+ ["Sea turtle","Fresh Food","2 lb",1,0,"Crate",150,"perish","Perishable","Fishy"],
+ ["Eggs","Fresh Food","Dozen",1,0,"Crate",100,"d8","Delicate","Rancid"],
+ ["Vegetables","Fresh Food","3 lb",1,0,"Crate",100,"d6","Delicate","Rancid"],
+ ["Fruit","Fresh Food","Piece",1/8,0,"Crate",800,"d4","Delicate","Rancid"],
+ ["Apple","Fresh Food","Apple",1/8,0,"Crate",800,"d10","Hardy","Rancid"],
+ ["Citrus","Fresh Food","Fruit",1/8,0,"Crate",800,"d10","Hardy","Rancid"],
+ ["Plantain","Fresh Food","Plantain",1/4,0,"Crate",400,"d6","Delicate","Rancid"],
+ ["Bread","Fresh Food","Loaf",1/2,0,"Crate",200,"d4","Delicate","Rancid"],
+ ["Seaweed bread","Fresh Food","Loaf",1/2,0,"Crate",200,"d4","Delicate","Rancid"],
+ ["Fresh cheese","Fresh Food","1 lb",1,0,"Crate",300,"d8","Delicate","Rancid"],
+ ["Sea fennel","Fresh Food","Bundle",1/4,0,"Bale",600,"d4","Delicate","Rancid"],
+ ["Firecap peppers","Fresh Food","Handful",0,0,"Bale",1000,"d10","Hardy","Rancid"],
+ ["Ship's biscuit","Stores","Ration",1,0,"Barrel",150,"d20","Preserved","Rancid"],
+ ["Dried beans, lentils or chickpeas","Stores","2 lb",1,0,"Barrel",150,"d20","Preserved","Rancid"],
+ ["Rice","Stores","2 lb",1,0,"Barrel",150,"d20","Preserved","Rancid"],
+ ["Wheat or barley","Stores","2 lb",1,0,"Barrel",150,"d20","Preserved","Rancid"],
+ ["Flour","Stores","2 lb",1,0,"Barrel",150,"d20","Preserved","Rancid"],
+ ["Salted beef","Stores","Ration",1,0,"Barrel",150,"d20","Preserved","Fishy"],
+ ["Salted ham","Stores","Ration",1,0,"Barrel",150,"d20","Preserved","Fishy"],
+ ["Smoked whale meat","Stores","Ration",1,0,"Barrel",150,"d20","Preserved","Fishy"],
+ ["Salted or smoked fish","Stores","Ration",1,0,"Barrel",150,"d20","Preserved","Fishy"],
+ ["Dried conch","Stores","Ration",1,0,"Barrel",150,"d20","Preserved","Fishy"],
+ ["Dried squid or cuttlefish","Stores","Ration",1,0,"Barrel",150,"d20","Preserved","Fishy"],
+ ["Smoked or salted shellfish","Stores","Ration",1,0,"Barrel",150,"d20","Preserved","Fishy"],
+ ["Glassleaf","Stores","Ration",1,0,"Barrel",150,"d20","Preserved","Fishy"],
+ ["Dried kelp","Stores","Bundle",1/2,0,"Bale",300,"d20","Preserved","Rancid"],
+ ["Dried figs or raisins","Delicacies","2 lb",1,0,"Crate",150,"d20","Preserved","Rancid"],
+ ["Chestnuts","Delicacies","2 lb",1,0,"Crate",150,"d12","Hardy","Rancid"],
+ ["Olives","Delicacies","Jar",1/2,0,"Crate",200,"d20","Preserved","Rancid"],
+ ["Pickles","Delicacies","Jar",1/2,0,"Crate",200,"d20","Preserved","Rancid"],
+ ["Capers","Delicacies","Jar",1/2,0,"Crate",200,"d20","Preserved","Rancid"],
+ ["Grape leaves","Delicacies","Jar",1/2,0,"Crate",200,"d20","Preserved","Rancid"],
+ ["Fruit preserves","Delicacies","Jar",1/2,0,"Crate",200,"d20","Preserved","Rancid"],
+ ["Candied peel","Delicacies","1 lb",1/2,0,"Crate",300,"d20","Preserved","Rancid"],
+ ["Cave-aged cheese","Delicacies","1 lb",1,0,"Crate",300,"d8","Delicate","Rancid"],
+ ["Wax-sealed goat cheese","Delicacies","10 lb wheel",10,0,"Crate",30,"d12","Hardy","Rancid"],
+ ["Dried mullet roe","Delicacies","1 lb slab",1,0,"Crate",300,"d20","Preserved","Fishy"],
+ ["Squid ink","Delicacies","Pot",0,0,"Crate",600,"d20","Preserved","Fishy"],
+ ["Ambergris","Delicacies","1 oz",0,0,null,null,"never",null,null],
+ ["Honey","Pantry","1 lb",1/2,0,"Cask",300,"never",null,null],
+ ["Raw sugar","Pantry","1 lb",1/2,0,"Sack",300,"never",null,null],
+ ["Molasses","Pantry","Jar",1/2,0,"Barrel",400,"d20","Preserved","Rancid"],
+ ["Olive oil","Pantry","Flask",1/2,0,"Barrel",320,"d20","Preserved","Rancid"],
+ ["Salt","Pantry","1 lb",0,0,"Sack",350,"never",null,null],
+ ["Vinegar","Pantry","Flask",0,0,"Barrel",320,"never",null,null],
+ ["Dried herbs","Pantry","Bundle",0,0,"Bale",400,"never",null,null],
+ ["Pepper","Pantry","Pinch",0,0,"Sack",3000,"never",null,null],
+ ["Saffron","Pantry","Pinch",0,0,null,null,"never",null,null],
+ ["Water","Drink","Gallon",1,1,"Barrel",40,"d10","Hardy","Stagnant"],
+ ["Hold Ale","Drink","Gallon",1,1,"Barrel",40,"d20","Preserved","Sour"],
+ ["Beer","Drink","Gallon",1,1,"Barrel",40,"d12","Hardy","Sour"],
+ ["Dark beer","Drink","Gallon",1,1,"Barrel",40,"d12","Hardy","Sour"],
+ ["Common wine","Drink","Gallon",1,1,"Barrel",40,"d20","Preserved","Sour"],
+ ["Mead","Drink","Bottle",0,1,"Crate",100,"never",null,null],
+ ["White wine","Drink","Bottle",0,1,"Crate",100,"never",null,null],
+ ["Fine red wine","Drink","Bottle",0,1,"Crate",100,"never",null,null],
+ ["Lotus wine","Drink","Bottle",0,1,"Crate",100,"never",null,null],
+ ["Aged reserve wine","Drink","Bottle",0,1,"Crate",100,"never",null,null],
+ ["Rum","Drink","Bottle",0,1,"Crate",100,"never",null,null],
+ ["Pine-needle liquor","Drink","Bottle",0,1,"Crate",100,"never",null,null],
+ ["Myrtle liqueur","Drink","Bottle",0,1,"Crate",100,"never",null,null],
+ ["Bitter-orange liqueur","Drink","Bottle",0,1,"Crate",100,"never",null,null],
+ ["Whiskey","Drink","Bottle",0,1,"Crate",100,"never",null,null],
+ ["Brandy","Drink","Bottle",0,1,"Crate",100,"never",null,null],
+ ["Coffee","Drink","Day's brew",0,1,"Sack",3000,"never",null,null],
+ ["Tea","Drink","Day's brew",0,1,"Chest",3000,"never",null,null],
+];
+/* livestock: [name, singular, rations of meat each, meat item, pen label, animals per pen] */
+const STOCK = [
+ ["Chicken","Bird",1,"Chicken","Coop",40],
+ ["Goat","Goat",20,"Goat","Herd",10],
+ ["Sheep","Sheep",25,"Mutton","Flock",10],
+ ["Pig","Pig",60,"Pork","Herd",10],
+ ["Cow","Cow",200,"Beef","Herd",10],
+];
+const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g,"-");
+const CAT = {};
+RAW.forEach(r=>{CAT[slug(r[0])]={id:slug(r[0]),name:r[0],cat:r[1],single:r[2],rat:r[3],water:!!r[4],cargo:r[5],per:r[6],keep:r[7],how:r[8],spoil:r[9]};});
+STOCK.forEach(s=>{const id="live-"+slug(s[0]);CAT[id]={id,name:s[0]+" (live)",cat:"Livestock",single:s[1],rat:0,water:false,cargo:s[4],per:s[5],keep:"never",how:null,spoil:null,live:true,meat:s[2],meatOf:slug(s[3])};});
+
+const DICE=["d20","d12","d10","d8","d6","d4"];
+const SPOIL={
+  Stagnant:{dc:13,dis:"Bilge Flux"},Rancid:{dc:12,dis:"Rot Gut"},
+  Fishy:{dc:14,dis:"Fish Fever"},Sour:{dc:10,dis:null}
+};
+const DAWNS=[
+ "Dawn spills thin gold across the deck, and below, in the dark of the hold, the quartermaster lifts the lantern to count what the night has taken.",
+ "The gulls cry the morning awake. Barrel by barrel, the hold is reckoned.",
+ "A grey and salt-heavy morning creeps over the rail; the dice rattle in the quartermaster's cupped hands.",
+ "Sunrise blooms rose-pink upon the swells, and the old ritual of the larder begins anew.",
+ "Mist clings to the rigging like a sleeping ghost, and somewhere below, the bread is quietly deciding its fate.",
+ "The bell rings the morning watch. Down the ladder goes the lantern, into the sweet and sour smell of stores.",
+];
+
+
+/* ---------------- State ---------------- */
+const SHIP=(()=>{try{const v=new URLSearchParams(location.search).get("ship");if(v)return v.toLowerCase().replace(/[^a-z0-9-]+/g,"-");}catch(e){}return DEFAULT_SHIP;})();
+const KEY="oceana-larder-v1"+(SHIP===DEFAULT_SHIP?"":"-"+SHIP);
+let S=fresh();
+let HIST=[];
+let REMOTE=null;          // set when the live ledger is connected
+let lastCustomKeys="";
+function fresh(){return {day:1,crew:6,shared:false,lots:[],custom:{},log:[],seq:1};}
+const toArr=x=>Array.isArray(x)?x:(x?Object.values(x):[]);
+function normalize(v){const s=Object.assign(fresh(),v||{});s.lots=toArr(s.lots).filter(Boolean);s.log=toArr(s.log).filter(Boolean);s.custom=s.custom||{};return s;}
+const clean=s=>JSON.parse(JSON.stringify(s));
+function item(id){return CAT[id]||S.custom[id]||{id,name:id,cat:"Custom",single:"Unit",rat:0,keep:"never"};}
+function saveLocal(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+function loadLocal(){try{const t=localStorage.getItem(KEY);if(t)S=normalize(JSON.parse(t));}catch(e){}}
+
+/* Every change to the hold goes through act(). Locally it just runs;
+   on the live ledger it runs inside a transaction, so two shipmates
+   pressing buttons at once never trample each other's work. */
+function act(fn,after){
+  const before=JSON.stringify(S);
+  if(!REMOTE){
+    if(fn()===false){S=normalize(JSON.parse(before));return;}
+    merge();HIST.push(before);if(HIST.length>30)HIST.shift();
+    saveLocal();render();if(after)after();return;
+  }
+  REMOTE.runTransaction(REMOTE.ref,cur=>{
+    S=normalize(cur);
+    if(fn()===false)return; // abort
+    merge();return clean(S);
+  }).then(res=>{
+    S=normalize(res.snapshot.val());saveLocal();render();
+    if(res.committed){HIST.push(before);if(HIST.length>30)HIST.shift();if(after)after();}
+  }).catch(e=>{toast("The ledger could not be reached. Try again in a moment.");console.error(e);});
+}
+function undo(){
+  if(!HIST.length){toast("Nothing left to unmake.");return;}
+  const prev=HIST.pop();
+  if(!REMOTE){S=normalize(JSON.parse(prev));saveLocal();render();toast("The last deed is undone.");return;}
+  REMOTE.set(REMOTE.ref,JSON.parse(prev)).then(()=>toast("The last deed is undone.")).catch(()=>toast("The ledger could not be reached."));
+}
+
+const r=n=>1+Math.floor(Math.random()*n);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt=n=>{const v=Math.round(n*100)/100;return Number.isInteger(v)?v.toLocaleString():v.toLocaleString(undefined,{maximumFractionDigits:2});};
+function pl(n,w){return fmt(n)+" "+w+(n===1?"":"s");}
+function unitWord(l){const it=item(l.item);return l.form==="cargo"?(it.cargo||"unit").toLowerCase():(it.single||"unit").toLowerCase();}
+function lotName(l){const it=item(l.item);return it.name+(l.form==="cargo"?" ("+(it.cargo||"cargo")+"s)":"");}
+function logLine(text,bad,flour){S.log.push({d:S.day,t:text,b:!!bad,f:!!flour});if(S.log.length>400)S.log=S.log.slice(-400);}
+function lotById(id){return S.lots.find(l=>l.id===+id);}
+
+function stepDown(die){const i=DICE.indexOf(die);return i<0?die:(i===DICE.length-1?"turning":DICE[i+1]);}
+function loseFrac(l,pctStep,label){
+  const roll=r(4),pct=roll*pctStep,lost=Math.min(l.units,Math.max(1,Math.ceil(l.units*pct/100)));
+  l.units-=lost;l.spoiled+=lost;
+  logLine(`${label}: rolled ${roll} on the d4, ${pct}% of what remained. ${pl(lost,unitWord(l))} of ${lotName(l)} spoil.`,true);
+}
+function lossDie(l){
+  const it=item(l.item);
+  if(it.how==="Hardy"){const v=r(6);if(v>=5)loseFrac(l,5,`Loss Die d6 shows ${v}`);else logLine(`Loss Die d6 shows ${v}; the hardy ${it.name.toLowerCase()} shrugs it off.`);}
+  else if(it.how==="Delicate"){const v=r(4);if(v>=3)loseFrac(l,5,`Loss Die d4 shows ${v}`);else logLine(`Loss Die d4 shows ${v}; the delicate ${it.name.toLowerCase()} is spared, this once.`);}
+  else logLine(`Being preserved, ${lotName(l)} loses nothing in the stepping down.`);
+}
+function doStep(l,why){
+  const from=l.die;l.die=stepDown(l.die);
+  logLine(`${lotName(l)}: ${why}; its Keep slips from ${from} to ${l.die==="turning"?"Turning":l.die}.`,l.die==="turning");
+  lossDie(l);
+}
+function merge(){
+  const out=[],map={};
+  for(const l of S.lots){
+    if(l.units<=0&&l.spoiled<=0)continue;
+    const k=[l.item,l.form,l.die,l.die==="perish"?l.spoilsOn:""].join("|");
+    if(map[k]){map[k].units+=l.units;map[k].spoiled+=l.spoiled;}
+    else{map[k]=l;out.push(l);}
+  }
+  S.lots=out;
+}
+
+/* ---------------- Dawn ---------------- */
+const DEVICE=Math.random().toString(36).slice(2,10); // one per open page
+function dawn(){
+  const ld=S.lastDawn;
+  if(REMOTE&&ld&&ld.by!==DEVICE&&Date.now()-ld.at<120000&&ld.day===S.day){
+    confirmBox("Dawn Has Already Broken","A shipmate greeted this very dawn only moments ago, and the dice have been cast for day "+S.day+". Roll yet another day?","Another day",dawnNow);
+    return;
+  }
+  dawnNow();
+}
+function dawnNow(){
+  const seen=S.day;
+  act(()=>{
+    if(S.day!==seen)return false; // a shipmate already greeted this dawn
+    S.day++;
+    S.lastDawn={at:Date.now(),by:DEVICE,day:S.day};
+    logLine(DAWNS[r(DAWNS.length)-1],false,true);
+    const shared={};let quiet=0;
+    for(const l of S.lots){
+      if(l.units<=0||l.die==="never")continue;
+      const it=item(l.item);
+      if(l.die==="perish"){
+        if(S.day>=l.spoilsOn){const n=l.units;l.spoiled+=n;l.units=0;logLine(`The ${it.name.toLowerCase()} gave up its freshness in the night. ${pl(n,unitWord(l))} spoiled.`,true);}
+        else quiet++;
+        continue;
+      }
+      if(l.die==="turning"){loseFrac(l,10,`${lotName(l)} is turning`);continue;}
+      let v;
+      if(S.shared){if(!shared[l.die])shared[l.die]=r(parseInt(l.die.slice(1)));v=shared[l.die];}
+      else v=r(parseInt(l.die.slice(1)));
+      if(v===1)doStep(l,`the ${l.die} came up 1`);else quiet++;
+    }
+    if(S.shared&&Object.keys(shared).length)logLine("Shared dice cast: "+Object.entries(shared).map(([d,v])=>d+" "+v).join(", ")+".");
+    if(quiet)logLine(`${pl(quiet,"lot")} held fast against the night, sound and sweet.`);
+  },()=>toast("Day "+S.day+" dawns."));
+}
+function damage(){
+  confirmBox("The Hold Is Struck","Has the hold flooded, or the ship been badly hurt? Every lot aboard steps down one die.","Alas, it has",()=>act(()=>{
+    logLine("Water roars through a wound in the hull, and the hold is struck!",true,true);
+    for(const l of S.lots){
+      if(l.units<=0||l.die==="never"||l.die==="perish")continue;
+      if(l.die==="turning")loseFrac(l,10,`${lotName(l)}, already turning, loses its morning's share again`);
+      else doStep(l,"seawater and ruin");
+    }
+  }));
+}
+
+/* ---------------- Stowing ---------------- */
+function addLot(id,form,qty,die,silent){
+  const it=item(id);
+  const l={id:S.seq++,item:id,form,units:qty,spoiled:0,die};
+  if(die==="perish")l.spoilsOn=S.day+2;
+  S.lots.push(l);
+  if(!silent)logLine(`Stowed ${pl(qty,form==="cargo"?(it.cargo||"unit").toLowerCase():(it.single||"unit").toLowerCase())} of ${it.name} below${die==="perish"?", fresh until the end of tomorrow":""}.`);
+  merge();
+}
+
+/* ---------------- Rendering ---------------- */
+function rationsOf(l,n){const it=item(l.item);return n*(l.form==="cargo"?(it.per||1)*it.rat:it.rat);}
+function setIfIdle(el,v){if(document.activeElement!==el)el.value=v;}
+function render(){
+  setIfIdle(document.getElementById("dayIn"),S.day);
+  setIfIdle(document.getElementById("crewIn"),S.crew);
+  document.getElementById("sharedIn").checked=!!S.shared;
+  const ck=Object.keys(S.custom).sort().join("|");
+  if(ck!==lastCustomKeys){lastCustomKeys=ck;fillItems(true);}
+  let food=0,water=0,sfood=0,swater=0,cargoUnits=0,looseTons=0,live=0;
+  for(const l of S.lots){
+    const it=item(l.item);
+    if(it.live){live+=l.form==="cargo"?l.units*it.per:l.units;continue;}
+    const g=rationsOf(l,l.units),b=rationsOf(l,l.spoiled);
+    if(it.water){water+=g;swater+=b;}else{food+=g;sfood+=b;}
+    if(l.form==="cargo")cargoUnits+=l.units+l.spoiled;
+    else if(it.per)looseTons+=Math.floor((l.units+l.spoiled)/it.per);
+  }
+  const crew=Math.max(0,S.crew|0);
+  const days=v=>crew?Math.floor(v/crew):"-";
+  const tons=(cargoUnits+looseTons)/5;
+  document.getElementById("stats").innerHTML=[
+    [fmt(food),"food rations, sound"+(sfood?` <span class="spoiled">(+${fmt(sfood)} spoiled)</span>`:"")],
+    [fmt(water),"water rations, sound"+(swater?` <span class="spoiled">(+${fmt(swater)} spoiled)</span>`:"")],
+    [days(food),"days of food for "+pl(crew,"mouth")],
+    [days(water),"days of water for "+pl(crew,"mouth")],
+    [fmt(tons),"tons of the hold in stores"],
+    ...(live?[[live,"living beasts aboard"]]:[]),
+  ].map(([b,s])=>`<div class="stat"><b>${b}</b><span>${s}</span></div>`).join("");
+
+  const body=document.getElementById("holdBody");
+  if(!S.lots.length){body.innerHTML=`<tr class="empty"><td colspan="7">The hold lies empty and echoing. Not a crumb, not a cask.</td></tr>`;}
+  else{
+    const order={"Fresh Food":0,"Stores":1,"Delicacies":2,"Pantry":3,"Drink":4,"Livestock":5,"Custom":6};
+    const lots=[...S.lots].sort((a,b)=>(order[item(a.item).cat]??9)-(order[item(b.item).cat]??9)||item(a.item).name.localeCompare(item(b.item).name));
+    body.innerHTML=lots.map(l=>{
+      const it=item(l.item);
+      let keep;
+      if(l.die==="never")keep=`<span class="die never">${it.live?"Alive":"Never"}</span>`;
+      else if(l.die==="perish")keep=`<span class="die perish">${S.day>=l.spoilsOn?"Spoiled":(l.spoilsOn-1===S.day?"Spoils tonight":"Spoils day "+(l.spoilsOn-1))}</span>`;
+      else if(l.die==="turning")keep=`<span class="die turn">Turning</span>`;
+      else keep=`<span class="die">${l.die}</span>`;
+      const nature=[it.how,it.spoil].filter(Boolean).join(", ")||"";
+      const stowed=l.form==="cargo"?`${esc(it.cargo||"Cargo")} <span class="tag">(${fmt(it.per)} ${esc((it.single||"").toLowerCase())} each)</span>`:`Loose <span class="tag">${esc(it.single||"")}</span>`;
+      const acts=[];
+      if(l.units>0)acts.push(`<button class="sm" data-a="eat" data-id="${l.id}">${it.live?"Butcher":(it.water?"Drink":"Eat")}</button>`);
+      if(l.form==="cargo"&&l.units>0&&it.per&&!it.live)acts.push(`<button class="sm" data-a="open" data-id="${l.id}">Open</button>`);
+      if(l.spoiled>0)acts.push(`<button class="sm" data-a="spoil" data-id="${l.id}">Spoiled...</button>`);
+      acts.push(`<button class="sm" data-a="edit" data-id="${l.id}">Amend</button>`);
+      return `<tr><td>${esc(it.name)}${it.cat==="Custom"?' <span class="tag">(custom)</span>':""}</td><td>${stowed}</td><td>${fmt(l.units)}</td><td class="${l.spoiled?"spoiled":""}">${fmt(l.spoiled)}</td><td>${keep}</td><td class="tag">${esc(nature)}</td><td><div class="acts">${acts.join("")}</div></td></tr>`;
+    }).join("");
+  }
+  const groups=[];
+  for(const e of S.log){if(!groups.length||groups[groups.length-1].d!==e.d)groups.push({d:e.d,es:[]});groups[groups.length-1].es.push(e);}
+  let html="";
+  for(let i=groups.length-1;i>=0;i--){
+    html+=`<div class="day">Day ${groups[i].d}</div>`;
+    for(const e of groups[i].es)html+=e.f?`<div class="flour">${esc(e.t)}</div>`:`<p class="${e.b?"bad":""}">${esc(e.t)}</p>`;
+  }
+  document.getElementById("log").innerHTML=html||`<p class="note">The log's pages are clean and waiting for ink.</p>`;
+}
+
+/* ---------------- Add panel ---------------- */
+const catSel=document.getElementById("catSel"),itemSel=document.getElementById("itemSel"),formSel=document.getElementById("formSel"),dieSel=document.getElementById("dieSel");
+function fillCats(){catSel.innerHTML=["Fresh Food","Stores","Delicacies","Pantry","Drink","Livestock","Custom"].map(c=>`<option>${c}</option>`).join("");}
+function fillItems(keep){
+  const c=catSel.value,was=itemSel.value;
+  const list=Object.values(CAT).concat(Object.values(S.custom)).filter(i=>i.cat===c);
+  itemSel.innerHTML=list.map(i=>`<option value="${esc(i.id)}">${esc(i.name)}</option>`).join("")+(c==="Custom"?`<option value="__new">+ Write a new provision...</option>`:"");
+  if(keep&&was&&was!=="__new"&&list.some(i=>i.id===was))itemSel.value=was;
+  else if(itemSel.value==="__new"&&list.length)itemSel.selectedIndex=0;
+  fillItem(true);
+}
+function fillItem(quiet){
+  const id=itemSel.value;
+  if(id==="__new"){if(!quiet)newCustom();document.getElementById("itemNote").textContent="Write a provision of your own, for the catch of the day or a recipe's fruits.";dieSel.innerHTML="";return;}
+  const it=CAT[id]||S.custom[id];
+  if(!it){document.getElementById("itemNote").textContent="";dieSel.innerHTML="";return;}
+  const co=formSel.querySelector('[value="cargo"]');
+  co.disabled=!it.per;if(!it.per)formSel.value="loose";
+  co.textContent=it.per?`Cargo (${it.cargo} of ${fmt(it.per)})`:"Cargo";
+  formSel.querySelector('[value="loose"]').textContent=`Loose (${it.single})`;
+  const opts=it.keep==="never"?[["never",it.live?"Alive":"Never spoils"]]:it.keep==="perish"?[["perish","Perishable"]]:DICE.slice(DICE.indexOf(it.keep)).map(d=>[d,d]).concat([["turning","Turning"]]);
+  dieSel.innerHTML=opts.map(([v,t])=>`<option value="${v}">${t}</option>`).join("");
+  const rat=it.rat?`${fmt(it.rat)} ${it.water?"water ":""}ration${it.rat===1?"":"s"} per ${it.single.toLowerCase()}`:(it.live?`${fmt(it.meat)} rations of meat each when butchered`:"adds flavor, not food");
+  const sp=it.spoil?` Spoiled, it is ${it.spoil}: DC ${SPOIL[it.spoil].dc} Constitution${SPOIL[it.spoil].dis?", or catch "+SPOIL[it.spoil].dis:", or be poisoned"}.`:"";
+  document.getElementById("itemNote").textContent=`${it.name}: ${rat}.${sp}${opts.length>1?" Bought already aging? Choose a lower Keep.":""}`;
+}
+catSel.onchange=()=>fillItems(false);
+itemSel.onchange=()=>fillItem(false);
+document.getElementById("addBtn").onclick=()=>{
+  const id=itemSel.value;
+  if(id==="__new"){newCustom();return;}
+  if(!(CAT[id]||S.custom[id]))return;
+  const q=Math.max(1,parseInt(document.getElementById("qtyIn").value)||1),form=formSel.value,die=dieSel.value;
+  act(()=>{addLot(id,form,q,die);});
+};
+
+/* ---------------- Dialogs (in-page, so they work even where pop-ups are blocked) ---------------- */
+const dlg=document.getElementById("dlg"),dform=document.getElementById("dlgForm");
+let onDlgOk=null;
+dform.addEventListener("submit",e=>{
+  e.preventDefault();
+  const v=e.submitter?e.submitter.value:"ok";
+  const cb=onDlgOk;onDlgOk=null;
+  const fd=new FormData(dform);
+  dlg.close();
+  if(v==="ok"&&cb)cb(fd);
+});
+dlg.addEventListener("cancel",()=>{onDlgOk=null;});
+function ask(html,onOk,okText,noCancel){
+  dform.innerHTML=html+`<div class="row" style="justify-content:flex-end;margin-top:10px">${noCancel?"":'<button value="cancel" formnovalidate>Never mind</button>'}<button class="primary" value="ok">${okText||"So be it"}</button></div>`;
+  onDlgOk=onOk;
+  if(dlg.open)dlg.close();
+  try{dlg.showModal();}catch(e){dlg.setAttribute("open","");}
+  const first=dform.querySelector("input:not([type=checkbox]),textarea,select");if(first)first.focus();
+}
+function confirmBox(title,text,yes,onYes){ask(`<h2>${esc(title)}</h2><p class="sub">${esc(text)}</p>`,()=>onYes(),yes);}
+
+document.getElementById("holdBody").onclick=e=>{
+  const b=e.target.closest("button");if(!b)return;
+  const lid=+b.dataset.id;const l=lotById(lid);if(!l)return;const it=item(l.item);
+  const a=b.dataset.a;
+  if(a==="eat"&&it.live){
+    const max=l.form==="cargo"?l.units*it.per:l.units;
+    ask(`<h2>To the Butcher's Block</h2><p class="sub">How many of the ${esc(it.name.toLowerCase())} meet their end today?</p><div class="grid"><label>Beasts</label><input type="number" name="n" min="1" max="${max}" value="1"></div><p class="note">Each yields ${fmt(it.meat)} rations of fresh, perishable meat, sound until the end of tomorrow.</p>`,fd=>{
+      const want=Math.max(1,parseInt(fd.get("n"))||1);
+      act(()=>{
+        const l=lotById(lid);if(!l)return false;let n;
+        if(l.form==="cargo"){let total=l.units*it.per;n=Math.min(want,total);total-=n;l.units=Math.floor(total/it.per);const rem=total%it.per;if(rem)addLot(l.item,"loose",rem,"never",true);}
+        else{n=Math.min(want,l.units);l.units-=n;}
+        addLot(it.meatOf,"loose",n*it.meat,"perish",true);
+        logLine(`${pl(n,it.single.toLowerCase())} butchered, giving ${fmt(n*it.meat)} rations of fresh ${CAT[it.meatOf].name.toLowerCase()}.`);
+      });
+    },"Butcher");
+  }
+  else if(a==="eat"){
+    ask(`<h2>${it.water?"Drawing from the Cask":"To the Galley"}</h2><p class="sub">${esc(lotName(l))}: ${fmt(l.units)} sound ${esc(unitWord(l))}${l.units===1?"":"s"} remain.</p><div class="grid"><label>Take</label><input type="number" name="n" min="1" max="${l.units}" value="${Math.min(l.units,Math.max(1,S.crew||1))}"></div>`,fd=>{
+      const want=Math.max(1,parseInt(fd.get("n"))||1);
+      act(()=>{
+        const l=lotById(lid);if(!l||l.units<=0)return false;const n=Math.min(l.units,want);l.units-=n;
+        logLine(`${pl(n,unitWord(l))} of ${lotName(l)} ${it.water?"drunk":"eaten"} (${fmt(rationsOf(l,n))} ${it.water?"water ":""}rations).`);
+      });
+    },it.water?"Drink":"Eat");
+  }
+  else if(a==="open"){
+    ask(`<h2>Breaking the Seal</h2><p class="sub">Pry open ${esc(it.cargo.toLowerCase())}s of ${esc(it.name.toLowerCase())}, and their contents join the loose stores at the same Keep.</p><div class="grid"><label>${esc(it.cargo)}s to open</label><input type="number" name="n" min="1" max="${l.units}" value="1"></div>`,fd=>{
+      const want=Math.max(1,parseInt(fd.get("n"))||1);
+      act(()=>{
+        const l=lotById(lid);if(!l||l.units<=0)return false;const n=Math.min(l.units,want);l.units-=n;
+        const nl={id:S.seq++,item:l.item,form:"loose",units:n*it.per,spoiled:0,die:l.die};if(l.die==="perish")nl.spoilsOn=l.spoilsOn;S.lots.push(nl);
+        logLine(`Opened ${pl(n,it.cargo.toLowerCase())} of ${it.name}: ${fmt(n*it.per)} ${it.single.toLowerCase()} now lie loose.`);
+      });
+    },"Open");
+  }
+  else if(a==="spoil"){
+    const sp=it.spoil&&SPOIL[it.spoil];
+    const risk=sp?`Whoever eats or drinks it must make a <b>DC ${sp.dc} Constitution save</b>, or be poisoned for 24 hours${sp.dis?" and catch <b>"+sp.dis+"</b>":""}.`:"";
+    ask(`<h2>The Spoiled Portion</h2><p class="sub">${fmt(l.spoiled)} spoiled ${esc(unitWord(l))}${l.spoiled===1?"":"s"} of ${esc(it.name.toLowerCase())}, sour-smelling and sorry. It still counts as a ration, at a price.</p><p>${risk}</p><div class="grid"><label>How many</label><input type="number" name="n" min="1" max="${l.spoiled}" value="${l.spoiled}"><label>Fate</label><select name="how"><option value="toss">Cast overboard</option><option value="eat">${it.water?"Drink":"Eat"} it anyway</option></select></div>`,fd=>{
+      const want=Math.max(1,parseInt(fd.get("n"))||1),how=fd.get("how");
+      act(()=>{
+        const l=lotById(lid);if(!l||l.spoiled<=0)return false;const n=Math.min(l.spoiled,want);l.spoiled-=n;
+        if(how==="toss")logLine(`${pl(n,unitWord(l))} of spoiled ${it.name.toLowerCase()} given to the sea and the grateful fish.`);
+        else logLine(`${pl(n,unitWord(l))} of spoiled ${it.name.toLowerCase()} ${it.water?"drunk":"eaten"} by brave or desperate souls (${fmt(rationsOf(l,n))} rations). ${sp?`Each must save: DC ${sp.dc} Con${sp.dis?", or "+sp.dis:", or poisoned"}.`:""}`,true);
+      });
+    },"Done");
+  }
+  else if(a==="edit"){
+    const keepOpts=(it.keep==="never"?["never"]:it.keep==="perish"?["perish"]:DICE.concat(["turning"])).map(d=>`<option value="${d}" ${d===l.die?"selected":""}>${d==="never"?(it.live?"Alive":"Never spoils"):d==="perish"?"Perishable":d==="turning"?"Turning":d}</option>`).join("");
+    ask(`<h2>Amending the Ledger</h2><p class="sub">${esc(lotName(l))}. For the honest corrections every quartermaster must sometimes make.</p><div class="grid"><label>Sound</label><input type="number" name="u" min="0" value="${l.units}"><label>Spoiled</label><input type="number" name="s" min="0" value="${l.spoiled}"><label>Keep</label><select name="d">${keepOpts}</select>${l.die==="perish"?`<label>Spoils at end of day</label><input type="number" name="p" min="1" value="${l.spoilsOn-1}">`:""}<label>Strike it out</label><label class="inline"><input type="checkbox" name="del"> Remove this lot entirely</label></div>`,fd=>{
+      const del=!!fd.get("del"),u=Math.max(0,parseFloat(fd.get("u"))||0),s=Math.max(0,parseFloat(fd.get("s"))||0),d=fd.get("d"),p=parseInt(fd.get("p"));
+      act(()=>{
+        const l=lotById(lid);if(!l)return false;
+        if(del){S.lots=S.lots.filter(x=>x!==l);logLine(`${lotName(l)} struck from the ledger.`);return;}
+        l.units=u;l.spoiled=s;l.die=d;
+        if(d==="perish")l.spoilsOn=(p||S.day)+1;
+        logLine(`The ledger for ${lotName(l)} is amended by hand.`);
+      });
+    },"Amend");
+  }
+};
+
+function newCustom(){
+  ask(`<h2>A Provision of Your Own</h2><p class="sub">For the catch of the day, a recipe's fruits, or some strange island delicacy the Bazaar never knew.</p>
+  <div class="grid">
+   <label>Name</label><input type="text" name="name" required>
+   <label>One unit is</label><input type="text" name="single" value="Ration">
+   <label>Rations per unit</label><input type="number" name="rat" step="0.125" min="0" value="1">
+   <label>Is it drink?</label><label class="inline"><input type="checkbox" name="water"> Counts as water rations</label>
+   <label>Cargo unit</label><input type="text" name="cargo" value="Crate">
+   <label>Units per cargo</label><input type="number" name="per" min="0" value="150">
+   <label>Keep</label><select name="keep">${DICE.map(d=>`<option>${d}</option>`).join("")}<option value="perish">Perishable</option><option value="never">Never spoils</option></select>
+   <label>How it spoils</label><select name="how"><option>Hardy</option><option>Delicate</option><option>Preserved</option></select>
+   <label>When spoiled</label><select name="spoil"><option>Rancid</option><option>Fishy</option><option>Stagnant</option><option>Sour</option></select>
+  </div><p class="note">Fishy for any animal flesh, Rancid for other food.</p>`,fd=>{
+    const name=String(fd.get("name")||"").trim();if(!name)return;
+    const keep=fd.get("keep");
+    const def={name,cat:"Custom",single:String(fd.get("single")||"Unit"),rat:parseFloat(fd.get("rat"))||0,water:!!fd.get("water"),cargo:String(fd.get("cargo")||"Crate"),per:parseInt(fd.get("per"))||null,keep,how:keep==="perish"?"Perishable":keep==="never"?null:fd.get("how"),spoil:keep==="never"?null:fd.get("spoil")};
+    let newId=null;
+    act(()=>{newId="custom-"+slug(name)+"-"+(S.seq++);S.custom[newId]=Object.assign({id:newId},def);},()=>{fillItems(true);if(newId&&S.custom[newId]){itemSel.value=newId;fillItem(true);}});
+  },"Add to the Catalog");
+}
+
+/* ---------------- Sharing by bottle ---------------- */
+function encode(){return btoa(unescape(encodeURIComponent(JSON.stringify(S))));}
+function decode(t){return JSON.parse(decodeURIComponent(escape(atob(t.trim().replace(/^.*#hold=/,"")))));}
+document.getElementById("shareBtn").onclick=()=>{
+  const code=encode();
+  const link=location.href.split("#")[0]+"#hold="+code;
+  ask(`<h2>A Message in a Bottle</h2><p class="sub">Cork the state of the hold into this bottle and cast it to your shipmates, or keep it safe as a record. Whoever opens it beholds the larder just as you left it.</p><p><b>The link</b> opens the larder with this hold already loaded:</p><textarea readonly>${esc(link)}</textarea><p><b>Or the code alone</b>, for pasting into "Receive a Bottle":</p><textarea readonly>${esc(code)}</textarea>`,()=>{},"Close",true);
+  dform.querySelectorAll("textarea").forEach(t=>t.addEventListener("focus",()=>t.select()));
+  try{navigator.clipboard.writeText(link).then(()=>toast("The link is copied, corked and ready."),()=>{});}catch(e){}
+};
+document.getElementById("loadBtn").onclick=()=>{
+  ask(`<h2>Receive a Bottle</h2><p class="sub">Paste the code or the whole link a shipmate sent. It will replace the hold you see now${REMOTE?", for everyone aboard":""}. Undo can bring the old one back.</p><textarea name="code"></textarea>`,fd=>{
+    let n;try{n=normalize(decode(String(fd.get("code")||"")));}catch(e){toast("The message is smudged beyond reading. Check the code.");return;}
+    act(()=>{S=n;},()=>toast("The bottle is opened; the hold is restored."));
+  },"Uncork");
+};
+document.getElementById("clearLogBtn").onclick=()=>confirmBox("Clear the Log","Tear every page from the Quartermaster's Log? The hold itself is untouched.","Tear them out",()=>act(()=>{S.log=[];}));
+document.getElementById("wipeBtn").onclick=()=>confirmBox("Empty the Hold","Empty the hold entirely and begin anew at day 1? Custom provisions are kept.","Empty it",()=>act(()=>{const c=S.custom;S=fresh();S.custom=c;}));
+
+/* ---------------- Wiring ---------------- */
+document.getElementById("dawnBtn").onclick=dawn;
+document.getElementById("dmgBtn").onclick=damage;
+document.getElementById("undoBtn").onclick=undo;
+document.getElementById("dayIn").onchange=e=>{const v=Math.max(1,parseInt(e.target.value)||1);act(()=>{S.day=v;});};
+document.getElementById("crewIn").onchange=e=>{const v=Math.max(0,parseInt(e.target.value)||0);act(()=>{S.crew=v;});};
+document.getElementById("sharedIn").onchange=e=>{const v=e.target.checked;act(()=>{S.shared=v;});};
+let tt;function toast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("on"),2600);}
+function setStatus(text,cls){const s=document.getElementById("status");s.textContent=text;s.className="status"+(cls?" "+cls:"");}
+
+/* ---------------- The live ledger ---------------- */
+async function connectRemote(){
+  if(!FIREBASE_CONFIG.apiKey||!FIREBASE_CONFIG.databaseURL)return false;
+  setStatus("Reaching the ledger...");
+  try{
+    const V="10.12.2";
+    const app=await import(`https://www.gstatic.com/firebasejs/${V}/firebase-app.js`);
+    const db=await import(`https://www.gstatic.com/firebasejs/${V}/firebase-database.js`);
+    const fb=app.initializeApp(FIREBASE_CONFIG);
+    const database=db.getDatabase(fb);
+    const ref=db.ref(database,"holds/"+SHIP);
+    let first=true;
+    await new Promise((res,rej)=>{
+      db.onValue(ref,snap=>{
+        const v=snap.val();
+        if(first){
+          first=false;
+          REMOTE={ref,runTransaction:db.runTransaction,set:db.set};
+          // First voyage on the live ledger: carry this device's hold aboard.
+          if(v===null&&S.lots.length){db.set(ref,clean(S));}
+          else{S=normalize(v);saveLocal();render();}
+          res();return;
+        }
+        S=normalize(v);saveLocal();render();
+      },err=>{if(first){first=false;rej(err);}else setStatus("The ledger is out of reach","off");});
+    });
+    db.onValue(db.ref(database,".info/connected"),s=>{
+      if(s.val())setStatus("Shared ledger: "+SHIP,"live");
+      else setStatus("Ledger out of reach, retrying","off");
+    });
+    return true;
+  }catch(e){
+    console.error(e);REMOTE=null;
+    setStatus("Ledger unreachable, kept on this device","off");
+    return false;
+  }
+}
+
+/* ---------------- Setting sail ---------------- */
+loadLocal();
+let bottle=null;
+if(location.hash.startsWith("#hold=")){
+  try{bottle=normalize(decode(location.hash));}catch(e){}
+  try{history.replaceState(null,"",location.href.split("#")[0]);}catch(e){}
+}
+fillCats();fillItems(false);render();
+connectRemote().then(()=>{
+  if(bottle)confirmBox("A Message in a Bottle","A bottle has washed ashore with a shipmate's hold corked inside. Open it, replacing the hold"+(REMOTE?" everyone aboard sees":" you have here")+"?","Uncork it",()=>act(()=>{S=bottle;}));
+});
+</script>
+</body>
+</html>
