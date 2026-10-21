@@ -130,10 +130,10 @@ A cup of lotus wine is 1/8 of a bottle.
 # Livestock
 A living animal doesn't spoil. Once butchered, its meat counts as fresh meat of that kind. Livestock tonnage counts the space and fodder they need, not just their weight. A live chicken lays 1d4 eggs a day.
 
-| Animal | Single | Price | Bulk | Bulk Price | Tonnage |
-| --- | --- | --- | --- | --- | --- |
-| Chicken | 1 bird (1 ration of meat) | 10 SH | Coop (40 birds) | 360 SH | 1/5 ton |
-| Goat | 1 goat (20 rations of meat) | 120 SH | Herd (10 goats) | 1,080 SH | 1 ton |
-| Sheep | 1 sheep (25 rations of meat) | 200 SH | Flock (10 sheep) | 1,800 SH | 1 ton |
-| Pig | 1 pig (60 rations of meat) | 300 SH | Herd (10 pigs) | 2,700 SH | 1 1/4 tons |
-| Cow | 1 cow (200 rations of meat) | 1,200 SH | Herd (10 cows) | 10,800 SH | 5 tons |
+| Animal  | Single                       | Price    | Bulk                        | Bulk Price | Tonnage |
+| ------- | ---------------------------- | -------- | --------------------------- | ---------- | ------- |
+| Chicken | 1 bird (1 ration of meat)    | 10 SH    | Coop (40 birds)             | 360 SH     | 1/5 ton |
+| Goat    | 1 goat (20 rations of meat)  | 120 SH   | 2 goats                     | 216 SH     | 1/5 ton |
+| Sheep   | 1 sheep (25 rations of meat) | 200 SH   | 2 sheep                     | 360 SH     | 1/5 ton |
+| Pig     | 1 pig (60 rations of meat)   | 300 SH   | 2 pigs                      | 540 SH     | 1/5 ton |
+| Cow     | 1 cow (200 rations of meat)  | 1,200 SH | 1 cows (them bitches heavy) | -          | 3/5 ton |

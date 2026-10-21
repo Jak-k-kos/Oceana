@@ -20,7 +20,7 @@ Weapon Slots: 0
 ***
 Crew Members: 1/2
 Passengers: 2
-Tonnage: 1/4
+Tonnage: 2/5
 Market Value: 4,800 SH
 # Properties
 ***

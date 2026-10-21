@@ -19,7 +19,7 @@ Loose goods don't count toward Tonnage until they add up to a full cargo unit. E
 | ---------------- | --------------- | -------- | ------------------- | ----------- |
 | Pine timber      | Plank or spar   | 48 SH    | 20 planks           | 864 SH      |
 | Oak ship timber  | Plank or beam   | 75 SH    | 20 planks           | 1,350 SH    |
-| Mast             | 1               | 1,450 SH | -                   | -           |
+| Full tree log    | 1               | 1,450 SH | -                   | -           |
 | Pine resin       | Bucket          | 14 SH    | Barrel (20 buckets) | 252 SH      |
 | Pitch            | Bucket          | 19 SH    | Barrel (20 buckets) | 342 SH      |
 | Tar              | Bucket          | 24 SH    | Barrel (20 buckets) | 432 SH      |
@@ -30,7 +30,7 @@ Loose goods don't count toward Tonnage until they add up to a full cargo unit. E
 | Nails and spikes | Keg             | 95 SH    | 10 kegs             | 855 SH      |
 | Charcoal         | Sack (50 lb)    | 95 SH    | 8 sacks             | 684 SH      |
 
-A mast takes up 1 ton of a ship's Tonnage on its own. Pine resin is boiled down into pitch and tar. Charcoal here is wood charcoal for forges. It burns hotter than [[Ship Supplies#Fuel|kelp charcoal]], but it costs too much to feed a ship's furnace. Field repairs at sea use [[Ship Supplies#Repair and Upkeep|repair stores]], which are made from these materials.
+A full tree log takes up 1 ton of a ship's Tonnage on its own. Pine resin is boiled down into pitch and tar. Charcoal here is wood charcoal for forges. It burns hotter than [[Ship Supplies#Fuel|kelp charcoal]], but it costs too much to feed a ship's furnace. Field repairs at sea use [[Ship Supplies#Repair and Upkeep|repair stores]], which are made from these materials.
 
 # Metal, Stone and Powder
 | Item | Single | Price | Cargo (1/5 ton) | Cargo Price |

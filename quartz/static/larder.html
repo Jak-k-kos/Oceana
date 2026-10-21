@@ -77,6 +77,17 @@ textarea{width:100%;min-height:110px;font:13px/1.3 monospace}
 .kicker{font-family:"IM Fell English SC",serif;color:var(--accent);letter-spacing:.06em;font-size:1rem}
 .keeperrow{justify-content:flex-end;margin-top:4px}
 #shipList table td,#trashList table td,#chestList table td{padding:8px 6px}
+
+.sect td{font-family:"IM Fell English SC",serif;color:var(--accent);background:transparent;padding-top:14px;border-bottom:1px solid var(--line);letter-spacing:.04em}
+.tonline{margin:0 0 10px;font-size:1.02rem}
+.tonline.sinking{color:var(--warn)}
+.over{color:var(--warn);font-weight:600;margin-left:6px}
+.sep{color:var(--muted);margin:0 4px}
+.testtag{font-size:.78rem;color:var(--gold);border:1px solid var(--gold);border-radius:999px;padding:0 7px;margin-left:4px;vertical-align:2px}
+.sub3{font-family:"IM Fell English SC",serif;font-weight:400;font-size:1.1rem;margin:12px 0 4px}
+button.primary-sm{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+button.primary-sm:hover{filter:brightness(1.08);color:var(--accent-ink)}
+dialog .grid [hidden]{display:none!important}
 </style>
 </head>
 <body>
@@ -90,7 +101,7 @@ textarea{width:100%;min-height:110px;font:13px/1.3 monospace}
     </div>
   </div>
   <p class="note" id="keeperNote" style="text-align:right;margin:0"></p>
-  <p class="sub">Every vessel that sails these drowned waters is written here, each with a hold of its own. Choose your ship, step aboard, and go below.</p>
+  <p class="sub">Every vessel that sails these drowned waters is written here, each with a hold of her own. Choose your ship, step aboard, and go below.</p>
 
   <div class="card">
     <h2>Ships at Anchor</h2>
@@ -100,8 +111,7 @@ textarea{width:100%;min-height:110px;font:13px/1.3 monospace}
   <div class="card">
     <h2>Christen a New Ship</h2>
     <div class="row">
-      <input type="text" id="newShipName" placeholder="The ship's name" style="min-width:240px">
-      <button id="newShipBtn">Break the Bottle on Her Bow</button>
+      <button class="primary" id="newShipBtn">Break the Bottle on Her Bow</button>
     </div>
     <p class="note">A ship made for testing is welcome here. Only the Keeper of the Register may scuttle one.</p>
   </div>
@@ -111,7 +121,6 @@ textarea{width:100%;min-height:110px;font:13px/1.3 monospace}
     <p class="sub">Ships sent to the bottom are not lost at once. They rest here, hold and all, until the Keeper raises them or gives them to the deep forever.</p>
     <div id="trashList"></div>
   </div>
-
 </div>
 
 <!-- ======================= THE HOLD ======================= -->
@@ -121,14 +130,17 @@ textarea{width:100%;min-height:110px;font:13px/1.3 monospace}
     <span class="status" id="status">Kept on this device</span>
   </div>
   <div class="kicker">The Ship's Larder</div>
-  <h1 id="shipTitle">A Ship</h1>
-  <p class="sub">Wherein every barrel, crate and humble loaf is counted, and the slow, patient hunger of the sea is reckoned each morning.</p>
+  <div class="titlerow">
+    <h1 id="shipTitle">A Ship</h1>
+    <button class="sm" id="papersBtn">Ship's Papers</button>
+  </div>
+  <p class="sub">Wherein every barrel, crate and bale is counted, and the slow, patient hunger of the sea is reckoned each morning.</p>
 
   <div class="card">
     <div class="row" style="justify-content:space-between">
       <div class="row">
         <button class="primary" id="dawnBtn" title="Roll every lot's Keep Die and advance the day">Dawn Breaks</button>
-        <button class="danger" id="dmgBtn" title="Hold flooded or ship badly damaged: every lot steps down one die">The Hold Is Struck</button>
+        <button class="danger" id="dmgBtn" title="Hold flooded or ship badly damaged">The Hold Is Struck</button>
         <button id="undoBtn" title="Undo the last change you made">Undo</button>
       </div>
       <div class="row">
@@ -140,27 +152,34 @@ textarea{width:100%;min-height:110px;font:13px/1.3 monospace}
   </div>
 
   <div class="card">
+    <div class="tonline" id="tonLine"></div>
     <div class="stats" id="stats"></div>
   </div>
 
   <div class="card">
-    <h2>Stow New Provisions</h2>
+    <h2>Stow New Cargo</h2>
     <div class="row">
       <select id="catSel"></select>
       <select id="itemSel" style="min-width:220px"></select>
-      <select id="formSel"><option value="loose">Loose</option><option value="cargo">Cargo</option></select>
+      <select id="formSel"></select>
       <label class="inline">Quantity <input type="number" id="qtyIn" min="1" value="1"></label>
-      <label class="inline">Keep <select id="dieSel"></select></label>
+      <label class="inline" id="dieWrap">Keep <select id="dieSel"></select></label>
       <button id="addBtn">Stow It Below</button>
     </div>
     <p class="note" id="itemNote"></p>
+  </div>
+
+  <div class="card" id="fireCard" hidden>
+    <h2>Fire the Weapons</h2>
+    <div id="fireList"></div>
+    <div id="waterList"></div>
   </div>
 
   <div class="card">
     <h2>The Hold</h2>
     <div class="tablewrap">
       <table>
-        <thead><tr><th>Provision</th><th>Stowed</th><th>Sound</th><th>Spoiled</th><th>Keep</th><th>Nature</th><th></th></tr></thead>
+        <thead><tr><th>Cargo</th><th>Stowed</th><th>Sound</th><th>Spoiled</th><th>Keep</th><th>Nature</th><th></th></tr></thead>
         <tbody id="holdBody"></tbody>
       </table>
     </div>
@@ -201,7 +220,7 @@ textarea{width:100%;min-height:110px;font:13px/1.3 monospace}
    every ship on whatever device it is opened on instead.
    ===================================================================== */
 /* The DM's account: a made-up address that only ever pairs with your password.
-   Create it in Firebase (Authentication > Users > Add user) with this exact email. */
+   Create it in Firebase (Security > Authentication > Users) with this exact email. */
 const KEEPER_EMAIL = "dm@oceana-ad350.firebaseapp.com";
 const FIREBASE_CONFIG = {
   apiKey: "AIzaSyB4HT_DyuZdUkYlXXGJA3OXxOTcSC161PA",
@@ -226,204 +245,38 @@ const FIREBASE_CONFIG = {
   window.addEventListener("storage",e=>{if(e.key==="theme")apply();});
 })();
 
-
-/* ---------------- The catalog, drawn from the Bazaar's Provisions ----------------
-   row: [name, category, single, rations per single, isWater, cargo label, singles per cargo unit, keep, how, spoilsAs] */
-const RAW = [
- ["Fish","Fresh Food","2 lb",1,0,"Crate",150,"perish","Perishable","Fishy"],
- ["Shellfish","Fresh Food","2 dozen",1,0,"Crate",150,"perish","Perishable","Fishy"],
- ["Chicken","Fresh Food","2 lb",1,0,"Crate",150,"perish","Perishable","Fishy"],
- ["Pork","Fresh Food","2 lb",1,0,"Crate",150,"perish","Perishable","Fishy"],
- ["Goat","Fresh Food","2 lb",1,0,"Crate",150,"perish","Perishable","Fishy"],
- ["Mutton","Fresh Food","2 lb",1,0,"Crate",150,"perish","Perishable","Fishy"],
- ["Beef","Fresh Food","2 lb",1,0,"Crate",150,"perish","Perishable","Fishy"],
- ["Sea turtle","Fresh Food","2 lb",1,0,"Crate",150,"perish","Perishable","Fishy"],
- ["Eggs","Fresh Food","Dozen",1,0,"Crate",100,"d8","Delicate","Rancid"],
- ["Vegetables","Fresh Food","3 lb",1,0,"Crate",100,"d6","Delicate","Rancid"],
- ["Fruit","Fresh Food","Piece",1/8,0,"Crate",800,"d4","Delicate","Rancid"],
- ["Apple","Fresh Food","Apple",1/8,0,"Crate",800,"d10","Hardy","Rancid"],
- ["Citrus","Fresh Food","Fruit",1/8,0,"Crate",800,"d10","Hardy","Rancid"],
- ["Plantain","Fresh Food","Plantain",1/4,0,"Crate",400,"d6","Delicate","Rancid"],
- ["Bread","Fresh Food","Loaf",1/2,0,"Crate",200,"d4","Delicate","Rancid"],
- ["Seaweed bread","Fresh Food","Loaf",1/2,0,"Crate",200,"d4","Delicate","Rancid"],
- ["Fresh cheese","Fresh Food","1 lb",1,0,"Crate",300,"d8","Delicate","Rancid"],
- ["Sea fennel","Fresh Food","Bundle",1/4,0,"Bale",600,"d4","Delicate","Rancid"],
- ["Firecap peppers","Fresh Food","Handful",0,0,"Bale",1000,"d10","Hardy","Rancid"],
- ["Ship's biscuit","Stores","Ration",1,0,"Barrel",150,"d20","Preserved","Rancid"],
- ["Dried beans, lentils or chickpeas","Stores","2 lb",1,0,"Barrel",150,"d20","Preserved","Rancid"],
- ["Rice","Stores","2 lb",1,0,"Barrel",150,"d20","Preserved","Rancid"],
- ["Wheat or barley","Stores","2 lb",1,0,"Barrel",150,"d20","Preserved","Rancid"],
- ["Flour","Stores","2 lb",1,0,"Barrel",150,"d20","Preserved","Rancid"],
- ["Salted beef","Stores","Ration",1,0,"Barrel",150,"d20","Preserved","Fishy"],
- ["Salted ham","Stores","Ration",1,0,"Barrel",150,"d20","Preserved","Fishy"],
- ["Smoked whale meat","Stores","Ration",1,0,"Barrel",150,"d20","Preserved","Fishy"],
- ["Salted or smoked fish","Stores","Ration",1,0,"Barrel",150,"d20","Preserved","Fishy"],
- ["Dried conch","Stores","Ration",1,0,"Barrel",150,"d20","Preserved","Fishy"],
- ["Dried squid or cuttlefish","Stores","Ration",1,0,"Barrel",150,"d20","Preserved","Fishy"],
- ["Smoked or salted shellfish","Stores","Ration",1,0,"Barrel",150,"d20","Preserved","Fishy"],
- ["Glassleaf","Stores","Ration",1,0,"Barrel",150,"d20","Preserved","Fishy"],
- ["Dried kelp","Stores","Bundle",1/2,0,"Bale",300,"d20","Preserved","Rancid"],
- ["Dried figs or raisins","Delicacies","2 lb",1,0,"Crate",150,"d20","Preserved","Rancid"],
- ["Chestnuts","Delicacies","2 lb",1,0,"Crate",150,"d12","Hardy","Rancid"],
- ["Olives","Delicacies","Jar",1/2,0,"Crate",200,"d20","Preserved","Rancid"],
- ["Pickles","Delicacies","Jar",1/2,0,"Crate",200,"d20","Preserved","Rancid"],
- ["Capers","Delicacies","Jar",1/2,0,"Crate",200,"d20","Preserved","Rancid"],
- ["Grape leaves","Delicacies","Jar",1/2,0,"Crate",200,"d20","Preserved","Rancid"],
- ["Fruit preserves","Delicacies","Jar",1/2,0,"Crate",200,"d20","Preserved","Rancid"],
- ["Candied peel","Delicacies","1 lb",1/2,0,"Crate",300,"d20","Preserved","Rancid"],
- ["Cave-aged cheese","Delicacies","1 lb",1,0,"Crate",300,"d8","Delicate","Rancid"],
- ["Wax-sealed goat cheese","Delicacies","10 lb wheel",10,0,"Crate",30,"d12","Hardy","Rancid"],
- ["Dried mullet roe","Delicacies","1 lb slab",1,0,"Crate",300,"d20","Preserved","Fishy"],
- ["Squid ink","Delicacies","Pot",0,0,"Crate",600,"d20","Preserved","Fishy"],
- ["Ambergris","Delicacies","1 oz",0,0,null,null,"never",null,null],
- ["Honey","Pantry","1 lb",1/2,0,"Cask",300,"never",null,null],
- ["Raw sugar","Pantry","1 lb",1/2,0,"Sack",300,"never",null,null],
- ["Molasses","Pantry","Jar",1/2,0,"Barrel",400,"d20","Preserved","Rancid"],
- ["Olive oil","Pantry","Flask",1/2,0,"Barrel",320,"d20","Preserved","Rancid"],
- ["Salt","Pantry","1 lb",0,0,"Sack",350,"never",null,null],
- ["Vinegar","Pantry","Flask",0,0,"Barrel",320,"never",null,null],
- ["Dried herbs","Pantry","Bundle",0,0,"Bale",400,"never",null,null],
- ["Pepper","Pantry","Pinch",0,0,"Sack",3000,"never",null,null],
- ["Saffron","Pantry","Pinch",0,0,null,null,"never",null,null],
- ["Water","Drink","Gallon",1,1,"Barrel",40,"d10","Hardy","Stagnant"],
- ["Hold Ale","Drink","Gallon",1,1,"Barrel",40,"d20","Preserved","Sour"],
- ["Beer","Drink","Gallon",1,1,"Barrel",40,"d12","Hardy","Sour"],
- ["Dark beer","Drink","Gallon",1,1,"Barrel",40,"d12","Hardy","Sour"],
- ["Common wine","Drink","Gallon",1,1,"Barrel",40,"d20","Preserved","Sour"],
- ["Mead","Drink","Bottle",0,1,"Crate",100,"never",null,null],
- ["White wine","Drink","Bottle",0,1,"Crate",100,"never",null,null],
- ["Fine red wine","Drink","Bottle",0,1,"Crate",100,"never",null,null],
- ["Lotus wine","Drink","Bottle",0,1,"Crate",100,"never",null,null],
- ["Aged reserve wine","Drink","Bottle",0,1,"Crate",100,"never",null,null],
- ["Rum","Drink","Bottle",0,1,"Crate",100,"never",null,null],
- ["Pine-needle liquor","Drink","Bottle",0,1,"Crate",100,"never",null,null],
- ["Myrtle liqueur","Drink","Bottle",0,1,"Crate",100,"never",null,null],
- ["Bitter-orange liqueur","Drink","Bottle",0,1,"Crate",100,"never",null,null],
- ["Whiskey","Drink","Bottle",0,1,"Crate",100,"never",null,null],
- ["Brandy","Drink","Bottle",0,1,"Crate",100,"never",null,null],
- ["Coffee","Drink","Day's brew",0,1,"Sack",3000,"never",null,null],
- ["Tea","Drink","Day's brew",0,1,"Chest",3000,"never",null,null],
-];
-/* livestock: [name, singular, rations of meat each, meat item, pen label, animals per pen] */
-const STOCK = [
- ["Chicken","Bird",1,"Chicken","Coop",40],
- ["Goat","Goat",20,"Goat","Herd",10],
- ["Sheep","Sheep",25,"Mutton","Flock",10],
- ["Pig","Pig",60,"Pork","Herd",10],
- ["Cow","Cow",200,"Beef","Herd",10],
-];
-const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g,"-");
-const CAT = {};
-RAW.forEach(r=>{CAT[slug(r[0])]={id:slug(r[0]),name:r[0],cat:r[1],single:r[2],rat:r[3],water:!!r[4],cargo:r[5],per:r[6],keep:r[7],how:r[8],spoil:r[9]};});
-STOCK.forEach(s=>{const id="live-"+slug(s[0]);CAT[id]={id,name:s[0]+" (live)",cat:"Livestock",single:s[1],rat:0,water:false,cargo:s[4],per:s[5],keep:"never",how:null,spoil:null,live:true,meat:s[2],meatOf:slug(s[3])};});
-
-const DICE=["d20","d12","d10","d8","d6","d4"];
-const SPOIL={
-  Stagnant:{dc:13,dis:"Bilge Flux"},Rancid:{dc:12,dis:"Rot Gut"},
-  Fishy:{dc:14,dis:"Fish Fever"},Sour:{dc:10,dis:null}
-};
-const DAWNS=[
- "Dawn spills thin gold across the deck, and below, in the dark of the hold, the quartermaster lifts the lantern to count what the night has taken.",
- "The gulls cry the morning awake. Barrel by barrel, the hold is reckoned.",
- "A grey and salt-heavy morning creeps over the rail; the dice rattle in the quartermaster's cupped hands.",
- "Sunrise blooms rose-pink upon the swells, and the old ritual of the larder begins anew.",
- "Mist clings to the rigging like a sleeping ghost, and somewhere below, the bread is quietly deciding its fate.",
- "The bell rings the morning watch. Down the ladder goes the lantern, into the sweet and sour smell of stores.",
-];
-
-
-/* ---------------- The two ledgers: this device, or the shared one ---------------- */
-const clone=v=>v==null?null:JSON.parse(JSON.stringify(v));
-const LocalDB=(()=>{
-  const K="oceana-larder-db";let tree={};
-  try{tree=JSON.parse(localStorage.getItem(K)||"{}")||{};}catch(e){}
-  const subs=new Set();
-  const keys=p=>p.split("/").filter(Boolean);
-  function getP(p){let o=tree;for(const k of keys(p)){if(o==null||typeof o!=="object")return null;o=o[k];}return o===undefined?null:clone(o);}
-  function setP(p,v){const ks=keys(p);let o=tree;for(let i=0;i<ks.length-1;i++){if(typeof o[ks[i]]!=="object"||o[ks[i]]===null)o[ks[i]]={};o=o[ks[i]];}if(v==null)delete o[ks[ks.length-1]];else o[ks[ks.length-1]]=clone(v);}
-  function fire(){for(const s of subs)s.f(getP(s.p));}
-  function persist(){try{localStorage.setItem(K,JSON.stringify(tree));}catch(e){}fire();}
-  window.addEventListener("storage",e=>{if(e.key===K){try{tree=JSON.parse(e.newValue||"{}")||{};}catch(x){}fire();}});
-  return {
-    local:true,
-    on(p,f){const s={p,f};subs.add(s);setTimeout(()=>{if(subs.has(s))f(getP(p));},0);return()=>subs.delete(s);},
-    async get(p){return getP(p);},
-    async set(p,v){setP(p,v);persist();},
-    async update(o){for(const k in o)setP(k,o[k]);persist();},
-    async tx(p,fn){const nv=fn(getP(p));if(nv===undefined)return {committed:false,val:getP(p)};setP(p,nv);persist();return {committed:true,val:getP(p)};},
-    connected(cb){cb(true);},
-  };
-})();
-let DB=LocalDB;
-let KEEPER=false, AUTH=null;
-
-async function connectFirebase(){
-  if(!FIREBASE_CONFIG.apiKey||!FIREBASE_CONFIG.databaseURL)return false;
-  try{
-    const V="10.12.2";
-    const app=await import(`https://www.gstatic.com/firebasejs/${V}/firebase-app.js`);
-    const d=await import(`https://www.gstatic.com/firebasejs/${V}/firebase-database.js`);
-    const fb=app.initializeApp(FIREBASE_CONFIG);
-    const db=d.getDatabase(fb);
-    DB={
-      local:false,
-      on(p,f){return d.onValue(d.ref(db,p),s=>f(s.val()),e=>{console.error(e);setStatus("The ledger refused us","off");});},
-      get(p){return d.get(d.ref(db,p)).then(s=>s.val());},
-      set(p,v){return d.set(d.ref(db,p),v);},
-      update(o){return d.update(d.ref(db),o);},
-      tx(p,fn){return d.runTransaction(d.ref(db,p),fn).then(r=>({committed:r.committed,val:r.snapshot.val()}));},
-      connected(cb){d.onValue(d.ref(db,".info/connected"),s=>cb(!!s.val()));},
-    };
-    try{
-      const a=await import(`https://www.gstatic.com/firebasejs/${V}/firebase-auth.js`);
-      const auth=a.getAuth(fb);
-      AUTH={
-        signIn(pw){return a.signInWithEmailAndPassword(auth,KEEPER_EMAIL,pw);},
-        signOut(){return a.signOut(auth);},
-        onChange(cb){a.onAuthStateChanged(auth,cb);},
-      };
-    }catch(e){console.error(e);AUTH=null;}
-    return true;
-  }catch(e){
-    console.error(e);DB=LocalDB;return false;
-  }
-}
-
 /* ---------------- Little helpers ---------------- */
-const r=n=>1+Math.floor(Math.random()*n);
+const cap=s=>{s=String(s);return s.charAt(0).toUpperCase()+s.slice(1);};
+const lc=s=>String(s).toLowerCase();
+const rnd=n=>1+Math.floor(Math.random()*n);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const fmt=n=>{const v=Math.round(n*100)/100;return Number.isInteger(v)?v.toLocaleString():v.toLocaleString(undefined,{maximumFractionDigits:2});};
-function pl(n,w){return fmt(n)+" "+w+(n===1?"":"s");}
+const fmt=n=>{const v=Math.round(n*1000)/1000;return Number.isInteger(v)?v.toLocaleString():v.toLocaleString(undefined,{maximumFractionDigits:3});};
 const $=id=>document.getElementById(id);
-let tt;function toast(m){const t=$("toast");t.textContent=m;t.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("on"),2800);}
+const clone=v=>v==null?null:JSON.parse(JSON.stringify(v));
+let tt;function toast(m){const t=$("toast");t.textContent=m;t.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("on"),3200);}
 function setStatus(text,cls){for(const id of ["status","hStatus"]){const s=$(id);s.textContent=text;s.className="status"+(cls?" "+cls:"");}}
 const DEVICE=Math.random().toString(36).slice(2,10); // one per open page
 const when=ts=>{try{return new Date(+ts).toLocaleString(undefined,{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"});}catch(e){return "";}};
-
-/* ---------------- Dialogs (in-page, so they work even where pop-ups are blocked) ---------------- */
-const dlg=$("dlg"),dform=$("dlgForm");
-let onDlgOk=null;
-dform.addEventListener("submit",e=>{
-  e.preventDefault();
-  const v=e.submitter?e.submitter.value:"ok";
-  const cb=onDlgOk;onDlgOk=null;
-  const fd=new FormData(dform);
-  dlg.close();
-  if(v==="ok"&&cb)cb(fd);
-});
-dlg.addEventListener("cancel",()=>{onDlgOk=null;});
-// Enter in a field means the dialog's main button, never "Never mind".
-dform.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.tagName==="INPUT"){e.preventDefault();const p=dform.querySelector("button.primary");if(p)p.click();}});
-function ask(html,onOk,okText,noCancel){
-  dform.innerHTML=html+`<div class="row" style="justify-content:flex-end;margin-top:10px">${noCancel?"":'<button value="cancel" formnovalidate>Never mind</button>'}<button class="primary" value="ok">${okText||"So be it"}</button></div>`;
-  onDlgOk=onOk;
-  if(dlg.open)dlg.close();
-  try{dlg.showModal();}catch(e){dlg.setAttribute("open","");}
-  const first=dform.querySelector("input:not([type=checkbox]):not([readonly]),select");if(first)first.focus();
+/* Tons are counted in fifths, so 18 1/5 tons is 91 fifths. */
+function tonsText(f){f=Math.round(f);const w=Math.floor(f/5),r=f%5;return w&&r?`${w} ${r}/5`:r?`${r}/5`:`${w}`;}
+/* Lines are dealt from a shuffled deck, so none repeats until all have been used. */
+const DECKS={},LAST={};
+function deal(key,arr){
+  if(!DECKS[key]||!DECKS[key].length){
+    const d=arr.map((_,i)=>i);
+    for(let i=d.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[d[i],d[j]]=[d[j],d[i]];}
+    if(LAST[key]===d[d.length-1]&&d.length>1)d.unshift(d.pop());
+    DECKS[key]=d;
+  }
+  const i=DECKS[key].pop();LAST[key]=i;return arr[i];
 }
-function confirmBox(title,text,yes,onYes){ask(`<h2>${esc(title)}</h2><p class="sub">${esc(text)}</p>`,()=>onYes(),yes);}
+const say=(key,...a)=>deal("log-"+key,LOG[key])(...a);
 
-/* ---------------- For shipmates who reach for what is the DM's alone ---------------- */
+/* =====================================================================
+   THE WORDS OF THE LEDGER
+   Every line here was approved at the table. Words in ${...} are
+   filled in by the ledger as it goes.
+   ===================================================================== */
 const SNARK={
   scuttle:[
     "You lay your hand upon the scuttling axe, and the whole crew turns to stare. Mutiny is a hanging offense, sailor. Only the God Above Gods (your virtuous DM) sends ships to the bottom.",
@@ -458,18 +311,307 @@ const SNARK={
     "A trap triggers. Rocks fall. You die. Roll a new character. ...Fine, you live. This time. But the chest remains the sole domain of the Supreme Dispenser of Doom and Second Chances (your forgiving DM).",
   ],
 };
-/* Lines are dealt like cards from a shuffled deck, so none repeats until all have been seen. */
-const SNARK_DECKS={};
-function snark(kind){
-  if(!SNARK_DECKS[kind]||!SNARK_DECKS[kind].length){
-    const d=SNARK[kind].map((_,i)=>i);
-    for(let i=d.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[d[i],d[j]]=[d[j],d[i]];}
-    if(SNARK_DECKS.last&&SNARK_DECKS.last[kind]===d[d.length-1])d.unshift(d.pop());
-    SNARK_DECKS[kind]=d;
-  }
-  const i=SNARK_DECKS[kind].pop();
-  SNARK_DECKS.last=Object.assign(SNARK_DECKS.last||{},{[kind]:i});
-  ask(`<h2>${kind==="scuttle"?"Avast, Sailor!":"Hands Off the Chest!"}</h2><p class="snark">${esc(SNARK[kind][i])}</p>`,()=>{},kind==="scuttle"?"I unhand the axe":"I back away slowly",true);
+SNARK.papers=[
+  "You reach for the ship's papers. The ink itself recoils. These are signed and sealed by the High Registrar of Every Hull (your illustrious DM), and no one else.",
+  "Forgery is a hanging offense in every port of the coalition. Only the Grand Notary of the Seven Seas (your scrupulous DM) may rewrite a ship's papers.",
+  "The papers are locked in the captain's desk. The captain's desk is locked in the captain's cabin. The key hangs around the neck of the Sovereign Scribe of Sails (your learned DM).",
+  "You try to scribble a few extra tons onto her papers. The quill snaps. The ink spills. The Archmagistrate of Maritime Law (your stern DM) is not amused.",
+  "A ship's papers are a sacred trust between a vessel and the Exalted Harbormaster of Heaven (your gracious DM). You are not party to that trust.",
+  "The papers flutter out of your grasp and into the wind, and drift neatly into the hands of the Lord Chancellor of the Charts (your all-knowing DM).",
+  "‘Amendments to a ship's registry,’ reads the small print, ‘may be made only by the Supreme Clerk of Creation (your meticulous DM), in triplicate.’",
+  "You squint at the papers. They are written in a script only the Ancient Cartographer of Fates (your wise DM) can read.",
+  "The ship's cat sits upon the papers and will not move. It answers only to the Most Puissant Master of Manifests (your noble DM).",
+  "The harbor clerk peers at you over his spectacles. ‘And you are… not the Eternal Keeper of Deeds and Decrees (your magnificent DM). Next!’",
+  "Changing a ship's papers requires a signature, a seal, and the blessing of the Celestial Authority on All Things Afloat (your benevolent DM). You have none of these.",
+  "The papers have been notarized, laminated and blessed. Only the Infallible Bureaucrat of the Deep (your patient DM) may touch them now.",
+  "You alter the papers. Instantly, the harbor guard arrests you for fraud. You are tried, convicted and hanged at dawn. Roll a new character. ...Not really. But only the Dread Justiciar of the Docks (your merciful DM) may change them.",
+  "Rocks fall onto the papers. Then onto you. You die, flattened beneath a pile of paperwork. ...Fine, you live. But the papers stay as they are, in the keeping of the Supreme Archivist of All Paper Things (your orderly DM).",
+];
+SNARK.overload=[
+  "You heave the crate toward the hold. The hold heaves it back. She is full, sailor, and only the Lord of Ballast and Burden (your venerable DM) may ask more of her.",
+  "The ship's timbers groan in a language every sailor understands: ‘No.’ Take it up with the Grand Assessor of Weight and Worth (your discerning DM).",
+  "The waterline creeps up the hull like a cat eyeing your dinner. Only the Supreme Overseer of Buoyancy (your watchful DM) may decide how low she sits.",
+  "The quartermaster blocks the hatch with folded arms. ‘Not one more barrel,’ he says, ‘unless the Most Hallowed Keeper of the Scales (your fair-minded DM) says so.’",
+  "The figurehead turns, very slowly, to glare at you. The ship has spoken, and so has the Exalted Regent of Ropes and Rigging (your wondrous DM).",
+  "You try to squeeze one more crate in sideways. Physics, that old enemy of pirates, refuses. Physics answers only to the Celestial Lawgiver of the Hold (your brilliant DM).",
+  "The bilge rats are packing their tiny bags. Even they know this ship is full. Overloading her is a privilege of the Thrice-Crowned Admiral of Excess (your extravagant DM).",
+  "The hold is fuller than a dwarf at a feast. If she must carry more, it will be at the word of the August Measurer of All Things (your meticulous DM).",
+  "A loose plank pops free and smacks you on the forehead. Consider it a warning from the Ever-Watchful Guardian of the Waterline (your vigilant DM).",
+  "Every sailor knows the rule: what goes in must not sink us. The rule was written by the Ancient Lawmaker of the Keel (your timeless DM).",
+  "The ship lists ever so slightly, as if to sigh. She has carried enough. Only the Grand Ferryman of Burdens (your tireless DM) may add to her load.",
+  "The sea folk below have started a betting pool on when you'll sink. Disappoint them. Only the Sovereign Banker of Bad Odds (your cunning DM) may raise the stakes.",
+  "You stow the crate. The ship sinks like a stone. Everyone drowns. The sea folk throw a party. Roll up new characters. ...Not really. The crate is still on the dock, because only the Unrivaled Lord of the Load Line (your omnipotent DM) can sink a ship with cargo.",
+  "Rocks fall. Into the hold. The ship, now carrying rocks, sinks. You die. ...Fine, no rocks, no sinking, no dying. But no crate either, unless the Eternal Mason of Doom (your rock-solid DM) wills it.",
+];
+
+const SELL_LINES=[
+  "Sold! May the shells jingle merrily in your purse.",
+  "Gone to the market. Hope you got a good price for that one.",
+  "The merchant counts out your shells with a smile that is just a little too wide. Hope you haggled hard.",
+  "Off it goes, down the gangplank and into someone else's ledger.",
+  "Sold, with the traditional handshake and the traditional suspicion that you were robbed.",
+  "The buyer walks away whistling. That is either a good sign or a very bad one.",
+  "A fair trade, or so the merchant swears upon three gods and his mother.",
+  "Sold! The hold breathes a little easier.",
+];
+
+const LOG={
+  dawn:[
+    ()=>"Dawn spills thin gold across the deck, and below, in the dark of the hold, the quartermaster lifts the lantern to count what the night has taken.",
+    ()=>"The gulls cry the morning awake. Barrel by barrel, the hold is reckoned.",
+    ()=>"A grey and salt-heavy morning creeps over the rail; the dice rattle in the quartermaster's cupped hands.",
+    ()=>"Sunrise blooms rose-pink upon the swells, and the old ritual of the larder begins anew.",
+    ()=>"Mist clings to the rigging like a sleeping ghost, and somewhere below, the bread is quietly deciding its fate.",
+    ()=>"The bell rings the morning watch. Down the ladder goes the lantern, into the sweet and sour smell of stores.",
+  ],
+  stow:[
+    (a,n)=>`Stowed ${a} of ${n} below.`,
+    (a,n)=>`Down the hatch went ${a} of ${n}, lashed tight against the roll of the sea.`,
+    (a,n)=>`${cap(a)} of ${n} came aboard and found a snug corner of the hold.`,
+    (a,n)=>`The hold welcomes ${a} of ${n}, and the quartermaster makes a neat little mark in the ledger.`,
+  ],
+  eat:[
+    (a,n,r)=>`${cap(a)} of ${n} eaten (${r}).`,
+    (a,n,r)=>`The galley fed the crew ${a} of ${n} (${r}), and not a crumb was wasted.`,
+    (a,n,r)=>`${cap(a)} of ${n} (${r}) vanished into hungry bellies.`,
+    (a,n,r)=>`Mess was called, and ${a} of ${n} (${r}) answered.`,
+  ],
+  drink:[
+    (a,n,r)=>`${cap(a)} of ${n} drunk (${r}).`,
+    (a,n,r)=>`The crew drank deep: ${a} of ${n} (${r}).`,
+    (a,n,r)=>`${cap(a)} of ${n} (${r}) wet the throats of thirsty sailors.`,
+    (a,n,r)=>`The cask gave up ${a} of ${n} (${r}) to the dry and the weary.`,
+  ],
+  open:[
+    (a,n)=>`Pried open ${a} of ${n}.`,
+    (a,n)=>`Off came the lid of ${a} of ${n}, with a groan of old nails.`,
+    (a,n)=>`The bosun's crowbar did its work: ${a} of ${n} lies open.`,
+    (a,n)=>`${cap(a)} of ${n} is broached, and its contents spill into the loose stores.`,
+  ],
+  repack:[
+    (n,a)=>`Loose ${n} packed neatly into ${a}.`,
+    (n,a)=>`The quartermaster, who cannot abide a mess, packed loose ${n} into ${a}.`,
+    (n,a)=>`Odds and ends of ${n} gathered up and sealed into ${a}.`,
+    (n,a)=>`Tidy hold, tidy mind: loose ${n} now fills ${a}.`,
+  ],
+  quiet:[
+    (n)=>`${n} lot${n===1?"":"s"} held fast against the night, sound and sweet.`,
+    (n)=>`The night passed gently below. ${n} lot${n===1?"":"s"} awoke as fresh as they slept.`,
+    (n)=>`Not a whisker of mold, not a whiff of rot. ${n} lot${n===1?"":"s"} kept their Keep.`,
+    (n)=>`The hold slept soundly, and so did ${n} of its lots.`,
+  ],
+  slip:[
+    (L,n,d,to)=>`${L}: the ${d} came up 1, and its Keep slips to ${to}.`,
+    (L,n,d,to)=>`A damp chill crept into the ${n}. The ${d} showed 1, and now it keeps on a ${to}.`,
+    (L,n,d,to)=>`The ${d} rolls a sorry 1. The ${n} is not what it was, and slips to a ${to}.`,
+    (L,n,d,to)=>`Time gnaws at the ${n}. A 1 on the ${d} drops it to a ${to}.`,
+  ],
+  miss:[
+    (d,v,n,how)=>`Loss Die ${d} shows ${v}; the ${how} ${n} shrug it off.`,
+    (d,v,n,how)=>`The ${n} trembled, but the Loss Die ${d} showed only ${v}. All are spared.`,
+    (d,v,n,how)=>`Loss Die ${d}: ${v}. The ${n} live to see another dawn.`,
+    (d,v,n,how)=>`Fortune smiles on the ${n}. A ${v} on the Loss Die ${d}, and nothing lost.`,
+  ],
+  hit:[
+    (d,v,r4,p,a,n)=>`Loss Die ${d} shows ${v}: rolled ${r4} on the d4, ${p}% of what remained. ${cap(a)} spoil.`,
+    (d,v,r4,p,a,n)=>`Bad luck below. The Loss Die ${d} shows ${v}, the d4 shows ${r4}, and ${p}% of the ${n} go soft: ${a} spoiled.`,
+    (d,v,r4,p,a,n)=>`The Loss Die ${d} lands on ${v}. A ${r4} on the d4 claims ${p}%: ${a} lost to rot.`,
+    (d,v,r4,p,a,n)=>`Mold finds the ${n}. Loss Die ${d} ${v}, d4 ${r4}, ${p}% gone: ${a} spoiled.`,
+  ],
+  preserved:[
+    (L,n)=>`Being preserved, ${L.charAt(0).toLowerCase()+L.slice(1)} loses nothing in the stepping down.`,
+    (L,n)=>`Salt and smoke stand guard. The ${n} slips a die, but not a morsel is lost.`,
+    (L,n)=>`The ${n} is preserved and proud. It steps down, yet loses nothing.`,
+    (L,n)=>`Brine keeps its promises. Nothing of the ${n} spoils as it slips.`,
+  ],
+  turning:[
+    (N,n,r4,p,a)=>`${N} is turning: rolled ${r4} on the d4, ${p}% of what remained. ${cap(a)} spoil.`,
+    (N,n,r4,p,a)=>`The ${n} is on its last legs. A ${r4} on the d4 takes ${p}%: ${a} spoiled.`,
+    (N,n,r4,p,a)=>`Rot spreads through the ${n}. d4 ${r4}, ${p}% lost: ${a} gone bad.`,
+    (N,n,r4,p,a)=>`The ${n} turns further still. The d4 shows ${r4}, and ${a} (${p}%) spoil.`,
+  ],
+  perish:[
+    (n,a)=>`The ${n} gave up its freshness in the night. ${cap(a)} spoiled.`,
+    (n,a)=>`By morning the ${n} had turned, and a smell hangs about the hold. ${cap(a)} spoiled.`,
+    (n,a)=>`No salt, no smoke, no mercy. The ${n} spoiled overnight. ${cap(a)} lost.`,
+    (n,a)=>`The gulls knew before the cook did. The ${n} has spoiled, ${a} of it.`,
+  ],
+  toss:[
+    (a,n)=>`${cap(a)} of spoiled ${n} given to the sea and the grateful fish.`,
+    (a,n)=>`Over the rail went ${a} of spoiled ${n}, and the gulls cheered.`,
+    (a,n)=>`${cap(a)} of spoiled ${n} cast overboard. The sea is not a picky eater.`,
+    (a,n)=>`The crew held their noses and heaved ${a} of spoiled ${n} into the waves.`,
+  ],
+  eatSpoiled:[
+    (a,n,r,s)=>`${cap(a)} of spoiled ${n} eaten by brave or desperate souls (${r}). Each must save: ${s}.`,
+    (a,n,r,s)=>`Hunger wins over sense. ${cap(a)} of spoiled ${n} eaten (${r}). Save: ${s}.`,
+    (a,n,r,s)=>`Someone ate ${a} of spoiled ${n} (${r}). Brave, or foolish. Save: ${s}.`,
+    (a,n,r,s)=>`Waste not, want not, they said, and down went ${a} of spoiled ${n} (${r}). Save: ${s}.`,
+  ],
+  butcher:[
+    (a,m,n)=>`${cap(a)} butchered, giving ${m} of fresh ${n}.`,
+    (a,m,n)=>`The cook sharpened the cleaver. ${cap(a)} met its end, yielding ${m} of fresh ${n}.`,
+    (a,m,n)=>`A solemn moment by the galley: ${a} becomes ${m} of fresh ${n}.`,
+    (a,m,n)=>`${cap(a)} went to the block. ${cap(m)} of fresh ${n} now hang in the hold.`,
+  ],
+  eggs:[
+    (k)=>`The hens laid ${k} eggs in the night.`,
+    (k)=>`Clucking and fussing, the hens produced ${k} eggs.`,
+    (k)=>`${k} eggs found warm in the straw this morning.`,
+    (k)=>`The hens did their duty: ${k} eggs, still warm from the straw.`,
+  ],
+  dozen:[
+    (d,left)=>`${cap(d)} packed for the galley; ${left} eggs wait for more company.`,
+  ],
+  fire:[
+    (a)=>`Fired ${a}!`,
+    (a)=>`The guns roared, and ${a} flew.`,
+    (a)=>`Smoke and thunder! ${cap(a)} fired.`,
+    (a)=>`${cap(a)} sent screaming across the waves.`,
+  ],
+  haul:[
+    (a)=>`${cap(a)} hauled back aboard and stowed.`,
+    (a)=>`Hand over hand, the crew reeled in ${a}.`,
+    (a)=>`${cap(a)} dragged dripping from the sea and stowed once more.`,
+  ],
+  cut:[
+    (a)=>`${cap(a)} cut free and lost to the deep.`,
+    (a)=>`The line was cut. ${cap(a)} sinks out of sight.`,
+    (a)=>`Snip, splash, gone. ${cap(a)} belongs to the sea now.`,
+  ],
+  burn:[
+    (a)=>`The furnaces were fed: ${a} of kelp charcoal burned.`,
+    (a)=>`Black smoke rose from the stacks as ${a} of kelp charcoal went into the fire.`,
+    (a)=>`The stokers shoveled ${a} of kelp charcoal into the hungry furnace.`,
+    (a)=>`Steam up! ${cap(a)} of kelp charcoal burned to keep her moving.`,
+  ],
+  soaked:[
+    (a)=>`Seawater soaks ${a} of kelp charcoal. It won't burn until dried.`,
+    (a)=>`The flood finds the charcoal. ${cap(a)} are wet through.`,
+    (a)=>`${cap(a)} of kelp charcoal sit soggy and useless in the bilge water.`,
+  ],
+  layout:[
+    (a)=>`${cap(a)} of wet charcoal laid out on deck to dry.`,
+    (a)=>`The crew spread ${a} of wet charcoal across the deck under the sun.`,
+    (a)=>`${cap(a)} of wet charcoal set out to dry, filling the deck with a smoky, salty smell.`,
+  ],
+  dried:[
+    (a)=>`${cap(a)} of charcoal dried in the sun and are ready to burn.`,
+    (a)=>`The sun did its work. ${cap(a)} of charcoal are dry once more.`,
+    (a)=>`${cap(a)} of charcoal, dry and crisp, gathered back into the hold.`,
+  ],
+  struck:[
+    ()=>"Water roars through a wound in the hull, and the hold is struck!",
+    ()=>"The sea forces its way inside, and the stores are drenched!",
+    ()=>"A crash, a lurch, a flood. The hold is struck!",
+    ()=>"Salt water pours into the hold, ruining all it touches!",
+  ],
+  amend:[
+    (n)=>`The ledger for ${n} is amended by hand.`,
+    (n)=>`The quartermaster corrects the count of ${n} with a careful stroke of the quill.`,
+    (n)=>`An honest correction: ${n} recounted and amended.`,
+    (n)=>`A smudge in the ledger is set right. ${cap(n)} amended.`,
+  ],
+  overload:[
+    ()=>"The ship is overloaded and sits dangerously low in the water. She is Sinking!",
+    ()=>"Against all good sense, more cargo was crammed aboard. She is Sinking!",
+    ()=>"The waterline vanishes beneath the waves. She is Sinking!",
+  ],
+};
+
+
+/* ---------------- The catalog ---------------- */
+const CATALOG=[{"id": "fish", "name": "Fish", "cat": "Fresh Food", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "perish", "how": "Perishable", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "shellfish", "name": "Shellfish", "cat": "Fresh Food", "kind": "food", "single": "2 dozen", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "perish", "how": "Perishable", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "chicken", "name": "Chicken", "cat": "Fresh Food", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "perish", "how": "Perishable", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "pork", "name": "Pork", "cat": "Fresh Food", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "perish", "how": "Perishable", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "goat", "name": "Goat", "cat": "Fresh Food", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "perish", "how": "Perishable", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "mutton", "name": "Mutton", "cat": "Fresh Food", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "perish", "how": "Perishable", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "beef", "name": "Beef", "cat": "Fresh Food", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "perish", "how": "Perishable", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "sea-turtle", "name": "Sea turtle", "cat": "Fresh Food", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "perish", "how": "Perishable", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "eggs", "name": "Eggs", "cat": "Fresh Food", "kind": "food", "single": "Dozen", "w": "dozen", "wp": "dozen", "rat": 1.0, "water": false, "keep": "d8", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "vegetables", "name": "Vegetables", "cat": "Fresh Food", "kind": "food", "single": "3 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d6", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "fruit", "name": "Fruit", "cat": "Fresh Food", "kind": "food", "single": "1 piece", "w": "piece", "wp": "pieces", "rat": 0.125, "water": false, "keep": "d4", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 800, "f": 1}, {"id": "apple", "name": "Apple", "cat": "Fresh Food", "kind": "food", "single": "1 apple", "w": "apple", "wp": "apples", "rat": 0.125, "water": false, "keep": "d10", "how": "Hardy", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 800, "f": 1}, {"id": "citrus", "name": "Citrus", "cat": "Fresh Food", "kind": "food", "single": "1 fruit", "w": "fruit", "wp": "fruit", "rat": 0.125, "water": false, "keep": "d10", "how": "Hardy", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 800, "f": 1}, {"id": "plantain", "name": "Plantain", "cat": "Fresh Food", "kind": "food", "single": "1 plantain", "w": "plantain", "wp": "plantains", "rat": 0.25, "water": false, "keep": "d6", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 400, "f": 1}, {"id": "bread", "name": "Bread", "cat": "Fresh Food", "kind": "food", "single": "Loaf", "w": "loaf", "wp": "loaves", "rat": 0.5, "water": false, "keep": "d4", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 200, "f": 1}, {"id": "seaweed-bread", "name": "Seaweed bread", "cat": "Fresh Food", "kind": "food", "single": "Loaf", "w": "loaf", "wp": "loaves", "rat": 0.5, "water": false, "keep": "d4", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 200, "f": 1}, {"id": "fresh-cheese", "name": "Fresh cheese", "cat": "Fresh Food", "kind": "food", "single": "1 lb", "w": "pound", "wp": "pounds", "rat": 1.0, "water": false, "keep": "d8", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 300, "f": 1}, {"id": "sea-fennel", "name": "Sea fennel", "cat": "Fresh Food", "kind": "food", "single": "Bundle", "w": "bundle", "wp": "bundles", "rat": 0.25, "water": false, "keep": "d4", "how": "Delicate", "spoil": "Rancid", "cargo": "Bale", "cargoPl": "bales", "per": 600, "f": 1}, {"id": "firecap-peppers", "name": "Firecap peppers", "cat": "Fresh Food", "kind": "food", "single": "Handful", "w": "handful", "wp": "handfuls", "rat": 0.0, "water": false, "keep": "d10", "how": "Hardy", "spoil": "Rancid", "cargo": "Bale", "cargoPl": "bales", "per": 1000, "f": 1}, {"id": "ship-s-biscuit", "name": "Ship's biscuit", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "dried-beans-lentils-or-chickpeas", "name": "Dried beans, lentils or chickpeas", "cat": "Stores", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "rice", "name": "Rice", "cat": "Stores", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "wheat-or-barley", "name": "Wheat or barley", "cat": "Stores", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "flour", "name": "Flour", "cat": "Stores", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "salted-beef", "name": "Salted beef", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "salted-ham", "name": "Salted ham", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "smoked-whale-meat", "name": "Smoked whale meat", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "salted-or-smoked-fish", "name": "Salted or smoked fish", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "dried-conch", "name": "Dried conch", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "dried-squid-or-cuttlefish", "name": "Dried squid or cuttlefish", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "smoked-or-salted-shellfish", "name": "Smoked or salted shellfish", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "glassleaf", "name": "Glassleaf", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "dried-kelp", "name": "Dried kelp", "cat": "Stores", "kind": "food", "single": "Bundle", "w": "bundle", "wp": "bundles", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Bale", "cargoPl": "bales", "per": 300, "f": 1}, {"id": "dried-figs-or-raisins", "name": "Dried figs or raisins", "cat": "Delicacies", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "chestnuts", "name": "Chestnuts", "cat": "Delicacies", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d12", "how": "Hardy", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "olives", "name": "Olives", "cat": "Delicacies", "kind": "food", "single": "Jar", "w": "jar", "wp": "jars", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 200, "f": 1}, {"id": "pickles", "name": "Pickles", "cat": "Delicacies", "kind": "food", "single": "Jar", "w": "jar", "wp": "jars", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 200, "f": 1}, {"id": "capers", "name": "Capers", "cat": "Delicacies", "kind": "food", "single": "Jar", "w": "jar", "wp": "jars", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 200, "f": 1}, {"id": "grape-leaves", "name": "Grape leaves", "cat": "Delicacies", "kind": "food", "single": "Jar", "w": "jar", "wp": "jars", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 200, "f": 1}, {"id": "fruit-preserves", "name": "Fruit preserves", "cat": "Delicacies", "kind": "food", "single": "Jar", "w": "jar", "wp": "jars", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 200, "f": 1}, {"id": "candied-peel", "name": "Candied peel", "cat": "Delicacies", "kind": "food", "single": "1 lb", "w": "pound", "wp": "pounds", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 300, "f": 1}, {"id": "cave-aged-cheese", "name": "Cave-aged cheese", "cat": "Delicacies", "kind": "food", "single": "1 lb", "w": "pound", "wp": "pounds", "rat": 1.0, "water": false, "keep": "d8", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 300, "f": 1}, {"id": "wax-sealed-goat-cheese", "name": "Wax-sealed goat cheese", "cat": "Delicacies", "kind": "food", "single": "10 lb wheel", "w": "wheel", "wp": "wheels", "rat": 10.0, "water": false, "keep": "d12", "how": "Hardy", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 30, "f": 1}, {"id": "dried-mullet-roe", "name": "Dried mullet roe", "cat": "Delicacies", "kind": "food", "single": "1 lb slab", "w": "slab", "wp": "slabs", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 300, "f": 1}, {"id": "squid-ink", "name": "Squid ink", "cat": "Delicacies", "kind": "food", "single": "Pot", "w": "pot", "wp": "pots", "rat": 0.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 600, "f": 1}, {"id": "ambergris", "name": "Ambergris", "cat": "Delicacies", "kind": "food", "single": "1 oz", "w": "ounce", "wp": "ounces", "rat": 0.0, "water": false, "keep": "never", "how": null, "spoil": null, "solo": true, "f": 0}, {"id": "honey", "name": "Honey", "cat": "Pantry", "kind": "food", "single": "1 lb", "w": "pound", "wp": "pounds", "rat": 0.5, "water": false, "keep": "never", "how": null, "spoil": null, "cargo": "Cask", "cargoPl": "casks", "per": 300, "f": 1}, {"id": "raw-sugar", "name": "Raw sugar", "cat": "Pantry", "kind": "food", "single": "1 lb", "w": "pound", "wp": "pounds", "rat": 0.5, "water": false, "keep": "never", "how": null, "spoil": null, "cargo": "Sack", "cargoPl": "sacks", "per": 300, "f": 1}, {"id": "molasses", "name": "Molasses", "cat": "Pantry", "kind": "food", "single": "Jar, 1 lb", "w": "jar", "wp": "jars", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Barrel", "cargoPl": "barrels", "per": 400, "f": 1}, {"id": "olive-oil", "name": "Olive oil", "cat": "Pantry", "kind": "food", "single": "Flask", "w": "flask", "wp": "flasks", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Barrel", "cargoPl": "barrels", "per": 320, "f": 1}, {"id": "salt", "name": "Salt", "cat": "Pantry", "kind": "food", "single": "1 lb", "w": "pound", "wp": "pounds", "rat": 0.0, "water": false, "keep": "never", "how": null, "spoil": null, "cargo": "Sack", "cargoPl": "sacks", "per": 350, "f": 1}, {"id": "vinegar", "name": "Vinegar", "cat": "Pantry", "kind": "food", "single": "Flask", "w": "flask", "wp": "flasks", "rat": 0.0, "water": false, "keep": "never", "how": null, "spoil": null, "cargo": "Barrel", "cargoPl": "barrels", "per": 320, "f": 1}, {"id": "dried-herbs", "name": "Dried herbs", "cat": "Pantry", "kind": "food", "single": "Bundle", "w": "bundle", "wp": "bundles", "rat": 0.0, "water": false, "keep": "never", "how": null, "spoil": null, "cargo": "Bale", "cargoPl": "bales", "per": 400, "f": 1}, {"id": "pepper", "name": "Pepper", "cat": "Pantry", "kind": "food", "single": "Pinch", "w": "pinch", "wp": "pinches", "rat": 0.0, "water": false, "keep": "never", "how": null, "spoil": null, "cargo": "Sack", "cargoPl": "sacks", "per": 3000, "f": 1}, {"id": "saffron", "name": "Saffron", "cat": "Pantry", "kind": "food", "single": "Pinch", "w": "pinch", "wp": "pinches", "rat": 0.0, "water": false, "keep": "never", "how": null, "spoil": null, "solo": true, "f": 0}, {"id": "water", "name": "Water", "cat": "Drink", "kind": "food", "single": "1 gallon", "w": "gallon", "wp": "gallons", "rat": 1.0, "water": true, "keep": "d10", "how": "Hardy", "spoil": "Stagnant", "cargo": "Barrel", "cargoPl": "barrels", "per": 40, "f": 1}, {"id": "hold-ale", "name": "Hold Ale", "cat": "Drink", "kind": "food", "single": "1 gallon", "w": "gallon", "wp": "gallons", "rat": 1.0, "water": true, "keep": "d20", "how": "Preserved", "spoil": "Sour", "cargo": "Barrel", "cargoPl": "barrels", "per": 40, "f": 1}, {"id": "beer", "name": "Beer", "cat": "Drink", "kind": "food", "single": "1 gallon", "w": "gallon", "wp": "gallons", "rat": 1.0, "water": true, "keep": "d12", "how": "Hardy", "spoil": "Sour", "cargo": "Barrel", "cargoPl": "barrels", "per": 40, "f": 1}, {"id": "dark-beer", "name": "Dark beer", "cat": "Drink", "kind": "food", "single": "1 gallon", "w": "gallon", "wp": "gallons", "rat": 1.0, "water": true, "keep": "d12", "how": "Hardy", "spoil": "Sour", "cargo": "Barrel", "cargoPl": "barrels", "per": 40, "f": 1}, {"id": "common-wine", "name": "Common wine", "cat": "Drink", "kind": "food", "single": "1 gallon", "w": "gallon", "wp": "gallons", "rat": 1.0, "water": true, "keep": "d20", "how": "Preserved", "spoil": "Sour", "cargo": "Barrel", "cargoPl": "barrels", "per": 40, "f": 1}, {"id": "mead", "name": "Mead", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "white-wine", "name": "White wine", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "fine-red-wine", "name": "Fine red wine", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "lotus-wine", "name": "Lotus wine", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "aged-reserve-wine", "name": "Aged reserve wine", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "rum", "name": "Rum", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "pine-needle-liquor", "name": "Pine-needle liquor", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "myrtle-liqueur", "name": "Myrtle liqueur", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "bitter-orange-liqueur", "name": "Bitter-orange liqueur", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "whiskey", "name": "Whiskey", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "brandy", "name": "Brandy", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "coffee", "name": "Coffee", "cat": "Drink", "kind": "food", "single": "1 day's brew", "w": "day's brew", "wp": "days' brew", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Sack", "cargoPl": "sacks", "per": 3000, "f": 1}, {"id": "tea", "name": "Tea", "cat": "Drink", "kind": "food", "single": "1 day's brew", "w": "day's brew", "wp": "days' brew", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Chest", "cargoPl": "chests", "per": 3000, "f": 1}, {"id": "live-chicken", "name": "Chicken (live)", "cat": "Livestock", "kind": "live", "single": "Bird", "w": "bird", "wp": "birds", "keep": "never", "meat": 1, "meatOf": "chicken", "f": 1, "cargo": "Coop", "cargoPl": "coops", "per": 40}, {"id": "live-goat", "name": "Goat (live)", "cat": "Livestock", "kind": "live", "single": "Goat", "w": "goat", "wp": "goats", "keep": "never", "meat": 20, "meatOf": "goat", "f": 1, "cargo": "Pair", "cargoPl": "pairs", "per": 2}, {"id": "live-sheep", "name": "Sheep (live)", "cat": "Livestock", "kind": "live", "single": "Sheep", "w": "sheep", "wp": "sheep", "keep": "never", "meat": 25, "meatOf": "mutton", "f": 1, "cargo": "Pair", "cargoPl": "pairs", "per": 2}, {"id": "live-pig", "name": "Pig (live)", "cat": "Livestock", "kind": "live", "single": "Pig", "w": "pig", "wp": "pigs", "keep": "never", "meat": 60, "meatOf": "pork", "f": 1, "cargo": "Pair", "cargoPl": "pairs", "per": 2}, {"id": "live-cow", "name": "Cow (live)", "cat": "Livestock", "kind": "live", "single": "Cow", "w": "cow", "wp": "cows", "keep": "never", "meat": 200, "meatOf": "beef", "f": 3, "solo": true}, {"id": "cannonball", "name": "Cannonball", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Round", "w": "round", "wp": "rounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 25, "f": 1}, {"id": "chain-shot", "name": "Chain shot", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Round", "w": "round", "wp": "rounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 25, "f": 1}, {"id": "grapeshot", "name": "Grapeshot", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Round", "w": "round", "wp": "rounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 25, "f": 1}, {"id": "smoke-bomb", "name": "Smoke bomb", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Round", "w": "round", "wp": "rounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "mortar-shell", "name": "Mortar shell", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Round", "w": "round", "wp": "rounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 10, "f": 1}, {"id": "burst-shell", "name": "Burst shell", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Round", "w": "round", "wp": "rounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 10, "f": 1}, {"id": "swivel-shot", "name": "Swivel shot", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Round", "w": "round", "wp": "rounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 200, "f": 1}, {"id": "swivel-grape", "name": "Swivel grape", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Round", "w": "round", "wp": "rounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 200, "f": 1}, {"id": "ballista-bolt", "name": "Ballista bolt", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Bolt", "w": "bolt", "wp": "bolts", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 40, "f": 1}, {"id": "flaming-bolt", "name": "Flaming bolt", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Bolt", "w": "bolt", "wp": "bolts", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 30, "f": 1}, {"id": "catapult-stone", "name": "Catapult stone", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Stone", "w": "stone", "wp": "stones", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 8, "f": 1}, {"id": "harpoon", "name": "Harpoon", "cat": "Ammunition", "kind": "supply", "ammo": true, "retrieve": true, "single": "Harpoon", "w": "harpoon", "wp": "harpoons", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "grappling-hook-and-chain", "name": "Grappling hook and chain", "cat": "Ammunition", "kind": "supply", "ammo": true, "retrieve": true, "single": "Hook", "w": "hook", "wp": "hooks", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 4, "f": 1}, {"id": "salamander-fuel", "name": "Salamander fuel", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Use", "w": "use", "wp": "uses", "useMult": 3, "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 24, "f": 1}, {"id": "dragon-head-fuel", "name": "Dragon head fuel", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Use", "w": "use", "wp": "uses", "useMult": 3, "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 15, "f": 1}, {"id": "boarding-plank", "name": "Boarding plank", "cat": "Boarding and Defense", "kind": "supply", "single": "Plank", "w": "plank", "wp": "planks", "solo": true, "f": 0}, {"id": "naval-mine", "name": "Naval mine", "cat": "Boarding and Defense", "kind": "supply", "ammo": true, "single": "Mine", "w": "mine", "wp": "mines", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 4, "f": 1}, {"id": "fire-sand", "name": "Fire sand", "cat": "Boarding and Defense", "kind": "supply", "single": "Bucket", "w": "bucket", "wp": "buckets", "solo": true, "f": 0}, {"id": "repair-stores", "name": "Repair stores", "cat": "Repair and Upkeep", "kind": "supply", "single": "1 unit", "w": "unit", "wp": "units", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 10, "f": 1}, {"id": "emergency-stores", "name": "Emergency stores", "cat": "Repair and Upkeep", "kind": "supply", "single": "1 unit", "w": "unit", "wp": "units", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 5, "f": 1}, {"id": "heavy-cordage", "name": "Heavy cordage", "cat": "Repair and Upkeep", "kind": "supply", "single": "Coil (100 ft)", "w": "coil", "wp": "coils", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 10, "f": 1}, {"id": "spare-anchor", "name": "Spare anchor", "cat": "Repair and Upkeep", "kind": "supply", "single": "Anchor", "w": "anchor", "wp": "anchors", "solo": true, "f": 1}, {"id": "kelp-charcoal", "name": "Kelp charcoal", "cat": "Fuel", "kind": "supply", "single": "Sack (50 lb)", "w": "sack", "wp": "sacks", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 8, "f": 1, "fuel": true}, {"id": "signal-flare", "name": "Signal flare", "cat": "Signals", "kind": "supply", "single": "Flare", "w": "flare", "wp": "flares", "solo": true, "f": 0}, {"id": "pine-timber", "name": "Pine timber", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Plank or spar", "w": "plank", "wp": "planks", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "oak-ship-timber", "name": "Oak ship timber", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Plank or beam", "w": "plank", "wp": "planks", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "full-tree-log", "name": "Full tree log", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Log", "w": "log", "wp": "logs", "solo": true, "f": 5}, {"id": "pine-resin", "name": "Pine resin", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Bucket", "w": "bucket", "wp": "buckets", "cargo": "Barrel", "cargoPl": "barrels", "per": 20, "f": 1}, {"id": "pitch", "name": "Pitch", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Bucket", "w": "bucket", "wp": "buckets", "cargo": "Barrel", "cargoPl": "barrels", "per": 20, "f": 1}, {"id": "tar", "name": "Tar", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Bucket", "w": "bucket", "wp": "buckets", "cargo": "Barrel", "cargoPl": "barrels", "per": 20, "f": 1}, {"id": "varnish", "name": "Varnish", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Jar", "w": "jar", "wp": "jars", "cargo": "Crate", "cargoPl": "crates", "per": 40, "f": 1}, {"id": "oakum", "name": "Oakum", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Bundle", "w": "bundle", "wp": "bundles", "cargo": "Bale", "cargoPl": "bales", "per": 50, "f": 1}, {"id": "raw-hemp", "name": "Raw hemp", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Bale", "cargoPl": "bales", "per": 400, "f": 1}, {"id": "sailcloth", "name": "Sailcloth", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Bolt (10 yards)", "w": "bolt", "wp": "bolts", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 10, "f": 1}, {"id": "nails-and-spikes", "name": "Nails and spikes", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Keg", "w": "keg", "wp": "kegs", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 10, "f": 1}, {"id": "charcoal", "name": "Charcoal", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Sack (50 lb)", "w": "sack", "wp": "sacks", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 8, "f": 1}, {"id": "iron-ore", "name": "Iron ore", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "copper-ore", "name": "Copper ore", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "silver-ore", "name": "Silver ore", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "iron-bar", "name": "Iron bar", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "copper-bar", "name": "Copper bar", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "silver-bar", "name": "Silver bar", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "gold-bar", "name": "Gold bar", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "solo": true, "f": 0}, {"id": "building-stone", "name": "Building stone", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "Block (50 lb)", "w": "block", "wp": "blocks", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 8, "f": 1}, {"id": "bricks-and-roof-tiles", "name": "Bricks and roof tiles", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 dozen", "w": "dozen", "wp": "dozen", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "millstone", "name": "Millstone", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "Millstone", "w": "millstone", "wp": "millstones", "solo": true, "f": 1}, {"id": "quicklime", "name": "Quicklime", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "Sack (50 lb)", "w": "sack", "wp": "sacks", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 8, "f": 1}, {"id": "alum", "name": "Alum", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "sulfur", "name": "Sulfur", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "saltpeter", "name": "Saltpeter", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "gunpowder", "name": "Gunpowder", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "Keg (20 lb)", "w": "keg", "wp": "kegs", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "kelp-ash", "name": "Kelp ash", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "Sack (50 lb)", "w": "sack", "wp": "sacks", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 8, "f": 1}, {"id": "glass", "name": "Glass", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "Pane", "w": "pane", "wp": "panes", "cargo": "Crate", "cargoPl": "crates", "per": 40, "f": 1}, {"id": "pottery-and-amphorae", "name": "Pottery and amphorae", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 jar", "w": "jar", "wp": "jars", "cargo": "Crate", "cargoPl": "crates", "per": 40, "f": 1}, {"id": "raw-cotton", "name": "Raw cotton", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Bale", "cargoPl": "bales", "per": 400, "f": 1}, {"id": "flax", "name": "Flax", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Bale", "cargoPl": "bales", "per": 400, "f": 1}, {"id": "cotton-cloth", "name": "Cotton cloth", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "Bolt (10 yards)", "w": "bolt", "wp": "bolts", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "wool-cloth", "name": "Wool cloth", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "Bolt (10 yards)", "w": "bolt", "wp": "bolts", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "fine-cloth", "name": "Fine cloth", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "Bolt (10 yards)", "w": "bolt", "wp": "bolts", "solo": true, "f": 0}, {"id": "sea-silk", "name": "Sea silk", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "1 yard", "w": "yard", "wp": "yards", "solo": true, "f": 0}, {"id": "common-dye", "name": "Common dye", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "murex-purple", "name": "Murex purple", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "solo": true, "f": 0}, {"id": "raw-hides", "name": "Raw hides", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "1 hide", "w": "hide", "wp": "hides", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "leather", "name": "Leather", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "1 hide", "w": "hide", "wp": "hides", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "whale-oil", "name": "Whale oil", "cat": "Sea and Field Goods", "kind": "goods", "single": "Flask", "w": "flask", "wp": "flasks", "cargo": "Barrel", "cargoPl": "barrels", "per": 320, "f": 1}, {"id": "spermaceti", "name": "Spermaceti", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "beeswax", "name": "Beeswax", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "soap", "name": "Soap", "cat": "Sea and Field Goods", "kind": "goods", "single": "Bar", "w": "bar", "wp": "bars", "cargo": "Crate", "cargoPl": "crates", "per": 200, "f": 1}, {"id": "whalebone", "name": "Whalebone", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "ivory", "name": "Ivory", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "tortoiseshell", "name": "Tortoiseshell", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "solo": true, "f": 0}, {"id": "sharkskin", "name": "Sharkskin", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 hide", "w": "hide", "wp": "hides", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "isinglass", "name": "Isinglass", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "carving-shell", "name": "Carving shell", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "cork", "name": "Cork", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "tobacco-leaf", "name": "Tobacco leaf", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Bale", "cargoPl": "bales", "per": 400, "f": 1}, {"id": "sea-glass", "name": "Sea glass", "cat": "Sea and Field Goods", "kind": "goods", "single": "Handful", "w": "handful", "wp": "handfuls", "solo": true, "f": 0}];
+const SHIP_TYPES=[{"name": "Battleship", "tons": 1500.0, "size": "Huge", "fuel": true}, {"name": "Brigantine", "tons": 70.0, "size": "Large", "fuel": false}, {"name": "Carrack", "tons": 100.0, "size": "Large", "fuel": false}, {"name": "Catamaran", "tons": 0.6, "size": "Small", "fuel": false}, {"name": "Cutter", "tons": 2.0, "size": "Small", "fuel": false}, {"name": "Fishing Smack", "tons": 4.0, "size": "Small", "fuel": false}, {"name": "Fluyt", "tons": 100.0, "size": "Medium", "fuel": false}, {"name": "Galleon", "tons": 800.0, "size": "Huge", "fuel": false}, {"name": "Galley", "tons": 80.0, "size": "Large", "fuel": false}, {"name": "Gunboat", "tons": 30.0, "size": "Medium", "fuel": false}, {"name": "Lifeboat", "tons": 1.0, "size": "Small", "fuel": false}, {"name": "Longship", "tons": 6.0, "size": "Medium", "fuel": false}, {"name": "Man o' War", "tons": 800.0, "size": "Huge", "fuel": false}, {"name": "Rowboat", "tons": 0.4, "size": "Small", "fuel": false}, {"name": "Sloop", "tons": 50.0, "size": "Medium", "fuel": false}, {"name": "Steam Frigate", "tons": 150.0, "size": "Large", "fuel": true}, {"name": "Steam Launch", "tons": 30.0, "size": "Medium", "fuel": true}, {"name": "Steam Ship", "tons": 1000.0, "size": "Huge", "fuel": true}, {"name": "Warship", "tons": 500.0, "size": "Huge", "fuel": false}, {"name": "Wave Skimmer", "tons": 1.0, "size": "Small", "fuel": false}, {"name": "Whaler", "tons": 150.0, "size": "Large", "fuel": false}];
+
+const DICE=["d20","d12","d10","d8","d6","d4"];
+const SPOIL={Stagnant:{dc:13,dis:"Bilge Flux"},Rancid:{dc:12,dis:"Rot Gut"},Fishy:{dc:14,dis:"Fish Fever"},Sour:{dc:10,dis:null}};
+const FUEL_NEED={Small:2,Medium:8,Large:16,Huge:32}; // sacks of kelp charcoal per day of steaming
+const CAT={};CATALOG.forEach(c=>CAT[c.id]=c);
+const CATS=["Fresh Food","Stores","Delicacies","Pantry","Drink","Livestock","Ammunition","Boarding and Defense","Repair and Upkeep","Fuel","Signals","Timber and Shipbuilding","Metal, Stone and Powder","Cloth, Dye and Leather","Sea and Field Goods","Custom"];
+const slug=s=>s.toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")||"x";
+
+/* ---------------- The two ledgers: this device, or the shared one ---------------- */
+const LocalDB=(()=>{
+  const K="oceana-larder-db";let tree={};
+  try{tree=JSON.parse(localStorage.getItem(K)||"{}")||{};}catch(e){}
+  const subs=new Set();
+  const keys=p=>p.split("/").filter(Boolean);
+  function getP(p){let o=tree;for(const k of keys(p)){if(o==null||typeof o!=="object")return null;o=o[k];}return o===undefined?null:clone(o);}
+  function setP(p,v){const ks=keys(p);let o=tree;for(let i=0;i<ks.length-1;i++){if(typeof o[ks[i]]!=="object"||o[ks[i]]===null)o[ks[i]]={};o=o[ks[i]];}if(v==null)delete o[ks[ks.length-1]];else o[ks[ks.length-1]]=clone(v);}
+  function fire(){for(const s of subs)s.f(getP(s.p));}
+  function persist(){try{localStorage.setItem(K,JSON.stringify(tree));}catch(e){}fire();}
+  window.addEventListener("storage",e=>{if(e.key===K){try{tree=JSON.parse(e.newValue||"{}")||{};}catch(x){}fire();}});
+  return {
+    local:true,
+    on(p,f){const s={p,f};subs.add(s);setTimeout(()=>{if(subs.has(s))f(getP(p));},0);return()=>subs.delete(s);},
+    async get(p){return getP(p);},
+    async set(p,v){setP(p,v);persist();},
+    async update(o){for(const k in o)setP(k,o[k]);persist();},
+    async tx(p,fn){const nv=fn(getP(p));if(nv===undefined)return {committed:false,val:getP(p)};setP(p,nv);persist();return {committed:true,val:getP(p)};},
+    connected(cb){cb(true);},
+  };
+})();
+let DB=LocalDB;
+let KEEPER=false, AUTH=null, signedIn=false;
+
+async function connectFirebase(){
+  if(!FIREBASE_CONFIG.apiKey||!FIREBASE_CONFIG.databaseURL)return false;
+  try{
+    const V="10.12.2";
+    const app=await import(`https://www.gstatic.com/firebasejs/${V}/firebase-app.js`);
+    const d=await import(`https://www.gstatic.com/firebasejs/${V}/firebase-database.js`);
+    const fb=app.initializeApp(FIREBASE_CONFIG);
+    const db=d.getDatabase(fb);
+    DB={
+      local:false,
+      on(p,f){return d.onValue(d.ref(db,p),s=>f(s.val()),e=>{console.error(e);setStatus("The ledger refused us","off");});},
+      get(p){return d.get(d.ref(db,p)).then(s=>s.val());},
+      set(p,v){return d.set(d.ref(db,p),v);},
+      update(o){return d.update(d.ref(db),o);},
+      tx(p,fn){return d.runTransaction(d.ref(db,p),fn).then(r=>({committed:r.committed,val:r.snapshot.val()}));},
+      connected(cb){d.onValue(d.ref(db,".info/connected"),s=>cb(!!s.val()));},
+    };
+    try{
+      const a=await import(`https://www.gstatic.com/firebasejs/${V}/firebase-auth.js`);
+      const auth=a.getAuth(fb);
+      AUTH={
+        signIn(pw){return a.signInWithEmailAndPassword(auth,KEEPER_EMAIL,pw);},
+        signOut(){return a.signOut(auth);},
+        onChange(cb){a.onAuthStateChanged(auth,cb);},
+      };
+    }catch(e){console.error(e);AUTH=null;}
+    return true;
+  }catch(e){console.error(e);DB=LocalDB;return false;}
+}
+
+/* ---------------- Dialogs (in-page, so they work even where pop-ups are blocked) ---------------- */
+const dlg=$("dlg"),dform=$("dlgForm");
+let onDlgOk=null;
+dform.addEventListener("submit",e=>{
+  e.preventDefault();
+  const v=e.submitter?e.submitter.value:"ok";
+  if(v.startsWith("x-"))return; // inner buttons handle themselves
+  const cb=onDlgOk;onDlgOk=null;
+  const fd=new FormData(dform);
+  dlg.close();
+  if(v==="ok"&&cb)cb(fd);
+});
+dlg.addEventListener("cancel",()=>{onDlgOk=null;});
+// Enter in a field means the dialog's main button, never "Never mind".
+dform.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.tagName==="INPUT"){e.preventDefault();const p=e.target.dataset.enter?dform.querySelector(e.target.dataset.enter):dform.querySelector("button.primary");if(p)p.click();}});
+function ask(html,onOk,okText,noCancel){
+  dform.innerHTML=html+`<div class="row" style="justify-content:flex-end;margin-top:10px">${noCancel?"":'<button value="cancel" formnovalidate>Never mind</button>'}<button class="primary" value="ok">${okText||"So be it"}</button></div>`;
+  onDlgOk=onOk;
+  if(dlg.open)dlg.close();
+  try{dlg.showModal();}catch(e){dlg.setAttribute("open","");}
+  const first=dform.querySelector("input:not([type=checkbox]):not([readonly]),select");if(first)first.focus();
+}
+function confirmBox(title,text,yes,onYes){ask(`<h2>${esc(title)}</h2><p class="sub">${esc(text)}</p>`,()=>onYes(),yes);}
+function snark(kind,extra){
+  const head={scuttle:"Avast, Sailor!",chest:"Hands Off the Chest!",papers:"Unhand Those Papers!",overload:"She's Full, Sailor!"}[kind];
+  const btn={scuttle:"I unhand the axe",chest:"I back away slowly",papers:"I put the quill down",overload:"I take it back to the dock"}[kind];
+  ask(`<h2>${head}</h2><p class="snark">${esc(deal("snark-"+kind,SNARK[kind]))}</p>${extra?`<p class="note">${esc(extra)}</p>`:""}`,()=>{},btn,true);
 }
 
 /* =====================================================================
@@ -477,22 +619,35 @@ function snark(kind){
    ===================================================================== */
 let SHIPS={}, harborUnsub=null, trashUnsub=null, migrated=false;
 const shipName=id=>(SHIPS[id]&&SHIPS[id].name)||id.replace(/-/g," ").replace(/\b\w/g,c=>c.toUpperCase());
-const shipSlug=s=>s.toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")||"ship";
+const ship=()=>SHIPS[SHIPID]||{};
+const maxF=()=>{const m=ship().maxTons;return typeof m==="number"?Math.round(m*5):null;};
+const canKeep=()=>KEEPER||!!ship().test;
 
 function showHarbor(){
   closeHold();
   $("holdView").hidden=true;$("harborView").hidden=false;
+  document.title="The Harbor Register";
   if(!harborUnsub)harborUnsub=DB.on("ships",v=>{SHIPS=v||{};renderShips();});
   if(!migrated&&!DB.local){
     migrated=true;
     // Holds from before the Register existed get an entry, so none are stranded.
-    DB.get("holds").then(h=>{if(!h)return;const up={};for(const id in h)if(!SHIPS[id])up["ships/"+id]={name:shipName(id),created:Date.now()};if(Object.keys(up).length)DB.update(up);}).catch(()=>{});
+    // The Register is read fresh here, so a ship that merely hasn't loaded yet is never overwritten.
+    Promise.all([DB.get("holds"),DB.get("ships")]).then(([h,reg])=>{
+      if(!h)return;reg=reg||{};
+      for(const id in h)if(!reg[id])DB.update({["ships/"+id]:{name:shipName(id),created:Date.now()}}).catch(()=>{});
+    }).catch(()=>{});
   }
   renderKeeper();
 }
+function shipFacts(s){
+  const bits=[];
+  if(typeof s.maxTons==="number")bits.push(tonsText(s.maxTons*5)+" tons");else bits.push("no Tonnage set");
+  if(s.fuel)bits.push("Fuel Powered, "+(s.size||"Medium"));
+  return bits.join(" · ");
+}
 function renderShips(){
   const ids=Object.keys(SHIPS).sort((a,b)=>(SHIPS[a].created||0)-(SHIPS[b].created||0));
-  $("shipList").innerHTML=ids.length?`<table><tbody>${ids.map(id=>`<tr><td><b>${esc(shipName(id))}</b><div class="tag">christened ${esc(when(SHIPS[id].created))}</div></td><td style="text-align:right"><div class="acts" style="justify-content:flex-end"><button class="sm" data-board="${esc(id)}">Go Aboard</button><button class="sm danger" data-scuttle="${esc(id)}">Scuttle</button></div></td></tr>`).join("")}</tbody></table>`
+  $("shipList").innerHTML=ids.length?`<table><tbody>${ids.map(id=>{const s=SHIPS[id];return `<tr><td><b>${esc(shipName(id))}</b>${s.test?' <span class="testtag">test ship</span>':""}<div class="tag">${esc(shipFacts(s))} · christened ${esc(when(s.created))}</div></td><td style="text-align:right"><div class="acts" style="justify-content:flex-end"><button class="sm" data-board="${esc(id)}">Go Aboard</button><button class="sm danger" data-scuttle="${esc(id)}">Scuttle</button></div></td></tr>`;}).join("")}</tbody></table>`
     :`<p class="note">No ship rides at anchor yet. Christen the first below.</p>`;
 }
 $("shipList").onclick=e=>{
@@ -501,20 +656,47 @@ $("shipList").onclick=e=>{
   if(b.dataset.scuttle&&!KEEPER){snark("scuttle");return;}
   if(b.dataset.scuttle){const id=b.dataset.scuttle;confirmBox("Scuttle "+shipName(id),"Send "+shipName(id)+" to the bottom? Her hold goes down with her, but both rest in the Keeper's Chest until raised or given to the deep forever.","Scuttle her",()=>scuttle(id));}
 };
-$("newShipBtn").onclick=async()=>{
-  const name=$("newShipName").value.trim();if(!name){toast("A ship must have a name.");return;}
-  let id=shipSlug(name),n=2;while(SHIPS[id])id=shipSlug(name)+"-"+(n++);
-  try{
-    await DB.update({["ships/"+id]:{name,created:Date.now()},["holds/"+id]:fresh()});
-    $("newShipName").value="";toast(name+" is christened!");go(id);
-  }catch(e){console.error(e);toast("The Register would not take her name. Try again.");}
+
+/* ---- Christening and the ship's particulars ---- */
+function shipFields(s,withName){
+  s=s||{};
+  return `<div class="grid">
+    ${withName?`<label>Name</label><input type="text" name="name" maxlength="70" required value="${esc(s.name||"")}">`:""}
+    <label>Ship type</label><select name="type"><option value="">Custom</option>${SHIP_TYPES.map((t,i)=>`<option value="${i}">${esc(t.name)}</option>`).join("")}</select>
+    <label>Max Tonnage</label><input type="number" name="tons" min="0" step="0.2" value="${typeof s.maxTons==="number"?s.maxTons:""}" placeholder="tons">
+    <label>Fuel Powered</label><label class="inline"><input type="checkbox" name="fuel" ${s.fuel?"checked":""}> She burns kelp charcoal</label>
+    <label>Size</label><select name="size">${["Small","Medium","Large","Huge"].map(z=>`<option ${z===(s.size||"Medium")?"selected":""}>${z}</option>`).join("")}</select>
+  </div>`;
+}
+function wireTypeFill(){
+  const sel=dform.querySelector("select[name=type]");if(!sel)return;
+  sel.onchange=()=>{const t=SHIP_TYPES[sel.value];if(!t)return;
+    dform.querySelector("input[name=tons]").value=t.tons;
+    dform.querySelector("input[name=fuel]").checked=t.fuel;
+    dform.querySelector("select[name=size]").value=t.size;};
+}
+function readShip(fd){
+  const tv=String(fd.get("tons")||"").trim();
+  const out={fuel:!!fd.get("fuel"),size:String(fd.get("size")||"Medium")};
+  if(tv!==""){const n=Math.max(0,Math.round(parseFloat(tv)*5)/5);if(!isNaN(n))out.maxTons=n;}
+  return out;
+}
+$("newShipBtn").onclick=()=>{
+  ask(`<h2>Christen a New Ship</h2><p class="sub">Name her, tell the Register what she can carry, and break the bottle on her bow.</p>${shipFields({},true)}
+    <div class="grid"><label>Test ship</label><label class="inline"><input type="checkbox" name="test"> A ship for testing; her papers and chest lie open to all</label></div>`,async fd=>{
+    const name=String(fd.get("name")||"").trim();if(!name){toast("A ship must have a name.");return;}
+    const s=Object.assign({name,created:Date.now(),test:!!fd.get("test")},readShip(fd));
+    let id=slug(name),n=2;while(SHIPS[id])id=slug(name)+"-"+(n++);
+    try{await DB.update({["ships/"+id]:s,["holds/"+id]:fresh()});toast(name+" is christened!");go(id);}
+    catch(e){console.error(e);toast("The Register would not take her name. Try again.");}
+  },"Christen Her");
+  wireTypeFill();
 };
-$("newShipName").addEventListener("keydown",e=>{if(e.key==="Enter")$("newShipBtn").click();});
 
 async function scuttle(id){
   try{
-    const [ship,hold]=await Promise.all([DB.get("ships/"+id),DB.get("holds/"+id)]);
-    await DB.set("trash/"+id,{ship:ship||{name:shipName(id)},hold:hold||null,deletedAt:Date.now()});
+    const [s,hold]=await Promise.all([DB.get("ships/"+id),DB.get("holds/"+id)]);
+    await DB.set("trash/"+id,{ship:s||{name:shipName(id)},hold:hold||null,deletedAt:Date.now()});
     await DB.update({["ships/"+id]:null,["holds/"+id]:null});
     toast(shipName(id)+" slips beneath the waves.");
   }catch(e){console.error(e);toast("Only the Keeper may scuttle a ship.");}
@@ -531,7 +713,7 @@ $("trashList").onclick=async e=>{
     const id=b.dataset.raise;
     try{
       const t=await DB.get("trash/"+id);if(!t)return;
-      let nid=id,n=2;while(SHIPS[nid])nid=id+"-raised"+(n>2?"-"+n:""),n++;
+      let nid=id,n=2;while(SHIPS[nid]){nid=id+"-raised"+(n>2?"-"+n:"");n++;}
       await DB.update({["ships/"+nid]:t.ship,["holds/"+nid]:t.hold||fresh(),["trash/"+id]:null});
       toast(((t.ship&&t.ship.name)||id)+" rises dripping from the deep!");
     }catch(e){console.error(e);toast("The chest would not open.");}
@@ -546,20 +728,17 @@ $("trashList").onclick=async e=>{
 
 /* ---------------- The Keeper ---------------- */
 function renderKeeper(){
-  if(!KEEPER){
-    $("trashList").innerHTML=`<button class="sm" data-locked="1">Open the Chest</button>`;
-    $("chestList").innerHTML="";
-  }
   if(KEEPER&&!trashUnsub)trashUnsub=DB.on("trash",renderTrash);
   if(!KEEPER&&trashUnsub){trashUnsub();trashUnsub=null;}
   if(KEEPER&&trashUnsub&&/data-locked/.test($("trashList").innerHTML))DB.get("trash").then(renderTrash).catch(()=>{});
+  if(!KEEPER)$("trashList").innerHTML=`<button class="sm" data-locked="1">Open the Chest</button>`;
+  if(!canKeep())$("chestList").innerHTML="";
   if(DB.local){$("keeperBtn").hidden=true;$("keeperNote").textContent="Kept on this device alone, so you hold every key.";}
   else if(!AUTH){$("keeperBtn").hidden=true;$("keeperNote").textContent="";}
   else{$("keeperBtn").hidden=false;$("keeperBtn").textContent=KEEPER||signedIn?"Leave DM's Access":"DM's Access";
     $("keeperNote").textContent=KEEPER?"The Keeper of the Register is aboard.":(signedIn?"Signed in, but the ledger does not know you as the Keeper.":"");}
   renderShips();
 }
-let signedIn=false;
 $("keeperBtn").onclick=async()=>{
   if(!AUTH)return;
   if(signedIn){await AUTH.signOut();return;}
@@ -583,43 +762,75 @@ async function checkKeeper(user){
    THE HOLD
    ===================================================================== */
 let SHIPID=null, S=fresh(), HIST=[], holdUnsub=null, nameUnsub=null, holdSeen=false, lastCustomKeys="";
-function fresh(){return {day:1,crew:6,shared:false,lots:[],custom:{},log:[],seq:1};}
+function fresh(){return {day:1,crew:6,shared:false,lots:[],custom:{},log:[],seq:1,eggs:0,inWater:{}};}
 const toArr=x=>Array.isArray(x)?x:(x?Object.values(x):[]);
-function normalize(v){const s=Object.assign(fresh(),v||{});s.lots=toArr(s.lots).filter(Boolean);s.log=toArr(s.log).filter(Boolean);s.custom=s.custom||{};return s;}
-function item(id){return CAT[id]||S.custom[id]||{id,name:id,cat:"Custom",single:"Unit",rat:0,keep:"never"};}
+function normalize(v){
+  const s=Object.assign(fresh(),v||{});s.lots=toArr(s.lots).filter(Boolean);s.log=toArr(s.log).filter(Boolean);s.custom=s.custom||{};s.inWater=s.inWater||{};s.eggs=s.eggs||0;
+  // Holds kept by earlier versions of the larder: give old custom cargo the fields it now needs.
+  for(const c of Object.values(s.custom)){
+    if(!c||c.kind)continue;
+    c.kind=c.keep&&c.keep!=="never"||c.rat?"food":"goods";
+    c.single=c.single||"Unit";c.w=c.w||lc(c.single);c.wp=c.wp||(/s$/.test(c.w)?c.w:c.w+"s");
+    if(c.per){c.f=c.f==null?1:c.f;c.cargo=c.cargo||"Crate";c.cargoPl=c.cargoPl||lc(c.cargo)+"s";}else{c.solo=true;c.f=c.f||0;}
+    if(c.kind==="food")c.keep=c.keep||"never";
+  }
+  // Single-only things once stowed as "loose" become singles.
+  for(const l of s.lots){const it=CAT[l.item]||s.custom[l.item];if(it&&it.solo&&l.form!=="solo")l.form="solo";if(l.spoiled==null)l.spoiled=0;}
+  return s;
+}
+function item(id){return CAT[id]||S.custom[id]||{id,name:id,cat:"Custom",kind:"goods",single:"Unit",w:"unit",wp:"units",rat:0,keep:"never",solo:true,f:0};}
 const holdPath=()=>"holds/"+SHIPID;
 
-function closeHold(){if(holdUnsub){holdUnsub();holdUnsub=null;}if(nameUnsub){nameUnsub();nameUnsub=null;}SHIPID=null;}
-function showHold(id){
-  closeHold();
-  SHIPID=id;S=fresh();HIST=[];holdSeen=false;lastCustomKeys="~";
-  $("harborView").hidden=true;$("holdView").hidden=false;
-  $("shipTitle").textContent=shipName(id);
-  nameUnsub=DB.on("ships/"+id,v=>{if(v&&v.name){SHIPS[id]=v;$("shipTitle").textContent=v.name;document.title=v.name+" | The Ship's Larder";}});
-  holdUnsub=DB.on(holdPath(),v=>{
-    if(v===null){
-      if(holdSeen){toast("This ship has gone to the bottom.");go(null);return;}
-      // A ship named in the address that was never christened: christen it now.
-      DB.update({["ships/"+id]:{name:shipName(id),created:Date.now()},[holdPath()]:fresh()});return;
-    }
-    holdSeen=true;S=normalize(v);render();
-  });
-  fillCats();fillItems(false);render();renderKeeper();
+/* ---- Words for amounts ---- */
+function amt(it,n){ // n single units, in words
+  if(it.useMult){const L=Math.floor(n/it.useMult),u=n%it.useMult;const p=[];if(L)p.push(`${fmt(L)} load${L===1?"":"s"}`);if(u||!L)p.push(`${fmt(u)} use${u===1?"":"s"}`);return p.join(" and ");}
+  return `${fmt(n)} ${n===1?it.w:it.wp}`;
+}
+function camt(it,n){return `${fmt(n)} ${n===1?lc(it.cargo||"cargo unit"):(it.cargoPl||"cargo units")}`;}
+function lotAmt(l,n){const it=item(l.item);return l.form==="cargo"?camt(it,n):amt(it,n);}
+function lotName(l){const it=item(l.item);return it.name+(l.form==="cargo"?` (${cap(it.cargoPl||"cargo units")})`:"");}
+function rationWords(it,n){const r=n*(it.rat||0);return `${fmt(r)} ${it.water&&it.rat?"water ":""}ration${r===1?"":"s"}`;}
+function firePhrase(it,n){
+  if(it.useMult)return `${amt(it,n)} of ${lc(it.name)}`;
+  if(it.id==="grappling-hook-and-chain")return `${fmt(n)} grappling hook${n===1?"":"s"}`;
+  if(/(ball|bomb|shell|bolt|stone|harpoon|mine)$/i.test(it.name))return `${fmt(n)} ${lc(it.name)}${n===1?"":"s"}`;
+  return `${amt(it,n)} of ${lc(it.name)}`;
 }
 
-/* Every change to the hold goes through act(): a transaction, so two
-   shipmates pressing buttons at once never trample each other's work. */
-function act(fn,after){
+/* ---- Weight ---- */
+function lotF(l){const it=item(l.item);const n=(l.units||0)+(l.spoiled||0);if(l.form==="cargo"||l.form==="solo")return n*(it.f||0);return 0;}
+const holdF=()=>S.lots.reduce((a,l)=>a+lotF(l),0);
+
+/* ---- Every change to the hold goes through act(), inside a transaction ----
+   opts.guard: refuse if it would carry her past her Tonnage.
+   opts.force: the Keeper has agreed to overload her. */
+function act(fn,after,opts){
   if(!SHIPID)return;
+  opts=opts||{};
   const before=JSON.stringify(S);
+  let over=null;
+  const M=maxF();
   DB.tx(holdPath(),cur=>{
+    over=null;
     if(cur===null)return; // the ship is gone
     S=normalize(cur);
+    const f0=holdF();
     if(fn()===false)return;
-    merge();return clone(S);
+    merge();
+    const f1=holdF();
+    if(opts.guard&&M!=null&&f1>M&&f1>f0){
+      if(!opts.force){over={f0,f1,M};return;}
+      logLine(say("overload"),true);
+    }
+    return clone(S);
   }).then(res=>{
     S=normalize(res.val);render();
     if(res.committed){HIST.push(before);if(HIST.length>30)HIST.shift();if(after)after();}
+    else if(over){
+      if(KEEPER){
+        confirmBox("Overload Her?","This would bring her to "+tonsText(over.f1)+" of "+tonsText(over.M)+" tons. A ship that heavy is Sinking. Load her anyway?","Load her anyway",()=>act(fn,after,Object.assign({},opts,{force:true})));
+      }else snark("overload","Room left in the hold: "+tonsText(Math.max(0,over.M-over.f0))+" tons.");
+    }
   }).catch(e=>{toast("The ledger could not be reached. Try again in a moment.");console.error(e);});
 }
 function undo(){
@@ -631,61 +842,62 @@ function backup(reason){
   if(!SHIPID||(!S.lots.length&&!S.log.length))return Promise.resolve();
   return DB.set(`backups/${SHIPID}/${Date.now()}`,{at:Date.now(),reason,day:S.day,hold:clone(S)}).catch(e=>console.error(e));
 }
-
-function unitWord(l){const it=item(l.item);return l.form==="cargo"?(it.cargo||"unit").toLowerCase():(it.single||"unit").toLowerCase();}
-function singleWord(it){return (it.single||"unit").toLowerCase();}
-function lotName(l){const it=item(l.item);return it.name+(l.form==="cargo"?" ("+(it.cargo||"cargo")+"s)":"");}
 function logLine(text,bad,flour){S.log.push({d:S.day,t:text,b:!!bad,f:!!flour});if(S.log.length>400)S.log=S.log.slice(-400);}
 function lotById(id){return S.lots.find(l=>l.id===+id);}
 
-function stepDown(die){const i=DICE.indexOf(die);return i<0?die:(i===DICE.length-1?"turning":DICE[i+1]);}
-function loseFrac(l,pctStep,label){
-  const roll=r(4),pct=roll*pctStep,lost=Math.min(l.units,Math.max(1,Math.ceil(l.units*pct/100)));
-  l.units-=lost;l.spoiled+=lost;
-  logLine(`${label}: rolled ${roll} on the d4, ${pct}% of what remained. ${pl(lost,unitWord(l))} of ${lotName(l)} spoil.`,true);
-}
-function lossDie(l){
-  const it=item(l.item);
-  if(it.how==="Hardy"){const v=r(6);if(v>=5)loseFrac(l,5,`Loss Die d6 shows ${v}`);else logLine(`Loss Die d6 shows ${v}; the hardy ${it.name.toLowerCase()} shrugs it off.`);}
-  else if(it.how==="Delicate"){const v=r(4);if(v>=3)loseFrac(l,5,`Loss Die d4 shows ${v}`);else logLine(`Loss Die d4 shows ${v}; the delicate ${it.name.toLowerCase()} is spared, this once.`);}
-  else logLine(`Being preserved, ${lotName(l)} loses nothing in the stepping down.`);
-}
-function doStep(l,why){
-  const from=l.die;l.die=stepDown(l.die);
-  logLine(`${lotName(l)}: ${why}; its Keep slips from ${from} to ${l.die==="turning"?"Turning":l.die}.`,l.die==="turning");
-  lossDie(l);
-}
-function merge(){
+/* ---- Combining: like with like at once; loose goods are packed into cargo units at dawn ---- */
+const lotKey=l=>[l.item,l.form,l.die,l.die==="perish"?l.spoilsOn:"",l.wet?1:0,l.wet&&l.dryOn?l.dryOn:"",l.oil?1:0].join("|");
+function combine(){
   const out=[],map={};
   for(const l of S.lots){
-    if(l.units<=0&&l.spoiled<=0)continue;
-    const k=[l.item,l.form,l.die,l.die==="perish"?l.spoilsOn:""].join("|");
-    if(map[k]){map[k].units+=l.units;map[k].spoiled+=l.spoiled;}
+    if((l.units||0)<=0&&(l.spoiled||0)<=0)continue;
+    const k=lotKey(l);
+    if(map[k]){map[k].units+=l.units||0;map[k].spoiled+=l.spoiled||0;}
     else{map[k]=l;out.push(l);}
   }
   S.lots=out;
 }
-function addLot(id,form,qty,die,silent,spoiled,spoilsOn){
-  const it=item(id);
-  const l={id:S.seq++,item:id,form,units:qty,spoiled:spoiled||0,die};
-  if(die==="perish")l.spoilsOn=spoilsOn||S.day+2;
-  S.lots.push(l);
-  if(!silent)logLine(`Stowed ${pl(qty,form==="cargo"?(it.cargo||"unit").toLowerCase():singleWord(it))} of ${it.name} below${die==="perish"?", fresh until the end of tomorrow":""}.`);
-  merge();
+function merge(){combine();}
+// At dawn, loose goods that fill a cargo unit are packed into it.
+function repack(){
+  combine(); // like with like first, so two small piles can fill a cargo unit together
+  const extra=[];
+  for(const l of S.lots){
+    const it=item(l.item);
+    if(l.form!=="loose"||!it.per)continue;
+    const k=Math.floor((l.units||0)/it.per),ks=Math.floor((l.spoiled||0)/it.per);
+    if(!k&&!ks)continue;
+    l.units-=k*it.per;l.spoiled-=ks*it.per;
+    const nl={id:S.seq++,item:l.item,form:"cargo",units:k,spoiled:ks,die:l.die};
+    for(const p of ["spoilsOn","wet","dryOn","oil"])if(l[p]!==undefined)nl[p]=l[p];
+    extra.push(nl);
+    logLine(say("repack",lc(it.name),camt(it,k+ks)));
+  }
+  S.lots.push(...extra);
+  combine();
 }
-/* Take n single units (loaves, gallons, rations...) from a lot, sound or spoiled.
-   From cargo, just enough crates are pried open; what is left over joins the
-   loose stores at the same Keep. */
+
+/* ---- Taking from the hold ---- */
+// Take n single units from a lot, sound or spoiled. From cargo, just enough
+// units are pried open; the rest join the loose stores at the same Keep.
 function take(l,n,fromSpoiled){
   const it=item(l.item);
   if(l.form!=="cargo"||!it.per){if(fromSpoiled)l.spoiled-=n;else l.units-=n;return 0;}
   const k=Math.ceil(n/it.per);
   if(fromSpoiled)l.spoiled-=k;else l.units-=k;
   const left=k*it.per-n;
-  if(left>0){const nl={id:S.seq++,item:l.item,form:"loose",units:fromSpoiled?0:left,spoiled:fromSpoiled?left:0,die:l.die};if(l.die==="perish")nl.spoilsOn=l.spoilsOn;S.lots.push(nl);}
+  if(left>0){const nl={id:S.seq++,item:l.item,form:"loose",units:fromSpoiled?0:left,spoiled:fromSpoiled?left:0,die:l.die};for(const p of ["spoilsOn","wet","dryOn","oil"])if(l[p]!==undefined)nl[p]=l[p];S.lots.push(nl);}
   return k;
 }
 const avail=(l,sp)=>(sp?l.spoiled:l.units)*(l.form==="cargo"?(item(l.item).per||1):1);
+// Sound singles of an item across every lot (dry ones only, for charcoal).
+function itemAvail(id,dryOnly){return S.lots.filter(l=>l.item===id&&(!dryOnly||!l.wet)).reduce((a,l)=>a+avail(l,false),0);}
+function takeAcross(id,n,dryOnly){
+  let opened=0,got=0;
+  const lots=S.lots.filter(l=>l.item===id&&l.units>0&&(!dryOnly||!l.wet)).sort((a,b)=>(a.form==="cargo")-(b.form==="cargo"));
+  for(const l of lots){if(got>=n)break;const k=Math.min(avail(l,false),n-got);opened+=take(l,k,false);got+=k;}
+  return {got,opened};
+}
 
 /* ---------------- Dawn ---------------- */
 function dawn(){
@@ -696,6 +908,26 @@ function dawn(){
   }
   dawnNow();
 }
+function stepDown(die){const i=DICE.indexOf(die);return i<0?die:(i===DICE.length-1?"turning":DICE[i+1]);}
+function loseFrac(l,pctStep){
+  const roll=rnd(4),pct=roll*pctStep,lost=Math.min(l.units,Math.max(1,Math.ceil(l.units*pct/100)));
+  l.units-=lost;l.spoiled+=lost;return {roll,pct,lost};
+}
+function lossDie(l){
+  const it=item(l.item),n=lc(it.name);
+  if(it.how==="Hardy"||it.how==="Delicate"){
+    const d=it.how==="Hardy"?6:4,v=rnd(d);
+    if(v<=2){const x=loseFrac(l,5);logLine(say("hit","d"+d,v,x.roll,x.pct,lotAmt(l,x.lost),n),true);}
+    else logLine(say("miss","d"+d,v,n,lc(it.how)));
+  }
+  else logLine(say("preserved",lotName(l),n));
+}
+function doStep(l,why){
+  const from=l.die;l.die=stepDown(l.die);
+  const to=l.die==="turning"?"Turning":l.die;
+  logLine(why?`${lotName(l)}: ${why}; its Keep slips from ${from} to ${to}.`:say("slip",lotName(l),lc(item(l.item).name),from,to),l.die==="turning");
+  lossDie(l);
+}
 function dawnNow(){
   const seen=S.day;
   backup("Before dawn on day "+(seen+1));
@@ -703,39 +935,81 @@ function dawnNow(){
     if(S.day!==seen)return false;
     S.day++;
     S.lastDawn={at:Date.now(),by:DEVICE,day:S.day};
-    logLine(DAWNS[r(DAWNS.length)-1],false,true);
+    logLine(say("dawn"),false,true);
     const shared={};let quiet=0;
     for(const l of S.lots){
-      if(l.units<=0||l.die==="never")continue;
       const it=item(l.item);
+      if(it.kind!=="food"||l.units<=0||l.die==="never")continue;
       if(l.die==="perish"){
-        if(S.day>=l.spoilsOn){const n=l.units;l.spoiled+=n;l.units=0;logLine(`The ${it.name.toLowerCase()} gave up its freshness in the night. ${pl(n,unitWord(l))} spoiled.`,true);}
+        if(S.day>=l.spoilsOn){const n=l.units;l.spoiled+=n;l.units=0;logLine(say("perish",lc(it.name),lotAmt(l,n)),true);}
         else quiet++;
         continue;
       }
-      if(l.die==="turning"){loseFrac(l,10,`${lotName(l)} is turning`);continue;}
+      if(l.die==="turning"){const x=loseFrac(l,10);logLine(say("turning",it.name,lc(it.name),x.roll,x.pct,lotAmt(l,x.lost)),true);continue;}
       let v;
-      if(S.shared){if(!shared[l.die])shared[l.die]=r(parseInt(l.die.slice(1)));v=shared[l.die];}
-      else v=r(parseInt(l.die.slice(1)));
-      if(v===1)doStep(l,`the ${l.die} came up 1`);else quiet++;
+      if(S.shared){if(!shared[l.die])shared[l.die]=rnd(parseInt(l.die.slice(1)));v=shared[l.die];}
+      else v=rnd(parseInt(l.die.slice(1)));
+      if(v===1)doStep(l);else quiet++;
     }
     if(S.shared&&Object.keys(shared).length)logLine("Shared dice cast: "+Object.entries(shared).map(([d,v])=>d+" "+v).join(", ")+".");
-    if(quiet)logLine(`${pl(quiet,"lot")} held fast against the night, sound and sweet.`);
-  },()=>toast("Day "+S.day+" dawns."));
+    if(quiet)logLine(say("quiet",quiet));
+    // The hens lay.
+    const hens=S.lots.filter(l=>l.item==="live-chicken").reduce((a,l)=>a+avail(l,false),0);
+    if(hens>0){
+      let laid=0;for(let i=0;i<hens;i++)laid+=rnd(4);
+      logLine(say("eggs",laid));
+      S.eggs=(S.eggs||0)+laid;
+      const dz=Math.floor(S.eggs/12);S.eggs%=12;
+      if(dz>0){addLot("eggs","loose",dz,"d8",true);logLine(say("dozen",amt(CAT.eggs,dz),S.eggs));}
+    }
+    // Charcoal laid out on deck dries.
+    for(const l of S.lots){
+      if(l.wet&&l.dryOn&&S.day>=l.dryOn){l.wet=false;delete l.dryOn;logLine(say("dried",lotAmt(l,(l.units||0))));}
+    }
+    // The quartermaster packs loose goods away.
+    repack();
+  },()=>{toast("Day "+S.day+" dawns.");offerFuel();});
+}
+function offerFuel(){
+  const s=ship();if(!s.fuel)return;
+  const need=FUEL_NEED[s.size||"Medium"]||8;
+  const kelp=CAT["kelp-charcoal"];
+  const dry=itemAvail("kelp-charcoal",true),wet=S.lots.filter(l=>l.item==="kelp-charcoal"&&l.wet).reduce((a,l)=>a+avail(l,false),0);
+  const sacks=n=>n%8===0&&n>=8?camt(kelp,n/8):amt(kelp,n);
+  const days=Math.floor(dry/need);
+  const wetNote=wet?` <i>(+${esc(amt(kelp,wet))} wet${S.lots.some(l=>l.item==="kelp-charcoal"&&l.wet&&l.dryOn)?", drying on deck":""}.)</i>`:"";
+  if(dry<=0){ask(`<h2>The Furnaces Are Cold</h2><p class="sub">There is no dry kelp charcoal aboard. She cannot use her engines until she takes on more fuel.${wetNote}</p>`,()=>{},"Understood",true);return;}
+  const short=dry<need;
+  ask(`<h2>Feed the Furnaces?</h2><p class="sub">Today's steaming takes <b>${esc(sacks(need))}</b> of kelp charcoal. Aboard: <b>${esc(amt(kelp,dry))}</b>, ${short?`not enough for a full day; a ${esc(s.size||"Medium")} ship needs ${esc(amt(kelp,need))}`:`enough for <b>${days} more day${days===1?"":"s"}</b>, or ${days-1} after today`}.${wetNote}</p>`,()=>{
+    act(()=>{const want=Math.min(need,itemAvail("kelp-charcoal",true));if(want<=0)return false;takeAcross("kelp-charcoal",want,true);logLine(say("burn",sacks(want)));},()=>{if(short)toast("The last of the charcoal is gone. The engines will run dry.");});
+  },short?"Burn What's Left":"Burn It");
+  const cancel=dform.querySelector('button[value=cancel]');if(cancel)cancel.textContent="Not Today";
 }
 function damage(){
-  confirmBox("The Hold Is Struck","Has the hold flooded, or the ship been badly hurt? Every lot aboard steps down one die.","Alas, it has",()=>act(()=>{
-    logLine("Water roars through a wound in the hull, and the hold is struck!",true,true);
+  confirmBox("The Hold Is Struck","Has the hold flooded, or the ship been badly hurt? Every lot of provisions steps down one die, and charcoal not wrapped in oilskin is soaked.","Alas, it has",()=>act(()=>{
+    logLine(say("struck"),true,true);
     for(const l of S.lots){
-      if(l.units<=0||l.die==="never"||l.die==="perish")continue;
-      if(l.die==="turning")loseFrac(l,10,`${lotName(l)}, already turning, loses its morning's share again`);
+      const it=item(l.item);
+      if(l.item==="kelp-charcoal"&&!l.oil&&!l.wet&&l.units>0){l.wet=true;delete l.dryOn;logLine(say("soaked",lotAmt(l,l.units)),true);continue;}
+      if(it.kind!=="food"||l.units<=0||l.die==="never"||l.die==="perish")continue;
+      if(l.die==="turning"){const x=loseFrac(l,10);logLine(`${lotName(l)}, already turning, loses its morning's share again: rolled ${x.roll} on the d4, ${x.pct}% of what remained. ${cap(lotAmt(l,x.lost))} spoil.`,true);}
       else doStep(l,"seawater and ruin");
     }
   }));
 }
 
+/* ---------------- Stowing ---------------- */
+function addLot(id,form,qty,die,silent,spoiled,spoilsOn){
+  const it=item(id);
+  const l={id:S.seq++,item:id,form,units:qty,spoiled:spoiled||0,die};
+  if(die==="perish")l.spoilsOn=spoilsOn||S.day+2;
+  S.lots.push(l);
+  if(!silent)logLine(say("stow",form==="cargo"?camt(it,qty):amt(it,qty),lc(it.name)));
+  return l;
+}
+
 /* ---------------- Rendering the hold ---------------- */
-function rationsOf(l,n){const it=item(l.item);return n*(l.form==="cargo"?(it.per||1)*it.rat:it.rat);}
+function rationsOf(l,n){const it=item(l.item);return n*(l.form==="cargo"?(it.per||1)*(it.rat||0):(it.rat||0));}
 function setIfIdle(el,v){if(document.activeElement!==el)el.value=v;}
 function render(){
   if(!SHIPID)return;
@@ -744,193 +1018,359 @@ function render(){
   $("sharedIn").checked=!!S.shared;
   const ck=Object.keys(S.custom).sort().join("|");
   if(ck!==lastCustomKeys){lastCustomKeys=ck;fillItems(true);}
-  let food=0,water=0,sfood=0,swater=0,cargoUnits=0,looseTons=0,live=0;
+  let food=0,water=0,sfood=0,swater=0,live=0;
   for(const l of S.lots){
     const it=item(l.item);
-    if(it.live){live+=l.form==="cargo"?l.units*it.per:l.units;continue;}
+    if(it.kind==="live"){live+=avail(l,false);continue;}
+    if(it.kind!=="food")continue;
     const g=rationsOf(l,l.units),b=rationsOf(l,l.spoiled);
     if(it.water){water+=g;swater+=b;}else{food+=g;sfood+=b;}
-    if(l.form==="cargo")cargoUnits+=l.units+l.spoiled;
-    else if(it.per)looseTons+=Math.floor((l.units+l.spoiled)/it.per);
   }
   const crew=Math.max(0,S.crew|0);
   const days=v=>crew?Math.floor(v/crew):"-";
-  const tons=(cargoUnits+looseTons)/5;
+  // Tonnage and fuel lines
+  const F=holdF(),M=maxF(),s=ship();
+  let tl=M==null?`<b>Tonnage:</b> ${tonsText(F)} tons aboard <span class="tag">(no limit set; see the Ship's Papers)</span>`
+    :`<b>Tonnage:</b> ${tonsText(F)} of ${tonsText(M)} tons`+(F>M?` <span class="over">Overloaded: Sinking!</span>`:"");
+  if(s.fuel){const need=FUEL_NEED[s.size||"Medium"]||8;const dry=itemAvail("kelp-charcoal",true);tl+=` <span class="sep">·</span> <b>Fuel:</b> ${Math.floor(dry/need)} day${Math.floor(dry/need)===1?"":"s"}`;}
+  $("tonLine").innerHTML=tl;
+  $("tonLine").className="tonline"+(M!=null&&F>M?" sinking":"");
   $("stats").innerHTML=[
     [fmt(food),"food rations, sound"+(sfood?` <span class="spoiled">(+${fmt(sfood)} spoiled)</span>`:"")],
     [fmt(water),"water rations, sound"+(swater?` <span class="spoiled">(+${fmt(swater)} spoiled)</span>`:"")],
-    [days(food),"days of food for "+pl(crew,"mouth")],
-    [days(water),"days of water for "+pl(crew,"mouth")],
-    [fmt(tons),"tons of the hold in stores"],
+    [days(food),`days of food for ${crew} mouth${crew===1?"":"s"}`],
+    [days(water),`days of water for ${crew} mouth${crew===1?"":"s"}`],
     ...(live?[[live,"living beasts aboard"]]:[]),
-  ].map(([b,s])=>`<div class="stat"><b>${b}</b><span>${s}</span></div>`).join("");
+  ].map(([b,t])=>`<div class="stat"><b>${b}</b><span>${t}</span></div>`).join("");
 
+  // The hold, by section
   const body=$("holdBody");
   if(!S.lots.length){body.innerHTML=`<tr class="empty"><td colspan="7">The hold lies empty and echoing. Not a crumb, not a cask.</td></tr>`;}
   else{
-    const order={"Fresh Food":0,"Stores":1,"Delicacies":2,"Pantry":3,"Drink":4,"Livestock":5,"Custom":6};
-    const lots=[...S.lots].sort((a,b)=>(order[item(a.item).cat]??9)-(order[item(b.item).cat]??9)||item(a.item).name.localeCompare(item(b.item).name)||(a.form>b.form?1:-1));
-    body.innerHTML=lots.map(l=>{
+    const sect=it=>it.cat==="Custom"?"Custom Cargo":{food:"Provisions",live:"Livestock",supply:"Ship Supplies",goods:"Trade Goods"}[it.kind]||"Cargo";
+    const order=["Provisions","Livestock","Ship Supplies","Trade Goods","Custom Cargo","Cargo"];
+    const lots=[...S.lots].sort((a,b)=>{const A=item(a.item),B=item(b.item);return order.indexOf(sect(A))-order.indexOf(sect(B))||CATS.indexOf(A.cat)-CATS.indexOf(B.cat)||A.name.localeCompare(B.name)||(a.form>b.form?1:-1);});
+    let html="",cur="";
+    for(const l of lots){
       const it=item(l.item);
+      if(sect(it)!==cur){cur=sect(it);html+=`<tr class="sect"><td colspan="7">${cur}</td></tr>`;}
       let keep;
-      if(l.die==="never")keep=`<span class="die never">${it.live?"Alive":"Never"}</span>`;
+      if(l.wet)keep=`<span class="die turn">${l.dryOn?"Drying":"Wet"}</span>`;
+      else if(it.kind!=="food")keep=it.kind==="live"?`<span class="die never">Alive</span>`:(l.oil?`<span class="die never">Oilskin</span>`:"");
+      else if(l.die==="never")keep=`<span class="die never">Never</span>`;
       else if(l.die==="perish")keep=`<span class="die perish">${S.day>=l.spoilsOn?"Spoiled":(l.spoilsOn-1===S.day?"Spoils tonight":"Spoils day "+(l.spoilsOn-1))}</span>`;
       else if(l.die==="turning")keep=`<span class="die turn">Turning</span>`;
       else keep=`<span class="die">${l.die}</span>`;
-      const nature=[it.how,it.spoil].filter(Boolean).join(", ")||"";
-      const stowed=l.form==="cargo"?`${esc(it.cargo||"Cargo")} <span class="tag">(${fmt(it.per)} ${esc(singleWord(it))} each)</span>`:`Loose <span class="tag">${esc(it.single||"")}</span>`;
+      const nature=it.kind==="food"?[it.how,it.spoil].filter(Boolean).join(", "):(it.ammo?"Ammunition":"");
+      let stowed;
+      if(l.form==="cargo")stowed=`${esc(it.cargo||"Cargo unit")} <span class="tag">(${esc(amt(it,it.per))} each, ${tonsText(it.f||0)} ton)</span>`;
+      else if(l.form==="solo")stowed=`Single <span class="tag">${it.f?`(${tonsText(it.f)} ton each)`:"(no weight)"}</span>`;
+      else stowed=`Loose <span class="tag">${esc(it.useMult?"uses":(it.single||""))}</span>`;
+      const show=n=>l.form==="cargo"?fmt(n):(it.useMult?esc(amt(it,n)):fmt(n));
       const acts=[];
-      if(l.units>0)acts.push(`<button class="sm" data-a="eat" data-id="${l.id}">${it.live?"Butcher":(it.water?"Drink":"Eat")}</button>`);
-      if(l.form==="cargo"&&it.per&&!it.live&&(l.units>0||l.spoiled>0))acts.push(`<button class="sm" data-a="open" data-id="${l.id}">Open</button>`);
-      if(l.spoiled>0)acts.push(`<button class="sm" data-a="spoil" data-id="${l.id}">Spoiled...</button>`);
-      acts.push(`<button class="sm" data-a="edit" data-id="${l.id}">Amend</button>`);
-      return `<tr><td>${esc(it.name)}${it.cat==="Custom"?' <span class="tag">(custom)</span>':""}</td><td>${stowed}</td><td>${fmt(l.units)}</td><td class="${l.spoiled?"spoiled":""}">${fmt(l.spoiled)}</td><td>${keep}</td><td class="tag">${esc(nature)}</td><td><div class="acts">${acts.join("")}</div></td></tr>`;
-    }).join("");
+      if(l.units>0){
+        if(it.kind==="live")acts.push(btn("eat",l,"Butcher"));
+        else if(it.ammo)acts.push(btn("fire",l,"Fire"));
+        else if(it.kind==="food")acts.push(btn("eat",l,it.water?"Drink":(it.rat?"Eat":"Use")));
+        else if(it.kind==="supply"&&!l.wet)acts.push(btn("use",l,"Use"));
+      }
+      if(l.spoiled>0)acts.push(btn("spoil",l,"Spoiled..."));
+      if(l.form==="cargo"&&it.per&&(l.units>0||l.spoiled>0))acts.push(btn("open",l,"Open"));
+      if(l.item==="kelp-charcoal"&&l.wet&&!l.dryOn)acts.push(btn("dry",l,"Lay Out to Dry"));
+      if(l.item==="kelp-charcoal"&&!l.wet&&!l.oil)acts.push(btn("oil",l,"Wrap in Oilskin"));
+      if(l.units>0)acts.push(btn("sell",l,"Sell"));
+      acts.push(btn("edit",l,"Amend"));
+      html+=`<tr><td>${esc(it.name)}${it.cat==="Custom"?' <span class="tag">(custom)</span>':""}</td><td>${stowed}</td><td>${show(l.units)}</td><td class="${l.spoiled?"spoiled":""}">${show(l.spoiled)}</td><td>${keep}</td><td class="tag">${esc(nature)}</td><td><div class="acts">${acts.join("")}</div></td></tr>`;
+    }
+    body.innerHTML=html;
   }
+  renderFire();
   const groups=[];
   for(const e of S.log){if(!groups.length||groups[groups.length-1].d!==e.d)groups.push({d:e.d,es:[]});groups[groups.length-1].es.push(e);}
-  let html="";
+  let lh="";
   for(let i=groups.length-1;i>=0;i--){
-    html+=`<div class="day">Day ${groups[i].d}</div>`;
-    for(const e of groups[i].es)html+=e.f?`<div class="flour">${esc(e.t)}</div>`:`<p class="${e.b?"bad":""}">${esc(e.t)}</p>`;
+    lh+=`<div class="day">Day ${groups[i].d}</div>`;
+    for(const e of groups[i].es)lh+=e.f?`<div class="flour">${esc(e.t)}</div>`:`<p class="${e.b?"bad":""}">${esc(e.t)}</p>`;
   }
-  $("log").innerHTML=html||`<p class="note">The log's pages are clean and waiting for ink.</p>`;
+  $("log").innerHTML=lh||`<p class="note">The log's pages are clean and waiting for ink.</p>`;
 }
+const btn=(a,l,t)=>`<button class="sm" data-a="${a}" data-id="${l.id}">${t}</button>`;
+
+/* ---------------- Fire the Weapons ---------------- */
+function renderFire(){
+  const ammo=CATALOG.concat(Object.values(S.custom)).filter(it=>it.ammo&&itemAvail(it.id)>0);
+  const wet=Object.entries(S.inWater||{}).filter(([,n])=>n>0);
+  $("fireCard").hidden=!ammo.length&&!wet.length;
+  $("fireList").innerHTML=ammo.length?`<table><tbody>${ammo.map(it=>`<tr><td><b>${esc(it.name)}</b><div class="tag">${esc(amt(it,itemAvail(it.id)))} aboard</div></td><td style="text-align:right"><div class="acts" style="justify-content:flex-end;align-items:center"><input type="number" min="1" value="1" data-shots="${esc(it.id)}" style="width:70px" aria-label="${esc(it.useMult?"uses":"shots")}"><span class="tag">${it.useMult?"uses":"shots"}</span><button class="sm primary-sm" data-fire="${esc(it.id)}">Fire!</button></div></td></tr>`).join("")}</tbody></table>`:`<p class="note">No shot aboard.</p>`;
+  $("waterList").innerHTML=wet.length?`<h3 class="sub3">In the Water</h3><table><tbody>${wet.map(([id,n])=>`<tr><td><b>${esc(firePhrase(item(id),n))}</b><div class="tag">still on the line</div></td><td style="text-align:right"><div class="acts" style="justify-content:flex-end"><button class="sm" data-haul="${esc(id)}">Haul Back</button><button class="sm danger" data-cut="${esc(id)}">Cut Free</button></div></td></tr>`).join("")}</tbody></table>`:"";
+}
+function fireItem(id,want){
+  const it=item(id);
+  act(()=>{
+    const have=itemAvail(id);if(have<=0)return false;
+    const n=Math.min(want,have);
+    const x=takeAcross(id,n);
+    if(x.opened)logLine(say("open",camt(it,x.opened),lc(it.name)));
+    logLine(say("fire",firePhrase(it,n)));
+    if(it.retrieve){S.inWater[id]=(S.inWater[id]||0)+n;}
+  });
+}
+$("fireList").onclick=e=>{
+  const b=e.target.closest("button[data-fire]");if(!b)return;
+  const inp=$("fireList").querySelector(`input[data-shots="${b.dataset.fire}"]`);
+  const n=Math.max(1,parseInt(inp&&inp.value)||1);
+  fireItem(b.dataset.fire,n);
+};
+$("waterList").onclick=e=>{
+  const b=e.target.closest("button");if(!b)return;
+  const id=b.dataset.haul||b.dataset.cut;const it=item(id);const n=(S.inWater||{})[id]||0;if(!n)return;
+  const haul=!!b.dataset.haul;
+  ask(`<h2>${haul?"Haul It Back":"Cut It Free"}</h2><p class="sub">${esc(cap(firePhrase(it,n)))} still on the line.</p><div class="grid"><label>How many</label><input type="number" name="n" min="1" max="${n}" value="${n}"></div>`,fd=>{
+    const want=Math.max(1,parseInt(fd.get("n"))||1);
+    act(()=>{
+      const have=(S.inWater||{})[id]||0;if(!have)return false;const k=Math.min(want,have);
+      S.inWater[id]=have-k;if(!S.inWater[id])delete S.inWater[id];
+      if(haul){addLot(id,"loose",k,"never",true);logLine(say("haul",firePhrase(it,k)));}
+      else logLine(say("cut",firePhrase(it,k)));
+    },null,{guard:haul});
+  },haul?"Haul Back":"Cut Free");
+};
 
 /* ---------------- Stowing panel ---------------- */
 const catSel=$("catSel"),itemSel=$("itemSel"),formSel=$("formSel"),dieSel=$("dieSel");
-function fillCats(){if(!catSel.options.length)catSel.innerHTML=["Fresh Food","Stores","Delicacies","Pantry","Drink","Livestock","Custom"].map(c=>`<option>${c}</option>`).join("");}
+function fillCats(){if(!catSel.options.length)catSel.innerHTML=CATS.map(c=>`<option>${c}</option>`).join("");}
 function fillItems(keep){
   const c=catSel.value,was=itemSel.value;
-  const list=Object.values(CAT).concat(Object.values(S.custom)).filter(i=>i.cat===c);
-  itemSel.innerHTML=list.map(i=>`<option value="${esc(i.id)}">${esc(i.name)}</option>`).join("")+(c==="Custom"?`<option value="__new">+ Write a new provision...</option>`:"");
-  if(keep&&was&&was!=="__new"&&list.some(i=>i.id===was))itemSel.value=was;
-  else if(itemSel.value==="__new"&&list.length)itemSel.selectedIndex=0;
-  fillItem(true);
+  const list=CATALOG.concat(Object.values(S.custom)).filter(i=>i.cat===c);
+  itemSel.innerHTML=list.map(i=>`<option value="${esc(i.id)}">${esc(i.name)}</option>`).join("")+(c==="Custom"?`<option value="__new">+ Write something new...</option>`:"");
+  if(keep&&was&&list.some(i=>i.id===was))itemSel.value=was;
+  else if(c==="Custom"&&!list.length)itemSel.value="__new";
+  fillItem();
 }
-function fillItem(quiet){
+function fillItem(){
   const id=itemSel.value;
-  if(id==="__new"){if(!quiet)newCustom();$("itemNote").textContent="Write a provision of your own, for the catch of the day or a recipe's fruits.";dieSel.innerHTML="";return;}
+  if(id==="__new"){
+    formSel.innerHTML=`<option>—</option>`;formSel.disabled=true;$("dieWrap").hidden=true;
+    $("addBtn").textContent="Write Something New";
+    $("itemNote").textContent="Write a cargo of your own: a catch of the day, a recipe's leftovers, monster parts, salvage, or anything the Bazaar never knew.";
+    return;
+  }
+  $("addBtn").textContent="Stow It Below";
   const it=CAT[id]||S.custom[id];
-  if(!it){$("itemNote").textContent="";dieSel.innerHTML="";return;}
-  const co=formSel.querySelector('[value="cargo"]');
-  co.disabled=!it.per;if(!it.per)formSel.value="loose";
-  co.textContent=it.per?`Cargo (${it.cargo} of ${fmt(it.per)})`:"Cargo";
-  formSel.querySelector('[value="loose"]').textContent=`Loose (${it.single})`;
-  const opts=it.keep==="never"?[["never",it.live?"Alive":"Never spoils"]]:it.keep==="perish"?[["perish","Perishable"]]:DICE.slice(Math.max(0,DICE.indexOf(it.keep))).map(d=>[d,d]).concat([["turning","Turning"]]);
+  if(!it){$("itemNote").textContent="";return;}
+  formSel.disabled=false;
+  if(it.solo){formSel.innerHTML=`<option value="solo">Single</option>`;}
+  else{
+    const loose=it.useMult?`Loose (loads of ${it.useMult} uses)`:`Loose (${it.single})`;
+    formSel.innerHTML=`<option value="loose">${esc(loose)}</option>`+(it.per?`<option value="cargo">${esc(`${it.cargo||"Cargo unit"} (${amt(it,it.per)}, ${tonsText(it.f||0)} ton)`)}</option>`:"");
+    if(it.per&&!it.useMult)formSel.value="cargo";
+  }
+  const isFood=it.kind==="food";
+  $("dieWrap").hidden=!isFood;
+  const opts=!isFood||it.keep==="never"?[["never","Never spoils"]]:it.keep==="perish"?[["perish","Perishable"]]:DICE.slice(Math.max(0,DICE.indexOf(it.keep))).map(d=>[d,d]).concat([["turning","Turning"]]);
   dieSel.innerHTML=opts.map(([v,t])=>`<option value="${v}">${t}</option>`).join("");
-  const rat=it.rat?`${fmt(it.rat)} ${it.water?"water ":""}ration${it.rat===1?"":"s"} per ${singleWord(it)}`:(it.live?`${fmt(it.meat)} rations of meat each when butchered`:"adds flavor, not food");
-  const sp=it.spoil?` Spoiled, it is ${it.spoil}: DC ${SPOIL[it.spoil].dc} Constitution${SPOIL[it.spoil].dis?", or catch "+SPOIL[it.spoil].dis:", or be poisoned"}.`:"";
-  $("itemNote").textContent=`${it.name}: ${rat}.${sp}${opts.length>1?" Bought already aging? Choose a lower Keep.":""}`;
+  let note;
+  if(it.kind==="live")note=`${it.name}: ${fmt(it.meat)} rations of meat each when butchered. ${it.solo?`Each takes ${tonsText(it.f)} ton.`:`A ${lc(it.cargo)} of ${amt(it,it.per)} takes ${tonsText(it.f)} ton.`}`;
+  else if(isFood){
+    const rat=it.rat?`${fmt(it.rat)} ${it.water?"water ":""}ration${it.rat===1?"":"s"} per ${it.w}`:"adds flavor, not food";
+    const sp=it.spoil?` Spoiled, it is ${it.spoil}: DC ${SPOIL[it.spoil].dc} Constitution${SPOIL[it.spoil].dis?", or catch "+SPOIL[it.spoil].dis:", or be poisoned"}.`:"";
+    note=`${it.name}: ${rat}.${sp}${opts.length>1?" Bought already aging? Choose a lower Keep.":""}`;
+  }else{
+    note=`${it.name}: `+(it.solo?(it.f?`takes ${tonsText(it.f)} ton of the hold on its own.`:`takes no room worth counting.`):`${amt(it,it.per)} to a ${lc(it.cargo||"cargo unit")} of ${tonsText(it.f||0)} ton.`)+(it.useMult?` Bought by the load, ${it.useMult} uses to a load.`:"")+(it.retrieve?" Can be hauled back after firing.":"");
+  }
+  $("itemNote").textContent=note;
 }
 catSel.onchange=()=>fillItems(false);
-itemSel.onchange=()=>fillItem(false);
+itemSel.onchange=()=>fillItem();
 $("addBtn").onclick=()=>{
   const id=itemSel.value;
   if(id==="__new"){newCustom();return;}
-  if(!(CAT[id]||S.custom[id]))return;
-  const q=Math.max(1,parseInt($("qtyIn").value)||1),form=formSel.value,die=dieSel.value;
-  act(()=>{addLot(id,form,q,die);});
+  const it=CAT[id]||S.custom[id];if(!it)return;
+  const q=Math.max(1,parseInt($("qtyIn").value)||1),form=it.solo?"solo":formSel.value,die=it.kind==="food"?dieSel.value:"never";
+  const units=form==="loose"&&it.useMult?q*it.useMult:q;
+  act(()=>{addLot(id,form,units,die);},null,{guard:true});
 };
 
-/* ---------------- Eating, drinking and tossing, by the ration ---------------- */
-function portionDialog(lid,spoiledMode){
+/* ---------------- Using, eating, selling and the rest ---------------- */
+function portionDialog(lid,mode){ // mode: eat | use | spoil | sell
   const l=lotById(lid);if(!l)return;const it=item(l.item);
-  const max=avail(l,spoiledMode);
-  const byRation=it.rat>0;
-  const maxR=byRation?max*it.rat:max;
-  const def=spoiledMode?maxR:Math.min(maxR,Math.max(1,S.crew||1));
-  const each=byRation?`Each ${esc(singleWord(it))} is ${fmt(it.rat)} ${it.water?"water ":""}ration${it.rat===1?"":"s"}; a part-eaten one is used up whole.`:"";
-  const opening=l.form==="cargo"?` Crates are opened only as needed, and the rest join the loose stores.`.replace("Crates",esc(it.cargo||"Crate")+"s"):"";
-  const sp=it.spoil&&SPOIL[it.spoil];
-  const risk=spoiledMode&&sp?`<p>Whoever eats or drinks it must make a <b>DC ${sp.dc} Constitution save</b>, or be poisoned for 24 hours${sp.dis?" and catch <b>"+sp.dis+"</b>":""}.</p>`:"";
-  const head=spoiledMode?`<h2>The Spoiled Portion</h2><p class="sub">${fmt(maxR)} spoiled ${byRation?(it.water?"water rations":"rations"):esc(singleWord(it))+"s"} of ${esc(it.name.toLowerCase())}, sour-smelling and sorry. It still counts as a ration, at a price.</p>${risk}`
-    :`<h2>${it.water?"Drawing from the Cask":"To the Galley"}</h2><p class="sub">${esc(lotName(l))}: ${fmt(maxR)} sound ${byRation?(it.water?"water rations":"rations"):esc(singleWord(it))+"s"} on hand.</p>`;
-  ask(`${head}<div class="grid"><label>${byRation?(it.water?"Water rations":"Rations"):esc(it.single)+"s"}</label><input type="number" name="n" min="${byRation?Math.min(it.rat,1):1}" step="${byRation?it.rat<1?it.rat:1:1}" max="${maxR}" value="${def}">${spoiledMode?`<label>Fate</label><select name="how"><option value="toss">Cast overboard</option><option value="eat">${it.water?"Drink":"Eat"} it anyway</option></select>`:""}</div><p class="note">${each}${opening}</p>`,fd=>{
-    const amt=Math.max(0,parseFloat(fd.get("n"))||0);if(!amt)return;
-    const how=spoiledMode?fd.get("how"):"eat";
+  const sp=mode==="spoil";
+  const max=avail(l,sp);
+  const byRation=it.kind==="food"&&it.rat>0&&(mode==="eat"||mode==="spoil");
+  const sellCargo=mode==="sell"&&l.form==="cargo";
+  const unitMax=sellCargo?l.units:(byRation?max*it.rat:max);
+  const unitName=sellCargo?(it.cargoPl||"cargo units"):byRation?(it.water?"water rations":"rations"):(it.useMult?"uses":it.wp);
+  const def=sp||mode==="sell"?unitMax:Math.min(unitMax,byRation?Math.max(1,S.crew||1):1);
+  const s=it.spoil&&SPOIL[it.spoil];
+  const risk=sp&&s?`<p>Whoever eats or drinks it must make a <b>DC ${s.dc} Constitution save</b>, or be poisoned for 24 hours${s.dis?" and catch <b>"+s.dis+"</b>":""}.</p>`:"";
+  const heads={eat:it.water?"Drawing from the Cask":"To the Galley",use:"Put to Use",spoil:"The Spoiled Portion",sell:"Down the Gangplank"};
+  const lead=sp?`${fmt(unitMax)} spoiled ${esc(unitName)} of ${esc(lc(it.name))}, sour-smelling and sorry. It still counts as a ration, at a price.`
+    :`${esc(lotName(l))}: ${fmt(unitMax)} ${esc(unitName)} on hand.`;
+  const each=byRation?`Each ${esc(it.w)} is ${fmt(it.rat)} ${it.water?"water ":""}ration${it.rat===1?"":"s"}; a part-eaten one is used up whole. `:"";
+  const opening=l.form==="cargo"&&!sellCargo?`${esc(cap(it.cargoPl||"cargo units"))} are opened only as needed, and the rest join the loose stores.`:"";
+  ask(`<h2>${heads[mode]}</h2><p class="sub">${lead}</p>${risk}<div class="grid"><label>${esc(cap(unitName))}</label><input type="number" name="n" min="0" step="${byRation&&it.rat<1?it.rat:1}" max="${unitMax}" value="${def}">${sp?`<label>Fate</label><select name="how"><option value="toss">Cast overboard</option><option value="eat">${it.water?"Drink":"Eat"} it anyway</option></select>`:""}</div><p class="note">${each}${opening}</p>`,fd=>{
+    const a=Math.max(0,parseFloat(fd.get("n"))||0);if(!a)return;
+    const how=sp?fd.get("how"):mode;
+    let flavor=null;
     act(()=>{
       const l=lotById(lid);if(!l)return false;
-      const have=avail(l,spoiledMode);if(have<=0)return false;
-      const n=Math.min(have,byRation?Math.ceil(amt/it.rat-1e-9):Math.ceil(amt));
-      const opened=take(l,n,spoiledMode);
-      const open=opened?`Pried open ${pl(opened,(it.cargo||"crate").toLowerCase())}. `:"";
-      const ration=it.rat?` (${fmt(n*it.rat)} ${it.water?"water ":""}rations)`:"";
-      if(spoiledMode&&how==="toss")logLine(`${open}${pl(n,singleWord(it))} of spoiled ${it.name.toLowerCase()} given to the sea and the grateful fish.`);
-      else if(spoiledMode)logLine(`${open}${pl(n,singleWord(it))} of spoiled ${it.name.toLowerCase()} ${it.water?"drunk":"eaten"} by brave or desperate souls${ration}. ${sp?`Each must save: DC ${sp.dc} Con${sp.dis?", or "+sp.dis:", or poisoned"}.`:""}`,true);
-      else logLine(`${open}${pl(n,singleWord(it))} of ${it.name.toLowerCase()} ${it.water?"drunk":"eaten"}${ration}.`);
-    });
-  },spoiledMode?"Done":(it.water?"Drink":"Eat"));
+      if(sellCargo){const k=Math.min(l.units,Math.ceil(a));if(!k)return false;l.units-=k;flavor=deal("sell",SELL_LINES);logLine(`Sold ${camt(it,k)} of ${lc(it.name)}. ${flavor}`);return;}
+      const have=avail(l,sp);if(have<=0)return false;
+      const n=Math.min(have,byRation?Math.ceil(a/it.rat-1e-9):Math.ceil(a));
+      const opened=take(l,n,sp);
+      if(opened)logLine(say("open",camt(it,opened),lc(it.name)));
+      const A=amt(it,n),N=lc(it.name),R=rationWords(it,n);
+      if(how==="sell"){flavor=deal("sell",SELL_LINES);logLine(`Sold ${A} of ${N}. ${flavor}`);}
+      else if(how==="use")logLine(`Used ${A} of ${N}.`);
+      else if(how==="toss")logLine(say("toss",A,N));
+      else if(sp)logLine(say("eatSpoiled",A,N,R,s?`DC ${s.dc} Con${s.dis?", or "+s.dis:", or poisoned"}`:"none needed"),true);
+      else if(it.rat)logLine(say(it.water?"drink":"eat",A,N,R));
+      else logLine(`Used ${A} of ${N}.`);
+    },()=>{if(flavor)toast(flavor);});
+  },{eat:it.water?"Drink":(it.rat?"Eat":"Use"),use:"Use",spoil:"Done",sell:"Sell"}[mode]);
 }
 
 $("holdBody").onclick=e=>{
   const b=e.target.closest("button");if(!b)return;
   const lid=+b.dataset.id;const l=lotById(lid);if(!l)return;const it=item(l.item);
   const a=b.dataset.a;
-  if(a==="eat"&&it.live){
-    const max=l.form==="cargo"?l.units*it.per:l.units;
-    ask(`<h2>To the Butcher's Block</h2><p class="sub">How many of the ${esc(it.name.toLowerCase())} meet their end today?</p><div class="grid"><label>Beasts</label><input type="number" name="n" min="1" max="${max}" value="1"></div><p class="note">Each yields ${fmt(it.meat)} rations of fresh, perishable meat, sound until the end of tomorrow.</p>`,fd=>{
+  if(a==="eat"&&it.kind==="live"){
+    const max=avail(l,false);
+    ask(`<h2>To the Butcher's Block</h2><p class="sub">How many of the ${esc(it.wp)} meet their end today?</p><div class="grid"><label>Beasts</label><input type="number" name="n" min="1" max="${max}" value="1"></div><p class="note">Each yields ${fmt(it.meat)} rations of fresh, perishable meat, sound until the end of tomorrow.</p>`,fd=>{
       const want=Math.max(1,parseInt(fd.get("n"))||1);
       act(()=>{
         const l=lotById(lid);if(!l)return false;
         const n=Math.min(want,avail(l,false));if(n<=0)return false;
         take(l,n,false);
-        addLot(it.meatOf,"loose",n*it.meat,"perish",true);
-        logLine(`${pl(n,singleWord(it))} butchered, giving ${fmt(n*it.meat)} rations of fresh ${CAT[it.meatOf].name.toLowerCase()}.`);
+        const meat=CAT[it.meatOf]?it.meatOf:(item(it.meatOf).id);
+        addLot(meat,"loose",n*it.meat,item(meat).keep==="perish"?"perish":(item(meat).keep||"never"),true);
+        logLine(say("butcher",amt(it,n),`${fmt(n*it.meat)} ration${n*it.meat===1?"":"s"}`,lc(item(meat).name)));
       });
     },"Butcher");
   }
-  else if(a==="eat")portionDialog(lid,false);
-  else if(a==="spoil")portionDialog(lid,true);
+  else if(a==="eat")portionDialog(lid,"eat");
+  else if(a==="use")portionDialog(lid,"use");
+  else if(a==="spoil")portionDialog(lid,"spoil");
+  else if(a==="sell")portionDialog(lid,"sell");
+  else if(a==="fire"){
+    const have=itemAvail(it.id);
+    ask(`<h2>Fire!</h2><p class="sub">${esc(amt(it,have))} of ${esc(lc(it.name))} aboard.</p><div class="grid"><label>${it.useMult?"Uses":"Shots"}</label><input type="number" name="n" min="1" max="${have}" value="1"></div>`,fd=>fireItem(it.id,Math.max(1,parseInt(fd.get("n"))||1)),"Fire!");
+  }
   else if(a==="open"){
-    const cw=esc((it.cargo||"Crate").toLowerCase());
-    ask(`<h2>Breaking the Seal</h2><p class="sub">Pry open ${cw}s of ${esc(it.name.toLowerCase())}, and their contents spill into the loose stores at the same Keep. Spoiled ${cw}s stay spoiled once opened.</p><div class="grid">${l.units>0?`<label>Sound ${cw}s</label><input type="number" name="n" min="0" max="${l.units}" value="1">`:""}${l.spoiled>0?`<label>Spoiled ${cw}s</label><input type="number" name="s" min="0" max="${l.spoiled}" value="${l.units>0?0:1}">`:""}</div>`,fd=>{
+    const cw=esc(lc(it.cargo||"cargo unit")),cwp=esc(it.cargoPl||"cargo units");
+    ask(`<h2>Breaking the Seal</h2><p class="sub">Pry open ${cwp} of ${esc(lc(it.name))}, and their contents spill into the loose stores at the same Keep, until the next dawn packs them away again. Spoiled ${cwp} stay spoiled once opened.</p><div class="grid">${l.units>0?`<label>Sound ${cwp}</label><input type="number" name="n" min="0" max="${l.units}" value="1">`:""}${l.spoiled>0?`<label>Spoiled ${cwp}</label><input type="number" name="s" min="0" max="${l.spoiled}" value="${l.units>0?0:1}">`:""}</div>`,fd=>{
       const wn=Math.max(0,parseInt(fd.get("n"))||0),ws=Math.max(0,parseInt(fd.get("s"))||0);
       if(!wn&&!ws)return;
       act(()=>{
         const l=lotById(lid);if(!l)return false;
         const n=Math.min(l.units,wn),s=Math.min(l.spoiled,ws);if(!n&&!s)return false;
         l.units-=n;l.spoiled-=s;
-        addLot(l.item,"loose",n*it.per,l.die,true,s*it.per,l.spoilsOn);
-        const parts=[];if(n)parts.push(`${fmt(n*it.per)} sound`);if(s)parts.push(`${fmt(s*it.per)} spoiled`);
-        logLine(`Opened ${pl(n+s,(it.cargo||"crate").toLowerCase())} of ${it.name}: ${parts.join(" and ")} ${singleWord(it)}${n*it.per+s*it.per===1?"":"s"} now lie loose.`);
+        const nl={id:S.seq++,item:l.item,form:"loose",units:n*it.per,spoiled:s*it.per,die:l.die};
+        for(const p of ["spoilsOn","wet","dryOn","oil"])if(l[p]!==undefined)nl[p]=l[p];
+        S.lots.push(nl);
+        logLine(say("open",camt(it,n+s),lc(it.name)));
       });
     },"Open");
   }
+  else if(a==="dry"){
+    act(()=>{const l=lotById(lid);if(!l||!l.wet)return false;l.dryOn=S.day+1;logLine(say("layout",lotAmt(l,l.units)));});
+  }
+  else if(a==="oil"){
+    act(()=>{const l=lotById(lid);if(!l||l.wet||l.oil)return false;l.oil=true;logLine(`${cap(lotAmt(l,l.units))} of kelp charcoal wrapped snug in oilskin.`);});
+  }
   else if(a==="edit"){
-    const keepOpts=(it.keep==="never"?["never"]:it.keep==="perish"?["perish"]:DICE.concat(["turning"])).map(d=>`<option value="${d}" ${d===l.die?"selected":""}>${d==="never"?(it.live?"Alive":"Never spoils"):d==="perish"?"Perishable":d==="turning"?"Turning":d}</option>`).join("");
-    ask(`<h2>Amending the Ledger</h2><p class="sub">${esc(lotName(l))}. For the honest corrections every quartermaster must sometimes make.</p><div class="grid"><label>Sound</label><input type="number" name="u" min="0" value="${l.units}"><label>Spoiled</label><input type="number" name="s" min="0" value="${l.spoiled}"><label>Keep</label><select name="d">${keepOpts}</select>${l.die==="perish"?`<label>Spoils at end of day</label><input type="number" name="p" min="1" value="${l.spoilsOn-1}">`:""}<label>Strike it out</label><label class="inline"><input type="checkbox" name="del"> Remove this lot entirely</label></div>`,fd=>{
-      const del=!!fd.get("del"),u=Math.max(0,parseFloat(fd.get("u"))||0),s=Math.max(0,parseFloat(fd.get("s"))||0),d=fd.get("d"),p=parseInt(fd.get("p"));
+    const food=it.kind==="food";
+    const keepOpts=(!food||it.keep==="never"?["never"]:it.keep==="perish"?["perish"]:DICE.concat(["turning"])).map(d=>`<option value="${d}" ${d===l.die?"selected":""}>${d==="never"?(it.kind==="live"?"Alive":"Never spoils"):d==="perish"?"Perishable":d==="turning"?"Turning":d}</option>`).join("");
+    const char=l.item==="kelp-charcoal";
+    ask(`<h2>Amending the Ledger</h2><p class="sub">${esc(lotName(l))}. For the honest corrections every quartermaster must sometimes make.</p><div class="grid"><label>Sound</label><input type="number" name="u" min="0" value="${l.units}">${food?`<label>Spoiled</label><input type="number" name="s" min="0" value="${l.spoiled}">`:""}${food?`<label>Keep</label><select name="d">${keepOpts}</select>`:""}${l.die==="perish"?`<label>Spoils at end of day</label><input type="number" name="p" min="1" value="${l.spoilsOn-1}">`:""}${char?`<label>Charcoal</label><select name="c"><option value="dry" ${!l.wet&&!l.oil?"selected":""}>Dry</option><option value="oil" ${l.oil?"selected":""}>Dry, in oilskin</option><option value="wet" ${l.wet?"selected":""}>Wet</option></select>`:""}<label>Strike it out</label><label class="inline"><input type="checkbox" name="del"> Remove this lot entirely</label></div>`,fd=>{
+      const del=!!fd.get("del"),u=Math.max(0,parseFloat(fd.get("u"))||0),sv=Math.max(0,parseFloat(fd.get("s"))||0),d=fd.get("d")||l.die,p=parseInt(fd.get("p")),c=fd.get("c");
       act(()=>{
         const l=lotById(lid);if(!l)return false;
-        if(del){S.lots=S.lots.filter(x=>x!==l);logLine(`${lotName(l)} struck from the ledger.`);return;}
-        l.units=u;l.spoiled=s;l.die=d;
+        if(del){S.lots=S.lots.filter(x=>x!==l);logLine(say("amend",lc(lotName(l))));return;}
+        l.units=u;if(food)l.spoiled=sv;l.die=d;
         if(d==="perish")l.spoilsOn=(p||S.day)+1;
-        logLine(`The ledger for ${lotName(l)} is amended by hand.`);
-      });
+        if(c){l.wet=c==="wet";l.oil=c==="oil";if(!l.wet)delete l.dryOn;}
+        logLine(say("amend",lc(lotName(l))));
+      },null,{guard:true});
     },"Amend");
   }
 };
 
+/* ---------------- Writing something new ---------------- */
 function newCustom(){
-  ask(`<h2>A Provision of Your Own</h2><p class="sub">For the catch of the day, a recipe's fruits, or some strange island delicacy the Bazaar never knew.</p>
+  const meats=CATALOG.filter(c=>c.cat==="Fresh Food"&&c.keep==="perish");
+  ask(`<h2>Something of Your Own</h2><p class="sub">For the catch of the day, a recipe's leftovers, monster parts, salvage, or some strange island cargo the Bazaar never knew.</p>
   <div class="grid">
-   <label>Name</label><input type="text" name="name" required>
-   <label>One unit is</label><input type="text" name="single" value="Ration">
-   <label>Rations per unit</label><input type="number" name="rat" step="0.125" min="0" value="1">
-   <label>Is it drink?</label><label class="inline"><input type="checkbox" name="water"> Counts as water rations</label>
-   <label>Cargo unit</label><input type="text" name="cargo" value="Crate">
-   <label>Units per cargo</label><input type="number" name="per" min="0" value="150">
-   <label>Keep</label><select name="keep">${DICE.map(d=>`<option>${d}</option>`).join("")}<option value="perish">Perishable</option><option value="never">Never spoils</option></select>
-   <label>How it spoils</label><select name="how"><option>Hardy</option><option>Delicate</option><option>Preserved</option></select>
-   <label>When spoiled</label><select name="spoil"><option>Rancid</option><option>Fishy</option><option>Stagnant</option><option>Sour</option></select>
-  </div><p class="note">Fishy for any animal flesh, Rancid for other food.</p>`,fd=>{
+   <label>Name</label><input type="text" name="name" maxlength="60" required>
+   <label>Kind</label><select name="kind"><option value="food">Provision</option><option value="supply">Ship supply</option><option value="goods">Trade good</option><option value="live">Livestock</option></select>
+   <label>Stowed as</label><select name="stow"><option value="cargo">Loose, packing into cargo units</option><option value="solo">Single items, each with its own weight</option></select>
+   <label>One unit is</label><input type="text" name="single" value="Unit" maxlength="30">
+   <label data-s="cargo">Cargo unit name</label><input data-s="cargo" type="text" name="cargo" value="Crate" maxlength="20">
+   <label data-s="cargo">Units per cargo unit</label><input data-s="cargo" type="number" name="per" min="1" value="100">
+   <label>Tonnage</label><input type="number" name="tons" min="0" step="0.2" value="0.2"><span></span><span class="note" data-s="cargo" style="margin-top:-6px">tons per cargo unit</span><span class="note" data-s="solo" style="margin-top:-6px">tons per single item</span>
+   <label data-k="food">Rations per unit</label><input data-k="food" type="number" name="rat" step="0.125" min="0" value="1">
+   <label data-k="food">Drink</label><label data-k="food" class="inline"><input type="checkbox" name="water"> Counts as water rations</label>
+   <label data-k="food">Keep</label><select data-k="food" name="keep">${DICE.map(d=>`<option>${d}</option>`).join("")}<option value="perish">Perishable</option><option value="never">Never spoils</option></select>
+   <label data-k="food">How it spoils</label><select data-k="food" name="how"><option>Hardy</option><option>Delicate</option><option>Preserved</option></select>
+   <label data-k="food">When spoiled</label><select data-k="food" name="spoil"><option>Rancid</option><option>Fishy</option><option>Stagnant</option><option>Sour</option></select>
+   <label data-k="supply">Ammunition</label><label data-k="supply" class="inline"><input type="checkbox" name="ammo"> Fired from the ship's weapons</label>
+   <label data-k="supply">On a line</label><label data-k="supply" class="inline"><input type="checkbox" name="retrieve"> Can be hauled back after firing</label>
+   <label data-k="live">Meat per head</label><input data-k="live" type="number" name="meat" min="0" value="20">
+   <label data-k="live">Butchers into</label><select data-k="live" name="meatOf">${meats.map(m=>`<option value="${m.id}">${esc(m.name)}</option>`).join("")}</select>
+  </div><p class="note" data-k="food">Fishy for any animal flesh, Rancid for other food.</p>`,fd=>{
     const name=String(fd.get("name")||"").trim();if(!name)return;
-    const keep=fd.get("keep");
-    const def={name,cat:"Custom",single:String(fd.get("single")||"Unit"),rat:parseFloat(fd.get("rat"))||0,water:!!fd.get("water"),cargo:String(fd.get("cargo")||"Crate"),per:parseInt(fd.get("per"))||null,keep,how:keep==="perish"?"Perishable":keep==="never"?null:fd.get("how"),spoil:keep==="never"?null:fd.get("spoil")};
+    const kind=fd.get("kind"),solo=fd.get("stow")==="solo";
+    const single=String(fd.get("single")||"Unit").trim()||"Unit";
+    const w=lc(single),wp=/s$/.test(w)?w:w+"s";
+    const f=Math.max(0,Math.round((parseFloat(fd.get("tons"))||0)*5));
+    const def={name,cat:"Custom",kind,single,w,wp,f};
+    if(solo)def.solo=true;else{const c=String(fd.get("cargo")||"Crate").trim()||"Crate";def.cargo=c;def.cargoPl=/s$/i.test(c)?lc(c):lc(c)+"s";def.per=Math.max(1,parseInt(fd.get("per"))||1);}
+    if(kind==="food"){const keep=fd.get("keep");Object.assign(def,{rat:parseFloat(fd.get("rat"))||0,water:!!fd.get("water"),keep,how:keep==="perish"?"Perishable":keep==="never"?null:fd.get("how"),spoil:keep==="never"?null:fd.get("spoil")});}
+    else def.keep="never";
+    if(kind==="supply"){if(fd.get("ammo"))def.ammo=true;if(fd.get("retrieve"))def.retrieve=true;}
+    if(kind==="live"){def.meat=Math.max(0,parseInt(fd.get("meat"))||0);def.meatOf=fd.get("meatOf");}
     let newId=null;
-    act(()=>{newId="custom-"+slug(name)+"-"+(S.seq++);S.custom[newId]=Object.assign({id:newId},def);},()=>{fillItems(true);if(newId&&S.custom[newId]){itemSel.value=newId;fillItem(true);}});
+    act(()=>{newId="custom-"+slug(name)+"-"+(S.seq++);S.custom[newId]=Object.assign({id:newId},def);},()=>{fillItems(true);if(newId&&S.custom[newId]){itemSel.value=newId;fillItem();toast(name+" is written into the catalog. Choose how many, and stow it below.");}});
   },"Add to the Catalog");
+  const sync=()=>{
+    const k=dform.querySelector("select[name=kind]").value,s=dform.querySelector("select[name=stow]").value;
+    dform.querySelectorAll("[data-k]").forEach(el=>el.hidden=el.dataset.k!==k);
+    dform.querySelectorAll("[data-s]").forEach(el=>el.hidden=el.dataset.s!==s);
+  };
+  dform.querySelector("select[name=kind]").onchange=sync;dform.querySelector("select[name=stow]").onchange=sync;sync();
+}
+
+/* ---------------- The Ship's Papers ---------------- */
+$("papersBtn").onclick=()=>{
+  const s=ship();
+  ask(`<h2>The Ship's Papers</h2><p class="sub">${esc(shipFacts(s))}${s.test?" · a test ship":""} · ${tonsText(holdF())} tons aboard</p>
+    <div class="grid"><label>Her name</label><div class="row"><input type="text" name="rename" data-enter="button[value=x-rename]" maxlength="70" value="${esc(shipName(SHIPID))}"><button class="sm" type="submit" value="x-rename">Rename Her</button></div></div>
+    <div class="row"><button class="sm" type="submit" value="x-adv">Advanced Options</button></div>`,()=>{},"Close",true);
+  dform.querySelector("button[value=x-rename]").onclick=async ev=>{
+    ev.preventDefault();
+    if(!canKeep()){dlg.close();snark("papers");return;}
+    const v=dform.querySelector("input[name=rename]").value.trim();if(!v){toast("A ship must have a name.");return;}
+    try{await DB.update({[`ships/${SHIPID}/name`]:v});dlg.close();toast("She sails on as "+v+".");}catch(e){console.error(e);toast("The Register would not take her new name.");}
+  };
+  dform.querySelector("button[value=x-adv]").onclick=ev=>{ev.preventDefault();dlg.close();advancedPapers();};
+};
+function advancedPapers(){
+  const s=ship();
+  if(!canKeep()){snark("papers");return;}
+  ask(`<h2>Advanced Options</h2><p class="sub">The particulars of ${esc(shipName(SHIPID))}, as written in the Register.</p>${shipFields(s,false)}
+    <div class="grid"><label>Test ship</label><div class="row"><span class="tag">${s.test?"She is a test ship.":"She is a real ship."}</span><button class="sm" type="submit" value="x-test">${s.test?"Make Her a Real Ship":"Make Her a Test Ship"}</button></div></div>`,async fd=>{
+    const v=readShip(fd);const id=SHIPID;
+    const up={[`ships/${id}/fuel`]:v.fuel,[`ships/${id}/size`]:v.size};
+    if(v.maxTons!==undefined)up[`ships/${id}/maxTons`]=v.maxTons;
+    else if(KEEPER)up[`ships/${id}/maxTons`]=null;
+    try{await DB.update(up);toast("Her papers are amended.");}catch(e){console.error(e);toast("The Register would not accept those papers.");}
+  },"Save Her Papers");
+  wireTypeFill();
+  dform.querySelector("button[value=x-test]").onclick=async ev=>{
+    ev.preventDefault();
+    if(!KEEPER){dlg.close();snark("papers");return;}
+    try{await DB.update({[`ships/${SHIPID}/test`]:!s.test});dlg.close();toast(s.test?"She is a real ship now.":"She is a test ship now.");}catch(e){toast("Only the Keeper may do this.");}
+  };
 }
 
 /* ---------------- Bottles, the log, and emptying ---------------- */
@@ -951,7 +1391,7 @@ $("loadBtn").onclick=()=>{
   },"Uncork");
 };
 $("clearLogBtn").onclick=()=>confirmBox("Clear the Log","Tear every page from the Quartermaster's Log? The hold itself is untouched.","Tear them out",()=>act(()=>{S.log=[];}));
-$("wipeBtn").onclick=()=>confirmBox("Empty the Hold","Empty the hold entirely and begin anew at day 1? Custom provisions are kept, and the hold as it is now is laid away in the Keeper's Chest.","Empty it",()=>backup("Before the hold was emptied").then(()=>act(()=>{const c=S.custom;S=fresh();S.custom=c;})));
+$("wipeBtn").onclick=()=>confirmBox("Empty the Hold","Empty the hold entirely and begin anew at day 1? Custom cargo is kept in the catalog, and the hold as it is now is laid away in the Keeper's Chest.","Empty it",()=>backup("Before the hold was emptied").then(()=>act(()=>{const c=S.custom;S=fresh();S.custom=c;})));
 
 /* ---------------- The Keeper's Chest of saved holds ---------------- */
 let CHEST={};
@@ -964,16 +1404,36 @@ function loadChest(){
       :`<p class="note">Nothing has been laid away for this ship yet.</p>`;
   }).catch(()=>{$("chestList").innerHTML=`<p class="note">The chest would not open.</p>`;});
 }
-$("chestBtn").onclick=()=>{if(!KEEPER){snark("chest");return;}loadChest();};
+$("chestBtn").onclick=()=>{if(!canKeep()){snark("chest");return;}loadChest();};
 $("chestList").onclick=e=>{
   const b=e.target.closest("button");if(!b||!b.dataset.restore)return;
+  if(!canKeep()){snark("chest");return;}
   const k=b.dataset.restore,bk=CHEST[k];if(!bk)return;
   confirmBox("Restore a Saved Hold","Return this ship's hold to how it stood on "+when(bk.at)+" (day "+bk.day+")? The hold as it is now is laid away first, so this too can be undone.","Restore it",()=>backup("Before restoring a saved hold").then(()=>act(()=>{S=normalize(bk.hold);},()=>{toast("The hold is restored.");loadChest();})));
 };
-$("pruneBtn").onclick=()=>!KEEPER?snark("chest"):confirmBox("Thin the Chest","Keep only the newest 30 saved holds of this ship, and let the older ones go?","Thin it",async()=>{
+$("pruneBtn").onclick=()=>!canKeep()?snark("chest"):confirmBox("Thin the Chest","Keep only the newest 30 saved holds of this ship, and let the older ones go?","Thin it",async()=>{
   try{const v=(await DB.get("backups/"+SHIPID))||{};const ks=Object.keys(v).sort((a,b)=>b-a).slice(30);if(!ks.length){toast("There are 30 or fewer already.");return;}const up={};ks.forEach(k=>up[`backups/${SHIPID}/${k}`]=null);await DB.update(up);toast(ks.length+" old copies let go.");loadChest();}
   catch(e){toast("Only the Keeper may do this.");}
 });
+
+/* ---------------- Opening and closing a hold ---------------- */
+function closeHold(){if(holdUnsub){holdUnsub();holdUnsub=null;}if(nameUnsub){nameUnsub();nameUnsub=null;}SHIPID=null;}
+function showHold(id){
+  closeHold();
+  SHIPID=id;S=fresh();HIST=[];holdSeen=false;lastCustomKeys="~";
+  $("harborView").hidden=true;$("holdView").hidden=false;$("chestList").innerHTML="";
+  $("shipTitle").textContent=shipName(id);
+  nameUnsub=DB.on("ships/"+id,v=>{if(v){SHIPS[id]=v;$("shipTitle").textContent=v.name||shipName(id);document.title=(v.name||shipName(id))+" | The Ship's Larder";render();}});
+  holdUnsub=DB.on(holdPath(),v=>{
+    if(v===null){
+      if(holdSeen){toast("This ship has gone to the bottom.");go(null);return;}
+      // A ship named in the address that was never christened: christen it now.
+      DB.get("ships/"+id).then(reg=>{const up={["holds/"+id]:fresh()};if(!reg)up["ships/"+id]={name:shipName(id),created:Date.now()};return DB.update(up);}).catch(()=>{});return;
+    }
+    holdSeen=true;S=normalize(v);render();
+  });
+  fillCats();fillItems(false);render();
+}
 
 /* ---------------- Wiring and routing ---------------- */
 $("dawnBtn").onclick=dawn;
@@ -984,7 +1444,7 @@ $("dayIn").onchange=e=>{const v=Math.max(1,parseInt(e.target.value)||1);act(()=>
 $("crewIn").onchange=e=>{const v=Math.max(0,parseInt(e.target.value)||0);act(()=>{S.crew=v;});};
 $("sharedIn").onchange=e=>{const v=e.target.checked;act(()=>{S.shared=v;});};
 
-const shipParam=()=>{try{const v=new URLSearchParams(location.search).get("ship");return v?shipSlug(v):null;}catch(e){return null;}};
+const shipParam=()=>{try{const v=new URLSearchParams(location.search).get("ship");return v?slug(v):null;}catch(e){return null;}};
 function go(id){
   try{const u=new URL(location.href);u.hash="";if(id)u.searchParams.set("ship",id);else u.searchParams.delete("ship");history.pushState(null,"",u.toString());}catch(e){}
   route();
@@ -1008,6 +1468,7 @@ window.addEventListener("popstate",route);
     setStatus(FIREBASE_CONFIG.apiKey?"Ledger unreachable, kept on this device":"Kept on this device",FIREBASE_CONFIG.apiKey?"off":"");
     KEEPER=true;
   }
+  if(!harborUnsub)harborUnsub=DB.on("ships",v=>{SHIPS=v||{};renderShips();if(SHIPID)render();});
   route();
   if(bottle&&SHIPID)setTimeout(()=>confirmBox("A Message in a Bottle","A bottle has washed ashore with a hold corked inside. Open it, replacing the hold of "+shipName(SHIPID)+"? The hold as it is now is laid away first.","Uncork it",()=>uncork(bottle)),500);
 })();

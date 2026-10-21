@@ -35,11 +35,11 @@ Each round includes its powder charge. See [[Ship Weapons]] for what each round 
 | Dragon head fuel | 1 load (3 uses) | 7,200 SH | 5 loads (15 uses) | 32,400 SH |
 
 # Boarding and Defense
-| Item | Price | Notes |
-| --- | --- | --- |
-| Boarding plank | 240 SH | 20 ft long and 10 ft wide. Placing it securely takes an action. AC 15, 22 HP, immune to poison and psychic damage, vulnerable to fire. Holds up to 800 lb. |
-| Naval mine | 720 SH | See below. |
-| Fire sand | 95 SH | A bucket of sand. When a crew member fights a fire with it, they reduce the fire by 2d6 instead of 1d6, or 3d6 with [[Ship Upgrades#Fire Troughs\|Fire Troughs]]. One use. |
+| Item           | Price  | Notes                                                                                                                                                                      | Cargo units (1/5 ton) | cargo unit pricing |
+| -------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------ |
+| Boarding plank | 240 SH | 20 ft long and 10 ft wide. Placing it securely takes an action. AC 15, 22 HP, immune to poison and psychic damage, vulnerable to fire. Holds up to 800 lb.                 | -                     | -                  |
+| Naval mine     | 720 SH | See below.                                                                                                                                                                 | 4 mines               | 2,592 SH           |
+| Fire sand      | 95 SH  | A bucket of sand. When a crew member fights a fire with it, they reduce the fire by 2d6 instead of 1d6, or 3d6 with [[Ship Upgrades#Fire Troughs\|Fire Troughs]]. One use. | -                     | -                  |
 
 **Naval mine.** A crew member primes it and drops it overboard with the Operate Crew Action. The next object to move into its space sets it off, dealing 28 (8d6) fire damage in a 10-foot radius. It also goes off if it drops to 0 hit points.
 - Once placed, it's hidden. Spotting it takes a DC 15 Wisdom (Perception) check.

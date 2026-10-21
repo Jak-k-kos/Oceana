@@ -104,8 +104,8 @@ Every edible item in [[Shops, Shells And Survival/The Bazaar/index|The Bazaar]] 
 Lost units are spoiled, not gone. They can be thrown overboard, or eaten and drunk at a risk.
 
 ## How It Spoils
-- **Hardy:** When the lot steps down, roll a d6 Loss Die. On a 5-6, lose units to spoilage.
-- **Delicate:** When the lot steps down, roll a d4 Loss Die. On a 3-4, lose units to spoilage.
+- **Hardy:** When the lot steps down, roll a d6 Loss Die. On a 1-2, lose units to spoilage.
+- **Delicate:** When the lot steps down, roll a d4 Loss Die. On a 1-2, lose units to spoilage.
 - **Preserved:** Loses nothing when it steps down.
 - **Perishable:** Has no Keep Die. Spoils at the end of the next day.
 
