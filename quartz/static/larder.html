@@ -479,6 +479,46 @@ SNARK.smuggler=[
   "Rocks fall. Into the smuggler's hold. Now it's full of rocks, and also you're dead. ...Fine, no rocks, no death. But no room either, unless the Grand Concealer of Catastrophe (your merciful DM) wills it.",
 ];
 
+SNARK.storeFull=[
+  "You shove the crate against the door. The door shoves back. The storehouse is full, and only the Grand Warden of Walls and Rafters (your venerable DM) may make room within it.",
+  "The shelves bow, the beams creak, and the floorboards file a formal complaint with the High Surveyor of Square Footage (your exacting DM).",
+  "The keeper plants themself in the doorway, arms folded. \"Not one sack more,\" they say, \"unless the Most Noble Lord of Lofts and Larders (your gracious DM) says so.\"",
+  "You try to stack it on top of the other stacks. The stacks have opinions. So does the Exalted Overseer of Every Cellar (your watchful DM).",
+  "You measure twice and cut once, but the storehouse is still exactly as big as it was. Only the Supreme Geometer of Stone and Timber (your learned DM) can bend that kind of arithmetic.",
+  "The roof lifts a single inch, as if to sigh. The walls were raised by the Ancient Architect of Storehouses (your timeless DM), and only they may raise them further.",
+  "You consult the storehouse's floor plan. Every square is labeled \"full.\" The handwriting belongs to the Celestial Clerk of Capacity (your meticulous DM).",
+  "The keeper produces a ledger, licks a thumb, and runs it down the page. \"Full,\" they announce. \"Signed and sealed by the Most August Registrar of Rafters (your scrupulous DM). Next!\"",
+  "The door will not close. The door must close. Only the Unrivaled Keeper of Keys and Corners (your mighty DM) can make both of these true at once.",
+  "A neighbor leans out a window. \"That storehouse is full, friend. Everyone knows. Even the Sovereign Gossip of the Harbor (your all-hearing DM) knows.\"",
+  "You squeeze it in. The walls burst outward, the roof caves in, and the whole storehouse folds like a wet map. You are found three days later beneath a pile of salted ham. Roll a new character. ...Not really. The crate is still in the street, because only the Grand Demolisher of Warehouses (your merciful DM) can overfill a storehouse.",
+  "Rocks fall. Through the storehouse roof. Now the storehouse is full of rocks, and you, regrettably, are under them. ...Fine, no rocks, no squashing. But no room either, unless the Eternal Mason of Masonry (your rock-solid DM) wills it.",
+];
+
+SNARK.seize=[
+  "You reach for the seal of the Harbor Customs. It is very heavy and very official, and it belongs to the Lord High Inspector of Holds and Hollows (your vigilant DM).",
+  "You clear your throat and announce, \"By order of the harbor!\" No one moves. Orders of the harbor come only from the Grand Assessor of Contraband (your keen-eyed DM).",
+  "A customs officer taps you on the shoulder. \"Seizing cargo is my job, friend. And my job answers to the Most Exacting Comptroller of Cargo (your unbribable DM).\"",
+  "You try to pry open the false bulkhead yourself. It does not budge, for it has been sealed by the Silent Sentinel of Secret Places (your watchful DM).",
+  "Smugglers do not seize their own goods. That privilege belongs to the High Collector of Tariffs and Trouble (your thorough DM).",
+  "You fill out the seizure form in triplicate. The clerk stamps it DENIED, in red, with the personal stamp of the Supreme Registrar of Forbidden Goods (your meticulous DM).",
+  "You knock on the bulkhead to find the hollow spot. Something inside knocks back. Only the Fearless Finder of Hidden Holds (your dauntless DM) opens what knocks back.",
+  "You borrow an inspector's coat and hat. They are three sizes too big, and the real inspector, the Most Lofty Lord of Lading (your discerning DM), wants them back.",
+  "You seize the cargo yourself. Customs seizes you. You are fined, flogged, clapped in irons, and hanged at dawn for impersonating an officer of the harbor. Roll a new character. ...Not really. But the cargo stays where it is, because only the Dread Magistrate of the Customs House (your merciful DM) may lay hands on it.",
+  "Rocks fall. Right onto the false bulkhead. It cracks open, the contraband spills out, and you are crushed beneath a crate of rum. ...Fine, no rocks, no rum, no crushing. The bulkhead stays shut until the Grand Breaker of Seals (your mighty DM) says otherwise.",
+];
+SNARK.recover=[
+  "The seized crates sit in the customs shed under lock, key, and a very bored guard. The key hangs on the belt of the Warden of Confiscated Things (your stern DM).",
+  "You try to sneak the seized cargo back aboard. A lantern swings your way. The Ever-Wakeful Watchman of the Wharf (your all-seeing DM) is not amused.",
+  "You whisper to the inspector that the cargo is yours. The inspector whispers back that all cargo belongs, in the end, to the Exalted Arbiter of What Is Owed (your impartial DM).",
+  "The customs ledger opens itself, glares at you, and slams shut. It answers only to the Ancient Keeper of Manifests and Misdeeds (your eternal DM).",
+  "You file an appeal. It is lost. You file another. It is lost too. All appeals go before the Unhurried High Court of the Harbor (your patient DM), which is closed on days that end in y.",
+  "You offer the guard a bribe. The guard pockets it, thanks you warmly, and keeps the cargo. Only the Shrewd Lord of Bargains and Bribes (your cunning DM) can strike a deal that sticks.",
+  "You climb through the customs shed window. The window was painted shut by the Meticulous Master of Locks and Latches (your thorough DM), and you are now stuck halfway.",
+  "You put on a fake mustache and claim to be the cargo's rightful owner. The mustache falls off. Ownership is decided by the Supreme Judge of Deeds and Disguises (your sharp-eyed DM).",
+  "You break into the customs shed, grab the crates, and run straight into the harbor guard, the customs men, and the inspector's very large dog. You are never seen again. Roll a new character. ...Not really. But the cargo stays impounded, because only the Grand Liberator of Lost Cargo (your merciful DM) can set it free.",
+  "Rocks fall. Onto the customs shed. The seized cargo is now buried, and so are you. ...Fine, no rocks, no burial. But no cargo either, unless the Grand Excavator of Lost Goods (your rock-solid DM) wills it.",
+];
+
 SNARK.close=[
   "You rattle the storehouse keys meaningfully. Nothing happens. Only the Grand Steward of Every Shelf and Cellar (your venerable DM) may close these doors.",
   "The storehouse is bolted, barred and blessed. Shutting it for good is the privilege of the Lord High Landlord of the Isles (your generous DM).",
@@ -772,6 +812,18 @@ const LOG={
     (a,n)=>`${cap(a)} of ${n} set ashore and left in someone else's keeping.`,
     (a,n)=>`Off came ${a} of ${n}, stacked neatly on the dock.`,
   ],
+  storeUnload:[
+    (a,n)=>`${cap(a)} of ${n} carried out through the storehouse door.`,
+    (a,n)=>`The keeper unbarred the door, and out went ${a} of ${n} on a creaking handcart.`,
+    (a,n)=>`${cap(a)} of ${n} taken down from the shelves and sent on ${vb(a,"its","their")} way.`,
+    (a,n)=>`${cap(a)} of ${n} ${vb(a,"leaves","leave")} the storehouse, and the keeper strikes ${vb(a,"it","them")} from the ledger with a sigh.`,
+  ],
+  storeToss:[
+    (a,n)=>`${cap(a)} of ${n} thrown out behind the storehouse.`,
+    (a,n)=>`Out the back door went ${a} of ${n}, and the alley cats rejoiced.`,
+    (a,n)=>`${cap(a)} of ${n} hauled to the midden heap and left for the gulls.`,
+    (a,n)=>`The keeper held their nose and pitched ${a} of ${n} into the harbor.`,
+  ],
   storeDawn:[
     ()=>"Morning light slants through the storehouse shutters, and the keeper takes up the ledger.",
     ()=>"The harbor bells ring the hour, and the storehouse door creaks open on another day.",
@@ -951,8 +1003,8 @@ function ask(html,onOk,okText,noCancel){
 }
 function confirmBox(title,text,yes,onYes){ask(`<h2>${esc(title)}</h2><p class="sub">${esc(text)}</p>`,()=>onYes(),yes);}
 function snark(kind,extra){
-  const head={scuttle:"Avast, Sailor!",chest:"Hands Off the Chest!",papers:"Unhand Those Papers!",overload:"She's Full, Sailor!",smuggler:"It's a Secret, Not a Warehouse!",close:"Those Doors Stay Open!",deeds:"Hands Off the Deeds!"}[kind];
-  const btn={scuttle:"I unhand the axe",chest:"I back away slowly",papers:"I put the quill down",overload:"I take it back to the dock",smuggler:"I take it back out",close:"I put the keys down",deeds:"I put the deeds back"}[kind];
+  const head={scuttle:"Avast, Sailor!",chest:"Hands Off the Chest!",papers:"Unhand Those Papers!",overload:"She's Full, Sailor!",storeFull:"Those Walls Won't Stretch!",seize:"That's Customs Business!",recover:"That Cargo Is Impounded!",smuggler:"It's a Secret, Not a Warehouse!",close:"Those Doors Stay Open!",deeds:"Hands Off the Deeds!"}[kind];
+  const btn={scuttle:"I unhand the axe",chest:"I back away slowly",papers:"I put the quill down",overload:"I take it back to the dock",storeFull:"I carry it back out",seize:"I leave it to the inspectors",recover:"I let it be",smuggler:"I take it back out",close:"I put the keys down",deeds:"I put the deeds back"}[kind];
   ask(`<h2>${head}</h2><p class="snark">${esc(deal("snark-"+kind,SNARK[kind])).replace(/\*([^*]+)\*/g,"<i>$1</i>")}</p>${extra?`<p class="note">${esc(extra)}</p>`:""}`,()=>{},btn,true);
 }
 
@@ -1244,7 +1296,8 @@ function act(fn,after,opts){
       if(KEEPER){
         if(here())confirmBox("Overfill the Storehouse?","This would bring it to "+tonsText(over.f1)+" of "+tonsW(over.M)+". Store it anyway?","Store it anyway",()=>act(fn,after,Object.assign({},opts,{force:true})));
         else confirmBox("Overload Her?","This would bring her to "+tonsText(over.f1)+" of "+tonsW(over.M)+". A ship that heavy is Sinking. Load her anyway?","Load her anyway",()=>act(fn,after,Object.assign({},opts,{force:true})));
-      }else snark("overload",(here()?"Room left in the storehouse: ":"Room left in the hold: ")+tonsW(Math.max(0,over.M-over.f0))+".");
+      }else if(here())snark("storeFull","Room left in the storehouse: "+tonsW(Math.max(0,over.M-over.f0))+".");
+      else snark("overload","Room left in the hold: "+tonsW(Math.max(0,over.M-over.f0))+".");
     }
   }).catch(e=>{toast("The ledger could not be reached. Try again in a moment.");console.error(e);});
 }
@@ -1565,7 +1618,13 @@ function summaryHtml(id,hold){
   }finally{S=sv;SHIPID=si;}
 }
 async function openDawn(keep,boxes0){
-  let holds;try{holds=(await DB.get("holds"))||{};}catch(e){toast("The ledger could not be reached.");return;}
+  let token=null;
+  if(!keep){ // a fresh open shows the panel straight away, and fills it once the ledgers arrive
+    ask(`<h2>Before the Sun Rises</h2><p class="sub" id="dawnWait">The quartermaster gathers the ledgers...</p>`,()=>{},"Never mind",true);
+    token=dform.querySelector("#dawnWait");
+  }
+  let holds;try{holds=(await DB.get("holds"))||{};}catch(e){if(token&&dlg.open&&dform.contains(token))dlg.close();toast("The ledger could not be reached.");return;}
+  if(token&&!(dlg.open&&dform.contains(token)))return; // closed while the ledgers were on their way
   const ids=Object.keys(SHIPS).filter(id=>holds[id]).sort((a,b)=>(isStore(SHIPS[a])-isStore(SHIPS[b]))||((SHIPS[a].created||0)-(SHIPS[b].created||0)));
   let pick;
   if(keep)pick=keep;
@@ -1709,7 +1768,9 @@ function render(){
       :H===0?`<span class="tag">She is too small to hide anything worth counting.</span>`
       :`<b>Hidden:</b> ${tonsText(h)} of ${tonsW(H)}`+(h>H?` <span class="over">Overstuffed!</span>`:"");
     setHtml("smugBody",hidLots.length?rowsHtml(hidLots,true,smug):`<tr class="empty"><td colspan="7">Nothing hidden. Nothing at all, inspector.</td></tr>`);
-    $("seizedList").innerHTML=S.seized.length?`<h3 class="sub3">Seized Cargo</h3><table><tbody>${S.seized.map(z=>`<tr><td><b>Seized on day ${z.day}</b><div class="tag">${esc(tidy(z.lots.map(l=>lotAmt(l,(l.units||0)+(l.spoiled||0))+" of "+lc(item(l.item).name)).join(", "))||"nothing at all")}</div></td><td style="text-align:right"><button class="sm" data-recover="${z.id}">Recover It</button></td></tr>`).join("")}</tbody></table>`:"";
+    $("seizedList").innerHTML=S.seized.length?`<h3 class="sub3">Seized Cargo</h3><table><tbody>${S.seized.map(z=>{
+      const rows=z.lots.map(l=>{if(l.id==null)return "";return `<tr><td class="tag" style="padding-left:16px">${esc(tidy(lotAmt(l,(l.units||0)+(l.spoiled||0))+" of "+lc(item(l.item).name)))}</td><td style="text-align:right"><button class="sm" data-recover-lot="${z.id}:${l.id}">Recover</button></td></tr>`;}).join("");
+      return `<tr><td><b>Seized on day ${z.day}</b></td><td style="text-align:right">${z.lots.length>1?`<button class="sm" data-recover="${z.id}">Recover All</button>`:""}</td></tr>${rows||`<tr><td class="tag" colspan="2">nothing at all</td></tr>`}`;}).join("")}</tbody></table>`:"";
   }
   $("intoWrap").hidden=!smug;
   renderFire();
@@ -1759,6 +1820,7 @@ function rowsHtml(list,hidden,smug){
     if(l.item==="kelp-charcoal"&&l.wet&&!l.dryOn)acts.push(btn("dry",l,"Lay Out to Dry"));
     if(l.item==="kelp-charcoal"&&!l.wet&&!l.oil)acts.push(btn("oil",l,"Wrap in Oilskin"));
     if(saltable(l))acts.push(btn("salt",l,"Salt"));
+    if(hidden&&(l.units>0||l.spoiled>0))acts.push(`<button class="sm danger" data-a="seize" data-id="${l.id}">Seize</button>`);
     if(l.units>0||l.spoiled>0)acts.push(btn("move",l,"Move…"));
     acts.push(btn("edit",l,"Amend"));
     html+=`<tr><td>${esc(it.name)}${it.cat==="Custom"?' <span class="tag">(custom)</span>':""}</td><td>${stowed}</td><td>${show(l.units)}</td><td class="${l.spoiled?"spoiled":""}">${show(l.spoiled)}</td><td>${keep}</td><td class="tag">${esc(nature)}</td><td><div class="acts">${acts.join("")}</div></td></tr>`;
@@ -1914,6 +1976,7 @@ function lotAction(a,lid){
   const l=lotById(lid);if(!l)return;const it=item(l.item);
   if(a==="move")return moveMenu(lid);
   if(a==="salt")return saltDialog(lid);
+  if(a==="seize")return seizeOne(lid);
   if(a==="unload"||a==="tossGood")return dropDialog(lid,a);
   if(a==="transfer")return transferDialog(lid);
   if(a==="eat"&&it.kind==="live"){
@@ -2035,8 +2098,7 @@ function dropDialog(lid,mode){
       const n=Math.min(l.units,wn),s=Math.min(l.spoiled,ws);if(!n&&!s)return false;
       l.units-=n;l.spoiled-=s;jot("rem",l.item,lotSingles(l,n+s));
       const A=lotAmt(l,n+s),N=lc(it.name);
-      if(st)logLine(mode==="unload"?`${cap(A)} of ${N} taken out of the storehouse.`:`${cap(A)} of ${N} thrown out.`);
-      else logLine(say(mode==="unload"?"unload":"tossGood",A,N));
+      logLine(say(st?(mode==="unload"?"storeUnload":"storeToss"):(mode==="unload"?"unload":"tossGood"),A,N));
     });
   },mode==="unload"?(st?"Take It Out":"Unload"):(st?"Throw It Out":"Toss It"));
 }
@@ -2058,8 +2120,8 @@ async function sendAcross(lid,to,wn,ws,force){
   const sv=S,si=SHIPID;S=normalize(dh);SHIPID=to;const destF=holdF();S=sv;SHIPID=si;
   const DM=typeof ds.maxTons==="number"?Math.round(ds.maxTons*5):null;
   if(!force&&DM!=null&&add>0&&destF+add>DM){
-    if(KEEPER)confirmBox("Overload "+shipName(to)+"?","This would bring "+shipName(to)+" to "+tonsText(destF+add)+" of "+tonsW(DM)+". Send it anyway?","Send it anyway",()=>sendAcross(lid,to,wn,ws,true));
-    else snark("overload","Room left in "+shipName(to)+": "+tonsW(Math.max(0,DM-destF))+".");
+    if(KEEPER)confirmBox((isStore(ds)?"Overfill ":"Overload ")+shipName(to)+"?","This would bring "+shipName(to)+" to "+tonsText(destF+add)+" of "+tonsW(DM)+". Send it anyway?","Send it anyway",()=>sendAcross(lid,to,wn,ws,true));
+    else snark(isStore(ds)?"storeFull":"overload","Room left in "+shipName(to)+": "+tonsW(Math.max(0,DM-destF))+".");
     return;
   }
   let moved=null,srcDay=0,def=null;const from=shipName(SHIPID),toName=shipName(to);
@@ -2147,7 +2209,7 @@ $("smugBody").onclick=onLotClick;
 
 /* ---------------- Seizing and recovering the hidden cargo ---------------- */
 $("seizeBtn").onclick=()=>{
-  if(!canKeep()){snark("papers");return;}
+  if(!canKeep()){snark("seize");return;}
   if(!S.lots.some(l=>l.hid)){toast("There is nothing in the smuggler's hold to seize.");return;}
   confirmBox("Seize the Hidden Cargo","The inspectors have found the smuggler's hold. Take everything in it? It is set aside, not lost, and can be recovered if the crew wins it back.","Seize it",()=>act(()=>{
     const hid=S.lots.filter(l=>l.hid);if(!hid.length)return false;
@@ -2158,9 +2220,42 @@ $("seizeBtn").onclick=()=>{
     logLine(say("seize",list.length>1?list.slice(0,-1).join(", ")+" and "+list[list.length-1]:list[0]),true);
   }));
 };
+function seizeOne(lid){
+  if(!canKeep()){snark("seize");return;}
+  const l=lotById(lid);if(!l||!l.hid)return;
+  ask(`<h2>Seize It</h2><p class="sub">${esc(lotName(l))}. The inspector's hand falls on this and this alone. It is set aside, not lost, and can be recovered.</p><div class="grid">${countFields(l,true)}</div>`,fd=>{
+    const wn=Math.max(0,parseInt(fd.get("n"))||0),ws=Math.max(0,parseInt(fd.get("s"))||0);if(!wn&&!ws)return;
+    act(()=>{
+      const l=lotById(lid);if(!l||!l.hid)return false;
+      const n=Math.min(l.units,wn),s=Math.min(l.spoiled,ws);if(!n&&!s)return false;
+      l.units-=n;l.spoiled-=s;
+      const piece={id:S.seq++,item:l.item,form:l.form,units:n,spoiled:s,die:l.die,hid:true};
+      for(const p of CARRY)if(p!=="hid"&&l[p]!==undefined)piece[p]=l[p];
+      let z=S.seized.find(x=>x.day===S.day);
+      if(!z){z={id:S.seq++,at:Date.now(),day:S.day,lots:[]};S.seized.push(z);}
+      z.lots.push(piece);
+      jot("rem",l.item,lotSingles(l,n+s));
+      logLine(say("seize",lotAmt(l,n+s)+" of "+lc(item(l.item).name)),true);
+    });
+  },"Seize It");
+}
 $("seizedList").onclick=e=>{
+  const one=e.target.closest("button[data-recover-lot]");
+  if(one){
+    if(!canKeep()){snark("recover");return;}
+    const [zid,pid]=one.dataset.recoverLot.split(":").map(Number);
+    act(()=>{
+      const z=S.seized.find(x=>x.id===zid);if(!z)return false;
+      const i=z.lots.findIndex(x=>x.id===pid);if(i<0)return false;
+      const l=z.lots[i];z.lots.splice(i,1);
+      S.lots.push(Object.assign({},l,{id:S.seq++,hid:true}));jot("add",l.item,lotSingles(l,(l.units||0)+(l.spoiled||0)));
+      if(!z.lots.length)S.seized=S.seized.filter(x=>x.id!==zid);
+      logLine(say("recover"));
+    },null,{guard:true});
+    return;
+  }
   const b=e.target.closest("button[data-recover]");if(!b)return;
-  if(!canKeep()){snark("papers");return;}
+  if(!canKeep()){snark("recover");return;}
   const zid=+b.dataset.recover;
   confirmBox("Recover the Seized Cargo","Return everything seized on that day to the smuggler's hold, as though it had never left?","Recover it",()=>act(()=>{
     const z=S.seized.find(x=>x.id===zid);if(!z)return false;
@@ -2464,7 +2559,11 @@ function loadChest(){
       :`<p class="note">Nothing has been laid away for this ship yet.</p>`;
   }).catch(()=>{$("chestList").innerHTML=`<p class="note">The chest would not open.</p>`;});
 }
-$("chestBtn").onclick=()=>{if(!canKeep()){snark("chest");return;}loadChest();};
+$("chestBtn").onclick=()=>{
+  if(!canKeep()){snark("chest");return;}
+  if($("chestBtn").dataset.open){$("chestList").innerHTML="";delete $("chestBtn").dataset.open;$("chestBtn").textContent="Open the Chest";return;}
+  $("chestBtn").dataset.open="1";$("chestBtn").textContent="Close the Chest";loadChest();
+};
 $("chestList").onclick=e=>{
   const b=e.target.closest("button");if(!b||!b.dataset.restore)return;
   if(!canKeep()){snark("chest");return;}
@@ -2481,7 +2580,7 @@ function closeHold(){if(SHIPID&&dlg.open){onDlgOk=null;dlg.close();}if(holdUnsub
 function showHold(id){
   closeHold();
   SHIPID=id;S=fresh();HIST=[];holdSeen=false;lastCustomKeys="~";DRAWN.clear();$("intoSel").value="hold";
-  $("harborView").hidden=true;$("holdView").hidden=false;$("chestList").innerHTML="";
+  $("harborView").hidden=true;$("holdView").hidden=false;$("chestList").innerHTML="";delete $("chestBtn").dataset.open;$("chestBtn").textContent="Open the Chest";
   $("shipTitle").textContent=shipName(id);
   nameUnsub=DB.on("ships/"+id,v=>{if(v){SHIPS[id]=v;$("shipTitle").textContent=v.name||shipName(id);document.title=(v.name||shipName(id))+" | The Ship's Larder";render();}});
   holdUnsub=DB.on(holdPath(),v=>{
