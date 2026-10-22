@@ -42,23 +42,25 @@ Market prices in shells (SH). What you actually pay is down to haggling, and pri
 | Firecap peppers | Handful (0 rations)     | 2 SH  | Bale (1,000 handfuls) | 1,800 SH    | d10  | Hardy, Rancid     |
 
 # Stores
-| Item | Single | Price | Cargo (1/5 ton) | Cargo Price | Keep | Properties |
-| --- | --- | --- | --- | --- | --- | --- |
-| Ship's biscuit | 1 ration | 5 SH | Barrel (150 rations) | 675 SH | d20 | Preserved, Rancid |
-| Dried beans, lentils or chickpeas | 2 lb (1 ration) | 3 SH | Barrel (150 rations) | 405 SH | d20 | Preserved, Rancid |
-| Rice | 2 lb (1 ration) | 4 SH | Barrel (150 rations) | 540 SH | d20 | Preserved, Rancid |
-| Wheat or barley | 2 lb (1 ration) | 3 SH | Barrel (150 rations) | 405 SH | d20 | Preserved, Rancid |
-| Flour | 2 lb (1 ration) | 4 SH | Barrel (150 rations) | 540 SH | d20 | Preserved, Rancid |
-| Salted beef | 1 ration | 15 SH | Barrel (150 rations) | 2,025 SH | d20 | Preserved, Fishy |
-| Salted ham | 1 ration | 18 SH | Barrel (150 rations) | 2,430 SH | d20 | Preserved, Fishy |
-| Smoked whale meat | 1 ration | 10 SH | Barrel (150 rations) | 1,350 SH | d20 | Preserved, Fishy |
-| Salted or smoked fish | 1 ration | 8 SH | Barrel (150 rations) | 1,080 SH | d20 | Preserved, Fishy |
-| Dried conch | 1 ration | 10 SH | Barrel (150 rations) | 1,350 SH | d20 | Preserved, Fishy |
-| Dried squid or cuttlefish | 1 ration | 8 SH | Barrel (150 rations) | 1,080 SH | d20 | Preserved, Fishy |
-| Smoked or salted shellfish | 1 ration | 10 SH | Barrel (150 rations) | 1,350 SH | d20 | Preserved, Fishy |
-| Glassleaf | 1 ration | 6 SH | Barrel (150 rations) | 810 SH | d20 | Preserved, Fishy |
-| Dried kelp | Bundle (1/2 ration) | 2 SH | Bale (300 bundles) | 540 SH | d20 | Preserved, Rancid |
-
+| Item                              | Single              | Price                | Cargo (1/5 ton)      | Cargo Price | Keep             | Properties        |
+| --------------------------------- | ------------------- | -------------------- | -------------------- | ----------- | ---------------- | ----------------- |
+| Ship's biscuit                    | 1 ration            | 5 SH                 | Barrel (150 rations) | 675 SH      | d20              | Preserved, Rancid |
+| Dried beans, lentils or chickpeas | 2 lb (1 ration)     | 3 SH                 | Barrel (150 rations) | 405 SH      | d20              | Preserved, Rancid |
+| Rice                              | 2 lb (1 ration)     | 4 SH                 | Barrel (150 rations) | 540 SH      | d20              | Preserved, Rancid |
+| Wheat or barley                   | 2 lb (1 ration)     | 3 SH                 | Barrel (150 rations) | 405 SH      | d20              | Preserved, Rancid |
+| Flour                             | 2 lb (1 ration)     | 4 SH                 | Barrel (150 rations) | 540 SH      | d20              | Preserved, Rancid |
+| Salted beef                       | 1 ration            | 15 SH                | Barrel (150 rations) | 2,025 SH    | d20              | Preserved, Fishy  |
+| Salted ham                        | 1 ration            | 18 SH                | Barrel (150 rations) | 2,430 SH    | d20              | Preserved, Fishy  |
+| Smoked whale meat                 | 1 ration            | 10 SH                | Barrel (150 rations) | 1,350 SH    | d20              | Preserved, Fishy  |
+| Salted or smoked fish             | 1 ration            | 8 SH                 | Barrel (150 rations) | 1,080 SH    | d20              | Preserved, Fishy  |
+| Dried conch                       | 1 ration            | 10 SH                | Barrel (150 rations) | 1,350 SH    | d20              | Preserved, Fishy  |
+| Dried squid or cuttlefish         | 1 ration            | 8 SH                 | Barrel (150 rations) | 1,080 SH    | d20              | Preserved, Fishy  |
+| Smoked or salted shellfish        | 1 ration            | 10 SH                | Barrel (150 rations) | 1,350 SH    | d20              | Preserved, Fishy  |
+| Glassleaf                         | 1 ration            | 6 SH                 | Barrel (150 rations) | 810 SH      | d20              | Preserved, Fishy  |
+| Dried kelp                        | Bundle (1/2 ration) | 2 SH                 | Bale (300 bundles)   | 540 SH      | d20              | Preserved, Rancid |
+| Salted chicken                    | 1 ration            | 14 SH                | Barrel (150 rations) | 1,890 SH    | d20              | Preserved, Fishy  |
+| Salted goat                       | 1 ration            | 14 SH                | Barrel (150 rations) | 1,890 SH    | d20              | Preserved, Fishy  |
+| Salted mutton                     | 16 SH               | Barrel (150 rations) | 2,160 SH             | d20         | Preserved, Fishy |                   |
 # Delicacies
 | Item | Single | Price | Cargo (1/5 ton) | Cargo Price | Keep | Properties |
 | --- | --- | --- | --- | --- | --- | --- |

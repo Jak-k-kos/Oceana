@@ -88,6 +88,34 @@ textarea{width:100%;min-height:110px;font:13px/1.3 monospace}
 button.primary-sm{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
 button.primary-sm:hover{filter:brightness(1.08);color:var(--accent-ink)}
 dialog .grid [hidden]{display:none!important}
+
+#shade{position:absolute;left:0;top:0;width:100%;background:rgba(20,12,4,.35);z-index:40}
+dialog{max-height:88vh;overflow:auto;overscroll-behavior:contain}
+dialog.panel{position:absolute;left:8px;right:8px;margin:0 auto;max-width:620px;width:auto;max-height:none;overflow:visible;z-index:50}
+.toast.near{position:absolute;bottom:auto;transform:translateX(-50%);z-index:60}
+.choices{display:flex;flex-direction:column;gap:8px;margin:10px 0}
+.choice{color:var(--ink)}
+.fate{color:var(--accent);font-size:.85rem;margin-left:4px;cursor:help}
+.dlist{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+.drow{border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.drow.here{border-color:var(--accent)}
+.dhead{color:var(--ink);font-size:1.02rem}
+.dsum p{margin:4px 0;font-size:.93rem}
+.crewchk{color:var(--good)}
+.crewchk.short{color:var(--warn)}
+.warn{color:var(--warn)}
+.ings{margin:8px 0;padding-left:18px}
+.ings li.ok{color:var(--good)}
+.ings li.no{color:var(--warn)}
+dialog .grid{grid-template-columns:auto minmax(0,1fr)}
+dialog .grid>*{min-width:0}
+dialog .grid>input[type=text],dialog .grid>select,dialog .grid textarea{width:100%;box-sizing:border-box}
+dialog .grid .row{flex-wrap:wrap;min-width:0}
+dialog .grid .row input[type=text]{flex:1 1 140px;min-width:0}
+@media (max-width:480px){dialog .grid{gap:6px 8px}dialog .grid>label{overflow-wrap:anywhere}}
+.toast.near{left:12px;right:12px;margin:0 auto;width:max-content;max-width:calc(100% - 24px);transform:none;border-radius:14px;text-align:center}
+dialog.panel form>:first-child{scroll-margin-top:28px}
+.feedall{margin:6px 0 2px;font-weight:600;color:var(--ink)}
 </style>
 </head>
 <body>
@@ -101,7 +129,7 @@ dialog .grid [hidden]{display:none!important}
     </div>
   </div>
   <p class="note" id="keeperNote" style="text-align:right;margin:0"></p>
-  <p class="sub">Every vessel that sails these drowned waters is written here, each with a hold of her own. Choose your ship, step aboard, and go below.</p>
+  <p class="sub">Every vessel that sails these drowned waters is written here, each with a hold of her own, and every storehouse ashore beside them. Choose your place, step inside, and take stock.</p>
 
   <div class="card">
     <h2>Ships at Anchor</h2>
@@ -116,9 +144,22 @@ dialog .grid [hidden]{display:none!important}
     <p class="note">A ship made for testing is welcome here. Only the Keeper of the Register may scuttle one.</p>
   </div>
 
+  <div class="card">
+    <h2>Storehouses Ashore</h2>
+    <div id="storeList"></div>
+  </div>
+
+  <div class="card">
+    <h2>Found a Storehouse</h2>
+    <div class="row">
+      <button class="primary" id="newStoreBtn">Lay the First Stone</button>
+    </div>
+    <p class="note">A storehouse made for testing is welcome too. Only the Keeper of the Register may close one.</p>
+  </div>
+
   <div class="card" id="trashCard">
-    <h2>The Keeper's Chest: Scuttled Ships</h2>
-    <p class="sub">Ships sent to the bottom are not lost at once. They rest here, hold and all, until the Keeper raises them or gives them to the deep forever.</p>
+    <h2>The Keeper's Chest: Scuttled Ships and Closed Storehouses</h2>
+    <p class="sub">Ships sent to the bottom and storehouses shut for good are not lost at once. They rest here, stores and all, until the Keeper raises them again or lets them go forever.</p>
     <div id="trashList"></div>
   </div>
 </div>
@@ -129,23 +170,26 @@ dialog .grid [hidden]{display:none!important}
     <button class="sm" id="harborBtn">&larr; The Harbor</button>
     <span class="status" id="status">Kept on this device</span>
   </div>
-  <div class="kicker">The Ship's Larder</div>
+  <div class="kicker" id="kicker">The Ship's Larder</div>
   <div class="titlerow">
     <h1 id="shipTitle">A Ship</h1>
     <button class="sm" id="papersBtn">Ship's Papers</button>
   </div>
-  <p class="sub">Wherein every barrel, crate and bale is counted, and the slow, patient hunger of the sea is reckoned each morning.</p>
+  <p class="sub" id="holdSub">Wherein every barrel, crate and bale is counted, and the slow, patient hunger of the sea is reckoned each morning.</p>
 
   <div class="card">
     <div class="row" style="justify-content:space-between">
       <div class="row">
         <button class="primary" id="dawnBtn" title="Roll every lot's Keep Die and advance the day">Dawn Breaks</button>
+        <button id="feedBtn" title="Give every mouth a food and a water ration">Feed the Crew</button>
+        <button id="cookBtn" title="Cook a recipe from the Recipe Book">Cook</button>
+        <button id="rainBtn" title="Set out the canvases and catch the rain">Catch Rain</button>
         <button class="danger" id="dmgBtn" title="Hold flooded or ship badly damaged">The Hold Is Struck</button>
         <button id="undoBtn" title="Undo the last change you made">Undo</button>
       </div>
       <div class="row">
-        <label class="inline">Day of the voyage <input type="number" id="dayIn" min="1"></label>
-        <label class="inline">Mouths aboard <input type="number" id="crewIn" min="0"></label>
+        <label class="inline"><span id="dayLbl">Day of the voyage</span> <input type="number" id="dayIn" min="1"></label>
+        <label class="inline"><span id="crewLbl">Mouths aboard</span> <input type="number" id="crewIn" min="0"></label>
         <label class="inline" title="Optional rule: one roll per Keep Die size, shared by every lot on that die"><input type="checkbox" id="sharedIn"> Shared dice</label>
       </div>
     </div>
@@ -164,6 +208,7 @@ dialog .grid [hidden]{display:none!important}
       <select id="formSel"></select>
       <label class="inline">Quantity <input type="number" id="qtyIn" min="1" value="1"></label>
       <label class="inline" id="dieWrap">Keep <select id="dieSel"></select></label>
+      <label class="inline" id="intoWrap" hidden><select id="intoSel"><option value="hold">Into the hold</option><option value="hid">Into the smuggler's hold</option></select></label>
       <button id="addBtn">Stow It Below</button>
     </div>
     <p class="note" id="itemNote"></p>
@@ -183,6 +228,21 @@ dialog .grid [hidden]{display:none!important}
         <tbody id="holdBody"></tbody>
       </table>
     </div>
+  </div>
+
+  <div class="card" id="smugCard" hidden>
+    <div class="row" style="justify-content:space-between">
+      <h2>The Smuggler's Hold</h2>
+      <button class="sm danger" id="seizeBtn">Seize the Hidden Cargo</button>
+    </div>
+    <div class="tonline" id="smugLine"></div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Cargo</th><th>Stowed</th><th>Sound</th><th>Spoiled</th><th>Keep</th><th>Nature</th><th></th></tr></thead>
+        <tbody id="smugBody"></tbody>
+      </table>
+    </div>
+    <div id="seizedList"></div>
   </div>
 
   <div class="card">
@@ -211,6 +271,7 @@ dialog .grid [hidden]{display:none!important}
   </div>
 </div>
 
+<div id="shade" hidden></div>
 <dialog id="dlg"><form method="dialog" id="dlgForm"></form></dialog>
 <div class="toast" id="toast"></div>
 <script>
@@ -253,11 +314,68 @@ const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"
 const fmt=n=>{const v=Math.round(n*1000)/1000;return Number.isInteger(v)?v.toLocaleString():v.toLocaleString(undefined,{maximumFractionDigits:3});};
 const $=id=>document.getElementById(id);
 const clone=v=>v==null?null:JSON.parse(JSON.stringify(v));
-let tt;function toast(m){const t=$("toast");t.textContent=m;t.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("on"),3200);}
+// Near the last tap, but never past the end of the larder or out of the part of it you can see.
+function seenRange(){ // [top,bottom] of the larder in sight, in page coordinates
+  try{
+    const fe=window.frameElement;
+    if(fe){const r=fe.getBoundingClientRect(),ph=fe.ownerDocument.defaultView.innerHeight;return [Math.max(window.scrollY,-r.top+window.scrollY),Math.min(window.scrollY+window.innerHeight,-r.top+ph+window.scrollY)];}
+  }catch(e){}
+  if(window.self===window.top)return [window.scrollY,window.scrollY+window.innerHeight];
+  if(SEEN.top!=null)return [window.scrollY+SEEN.top,window.scrollY+SEEN.bottom];
+  return [window.scrollY,window.scrollY+window.innerHeight];
+}
+function toastTop(){
+  let y=(typeof tapY==="number"?tapY:0)-70;
+  let lo=8,hi=Math.max(8,contentHeight()-60);
+  try{
+    const fe=window.frameElement;
+    if(fe){const r=fe.getBoundingClientRect(),ph=fe.ownerDocument.defaultView.innerHeight;lo=Math.max(lo,-r.top+8);hi=Math.min(hi,-r.top+ph-70);}
+    else if(window.self===window.top){lo=Math.max(lo,window.scrollY+8);hi=Math.min(hi,window.scrollY+window.innerHeight-70);}
+    else if(SEEN.top!=null){lo=Math.max(lo,window.scrollY+SEEN.top+8);hi=Math.min(hi,window.scrollY+SEEN.bottom-70);}
+  }catch(e){
+    // A frame we may not look out of (Obsidian): ask the browser which part of the larder is in sight.
+    if(SEEN.top!=null){lo=Math.max(lo,window.scrollY+SEEN.top+8);hi=Math.min(hi,window.scrollY+SEEN.bottom-70);}
+  }
+  return Math.round(Math.max(lo,Math.min(y,Math.max(lo,hi))));
+}
+const SEEN={top:null,bottom:null};
+try{
+  const io=new IntersectionObserver(es=>{for(const e of es){const r=e.intersectionRect;SEEN.top=r.top;SEEN.bottom=r.bottom;}},{threshold:Array.from({length:201},(_,i)=>i/200)});
+  const go=()=>io.observe(document.body);if(document.body)go();else addEventListener("DOMContentLoaded",go);
+}catch(e){}
+// A fresh look at what is in sight: a one-time observer always reports at once, even when the old one has nothing new to say.
+function refreshSeen(){
+  return new Promise(res=>{
+    try{
+      if(!document.body)return res();
+      const io=new IntersectionObserver(es=>{for(const e of es){const r=e.intersectionRect;SEEN.top=r.top;SEEN.bottom=r.bottom;}io.disconnect();res();});
+      io.observe(document.body);setTimeout(res,300);
+    }catch(e){res();}
+  });
+}
+const CROSS=(()=>{try{return window.self!==window.top&&!window.frameElement;}catch(e){return true;}})();
+if(CROSS){document.addEventListener("pointerdown",()=>refreshSeen(),true);window.addEventListener("scroll",()=>refreshSeen(),{passive:true});}
+function contentHeight(){
+  let h=0;
+  for(const el of document.body.children){
+    if(el.id==="shade"||el.id==="toast"||el.tagName==="SCRIPT"||el.hidden)continue;
+    if(el.id==="dlg"&&!el.open)continue;
+    const r=el.getBoundingClientRect();if(r.height)h=Math.max(h,r.bottom+window.scrollY);
+  }
+  return Math.ceil(h+24);
+}
+let tt;function toast(m){
+  const t=$("toast");t.textContent=m;
+  if(typeof panelMode==="function"&&panelMode()){t.classList.add("near");t.style.top=toastTop()+"px";}
+  else{t.classList.remove("near");t.style.top="";}
+  if(CROSS&&t.classList.contains("near"))refreshSeen().then(()=>{t.style.top=toastTop()+"px";});
+  t.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("on"),3200);
+}
 function setStatus(text,cls){for(const id of ["status","hStatus"]){const s=$(id);s.textContent=text;s.className="status"+(cls?" "+cls:"");}}
 const DEVICE=Math.random().toString(36).slice(2,10); // one per open page
 const when=ts=>{try{return new Date(+ts).toLocaleString(undefined,{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"});}catch(e){return "";}};
 /* Tons are counted in fifths, so 18 1/5 tons is 91 fifths. */
+const tonsW=f=>{f=Math.round(f);return tonsText(f)+(f>0&&f<=5?" ton":" tons");};
 function tonsText(f){f=Math.round(f);const w=Math.floor(f/5),r=f%5;return w&&r?`${w} ${r}/5`:r?`${r}/5`:`${w}`;}
 /* Lines are dealt from a shuffled deck, so none repeats until all have been used. */
 const DECKS={},LAST={};
@@ -344,6 +462,56 @@ SNARK.overload=[
   "Rocks fall. Into the hold. The ship, now carrying rocks, sinks. You die. ...Fine, no rocks, no sinking, no dying. But no crate either, unless the Eternal Mason of Doom (your rock-solid DM) wills it.",
 ];
 
+SNARK.smuggler=[
+  "You try to wedge one more crate behind the false bulkhead. The bulkhead bulges suspiciously. Only the Grand Master of Hidden Things (your cunning DM) decides how much a secret can hold.",
+  "A secret compartment stuffed to bursting is no secret at all. Ask the Shadow Sovereign of Contraband (your sly DM) if you must.",
+  "The loose plank won't sit flat anymore. Any customs man with eyes would notice. The Most Discreet Warden of Whispers (your subtle DM) is not pleased.",
+  "The smuggler's hold is full, and the smuggler's hold is supposed to be *small*. That's the whole point. Take it up with the Lord of Locked Lips (your tight-lipped DM).",
+  "You hear a faint creak, then a muffled ‘oof.’ It's the stowaway you forgot you hid. Only the Keeper of Concealed Cargo (your secretive DM) may cram anyone else in there.",
+  "The hidden hold is packed tighter than a smuggler's alibi. Room for more is granted only by the Exalted Patron of Plausible Deniability (your innocent-looking DM).",
+  "One more barrel and the false wall becomes a very real hole. The Arch-Fence of the Seven Seas (your well-connected DM) advises against it.",
+  "You stuff, you shove, you sit on the lid. It does not close. Only the Silent Broker of Forbidden Things (your mysterious DM) may make it fit.",
+  "A secret is only a secret until it's too big to hide. That wisdom comes from the Ancient Oracle of Things Unseen (your inscrutable DM).",
+  "The rats who live in the smuggler's hold have filed a complaint. It has been forwarded to the High Magistrate of Hidey-Holes (your fair-handed DM).",
+  "Even contraband needs elbow room. Overstuffing the hidden hold is a privilege reserved for the Thrice-Veiled Baron of Bootleg (your devious DM).",
+  "You hide it so well that even you can't find where you put it. Or rather, you can't, because there's no room. Only the Phantom Quartermaster of the Underdeck (your unseen DM) knows the trick.",
+  "You force the crate in. The false bulkhead splits, the contraband spills across the deck, and a customs cutter happens by at that very moment. You're arrested, tried and hanged. Roll a new character. ...Not really. The crate is still on the dock, because only the Supreme Smuggler of Destinies (your all-powerful DM) can overfill a secret.",
+  "Rocks fall. Into the smuggler's hold. Now it's full of rocks, and also you're dead. ...Fine, no rocks, no death. But no room either, unless the Grand Concealer of Catastrophe (your merciful DM) wills it.",
+];
+
+SNARK.close=[
+  "You rattle the storehouse keys meaningfully. Nothing happens. Only the Grand Steward of Every Shelf and Cellar (your venerable DM) may close these doors.",
+  "The storehouse is bolted, barred and blessed. Shutting it for good is the privilege of the Lord High Landlord of the Isles (your generous DM).",
+  "You try to board up the windows. The hammer slips. The Most Exalted Keeper of Keys (your watchful DM) tuts disapprovingly.",
+  "The lease is ironclad and signed in triplicate by the Archduke of Deeds and Dwellings (your meticulous DM). You are not on it.",
+  "The storehouse cat sits squarely in the doorway and refuses to let you shut it. It answers only to the Supreme Warden of Warehouses (your benevolent DM).",
+  "Closing a storehouse requires a writ, a witness, and the nod of the Eternal Harbormaster of Holdings (your gracious DM). You have none of these.",
+  "The barrels inside glare at you. They have lived here for months. Only the Venerable Custodian of Crates (your patient DM) may evict them.",
+  "You reach for the padlock. The padlock reaches back. It belongs to the Lord of Locks and Larders (your incorruptible DM).",
+  "The dockside gossips are already whispering about you. Shutting the storehouse is a matter for the Sovereign of Stone and Shelter (your discerning DM).",
+  "The rats who live in the rafters have filed a protest. It has been forwarded to the High Magistrate of Hoards (your fair-minded DM).",
+  "You try to sell the building out from under the stores. The buyer laughs and points you to the Thrice-Crowned Baron of Bricks (your magnificent DM).",
+  "A storehouse is a promise to the future. Only the Ancient Guardian of Tomorrow's Bread (your wise DM) may break it.",
+  "You slam the doors shut forever. The roof caves in, the walls crumble, and you are buried beneath a mountain of salt pork. Roll a new character. ...Not really. The storehouse stands, because only the Almighty Architect of Ruin (your all-powerful DM) can close it.",
+  "Rocks fall. Onto the storehouse. And onto you. You die. ...Fine, the storehouse stands and so do you. But it stays open, unless the Grand Demolisher of Destinies (your merciful DM) wills otherwise.",
+];
+SNARK.deeds=[
+  "You reach for the storehouse deeds. The ink smudges itself in protest. These belong to the High Recorder of Holdings (your illustrious DM), and no one else.",
+  "Altering a deed is forgery, and forgery is a hanging offense in every port of the coalition. Only the Grand Notary of Lands and Larders (your scrupulous DM) may amend them.",
+  "The deeds are locked in an iron box, the box is locked in a vault, and the key hangs around the neck of the Sovereign Clerk of Cellars (your learned DM).",
+  "You try to scribble a bigger cellar onto the deed. The quill snaps. The Archmagistrate of Property (your stern DM) is not amused.",
+  "A storehouse's deeds are a sacred trust between its stones and the Exalted Landlord of Heaven (your gracious DM). You are not party to that trust.",
+  "The deeds blow out of your hands and drift, quite precisely, into the waiting palm of the Lord Chancellor of Leases (your all-knowing DM).",
+  "‘Changes to a holding,’ reads the small print, ‘may be made only by the Supreme Surveyor of All Things Stored (your meticulous DM), in triplicate.’",
+  "You squint at the deeds. They're written in a hand only the Ancient Scribe of Sheds and Silos (your wise DM) can read.",
+  "The storehouse cat is asleep on the deeds and will not be moved. It answers only to the Most Puissant Master of Inventories (your noble DM).",
+  "The harbor clerk peers at you over his spectacles. ‘And you are… not the Eternal Keeper of Titles and Tenancies (your magnificent DM). Next!’",
+  "Changing a deed requires a seal, a signature, and the blessing of the Celestial Authority on All Things Kept (your benevolent DM). You have none of these.",
+  "The deeds have been witnessed, sealed and blessed by three priests. Only the Infallible Bureaucrat of the Bazaar (your patient DM) may touch them now.",
+  "You forge the deeds. The harbor guard arrests you on the spot, and you are tried, convicted and hanged by noon. Roll a new character. ...Not really. But only the Dread Justiciar of the Docks (your merciful DM) may change them.",
+  "Rocks fall onto the deeds, then onto you. You die, buried under a pile of paperwork and masonry. ...Fine, you live. But the deeds stay as they are, in the keeping of the Supreme Archivist of Ashore (your orderly DM).",
+];
+
 const SELL_LINES=[
   "Sold! May the shells jingle merrily in your purse.",
   "Gone to the market. Hope you got a good price for that one.",
@@ -355,6 +523,15 @@ const SELL_LINES=[
   "Sold! The hold breathes a little easier.",
 ];
 
+const COOK_END={1:"Effect 1.",2:"Effect 2.",3:"Effect 3.",short:"It came out plain, but it fills a belly.",bust:"It went wrong somewhere, though it's still edible, more or less."};
+// Grammar helpers: one thing is, many things are; nobody is counted as zero.
+const one=a=>/^1 /.test(String(a))&&!/ and \d/.test(String(a)); // "1 hook of grappling hook and chain" is one; "1 barrel and 2 sacks" are not
+const vb=(a,sg,pl)=>one(a)?sg:pl;
+const pln=n=>/s$/i.test(String(n).trim())&&!/(ss|us|molasses)$/i.test(String(n).trim()); // eggs, olives: many
+const nv=(n,sg,pl)=>pln(n)?pl:sg;
+const keepOn=(to,n)=>to==="Turning"?`${nv(n,"it is","they are")} turning`:`${nv(n,"it keeps","they keep")} on a ${to}`;
+const both=(f,w)=>[f,w].filter(Boolean).join(" and ");
+const eg=k=>`${k} egg${k===1?"":"s"}`;
 const LOG={
   dawn:[
     ()=>"Dawn spills thin gold across the deck, and below, in the dark of the hold, the quartermaster lifts the lantern to count what the night has taken.",
@@ -385,56 +562,56 @@ const LOG={
   open:[
     (a,n)=>`Pried open ${a} of ${n}.`,
     (a,n)=>`Off came the lid of ${a} of ${n}, with a groan of old nails.`,
-    (a,n)=>`The bosun's crowbar did its work: ${a} of ${n} lies open.`,
-    (a,n)=>`${cap(a)} of ${n} is broached, and its contents spill into the loose stores.`,
+    (a,n)=>`The bosun's crowbar did its work: ${a} of ${n} ${vb(a,"lies","lie")} open.`,
+    (a,n)=>`${cap(a)} of ${n} ${vb(a,"is","are")} broached, and ${vb(a,"its","their")} contents spill into the loose stores.`,
   ],
   repack:[
     (n,a)=>`Loose ${n} packed neatly into ${a}.`,
     (n,a)=>`The quartermaster, who cannot abide a mess, packed loose ${n} into ${a}.`,
     (n,a)=>`Odds and ends of ${n} gathered up and sealed into ${a}.`,
-    (n,a)=>`Tidy hold, tidy mind: loose ${n} now fills ${a}.`,
+    (n,a)=>`Tidy hold, tidy mind: loose ${n} now ${nv(n,"fills","fill")} ${a}.`,
   ],
   quiet:[
     (n)=>`${n} lot${n===1?"":"s"} held fast against the night, sound and sweet.`,
-    (n)=>`The night passed gently below. ${n} lot${n===1?"":"s"} awoke as fresh as they slept.`,
-    (n)=>`Not a whisker of mold, not a whiff of rot. ${n} lot${n===1?"":"s"} kept their Keep.`,
-    (n)=>`The hold slept soundly, and so did ${n} of its lots.`,
+    (n)=>`The night passed gently below. ${n} lot${n===1?"":"s"} awoke as fresh as ${n===1?"it":"they"} slept.`,
+    (n)=>`Not a whisker of mold, not a whiff of rot. ${n} lot${n===1?"":"s"} kept ${n===1?"its":"their"} Keep.`,
+    (n)=>`The hold slept soundly, and so did ${n===1?"its one lot":`${n} of its lots`}.`,
   ],
   slip:[
     (L,n,d,to)=>`${L}: the ${d} came up 1, and its Keep slips to ${to}.`,
-    (L,n,d,to)=>`A damp chill crept into the ${n}. The ${d} showed 1, and now it keeps on a ${to}.`,
-    (L,n,d,to)=>`The ${d} rolls a sorry 1. The ${n} is not what it was, and slips to a ${to}.`,
-    (L,n,d,to)=>`Time gnaws at the ${n}. A 1 on the ${d} drops it to a ${to}.`,
+    (L,n,d,to)=>`A damp chill crept into the ${n}. The ${d} showed 1, and now ${keepOn(to,n)}.`,
+    (L,n,d,to)=>`The ${d} rolls a sorry 1. The ${n} ${nv(n,"is","are")} not what ${nv(n,"it was","they were")}, and ${to==="Turning"?nv(n,"begins","begin")+" to turn":nv(n,"slips","slip")+" to a "+to}.`,
+    (L,n,d,to)=>`Time gnaws at the ${n}. A 1 on the ${d} ${to==="Turning"?"sets "+nv(n,"it","them")+" turning":"drops "+nv(n,"it","them")+" to a "+to}.`,
   ],
   miss:[
-    (d,v,n,how)=>`Loss Die ${d} shows ${v}; the ${how} ${n} shrug it off.`,
+    (d,v,n,how)=>`Loss Die ${d} shows ${v}; the ${how} ${n} ${nv(n,"shrugs","shrug")} it off.`,
     (d,v,n,how)=>`The ${n} trembled, but the Loss Die ${d} showed only ${v}. All are spared.`,
-    (d,v,n,how)=>`Loss Die ${d}: ${v}. The ${n} live to see another dawn.`,
+    (d,v,n,how)=>`Loss Die ${d}: ${v}. The ${n} ${nv(n,"lives","live")} to see another dawn.`,
     (d,v,n,how)=>`Fortune smiles on the ${n}. A ${v} on the Loss Die ${d}, and nothing lost.`,
   ],
   hit:[
-    (d,v,r4,p,a,n)=>`Loss Die ${d} shows ${v}: rolled ${r4} on the d4, ${p}% of what remained. ${cap(a)} spoil.`,
+    (d,v,r4,p,a,n)=>`Loss Die ${d} shows ${v}: rolled ${r4} on the d4, ${p}% of what remained. ${cap(a)} ${vb(a,"spoils","spoil")}.`,
     (d,v,r4,p,a,n)=>`Bad luck below. The Loss Die ${d} shows ${v}, the d4 shows ${r4}, and ${p}% of the ${n} go soft: ${a} spoiled.`,
     (d,v,r4,p,a,n)=>`The Loss Die ${d} lands on ${v}. A ${r4} on the d4 claims ${p}%: ${a} lost to rot.`,
     (d,v,r4,p,a,n)=>`Mold finds the ${n}. Loss Die ${d} ${v}, d4 ${r4}, ${p}% gone: ${a} spoiled.`,
   ],
   preserved:[
     (L,n)=>`Being preserved, ${L.charAt(0).toLowerCase()+L.slice(1)} loses nothing in the stepping down.`,
-    (L,n)=>`Salt and smoke stand guard. The ${n} slips a die, but not a morsel is lost.`,
-    (L,n)=>`The ${n} is preserved and proud. It steps down, yet loses nothing.`,
-    (L,n)=>`Brine keeps its promises. Nothing of the ${n} spoils as it slips.`,
+    (L,n)=>`Salt and smoke stand guard. The ${n} ${nv(n,"slips","slip")} a die, but not a morsel is lost.`,
+    (L,n)=>`The ${n} ${nv(n,"is","are")} preserved and proud. ${nv(n,"It steps","They step")} down, yet ${nv(n,"loses","lose")} nothing.`,
+    (L,n)=>`Brine keeps its promises. Nothing of the ${n} spoils as ${nv(n,"it slips","they slip")}.`,
   ],
   turning:[
-    (N,n,r4,p,a)=>`${N} is turning: rolled ${r4} on the d4, ${p}% of what remained. ${cap(a)} spoil.`,
-    (N,n,r4,p,a)=>`The ${n} is on its last legs. A ${r4} on the d4 takes ${p}%: ${a} spoiled.`,
+    (N,n,r4,p,a)=>`${N} ${nv(n,"is","are")} turning: rolled ${r4} on the d4, ${p}% of what remained. ${cap(a)} ${vb(a,"spoils","spoil")}.`,
+    (N,n,r4,p,a)=>`The ${n} ${nv(n,"is on its","are on their")} last legs. A ${r4} on the d4 takes ${p}%: ${a} spoiled.`,
     (N,n,r4,p,a)=>`Rot spreads through the ${n}. d4 ${r4}, ${p}% lost: ${a} gone bad.`,
-    (N,n,r4,p,a)=>`The ${n} turns further still. The d4 shows ${r4}, and ${a} (${p}%) spoil.`,
+    (N,n,r4,p,a)=>`The ${n} ${nv(n,"turns","turn")} further still. The d4 shows ${r4}, and ${a} (${p}%) ${vb(a,"spoils","spoil")}.`,
   ],
   perish:[
-    (n,a)=>`The ${n} gave up its freshness in the night. ${cap(a)} spoiled.`,
+    (n,a)=>`The ${n} gave up ${nv(n,"its","their")} freshness in the night. ${cap(a)} spoiled.`,
     (n,a)=>`By morning the ${n} had turned, and a smell hangs about the hold. ${cap(a)} spoiled.`,
     (n,a)=>`No salt, no smoke, no mercy. The ${n} spoiled overnight. ${cap(a)} lost.`,
-    (n,a)=>`The gulls knew before the cook did. The ${n} has spoiled, ${a} of it.`,
+    (n,a)=>`The gulls knew before the cook did. The ${n} ${nv(n,"has","have")} spoiled, ${a} of ${nv(n,"it","them")}.`,
   ],
   toss:[
     (a,n)=>`${cap(a)} of spoiled ${n} given to the sea and the grateful fish.`,
@@ -450,18 +627,18 @@ const LOG={
   ],
   butcher:[
     (a,m,n)=>`${cap(a)} butchered, giving ${m} of fresh ${n}.`,
-    (a,m,n)=>`The cook sharpened the cleaver. ${cap(a)} met its end, yielding ${m} of fresh ${n}.`,
-    (a,m,n)=>`A solemn moment by the galley: ${a} becomes ${m} of fresh ${n}.`,
-    (a,m,n)=>`${cap(a)} went to the block. ${cap(m)} of fresh ${n} now hang in the hold.`,
+    (a,m,n)=>`The cook sharpened the cleaver. ${cap(a)} met ${vb(a,"its","their")} end, yielding ${m} of fresh ${n}.`,
+    (a,m,n)=>`A solemn moment by the galley: ${a} ${vb(a,"becomes","become")} ${m} of fresh ${n}.`,
+    (a,m,n)=>`${cap(a)} went to the block. ${cap(m)} of fresh ${n} now ${vb(m,"hangs","hang")} in the hold.`,
   ],
   eggs:[
-    (k)=>`The hens laid ${k} eggs in the night.`,
-    (k)=>`Clucking and fussing, the hens produced ${k} eggs.`,
-    (k)=>`${k} eggs found warm in the straw this morning.`,
-    (k)=>`The hens did their duty: ${k} eggs, still warm from the straw.`,
+    (k)=>`The hens laid ${eg(k)} in the night.`,
+    (k)=>`Clucking and fussing, the hens produced ${eg(k)}.`,
+    (k)=>`${cap(eg(k))} found warm in the straw this morning.`,
+    (k)=>`The hens did their duty: ${eg(k)}, still warm from the straw.`,
   ],
   dozen:[
-    (d,left)=>`${cap(d)} packed for the galley; ${left} eggs wait for more company.`,
+    (d,left)=>`${cap(d)} packed for the galley; ${left?`${eg(left)} ${left===1?"waits":"wait"} for more company`:"not an egg left over"}.`,
   ],
   fire:[
     (a)=>`Fired ${a}!`,
@@ -476,8 +653,8 @@ const LOG={
   ],
   cut:[
     (a)=>`${cap(a)} cut free and lost to the deep.`,
-    (a)=>`The line was cut. ${cap(a)} sinks out of sight.`,
-    (a)=>`Snip, splash, gone. ${cap(a)} belongs to the sea now.`,
+    (a)=>`The line was cut. ${cap(a)} ${vb(a,"sinks","sink")} out of sight.`,
+    (a)=>`Snip, splash, gone. ${cap(a)} ${vb(a,"belongs","belong")} to the sea now.`,
   ],
   burn:[
     (a)=>`The furnaces were fed: ${a} of kelp charcoal burned.`,
@@ -487,8 +664,8 @@ const LOG={
   ],
   soaked:[
     (a)=>`Seawater soaks ${a} of kelp charcoal. It won't burn until dried.`,
-    (a)=>`The flood finds the charcoal. ${cap(a)} are wet through.`,
-    (a)=>`${cap(a)} of kelp charcoal sit soggy and useless in the bilge water.`,
+    (a)=>`The flood finds the charcoal. ${cap(a)} ${vb(a,"is","are")} wet through.`,
+    (a)=>`${cap(a)} of kelp charcoal ${vb(a,"sits","sit")} soggy and useless in the bilge water.`,
   ],
   layout:[
     (a)=>`${cap(a)} of wet charcoal laid out on deck to dry.`,
@@ -496,8 +673,8 @@ const LOG={
     (a)=>`${cap(a)} of wet charcoal set out to dry, filling the deck with a smoky, salty smell.`,
   ],
   dried:[
-    (a)=>`${cap(a)} of charcoal dried in the sun and are ready to burn.`,
-    (a)=>`The sun did its work. ${cap(a)} of charcoal are dry once more.`,
+    (a)=>`${cap(a)} of charcoal dried in the sun and ${vb(a,"is","are")} ready to burn.`,
+    (a)=>`The sun did its work. ${cap(a)} of charcoal ${vb(a,"is","are")} dry once more.`,
     (a)=>`${cap(a)} of charcoal, dry and crisp, gathered back into the hold.`,
   ],
   struck:[
@@ -511,6 +688,117 @@ const LOG={
     (n)=>`The quartermaster corrects the count of ${n} with a careful stroke of the quill.`,
     (n)=>`An honest correction: ${n} recounted and amended.`,
     (n)=>`A smudge in the ledger is set right. ${cap(n)} amended.`,
+  ],
+  stash:[
+    (a,n)=>`${cap(a)} of ${n} slipped behind the false bulkhead.`,
+    (a,n)=>`${cap(a)} of ${n} ${vb(a,"vanishes","vanish")} into the smuggler's hold, as if ${vb(a,"it","they")} ${vb(a,"was","were")} never aboard at all.`,
+    (a,n)=>`Quietly, quietly: ${a} of ${n} stashed where no customs man will look.`,
+    (a,n)=>`The loose plank lifts, ${a} of ${n} ${vb(a,"goes","go")} down, and the plank settles back as innocent as ever.`,
+  ],
+  unstash:[
+    (a,n)=>`${cap(a)} of ${n} brought out from the smuggler's hold.`,
+    (a,n)=>`The false bulkhead swings open, and out ${vb(a,"comes","come")} ${a} of ${n}.`,
+    (a,n)=>`${cap(a)} of ${n} ${vb(a,"returns","return")} from hiding, none the worse for it.`,
+    (a,n)=>`With a glance over the shoulder, ${a} of ${n} ${vb(a,"is","are")} fetched up from ${vb(a,"its","their")} secret place.`,
+  ],
+  feed:[
+    (f,w)=>`The crew was fed: ${both(f,w)} shared out at the mess table.`,
+    (f,w)=>`Bowls filled, cups poured: ${both(f,w)} to keep the crew on their feet.`,
+    (f,w,full)=>`${f&&w?`The cook ladled out ${f} and the cask gave up ${w}.`:`The galley gave up ${both(f,w)}.`} ${full?"No one went to their hammock hungry.":"It was not quite enough to go round."}`,
+    (f,w)=>`Mess was piped, and ${both(f,w)} went round the table.`,
+  ],
+  without:[
+    (h,t)=>`${[h&&`${h} went to their hammocks hungry`,t&&`${t} ${h?"":"went to their hammocks "}parched`].filter(Boolean).join(" and ")}. Each gains a level of exhaustion.`,
+    (h,t)=>`There was not enough to go round: ${[h&&`${h} without food`,t&&`${t} without water`].filter(Boolean).join(", ")}, and a level of exhaustion for each.`,
+    (h,t)=>`Empty bellies and dry throats: ${[h&&`${h} hungry`,t&&`${t} thirsty`].filter(Boolean).join(", ")}. The sea is a hard master.`,
+    (h,t)=>`The rations ran short. ${[h&&`${h} went without food`,t&&`${t} ${h?"":"went "}without water`].filter(Boolean).join(" and ")}, and they feel it in their bones.`,
+  ],
+  rain:[
+    (s,a)=>`The canvases filled with ${s} rain: ${a} of fresh water caught.`,
+    (s,a)=>`${cap(s)} rain drummed on the stretched canvas, and ${a} ran into the waiting barrels.`,
+    (s,a)=>`The sky opened, and the crew caught ${a} of sweet rainwater.`,
+    (s,a)=>`Every sailor turned their face up to the ${s} rain, and the canvases gathered ${a}.`,
+  ],
+  transferOut:[
+    (a,n,to)=>`${cap(a)} of ${n} sent across to ${to}.`,
+    (a,n,to)=>`Lines were rigged between the ships, and ${a} of ${n} swung across to ${to}.`,
+    (a,n,to)=>`${cap(a)} of ${n} rowed over to ${to}, with a promise to send the boat back.`,
+    (a,n,to)=>`The crew passed ${a} of ${n} hand to hand across to ${to}.`,
+  ],
+  transferIn:[
+    (a,n,from)=>`${cap(a)} of ${n} arrived from ${from}.`,
+    (a,n,from)=>`${cap(a)} of ${n} swung aboard from ${from} and ${vb(a,"was","were")} stowed below.`,
+    (a,n,from)=>`A boat came alongside from ${from}, heavy with ${a} of ${n}.`,
+    (a,n,from)=>`${from} sent over ${a} of ${n}, and the quartermaster made a note of it.`,
+  ],
+  cook:[
+    (a,n)=>`The galley fire roared, and ${a} of ${n} came off the stove.`,
+    (a,n)=>`The cook rolled up their sleeves and turned out ${a} of ${n}.`,
+    (a,n)=>`A fine smell drifted up from the galley: ${a} of ${n}.`,
+    (a,n)=>`Pots clattered, and ${a} of ${n} ${vb(a,"was","were")} ready for the crew.`,
+  ],
+  use:[
+    (a,n)=>`${cap(a)} of ${n} put to use.`,
+    (a,n)=>`The crew put ${a} of ${n} to good use.`,
+    (a,n)=>`${cap(a)} of ${n} ${vb(a,"was","were")} hauled up from the hold and spent.`,
+    (a,n)=>`Hammers rang and ropes ran: ${a} of ${n} used.`,
+  ],
+  oil:[
+    (a)=>`${cap(a)} of kelp charcoal wrapped snug in oilskin.`,
+    (a)=>`The crew bundled ${a} of kelp charcoal in oilskin, safe from any flood.`,
+    (a)=>`${cap(a)} of kelp charcoal sealed tight in oilskin against the sea.`,
+  ],
+  seize:[
+    (x)=>`The inspectors found the smuggler's hold, and seized ${x}.`,
+    (x)=>`A sharp-eyed inspector tapped the false bulkhead, and it rang hollow. ${cap(x)} ${vb(x,"was","were")} seized.`,
+    (x)=>`The secret is out. ${cap(x)} ${vb(x,"was","were")} carried off by stern officials.`,
+    (x)=>`Customs came aboard, and left with ${x}.`,
+  ],
+  recover:[
+    ()=>"The seized cargo was won back and returned to the smuggler's hold.",
+    ()=>"By guile or by gall, the crew recovered their seized cargo and tucked it back into hiding.",
+    ()=>"Like a cat returning to its favorite cushion, the seized cargo slipped back into the smuggler's hold.",
+    ()=>"The seized cargo found its way home to the smuggler's hold, and no one asked how.",
+  ],
+  tossGood:[
+    (a,n)=>`${cap(a)} of ${n} heaved over the rail.`,
+    (a,n)=>`Over the side went ${a} of ${n}, and the fish thanked no one.`,
+    (a,n)=>`${cap(a)} of ${n} given to the sea, for reasons best known to the crew.`,
+    (a,n)=>`With a splash and a shrug, ${a} of ${n} went to the deep.`,
+  ],
+  unload:[
+    (a,n)=>`${cap(a)} of ${n} unloaded onto the dock.`,
+    (a,n)=>`The crew rolled ${a} of ${n} down the gangplank and onto the quay.`,
+    (a,n)=>`${cap(a)} of ${n} set ashore and left in someone else's keeping.`,
+    (a,n)=>`Off came ${a} of ${n}, stacked neatly on the dock.`,
+  ],
+  storeDawn:[
+    ()=>"Morning light slants through the storehouse shutters, and the keeper takes up the ledger.",
+    ()=>"The harbor bells ring the hour, and the storehouse door creaks open on another day.",
+    ()=>"Dust dances in the first sunbeams, and the keeper walks the aisles to count what the night has taken.",
+    ()=>"Gulls cry over the rooftops as the storehouse wakes, barrel by barrel.",
+  ],
+  storeStow:[
+    (a,n)=>`Stowed ${a} of ${n} in the storehouse.`,
+    (a,n)=>`${cap(a)} of ${n} carried in and stacked against the wall.`,
+    (a,n)=>`The storehouse takes in ${a} of ${n}, and the keeper makes a note of it.`,
+    (a,n)=>`${cap(a)} of ${n} found a dry corner of the storehouse.`,
+  ],
+  salt:[
+    (a,n,s)=>`${cap(a)} of ${n} packed in ${s} of salt, and set aside to keep.`,
+    (a,n,s)=>`The cook rubbed ${s} of salt into ${a} of ${n}, and laid it down in the barrel.`,
+    (a,n,s)=>`Salt and patience: ${a} of ${n} cured against the long voyage.`,
+    (a,n,s)=>`${cap(a)} of ${n} buried in salt. It won't be tender, but it will last.`,
+  ],
+  produce:[
+    (a,n)=>`The island's labors bore fruit: ${a} of ${n} added to the stores.`,
+    (a,n)=>`A fresh delivery arrived with the morning: ${a} of ${n}.`,
+    (a,n)=>`The workers brought in their share: ${a} of ${n}, stacked and counted.`,
+    (a,n)=>`Another yield: ${a} of ${n}, fresh to the stores.`,
+  ],
+  noroom:[
+    (a,n)=>`${cap(a)} of ${n} arrived, but there was no room to store ${vb(a,"it","them")}, and ${vb(a,"it was","they were")} turned away.`,
+    (a,n)=>`No space left for the ${n}. The workers shrug and take ${nv(n,"it","them")} home.`,
   ],
   overload:[
     ()=>"The ship is overloaded and sits dangerously low in the water. She is Sinking!",
@@ -527,7 +815,15 @@ const SHIP_TYPES=[{"name": "Battleship", "tons": 1500.0, "size": "Huge", "fuel":
 const DICE=["d20","d12","d10","d8","d6","d4"];
 const SPOIL={Stagnant:{dc:13,dis:"Bilge Flux"},Rancid:{dc:12,dis:"Rot Gut"},Fishy:{dc:14,dis:"Fish Fever"},Sour:{dc:10,dis:null}};
 const FUEL_NEED={Small:2,Medium:8,Large:16,Huge:32}; // sacks of kelp charcoal per day of steaming
+// Meats salted aboard that the Bazaar does not sell (yet).
+(function(){
+  const at=CATALOG.findIndex(c=>c.id==="salted-ham")+1;
+  const mk=(id,name)=>({id,name,cat:"Stores",kind:"food",single:"1 ration",w:"ration",wp:"rations",rat:1,water:false,keep:"d20",how:"Preserved",spoil:"Fishy",cargo:"Barrel",cargoPl:"barrels",per:150,f:1});
+  CATALOG.splice(at,0,mk("salted-chicken","Salted chicken"),mk("salted-goat","Salted goat"),mk("salted-mutton","Salted mutton"));
+})();
 const CAT={};CATALOG.forEach(c=>CAT[c.id]=c);
+// Fresh meat and what it becomes when salted.
+const SALTS={fish:"salted-or-smoked-fish",shellfish:"smoked-or-salted-shellfish",chicken:"salted-chicken",pork:"salted-ham",goat:"salted-goat",mutton:"salted-mutton",beef:"salted-beef"};
 const CATS=["Fresh Food","Stores","Delicacies","Pantry","Drink","Livestock","Ammunition","Boarding and Defense","Repair and Upkeep","Fuel","Signals","Timber and Shipbuilding","Metal, Stone and Powder","Cloth, Dye and Leather","Sea and Field Goods","Custom"];
 const slug=s=>s.toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")||"x";
 
@@ -588,6 +884,37 @@ async function connectFirebase(){
 /* ---------------- Dialogs (in-page, so they work even where pop-ups are blocked) ---------------- */
 const dlg=$("dlg"),dform=$("dlgForm");
 let onDlgOk=null;
+// Inside an embed, or on a narrow screen, a floating pop-up can open out of sight and fight the
+// page for scrolling. There the pop-up becomes a panel laid over the page right where you tapped,
+// and the page itself does the scrolling.
+const EMBEDDED=(()=>{try{return window.self!==window.top;}catch(e){return true;}})();
+const panelMode=()=>EMBEDDED||window.innerWidth<700;
+let lastY=0,tapY=0;
+document.addEventListener("pointerdown",e=>{tapY=e.pageY;if(!dlg.contains(e.target))lastY=e.pageY;},true);
+function placePanel(){
+  const h=dlg.offsetHeight;
+  let top=Math.max(8,lastY-40);
+  // If it would run past the bottom of what you can see, lift it, but never above what you can see.
+  const [vt,vb]=seenRange();if(top+h>vb-8)top=Math.max(vt+8,vb-h-8,8);
+  dlg.style.top=top+"px";
+  // Let the page grow beneath a tall panel rather than shoving the panel up out of sight.
+  const need=top+h+16,sh=$("shade");
+  if(sh.offsetHeight<need)sh.style.height=need+"px";
+  document.body.style.minHeight=need+"px";
+}
+dlg.addEventListener("close",()=>{if(dlg.open)return; // another pop-up has already taken its place
+  $("shade").hidden=true;dlg.classList.remove("panel");dlg.style.top="";document.body.style.minHeight="";fitFrame();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&dlg.open&&dlg.classList.contains("panel")){onDlgOk=null;dlg.close();}});
+// On the site itself the larder can size its own frame, so there is never a scrollbar inside a scrollbar.
+function fitFrame(){
+  try{
+    const fe=window.frameElement;if(!fe)return;
+    const h=contentHeight();
+    if(h>40&&Math.abs(fe.offsetHeight-h)>4)fe.style.height=h+"px";
+  }catch(e){}
+}
+try{new ResizeObserver(()=>fitFrame()).observe(document.body);}catch(e){}
+window.addEventListener("load",fitFrame);
 dform.addEventListener("submit",e=>{
   e.preventDefault();
   const v=e.submitter?e.submitter.value:"ok";
@@ -604,14 +931,29 @@ function ask(html,onOk,okText,noCancel){
   dform.innerHTML=html+`<div class="row" style="justify-content:flex-end;margin-top:10px">${noCancel?"":'<button value="cancel" formnovalidate>Never mind</button>'}<button class="primary" value="ok">${okText||"So be it"}</button></div>`;
   onDlgOk=onOk;
   if(dlg.open)dlg.close();
-  try{dlg.showModal();}catch(e){dlg.setAttribute("open","");}
-  const first=dform.querySelector("input:not([type=checkbox]):not([readonly]),select");if(first)first.focus();
+  if(panelMode()){
+    onDlgOk=onOk; // closing the old one cleared nothing of this
+    dlg.classList.add("panel");$("shade").hidden=false;
+    $("shade").style.height=Math.max(document.documentElement.scrollHeight,document.body.scrollHeight)+"px";
+    dlg.style.top=Math.max(8,lastY-40)+"px"; // set before opening, so the browser's own focus never scrolls to a stale spot
+    try{dlg.show();}catch(e){dlg.setAttribute("open","");}
+    placePanel();fitFrame();
+    if(!EMBEDDED){const r=dlg.getBoundingClientRect();if(r.top<0||r.top>window.innerHeight-40)window.scrollTo({top:Math.max(0,dlg.offsetTop-8)});}
+    else{
+      const look=()=>{try{(dform.firstElementChild||dlg).scrollIntoView({block:"nearest"});}catch(e){}};
+      if(CROSS){const mine=dform.innerHTML;refreshSeen().then(()=>{if(dlg.open&&dform.innerHTML===mine){placePanel();fitFrame();}look();});}
+      else look();
+    }
+  }else{
+    try{dlg.showModal();}catch(e){dlg.setAttribute("open","");}
+  }
+  const first=dform.querySelector("input:not([type=checkbox]):not([readonly]):not([type=radio]),select");if(first)try{first.focus({preventScroll:true});}catch(e){}
 }
 function confirmBox(title,text,yes,onYes){ask(`<h2>${esc(title)}</h2><p class="sub">${esc(text)}</p>`,()=>onYes(),yes);}
 function snark(kind,extra){
-  const head={scuttle:"Avast, Sailor!",chest:"Hands Off the Chest!",papers:"Unhand Those Papers!",overload:"She's Full, Sailor!"}[kind];
-  const btn={scuttle:"I unhand the axe",chest:"I back away slowly",papers:"I put the quill down",overload:"I take it back to the dock"}[kind];
-  ask(`<h2>${head}</h2><p class="snark">${esc(deal("snark-"+kind,SNARK[kind]))}</p>${extra?`<p class="note">${esc(extra)}</p>`:""}`,()=>{},btn,true);
+  const head={scuttle:"Avast, Sailor!",chest:"Hands Off the Chest!",papers:"Unhand Those Papers!",overload:"She's Full, Sailor!",smuggler:"It's a Secret, Not a Warehouse!",close:"Those Doors Stay Open!",deeds:"Hands Off the Deeds!"}[kind];
+  const btn={scuttle:"I unhand the axe",chest:"I back away slowly",papers:"I put the quill down",overload:"I take it back to the dock",smuggler:"I take it back out",close:"I put the keys down",deeds:"I put the deeds back"}[kind];
+  ask(`<h2>${head}</h2><p class="snark">${esc(deal("snark-"+kind,SNARK[kind])).replace(/\*([^*]+)\*/g,"<i>$1</i>")}</p>${extra?`<p class="note">${esc(extra)}</p>`:""}`,()=>{},btn,true);
 }
 
 /* =====================================================================
@@ -620,6 +962,8 @@ function snark(kind,extra){
 let SHIPS={}, harborUnsub=null, trashUnsub=null, migrated=false;
 const shipName=id=>(SHIPS[id]&&SHIPS[id].name)||id.replace(/-/g," ").replace(/\b\w/g,c=>c.toUpperCase());
 const ship=()=>SHIPS[SHIPID]||{};
+const isStore=s=>(s||{}).kind==="store";
+const here=()=>isStore(ship());
 const maxF=()=>{const m=ship().maxTons;return typeof m==="number"?Math.round(m*5):null;};
 const canKeep=()=>KEEPER||!!ship().test;
 
@@ -641,21 +985,37 @@ function showHarbor(){
 }
 function shipFacts(s){
   const bits=[];
-  if(typeof s.maxTons==="number")bits.push(tonsText(s.maxTons*5)+" tons");else bits.push("no Tonnage set");
+  if(isStore(s)){
+    if(s.port)bits.push(s.port);
+    bits.push(typeof s.maxTons==="number"?"holds "+tonsW(s.maxTons*5)+"":"no limit to its space");
+    if(s.hearth)bits.push("a hearth");
+    if(s.battery)bits.push("a battery");
+    const p=toArr(s.production).filter(Boolean);if(p.length)bits.push(p.length+" "+(p.length===1?"thing":"things")+" produced");
+    return bits.join(" · ");
+  }
+  if(typeof s.maxTons==="number")bits.push(tonsW(s.maxTons*5)+"");else bits.push("no Tonnage set");
   if(s.fuel)bits.push("Fuel Powered, "+(s.size||"Medium"));
+  if(s.smuggler)bits.push("Smuggler's Hold");
   return bits.join(" · ");
 }
 function renderShips(){
   const ids=Object.keys(SHIPS).sort((a,b)=>(SHIPS[a].created||0)-(SHIPS[b].created||0));
-  $("shipList").innerHTML=ids.length?`<table><tbody>${ids.map(id=>{const s=SHIPS[id];return `<tr><td><b>${esc(shipName(id))}</b>${s.test?' <span class="testtag">test ship</span>':""}<div class="tag">${esc(shipFacts(s))} · christened ${esc(when(s.created))}</div></td><td style="text-align:right"><div class="acts" style="justify-content:flex-end"><button class="sm" data-board="${esc(id)}">Go Aboard</button><button class="sm danger" data-scuttle="${esc(id)}">Scuttle</button></div></td></tr>`;}).join("")}</tbody></table>`
+  const ships=ids.filter(id=>!isStore(SHIPS[id])),stores=ids.filter(id=>isStore(SHIPS[id]));
+  $("shipList").innerHTML=ships.length?`<table><tbody>${ships.map(id=>{const s=SHIPS[id];return `<tr><td><b>${esc(shipName(id))}</b>${s.test?' <span class="testtag">test ship</span>':""}<div class="tag">${esc(shipFacts(s))} · christened ${esc(when(s.created))}</div></td><td style="text-align:right"><div class="acts" style="justify-content:flex-end"><button class="sm" data-board="${esc(id)}">Go Aboard</button><button class="sm danger" data-scuttle="${esc(id)}">Scuttle</button></div></td></tr>`;}).join("")}</tbody></table>`
     :`<p class="note">No ship rides at anchor yet. Christen the first below.</p>`;
+  $("storeList").innerHTML=stores.length?`<table><tbody>${stores.map(id=>{const s=SHIPS[id];return `<tr><td><b>${esc(shipName(id))}</b>${s.test?' <span class="testtag">test storehouse</span>':""}<div class="tag">${esc(shipFacts(s))} · founded ${esc(when(s.created))}</div></td><td style="text-align:right"><div class="acts" style="justify-content:flex-end"><button class="sm" data-board="${esc(id)}">Step Inside</button><button class="sm danger" data-close="${esc(id)}">Close</button></div></td></tr>`;}).join("")}</tbody></table>`
+    :`<p class="note">No storehouse stands ashore yet. Lay the first stone below.</p>`;
 }
-$("shipList").onclick=e=>{
+function onRegisterClick(e){
   const b=e.target.closest("button");if(!b)return;
   if(b.dataset.board)go(b.dataset.board);
   if(b.dataset.scuttle&&!KEEPER){snark("scuttle");return;}
+  if(b.dataset.close&&!KEEPER){snark("close");return;}
   if(b.dataset.scuttle){const id=b.dataset.scuttle;confirmBox("Scuttle "+shipName(id),"Send "+shipName(id)+" to the bottom? Her hold goes down with her, but both rest in the Keeper's Chest until raised or given to the deep forever.","Scuttle her",()=>scuttle(id));}
-};
+  if(b.dataset.close){const id=b.dataset.close;confirmBox("Close "+shipName(id),"Shut "+shipName(id)+" for good? Its stores go with it, but both rest in the Keeper's Chest until reopened or let go forever.","Close it",()=>scuttle(id));}
+}
+$("shipList").onclick=onRegisterClick;
+$("storeList").onclick=onRegisterClick;
 
 /* ---- Christening and the ship's particulars ---- */
 function shipFields(s,withName){
@@ -666,6 +1026,7 @@ function shipFields(s,withName){
     <label>Max Tonnage</label><input type="number" name="tons" min="0" step="0.2" value="${typeof s.maxTons==="number"?s.maxTons:""}" placeholder="tons">
     <label>Fuel Powered</label><label class="inline"><input type="checkbox" name="fuel" ${s.fuel?"checked":""}> She burns kelp charcoal</label>
     <label>Size</label><select name="size">${["Small","Medium","Large","Huge"].map(z=>`<option ${z===(s.size||"Medium")?"selected":""}>${z}</option>`).join("")}</select>
+    <label>Smuggler's Hold</label><label class="inline"><input type="checkbox" name="smug" ${s.smuggler?"checked":""}> Installed, hiding 1/10 of her Tonnage</label>
   </div>`;
 }
 function wireTypeFill(){
@@ -677,7 +1038,7 @@ function wireTypeFill(){
 }
 function readShip(fd){
   const tv=String(fd.get("tons")||"").trim();
-  const out={fuel:!!fd.get("fuel"),size:String(fd.get("size")||"Medium")};
+  const out={fuel:!!fd.get("fuel"),size:String(fd.get("size")||"Medium"),smuggler:!!fd.get("smug")};
   if(tv!==""){const n=Math.max(0,Math.round(parseFloat(tv)*5)/5);if(!isNaN(n))out.maxTons=n;}
   return out;
 }
@@ -685,12 +1046,52 @@ $("newShipBtn").onclick=()=>{
   ask(`<h2>Christen a New Ship</h2><p class="sub">Name her, tell the Register what she can carry, and break the bottle on her bow.</p>${shipFields({},true)}
     <div class="grid"><label>Test ship</label><label class="inline"><input type="checkbox" name="test"> A ship for testing; her papers and chest lie open to all</label></div>`,async fd=>{
     const name=String(fd.get("name")||"").trim();if(!name){toast("A ship must have a name.");return;}
-    const s=Object.assign({name,created:Date.now(),test:!!fd.get("test")},readShip(fd));
-    let id=slug(name),n=2;while(SHIPS[id])id=slug(name)+"-"+(n++);
-    try{await DB.update({["ships/"+id]:s,["holds/"+id]:fresh()});toast(name+" is christened!");go(id);}
-    catch(e){console.error(e);toast("The Register would not take her name. Try again.");}
+    const s=Object.assign({name,kind:"ship",created:Date.now(),test:!!fd.get("test")},readShip(fd));
+    const id=await claimId(name,s,fresh());
+    if(id){toast(name+" is christened!");go(id);}else toast("The Register would not take her name. Try again.");
   },"Christen Her");
   wireTypeFill();
+};
+
+function storeFields(s,withName){
+  s=s||{};
+  return `<div class="grid">
+    ${withName?`<label>Name</label><input type="text" name="name" maxlength="70" required value="${esc(s.name||"")}">`:""}
+    <label>Port</label><input type="text" name="port" maxlength="60" value="${esc(s.port||"")}" placeholder="where it stands">
+    <label>Capacity</label><input type="number" name="tons" min="0" step="0.2" value="${typeof s.maxTons==="number"?s.maxTons:""}" placeholder="tons, blank for no limit">
+    <label>Hearth</label><label class="inline"><input type="checkbox" name="hearth" ${s.hearth?"checked":""}> A fire to cook on</label>
+    <label>Battery</label><label class="inline"><input type="checkbox" name="battery" ${s.battery?"checked":""}> Cannons, mortars or other guns</label>
+  </div>`;
+}
+function readStore(fd){
+  const tv=String(fd.get("tons")||"").trim();
+  const out={port:String(fd.get("port")||"").trim(),hearth:!!fd.get("hearth"),battery:!!fd.get("battery")};
+  if(tv!==""){const n=Math.max(0,Math.round(parseFloat(tv)*5)/5);if(!isNaN(n))out.maxTons=n;}
+  return out;
+}
+async function claimId(name,rec,hold){
+  // Pick a free name in the Register. A name still resting in the Keeper's Chest is refused,
+  // so the next one is tried instead.
+  let n=1;
+  for(let tries=0;tries<25;tries++){
+    const id=n===1?slug(name):slug(name)+"-"+n;n++;
+    if(SHIPS[id])continue;
+    if(KEEPER||DB.local){try{if(await DB.get("trash/"+id))continue;}catch(e){}}
+    try{await DB.update({["ships/"+id]:rec,["holds/"+id]:hold});return id;}
+    catch(e){if(tries>=24)console.error(e);}
+  }
+  return null;
+}
+$("newStoreBtn").onclick=()=>{
+  ask(`<h2>Found a Storehouse</h2><p class="sub">Name it, say where it stands and what it holds, and lay the first stone.</p>${storeFields({},true)}
+    <div class="grid"><label>Mouths to feed</label><input type="number" name="mouths" min="0" value="0">
+    <label>Test storehouse</label><label class="inline"><input type="checkbox" name="test"> For testing; its deeds and chest lie open to all</label></div>`,async fd=>{
+    const name=String(fd.get("name")||"").trim();if(!name){toast("A storehouse must have a name.");return;}
+    const rec=Object.assign({name,kind:"store",created:Date.now(),test:!!fd.get("test")},readStore(fd));
+    const hold=Object.assign(fresh(),{crew:Math.max(0,parseInt(fd.get("mouths"))||0)});
+    const id=await claimId(name,rec,hold);
+    if(id){toast(name+" stands ready.");go(id);}else toast("The Register would not take its name. Try again.");
+  },"Lay the Stone");
 };
 
 async function scuttle(id){
@@ -698,13 +1099,13 @@ async function scuttle(id){
     const [s,hold]=await Promise.all([DB.get("ships/"+id),DB.get("holds/"+id)]);
     await DB.set("trash/"+id,{ship:s||{name:shipName(id)},hold:hold||null,deletedAt:Date.now()});
     await DB.update({["ships/"+id]:null,["holds/"+id]:null});
-    toast(shipName(id)+" slips beneath the waves.");
-  }catch(e){console.error(e);toast("Only the Keeper may scuttle a ship.");}
+    toast(isStore(s)?shipName(id)+" is shut and shuttered.":shipName(id)+" slips beneath the waves.");
+  }catch(e){console.error(e);toast("Only the Keeper may do that.");}
 }
 function renderTrash(v){
   const t=v||{};const ids=Object.keys(t).sort((a,b)=>(t[b].deletedAt||0)-(t[a].deletedAt||0));
-  $("trashList").innerHTML=ids.length?`<table><tbody>${ids.map(id=>`<tr><td><b>${esc((t[id].ship&&t[id].ship.name)||id)}</b><div class="tag">scuttled ${esc(when(t[id].deletedAt))}</div></td><td style="text-align:right"><div class="acts" style="justify-content:flex-end"><button class="sm" data-raise="${esc(id)}">Raise Her</button><button class="sm danger" data-forever="${esc(id)}">Give to the Deep</button></div></td></tr>`).join("")}</tbody></table>`
-    :`<p class="note">The chest is empty. No ship lies waiting below.</p>`;
+  $("trashList").innerHTML=ids.length?`<table><tbody>${ids.map(id=>{const st=isStore(t[id].ship);return `<tr><td><b>${esc((t[id].ship&&t[id].ship.name)||id)}</b><div class="tag">${st?"closed":"scuttled"} ${esc(when(t[id].deletedAt))}</div></td><td style="text-align:right"><div class="acts" style="justify-content:flex-end"><button class="sm" data-raise="${esc(id)}">${st?"Reopen It":"Raise Her"}</button><button class="sm danger" data-forever="${esc(id)}">${st?"Let It Go":"Give to the Deep"}</button></div></td></tr>`;}).join("")}</tbody></table>`
+    :`<p class="note">The chest is empty. Nothing lies waiting here.</p>`;
 }
 $("trashList").onclick=async e=>{
   const b=e.target.closest("button");if(!b)return;
@@ -715,12 +1116,12 @@ $("trashList").onclick=async e=>{
       const t=await DB.get("trash/"+id);if(!t)return;
       let nid=id,n=2;while(SHIPS[nid]){nid=id+"-raised"+(n>2?"-"+n:"");n++;}
       await DB.update({["ships/"+nid]:t.ship,["holds/"+nid]:t.hold||fresh(),["trash/"+id]:null});
-      toast(((t.ship&&t.ship.name)||id)+" rises dripping from the deep!");
+      toast(((t.ship&&t.ship.name)||id)+(isStore(t.ship)?" opens its doors again!":" rises dripping from the deep!"));
     }catch(e){console.error(e);toast("The chest would not open.");}
   }
   if(b.dataset.forever){
     const id=b.dataset.forever;
-    confirmBox("Give Her to the Deep","This ship, her hold and every saved copy of it will be gone for good. There is no raising her after this.","Farewell",async()=>{
+    confirmBox("Gone for Good","This place, its stores and every saved copy of them will be gone for good. There is no bringing it back after this.","Farewell",async()=>{
       try{await DB.update({["trash/"+id]:null,["backups/"+id]:null});toast("She is gone, and the sea keeps her.");}catch(e){toast("Only the Keeper may do this.");}
     });
   }
@@ -744,7 +1145,7 @@ $("keeperBtn").onclick=async()=>{
   if(signedIn){await AUTH.signOut();return;}
   ask(`<h2>The Keeper's Word</h2><p class="sub">Speak the password, and the Register will know its Keeper.</p><div class="grid"><label>Password</label><input type="password" name="pw" autocomplete="current-password" required></div>`,async fd=>{
     try{await AUTH.signIn(String(fd.get("pw")||""));toast("Welcome aboard, Keeper.");}
-    catch(e){console.error(e);const c=e&&e.code||"";
+    catch(e){const c=e&&e.code||"";if(c==="auth/network-request-failed"||c==="auth/operation-not-allowed")console.error(e);
       toast(c==="auth/too-many-requests"?"Too many wrong words. The Register will listen again shortly."
         :c==="auth/operation-not-allowed"?"Password sign-in is not switched on in Firebase yet."
         :c==="auth/network-request-failed"?"The ledger could not be reached."
@@ -762,10 +1163,12 @@ async function checkKeeper(user){
    THE HOLD
    ===================================================================== */
 let SHIPID=null, S=fresh(), HIST=[], holdUnsub=null, nameUnsub=null, holdSeen=false, lastCustomKeys="";
-function fresh(){return {day:1,crew:6,shared:false,lots:[],custom:{},log:[],seq:1,eggs:0,inWater:{}};}
+function fresh(){return {day:1,crew:6,shared:false,lots:[],custom:{},log:[],seq:1,eggs:0,inWater:{},seized:[],jour:null};}
 const toArr=x=>Array.isArray(x)?x:(x?Object.values(x):[]);
 function normalize(v){
   const s=Object.assign(fresh(),v||{});s.lots=toArr(s.lots).filter(Boolean);s.log=toArr(s.log).filter(Boolean);s.custom=s.custom||{};s.inWater=s.inWater||{};s.eggs=s.eggs||0;
+  s.seized=toArr(s.seized).filter(Boolean).map(z=>Object.assign({},z,{lots:toArr(z.lots).filter(Boolean)}));
+  if(s.jour){for(const k of ["add","rem","stash","unstash"])s.jour[k]=s.jour[k]||{};s.jour.food=s.jour.food||0;s.jour.water=s.jour.water||0;}
   // Holds kept by earlier versions of the larder: give old custom cargo the fields it now needs.
   for(const c of Object.values(s.custom)){
     if(!c||c.kind)continue;
@@ -778,6 +1181,8 @@ function normalize(v){
   for(const l of s.lots){const it=CAT[l.item]||s.custom[l.item];if(it&&it.solo&&l.form!=="solo")l.form="solo";if(l.spoiled==null)l.spoiled=0;}
   return s;
 }
+// "live pigs", not "pig (live)", wherever a name is said in passing
+function dispName(it){const n=lc(it.name);if(it.kind==="live"&&/ \(live\)$/.test(n)){const b=n.replace(/ \(live\)$/,"");return "live "+(/(sheep|s)$/.test(b)?b:b+"s");}return n;}
 function item(id){return CAT[id]||S.custom[id]||{id,name:id,cat:"Custom",kind:"goods",single:"Unit",w:"unit",wp:"units",rat:0,keep:"never",solo:true,f:0};}
 const holdPath=()=>"holds/"+SHIPID;
 
@@ -800,6 +1205,9 @@ function firePhrase(it,n){
 /* ---- Weight ---- */
 function lotF(l){const it=item(l.item);const n=(l.units||0)+(l.spoiled||0);if(l.form==="cargo"||l.form==="solo")return n*(it.f||0);return 0;}
 const holdF=()=>S.lots.reduce((a,l)=>a+lotF(l),0);
+const hidF=()=>S.lots.filter(l=>l.hid).reduce((a,l)=>a+lotF(l),0);
+// The Smuggler's Hold hides 1/10 of her Tonnage, rounded down to the fifth of a ton.
+const hidMaxF=()=>{const M=maxF();return ship().smuggler&&M!=null?Math.floor(M/10):null;};
 
 /* ---- Every change to the hold goes through act(), inside a transaction ----
    opts.guard: refuse if it would carry her past her Tonnage.
@@ -807,52 +1215,118 @@ const holdF=()=>S.lots.reduce((a,l)=>a+lotF(l),0);
 function act(fn,after,opts){
   if(!SHIPID)return;
   opts=opts||{};
-  const before=JSON.stringify(S);
+  let before=null;
   let over=null;
-  const M=maxF();
+  const M=maxF(),H=hidMaxF(),here0=SHIPID;
   DB.tx(holdPath(),cur=>{
     over=null;
     if(cur===null)return; // the ship is gone
-    S=normalize(cur);
-    const f0=holdF();
+    S=normalize(cur);before=JSON.stringify(S);
+    const f0=holdF(),h0=hidF();
     if(fn()===false)return;
     merge();
-    const f1=holdF();
+    const f1=holdF(),h1=hidF();
     if(opts.guard&&M!=null&&f1>M&&f1>f0){
       if(!opts.force){over={f0,f1,M};return;}
-      logLine(say("overload"),true);
+      if(!here())logLine(say("overload"),true);
     }
+    if(opts.guard&&H!=null&&h1>H&&h1>h0&&!opts.forceHid){over={hid:true,h0,h1,H};return;}
     return clone(S);
   }).then(res=>{
+    if(SHIPID!==here0){if(res.committed&&after)after();return;}
     S=normalize(res.val);render();
-    if(res.committed){HIST.push(before);if(HIST.length>30)HIST.shift();if(after)after();}
+    if(res.committed){remember(before,res.val);if(after)after();}
+    else if(over&&over.hid){
+      if(KEEPER)confirmBox("Overfill the Smuggler's Hold?","This would put "+tonsText(over.h1)+" of "+tonsW(over.H)+" in the smuggler's hold. Stuff it in anyway?","Stuff it in",()=>act(fn,after,Object.assign({},opts,{forceHid:true})));
+      else snark("smuggler","Room left in the smuggler's hold: "+tonsW(Math.max(0,over.H-over.h0))+".");
+    }
     else if(over){
       if(KEEPER){
-        confirmBox("Overload Her?","This would bring her to "+tonsText(over.f1)+" of "+tonsText(over.M)+" tons. A ship that heavy is Sinking. Load her anyway?","Load her anyway",()=>act(fn,after,Object.assign({},opts,{force:true})));
-      }else snark("overload","Room left in the hold: "+tonsText(Math.max(0,over.M-over.f0))+" tons.");
+        if(here())confirmBox("Overfill the Storehouse?","This would bring it to "+tonsText(over.f1)+" of "+tonsW(over.M)+". Store it anyway?","Store it anyway",()=>act(fn,after,Object.assign({},opts,{force:true})));
+        else confirmBox("Overload Her?","This would bring her to "+tonsText(over.f1)+" of "+tonsW(over.M)+". A ship that heavy is Sinking. Load her anyway?","Load her anyway",()=>act(fn,after,Object.assign({},opts,{force:true})));
+      }else snark("overload",(here()?"Room left in the storehouse: ":"Room left in the hold: ")+tonsW(Math.max(0,over.M-over.f0))+".");
     }
   }).catch(e=>{toast("The ledger could not be reached. Try again in a moment.");console.error(e);});
 }
+// A hold written out the same way every time, so two copies can be compared fairly.
+function canon(v){
+  // The shared ledger forgets empty lists and boxes, so they are left out of both sides.
+  const empty=x=>x&&typeof x==="object"&&!Object.keys(x).length;
+  const o=x=>{if(Array.isArray(x))return x.map(o).filter(y=>y!=null&&!empty(y));if(x&&typeof x==="object"){const r={};for(const k of Object.keys(x).sort()){const y=o(x[k]);if(y!=null&&!empty(y))r[k]=y;}return r;}return x;};
+  return JSON.stringify(o(normalize(clone(v))));
+}
+function remember(before,after){HIST.push({before,after:canon(after)});if(HIST.length>30)HIST.shift();}
+// Undo puts the hold back only if no one has touched it since your deed. Otherwise it would sweep away
+// a shipmate's work, roll back a dawn, or conjure a second copy of cargo sent elsewhere.
 function undo(){
   if(!HIST.length){toast("Nothing left to unmake.");return;}
-  const prev=HIST.pop();
-  DB.set(holdPath(),JSON.parse(prev)).then(()=>toast("The last deed is undone.")).catch(()=>toast("The ledger could not be reached."));
+  const h=HIST[HIST.length-1];let moved=false;
+  DB.tx(holdPath(),cur=>{
+    moved=false;
+    if(cur===null)return;
+    if(canon(cur)!==h.after){moved=true;return;}
+    const b=JSON.parse(h.before);b.seq=Math.max(b.seq||1,normalize(cur).seq||1);return b;
+  }).then(r=>{
+    if(r.committed){HIST.pop();toast("The last deed is undone.");}
+    else if(moved){HIST.length=0;toast("The hold has changed since your last deed, by another hand or another dawn, so it can no longer be undone.");}
+  }).catch(()=>toast("The ledger could not be reached."));
 }
 function backup(reason){
   if(!SHIPID||(!S.lots.length&&!S.log.length))return Promise.resolve();
   return DB.set(`backups/${SHIPID}/${Date.now()}`,{at:Date.now(),reason,day:S.day,hold:clone(S)}).catch(e=>console.error(e));
 }
-function logLine(text,bad,flour){S.log.push({d:S.day,t:text,b:!!bad,f:!!flour});if(S.log.length>400)S.log=S.log.slice(-400);}
+/* ---- The day's own ledger: what came aboard, what went, what was hidden, and what was eaten ---- */
+function jour(){
+  if(!S.jour||S.jour.d!==S.day)S.jour={d:S.day,add:{},rem:{},stash:{},unstash:{},food:0,water:0};
+  return S.jour;
+}
+function jot(kind,id,n){if(!n)return;const j=jour();j[kind][id]=(j[kind][id]||0)+n;}
+function ateRations(it,n){if(!it.rat)return;const j=jour();if(it.water)j.water+=n*it.rat;else j.food+=n*it.rat;}
+function lotSingles(l,n){return l.form==="cargo"?n*(item(l.item).per||1):n;}
+function qtyWords(it,n){return it.per&&n>=it.per&&n%it.per===0?camt(it,n/it.per):amt(it,n);}
+// Work on another place's hold, inside a transaction, as though standing in it.
+// The shared ledger answers a transaction from what this page has already loaded. A hold nobody here is
+// watching would look empty on the first try and the deed would be refused, so we watch it for a moment first.
+function watchFor(path){
+  return new Promise(res=>{
+    let off=null,done=false;
+    const fin=()=>{if(done)return;done=true;res(()=>{try{off&&off();}catch(e){}});};
+    try{off=DB.on(path,()=>fin());}catch(e){fin();}
+    setTimeout(fin,4000);
+  });
+}
+async function onHold(id,fn){
+  const stop=await watchFor("holds/"+id);
+  try{
+    return await DB.tx("holds/"+id,cur=>{
+      if(cur===null)return;
+      const sS=S,sI=SHIPID;S=normalize(cur);SHIPID=id;
+      try{if(fn()===false)return;merge();return clone(S);}
+      finally{S=sS;SHIPID=sI;}
+    });
+  }finally{stop();}
+}
+const tidy=t=>String(t)
+  .replace(/\b(\w+?)(e?s)? of \1\b(?! \()/gi,"$1$2")
+  .replace(/(\d[\d,.]*) (\w+) of ([a-z][a-z ]*?) \(live\)/gi,(m,n,w,base)=>{
+    const many=x=>/(sheep|s)$/.test(x)?x:x+"s";
+    if(/^(coops?|pairs?)$/i.test(w))return `${n} ${w} of live ${many(base)}`;
+    return `${n} live ${w===base||w.startsWith(base)?w:(n==="1"?base:many(base))}`;})
+  .replace(/\bdozen of (spoiled |fresh )?eggs\b/gi,"dozen $1eggs")
+  .replace(/\b([Ll])oose ([a-z][a-z ]*?) \(live\)/g,(m,L,base)=>`${L}oose live ${/(sheep|s)$/.test(base)?base:base+"s"}`)
+  .replace(/(\d[\d,.]*) rations? of ([^().]+?) \(\1 rations?\)/g,(m,n,x)=>`${n} ration${n==="1"?"":"s"} of ${x}`);
+function logLine(text,bad,flour){text=tidy(text);S.log.push({d:S.day,t:text,b:!!bad,f:!!flour});if(S.log.length>400)S.log=S.log.slice(-400);}
 function lotById(id){return S.lots.find(l=>l.id===+id);}
 
+const CARRY=["spoilsOn","wet","dryOn","oil","hid","fate","fateAll"]; // what a lot's pieces keep when it is split
 /* ---- Combining: like with like at once; loose goods are packed into cargo units at dawn ---- */
-const lotKey=l=>[l.item,l.form,l.die,l.die==="perish"?l.spoilsOn:"",l.wet?1:0,l.wet&&l.dryOn?l.dryOn:"",l.oil?1:0].join("|");
+const lotKey=l=>[l.item,l.form,l.die,l.die==="perish"?l.spoilsOn:"",l.wet?1:0,l.wet&&l.dryOn?l.dryOn:"",l.oil?1:0,l.hid?1:0,l.fate||"",l.fateAll?1:0].join("|"); // a lot under the Keeper's thumb keeps to itself
 function combine(){
   const out=[],map={};
   for(const l of S.lots){
     if((l.units||0)<=0&&(l.spoiled||0)<=0)continue;
     const k=lotKey(l);
-    if(map[k]){map[k].units+=l.units||0;map[k].spoiled+=l.spoiled||0;}
+    if(map[k]){map[k].units+=l.units||0;map[k].spoiled+=l.spoiled||0;if(l.fate&&!map[k].fate){map[k].fate=l.fate;map[k].fateAll=!!l.fateAll;}}
     else{map[k]=l;out.push(l);}
   }
   S.lots=out;
@@ -869,9 +1343,9 @@ function repack(){
     if(!k&&!ks)continue;
     l.units-=k*it.per;l.spoiled-=ks*it.per;
     const nl={id:S.seq++,item:l.item,form:"cargo",units:k,spoiled:ks,die:l.die};
-    for(const p of ["spoilsOn","wet","dryOn","oil"])if(l[p]!==undefined)nl[p]=l[p];
+    for(const p of CARRY)if(l[p]!==undefined)nl[p]=l[p];
     extra.push(nl);
-    logLine(say("repack",lc(it.name),camt(it,k+ks)));
+    logLine(say("repack",dispName(it),camt(it,k+ks)));
   }
   S.lots.push(...extra);
   combine();
@@ -886,28 +1360,21 @@ function take(l,n,fromSpoiled){
   const k=Math.ceil(n/it.per);
   if(fromSpoiled)l.spoiled-=k;else l.units-=k;
   const left=k*it.per-n;
-  if(left>0){const nl={id:S.seq++,item:l.item,form:"loose",units:fromSpoiled?0:left,spoiled:fromSpoiled?left:0,die:l.die};for(const p of ["spoilsOn","wet","dryOn","oil"])if(l[p]!==undefined)nl[p]=l[p];S.lots.push(nl);}
+  if(left>0){const nl={id:S.seq++,item:l.item,form:"loose",units:fromSpoiled?0:left,spoiled:fromSpoiled?left:0,die:l.die};for(const p of CARRY)if(l[p]!==undefined)nl[p]=l[p];S.lots.push(nl);}
   return k;
 }
 const avail=(l,sp)=>(sp?l.spoiled:l.units)*(l.form==="cargo"?(item(l.item).per||1):1);
 // Sound singles of an item across every lot (dry ones only, for charcoal).
-function itemAvail(id,dryOnly){return S.lots.filter(l=>l.item===id&&(!dryOnly||!l.wet)).reduce((a,l)=>a+avail(l,false),0);}
+// The smuggler's hold is never drawn from automatically: hidden cargo must be brought out first.
+function itemAvail(id,dryOnly){return S.lots.filter(l=>l.item===id&&!l.hid&&(!dryOnly||!l.wet)).reduce((a,l)=>a+avail(l,false),0);}
 function takeAcross(id,n,dryOnly){
   let opened=0,got=0;
-  const lots=S.lots.filter(l=>l.item===id&&l.units>0&&(!dryOnly||!l.wet)).sort((a,b)=>(a.form==="cargo")-(b.form==="cargo"));
+  const lots=S.lots.filter(l=>l.item===id&&l.units>0&&!l.hid&&(!dryOnly||!l.wet)).sort((a,b)=>(a.form==="cargo")-(b.form==="cargo"));
   for(const l of lots){if(got>=n)break;const k=Math.min(avail(l,false),n-got);opened+=take(l,k,false);got+=k;}
   return {got,opened};
 }
 
 /* ---------------- Dawn ---------------- */
-function dawn(){
-  const ld=S.lastDawn;
-  if(!DB.local&&ld&&ld.by!==DEVICE&&Date.now()-ld.at<120000&&ld.day===S.day){
-    confirmBox("Dawn Has Already Broken","A shipmate greeted this very dawn only moments ago, and the dice have been cast for day "+S.day+". Roll yet another day?","Another day",dawnNow);
-    return;
-  }
-  dawnNow();
-}
 function stepDown(die){const i=DICE.indexOf(die);return i<0?die:(i===DICE.length-1?"turning":DICE[i+1]);}
 function loseFrac(l,pctStep){
   const roll=rnd(4),pct=roll*pctStep,lost=Math.min(l.units,Math.max(1,Math.ceil(l.units*pct/100)));
@@ -928,63 +1395,238 @@ function doStep(l,why){
   logLine(why?`${lotName(l)}: ${why}; its Keep slips from ${from} to ${to}.`:say("slip",lotName(l),lc(item(l.item).name),from,to),l.die==="turning");
   lossDie(l);
 }
-function dawnNow(){
-  const seen=S.day;
-  backup("Before dawn on day "+(seen+1));
-  act(()=>{
-    if(S.day!==seen)return false;
-    S.day++;
-    S.lastDawn={at:Date.now(),by:DEVICE,day:S.day};
-    logLine(say("dawn"),false,true);
-    const shared={};let quiet=0;
-    for(const l of S.lots){
+
+/* ---- Feeding the crew: whatever is closest to spoiling goes first ---- */
+const FEED_FOOD_CATS=["Fresh Food","Stores","Custom"];
+function urgency(l){
+  if(l.die==="perish")return l.spoilsOn||0;
+  if(l.die==="turning")return 1e6;
+  const i=DICE.indexOf(l.die);if(i>=0)return 2e6+(DICE.length-i);
+  return 9e6;
+}
+function feedable(l,drink){
+  const it=item(l.item);
+  if(l.hid||l.units<=0||it.kind!=="food"||!(it.rat>0))return false;
+  if(drink)return !!it.water;
+  return !it.water&&FEED_FOOD_CATS.includes(it.cat);
+}
+function hunger(){ // how many go without, by what has been eaten today
+  const crew=Math.max(0,S.crew|0),j=jour();
+  return {crew,food:Math.max(0,crew-Math.floor(j.food+1e-9)),water:Math.max(0,crew-Math.floor(j.water+1e-9))};
+}
+function feedNow(){
+  const h=hunger();if(!h.crew)return false;
+  let gotF=0,gotW=0;
+  for(const drink of [false,true]){
+    const j0=jour();let need=Math.max(0,h.crew-(drink?j0.water:j0.food));
+    const lots=S.lots.filter(l=>feedable(l,drink)).sort((a,b)=>urgency(a)-urgency(b)||(a.form==="cargo")-(b.form==="cargo"));
+    for(const l of lots){
+      if(need<=1e-9)break;
       const it=item(l.item);
-      if(it.kind!=="food"||l.units<=0||l.die==="never")continue;
-      if(l.die==="perish"){
-        if(S.day>=l.spoilsOn){const n=l.units;l.spoiled+=n;l.units=0;logLine(say("perish",lc(it.name),lotAmt(l,n)),true);}
-        else quiet++;
-        continue;
-      }
-      if(l.die==="turning"){const x=loseFrac(l,10);logLine(say("turning",it.name,lc(it.name),x.roll,x.pct,lotAmt(l,x.lost)),true);continue;}
-      let v;
-      if(S.shared){if(!shared[l.die])shared[l.die]=rnd(parseInt(l.die.slice(1)));v=shared[l.die];}
-      else v=rnd(parseInt(l.die.slice(1)));
-      if(v===1)doStep(l);else quiet++;
+      const n=Math.min(avail(l,false),Math.ceil(need/it.rat-1e-9));if(n<=0)continue;
+      take(l,n,false);
+      const r=n*it.rat;need-=r;if(drink)gotW+=r;else gotF+=r;
+      ateRations(it,n);jot("rem",l.item,n);
     }
-    if(S.shared&&Object.keys(shared).length)logLine("Shared dice cast: "+Object.entries(shared).map(([d,v])=>d+" "+v).join(", ")+".");
-    if(quiet)logLine(say("quiet",quiet));
-    // The hens lay.
-    const hens=S.lots.filter(l=>l.item==="live-chicken").reduce((a,l)=>a+avail(l,false),0);
-    if(hens>0){
-      let laid=0;for(let i=0;i<hens;i++)laid+=rnd(4);
-      logLine(say("eggs",laid));
-      S.eggs=(S.eggs||0)+laid;
-      const dz=Math.floor(S.eggs/12);S.eggs%=12;
-      if(dz>0){addLot("eggs","loose",dz,"d8",true);logLine(say("dozen",amt(CAT.eggs,dz),S.eggs));}
-    }
-    // Charcoal laid out on deck dries.
-    for(const l of S.lots){
-      if(l.wet&&l.dryOn&&S.day>=l.dryOn){l.wet=false;delete l.dryOn;logLine(say("dried",lotAmt(l,(l.units||0))));}
-    }
-    // The quartermaster packs loose goods away.
-    repack();
-  },()=>{toast("Day "+S.day+" dawns.");offerFuel();});
+  }
+  if(!gotF&&!gotW)return false;
+  const left=hunger();
+  logLine(say("feed",gotF?`${fmt(gotF)} food ration${gotF===1?"":"s"}`:"",gotW?`${fmt(gotW)} water ration${gotW===1?"":"s"}`:"",!left.food&&!left.water));
 }
-function offerFuel(){
-  const s=ship();if(!s.fuel)return;
+
+/* ---- What arrives at a storehouse on its own ---- */
+const EVERY={1:"daily",5:"weekly",25:"monthly"};
+function projF(){ // the hold's weight once the loose stores are packed at dawn
+  let f=0;const loose={};
+  for(const l of S.lots){
+    const it=item(l.item);
+    if(l.form==="loose"&&it.per){const k=lotKey(l);const g=loose[k]||(loose[k]={u:0,s:0,it});g.u+=l.units||0;g.s+=l.spoiled||0;}
+    else f+=lotF(l);
+  }
+  for(const g of Object.values(loose))f+=(Math.floor(g.u/g.it.per)+Math.floor(g.s/g.it.per))*(g.it.f||0);
+  return f;
+}
+function produce(){
+  const s=ship();if(!isStore(s))return;
+  const M=maxF();
+  for(const p of toArr(s.production).filter(Boolean)){
+    const it=item(p.item);if(!it||!CAT[p.item]&&!S.custom[p.item])continue;
+    const every=+p.every||1,start=+p.start||0;
+    if(S.day<=start||(S.day-start)%every!==0)continue;
+    const form=it.solo?"solo":(p.form==="cargo"&&it.per?"cargo":"loose");
+    const qty=Math.max(1,+p.qty||1);
+    const die=it.kind!=="food"?"never":(it.keep==="perish"?"perish":(it.keep||"never"));
+    const words=form==="cargo"?camt(it,qty):amt(it,qty);
+    const f0=projF();
+    const l=addLot(p.item,form,qty,die,true);
+    if(M!=null&&projF()>M&&projF()>f0){S.lots=S.lots.filter(x=>x!==l);logLine(say("noroom",words,dispName(it)));continue;}
+    logLine(say("produce",words,dispName(it)));jot("add",p.item,lotSingles(l,qty));
+  }
+}
+
+/* ---- One place's dawn. Runs inside onHold or act, standing in that hold. ---- */
+function dawnHere(seen,burn){
+  if(S.day!==seen)return false; // a shipmate already greeted this dawn
+  // Those who went without today feel it.
+  const h=hunger();
+  if(h.crew&&(h.food||h.water))logLine(say("without",h.food,h.water),true);
+  S.day++;
+  S.lastDawn={at:Date.now(),by:DEVICE,day:S.day};
+  logLine(say(here()?"storeDawn":"dawn"),false,true);
+  const shared={},thumbed=new Set();let quiet=0;
+  for(const l of S.lots){
+    const it=item(l.item);
+    if(it.kind!=="food"||l.units<=0||l.die==="never")continue;
+    if(l.die==="perish"){
+      if(S.day>=l.spoilsOn){const n=l.units;l.spoiled+=n;l.units=0;logLine(say("perish",lc(it.name),lotAmt(l,n)),true);}
+      else quiet++;
+      continue;
+    }
+    if(l.die==="turning"){const x=loseFrac(l,10);logLine(say("turning",it.name,lc(it.name),x.roll,x.pct,lotAmt(l,x.lost)),true);continue;}
+    let v;
+    if(l.fate)thumbed.add(l.die);
+    if(l.fate==="down")v=1;               // the Keeper's thumb, never shown
+    else if(l.fate==="hold")v=0;
+    else if(S.shared){if(!shared[l.die])shared[l.die]=rnd(parseInt(l.die.slice(1)));v=shared[l.die];}
+    else v=rnd(parseInt(l.die.slice(1)));
+    if(l.fate&&!l.fateAll){delete l.fate;delete l.fateAll;}
+    if(v===1){doStep(l);if(!DICE.includes(l.die)){delete l.fate;delete l.fateAll;}}else quiet++;
+  }
+  // A die the Keeper's thumb pressed on is left out of the shared tally, so the log never contradicts itself.
+  const told=Object.entries(shared).filter(([d])=>!thumbed.has(d));
+  if(S.shared&&told.length)logLine("Shared dice cast: "+told.map(([d,v])=>d+" "+v).join(", ")+".");
+  if(quiet)logLine(say("quiet",quiet));
+  // The hens lay.
+  const hens=S.lots.filter(l=>l.item==="live-chicken").reduce((a,l)=>a+avail(l,false),0);
+  if(hens>0){
+    let laid=0;for(let i=0;i<hens;i++)laid+=rnd(4);
+    logLine(say("eggs",laid));
+    S.eggs=(S.eggs||0)+laid;
+    const dz=Math.floor(S.eggs/12);S.eggs%=12;
+    if(dz>0){addLot("eggs","loose",dz,"d8",true);jot("add","eggs",dz);logLine(say("dozen",amt(CAT.eggs,dz)+" of eggs",S.eggs));}
+  }
+  // Charcoal laid out on deck dries.
+  for(const l of S.lots){
+    if(l.wet&&l.dryOn&&S.day>=l.dryOn){l.wet=false;delete l.dryOn;logLine(say("dried",lotAmt(l,(l.units||0))));}
+  }
+  // The furnaces, if the quartermaster said so.
+  if(burn)burnFuel();
+  // Storehouses take in what they produce.
+  produce();
+  // The quartermaster packs loose goods away.
+  const M0=maxF(),fBefore=holdF();
+  repack();
+  if(M0!=null&&holdF()>M0&&holdF()>fBefore)logLine(here()?"The loose stores, packed away at last, fill the storehouse past its walls. It is Overfilled!":say("overload"),true);
+}
+function fuelInfo(s,hold){ // for the dawn list: days of fuel left in a given hold
   const need=FUEL_NEED[s.size||"Medium"]||8;
-  const kelp=CAT["kelp-charcoal"];
-  const dry=itemAvail("kelp-charcoal",true),wet=S.lots.filter(l=>l.item==="kelp-charcoal"&&l.wet).reduce((a,l)=>a+avail(l,false),0);
-  const sacks=n=>n%8===0&&n>=8?camt(kelp,n/8):amt(kelp,n);
-  const days=Math.floor(dry/need);
-  const wetNote=wet?` <i>(+${esc(amt(kelp,wet))} wet${S.lots.some(l=>l.item==="kelp-charcoal"&&l.wet&&l.dryOn)?", drying on deck":""}.)</i>`:"";
-  if(dry<=0){ask(`<h2>The Furnaces Are Cold</h2><p class="sub">There is no dry kelp charcoal aboard. She cannot use her engines until she takes on more fuel.${wetNote}</p>`,()=>{},"Understood",true);return;}
-  const short=dry<need;
-  ask(`<h2>Feed the Furnaces?</h2><p class="sub">Today's steaming takes <b>${esc(sacks(need))}</b> of kelp charcoal. Aboard: <b>${esc(amt(kelp,dry))}</b>, ${short?`not enough for a full day; a ${esc(s.size||"Medium")} ship needs ${esc(amt(kelp,need))}`:`enough for <b>${days} more day${days===1?"":"s"}</b>, or ${days-1} after today`}.${wetNote}</p>`,()=>{
-    act(()=>{const want=Math.min(need,itemAvail("kelp-charcoal",true));if(want<=0)return false;takeAcross("kelp-charcoal",want,true);logLine(say("burn",sacks(want)));},()=>{if(short)toast("The last of the charcoal is gone. The engines will run dry.");});
-  },short?"Burn What's Left":"Burn It");
-  const cancel=dform.querySelector('button[value=cancel]');if(cancel)cancel.textContent="Not Today";
+  const lots=toArr(hold.lots).filter(l=>l&&l.item==="kelp-charcoal"&&!l.hid);
+  const per=CAT["kelp-charcoal"].per;
+  const dry=lots.filter(l=>!l.wet).reduce((a,l)=>a+(l.units||0)*(l.form==="cargo"?per:1),0);
+  return {need,dry,days:Math.floor(dry/need)};
 }
+function burnFuel(){
+  const s=ship();if(!s.fuel||isStore(s))return;
+  const need=FUEL_NEED[s.size||"Medium"]||8,kelp=CAT["kelp-charcoal"];
+  const want=Math.min(need,itemAvail("kelp-charcoal",true));if(want<=0)return;
+  takeAcross("kelp-charcoal",want,true);jot("rem","kelp-charcoal",want);
+  logLine(say("burn",want%8===0&&want>=8?camt(kelp,want/8):amt(kelp,want)));
+}
+
+/* ---- The dawn list: every ship and storehouse, wake the ones you choose ---- */
+const PICK_KEY="oceana-larder-dawn-pick";
+function summaryHtml(id,hold){
+  const s=SHIPS[id]||{};
+  const sv=S,si=SHIPID;S=normalize(hold);SHIPID=id; // read it as though standing in it
+  try{
+    const j=jour();
+    const list=(o)=>Object.entries(o).map(([k,n])=>tidy(listOne(k,n))).join(", ");
+    const listOne=(k,n)=>{const it=item(k),q=qtyWords(it,n),nm=lc(it.name);
+      if(it.kind==="live"&&/ \(live\)$/.test(nm)&&!/ (coops?|pairs?)$/.test(q)){const base=nm.replace(/ \(live\)$/,"");const pl=base===it.w||base===it.wp?(n===1?it.w:it.wp):(n===1?base:base+"s");return esc(`${fmt(n)} live ${pl}`);}if(/ dozen$/.test(q))return esc(q+" "+nm);
+      return esc(/ (cargo units?|barrels?|crates?|bales?|sacks?|casks?|chests?|coops?|pairs?)$/.test(q)||![it.w,it.wp].includes(nm)?q+" of "+nm:q);};
+    const bits=[];
+    if(Object.keys(j.add).length)bits.push(`<b>Added:</b> ${list(j.add)}`);
+    if(Object.keys(j.rem).length)bits.push(`<b>Removed:</b> ${list(j.rem)}`);
+    if(Object.keys(j.stash).length)bits.push(`<b>Stashed:</b> ${list(j.stash)}`);
+    if(Object.keys(j.unstash).length)bits.push(`<b>Brought out:</b> ${list(j.unstash)}`);
+    if(!bits.length)bits.push(`<span class="tag">Nothing came or went today.</span>`);
+    const h=hunger();
+    let crew="";
+    if(h.crew){
+      const fedF=Math.floor(j.food+1e-9),fedW=Math.floor(j.water+1e-9);
+      const lvl=Math.max(h.food,h.water);
+      crew=`<p class="crewchk${lvl?" short":""}">${h.crew} mouth${h.crew===1?"":"s"}. Today they ate ${fmt(j.food)} food ration${j.food===1?"":"s"} and drank ${fmt(j.water)} water ration${j.water===1?"":"s"}. `+
+        (lvl?`${h.food?`${h.food} go${h.food===1?"es":""} without food`:""}${h.food&&h.water?" and ":""}${h.water?`${h.water}${h.food?"":` go${h.water===1?"es":""}`} without water`:""}: <b>${lvl} gain${lvl===1?"s":""} a level of exhaustion</b> if dawn breaks now.`:"Every mouth has been fed and watered.")+
+        (lvl?` <button class="sm" type="submit" value="x-feed-${esc(id)}">Feed the Crew</button>`:"")+`</p>`;
+    }
+    let fuel="";
+    if(s.fuel&&!isStore(s)){const f=fuelInfo(s,S);fuel=f.dry>0?`<label class="inline"><input type="checkbox" name="fuel-${esc(id)}" checked> Burn fuel (${f.days} day${f.days===1?"":"s"} left${f.dry<f.need?", not enough for a full day":""})</label>`:`<p class="tag">The furnaces are cold: no dry kelp charcoal aboard.</p>`;}
+    return `<div class="dsum">${bits.map(x=>`<p>${x}</p>`).join("")}${crew}${fuel}</div>`;
+  }finally{S=sv;SHIPID=si;}
+}
+async function openDawn(keep,boxes0){
+  let holds;try{holds=(await DB.get("holds"))||{};}catch(e){toast("The ledger could not be reached.");return;}
+  const ids=Object.keys(SHIPS).filter(id=>holds[id]).sort((a,b)=>(isStore(SHIPS[a])-isStore(SHIPS[b]))||((SHIPS[a].created||0)-(SHIPS[b].created||0)));
+  let pick;
+  if(keep)pick=keep;
+  else{try{pick=JSON.parse(localStorage.getItem(PICK_KEY)||"null");}catch(e){pick=null;}if(!Array.isArray(pick)||!pick.length)pick=SHIPID?[SHIPID]:[];}
+  const rows=ids.map(id=>{
+    const h=normalize(holds[id]),ld=h.lastDawn;
+    const recent=!DB.local&&ld&&ld.by!==DEVICE&&Date.now()-ld.at<120000&&ld.day===h.day;
+    const on=pick.includes(id)&&!recent;
+    return `<div class="drow${id===SHIPID?" here":""}"><label class="inline dhead"><input type="checkbox" name="pick" value="${esc(id)}" ${on?"checked":""}> <b>${esc(shipName(id))}</b> <span class="tag">${isStore(SHIPS[id])?"storehouse":"ship"} · day ${h.day}</span></label>${recent?`<p class="tag warn">A shipmate greeted this dawn only moments ago.</p>`:""}${summaryHtml(id,h)}</div>`;
+  }).join("");
+  ask(`<h2>Before the Sun Rises</h2><p class="sub">Choose which ships and storehouses wake to a new day. Each rolls its own dice and keeps its own count of days.</p>
+    <label class="inline feedall"><input type="checkbox" name="feedall" checked> Feed every place that wakes from its own stores first</label>
+    <p class="note">Hunger below is counted as things stand now. With the box ticked, only those whose stores truly run out go without.</p>
+    <div class="row"><button class="sm" type="submit" value="x-only">This One Only</button><button class="sm" type="submit" value="x-all">Everything</button><button class="sm" type="submit" value="x-none">Nothing</button></div>
+    <div class="dlist">${rows||'<p class="note">There is nothing in the Register to wake.</p>'}</div>`,fd=>{
+    const chosen=fd.getAll("pick");
+    try{localStorage.setItem(PICK_KEY,JSON.stringify(chosen));}catch(e){}
+    if(!chosen.length){toast("No dawn breaks anywhere.");return;}
+    breakDawn(chosen,holds,id=>!!fd.get("fuel-"+id),!!fd.get("feedall"));
+  },"Let Dawn Break");
+  const boxes=()=>[...dform.querySelectorAll("input[name=pick]")];
+  if(boxes0)for(const [k,v] of Object.entries(boxes0)){const x=dform.querySelector(`input[name="${k}"]`);if(x)x.checked=v;}
+  dform.querySelector("button[value=x-only]").onclick=ev=>{ev.preventDefault();boxes().forEach(b=>b.checked=b.value===SHIPID);};
+  dform.querySelector("button[value=x-all]").onclick=ev=>{ev.preventDefault();boxes().forEach(b=>b.checked=true);};
+  dform.querySelector("button[value=x-none]").onclick=ev=>{ev.preventDefault();boxes().forEach(b=>b.checked=false);};
+  dform.querySelectorAll("button[value^=x-feed-]").forEach(b=>b.onclick=async ev=>{
+    ev.preventDefault();
+    const id=b.value.slice(7),now=boxes().filter(x=>x.checked).map(x=>x.value);
+    const ticks={};dform.querySelectorAll("input[name=feedall],input[name^=fuel-]").forEach(x=>ticks[x.name]=x.checked);
+    let r;try{r=await onHold(id,()=>feedNow());}catch(e){console.error(e);toast("The ledger could not be reached.");return;}
+    await openDawn(now,ticks);
+    const row=[...dform.querySelectorAll("input[name=pick]")].find(x=>x.value===id);
+    if(row)try{const d=row.closest(".drow");d.scrollIntoView({block:"center"});tapY=d.getBoundingClientRect().top+window.scrollY+90;}catch(e){}
+    if(!r||!r.committed)toast("There is nothing there the crew can eat or drink.");
+  });
+}
+async function breakDawn(ids,holds,burnFor,feedAll){
+  let n=0,changedHere=false;
+  for(const id of ids){
+    const h=holds[id];if(!h)continue;
+    const seen=normalize(h).day;let pre=null;
+    try{
+      const r=await onHold(id,()=>{if(S.day!==seen)return false;pre=clone(S);if(feedAll)feedNow();return dawnHere(seen,burnFor(id));});
+      if(r&&r.committed){
+        n++;if(id===SHIPID)changedHere=true;
+        try{await DB.set(`backups/${id}/${Date.now()+n}`,{at:Date.now(),reason:"Before dawn on day "+(seen+1),day:seen,hold:pre});}catch(e){console.error(e);}
+      }
+    }catch(e){console.error(e);}
+  }
+  // Dawn is a line drawn under the past: undoing it would let the dice be rolled again.
+  if(changedHere)HIST.length=0;
+  toast(n===0?"A shipmate already greeted this dawn, so no new day breaks.":n===1?"Dawn breaks.":`Dawn breaks over ${n} places.`);
+}
+function dawn(){openDawn();}
+$("feedBtn").onclick=()=>{
+  const h=hunger();
+  if(!h.crew){toast("There are no mouths to feed here.");return;}
+  if(!h.food&&!h.water){toast("Every mouth has already been fed and watered today.");return;}
+  if(!S.lots.some(l=>(h.food&&feedable(l,false))||(h.water&&feedable(l,true)))){toast("There is nothing here the crew can eat or drink.");return;}
+  act(()=>feedNow(),()=>{const x=hunger();if(x.food||x.water)toast(`The stores ran short: ${[x.food&&`${x.food} still without food`,x.water&&`${x.water} still without water`].filter(Boolean).join(", ")}.`);});
+};
 function damage(){
   confirmBox("The Hold Is Struck","Has the hold flooded, or the ship been badly hurt? Every lot of provisions steps down one die, and charcoal not wrapped in oilskin is soaked.","Alas, it has",()=>act(()=>{
     logLine(say("struck"),true,true);
@@ -992,7 +1634,7 @@ function damage(){
       const it=item(l.item);
       if(l.item==="kelp-charcoal"&&!l.oil&&!l.wet&&l.units>0){l.wet=true;delete l.dryOn;logLine(say("soaked",lotAmt(l,l.units)),true);continue;}
       if(it.kind!=="food"||l.units<=0||l.die==="never"||l.die==="perish")continue;
-      if(l.die==="turning"){const x=loseFrac(l,10);logLine(`${lotName(l)}, already turning, loses its morning's share again: rolled ${x.roll} on the d4, ${x.pct}% of what remained. ${cap(lotAmt(l,x.lost))} spoil.`,true);}
+      if(l.die==="turning"){const x=loseFrac(l,10);logLine(`${lotName(l)}, already turning, ${nv(lc(it.name),"loses its","lose their")} morning's share again: rolled ${x.roll} on the d4, ${x.pct}% of what remained. ${cap(lotAmt(l,x.lost))} ${x.lost===1?"spoils":"spoil"}.`,true);}
       else doStep(l,"seawater and ruin");
     }
   }));
@@ -1004,13 +1646,15 @@ function addLot(id,form,qty,die,silent,spoiled,spoilsOn){
   const l={id:S.seq++,item:id,form,units:qty,spoiled:spoiled||0,die};
   if(die==="perish")l.spoilsOn=spoilsOn||S.day+2;
   S.lots.push(l);
-  if(!silent)logLine(say("stow",form==="cargo"?camt(it,qty):amt(it,qty),lc(it.name)));
+  if(!silent){logLine(say(here()?"storeStow":"stow",form==="cargo"?camt(it,qty):amt(it,qty),lc(it.name)));jot("add",id,lotSingles(l,qty));}
   return l;
 }
 
 /* ---------------- Rendering the hold ---------------- */
 function rationsOf(l,n){const it=item(l.item);return n*(l.form==="cargo"?(it.per||1)*(it.rat||0):(it.rat||0));}
 function setIfIdle(el,v){if(document.activeElement!==el)el.value=v;}
+const DRAWN=new Map();
+function setHtml(id,html){if(DRAWN.get(id)===html&&$(id).innerHTML!=="")return;DRAWN.set(id,html);$(id).innerHTML=html;}
 function render(){
   if(!SHIPID)return;
   setIfIdle($("dayIn"),S.day);
@@ -1028,62 +1672,46 @@ function render(){
   }
   const crew=Math.max(0,S.crew|0);
   const days=v=>crew?Math.floor(v/crew):"-";
-  // Tonnage and fuel lines
-  const F=holdF(),M=maxF(),s=ship();
-  let tl=M==null?`<b>Tonnage:</b> ${tonsText(F)} tons aboard <span class="tag">(no limit set; see the Ship's Papers)</span>`
-    :`<b>Tonnage:</b> ${tonsText(F)} of ${tonsText(M)} tons`+(F>M?` <span class="over">Overloaded: Sinking!</span>`:"");
-  if(s.fuel){const need=FUEL_NEED[s.size||"Medium"]||8;const dry=itemAvail("kelp-charcoal",true);tl+=` <span class="sep">·</span> <b>Fuel:</b> ${Math.floor(dry/need)} day${Math.floor(dry/need)===1?"":"s"}`;}
-  $("tonLine").innerHTML=tl;
+  // The place itself: a ship or a storehouse
+  const F=holdF(),M=maxF(),s=ship(),st=isStore(s);
+  $("kicker").textContent=st?"The Storehouse Ledger":"The Ship's Larder";
+  $("holdSub").textContent=st?"Wherein every barrel, crate and bale ashore is counted, and the slow, patient hunger of time is reckoned each morning.":"Wherein every barrel, crate and bale is counted, and the slow, patient hunger of the sea is reckoned each morning.";
+  $("papersBtn").textContent=st?"Storehouse Deeds":"Ship's Papers";
+  $("dayLbl").textContent=st?"Day":"Day of the voyage";
+  $("crewLbl").textContent=st?"Mouths to feed":"Mouths aboard";
+  $("dmgBtn").hidden=st;$("rainBtn").hidden=st;$("cookBtn").hidden=st&&!s.hearth;
+  $("addBtn").textContent=itemSel.value==="__new"?"Write Something New":(st?"Store It":"Stow It Below");
+  let tl;
+  if(st)tl=M==null?`<b>Stored:</b> ${tonsW(F)} <span class="tag">(no limit to its space)</span>`:`<b>Stored:</b> ${tonsText(F)} of ${tonsW(M)}`+(F>M?` <span class="over">Overfilled!</span>`:"");
+  else tl=M==null?`<b>Tonnage:</b> ${tonsW(F)} aboard <span class="tag">(no limit set; see the Ship's Papers)</span>`
+    :`<b>Tonnage:</b> ${tonsText(F)} of ${tonsW(M)}`+(F>M?` <span class="over">Overloaded: Sinking!</span>`:"");
+  if(s.fuel&&!st){const need=FUEL_NEED[s.size||"Medium"]||8;const dry=itemAvail("kelp-charcoal",true);tl+=` <span class="sep">·</span> <b>Fuel:</b> ${Math.floor(dry/need)} day${Math.floor(dry/need)===1?"":"s"}`;}
+  setHtml("tonLine",tl);
   $("tonLine").className="tonline"+(M!=null&&F>M?" sinking":"");
-  $("stats").innerHTML=[
-    [fmt(food),"food rations, sound"+(sfood?` <span class="spoiled">(+${fmt(sfood)} spoiled)</span>`:"")],
-    [fmt(water),"water rations, sound"+(swater?` <span class="spoiled">(+${fmt(swater)} spoiled)</span>`:"")],
-    [days(food),`days of food for ${crew} mouth${crew===1?"":"s"}`],
-    [days(water),`days of water for ${crew} mouth${crew===1?"":"s"}`],
-    ...(live?[[live,"living beasts aboard"]]:[]),
-  ].map(([b,t])=>`<div class="stat"><b>${b}</b><span>${t}</span></div>`).join("");
+  setHtml("stats",[
+    [fmt(food),"food ration"+(food===1?"":"s")+", sound"+(sfood?` <span class="spoiled">(+${fmt(sfood)} spoiled)</span>`:"")],
+    [fmt(water),"water ration"+(water===1?"":"s")+", sound"+(swater?` <span class="spoiled">(+${fmt(swater)} spoiled)</span>`:"")],
+    [days(food),`day${days(food)===1?"":"s"} of food for ${crew} mouth${crew===1?"":"s"}`],
+    [days(water),`day${days(water)===1?"":"s"} of water for ${crew} mouth${crew===1?"":"s"}`],
+    ...(live?[[live,live===1?"living beast aboard":"living beasts aboard"]]:[]),
+  ].map(([b,t])=>`<div class="stat"><b>${b}</b><span>${t}</span></div>`).join(""));
 
-  // The hold, by section
-  const body=$("holdBody");
-  if(!S.lots.length){body.innerHTML=`<tr class="empty"><td colspan="7">The hold lies empty and echoing. Not a crumb, not a cask.</td></tr>`;}
-  else{
-    const sect=it=>it.cat==="Custom"?"Custom Cargo":{food:"Provisions",live:"Livestock",supply:"Ship Supplies",goods:"Trade Goods"}[it.kind]||"Cargo";
-    const order=["Provisions","Livestock","Ship Supplies","Trade Goods","Custom Cargo","Cargo"];
-    const lots=[...S.lots].sort((a,b)=>{const A=item(a.item),B=item(b.item);return order.indexOf(sect(A))-order.indexOf(sect(B))||CATS.indexOf(A.cat)-CATS.indexOf(B.cat)||A.name.localeCompare(B.name)||(a.form>b.form?1:-1);});
-    let html="",cur="";
-    for(const l of lots){
-      const it=item(l.item);
-      if(sect(it)!==cur){cur=sect(it);html+=`<tr class="sect"><td colspan="7">${cur}</td></tr>`;}
-      let keep;
-      if(l.wet)keep=`<span class="die turn">${l.dryOn?"Drying":"Wet"}</span>`;
-      else if(it.kind!=="food")keep=it.kind==="live"?`<span class="die never">Alive</span>`:(l.oil?`<span class="die never">Oilskin</span>`:"");
-      else if(l.die==="never")keep=`<span class="die never">Never</span>`;
-      else if(l.die==="perish")keep=`<span class="die perish">${S.day>=l.spoilsOn?"Spoiled":(l.spoilsOn-1===S.day?"Spoils tonight":"Spoils day "+(l.spoilsOn-1))}</span>`;
-      else if(l.die==="turning")keep=`<span class="die turn">Turning</span>`;
-      else keep=`<span class="die">${l.die}</span>`;
-      const nature=it.kind==="food"?[it.how,it.spoil].filter(Boolean).join(", "):(it.ammo?"Ammunition":"");
-      let stowed;
-      if(l.form==="cargo")stowed=`${esc(it.cargo||"Cargo unit")} <span class="tag">(${esc(amt(it,it.per))} each, ${tonsText(it.f||0)} ton)</span>`;
-      else if(l.form==="solo")stowed=`Single <span class="tag">${it.f?`(${tonsText(it.f)} ton each)`:"(no weight)"}</span>`;
-      else stowed=`Loose <span class="tag">${esc(it.useMult?"uses":(it.single||""))}</span>`;
-      const show=n=>l.form==="cargo"?fmt(n):(it.useMult?esc(amt(it,n)):fmt(n));
-      const acts=[];
-      if(l.units>0){
-        if(it.kind==="live")acts.push(btn("eat",l,"Butcher"));
-        else if(it.ammo)acts.push(btn("fire",l,"Fire"));
-        else if(it.kind==="food")acts.push(btn("eat",l,it.water?"Drink":(it.rat?"Eat":"Use")));
-        else if(it.kind==="supply"&&!l.wet)acts.push(btn("use",l,"Use"));
-      }
-      if(l.spoiled>0)acts.push(btn("spoil",l,"Spoiled..."));
-      if(l.form==="cargo"&&it.per&&(l.units>0||l.spoiled>0))acts.push(btn("open",l,"Open"));
-      if(l.item==="kelp-charcoal"&&l.wet&&!l.dryOn)acts.push(btn("dry",l,"Lay Out to Dry"));
-      if(l.item==="kelp-charcoal"&&!l.wet&&!l.oil)acts.push(btn("oil",l,"Wrap in Oilskin"));
-      if(l.units>0)acts.push(btn("sell",l,"Sell"));
-      acts.push(btn("edit",l,"Amend"));
-      html+=`<tr><td>${esc(it.name)}${it.cat==="Custom"?' <span class="tag">(custom)</span>':""}</td><td>${stowed}</td><td>${show(l.units)}</td><td class="${l.spoiled?"spoiled":""}">${show(l.spoiled)}</td><td>${keep}</td><td class="tag">${esc(nature)}</td><td><div class="acts">${acts.join("")}</div></td></tr>`;
-    }
-    body.innerHTML=html;
+  // The hold, by section, and the smuggler's hold beneath it
+  const smug=!!s.smuggler&&!st;
+  const mainLots=S.lots.filter(l=>!l.hid),hidLots=S.lots.filter(l=>l.hid);
+  setHtml("holdBody",mainLots.length?rowsHtml(mainLots,false,smug):`<tr class="empty"><td colspan="7">The hold lies empty and echoing. Not a crumb, not a cask.</td></tr>`);
+  const showSmug=smug||hidLots.length||(S.seized.length&&!st);
+  $("smugCard").hidden=!showSmug;
+  if(showSmug){
+    const H=hidMaxF(),h=hidF();
+    $("smugLine").innerHTML=!smug?`<span class="tag">No smuggler's hold is fitted, yet cargo lingers here.</span>`
+      :H==null?`<b>Hidden:</b> ${tonsW(h)} <span class="tag">(set her Tonnage in the Ship's Papers to size the smuggler's hold)</span>`
+      :H===0?`<span class="tag">She is too small to hide anything worth counting.</span>`
+      :`<b>Hidden:</b> ${tonsText(h)} of ${tonsW(H)}`+(h>H?` <span class="over">Overstuffed!</span>`:"");
+    setHtml("smugBody",hidLots.length?rowsHtml(hidLots,true,smug):`<tr class="empty"><td colspan="7">Nothing hidden. Nothing at all, inspector.</td></tr>`);
+    $("seizedList").innerHTML=S.seized.length?`<h3 class="sub3">Seized Cargo</h3><table><tbody>${S.seized.map(z=>`<tr><td><b>Seized on day ${z.day}</b><div class="tag">${esc(tidy(z.lots.map(l=>lotAmt(l,(l.units||0)+(l.spoiled||0))+" of "+lc(item(l.item).name)).join(", "))||"nothing at all")}</div></td><td style="text-align:right"><button class="sm" data-recover="${z.id}">Recover It</button></td></tr>`).join("")}</tbody></table>`:"";
   }
+  $("intoWrap").hidden=!smug;
   renderFire();
   const groups=[];
   for(const e of S.log){if(!groups.length||groups[groups.length-1].d!==e.d)groups.push({d:e.d,es:[]});groups[groups.length-1].es.push(e);}
@@ -1092,16 +1720,58 @@ function render(){
     lh+=`<div class="day">Day ${groups[i].d}</div>`;
     for(const e of groups[i].es)lh+=e.f?`<div class="flour">${esc(e.t)}</div>`:`<p class="${e.b?"bad":""}">${esc(e.t)}</p>`;
   }
-  $("log").innerHTML=lh||`<p class="note">The log's pages are clean and waiting for ink.</p>`;
+  setHtml("log",lh||`<p class="note">The log's pages are clean and waiting for ink.</p>`);
 }
 const btn=(a,l,t)=>`<button class="sm" data-a="${a}" data-id="${l.id}">${t}</button>`;
+const canFire=()=>!here()||!!ship().battery;
+function saltable(l){return !!SALTS[l.item]&&l.die==="perish"&&l.units>0&&S.day<l.spoilsOn;}
+function rowsHtml(list,hidden,smug){
+  const sect=it=>it.cat==="Custom"?"Custom Cargo":{food:"Provisions",live:"Livestock",supply:"Ship Supplies",goods:"Trade Goods"}[it.kind]||"Cargo";
+  const order=["Provisions","Livestock","Ship Supplies","Trade Goods","Custom Cargo","Cargo"];
+  const lots=[...list].sort((a,b)=>{const A=item(a.item),B=item(b.item);return order.indexOf(sect(A))-order.indexOf(sect(B))||CATS.indexOf(A.cat)-CATS.indexOf(B.cat)||A.name.localeCompare(B.name)||(a.form>b.form?1:-1);});
+  let html="",cur="";
+  for(const l of lots){
+    const it=item(l.item);
+    if(sect(it)!==cur){cur=sect(it);html+=`<tr class="sect"><td colspan="7">${cur}</td></tr>`;}
+    let keep;
+    if(l.wet)keep=`<span class="die turn">${l.dryOn?"Drying":"Wet"}</span>`;
+    else if(it.kind!=="food")keep=it.kind==="live"?`<span class="die never">Alive</span>`:(l.oil?`<span class="die never">Oilskin</span>`:"");
+    else if(l.die==="never")keep=`<span class="die never">Never</span>`;
+    else if(l.die==="perish")keep=`<span class="die perish">${S.day>=l.spoilsOn?"Spoiled":(l.spoilsOn-1===S.day?"Spoils tonight":"Spoils day "+(l.spoilsOn-1))}</span>`;
+    else if(l.die==="turning")keep=`<span class="die turn">Turning</span>`;
+    else keep=`<span class="die">${l.die}</span>`;
+    if(KEEPER&&l.fate)keep+=` <span class="fate" title="The Keeper's thumb: ${l.fate==="down"?"steps down":"holds fast"} at ${l.fateAll?"every dawn":"the next dawn"}">${l.fate==="down"?"▼":"■"}${l.fateAll?"∞":""}</span>`;
+    const nature=it.kind==="food"?[it.how,it.spoil].filter(Boolean).join(", "):(it.ammo?"Ammunition":"");
+    let stowed;
+    if(l.form==="cargo")stowed=`${esc(it.cargo||"Cargo unit")} <span class="tag">(${esc(amt(it,it.per))} each, ${tonsText(it.f||0)} ton)</span>`;
+    else if(l.form==="solo")stowed=`Single <span class="tag">${it.f?`(${tonsText(it.f)} ton each)`:"(no weight)"}</span>`;
+    else stowed=`Loose <span class="tag">${esc(it.useMult?"uses":(it.single||""))}</span>`;
+    const show=n=>l.form==="cargo"?fmt(n):(it.useMult?esc(amt(it,n)):fmt(n));
+    const acts=[];
+    if(l.units>0){
+      if(it.kind==="live")acts.push(btn("eat",l,"Butcher"));
+      else if(it.ammo){if(!hidden&&canFire())acts.push(btn("fire",l,"Fire"));}
+      else if(it.kind==="food")acts.push(btn("eat",l,it.water?"Drink":(it.rat?"Eat":"Use")));
+      else if(it.kind==="supply"&&!l.wet)acts.push(btn("use",l,"Use"));
+    }
+    if(l.spoiled>0)acts.push(btn("spoil",l,"Spoiled..."));
+    if(l.form==="cargo"&&it.per&&(l.units>0||l.spoiled>0))acts.push(btn("open",l,"Open"));
+    if(l.item==="kelp-charcoal"&&l.wet&&!l.dryOn)acts.push(btn("dry",l,"Lay Out to Dry"));
+    if(l.item==="kelp-charcoal"&&!l.wet&&!l.oil)acts.push(btn("oil",l,"Wrap in Oilskin"));
+    if(saltable(l))acts.push(btn("salt",l,"Salt"));
+    if(l.units>0||l.spoiled>0)acts.push(btn("move",l,"Move…"));
+    acts.push(btn("edit",l,"Amend"));
+    html+=`<tr><td>${esc(it.name)}${it.cat==="Custom"?' <span class="tag">(custom)</span>':""}</td><td>${stowed}</td><td>${show(l.units)}</td><td class="${l.spoiled?"spoiled":""}">${show(l.spoiled)}</td><td>${keep}</td><td class="tag">${esc(nature)}</td><td><div class="acts">${acts.join("")}</div></td></tr>`;
+  }
+  return html;
+}
 
 /* ---------------- Fire the Weapons ---------------- */
 function renderFire(){
-  const ammo=CATALOG.concat(Object.values(S.custom)).filter(it=>it.ammo&&itemAvail(it.id)>0);
+  const ammo=canFire()?CATALOG.concat(Object.values(S.custom)).filter(it=>it.ammo&&itemAvail(it.id)>0):[];
   const wet=Object.entries(S.inWater||{}).filter(([,n])=>n>0);
   $("fireCard").hidden=!ammo.length&&!wet.length;
-  $("fireList").innerHTML=ammo.length?`<table><tbody>${ammo.map(it=>`<tr><td><b>${esc(it.name)}</b><div class="tag">${esc(amt(it,itemAvail(it.id)))} aboard</div></td><td style="text-align:right"><div class="acts" style="justify-content:flex-end;align-items:center"><input type="number" min="1" value="1" data-shots="${esc(it.id)}" style="width:70px" aria-label="${esc(it.useMult?"uses":"shots")}"><span class="tag">${it.useMult?"uses":"shots"}</span><button class="sm primary-sm" data-fire="${esc(it.id)}">Fire!</button></div></td></tr>`).join("")}</tbody></table>`:`<p class="note">No shot aboard.</p>`;
+  setHtml("fireList",ammo.length?`<table><tbody>${ammo.map(it=>`<tr><td><b>${esc(it.name)}</b><div class="tag">${esc(amt(it,itemAvail(it.id)))} aboard</div></td><td style="text-align:right"><div class="acts" style="justify-content:flex-end;align-items:center"><input type="number" min="1" value="1" data-shots="${esc(it.id)}" style="width:70px" aria-label="${esc(it.useMult?"uses":"shots")}"><span class="tag">${it.useMult?"uses":"shots"}</span><button class="sm primary-sm" data-fire="${esc(it.id)}">Fire!</button></div></td></tr>`).join("")}</tbody></table>`:`<p class="note">No shot aboard.</p>`);
   $("waterList").innerHTML=wet.length?`<h3 class="sub3">In the Water</h3><table><tbody>${wet.map(([id,n])=>`<tr><td><b>${esc(firePhrase(item(id),n))}</b><div class="tag">still on the line</div></td><td style="text-align:right"><div class="acts" style="justify-content:flex-end"><button class="sm" data-haul="${esc(id)}">Haul Back</button><button class="sm danger" data-cut="${esc(id)}">Cut Free</button></div></td></tr>`).join("")}</tbody></table>`:"";
 }
 function fireItem(id,want){
@@ -1111,7 +1781,7 @@ function fireItem(id,want){
     const n=Math.min(want,have);
     const x=takeAcross(id,n);
     if(x.opened)logLine(say("open",camt(it,x.opened),lc(it.name)));
-    logLine(say("fire",firePhrase(it,n)));
+    logLine(say("fire",firePhrase(it,n)));jot("rem",id,n);
     if(it.retrieve){S.inWater[id]=(S.inWater[id]||0)+n;}
   });
 }
@@ -1130,7 +1800,7 @@ $("waterList").onclick=e=>{
     act(()=>{
       const have=(S.inWater||{})[id]||0;if(!have)return false;const k=Math.min(want,have);
       S.inWater[id]=have-k;if(!S.inWater[id])delete S.inWater[id];
-      if(haul){addLot(id,"loose",k,"never",true);logLine(say("haul",firePhrase(it,k)));}
+      if(haul){addLot(id,it.solo?"solo":"loose",k,"never",true);jot("add",id,k);logLine(say("haul",firePhrase(it,k)));}
       else logLine(say("cut",firePhrase(it,k)));
     },null,{guard:haul});
   },haul?"Haul Back":"Cut Free");
@@ -1155,7 +1825,7 @@ function fillItem(){
     $("itemNote").textContent="Write a cargo of your own: a catch of the day, a recipe's leftovers, monster parts, salvage, or anything the Bazaar never knew.";
     return;
   }
-  $("addBtn").textContent="Stow It Below";
+  $("addBtn").textContent=here()?"Store It":"Stow It Below";
   const it=CAT[id]||S.custom[id];
   if(!it){$("itemNote").textContent="";return;}
   formSel.disabled=false;
@@ -1188,7 +1858,13 @@ $("addBtn").onclick=()=>{
   const it=CAT[id]||S.custom[id];if(!it)return;
   const q=Math.max(1,parseInt($("qtyIn").value)||1),form=it.solo?"solo":formSel.value,die=it.kind==="food"?dieSel.value:"never";
   const units=form==="loose"&&it.useMult?q*it.useMult:q;
-  act(()=>{addLot(id,form,units,die);},null,{guard:true});
+  const hide=ship().smuggler&&!here()&&$("intoSel").value==="hid";
+  act(()=>{
+    if(!hide){addLot(id,form,units,die);return;}
+    const l=addLot(id,form,units,die,true);l.hid=true;
+    jot("add",id,lotSingles(l,units));
+    logLine(say("stash",form==="cargo"?camt(it,units):amt(it,units),lc(it.name)));
+  },null,{guard:true});
 };
 
 /* ---------------- Using, eating, selling and the rest ---------------- */
@@ -1199,12 +1875,13 @@ function portionDialog(lid,mode){ // mode: eat | use | spoil | sell
   const byRation=it.kind==="food"&&it.rat>0&&(mode==="eat"||mode==="spoil");
   const sellCargo=mode==="sell"&&l.form==="cargo";
   const unitMax=sellCargo?l.units:(byRation?max*it.rat:max);
-  const unitName=sellCargo?(it.cargoPl||"cargo units"):byRation?(it.water?"water rations":"rations"):(it.useMult?"uses":it.wp);
+  const one=unitMax===1;
+  const unitName=sellCargo?(one?lc(it.cargo||"cargo unit"):(it.cargoPl||"cargo units")):byRation?(it.water?(one?"water ration":"water rations"):(one?"ration":"rations")):(it.useMult?(one?"use":"uses"):(one?it.w:it.wp));
   const def=sp||mode==="sell"?unitMax:Math.min(unitMax,byRation?Math.max(1,S.crew||1):1);
   const s=it.spoil&&SPOIL[it.spoil];
   const risk=sp&&s?`<p>Whoever eats or drinks it must make a <b>DC ${s.dc} Constitution save</b>, or be poisoned for 24 hours${s.dis?" and catch <b>"+s.dis+"</b>":""}.</p>`:"";
   const heads={eat:it.water?"Drawing from the Cask":"To the Galley",use:"Put to Use",spoil:"The Spoiled Portion",sell:"Down the Gangplank"};
-  const lead=sp?`${fmt(unitMax)} spoiled ${esc(unitName)} of ${esc(lc(it.name))}, sour-smelling and sorry. It still counts as a ration, at a price.`
+  const lead=sp?`${fmt(unitMax)} spoiled ${esc(unitName)}${unitName.includes(lc(it.name))?"":" of "+esc(lc(it.name))}, sour-smelling and sorry. It still counts as a ration, at a price.`
     :`${esc(lotName(l))}: ${fmt(unitMax)} ${esc(unitName)} on hand.`;
   const each=byRation?`Each ${esc(it.w)} is ${fmt(it.rat)} ${it.water?"water ":""}ration${it.rat===1?"":"s"}; a part-eaten one is used up whole. `:"";
   const opening=l.form==="cargo"&&!sellCargo?`${esc(cap(it.cargoPl||"cargo units"))} are opened only as needed, and the rest join the loose stores.`:"";
@@ -1214,26 +1891,31 @@ function portionDialog(lid,mode){ // mode: eat | use | spoil | sell
     let flavor=null;
     act(()=>{
       const l=lotById(lid);if(!l)return false;
-      if(sellCargo){const k=Math.min(l.units,Math.ceil(a));if(!k)return false;l.units-=k;flavor=deal("sell",SELL_LINES);logLine(`Sold ${camt(it,k)} of ${lc(it.name)}. ${flavor}`);return;}
+      if(sellCargo){const k=Math.min(l.units,Math.ceil(a));if(!k)return false;l.units-=k;jot("rem",l.item,lotSingles(l,k));flavor=deal("sell",SELL_LINES);logLine(`Sold ${camt(it,k)} of ${lc(it.name)}. ${flavor}`);return;}
       const have=avail(l,sp);if(have<=0)return false;
       const n=Math.min(have,byRation?Math.ceil(a/it.rat-1e-9):Math.ceil(a));
       const opened=take(l,n,sp);
       if(opened)logLine(say("open",camt(it,opened),lc(it.name)));
       const A=amt(it,n),N=lc(it.name),R=rationWords(it,n);
+      jot("rem",l.item,n);
       if(how==="sell"){flavor=deal("sell",SELL_LINES);logLine(`Sold ${A} of ${N}. ${flavor}`);}
-      else if(how==="use")logLine(`Used ${A} of ${N}.`);
+      else if(how==="use")logLine(say("use",A,N));
       else if(how==="toss")logLine(say("toss",A,N));
-      else if(sp)logLine(say("eatSpoiled",A,N,R,s?`DC ${s.dc} Con${s.dis?", or "+s.dis:", or poisoned"}`:"none needed"),true);
-      else if(it.rat)logLine(say(it.water?"drink":"eat",A,N,R));
-      else logLine(`Used ${A} of ${N}.`);
+      else if(sp){ateRations(it,n);logLine(say("eatSpoiled",A,N,R,s?`DC ${s.dc} Con${s.dis?", or "+s.dis:", or poisoned"}`:"none needed"),true);}
+      else if(it.rat){ateRations(it,n);logLine(say(it.water?"drink":"eat",A,N,R));}
+      else logLine(say("use",A,N));
     },()=>{if(flavor)toast(flavor);});
   },{eat:it.water?"Drink":(it.rat?"Eat":"Use"),use:"Use",spoil:"Done",sell:"Sell"}[mode]);
 }
 
-$("holdBody").onclick=e=>{
-  const b=e.target.closest("button");if(!b)return;
-  const lid=+b.dataset.id;const l=lotById(lid);if(!l)return;const it=item(l.item);
-  const a=b.dataset.a;
+let amendWas={};
+function onLotClick(e){const b=e.target.closest("button[data-a]");if(!b)return;lotAction(b.dataset.a,+b.dataset.id);}
+function lotAction(a,lid){
+  const l=lotById(lid);if(!l)return;const it=item(l.item);
+  if(a==="move")return moveMenu(lid);
+  if(a==="salt")return saltDialog(lid);
+  if(a==="unload"||a==="tossGood")return dropDialog(lid,a);
+  if(a==="transfer")return transferDialog(lid);
   if(a==="eat"&&it.kind==="live"){
     const max=avail(l,false);
     ask(`<h2>To the Butcher's Block</h2><p class="sub">How many of the ${esc(it.wp)} meet their end today?</p><div class="grid"><label>Beasts</label><input type="number" name="n" min="1" max="${max}" value="1"></div><p class="note">Each yields ${fmt(it.meat)} rations of fresh, perishable meat, sound until the end of tomorrow.</p>`,fd=>{
@@ -1244,6 +1926,7 @@ $("holdBody").onclick=e=>{
         take(l,n,false);
         const meat=CAT[it.meatOf]?it.meatOf:(item(it.meatOf).id);
         addLot(meat,"loose",n*it.meat,item(meat).keep==="perish"?"perish":(item(meat).keep||"never"),true);
+        jot("rem",l.item,n);jot("add",meat,n*it.meat);
         logLine(say("butcher",amt(it,n),`${fmt(n*it.meat)} ration${n*it.meat===1?"":"s"}`,lc(item(meat).name)));
       });
     },"Butcher");
@@ -1266,7 +1949,7 @@ $("holdBody").onclick=e=>{
         const n=Math.min(l.units,wn),s=Math.min(l.spoiled,ws);if(!n&&!s)return false;
         l.units-=n;l.spoiled-=s;
         const nl={id:S.seq++,item:l.item,form:"loose",units:n*it.per,spoiled:s*it.per,die:l.die};
-        for(const p of ["spoilsOn","wet","dryOn","oil"])if(l[p]!==undefined)nl[p]=l[p];
+        for(const p of CARRY)if(l[p]!==undefined)nl[p]=l[p];
         S.lots.push(nl);
         logLine(say("open",camt(it,n+s),lc(it.name)));
       });
@@ -1276,24 +1959,339 @@ $("holdBody").onclick=e=>{
     act(()=>{const l=lotById(lid);if(!l||!l.wet)return false;l.dryOn=S.day+1;logLine(say("layout",lotAmt(l,l.units)));});
   }
   else if(a==="oil"){
-    act(()=>{const l=lotById(lid);if(!l||l.wet||l.oil)return false;l.oil=true;logLine(`${cap(lotAmt(l,l.units))} of kelp charcoal wrapped snug in oilskin.`);});
+    act(()=>{const l=lotById(lid);if(!l||l.wet||l.oil)return false;l.oil=true;logLine(say("oil",lotAmt(l,l.units)));});
+  }
+  else if(a==="stash"||a==="unstash"){
+    const into=a==="stash";
+    const unit=l.form==="cargo"?esc(it.cargoPl||"cargo units"):esc(it.useMult?"uses":it.wp);
+    ask(`<h2>${into?"Into Hiding":"Out of Hiding"}</h2><p class="sub">${into?`Slip ${esc(lc(lotName(l)))} into the smuggler's hold, where only a sharp-eyed inspector will ever find it.`:`Bring ${esc(lc(lotName(l)))} out of the smuggler's hold and back among the honest cargo.`}</p><div class="grid">${l.units>0?`<label>Sound ${unit}</label><input type="number" name="n" min="0" max="${l.units}" value="${l.units}">`:""}${l.spoiled>0?`<label>Spoiled ${unit}</label><input type="number" name="s" min="0" max="${l.spoiled}" value="${l.spoiled}">`:""}</div>`,fd=>{
+      const wn=Math.max(0,parseInt(fd.get("n"))||0),ws=Math.max(0,parseInt(fd.get("s"))||0);
+      if(!wn&&!ws)return;
+      act(()=>{
+        const l=lotById(lid);if(!l)return false;
+        const n=Math.min(l.units,wn),s=Math.min(l.spoiled,ws);if(!n&&!s)return false;
+        l.units-=n;l.spoiled-=s;
+        const nl={id:S.seq++,item:l.item,form:l.form,units:n,spoiled:s,die:l.die};
+        for(const p of CARRY)if(p!=="hid"&&l[p]!==undefined)nl[p]=l[p];
+        if(into)nl.hid=true;
+        S.lots.push(nl);
+        jot(into?"stash":"unstash",l.item,lotSingles(l,n+s));
+        logLine(say(into?"stash":"unstash",lotAmt(l,n+s),lc(it.name)));
+      },null,{guard:into});
+    },into?"Stash It":"Bring It Out");
   }
   else if(a==="edit"){
     const food=it.kind==="food";
     const keepOpts=(!food||it.keep==="never"?["never"]:it.keep==="perish"?["perish"]:DICE.concat(["turning"])).map(d=>`<option value="${d}" ${d===l.die?"selected":""}>${d==="never"?(it.kind==="live"?"Alive":"Never spoils"):d==="perish"?"Perishable":d==="turning"?"Turning":d}</option>`).join("");
     const char=l.item==="kelp-charcoal";
-    ask(`<h2>Amending the Ledger</h2><p class="sub">${esc(lotName(l))}. For the honest corrections every quartermaster must sometimes make.</p><div class="grid"><label>Sound</label><input type="number" name="u" min="0" value="${l.units}">${food?`<label>Spoiled</label><input type="number" name="s" min="0" value="${l.spoiled}">`:""}${food?`<label>Keep</label><select name="d">${keepOpts}</select>`:""}${l.die==="perish"?`<label>Spoils at end of day</label><input type="number" name="p" min="1" value="${l.spoilsOn-1}">`:""}${char?`<label>Charcoal</label><select name="c"><option value="dry" ${!l.wet&&!l.oil?"selected":""}>Dry</option><option value="oil" ${l.oil?"selected":""}>Dry, in oilskin</option><option value="wet" ${l.wet?"selected":""}>Wet</option></select>`:""}<label>Strike it out</label><label class="inline"><input type="checkbox" name="del"> Remove this lot entirely</label></div>`,fd=>{
+    amendWas={u:l.units,s:l.spoiled,d:l.die,p:l.die==="perish"?l.spoilsOn-1:NaN,c:l.wet?"wet":l.oil?"oil":"dry"};
+    const thumb=KEEPER&&food&&DICE.includes(l.die)?`<label>Next dawn</label><select name="fate"><option value="" ${!l.fate?"selected":""}>Roll as normal</option><option value="down" ${l.fate==="down"?"selected":""}>Force it to step down</option><option value="hold" ${l.fate==="hold"?"selected":""}>Let it hold fast</option></select><label></label><label class="inline"><input type="checkbox" name="fateAll" ${l.fateAll?"checked":""}> Every dawn until I change it</label>`:"";
+    ask(`<h2>Amending the Ledger</h2><p class="sub">${esc(lotName(l))}. For the honest corrections every quartermaster must sometimes make.</p><div class="grid"><label>Sound</label><input type="number" name="u" min="0" value="${l.units}">${food?`<label>Spoiled</label><input type="number" name="s" min="0" value="${l.spoiled}">`:""}${food?`<label>Keep</label><select name="d">${keepOpts}</select>`:""}${l.die==="perish"?`<label>Spoils at end of day</label><input type="number" name="p" min="1" value="${l.spoilsOn-1}">`:""}${char?`<label>Charcoal</label><select name="c"><option value="dry" ${!l.wet&&!l.oil?"selected":""}>Dry</option><option value="oil" ${l.oil?"selected":""}>Dry, in oilskin</option><option value="wet" ${l.wet?"selected":""}>Wet</option></select>`:""}${thumb}<label>Strike it out</label><label class="inline"><input type="checkbox" name="del"> Remove this lot entirely</label></div>${thumb?`<p class="note">Only the Keeper sees the thumb on the scale. At dawn the lot reads exactly as though the dice fell that way.</p>`:""}`,fd=>{
+      const fate=fd.get("fate"),fateAll=!!fd.get("fateAll"),hasThumb=fd.has("fate");
       const del=!!fd.get("del"),u=Math.max(0,parseFloat(fd.get("u"))||0),sv=Math.max(0,parseFloat(fd.get("s"))||0),d=fd.get("d")||l.die,p=parseInt(fd.get("p")),c=fd.get("c");
+      // Only what was actually changed in the form is written, so a shipmate's meal or a dawn
+      // that came in while the form was open is never quietly undone.
+      const was=amendWas;
       act(()=>{
         const l=lotById(lid);if(!l)return false;
         if(del){S.lots=S.lots.filter(x=>x!==l);logLine(say("amend",lc(lotName(l))));return;}
-        l.units=u;if(food)l.spoiled=sv;l.die=d;
-        if(d==="perish")l.spoilsOn=(p||S.day)+1;
-        if(c){l.wet=c==="wet";l.oil=c==="oil";if(!l.wet)delete l.dryOn;}
+        if(u!==was.u)l.units=u;
+        if(food&&sv!==was.s)l.spoiled=sv;
+        if(d!==was.d)l.die=d;
+        if(l.die==="perish"&&(d!==was.d||p!==was.p))l.spoilsOn=(p||S.day)+1;
+        if(c&&c!==was.c){l.wet=c==="wet";l.oil=c==="oil";if(!l.wet)delete l.dryOn;}
+        if(hasThumb){if(fate&&DICE.includes(l.die)){l.fate=fate;l.fateAll=fateAll;}else{delete l.fate;delete l.fateAll;}}
         logLine(say("amend",lc(lotName(l))));
       },null,{guard:true});
     },"Amend");
   }
+}
+/* ---------------- The Move menu ---------------- */
+function moveMenu(lid){
+  const l=lotById(lid);if(!l)return;const it=item(l.item);const st=here();
+  const opts=[];
+  if(l.units>0)opts.push(["sell","Sell"],["unload",st?"Take It Out":"Unload to the Dock"],["tossGood",st?"Throw It Out":"Toss Overboard"]);
+  opts.push(["transfer","Transfer to Another Ship or Storehouse"]);
+  if(!st&&ship().smuggler&&!l.hid)opts.push(["stash","Stash in the Smuggler's Hold"]);
+  if(l.hid)opts.push(["unstash","Bring Out of the Smuggler's Hold"]);
+  ask(`<h2>Move ${esc(lotName(l))}</h2><p class="sub">Where is it bound?</p><div class="choices">${opts.map(([v,t],i)=>`<label class="inline choice"><input type="radio" name="dest" value="${v}" ${i===0?"checked":""}> ${esc(t)}</label>`).join("")}</div>`,fd=>{
+    const v=fd.get("dest");if(!v)return;
+    if(v==="sell")return portionDialog(lid,"sell");
+    lotAction(v,lid);
+  },"Onward");
+}
+function countFields(l,defAll){
+  const it=item(l.item);const unit=l.form==="cargo"?esc(it.cargoPl||"cargo units"):esc(it.useMult?"uses":it.wp);
+  return `${l.units>0?`<label>Sound ${unit}</label><input type="number" name="n" min="0" max="${l.units}" value="${defAll?l.units:Math.min(1,l.units)}">`:""}${l.spoiled>0?`<label>Spoiled ${unit}</label><input type="number" name="s" min="0" max="${l.spoiled}" value="${defAll||!l.units?l.spoiled:0}">`:""}`;
+}
+function dropDialog(lid,mode){
+  const l=lotById(lid);if(!l)return;const it=item(l.item);const st=here();
+  const head=mode==="unload"?(st?"Taking It Out":"Down the Gangplank"):(st?"Out It Goes":"Over the Side");
+  const lead=mode==="unload"?(st?"Carry it out of the storehouse, with no shells changing hands.":"Set it ashore on the dock, with no shells changing hands."):(st?"Throw it out for good.":"Give it to the sea for good.");
+  ask(`<h2>${head}</h2><p class="sub">${esc(lotName(l))}. ${lead}</p><div class="grid">${countFields(l,true)}</div>`,fd=>{
+    const wn=Math.max(0,parseInt(fd.get("n"))||0),ws=Math.max(0,parseInt(fd.get("s"))||0);if(!wn&&!ws)return;
+    act(()=>{
+      const l=lotById(lid);if(!l)return false;
+      const n=Math.min(l.units,wn),s=Math.min(l.spoiled,ws);if(!n&&!s)return false;
+      l.units-=n;l.spoiled-=s;jot("rem",l.item,lotSingles(l,n+s));
+      const A=lotAmt(l,n+s),N=lc(it.name);
+      if(st)logLine(mode==="unload"?`${cap(A)} of ${N} taken out of the storehouse.`:`${cap(A)} of ${N} thrown out.`);
+      else logLine(say(mode==="unload"?"unload":"tossGood",A,N));
+    });
+  },mode==="unload"?(st?"Take It Out":"Unload"):(st?"Throw It Out":"Toss It"));
+}
+function transferDialog(lid){
+  const l=lotById(lid);if(!l)return;const it=item(l.item);
+  const dests=Object.keys(SHIPS).filter(id=>id!==SHIPID).sort((a,b)=>(isStore(SHIPS[a])-isStore(SHIPS[b]))||shipName(a).localeCompare(shipName(b)));
+  if(!dests.length){toast("There is nowhere else in the Register to send it.");return;}
+  ask(`<h2>Across to Another</h2><p class="sub">${esc(lotName(l))}. Send it to another ship or storehouse in the Register. Once sent, it cannot be undone from here.</p><div class="grid"><label>Bound for</label><select name="to">${dests.map(id=>`<option value="${esc(id)}">${esc(shipName(id))}${isStore(SHIPS[id])?" (storehouse)":""}</option>`).join("")}</select>${countFields(l,true)}</div>`,async fd=>{
+    const to=fd.get("to"),wn=Math.max(0,parseInt(fd.get("n"))||0),ws=Math.max(0,parseInt(fd.get("s"))||0);if(!to||(!wn&&!ws))return;
+    sendAcross(lid,to,wn,ws,false);
+  },"Send It");
+}
+async function sendAcross(lid,to,wn,ws,force){
+  const l0=lotById(lid);if(!l0)return;const it=item(l0.item);
+  let dh,ds;try{[dh,ds]=await Promise.all([DB.get("holds/"+to),DB.get("ships/"+to)]);}catch(e){toast("The ledger could not be reached.");return;}
+  if(!dh||!ds){toast(shipName(to)+" is no longer in the Register.");return;}
+  const n0=Math.min(l0.units,wn),s0=Math.min(l0.spoiled,ws);
+  const add=(l0.form==="cargo"||l0.form==="solo")?(n0+s0)*(it.f||0):0;
+  const sv=S,si=SHIPID;S=normalize(dh);SHIPID=to;const destF=holdF();S=sv;SHIPID=si;
+  const DM=typeof ds.maxTons==="number"?Math.round(ds.maxTons*5):null;
+  if(!force&&DM!=null&&add>0&&destF+add>DM){
+    if(KEEPER)confirmBox("Overload "+shipName(to)+"?","This would bring "+shipName(to)+" to "+tonsText(destF+add)+" of "+tonsW(DM)+". Send it anyway?","Send it anyway",()=>sendAcross(lid,to,wn,ws,true));
+    else snark("overload","Room left in "+shipName(to)+": "+tonsW(Math.max(0,DM-destF))+".");
+    return;
+  }
+  let moved=null,srcDay=0,def=null;const from=shipName(SHIPID),toName=shipName(to);
+  act(()=>{
+    const l=lotById(lid);if(!l)return false;
+    const n=Math.min(l.units,wn),s=Math.min(l.spoiled,ws);if(!n&&!s)return false;
+    l.units-=n;l.spoiled-=s;
+    moved={item:l.item,form:l.form,units:n,spoiled:s,die:l.die};
+    for(const p of ["spoilsOn","wet","dryOn","oil"])if(l[p]!==undefined)moved[p]=l[p];
+    srcDay=S.day;def=S.custom[l.item]?clone(S.custom[l.item]):null;
+    jot("rem",l.item,lotSingles(l,n+s));
+    logLine(say("transferOut",lotAmt(l,n+s),lc(it.name),toName));
+  },async()=>{
+    if(!moved)return;
+    HIST.length=0; // the cargo is in two ledgers now; nothing before this can be undone from here
+    const m=moved;
+    try{
+      let full=false;
+      const r=await onHold(to,()=>{
+        full=false;let a=m; // what lands, perhaps renamed
+        if(def){
+          const same=(a,b)=>{const x=Object.assign({},a),y=Object.assign({},b);delete x.id;delete y.id;return canon(x)===canon(y);};
+          if(!S.custom[a.item])S.custom[a.item]=def;
+          else if(!same(S.custom[a.item],def)){const nid=a.item+"-"+(S.seq++);S.custom[nid]=Object.assign({},def,{id:nid});a=Object.assign({},a,{item:nid});}
+        }
+        const nl=Object.assign({},a,{id:S.seq++});
+        if(nl.spoilsOn!==undefined)nl.spoilsOn=S.day+(m.spoilsOn-srcDay);
+        if(nl.dryOn!==undefined)nl.dryOn=S.day+(m.dryOn-srcDay);
+        const f0=holdF();S.lots.push(nl);
+        if(!force&&DM!=null&&holdF()>DM&&holdF()>f0){full=true;return false;}
+        jot("add",a.item,lotSingles(nl,m.units+m.spoiled));
+        logLine(say("transferIn",lotAmt(nl,m.units+m.spoiled),lc(item(a.item).name),from));
+      });
+      if(!r.committed)throw new Error(full?"full":"not committed");
+      // Undo works by putting the hold back as it was, which would conjure a second copy of what was sent.
+      // So a transfer is a line drawn under the past: nothing before it can be undone from here.
+      HIST.length=0;
+      toast("Sent across to "+toName+".");
+    }catch(e){
+      console.error(e);
+      // It never arrived: put it back where it came from.
+      act(()=>{S.lots.push(Object.assign({},m,{id:S.seq++}));jot("add",m.item,lotSingles(m,m.units+m.spoiled));logLine(`${cap(lotAmt(m,m.units+m.spoiled))} of ${lc(it.name)} could not reach ${toName}, and came back aboard.`);},()=>{HIST.length=0;});
+      toast(e&&e.message==="full"?toName+" filled up in the meantime, so it came back.":"It could not reach "+toName+", so it came back.");
+    }
+  });
+}
+
+/* ---------------- Catching rain ---------------- */
+const CANVAS={Small:1,Medium:2,Large:3,Huge:4};
+$("rainBtn").onclick=()=>{
+  const max=CANVAS[ship().size||"Medium"]||2;
+  ask(`<h2>Set Out the Canvases</h2><p class="sub">Stretch the rain canvases across the deck and let the sky fill the barrels.</p><div class="grid"><label>The rain</label><select name="str"><option value="light">Light rain (1d4 a canvas)</option><option value="medium">Medium rain (2d4 a canvas)</option><option value="heavy">Heavy rain (4d4 a canvas)</option></select><label>Canvases</label><input type="number" name="c" min="1" max="${max}" value="${max}"></div><p class="note">A ${esc((ship().size||"Medium").toLowerCase())} ship can rig ${max} canvas${max===1?"":"es"}. Caught rainwater keeps on a d8, Hardy and Stagnant.</p>`,fd=>{
+    const str=fd.get("str"),c=Math.min(max,Math.max(1,parseInt(fd.get("c"))||1));
+    const dice={light:1,medium:2,heavy:4}[str]||1;
+    act(()=>{
+      let g=0;for(let i=0;i<c*dice;i++)g+=rnd(4);
+      addLot("water","loose",g,"d8",true);jot("add","water",g);
+      logLine(say("rain",str,amt(CAT.water,g)));
+    },()=>toast("The canvases caught the rain."));
+  },"Catch It");
+};
+
+/* ---------------- Salting meat ---------------- */
+function saltDialog(lid){
+  const l=lotById(lid);if(!l)return;const it=item(l.item);
+  const have=avail(l,false),salt=itemAvail("salt"),max=Math.min(have,salt);
+  const keep=S.day<=l.spoilsOn-2?"d20":"d12";
+  if(salt<=0){ask(`<h2>No Salt Aboard</h2><p class="sub">Salting takes a pound of salt for every ration of meat, and there is none in the ${here()?"storehouse":"hold"}.</p>`,()=>{},"Understood",true);return;}
+  ask(`<h2>Into the Salt</h2><p class="sub">${esc(lotName(l))}: ${fmt(have)} ration${have===1?"":"s"} of fresh meat, and ${fmt(salt)} lb of salt to hand. Each ration takes a pound.</p><div class="grid"><label>Rations to salt</label><input type="number" name="n" min="1" max="${max}" value="${max}"></div><p class="note">Salted ${S.day<=l.spoilsOn-2?"while it's fresh":"a day late"}, it becomes ${esc(item(SALTS[l.item]).name.toLowerCase())} that keeps on a ${keep}, Preserved.</p>`,fd=>{
+    const want=Math.max(1,parseInt(fd.get("n"))||1);
+    act(()=>{
+      const l=lotById(lid);if(!l||!saltable(l))return false;
+      const n=Math.min(want,avail(l,false),itemAvail("salt"));if(n<=0)return false;
+      const k=S.day<=l.spoilsOn-2?"d20":"d12";
+      take(l,n,false);takeAcross("salt",n);
+      const nl=addLot(SALTS[l.item],"loose",n,k,true);if(l.hid)nl.hid=true;
+      jot("rem",l.item,n);jot("rem","salt",n);jot("add",SALTS[l.item],n);
+      logLine(say("salt",`${fmt(n)} ration${n===1?"":"s"}`,lc(it.name),`${fmt(n)} lb`));
+    });
+  },"Salt It");
+}
+
+$("holdBody").onclick=onLotClick;
+$("smugBody").onclick=onLotClick;
+
+/* ---------------- Seizing and recovering the hidden cargo ---------------- */
+$("seizeBtn").onclick=()=>{
+  if(!canKeep()){snark("papers");return;}
+  if(!S.lots.some(l=>l.hid)){toast("There is nothing in the smuggler's hold to seize.");return;}
+  confirmBox("Seize the Hidden Cargo","The inspectors have found the smuggler's hold. Take everything in it? It is set aside, not lost, and can be recovered if the crew wins it back.","Seize it",()=>act(()=>{
+    const hid=S.lots.filter(l=>l.hid);if(!hid.length)return false;
+    S.lots=S.lots.filter(l=>!l.hid);
+    S.seized.push({id:S.seq++,at:Date.now(),day:S.day,lots:hid});
+    for(const l of hid)jot("rem",l.item,lotSingles(l,(l.units||0)+(l.spoiled||0)));
+    const list=hid.map(l=>lotAmt(l,(l.units||0)+(l.spoiled||0))+" of "+lc(item(l.item).name));
+    logLine(say("seize",list.length>1?list.slice(0,-1).join(", ")+" and "+list[list.length-1]:list[0]),true);
+  }));
+};
+$("seizedList").onclick=e=>{
+  const b=e.target.closest("button[data-recover]");if(!b)return;
+  if(!canKeep()){snark("papers");return;}
+  const zid=+b.dataset.recover;
+  confirmBox("Recover the Seized Cargo","Return everything seized on that day to the smuggler's hold, as though it had never left?","Recover it",()=>act(()=>{
+    const z=S.seized.find(x=>x.id===zid);if(!z)return false;
+    for(const l of z.lots){S.lots.push(Object.assign({},l,{id:S.seq++,hid:true}));jot("add",l.item,lotSingles(l,(l.units||0)+(l.spoiled||0)));}
+    S.seized=S.seized.filter(x=>x.id!==zid);
+    logLine(say("recover"));
+  },null,{guard:true}));
+};
+
+/* ---------------- Cooking from the Recipe Book on the site ---------------- */
+// The larder reads the site itself, so a recipe appears here as soon as it is published and linked
+// in the Recipe Book, and disappears again if it is drafted or its link is commented out.
+const SITE_BASE=(()=>{const p=location.pathname,i=p.lastIndexOf("/static/");return location.protocol.startsWith("http")&&i>=0?location.origin+p.slice(0,i+1):null;})();
+const ALIASES={"dried figs":["dried-figs-or-raisins"],"raisins":["dried-figs-or-raisins"],"dried beans":["dried-beans-lentils-or-chickpeas"],"dried lentils":["dried-beans-lentils-or-chickpeas"],"lentils":["dried-beans-lentils-or-chickpeas"],"chickpeas":["dried-beans-lentils-or-chickpeas"],"barley":["wheat-or-barley"],"wheat":["wheat-or-barley"],"dried squid":["dried-squid-or-cuttlefish"],"dried cuttlefish":["dried-squid-or-cuttlefish"],"coffee beans":["coffee"],"tea leaves":["tea"],"salted beef or fish":["salted-beef","salted-or-smoked-fish"],"salted fish":["salted-or-smoked-fish"],"smoked fish":["salted-or-smoked-fish"],"pig":["live-pig"],"pigs":["live-pig"],"water":["water"]};
+function findItems(name){
+  name=lc(name).trim().replace(/\.$/,"");
+  if(ALIASES[name])return ALIASES[name].filter(id=>item(id));
+  const all=CATALOG.concat(Object.values(S.custom));
+  const forms=[name,name.replace(/ies$/,"y"),name.replace(/es$/,""),name.replace(/s$/,"")];
+  for(const f of forms){const hit=all.filter(i=>lc(i.name)===f&&i.kind!=="live");if(hit.length)return hit.map(i=>i.id);}
+  for(const f of forms){const hit=all.filter(i=>lc(i.name)===f);if(hit.length)return hit.map(i=>i.id);}
+  return [];
+}
+function parseIngredient(raw){
+  const s=raw.replace(/\s+/g," ").trim().replace(/^\d+\)\s*/,"").replace(/\.$/,"");
+  let qty,unit="",name,paren="",m;
+  if((m=s.match(/^(\d+(?:\.\d+)?)\s+water rations?$/i))){qty=+m[1];unit="rations";name="water";}
+  else if((m=s.match(/^(\d+(?:\.\d+)?)\s+(.+?)\s+of\s+(.+)$/i))){qty=+m[1];unit=lc(m[2]);name=m[3];}
+  else if((m=s.match(/^(\d+(?:\.\d+)?)\s+dozen\s+(.+)$/i))){qty=+m[1];unit="dozen";name=m[2];}
+  else if((m=s.match(/^(\d+(?:\.\d+)?)\s+([^(]+?)\s*(?:\((.*)\))?$/))){qty=+m[1];name=m[2];paren=m[3]||"";}
+  else return {text:s,alts:[]};
+  const alts=[];
+  for(const id of findItems(name)){
+    const it=item(id);
+    const n=/^rations?$/.test(unit)&&it.rat>0?Math.ceil(qty/it.rat-1e-9):qty;
+    alts.push({id,n});
+    if(it.kind==="live"&&it.meatOf&&item(it.meatOf))alts.push({id:it.meatOf,n:qty*(it.meat||0)});
+  }
+  return {text:s,alts};
+}
+function parseRecipe(name,doc,text){
+  let lines=[];
+  if(doc){
+    const hs=[...doc.querySelectorAll("h1,h2,h3,h4")];
+    const h=hs.find(x=>/^\s*ingredients\s*$/i.test(x.textContent));
+    for(let el=h&&h.nextElementSibling;el&&!/^H[1-4]$/.test(el.tagName);el=el.nextElementSibling){
+      el.querySelectorAll("li").forEach(li=>lines.push(li.textContent));
+      if(el.tagName==="P")el.textContent.split("\n").forEach(x=>{if(/^\s*\d+\)\s/.test(x))lines.push(x);});
+    }
+    text=(doc.querySelector("article")||doc.body).textContent;
+  }
+  text=String(text||"");
+  if(!lines.length){
+    const i=text.search(/ingredients/i),j=text.search(/makes\s+\d/i);
+    if(i>=0)lines=text.slice(i+11,j>i?j:undefined).split(/\s*\d+\)\s+/).map(x=>x.trim()).filter(Boolean);
+  }
+  const mk=text.match(/Makes\s+(\d+)\s+(servings?|pots?)/i),mugs=text.match(/\((\d+)\s+mugs?\)/i);
+  const props=(text.match(/Properties:\**\s*([A-Za-z ,]+)/i)||[])[1]||"";
+  const spoil=["Fishy","Rancid","Stagnant","Sour"].find(p=>new RegExp(p,"i").test(props))||"Rancid";
+  const diff=((text.match(/Difficulty:\**\s*([A-Za-z]+)/i)||[])[1])||"";
+  const brew=!!mugs;
+  return {name,difficulty:diff,servings:brew?+mugs[1]:(mk?+mk[1]:1),brew,drink:brew||spoil==="Stagnant"||spoil==="Sour",spoil,ingredients:lines.map(parseIngredient)};
+}
+async function loadRecipes(){
+  if(!SITE_BASE)throw new Error("The Recipe Book can only be read when the larder is opened from the site.");
+  const res=await fetch(SITE_BASE+"static/contentIndex.json",{cache:"no-cache"});
+  if(!res.ok)throw new Error("The site's page index could not be read.");
+  const ci=await res.json();
+  const entries=Object.entries(ci);
+  const idx=entries.find(([k,e])=>e&&/(^|\/)recipe book\/index\.md$/i.test(e.filePath||""));
+  if(!idx)throw new Error("The Recipe Book was not found on the site.");
+  const dir=idx[1].filePath.replace(/index\.md$/i,"");
+  const norm=x=>lc(decodeURIComponent(String(x||""))).replace(/^\.?\//,"").replace(/#.*$/,"").replace(/\.html$/,"");
+  const links=(idx[1].links||[]).map(norm);
+  const list=entries.filter(([k,e])=>e&&e.filePath&&e.filePath.startsWith(dir)&&e.filePath!==idx[1].filePath&&(!links.length||links.includes(norm(k))||links.includes(norm(e.slug))));
+  const out=[];
+  for(const [k,e] of list){
+    const name=e.title||e.filePath.split("/").pop().replace(/\.md$/,"");
+    let doc=null;
+    for(const u of [SITE_BASE+k+".html",SITE_BASE+k]){
+      try{const r=await fetch(encodeURI(u).replace(/'/g,"%27"),{cache:"no-cache"});if(r.ok){doc=new DOMParser().parseFromString(await r.text(),"text/html");break;}}catch(x){}
+    }
+    const rec=parseRecipe(name,doc,e.content);
+    if(rec.ingredients.length)out.push(rec);
+  }
+  return out.sort((a,b)=>a.name.localeCompare(b.name));
+}
+function bestAlt(ing){
+  for(const a of ing.alts)if(itemAvail(a.id)>=a.n)return a;
+  return null;
+}
+function takeUrgent(id,n){
+  let got=0;
+  const lots=S.lots.filter(l=>l.item===id&&l.units>0&&!l.hid).sort((a,b)=>urgency(a)-urgency(b)||(a.form==="cargo")-(b.form==="cargo"));
+  for(const l of lots){if(got>=n)break;const k=Math.min(avail(l,false),n-got);take(l,k,false);got+=k;}
+  return got;
+}
+$("cookBtn").onclick=async()=>{
+  toast("Opening the Recipe Book...");
+  let recs;
+  try{recs=await loadRecipes();}
+  catch(e){if(SITE_BASE)console.error(e);ask(`<h2>The Recipe Book Is Closed</h2><p class="sub">${esc(e.message||"The Recipe Book could not be read.")}</p>`,()=>{},"Understood",true);return;}
+  if(!recs.length){ask(`<h2>No Recipes Yet</h2><p class="sub">No published recipe could be read from the Recipe Book.</p>`,()=>{},"Understood",true);return;}
+  ask(`<h2>To the Galley</h2><p class="sub">Choose a recipe from the Recipe Book. Ingredients come from the ${here()?"storehouse":"main hold"}, whatever is closest to spoiling first.</p>
+    <div class="grid"><label>Recipe</label><select name="r">${recs.map((r,i)=>`<option value="${i}">${esc(r.name)}${r.difficulty?` (${esc(r.difficulty)})`:""}</option>`).join("")}</select></div>
+    <div id="cookInfo"></div>
+    <div class="grid"><label>Big Pot</label><label class="inline"><input type="checkbox" name="big"> Half again as many servings</label>
+    <label>Make Do</label><label class="inline"><input type="checkbox" name="makedo"> Cook with one ingredient missing (no third effect)</label>
+    <label>How it turned out</label><select name="out"><option value="">Not recorded</option><option value="1">Effect 1</option><option value="2">Effect 2</option><option value="3">Effect 3</option><option value="short">Short</option><option value="bust">Bust</option></select></div>`,fd=>{
+    const r=recs[+fd.get("r")];if(!r)return;
+    const big=!!fd.get("big"),makedo=!!fd.get("makedo"),out=fd.get("out");
+    const missing=r.ingredients.filter(g=>!bestAlt(g));
+    if(missing.length>(makedo?1:0)){
+      ask(`<h2>Not Enough in the Larder</h2><p class="sub">${esc(r.name)} still wants: ${esc(missing.map(g=>g.text).join("; "))}.${missing.length===1&&!makedo?" Tick Make Do to cook without it.":""}</p>`,()=>{},"Understood",true);return;
+    }
+    act(()=>{
+      const used=[];
+      for(const g of r.ingredients){const a=bestAlt(g);if(!a)continue;takeUrgent(a.id,a.n);jot("rem",a.id,a.n);used.push(a);}
+      const id="dish-"+slug(r.name);
+      if(!S.custom[id]||!S.custom[id].dish)S.custom[id]={id,name:r.name,cat:"Custom",kind:"food",dish:true,single:r.brew?"Mug":"Serving",w:r.brew?"mug":"serving",wp:r.brew?"mugs":"servings",rat:r.brew?0:1,water:r.drink,keep:"perish",how:"Perishable",spoil:r.spoil,f:0};
+      const n=big?Math.floor(r.servings*1.5):r.servings;
+      addLot(id,"loose",n,"perish",true);jot("add",id,n);
+      logLine(say("cook",amt(S.custom[id],n),r.name)+(out&&COOK_END[out]?" "+COOK_END[out]:""));
+    },()=>toast("Something good is coming off the stove."));
+  },"Cook It");
+  const show=()=>{
+    const r=recs[+dform.querySelector("select[name=r]").value];if(!r)return;
+    $("cookInfo").innerHTML=`<ul class="ings">${r.ingredients.map(g=>{const a=bestAlt(g);const it=a&&item(a.id);return `<li class="${a?"ok":"no"}">${a?"✓":"✗"} ${esc(g.text)}${!g.alts.length?' <span class="tag">(not in the ledger)</span>':a?` <span class="tag">(${esc(lc(it.name))}, ${fmt(itemAvail(a.id))} on hand)</span>`:` <span class="tag">(not enough aboard)</span>`}</li>`;}).join("")}</ul><p class="note">Makes ${r.servings} ${r.brew?"mugs":"servings"}${r.brew?", which don't count as rations":r.drink?", each a water ration":", each a food ration"}. Perishable and ${esc(r.spoil)}.</p>`;
+    if(panelMode())placePanel();
+  };
+  dform.querySelector("select[name=r]").onchange=show;show();
 };
 
 /* ---------------- Writing something new ---------------- */
@@ -1330,7 +2328,7 @@ function newCustom(){
     if(kind==="supply"){if(fd.get("ammo"))def.ammo=true;if(fd.get("retrieve"))def.retrieve=true;}
     if(kind==="live"){def.meat=Math.max(0,parseInt(fd.get("meat"))||0);def.meatOf=fd.get("meatOf");}
     let newId=null;
-    act(()=>{newId="custom-"+slug(name)+"-"+(S.seq++);S.custom[newId]=Object.assign({id:newId},def);},()=>{fillItems(true);if(newId&&S.custom[newId]){itemSel.value=newId;fillItem();toast(name+" is written into the catalog. Choose how many, and stow it below.");}});
+    act(()=>{newId="custom-"+slug(name)+"-"+(S.seq++)+Math.random().toString(36).slice(2,6);S.custom[newId]=Object.assign({id:newId},def);},()=>{fillItems(true);if(newId&&S.custom[newId]){itemSel.value=newId;fillItem();toast(name+" is written into the catalog. Choose how many, and stow it below.");}});
   },"Add to the Catalog");
   const sync=()=>{
     const k=dform.querySelector("select[name=kind]").value,s=dform.querySelector("select[name=stow]").value;
@@ -1340,10 +2338,71 @@ function newCustom(){
   dform.querySelector("select[name=kind]").onchange=sync;dform.querySelector("select[name=stow]").onchange=sync;sync();
 }
 
+/* ---------------- The Storehouse Deeds ---------------- */
+function deedsDialog(){
+  const s=ship();
+  const prod=toArr(s.production).filter(Boolean);
+  ask(`<h2>The Storehouse Deeds</h2><p class="sub">${esc(shipFacts(s))}${s.test?" · a test storehouse":""} · ${tonsW(holdF())} stored</p>
+    ${prod.length?`<p class="note">It produces: ${esc(prod.map(p=>prodWords(p)).join("; "))}.</p>`:""}
+    <div class="grid"><label>Its name</label><div class="row"><input type="text" name="rename" data-enter="button[value=x-rename]" maxlength="70" value="${esc(shipName(SHIPID))}"><button class="sm" type="submit" value="x-rename">Rename It</button></div></div>
+    <div class="row"><button class="sm" type="submit" value="x-adv">Advanced Options</button></div>`,()=>{},"Close",true);
+  dform.querySelector("button[value=x-rename]").onclick=async ev=>{
+    ev.preventDefault();
+    if(!canKeep()){dlg.close();snark("deeds");return;}
+    const v=dform.querySelector("input[name=rename]").value.trim();if(!v){toast("A storehouse must have a name.");return;}
+    try{await DB.update({[`ships/${SHIPID}/name`]:v});dlg.close();toast("It shall be known as "+v+".");}catch(e){console.error(e);toast("The Register would not take the new name.");}
+  };
+  dform.querySelector("button[value=x-adv]").onclick=ev=>{ev.preventDefault();dlg.close();advancedDeeds();};
+}
+function prodWords(p){const it=item(p.item);const q=Math.max(1,+p.qty||1);return `${p.form==="cargo"&&it.per?camt(it,q):amt(it,q)} of ${lc(it.name)}, ${EVERY[+p.every||1]||"daily"}`;}
+function advancedDeeds(){
+  const s=ship();
+  if(!canKeep()){snark("deeds");return;}
+  const prod=toArr(s.production).filter(Boolean);
+  const items=CATALOG.concat(Object.values(S.custom).filter(c=>!c.dish));
+  const opts=CATS.filter(c=>items.some(i=>i.cat===c)).map(c=>`<optgroup label="${esc(c)}">${items.filter(i=>i.cat===c).map(i=>`<option value="${esc(i.id)}">${esc(i.name)}</option>`).join("")}</optgroup>`).join("");
+  ask(`<h2>Advanced Options</h2><p class="sub">The particulars of ${esc(shipName(SHIPID))}, as written in the Register.</p>${storeFields(s,false)}
+    <h3 class="sub3">What It Produces</h3>
+    ${prod.length?`<table><tbody>${prod.map((p,i)=>`<tr><td>${esc(prodWords(p))}</td><td style="text-align:right"><button class="sm danger" type="submit" value="x-delprod-${i}">Remove</button></td></tr>`).join("")}</tbody></table>`:`<p class="note">Nothing yet.</p>`}
+    <div class="grid"><label>Add</label><select name="pitem">${opts}</select><label>How much</label><div class="row"><input type="number" name="pqty" min="1" value="1" style="width:80px"><select name="pform"><option value="loose">loose</option><option value="cargo">cargo units</option></select><select name="pevery"><option value="1">daily</option><option value="5">weekly (5 days)</option><option value="25">monthly (25 days)</option></select><button class="sm" type="submit" value="x-addprod">Add It</button></div></div>
+    <div class="grid"><label>Test storehouse</label><div class="row"><span class="tag">${s.test?"It is a test storehouse.":"It is a real storehouse."}</span><button class="sm" type="submit" value="x-test">${s.test?"Make It Real":"Make It a Test Storehouse"}</button></div></div>`,async fd=>{
+    const v=readStore(fd);const id=SHIPID;
+    const up={[`ships/${id}/port`]:v.port,[`ships/${id}/hearth`]:v.hearth,[`ships/${id}/battery`]:v.battery};
+    if(v.maxTons!==undefined)up[`ships/${id}/maxTons`]=v.maxTons;
+    else up[`ships/${id}/maxTons`]=null;
+    try{await DB.update(up);toast("Its deeds are amended.");}catch(e){console.error(e);toast("The Register would not accept those deeds.");}
+  },"Save the Deeds");
+  // Production is changed against the Register as it stands now, so a shipmate's line is never lost,
+  // and only the particulars you actually changed in the form are written with it.
+  const v0=readStore(new FormData(dform));
+  const saveProd=async change=>{
+    const v=readStore(new FormData(dform)),id=SHIPID;
+    let cur;try{cur=toArr(await DB.get(`ships/${id}/production`)).filter(Boolean);}catch(e){cur=prod;}
+    const list=change(cur);
+    const up={[`ships/${id}/production`]:list.length?list:null};
+    for(const k of ["port","hearth","battery"])if(v[k]!==v0[k])up[`ships/${id}/${k}`]=v[k];
+    if(v.maxTons!==v0.maxTons)up[`ships/${id}/maxTons`]=v.maxTons!==undefined?v.maxTons:null;
+    try{await DB.update(up);dlg.close();advancedDeeds();}catch(e){console.error(e);toast("The Register would not accept that.");}};
+  dform.querySelector("button[value=x-addprod]").onclick=ev=>{
+    ev.preventDefault();
+    const id=dform.querySelector("select[name=pitem]").value;if(!id)return;
+    const it=item(id);
+    const p={item:id,qty:Math.max(1,parseInt(dform.querySelector("input[name=pqty]").value)||1),form:dform.querySelector("select[name=pform]").value==="cargo"&&it.per?"cargo":"loose",every:+dform.querySelector("select[name=pevery]").value||1,start:S.day};
+    saveProd(cur=>cur.concat([p]));
+  };
+  dform.querySelectorAll("button[value^=x-delprod-]").forEach(b=>b.onclick=ev=>{ev.preventDefault();const gone=JSON.stringify(prod[+b.value.slice(10)]);saveProd(cur=>{const i=cur.findIndex(x=>JSON.stringify(x)===gone);return i<0?cur:cur.filter((_,k)=>k!==i);});});
+  dform.querySelector("button[value=x-test]").onclick=async ev=>{
+    ev.preventDefault();
+    if(!KEEPER){dlg.close();snark("deeds");return;}
+    try{await DB.update({[`ships/${SHIPID}/test`]:!s.test});dlg.close();toast(s.test?"It is a real storehouse now.":"It is a test storehouse now.");}catch(e){toast("Only the Keeper may do this.");}
+  };
+}
+
 /* ---------------- The Ship's Papers ---------------- */
 $("papersBtn").onclick=()=>{
+  if(here())return deedsDialog();
   const s=ship();
-  ask(`<h2>The Ship's Papers</h2><p class="sub">${esc(shipFacts(s))}${s.test?" · a test ship":""} · ${tonsText(holdF())} tons aboard</p>
+  ask(`<h2>The Ship's Papers</h2><p class="sub">${esc(shipFacts(s))}${s.test?" · a test ship":""} · ${tonsW(holdF())} aboard</p>
     <div class="grid"><label>Her name</label><div class="row"><input type="text" name="rename" data-enter="button[value=x-rename]" maxlength="70" value="${esc(shipName(SHIPID))}"><button class="sm" type="submit" value="x-rename">Rename Her</button></div></div>
     <div class="row"><button class="sm" type="submit" value="x-adv">Advanced Options</button></div>`,()=>{},"Close",true);
   dform.querySelector("button[value=x-rename]").onclick=async ev=>{
@@ -1360,9 +2419,9 @@ function advancedPapers(){
   ask(`<h2>Advanced Options</h2><p class="sub">The particulars of ${esc(shipName(SHIPID))}, as written in the Register.</p>${shipFields(s,false)}
     <div class="grid"><label>Test ship</label><div class="row"><span class="tag">${s.test?"She is a test ship.":"She is a real ship."}</span><button class="sm" type="submit" value="x-test">${s.test?"Make Her a Real Ship":"Make Her a Test Ship"}</button></div></div>`,async fd=>{
     const v=readShip(fd);const id=SHIPID;
-    const up={[`ships/${id}/fuel`]:v.fuel,[`ships/${id}/size`]:v.size};
+    const up={[`ships/${id}/fuel`]:v.fuel,[`ships/${id}/size`]:v.size,[`ships/${id}/smuggler`]:v.smuggler,[`ships/${id}/kind`]:"ship"};
     if(v.maxTons!==undefined)up[`ships/${id}/maxTons`]=v.maxTons;
-    else if(KEEPER)up[`ships/${id}/maxTons`]=null;
+    else up[`ships/${id}/maxTons`]=null;
     try{await DB.update(up);toast("Her papers are amended.");}catch(e){console.error(e);toast("The Register would not accept those papers.");}
   },"Save Her Papers");
   wireTypeFill();
@@ -1381,9 +2440,10 @@ $("shareBtn").onclick=()=>{
   const link=location.href.split("#")[0]+"#hold="+code;
   ask(`<h2>A Message in a Bottle</h2><p class="sub">Cork the state of the hold into this bottle and keep it safe, or cast it to a shipmate. Whoever opens it beholds the larder just as you left it.</p><p><b>The link</b> opens this ship with the hold already loaded:</p><textarea readonly>${esc(link)}</textarea><p><b>Or the code alone</b>, for pasting into "Receive a Bottle":</p><textarea readonly>${esc(code)}</textarea>`,()=>{},"Close",true);
   dform.querySelectorAll("textarea").forEach(t=>t.addEventListener("focus",()=>t.select()));
-  try{navigator.clipboard.writeText(link).then(()=>toast("The link is copied, corked and ready."),()=>{});}catch(e){}
+  const clipOk=!(document.featurePolicy&&document.featurePolicy.allowsFeature&&!document.featurePolicy.allowsFeature("clipboard-write"));
+  if(clipOk)try{navigator.clipboard.writeText(link).then(()=>toast("The link is copied, corked and ready."),()=>{});}catch(e){}
 };
-function uncork(n){backup("Before a bottle was uncorked").then(()=>act(()=>{const keepDawn=S.lastDawn;S=n;if(keepDawn)S.lastDawn=keepDawn;},()=>toast("The bottle is opened; the hold is restored.")));}
+function uncork(n){backup("Before a bottle was uncorked").then(()=>act(()=>{const keepDawn=S.lastDawn,seq=S.seq;S=normalize(clone(n));S.seq=Math.max(S.seq||1,seq||1);if(keepDawn)S.lastDawn=keepDawn;},()=>toast("The bottle is opened; the hold is restored.")));}
 $("loadBtn").onclick=()=>{
   ask(`<h2>Receive a Bottle</h2><p class="sub">Paste the code or the whole link from a bottle. It will replace this ship's hold${DB.local?"":" for everyone aboard"}; the hold as it is now is laid away in the Keeper's Chest first.</p><textarea name="code"></textarea>`,fd=>{
     let n;try{n=normalize(decode(String(fd.get("code")||"")));}catch(e){toast("The message is smudged beyond reading. Check the code.");return;}
@@ -1391,7 +2451,7 @@ $("loadBtn").onclick=()=>{
   },"Uncork");
 };
 $("clearLogBtn").onclick=()=>confirmBox("Clear the Log","Tear every page from the Quartermaster's Log? The hold itself is untouched.","Tear them out",()=>act(()=>{S.log=[];}));
-$("wipeBtn").onclick=()=>confirmBox("Empty the Hold","Empty the hold entirely and begin anew at day 1? Custom cargo is kept in the catalog, and the hold as it is now is laid away in the Keeper's Chest.","Empty it",()=>backup("Before the hold was emptied").then(()=>act(()=>{const c=S.custom;S=fresh();S.custom=c;})));
+$("wipeBtn").onclick=()=>confirmBox("Empty the Hold","Empty the hold entirely and begin anew at day 1? Custom cargo is kept in the catalog, and the hold as it is now is laid away in the Keeper's Chest.","Empty it",()=>backup("Before the hold was emptied").then(()=>act(()=>{const c=S.custom,seq=S.seq;S=fresh();S.custom=c;S.seq=seq;})));
 
 /* ---------------- The Keeper's Chest of saved holds ---------------- */
 let CHEST={};
@@ -1409,7 +2469,7 @@ $("chestList").onclick=e=>{
   const b=e.target.closest("button");if(!b||!b.dataset.restore)return;
   if(!canKeep()){snark("chest");return;}
   const k=b.dataset.restore,bk=CHEST[k];if(!bk)return;
-  confirmBox("Restore a Saved Hold","Return this ship's hold to how it stood on "+when(bk.at)+" (day "+bk.day+")? The hold as it is now is laid away first, so this too can be undone.","Restore it",()=>backup("Before restoring a saved hold").then(()=>act(()=>{S=normalize(bk.hold);},()=>{toast("The hold is restored.");loadChest();})));
+  confirmBox("Restore a Saved Hold","Return this ship's hold to how it stood on "+when(bk.at)+" (day "+bk.day+")? The hold as it is now is laid away first, so this too can be undone.","Restore it",()=>backup("Before restoring a saved hold").then(()=>act(()=>{const seq=S.seq;S=normalize(clone(bk.hold));S.seq=Math.max(S.seq||1,seq||1);},()=>{toast("The hold is restored.");loadChest();})));
 };
 $("pruneBtn").onclick=()=>!canKeep()?snark("chest"):confirmBox("Thin the Chest","Keep only the newest 30 saved holds of this ship, and let the older ones go?","Thin it",async()=>{
   try{const v=(await DB.get("backups/"+SHIPID))||{};const ks=Object.keys(v).sort((a,b)=>b-a).slice(30);if(!ks.length){toast("There are 30 or fewer already.");return;}const up={};ks.forEach(k=>up[`backups/${SHIPID}/${k}`]=null);await DB.update(up);toast(ks.length+" old copies let go.");loadChest();}
@@ -1417,18 +2477,24 @@ $("pruneBtn").onclick=()=>!canKeep()?snark("chest"):confirmBox("Thin the Chest",
 });
 
 /* ---------------- Opening and closing a hold ---------------- */
-function closeHold(){if(holdUnsub){holdUnsub();holdUnsub=null;}if(nameUnsub){nameUnsub();nameUnsub=null;}SHIPID=null;}
+function closeHold(){if(SHIPID&&dlg.open){onDlgOk=null;dlg.close();}if(holdUnsub){holdUnsub();holdUnsub=null;}if(nameUnsub){nameUnsub();nameUnsub=null;}SHIPID=null;}
 function showHold(id){
   closeHold();
-  SHIPID=id;S=fresh();HIST=[];holdSeen=false;lastCustomKeys="~";
+  SHIPID=id;S=fresh();HIST=[];holdSeen=false;lastCustomKeys="~";DRAWN.clear();$("intoSel").value="hold";
   $("harborView").hidden=true;$("holdView").hidden=false;$("chestList").innerHTML="";
   $("shipTitle").textContent=shipName(id);
   nameUnsub=DB.on("ships/"+id,v=>{if(v){SHIPS[id]=v;$("shipTitle").textContent=v.name||shipName(id);document.title=(v.name||shipName(id))+" | The Ship's Larder";render();}});
   holdUnsub=DB.on(holdPath(),v=>{
     if(v===null){
       if(holdSeen){toast("This ship has gone to the bottom.");go(null);return;}
-      // A ship named in the address that was never christened: christen it now.
-      DB.get("ships/"+id).then(reg=>{const up={["holds/"+id]:fresh()};if(!reg)up["ships/"+id]={name:shipName(id),created:Date.now()};return DB.update(up);}).catch(()=>{});return;
+      // A ship in the address with no hold. If she is still in the Register, give her an empty hold;
+      // if not, she was scuttled or never christened, and she must never be raised by accident.
+      DB.get("ships/"+id).then(reg=>{
+        if(SHIPID!==id)return;
+        if(reg)return DB.update({["holds/"+id]:fresh()});
+        toast("That ship is not in the Register. She may have been scuttled.");go(null);
+      }).catch(()=>{if(SHIPID===id){toast("That ship is not in the Register.");go(null);}});
+      return;
     }
     holdSeen=true;S=normalize(v);render();
   });
@@ -1449,7 +2515,7 @@ function go(id){
   try{const u=new URL(location.href);u.hash="";if(id)u.searchParams.set("ship",id);else u.searchParams.delete("ship");history.pushState(null,"",u.toString());}catch(e){}
   route();
 }
-function route(){const id=shipParam();if(id){if(id!==SHIPID)showHold(id);}else showHarbor();}
+function route(){if(dlg.open){onDlgOk=null;dlg.close();}const id=shipParam();if(id){if(id!==SHIPID)showHold(id);}else showHarbor();}
 window.addEventListener("popstate",route);
 
 /* ---------------- Setting sail ---------------- */
