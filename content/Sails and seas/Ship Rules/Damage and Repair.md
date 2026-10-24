@@ -31,7 +31,7 @@ At negative half its maximum Hull Points, the ship is damaged beyond repair and 
 A ship is an object, so healing magic doesn't work on it. Repairs take labor and spare materials.
 - During the Character Phase, a creature can take the **Repair** action: patching holes, tying ropes, fixing valves, or bailing water. This is **not** a Crew Action, so it happens immediately.
 - **Check:** DC 10 Strength or Intelligence (player's choice). The DM decides whether tool proficiencies (like carpenter's or tinker's tools) apply.
-- **Success:** Spend and roll one of the ship's Hull Dice, adding the result to its Hull Points. If a part of the ship has its own hit points (like many ranged weapons), you can add the roll to that part instead.
+- **Success:** Spend and roll one of the ship's Hull Dice, adding the result to its Hull Points. If a part of the ship has its own hit points (like many ranged weapons), you can add the roll to that part instead. Each Hull Die spent this way uses up 1 unit of [[Ship Supplies#Repair and Upkeep|repair stores]]. Without them, no field repairs can be made.
 
 # Long-Term Repairs
 Field patches won't hold forever. Proper repairs need the ship docked somewhere with room to house it and the facilities to fix it, from a beach shed for a rowboat to a city dry dock for a bigger ship. The DM decides whether a location is suitable.

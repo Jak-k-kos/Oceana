@@ -27,7 +27,7 @@
           },
           {
             "type": "day",
-            "name": "Day of Westria",
+            "name": "Day of Welestia",
             "id": "ID_2ae8b85aeb2b",
             "number": null,
             "abbreviation": "WES"
@@ -41,10 +41,10 @@
           },
           {
             "type": "day",
-            "name": "Day of Apoti",
+            "name": "Day of Apiot",
             "id": "ID_a9dba838c869",
             "number": null,
-            "abbreviation": "APO"
+            "abbreviation": "API"
           }
         ],
         "months": [
@@ -57,7 +57,7 @@
             "offset": 0
           },
           {
-            "name": "macis",
+            "name": "Macis",
             "type": "month",
             "length": 25,
             "id": "ID_3918fa2b9a6a",
@@ -73,7 +73,7 @@
             "offset": 0
           },
           {
-            "name": "osca",
+            "name": "Osca",
             "type": "month",
             "length": 25,
             "id": "ID_bada28fa5b19",

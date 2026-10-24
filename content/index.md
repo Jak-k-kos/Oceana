@@ -11,7 +11,8 @@ Welcome to the world of Oceana. The waters rose, the sea folk claimed the deep, 
 - [[Locations/Azure Plains Coalition (APC)/index|Azure Plains Coalition]]
 - [[Locations/Kingdom of Albryn/index|Kingdom of Albryn]]
 - [[Shops, Shells And Survival/House Rules|House Rules]]
-- [[The Ships Larder]]
+- [[The Ships Larder]]  ([full page ledger](https://jak-k-kos.github.io/Oceana/static/larder.html))
+- [[It Which Remembers]] ([Full Page](https://jak-k-kos.github.io/Oceana/static/oracle.html))
 
 # The Crew
 - [[Silk|Silk (Austin)]]

@@ -14,9 +14,9 @@ Damage Threshold: 10
 Weapon Slots: 3
 ***
 
-| Initiative          | Sail Stations      | Speed Unit           | Max Speed                   | Travel Speed                 |
-| ------------------- | ------------------ | -------------------- | --------------------------- | ---------------------------- |
-| <center>+8</center> | <center>6</center> | <center>20'</center> | <center>120' (90')</center> | <center>4 hexes/day</center> |
+| Initiative          | Sail Stations      | Speed Unit           | Max Speed                    | Travel Speed                 |
+| ------------------- | ------------------ | -------------------- | ---------------------------- | ---------------------------- |
+| <center>+8</center> | <center>6</center> | <center>20'</center> | <center>120' (100')</center> | <center>4 hexes/day</center> |
 ***
 Crew Members: 2/10
 Passengers: 15

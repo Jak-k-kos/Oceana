@@ -16,7 +16,7 @@ Weapon Slots: 15
 
 | Initiative          | Sail Stations       | Speed Unit           | Max Speed                    | Travel Speed                 |
 | ------------------- | ------------------- | -------------------- | ---------------------------- | ---------------------------- |
-| <center>+3</center> | <center>20</center> | <center>10'</center> | <center>200' (160')</center> | <center>7 hexes/day</center> |
+| <center>+3</center> | <center>20</center> | <center>10'</center> | <center>200' (145')</center> | <center>6 hexes/day</center> |
 ***
 Crew Members: 10/40
 Passengers: 60

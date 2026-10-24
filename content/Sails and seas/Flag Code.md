@@ -1,115 +1,112 @@
-# Special Symbols
+---
+title: Flag Code
+draft: false
+---
+# Flag Code
+Out on the open water a voice carries only so far, and a shout is swallowed by the wind long before it reaches another deck. So the ships of Oceana speak in cloth and colour. A string of flags run up the halyard can hail a friend, warn of a storm, demand a surrender or beg for help, and a sharp-eyed sailor can read it from a mile away.
+
+- [[#General Flags]]
+- [[#Reading a Signal]]
+- [[#Counting]]
 - [[#Bars|Bars (Sizes)]]
-- [[#Chevron|Chevron (Instruction)]]
-- [[#Cross|Cross (Response Flags)]]
-- [[#Direction]]
-- [[#Star|Star (types / groups)]]
+- [[#Chevrons|Chevrons (Instructions)]]
+- [[#Crosses|Crosses (Responses)]]
+- [[#Directions]]
+- [[#Stars|Stars (Types and Groups)]]
 - [[#Misc]]
 - [[#X|X (Firing Instructions)]]
+
 # General Flags
+| | Square | Dot | Triangle |
+| --- | --- | --- | --- |
+| Red | Hostile, force | Many | Attacking |
+| Orange | Storm, hazard | Sinking, dying, critical | Heading, fleeing |
+| Yellow | Cargo, goods, supplies | Weapons | In need |
+| Green | Civilian ship | Near, close | Approaching |
+| Blue | Us, ours | Friendly | Safe, all clear |
+| Purple | Unknown ship or entity, other ship | Dangerous | Capture, taken |
+| Brown | Land, port | Far, distant | Stranded, aground |
+| Black | Pirates | Hidden, disguised | Destroyed, dead |
+| White | You | One, single | Question (two in a row: unknown) |
 
-|        | Square                          | Dot                      | Triangle             |
-| ------ | ------------------------------- | ------------------------ | -------------------- |
-| Red    | Hostile, Force                  | Many,                    | Attacking            |
-| Orange | Storm, Hazard                   | Sinking, Dying, critical | heading, fleeing     |
-| Yellow | Cargo, Goods, Supplies          | weapons                  | In need              |
-| Green  | civilian ship                   | Near, Close              | Approaching          |
-| Blue   | Us/ours                         | friendly                 | Safe, All Clear      |
-| Purple | Unknown ship/entity, other ship | Dangerous                | Capture, Taken       |
-| Brown  | Land, Port                      | Far, Distant             | Stranded, Aground    |
-| Black  | Pirates                         | Hidden, Disguised        | Destroyed, Dead      |
-| White  | You                             | One, Single              | Question, 2x=unknown |
-# Information
-## general rules 
-the first flag is always the subject and is modified by the ones after it.
-a break between flags signifies a new subject. 
-a subject followed by a orange triangle then white triangle asks for direction and heading.
-a direction followed by a white triangle asks what's in that direction
-one bar followed by a white triangle asks for size
-without a new subject the last subject is inferred
-as one may assume, a white flag replacing the ensign means surrender
-repeating a message or part of it followed by a yellow cross can be used to show what specifically is not understood in a previous message
-clarification- red square can mean military ship when the blue dot is added.
+# Reading a Signal
+- The first flag is always the subject. The flags after it modify it.
+- A break between flags starts a new subject.
+- If no new subject is given, the last subject is assumed.
+- A subject followed by an orange triangle and then a white triangle asks for its direction and heading.
+- A direction followed by a white triangle asks what's in that direction.
+- One bar followed by a white triangle asks for size.
+- To show what wasn't understood, repeat the message, or the part of it in question, followed by a yellow cross.
+- A white flag flown in place of the ensign means surrender.
+- A red square can mean a military ship when a blue dot is added.
 
-## Counting with flags
-counting only comes into account when asked using the red dot, white triangle to ask
-on their own.
-one white dot means one.
-three white dots means a few.
-one red dot means a many
-three red dots mean an overwhelming number
+## Counting
+Exact counts are only given when asked for. To ask how many, fly a red dot followed by a white triangle.
 
-when asked for a count, one white dot is used to count one, red dots are used to count 5, black dots to count ten.
+On their own, dots give a rough amount:
+- One white dot: one
+- Three white dots: a few
+- One red dot: many
+- Three red dots: an overwhelming number
 
-----
+When answering a count, add up the dots:
+- White dot: 1
+- Red dot: 5
+- Black dot: 10
+
 # Bars
-## One Black Bar
-small 
-### Two Black Bars
-medium
-### Three Black Bars
-large
-### Four Black Bars
-huge
-# Chevron
-### Red Chevron
-Surrender immediately
-## Orange Chevron
-Maintain Distance, Approach with caution
-## Yellow Chevron
-Prepare to be boarded
-## Green Chevron
-Welcome to approach/ proceed
-## Blue Chevron
-Follow us
-## Purple Chevron
-Identify yourself.
-## Brown Chevron
-Drop Anchor and wait for instruction
-## Black Chevron
-DANGER FLEE IMMEDIATLY
+| Flag | Meaning |
+| --- | --- |
+| One black bar | Small |
+| Two black bars | Medium |
+| Three black bars | Large |
+| Four black bars | Huge |
 
+# Chevrons
+| Flag | Meaning |
+| --- | --- |
+| Red chevron | Surrender immediately |
+| Orange chevron | Maintain distance, approach with caution |
+| Yellow chevron | Prepare to be boarded |
+| Green chevron | Welcome to approach, proceed |
+| Blue chevron | Follow us |
+| Purple chevron | Identify yourself |
+| Brown chevron | Drop anchor and wait for instruction |
+| Black chevron | Danger, flee immediately |
 
-# Cross
-## Green Cross
-Yes, Affirmative, Will comply
-## Red Cross
-No, We Refuse, not/negative
-## Yellow Cross
-Unclear, Repeat last signal, clarify.
+# Crosses
+| Flag | Meaning |
+| --- | --- |
+| Green cross | Yes, affirmative, will comply |
+| Red cross | No, we refuse, not, negative |
+| Yellow cross | Unclear, repeat last signal, clarify |
 
-# Direction
-## Black N
-North
-## Black E
-East
-## Black S
-South
-## Black W
-West
+# Directions
+| Flag | Meaning |
+| --- | --- |
+| Black N | North |
+| Black E | East |
+| Black S | South |
+| Black W | West |
 
-# Star
-## Yellow Star
-Dragons
-## Blue Star
-Sea Folk
-## Black Star
-Sea Monsters
-### Green Star
-Plague/Sickness
-### White Star
-man in the water/ in the water
+# Stars
+| Flag | Meaning |
+| --- | --- |
+| Yellow star | Dragons |
+| Blue star | Sea folk |
+| Black star | Sea monsters |
+| Green star | Plague, sickness |
+| White star | Man in the water, in the water |
 
 # Misc
-## Black Eye
-seen
-### Blue Squiggle
-Waters, region
-# X
-## Black X
-open fire
-## Red X
-Comply or we will fire
-## White X
-do not fire/ cease fire
+| Flag | Meaning |
+| --- | --- |
+| Black eye | Seen |
+| Blue squiggle | Waters, region |
 
+# X
+| Flag | Meaning |
+| --- | --- |
+| Black X | Open fire |
+| Red X | Comply or we will fire |
+| White X | Do not fire, cease fire |

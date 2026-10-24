@@ -4,6 +4,9 @@ draft: false
 ---
 
 # Ship types
+Walk any harbor in Oceana at dawn and you will see the whole drowned world bobbing at its moorings. Fishing smacks nose out past the breakwater with the tide, patched and salt-crusted and proud of it. Fat-bellied fluyts sit low with grain and kelp charcoal, while lean sloops and cutters strain at their lines like hounds that smell a chase. Far out in the roads ride the giants: galleons gilded like temples, warships with their gun ports shut like sleeping eyes, and now and then a Kingdom steam ship, breathing black smoke and caring nothing for the wind.
+
+Every hull has its purpose, and every captain swears by their own. Ships are sorted below by size, from boats a single sailor can row to floating fortresses that need a small town to crew them. Each one lists what it costs, what it carries and how it handles, and the [[Sails and Seas/Ship Rules/Basic Ship Rules|Basic Ship Rules]] explain what all those numbers mean.
 
 ## Small Ships
 - [[Sails and Seas/Ship types/Rowboat|Rowboat]]

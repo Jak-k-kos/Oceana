@@ -1,6 +1,6 @@
 * [[#Ranged Weapons]]
 * [[#Melee Weapons]]
-# Weapon Upgrades
+# Weapons
 ***
 All ship weapons are martial weapons. Each weapon is mounted on a side of the ship (bow, port, starboard or stern) and can only target things in that side's quadrant, marked by lines drawn at 45 degrees from the ship's corners. The bow and stern can each hold only one weapon, no matter how many slots it uses. Port and starboard can hold as many as fit in the ship's Weapon Slots.
 
@@ -48,10 +48,10 @@ AC: 15
 HP: 30
 DMG Immunities: Poison, Psychic
 Weapon Slots: 1
-Market Price: 72,000 SH
+Market Price: 36,000 SH
 Desc: Large object. A giant crossbow that fires heavy bolts, the budget choice for ships that can't afford cannons. Loading and aiming it takes one action before it can be fired with the Operate Crew Action.
 #### Ammunition:
-* Bolt: Ranged Weapon Attack: range 120/480 ft., one target. Hit: 17 (3d10) piercing damage.
+* Bolt: Ranged Weapon Attack: range 120/480 ft., one target. Hit: 22 (4d10) piercing damage.
 * Flaming Bolt: Ranged Weapon Attack: range 120/480 ft., one target. Hit: A wooden or otherwise flammable ship catches fire. At the start of its turn it takes 7 (2d6) fire damage, and the fire grows by 1d6 each turn after that. See [[Damage and Repair#Fire|Fire]].
 
 ### Harpoon Gun
@@ -69,7 +69,7 @@ AC: 15
 HP: 70
 DMG Immunities: Poison, Psychic
 Weapon Slots: 2
-Market Price: 38,000 SH
+Market Price: 72,000 SH
 Desc: Huge object. A ship-mounted catapult that throws heavy loads in a high arc. Loading it takes one action before it can be fired with the Operate Crew Action.
 #### Ammunition:
 * Catapult Stone: Ranged Weapon Attack: range 200/800 ft. (can't hit targets within 60 ft.), one target. Hit: 27 (5d10) bludgeoning damage.
