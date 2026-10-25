@@ -60,17 +60,17 @@ Lotus wine and aged reserve wine give their effects as described under [[Provisi
 
 
 # Lodging
-| Lodging (per night)      | Price  | Effects |
-| ------------------------ | ------ | ------- |
-| Common room floor        | 2 SH   |         |
-| Hammock in a shared room | 5 SH   |         |
-| Shared room with a bed   | 10 SH  |         |
-| Private room             | 20 SH  |         |
-| Good room                | 40 SH  |         |
-| Wealthy suite            | 100 SH |         |
-| Aristocratic quarters    | 300 SH |         |
-| Hot bath                 | 3 SH   |         |
-| Laundry                  | 1 SH   |         |
+| Lodging (per night)      | Price  | Effects                                                                                                                                                                          |
+| ------------------------ | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Common room floor        | 2 SH   | **Fitful Sleep.** At the end of a long rest, make a DC 12 Constitution save; on a failure, the rest removes no exhaustion. Unattended gear may be stolen.                        |
+| Hammock in a shared room | 5 SH   | **Restless Sleep.** At the end of a long rest, make a DC 8 Constitution save; on a failure, the rest removes no exhaustion. Unattended gear may be stolen.                       |
+| Shared room with a bed   | 10 SH  | **Wandering Hands.** The rest works as normal, but unattended gear may be stolen.                                                                                                |
+| Private room             | 20 SH  | **Under Lock and Key.** Gear and cargo left in the room are safe.                                                                                                                |
+| Good room                | 40 SH  | **Deep Rest.** A long rest removes one extra level of exhaustion.                                                                                                                |
+| Wealthy suite            | 100 SH | **Swift Recovery.** A long rest takes 2 days instead of 3. Includes Deep Rest.                                                                                                   |
+| Aristocratic quarters    | 300 SH | **Good Company.** Rumors, introductions and favors from captains, merchants and the powerful under the same roof. Includes Swift Recovery and Deep Rest.                         |
+| Hot bath                 | 3 SH   | **Scrubbed Clean.** +1 on Charisma checks made to haggle until the next dawn. Merchants deal kinder with those who don't smell of bilge and brine.                               |
+| Laundry                  | 1 SH   | **Presentable.** Fine shops, council halls and the better houses won't turn you away at the door, and guards and officials take you for honest folk rather than dockside rabble. |
 
 # Harbor
 Docking includes the harbor's night watch. While a ship is docked, the harbor is responsible for it.

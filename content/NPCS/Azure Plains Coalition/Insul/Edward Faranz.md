@@ -1,8 +1,8 @@
 ---
 tags:
   - NPC
-draft: true
-lastname:
+draft: false
+lastname: Faranz
 ---
 %%
 DM Notes:

@@ -36,9 +36,10 @@ title: Insul
 - [[Lilly Fiore]]
 - [[Orchid Fiore]]
 
-
+# The GoldenRoar Family
+* [[Gaknin Goldenroar]]
+* [[Tryknin Goldenroar|Tryknin Goldenroar (Torin)]]
 # Others
-- [[Gaknin Goldenroar]]
 - [[Mr. Ferguson]]
 
 

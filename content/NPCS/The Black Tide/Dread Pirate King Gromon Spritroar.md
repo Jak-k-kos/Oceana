@@ -7,7 +7,7 @@ lastname: Spritroar
 %%
 DM Notes:
 ------------------------------------
-species: 
+species: Leonin
 Unique Trait: A laugh so loud that crews said you could hear it two ships over
 Motivation: Keep his son out of the Black Tide's reach, whatever it costs
 Belief: No crown is worth a child's life
