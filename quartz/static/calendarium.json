@@ -309,7 +309,7 @@
           },
           "id": "ID_5879da397b48",
           "note": "World Events/HearthFire's Glow.md",
-          "category": "ID_5b58681b7bba",
+          "category": "ID_e87b684828eb",
           "sort": {
             "timestamp": 5e-324,
             "order": ""
@@ -329,7 +329,7 @@
           },
           "id": "ID_4a487818bb68",
           "note": "World Events/HearthFire's Blaze.md",
-          "category": "ID_5b58681b7bba",
+          "category": "ID_e87b684828eb",
           "sort": {
             "timestamp": 5e-324,
             "order": ""
@@ -349,7 +349,7 @@
           },
           "id": "ID_a99a1b393928",
           "note": "World Events/Apiot's Boon.md",
-          "category": "ID_5b58681b7bba",
+          "category": "ID_08097b0a985a",
           "sort": {
             "timestamp": 5e-324,
             "order": ""
@@ -369,7 +369,7 @@
           },
           "id": "ID_a98b39394839",
           "note": "World Events/Apiot's Promise.md",
-          "category": "ID_5b58681b7bba",
+          "category": "ID_08097b0a985a",
           "sort": {
             "timestamp": 5e-324,
             "order": ""
@@ -389,7 +389,7 @@
           },
           "id": "ID_58885b398b8a",
           "note": "World Events/Night Of Names.md",
-          "category": "ID_5b58681b7bba",
+          "category": "ID_e8f929181a88",
           "sort": {
             "timestamp": 5e-324,
             "order": ""
@@ -400,8 +400,23 @@
       "categories": [
         {
           "id": "ID_5b58681b7bba",
-          "color": "#dda442",
-          "name": "holidays"
+          "color": "#0636c6",
+          "name": "Aquilla"
+        },
+        {
+          "id": "ID_e87b684828eb",
+          "color": "#ff4d00",
+          "name": "Flaris"
+        },
+        {
+          "id": "ID_08097b0a985a",
+          "color": "#0f6204",
+          "name": "Apiot"
+        },
+        {
+          "id": "ID_e8f929181a88",
+          "color": "#c9c9c9",
+          "name": "Morvaine"
         }
       ],
       "path": [],

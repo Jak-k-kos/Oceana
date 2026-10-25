@@ -31,6 +31,7 @@ Market prices in shells (SH). What you actually pay is down to haggling, and pri
 | Sea turtle      | 2 lb (1 ration)         | 40 SH | Crate (150 rations)   | 5,400 SH    | -    | Perishable, Fishy |
 | Eggs            | Dozen (1 ration)        | 10 SH | Crate (100 dozen)     | 900 SH      | d8   | Delicate, Rancid  |
 | Vegetables      | 3 lb (1 ration)         | 3 SH  | Crate (100 rations)   | 270 SH      | d6   | Delicate, Rancid  |
+| Cucumber        | 3 lb (1 ration)         | 3 SH  | Crate (100 rations)   | 270 SH      | d6   | Delicate, Rancid  |
 | Fruit           | 1 piece (1/8 ration)    | 1 SH  | Crate (800 pieces)    | 720 SH      | d4   | Delicate, Rancid  |
 | Apple           | 1 apple (1/8 ration)    | 1 SH  | Crate (800 apples)    | 720 SH      | d10  | Hardy, Rancid     |
 | Citrus          | 1 fruit (1/8 ration)    | 2 SH  | Crate (800 fruit)     | 1,440 SH    | d10  | Hardy, Rancid     |
@@ -62,21 +63,21 @@ Market prices in shells (SH). What you actually pay is down to haggling, and pri
 | Salted goat                       | 1 ration            | 14 SH                | Barrel (150 rations) | 1,890 SH    | d20              | Preserved, Fishy  |
 | Salted mutton                     | 16 SH               | Barrel (150 rations) | 2,160 SH             | d20         | Preserved, Fishy |                   |
 # Delicacies
-| Item | Single | Price | Cargo (1/5 ton) | Cargo Price | Keep | Properties |
-| --- | --- | --- | --- | --- | --- | --- |
-| Dried figs or raisins | 2 lb (1 ration) | 10 SH | Crate (150 rations) | 1,350 SH | d20 | Preserved, Rancid |
-| Chestnuts | 2 lb (1 ration) | 4 SH | Crate (150 rations) | 540 SH | d12 | Hardy, Rancid |
-| Olives | Jar (1/2 ration) | 6 SH | Crate (200 jars) | 1,080 SH | d20 | Preserved, Rancid |
-| Pickles | Jar (1/2 ration) | 3 SH | Crate (200 jars) | 540 SH | d20 | Preserved, Rancid |
-| Capers | Jar (1/2 ration) | 6 SH | Crate (200 jars) | 1,080 SH | d20 | Preserved, Rancid |
-| Grape leaves | Jar (1/2 ration) | 5 SH | Crate (200 jars) | 900 SH | d20 | Preserved, Rancid |
-| Fruit preserves | Jar (1/2 ration) | 8 SH | Crate (200 jars) | 1,440 SH | d20 | Preserved, Rancid |
-| Candied peel | 1 lb (1/2 ration) | 15 SH | Crate (300 lb) | 4,050 SH | d20 | Preserved, Rancid |
-| Cave-aged cheese | 1 lb (1 ration) | 30 SH | Crate (300 lb) | 8,100 SH | d8 | Delicate, Rancid |
-| Wax-sealed goat cheese | 10 lb wheel (10 rations) | 60 SH | Crate (30 wheels) | 1,620 SH | d12 | Hardy, Rancid |
-| Dried mullet roe | 1 lb slab (1 ration) | 60 SH | Crate (300 slabs) | 16,200 SH | d20 | Preserved, Fishy |
-| Squid ink | Pot (0 rations) | 3 SH | Crate (600 pots) | 1,620 SH | d20 | Preserved, Fishy |
-| Ambergris | 1 oz (0 rations) | 500 SH | - | - | Never spoils | - |
+| Item                   | Single                   | Price  | Cargo (1/5 ton)     | Cargo Price | Keep         | Properties        |
+| ---------------------- | ------------------------ | ------ | ------------------- | ----------- | ------------ | ----------------- |
+| Dried figs or raisins  | 2 lb (1 ration)          | 10 SH  | Crate (150 rations) | 1,350 SH    | d20          | Preserved, Rancid |
+| Chestnuts              | 2 lb (1 ration)          | 4 SH   | Crate (150 rations) | 540 SH      | d12          | Hardy, Rancid     |
+| Olives                 | Jar (1/2 ration)         | 6 SH   | Crate (200 jars)    | 1,080 SH    | d20          | Preserved, Rancid |
+| Pickles                | Jar (1/2 ration)         | 3 SH   | Crate (200 jars)    | 540 SH      | d20          | Preserved, Rancid |
+| Capers                 | Jar (1/2 ration)         | 6 SH   | Crate (200 jars)    | 1,080 SH    | d20          | Preserved, Rancid |
+| Grape leaves           | Jar (1/2 ration)         | 5 SH   | Crate (200 jars)    | 900 SH      | d20          | Preserved, Rancid |
+| Fruit preserves        | Jar (1/2 ration)         | 8 SH   | Crate (200 jars)    | 1,440 SH    | d20          | Preserved, Rancid |
+| Candied peel           | 1 lb (1/2 ration)        | 15 SH  | Crate (300 lb)      | 4,050 SH    | d20          | Preserved, Rancid |
+| Cave-aged cheese       | 1 lb (1 ration)          | 30 SH  | Crate (300 lb)      | 8,100 SH    | d8           | Delicate, Rancid  |
+| Wax-sealed goat cheese | 10 lb wheel (10 rations) | 60 SH  | Crate (30 wheels)   | 1,620 SH    | d12          | Hardy, Rancid     |
+| Dried mullet roe       | 1 lb slab (1 ration)     | 60 SH  | Crate (300 slabs)   | 16,200 SH   | d20          | Preserved, Fishy  |
+| Squid ink              | Pot (0 rations)          | 3 SH   | Crate (600 pots)    | 1,620 SH    | d20          | Preserved, Fishy  |
+| Ambergris              | 1 oz (0 rations)         | 500 SH | -                   | -           | Never spoils | -                 |
 
 # Pantry
 | Item | Single | Price | Cargo (1/5 ton) | Cargo Price | Keep | Properties |
