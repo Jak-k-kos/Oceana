@@ -13,6 +13,8 @@ Fresh goat braised with olives and red wine, the way the hill herders make it. I
 
 **Properties:** Perishable, Fishy
 
+**Keeps:** 2 days
+
 ## Ingredients
 1) 2 rations of goat
 2) 1 jar of olives

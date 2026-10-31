@@ -11,7 +11,9 @@ Every sailor's first drink and most sailors' last. Watering the rum stretches it
 
 **Cook time:** 10 minutes
 
-**Properties:** Perishable, Stagnant
+**Properties:** Hardy, Stagnant
+
+**Keeps:** d12
 
 Counts as a water ration.
 

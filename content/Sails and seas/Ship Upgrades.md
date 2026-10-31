@@ -101,6 +101,10 @@ Desc: The ships cargo space is torn down for more guns. weapons slots are increa
 Market Value: Small 48,000 SH | Medium 95,000 SH | Large 190,000 SH | Huge 380,000 SH *(Small ship compatible)*
 Desc: Create a hold capable of hiding 1/10 the maximum tonnage of the vessel. can only be found with a DC 20 Investigation check. 
 
+### Cold Hold
+Market Value: Small 70,000 SH | Medium 140,000 SH | Large 280,000 SH | Huge 560,000 SH *(Small ship compatible)*
+Desc: A hold sheathed in tin and copper, set low against the hull beneath the waterline, where the deep water draws the warmth out through the metal day and night. Milk ships, fishing fleets and butchers' runners swear by them. The cold hold can carry 1/5 the maximum tonnage of the vessel. Time runs slowly in the cold: each day there spends only a fifth of a perishable's freshness, so fresh meat that would keep 2 days keeps 10. Food taken out spends its freshness at the normal rate again, so food with 5 days or fewer left in the cold expires at the end of the day it comes out. Food with a Keep Die rolls it with advantage while in the cold hold. The cold doesn't help if the hold is struck: food in the cold hold steps down like everything else.
+
 ### Deck Grip
 Market Value: Small 24,000 SH | Medium 48,000 SH | Large 96,000 SH | Huge 192,000 SH *(Small ship compatible)*
 Desc: -2 DC for being knocked prone on your deck. Sail DC increases from weather and environment are reduced by 1

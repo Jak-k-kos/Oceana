@@ -13,6 +13,8 @@ Raw fish cured in citrus and salt, then buried in sliced firecap peppers until t
 
 **Properties:** Perishable, Fishy
 
+**Keeps:** 1 day
+
 No fire needed.
 
 ## Ingredients

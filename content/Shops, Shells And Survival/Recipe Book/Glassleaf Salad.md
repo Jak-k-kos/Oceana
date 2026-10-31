@@ -13,6 +13,8 @@ Dried glassleaf soaked until it's clear and supple again, then tossed with sea f
 
 **Properties:** Perishable, Fishy
 
+**Keeps:** 1 day
+
 ## Ingredients
 1) 2 rations of glassleaf
 2) 1 bundle of sea fennel

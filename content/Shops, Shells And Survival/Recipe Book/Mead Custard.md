@@ -13,6 +13,8 @@ A pale, wobbling custard of eggs and sugar, set with a splash of honey mead. It'
 
 **Properties:** Perishable, Rancid
 
+**Keeps:** 1 day
+
 ## Ingredients
 1) 1 dozen eggs
 2) 1 lb of raw sugar

@@ -17,20 +17,20 @@ Market prices in shells (SH). What you actually pay is down to haggling, and pri
 - **Single:** one loose unit. Recipes use these units.
 - **Rations:** a ration is one creature's food for a day. Items marked 0 rations add flavor, not food.
 - **Cargo:** goods shipped in the hold are bought by the cargo unit. Every cargo unit takes up 1/5 ton of a ship's Tonnage (5 per ton). Loose supplies don't count toward Tonnage until they add up to a full cargo unit.
-- **Keep and Properties** are explained under [[House Rules#Spoilage|Spoilage]].
+- **Keep and Properties** are explained under [[House Rules#Spoilage|Spoilage]]. A perishable's Keep is how many days it lasts, counting the day it was bought.
 - **Tags** tell the Ship's Larder about anything special. Most rows have none.
 
 # Fresh Food
 | Item | Single | Price | Cargo (1/5 ton) | Cargo Price | Keep | Properties | Tags |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Fish | 2 lb (1 ration) | 4 SH | Crate (150 rations) | 540 SH | - | Perishable, Fishy | |
-| Shellfish | 2 dozen (1 ration) | 6 SH | Crate (150 rations) | 810 SH | - | Perishable, Fishy | |
-| Chicken | 2 lb (1 ration) | 10 SH | Crate (150 rations) | 1,350 SH | - | Perishable, Fishy | |
-| Pork | 2 lb (1 ration) | 10 SH | Crate (150 rations) | 1,350 SH | - | Perishable, Fishy | |
-| Goat | 2 lb (1 ration) | 10 SH | Crate (150 rations) | 1,350 SH | - | Perishable, Fishy | |
-| Mutton | 2 lb (1 ration) | 12 SH | Crate (150 rations) | 1,620 SH | - | Perishable, Fishy | |
-| Beef | 2 lb (1 ration) | 16 SH | Crate (150 rations) | 2,160 SH | - | Perishable, Fishy | |
-| Sea turtle | 2 lb (1 ration) | 40 SH | Crate (150 rations) | 5,400 SH | - | Perishable, Fishy | |
+| Fish | 2 lb (1 ration) | 4 SH | Crate (150 rations) | 540 SH | 1 day | Perishable, Fishy | |
+| Shellfish | 2 dozen (1 ration) | 6 SH | Crate (150 rations) | 810 SH | 2 days | Perishable, Fishy | |
+| Chicken | 2 lb (1 ration) | 10 SH | Crate (150 rations) | 1,350 SH | 2 days | Perishable, Fishy | |
+| Pork | 2 lb (1 ration) | 10 SH | Crate (150 rations) | 1,350 SH | 2 days | Perishable, Fishy | |
+| Goat | 2 lb (1 ration) | 10 SH | Crate (150 rations) | 1,350 SH | 3 days | Perishable, Fishy | |
+| Mutton | 2 lb (1 ration) | 12 SH | Crate (150 rations) | 1,620 SH | 3 days | Perishable, Fishy | |
+| Beef | 2 lb (1 ration) | 16 SH | Crate (150 rations) | 2,160 SH | 3 days | Perishable, Fishy | |
+| Sea turtle | 2 lb (1 ration) | 40 SH | Crate (150 rations) | 5,400 SH | 2 days | Perishable, Fishy | |
 | Eggs | Dozen (1 ration) | 10 SH | Crate (100 dozen) | 900 SH | d8 | Delicate, Rancid | |
 | Vegetables | 3 lb (1 ration) | 3 SH | Crate (100 rations) | 270 SH | d6 | Delicate, Rancid | |
 | Green beans | 2 lb (1 ration) | 3 SH | Crate (150 rations) | 405 SH | d6 | Delicate, Rancid | |
@@ -81,7 +81,7 @@ Market prices in shells (SH). What you actually pay is down to haggling, and pri
 # Preserving
 What would spoil may be made to last, if a crew has the means and the patience. Fresh meat is packed in salt, vegetables and their kin are put up in vinegar, and fruit is laid out on deck for the sun and wind to cure. See [[House Rules#Spoilage|Spoilage]] for how long each keeps.
 
-- **Salt:** done the day the meat came aboard, it keeps on a d20. A day late, only a d12.
+- **Salt:** done while the meat has more than a day of freshness left, it keeps on a d20. Salted on its last day, only a d12.
 - **Pickle:** done while the food still keeps as well as the day it was bought, it keeps on a d20. Once it has begun to slip, only a d12. Food that is already turning cannot be pickled.
 - **Dry:** it costs nothing but a day. Laid out on deck, it comes in dried at the next dawn and keeps on a d20.
 
@@ -158,7 +158,7 @@ Drinks sold by the gallon count as water rations. Bottles hold about a fifth of 
 | Bitter-orange liqueur | Bottle | 25 SH | Crate (100 bottles) | 2,250 SH | Never spoils | - | |
 | Whiskey | Bottle | 30 SH | Crate (100 bottles) | 2,700 SH | Never spoils | - | |
 | Brandy | Bottle | 60 SH | Crate (100 bottles) | 5,400 SH | Never spoils | - | |
-| Milk | 1 gallon (1 water ration) | 4 SH | Barrel (40 gallons) | 144 SH | - | Perishable, Sour | |
+| Milk | 1 gallon (1 water ration) | 4 SH | Barrel (40 gallons) | 144 SH | 1 day | Perishable, Sour | |
 | Coffee beans | 1 day's brew | 4 SH | Sack (3,000 days) | 10,800 SH | Never spoils | - | |
 | Tea leaves | 1 day's brew | 4 SH | Chest (3,000 days) | 10,800 SH | Never spoils | - | |
 

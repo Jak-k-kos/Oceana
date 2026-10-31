@@ -13,6 +13,8 @@ Soft eggs, scrambled slow in butter with a shaving of ambergris worth more than 
 
 **Properties:** Perishable, Rancid
 
+**Keeps:** 1 day
+
 ## Ingredients
 1) 1 dozen eggs
 2) 1 ounce of ambergris

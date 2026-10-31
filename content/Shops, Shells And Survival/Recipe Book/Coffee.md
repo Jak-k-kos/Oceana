@@ -13,6 +13,8 @@ Black, bitter and boiled hard in the galley before the morning watch. Beans come
 
 **Properties:** Perishable, Stagnant
 
+**Keeps:** 1 day
+
 A brew, not a meal. Doesn't count as a water ration. See [[Shops, Shells And Survival/Recipe Book/index#Brews|Brews]].
 
 ## Ingredients

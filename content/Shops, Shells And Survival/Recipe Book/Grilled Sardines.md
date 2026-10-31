@@ -13,6 +13,8 @@ A string of sardines grilled whole over the coals, salted hard and eaten bones a
 
 **Properties:** Perishable, Fishy
 
+**Keeps:** 1 day
+
 ## Ingredients
 1) 2 rations of fish
 2) 1 lb of salt

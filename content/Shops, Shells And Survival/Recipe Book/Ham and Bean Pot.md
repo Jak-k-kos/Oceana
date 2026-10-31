@@ -13,6 +13,8 @@ Salted ham and beans, slow-baked under molasses until the beans fall apart and t
 
 **Properties:** Perishable, Fishy
 
+**Keeps:** 3 days
+
 ## Ingredients
 1) 2 rations of salted ham
 2) 2 rations of dried beans

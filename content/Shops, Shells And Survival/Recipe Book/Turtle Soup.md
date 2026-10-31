@@ -13,6 +13,8 @@ A rich, dark soup simmered for hours from sea turtle, white wine and herbs. Turt
 
 **Properties:** Perishable, Fishy
 
+**Keeps:** 2 days
+
 ## Ingredients
 1) 2 rations of sea turtle
 2) 1 bottle of white wine

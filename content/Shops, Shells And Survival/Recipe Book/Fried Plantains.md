@@ -13,6 +13,8 @@ Ripe plantains sliced thick and fried in oil until the edges blacken and the mid
 
 **Properties:** Perishable, Rancid
 
+**Keeps:** 1 day
+
 ## Ingredients
 1) 8 plantains
 2) 1 flask of olive oil

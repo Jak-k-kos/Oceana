@@ -13,6 +13,8 @@ Brined grape leaves rolled tight around rice, herbs and a little oil. They're sm
 
 **Properties:** Perishable, Rancid
 
+**Keeps:** 2 days
+
 ## Ingredients
 1) 1 jar of grape leaves
 2) 1 ration of rice

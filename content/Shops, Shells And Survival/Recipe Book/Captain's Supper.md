@@ -13,6 +13,8 @@ Salted ham, cave-aged cheese, amber slabs of roe and sweet dried figs, served wi
 
 **Properties:** Perishable, Fishy
 
+**Keeps:** 3 days
+
 ## Ingredients
 1) 2 rations of salted ham
 2) 1 lb of cave-aged cheese

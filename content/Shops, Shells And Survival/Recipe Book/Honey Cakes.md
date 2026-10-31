@@ -11,7 +11,9 @@ Small round cakes, soaked in warm honey and baked until the edges crack. They're
 
 **Cook time:** 1 hour
 
-**Properties:** Perishable, Rancid
+**Properties:** Delicate, Rancid
+
+**Keeps:** d8
 
 ## Ingredients
 1) 1 ration of flour

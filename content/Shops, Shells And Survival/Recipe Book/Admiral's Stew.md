@@ -13,6 +13,8 @@ A stew of fresh fish and shellfish, cooked in white wine with citrus and a pinch
 
 **Properties:** Perishable, Fishy
 
+**Keeps:** 1 day
+
 ## Ingredients
 1) 2 rations of fish
 2) 1 ration of shellfish

@@ -13,6 +13,8 @@ A dark, heavy stew of smoked whale meat, salt beef and firecap peppers, cooked d
 
 **Properties:** Perishable, Fishy
 
+**Keeps:** 3 days
+
 ## Ingredients
 1) 2 rations of smoked whale meat
 2) 2 rations of salted beef

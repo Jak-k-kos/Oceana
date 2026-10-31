@@ -107,7 +107,7 @@ Lost units are spoiled, not gone. They can be thrown overboard, or eaten and dru
 - **Hardy:** When the lot steps down, roll a d6 Loss Die. On a 1-2, lose units to spoilage.
 - **Delicate:** When the lot steps down, roll a d4 Loss Die. On a 1-2, lose units to spoilage.
 - **Preserved:** Loses nothing when it steps down.
-- **Perishable:** Has no Keep Die. Spoils at the end of the next day.
+- **Perishable:** Has no Keep Die. It keeps for the number of days in its Keep column, counting the day it was bought, then spoils at the end of its last day. In a cold hold or cold cellar, a perishable keeps five times as long.
 
 ## What It Does When Spoiled
 - **Stagnant:** DC 13 Constitution save, or catch [[#Bilge Flux]].
@@ -119,7 +119,7 @@ Lost units are spoiled, not gone. They can be thrown overboard, or eaten and dru
 If the hold is crowded, the players can roll one of each Keep Die currently in the hold instead of one per lot. Every lot at that die shares the roll, so a 1 steps all of them down together. Loss Dice are still rolled for each lot that steps down. It's faster, but swingier, since lots on the same die spoil together.
 
 ## Preserving
-- **Salting:** 1 lb of salt per ration of fresh meat (not sea turtle). Meat salted the day it's fresh starts a new lot at d20, Preserved, Fishy. Meat salted a day later starts at d12.
+- **Salting:** 1 lb of salt per ration of fresh meat (not sea turtle). Meat salted while it has more than a day of freshness left starts a new lot at d20, Preserved, Fishy. Meat salted on its last day starts at d12.
 - **Pickling:** 1 flask of vinegar per ration (or per head of garlic). It starts a new lot at d20, Preserved, Rancid.
 - **Drying:** fruit left a day in the sun starts a new lot at d20, Preserved, Rancid.
 

@@ -13,6 +13,8 @@ Thick, creamy and peppery, full of chewy conch pounded tender with a mallet. Div
 
 **Properties:** Perishable, Fishy
 
+**Keeps:** 2 days
+
 ## Ingredients
 1) 2 rations of dried conch
 2) 1 ration of vegetables

@@ -13,6 +13,8 @@ Salt beef, crushed biscuit and onion, stewed down into a brown hash thick enough
 
 **Properties:** Perishable, Fishy
 
+**Keeps:** 2 days
+
 ## Ingredients
 1) 2 rations of salted beef
 2) 1 ration of ship's biscuit

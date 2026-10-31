@@ -13,6 +13,8 @@ A black, fiery stew of salt beef, vegetables and firecap peppers, kept going on 
 
 **Properties:** Perishable, Fishy
 
+**Keeps:** 3 days
+
 ## Ingredients
 1) 2 rations of salted beef
 2) 1 ration of vegetables

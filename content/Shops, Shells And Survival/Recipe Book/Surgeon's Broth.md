@@ -13,6 +13,8 @@ Bones boiled for hours with garlic and herbs until the broth turns golden. Every
 
 **Properties:** Perishable, Fishy
 
+**Keeps:** 2 days
+
 ## Ingredients
 1) 1 ration of salted beef or fish
 2) 1 ration of vegetables

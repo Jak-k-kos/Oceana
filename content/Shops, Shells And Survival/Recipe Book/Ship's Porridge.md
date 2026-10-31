@@ -13,6 +13,8 @@ When the biscuit is too hard to bite, sailors crush it with a belaying pin and b
 
 **Properties:** Perishable, Rancid
 
+**Keeps:** 1 day
+
 ## Ingredients
 1) 2 rations of ship's biscuit
 2) 1 jar of molasses

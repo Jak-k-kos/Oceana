@@ -13,6 +13,8 @@ A thick, peppery soup heavy with garlic. Every ship's surgeon swears by it, and 
 
 **Properties:** Perishable, Rancid
 
+**Keeps:** 3 days
+
 ## Ingredients
 1) 2 rations of dried lentils
 2) 1 ration of vegetables

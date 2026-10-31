@@ -13,6 +13,8 @@ Eggs scrambled with flaked salt fish and a pinch of herbs, eaten standing up in 
 
 **Properties:** Perishable, Fishy
 
+**Keeps:** 1 day
+
 ## Ingredients
 1) 1 dozen eggs
 2) 1 ration of salted or smoked fish

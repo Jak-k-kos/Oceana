@@ -13,6 +13,8 @@ A thin, salty broth of fish heads and dried kelp, drunk by pearl divers before t
 
 **Properties:** Perishable, Fishy
 
+**Keeps:** 1 day
+
 ## Ingredients
 1) 2 rations of fish
 2) 1 bundle of dried kelp

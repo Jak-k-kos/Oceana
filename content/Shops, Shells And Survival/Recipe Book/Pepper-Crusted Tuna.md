@@ -13,6 +13,8 @@ Thick cuts of fresh tuna rolled in cracked pepper and seared fast in a smoking-h
 
 **Properties:** Perishable, Fishy
 
+**Keeps:** 1 day
+
 ## Ingredients
 1) 2 rations of fish
 2) 1 pinch of pepper

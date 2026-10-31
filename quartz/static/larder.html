@@ -164,6 +164,7 @@ dialog.panel form>:first-child{scroll-margin-top:28px}
     </div>
     <p class="sub" id="bazaarInfo"></p>
     <div id="bazaarReport"></div>
+    <div id="bazaarStruck"></div>
   </div>
 
   <div class="card" id="trashCard">
@@ -217,8 +218,9 @@ dialog.panel form>:first-child{scroll-margin-top:28px}
       <select id="formSel"></select>
       <label class="inline">Quantity <input type="number" id="qtyIn" min="1" value="1"></label>
       <label class="inline" id="dieWrap">Keep <select id="dieSel"></select></label>
+      <label class="inline" id="freshWrap" hidden>Days fresh <input type="number" id="freshIn" min="1" value="2" style="width:64px"></label>
       <label class="inline" id="outWrap" hidden>Turned out <select id="outSel"><option value="none">Not recorded</option><option value="1">Effect 1</option><option value="2">Effect 2</option><option value="3">Effect 3</option><option value="short">Short</option><option value="bust">Bust</option></select></label>
-      <label class="inline" id="intoWrap" hidden><select id="intoSel"><option value="hold">Into the hold</option><option value="hid">Into the smuggler's hold</option></select></label>
+      <label class="inline" id="intoWrap" hidden><select id="intoSel"></select></label>
       <button id="addBtn">Stow It Below</button>
     </div>
     <p class="note" id="itemNote"></p>
@@ -253,6 +255,18 @@ dialog.panel form>:first-child{scroll-margin-top:28px}
       </table>
     </div>
     <div id="seizedList"></div>
+  </div>
+
+  <div class="card" id="coldCard" hidden>
+    <h2 id="coldTitle">The Cold Hold</h2>
+    <div class="tonline" id="coldLine"></div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Cargo</th><th>Stowed</th><th>Sound</th><th>Spoiled</th><th>Keep</th><th>Nature</th><th></th></tr></thead>
+        <tbody id="coldBody"></tbody>
+      </table>
+    </div>
+    <div id="coldMake"></div>
   </div>
 
   <div class="card">
@@ -544,6 +558,20 @@ SNARK.close=[
   "A storehouse is a promise to the future. Only the Ancient Guardian of Tomorrow's Bread (your wise DM) may break it.",
   "You slam the doors shut forever. The roof caves in, the walls crumble, and you are buried beneath a mountain of salt pork. Roll a new character. ...Not really. The storehouse stands, because only the Almighty Architect of Ruin (your all-powerful DM) can close it.",
   "Rocks fall. Onto the storehouse. And onto you. You die. ...Fine, the storehouse stands and so do you. But it stays open, unless the Grand Demolisher of Destinies (your merciful DM) wills otherwise.",
+];
+SNARK.coldFull=[
+  "You lean on the cold hold's door. Frost-cold copper leans back. The cold hold is full, and only the High Admiral of Ice and Ironwork (your frosty DM) may make room within it.",
+  "The fish already down there turn their glassy eyes on you. They have been asked to share once. They will not be asked again, except by the Lord Commander of the Chill (your unflinching DM).",
+  "You measure the cold hold twice. It is a fifth of the ship both times. Only the Grand Geometer of Hull and Waterline (your exacting DM) can make a fifth into anything more.",
+  "The copper sweats, the tin groans, and the deep sea itself files a complaint with the Most Noble Warden of the Waterline (your gracious DM).",
+  "You try to wedge it between the milk and the beef. The milk curdles at you. The beef says nothing, but you can tell. Take it up with the Exalted Steward of Cold Storage (your watchful DM).",
+  "The cooper knocks on the cold hold door, listens, and shakes his head. \"Full to the copper,\" he says. \"Signed and sealed by the Celestial Quartermaster of the Deep (your meticulous DM). Next!\"",
+  "The cold keeps food fresh. It does not keep the laws of space suspended. That power belongs only to the Supreme Magistrate of Room and Reason (your learned DM).",
+  "You lift the hatch. A wall of crates, barrels and one deeply unimpressed eel looks back up at you. The eel answers only to the Sovereign Keeper of Cold Things (your mighty DM).",
+  "One more crate and the door won't shut. If the door won't shut, the cold gets out. If the cold gets out, everyone has a very bad week. Ask the Ancient Shipwright of Sweating Metal (your timeless DM).",
+  "The bosun chalks a line across the cold hold door. Beneath it, in letters a foot high: FULL. The handwriting belongs to the Unrivaled Registrar of Refrigeration (your scrupulous DM).",
+  "You cram it in anyway. The hold buckles, the copper splits, and the sea pours in, cold, exactly as promised. You are found frozen solid, clutching a wheel of cheese. Roll a new character. ...Not really. The crate is still on deck, because only the Grand Drowner of Overfilled Holds (your merciful DM) can pack the cold past full.",
+  "Ice falls. On you. From nowhere, for no reason. Now the cold hold is full of you, and you, regrettably, are full of ice. ...Fine, no ice, no freezing. But no room either, unless the Eternal Lord of Winter Below (your bone-chilling DM) wills it.",
 ];
 SNARK.deeds=[
   "You reach for the storehouse deeds. The ink smudges itself in protest. These belong to the High Recorder of Holdings (your illustrious DM), and no one else.",
@@ -858,6 +886,23 @@ const LOG={
     (a)=>`The lashings were cut, and ${a} tumbled into the sea.`,
     (a)=>`${cap(a)} left behind, bobbing in the wake.`,
   ],
+  coldIn:[
+    (a,n,p)=>`${cap(a)} of ${n} carried down into the ${p}, where the cold will keep ${vb(a,"it","them")}.`,
+    (a,n,p)=>`Down into the chill of the ${p} with ${a} of ${n}, and the door shut tight behind.`,
+    (a,n,p)=>`${cap(a)} of ${n} laid by in the ${p}, against the cold metal and the colder sea.`,
+  ],
+  coldOut:[
+    (a,n,p)=>`${cap(a)} of ${n} brought up out of the ${p}, and the warm air goes to work on ${vb(a,"it","them")} again.`,
+    (a,n,p)=>`${cap(a)} of ${n} fetched up from the ${p}, still cold to the touch, for now.`,
+    (a,n,p)=>`Out of the ${p} ${vb(a,"comes","come")} ${a} of ${n}, back among the common stores.`,
+  ],
+  coldGone:[
+    (p)=>`The ${p} is no more, and all that was kept in it is carried out into the open.`,
+    (p)=>`With the ${p} gone, its stores are brought up to take their chances with the warm air.`,
+  ],
+  fold:[
+    (a,n,t)=>`By the Keeper's word, ${a} of ${n} ${vb(a,"is","are")} entered in the ledger as ${t} from now on.`,
+  ],
   yields:[
     (s,a,n)=>`The ${s} gave ${a} of ${n} in the night.`,
     (s,a,n)=>`Morning chores done: ${a} of ${n} from the ${s}.`,
@@ -912,7 +957,7 @@ const LOG={
 
 
 /* ---------------- The catalog ---------------- */
-const CATALOG=[{"id": "fish", "name": "Fish", "cat": "Fresh Food", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "perish", "how": "Perishable", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "shellfish", "name": "Shellfish", "cat": "Fresh Food", "kind": "food", "single": "2 dozen", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "perish", "how": "Perishable", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "chicken", "name": "Chicken", "cat": "Fresh Food", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "perish", "how": "Perishable", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "pork", "name": "Pork", "cat": "Fresh Food", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "perish", "how": "Perishable", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "goat", "name": "Goat", "cat": "Fresh Food", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "perish", "how": "Perishable", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "mutton", "name": "Mutton", "cat": "Fresh Food", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "perish", "how": "Perishable", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "beef", "name": "Beef", "cat": "Fresh Food", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "perish", "how": "Perishable", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "sea-turtle", "name": "Sea turtle", "cat": "Fresh Food", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "perish", "how": "Perishable", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "eggs", "name": "Eggs", "cat": "Fresh Food", "kind": "food", "single": "Dozen", "w": "dozen", "wp": "dozen", "rat": 1.0, "water": false, "keep": "d8", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "vegetables", "name": "Vegetables", "cat": "Fresh Food", "kind": "food", "single": "3 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d6", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "fruit", "name": "Fruit", "cat": "Fresh Food", "kind": "food", "single": "1 piece", "w": "piece", "wp": "pieces", "rat": 0.125, "water": false, "keep": "d4", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 800, "f": 1}, {"id": "apple", "name": "Apple", "cat": "Fresh Food", "kind": "food", "single": "1 apple", "w": "apple", "wp": "apples", "rat": 0.125, "water": false, "keep": "d10", "how": "Hardy", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 800, "f": 1}, {"id": "citrus", "name": "Citrus", "cat": "Fresh Food", "kind": "food", "single": "1 fruit", "w": "fruit", "wp": "fruit", "rat": 0.125, "water": false, "keep": "d10", "how": "Hardy", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 800, "f": 1}, {"id": "plantain", "name": "Plantain", "cat": "Fresh Food", "kind": "food", "single": "1 plantain", "w": "plantain", "wp": "plantains", "rat": 0.25, "water": false, "keep": "d6", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 400, "f": 1}, {"id": "bread", "name": "Bread", "cat": "Fresh Food", "kind": "food", "single": "Loaf", "w": "loaf", "wp": "loaves", "rat": 0.5, "water": false, "keep": "d4", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 200, "f": 1}, {"id": "seaweed-bread", "name": "Seaweed bread", "cat": "Fresh Food", "kind": "food", "single": "Loaf", "w": "loaf", "wp": "loaves", "rat": 0.5, "water": false, "keep": "d4", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 200, "f": 1}, {"id": "fresh-cheese", "name": "Fresh cheese", "cat": "Fresh Food", "kind": "food", "single": "1 lb", "w": "pound", "wp": "pounds", "rat": 1.0, "water": false, "keep": "d8", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 300, "f": 1}, {"id": "sea-fennel", "name": "Sea fennel", "cat": "Fresh Food", "kind": "food", "single": "Bundle", "w": "bundle", "wp": "bundles", "rat": 0.25, "water": false, "keep": "d4", "how": "Delicate", "spoil": "Rancid", "cargo": "Bale", "cargoPl": "bales", "per": 600, "f": 1}, {"id": "firecap-peppers", "name": "Firecap peppers", "cat": "Fresh Food", "kind": "food", "single": "Handful", "w": "handful", "wp": "handfuls", "rat": 0.0, "water": false, "keep": "d10", "how": "Hardy", "spoil": "Rancid", "cargo": "Bale", "cargoPl": "bales", "per": 1000, "f": 1}, {"id": "green-beans", "name": "Green beans", "cat": "Fresh Food", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d6", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "garlic", "name": "Garlic", "cat": "Fresh Food", "kind": "food", "single": "1 head", "w": "head", "wp": "heads", "rat": 0.0, "water": false, "keep": "d12", "how": "Hardy", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 500, "f": 1}, {"id": "cucumber", "name": "Cucumber", "cat": "Fresh Food", "kind": "food", "single": "1 cucumber", "w": "cucumber", "wp": "cucumbers", "rat": 0.25, "water": false, "keep": "d6", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 400, "f": 1}, {"id": "watermelon", "name": "Watermelon", "cat": "Fresh Food", "kind": "food", "single": "1 melon", "w": "melon", "wp": "melons", "rat": 1.0, "water": false, "keep": "d8", "how": "Hardy", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 20, "f": 1}, {"id": "ship-s-biscuit", "name": "Ship's biscuit", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "dried-beans-lentils-or-chickpeas", "name": "Dried beans, lentils or chickpeas", "cat": "Stores", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "rice", "name": "Rice", "cat": "Stores", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "wheat-or-barley", "name": "Wheat or barley", "cat": "Stores", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "flour", "name": "Flour", "cat": "Stores", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "salted-beef", "name": "Salted beef", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "salted-ham", "name": "Salted ham", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "smoked-whale-meat", "name": "Smoked whale meat", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "salted-or-smoked-fish", "name": "Salted or smoked fish", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "dried-conch", "name": "Dried conch", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "dried-squid-or-cuttlefish", "name": "Dried squid or cuttlefish", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "smoked-or-salted-shellfish", "name": "Smoked or salted shellfish", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "glassleaf", "name": "Glassleaf", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "dried-kelp", "name": "Dried kelp", "cat": "Stores", "kind": "food", "single": "Bundle", "w": "bundle", "wp": "bundles", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Bale", "cargoPl": "bales", "per": 300, "f": 1}, {"id": "pickled-vegetables", "name": "Pickled vegetables", "cat": "Stores", "kind": "food", "single": "3 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "pickled-cucumber", "name": "Pickled cucumber", "cat": "Stores", "kind": "food", "single": "1 cucumber", "w": "cucumber", "wp": "cucumbers", "rat": 0.25, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 400, "f": 1}, {"id": "pickled-watermelon", "name": "Pickled watermelon", "cat": "Stores", "kind": "food", "single": "1 melon", "w": "melon", "wp": "melons", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 20, "f": 1}, {"id": "pickled-green-beans", "name": "Pickled green beans", "cat": "Stores", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "pickled-eggs", "name": "Pickled eggs", "cat": "Stores", "kind": "food", "single": "Dozen", "w": "dozen", "wp": "dozen", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "pickled-garlic", "name": "Pickled garlic", "cat": "Stores", "kind": "food", "single": "1 head", "w": "head", "wp": "heads", "rat": 0.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 500, "f": 1}, {"id": "dried-fruit", "name": "Dried fruit", "cat": "Stores", "kind": "food", "single": "1 piece", "w": "piece", "wp": "pieces", "rat": 0.125, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 800, "f": 1}, {"id": "dried-apple", "name": "Dried apple", "cat": "Stores", "kind": "food", "single": "1 apple", "w": "apple", "wp": "apples", "rat": 0.125, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 800, "f": 1}, {"id": "dried-citrus", "name": "Dried citrus", "cat": "Stores", "kind": "food", "single": "1 fruit", "w": "fruit", "wp": "fruit", "rat": 0.125, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 800, "f": 1}, {"id": "dried-plantain", "name": "Dried plantain", "cat": "Stores", "kind": "food", "single": "1 plantain", "w": "plantain", "wp": "plantains", "rat": 0.25, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 400, "f": 1}, {"id": "dried-figs-or-raisins", "name": "Dried figs or raisins", "cat": "Delicacies", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "chestnuts", "name": "Chestnuts", "cat": "Delicacies", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d12", "how": "Hardy", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "olives", "name": "Olives", "cat": "Delicacies", "kind": "food", "single": "Jar", "w": "jar", "wp": "jars", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 200, "f": 1}, {"id": "pickles", "name": "Pickles", "cat": "Delicacies", "kind": "food", "single": "Jar", "w": "jar", "wp": "jars", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 200, "f": 1}, {"id": "capers", "name": "Capers", "cat": "Delicacies", "kind": "food", "single": "Jar", "w": "jar", "wp": "jars", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 200, "f": 1}, {"id": "grape-leaves", "name": "Grape leaves", "cat": "Delicacies", "kind": "food", "single": "Jar", "w": "jar", "wp": "jars", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 200, "f": 1}, {"id": "fruit-preserves", "name": "Fruit preserves", "cat": "Delicacies", "kind": "food", "single": "Jar", "w": "jar", "wp": "jars", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 200, "f": 1}, {"id": "candied-peel", "name": "Candied peel", "cat": "Delicacies", "kind": "food", "single": "1 lb", "w": "pound", "wp": "pounds", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 300, "f": 1}, {"id": "cave-aged-cheese", "name": "Cave-aged cheese", "cat": "Delicacies", "kind": "food", "single": "1 lb", "w": "pound", "wp": "pounds", "rat": 1.0, "water": false, "keep": "d8", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 300, "f": 1}, {"id": "wax-sealed-goat-cheese", "name": "Wax-sealed goat cheese", "cat": "Delicacies", "kind": "food", "single": "10 lb wheel", "w": "wheel", "wp": "wheels", "rat": 10.0, "water": false, "keep": "d12", "how": "Hardy", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 30, "f": 1}, {"id": "dried-mullet-roe", "name": "Dried mullet roe", "cat": "Delicacies", "kind": "food", "single": "1 lb slab", "w": "slab", "wp": "slabs", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 300, "f": 1}, {"id": "squid-ink", "name": "Squid ink", "cat": "Delicacies", "kind": "food", "single": "Pot", "w": "pot", "wp": "pots", "rat": 0.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 600, "f": 1}, {"id": "ambergris", "name": "Ambergris", "cat": "Delicacies", "kind": "food", "single": "1 oz", "w": "ounce", "wp": "ounces", "rat": 0.0, "water": false, "keep": "never", "how": null, "spoil": null, "solo": true, "f": 0}, {"id": "honey", "name": "Honey", "cat": "Pantry", "kind": "food", "single": "1 lb", "w": "pound", "wp": "pounds", "rat": 0.5, "water": false, "keep": "never", "how": null, "spoil": null, "cargo": "Cask", "cargoPl": "casks", "per": 300, "f": 1}, {"id": "raw-sugar", "name": "Raw sugar", "cat": "Pantry", "kind": "food", "single": "1 lb", "w": "pound", "wp": "pounds", "rat": 0.5, "water": false, "keep": "never", "how": null, "spoil": null, "cargo": "Sack", "cargoPl": "sacks", "per": 300, "f": 1}, {"id": "molasses", "name": "Molasses", "cat": "Pantry", "kind": "food", "single": "Jar, 1 lb", "w": "jar", "wp": "jars", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Barrel", "cargoPl": "barrels", "per": 400, "f": 1}, {"id": "olive-oil", "name": "Olive oil", "cat": "Pantry", "kind": "food", "single": "Flask", "w": "flask", "wp": "flasks", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Barrel", "cargoPl": "barrels", "per": 320, "f": 1}, {"id": "salt", "name": "Salt", "cat": "Pantry", "kind": "food", "single": "1 lb", "w": "pound", "wp": "pounds", "rat": 0.0, "water": false, "keep": "never", "how": null, "spoil": null, "cargo": "Sack", "cargoPl": "sacks", "per": 350, "f": 1}, {"id": "vinegar", "name": "Vinegar", "cat": "Pantry", "kind": "food", "single": "Flask", "w": "flask", "wp": "flasks", "rat": 0.0, "water": false, "keep": "never", "how": null, "spoil": null, "cargo": "Barrel", "cargoPl": "barrels", "per": 320, "f": 1}, {"id": "dried-herbs", "name": "Dried herbs", "cat": "Pantry", "kind": "food", "single": "Bundle", "w": "bundle", "wp": "bundles", "rat": 0.0, "water": false, "keep": "never", "how": null, "spoil": null, "cargo": "Bale", "cargoPl": "bales", "per": 400, "f": 1}, {"id": "pepper", "name": "Pepper", "cat": "Pantry", "kind": "food", "single": "Pinch", "w": "pinch", "wp": "pinches", "rat": 0.0, "water": false, "keep": "never", "how": null, "spoil": null, "cargo": "Sack", "cargoPl": "sacks", "per": 3000, "f": 1}, {"id": "saffron", "name": "Saffron", "cat": "Pantry", "kind": "food", "single": "Pinch", "w": "pinch", "wp": "pinches", "rat": 0.0, "water": false, "keep": "never", "how": null, "spoil": null, "solo": true, "f": 0}, {"id": "water", "name": "Water", "cat": "Drink", "kind": "food", "single": "1 gallon", "w": "gallon", "wp": "gallons", "rat": 1.0, "water": true, "keep": "d10", "how": "Hardy", "spoil": "Stagnant", "cargo": "Barrel", "cargoPl": "barrels", "per": 40, "f": 1}, {"id": "hold-ale", "name": "Hold Ale", "cat": "Drink", "kind": "food", "single": "1 gallon", "w": "gallon", "wp": "gallons", "rat": 1.0, "water": true, "keep": "d20", "how": "Preserved", "spoil": "Sour", "cargo": "Barrel", "cargoPl": "barrels", "per": 40, "f": 1}, {"id": "beer", "name": "Beer", "cat": "Drink", "kind": "food", "single": "1 gallon", "w": "gallon", "wp": "gallons", "rat": 1.0, "water": true, "keep": "d12", "how": "Hardy", "spoil": "Sour", "cargo": "Barrel", "cargoPl": "barrels", "per": 40, "f": 1}, {"id": "dark-beer", "name": "Dark beer", "cat": "Drink", "kind": "food", "single": "1 gallon", "w": "gallon", "wp": "gallons", "rat": 1.0, "water": true, "keep": "d12", "how": "Hardy", "spoil": "Sour", "cargo": "Barrel", "cargoPl": "barrels", "per": 40, "f": 1}, {"id": "common-wine", "name": "Common wine", "cat": "Drink", "kind": "food", "single": "1 gallon", "w": "gallon", "wp": "gallons", "rat": 1.0, "water": true, "keep": "d20", "how": "Preserved", "spoil": "Sour", "cargo": "Barrel", "cargoPl": "barrels", "per": 40, "f": 1}, {"id": "mead", "name": "Mead", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "white-wine", "name": "White wine", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "fine-red-wine", "name": "Fine red wine", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "lotus-wine", "name": "Lotus wine", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "aged-reserve-wine", "name": "Aged reserve wine", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "rum", "name": "Rum", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "pine-needle-liquor", "name": "Pine-needle liquor", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "myrtle-liqueur", "name": "Myrtle liqueur", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "bitter-orange-liqueur", "name": "Bitter-orange liqueur", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "whiskey", "name": "Whiskey", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "brandy", "name": "Brandy", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "coffee", "name": "Coffee", "cat": "Drink", "kind": "food", "single": "1 day's brew", "w": "day's brew", "wp": "days' brew", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Sack", "cargoPl": "sacks", "per": 3000, "f": 1}, {"id": "tea", "name": "Tea", "cat": "Drink", "kind": "food", "single": "1 day's brew", "w": "day's brew", "wp": "days' brew", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Chest", "cargoPl": "chests", "per": 3000, "f": 1}, {"id": "live-chicken", "name": "Chicken (live)", "cat": "Livestock", "kind": "live", "single": "Bird", "w": "bird", "wp": "birds", "keep": "never", "meat": 1, "meatOf": "chicken", "f": 1, "cargo": "Coop", "cargoPl": "coops", "per": 40}, {"id": "live-goat", "name": "Goat (live)", "cat": "Livestock", "kind": "live", "single": "Goat", "w": "goat", "wp": "goats", "keep": "never", "meat": 20, "meatOf": "goat", "f": 1, "cargo": "Pair", "cargoPl": "pairs", "per": 2}, {"id": "live-sheep", "name": "Sheep (live)", "cat": "Livestock", "kind": "live", "single": "Sheep", "w": "sheep", "wp": "sheep", "keep": "never", "meat": 25, "meatOf": "mutton", "f": 1, "cargo": "Pair", "cargoPl": "pairs", "per": 2}, {"id": "live-pig", "name": "Pig (live)", "cat": "Livestock", "kind": "live", "single": "Pig", "w": "pig", "wp": "pigs", "keep": "never", "meat": 60, "meatOf": "pork", "f": 1, "cargo": "Pair", "cargoPl": "pairs", "per": 2}, {"id": "live-cow", "name": "Cow (live)", "cat": "Livestock", "kind": "live", "single": "Cow", "w": "cow", "wp": "cows", "keep": "never", "meat": 200, "meatOf": "beef", "f": 3, "solo": true}, {"id": "cannonball", "name": "Cannonball", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Round", "w": "round", "wp": "rounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 25, "f": 1}, {"id": "chain-shot", "name": "Chain shot", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Round", "w": "round", "wp": "rounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 25, "f": 1}, {"id": "grapeshot", "name": "Grapeshot", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Round", "w": "round", "wp": "rounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 25, "f": 1}, {"id": "smoke-bomb", "name": "Smoke bomb", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Round", "w": "round", "wp": "rounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "mortar-shell", "name": "Mortar shell", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Round", "w": "round", "wp": "rounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 10, "f": 1}, {"id": "burst-shell", "name": "Burst shell", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Round", "w": "round", "wp": "rounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 10, "f": 1}, {"id": "swivel-shot", "name": "Swivel shot", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Round", "w": "round", "wp": "rounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 200, "f": 1}, {"id": "swivel-grape", "name": "Swivel grape", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Round", "w": "round", "wp": "rounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 200, "f": 1}, {"id": "ballista-bolt", "name": "Ballista bolt", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Bolt", "w": "bolt", "wp": "bolts", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 40, "f": 1}, {"id": "flaming-bolt", "name": "Flaming bolt", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Bolt", "w": "bolt", "wp": "bolts", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 30, "f": 1}, {"id": "catapult-stone", "name": "Catapult stone", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Stone", "w": "stone", "wp": "stones", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 8, "f": 1}, {"id": "harpoon", "name": "Harpoon", "cat": "Ammunition", "kind": "supply", "ammo": true, "retrieve": true, "single": "Harpoon", "w": "harpoon", "wp": "harpoons", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "grappling-hook-and-chain", "name": "Grappling hook and chain", "cat": "Ammunition", "kind": "supply", "ammo": true, "retrieve": true, "single": "Hook", "w": "hook", "wp": "hooks", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 4, "f": 1}, {"id": "salamander-fuel", "name": "Salamander fuel", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Use", "w": "use", "wp": "uses", "useMult": 3, "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 24, "f": 1}, {"id": "dragon-head-fuel", "name": "Dragon head fuel", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Use", "w": "use", "wp": "uses", "useMult": 3, "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 15, "f": 1}, {"id": "boarding-plank", "name": "Boarding plank", "cat": "Ammunition", "kind": "supply", "single": "Plank", "w": "plank", "wp": "planks", "solo": true, "f": 0, "ammo": true, "retrieve": true}, {"id": "naval-mine", "name": "Naval mine", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Mine", "w": "mine", "wp": "mines", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 4, "f": 1}, {"id": "fire-sand", "name": "Fire sand", "cat": "Repair and Upkeep", "kind": "supply", "single": "Bucket", "w": "bucket", "wp": "buckets", "solo": true, "f": 0}, {"id": "repair-stores", "name": "Repair stores", "cat": "Repair and Upkeep", "kind": "supply", "single": "1 unit", "w": "unit", "wp": "units", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 10, "f": 1}, {"id": "emergency-stores", "name": "Emergency stores", "cat": "Repair and Upkeep", "kind": "supply", "single": "1 unit", "w": "unit", "wp": "units", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 5, "f": 1}, {"id": "heavy-cordage", "name": "Heavy cordage", "cat": "Repair and Upkeep", "kind": "supply", "single": "Coil (100 ft)", "w": "coil", "wp": "coils", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 10, "f": 1}, {"id": "spare-anchor", "name": "Spare anchor", "cat": "Repair and Upkeep", "kind": "supply", "single": "Anchor", "w": "anchor", "wp": "anchors", "solo": true, "f": 1}, {"id": "kelp-charcoal", "name": "Kelp charcoal", "cat": "Fuel", "kind": "supply", "single": "Sack (50 lb)", "w": "sack", "wp": "sacks", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 8, "f": 1, "fuel": true}, {"id": "signal-flare", "name": "Signal flare", "cat": "Ammunition", "kind": "supply", "single": "Flare", "w": "flare", "wp": "flares", "solo": true, "f": 0, "ammo": true}, {"id": "pine-timber", "name": "Pine timber", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Plank or spar", "w": "plank", "wp": "planks", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "oak-ship-timber", "name": "Oak ship timber", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Plank or beam", "w": "plank", "wp": "planks", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "full-tree-log", "name": "Full tree log", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Log", "w": "log", "wp": "logs", "solo": true, "f": 5}, {"id": "pine-resin", "name": "Pine resin", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Bucket", "w": "bucket", "wp": "buckets", "cargo": "Barrel", "cargoPl": "barrels", "per": 20, "f": 1}, {"id": "pitch", "name": "Pitch", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Bucket", "w": "bucket", "wp": "buckets", "cargo": "Barrel", "cargoPl": "barrels", "per": 20, "f": 1}, {"id": "tar", "name": "Tar", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Bucket", "w": "bucket", "wp": "buckets", "cargo": "Barrel", "cargoPl": "barrels", "per": 20, "f": 1}, {"id": "varnish", "name": "Varnish", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Jar", "w": "jar", "wp": "jars", "cargo": "Crate", "cargoPl": "crates", "per": 40, "f": 1}, {"id": "oakum", "name": "Oakum", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Bundle", "w": "bundle", "wp": "bundles", "cargo": "Bale", "cargoPl": "bales", "per": 50, "f": 1}, {"id": "raw-hemp", "name": "Raw hemp", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Bale", "cargoPl": "bales", "per": 400, "f": 1}, {"id": "sailcloth", "name": "Sailcloth", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Bolt (10 yards)", "w": "bolt", "wp": "bolts", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 10, "f": 1}, {"id": "nails-and-spikes", "name": "Nails and spikes", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Keg", "w": "keg", "wp": "kegs", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 10, "f": 1}, {"id": "charcoal", "name": "Charcoal", "cat": "Fuel", "kind": "supply", "single": "Sack (50 lb)", "w": "sack", "wp": "sacks", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 8, "f": 1, "fuel": true}, {"id": "iron-ore", "name": "Iron ore", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "copper-ore", "name": "Copper ore", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "silver-ore", "name": "Silver ore", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "iron-bar", "name": "Iron bar", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "copper-bar", "name": "Copper bar", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "silver-bar", "name": "Silver bar", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "gold-bar", "name": "Gold bar", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "solo": true, "f": 0}, {"id": "building-stone", "name": "Building stone", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "Block (50 lb)", "w": "block", "wp": "blocks", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 8, "f": 1}, {"id": "bricks-and-roof-tiles", "name": "Bricks and roof tiles", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 dozen", "w": "dozen", "wp": "dozen", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "millstone", "name": "Millstone", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "Millstone", "w": "millstone", "wp": "millstones", "solo": true, "f": 1}, {"id": "quicklime", "name": "Quicklime", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "Sack (50 lb)", "w": "sack", "wp": "sacks", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 8, "f": 1}, {"id": "alum", "name": "Alum", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "sulfur", "name": "Sulfur", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "saltpeter", "name": "Saltpeter", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "gunpowder", "name": "Gunpowder", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "Keg (20 lb)", "w": "keg", "wp": "kegs", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "kelp-ash", "name": "Kelp ash", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "Sack (50 lb)", "w": "sack", "wp": "sacks", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 8, "f": 1}, {"id": "glass", "name": "Glass", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "Pane", "w": "pane", "wp": "panes", "cargo": "Crate", "cargoPl": "crates", "per": 40, "f": 1}, {"id": "pottery-and-amphorae", "name": "Pottery and amphorae", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 jar", "w": "jar", "wp": "jars", "cargo": "Crate", "cargoPl": "crates", "per": 40, "f": 1}, {"id": "raw-cotton", "name": "Raw cotton", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Bale", "cargoPl": "bales", "per": 400, "f": 1}, {"id": "flax", "name": "Flax", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Bale", "cargoPl": "bales", "per": 400, "f": 1}, {"id": "cotton-cloth", "name": "Cotton cloth", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "Bolt (10 yards)", "w": "bolt", "wp": "bolts", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "wool-cloth", "name": "Wool cloth", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "Bolt (10 yards)", "w": "bolt", "wp": "bolts", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "fine-cloth", "name": "Fine cloth", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "Bolt (10 yards)", "w": "bolt", "wp": "bolts", "solo": true, "f": 0}, {"id": "sea-silk", "name": "Sea silk", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "1 yard", "w": "yard", "wp": "yards", "solo": true, "f": 0}, {"id": "common-dye", "name": "Common dye", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "murex-purple", "name": "Murex purple", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "solo": true, "f": 0}, {"id": "raw-hides", "name": "Raw hides", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "1 hide", "w": "hide", "wp": "hides", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "leather", "name": "Leather", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "1 hide", "w": "hide", "wp": "hides", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "whale-oil", "name": "Whale oil", "cat": "Sea and Field Goods", "kind": "goods", "single": "Flask", "w": "flask", "wp": "flasks", "cargo": "Barrel", "cargoPl": "barrels", "per": 320, "f": 1}, {"id": "spermaceti", "name": "Spermaceti", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "beeswax", "name": "Beeswax", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "soap", "name": "Soap", "cat": "Sea and Field Goods", "kind": "goods", "single": "Bar", "w": "bar", "wp": "bars", "cargo": "Crate", "cargoPl": "crates", "per": 200, "f": 1}, {"id": "whalebone", "name": "Whalebone", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "ivory", "name": "Ivory", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "tortoiseshell", "name": "Tortoiseshell", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "solo": true, "f": 0}, {"id": "sharkskin", "name": "Sharkskin", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 hide", "w": "hide", "wp": "hides", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "isinglass", "name": "Isinglass", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "carving-shell", "name": "Carving shell", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "cork", "name": "Cork", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "tobacco-leaf", "name": "Tobacco leaf", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Bale", "cargoPl": "bales", "per": 400, "f": 1}, {"id": "sea-glass", "name": "Sea glass", "cat": "Sea and Field Goods", "kind": "goods", "single": "Handful", "w": "handful", "wp": "handfuls", "solo": true, "f": 0}];
+const CATALOG=[{"id": "fish", "keepDays": 1, "name": "Fish", "cat": "Fresh Food", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "perish", "how": "Perishable", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "shellfish", "keepDays": 2, "name": "Shellfish", "cat": "Fresh Food", "kind": "food", "single": "2 dozen", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "perish", "how": "Perishable", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "chicken", "keepDays": 2, "name": "Chicken", "cat": "Fresh Food", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "perish", "how": "Perishable", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "pork", "keepDays": 2, "name": "Pork", "cat": "Fresh Food", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "perish", "how": "Perishable", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "goat", "keepDays": 3, "name": "Goat", "cat": "Fresh Food", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "perish", "how": "Perishable", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "mutton", "keepDays": 3, "name": "Mutton", "cat": "Fresh Food", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "perish", "how": "Perishable", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "beef", "keepDays": 3, "name": "Beef", "cat": "Fresh Food", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "perish", "how": "Perishable", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "sea-turtle", "keepDays": 2, "name": "Sea turtle", "cat": "Fresh Food", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "perish", "how": "Perishable", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "eggs", "name": "Eggs", "cat": "Fresh Food", "kind": "food", "single": "Dozen", "w": "dozen", "wp": "dozen", "rat": 1.0, "water": false, "keep": "d8", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "vegetables", "name": "Vegetables", "cat": "Fresh Food", "kind": "food", "single": "3 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d6", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "fruit", "name": "Fruit", "cat": "Fresh Food", "kind": "food", "single": "1 piece", "w": "piece", "wp": "pieces", "rat": 0.125, "water": false, "keep": "d4", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 800, "f": 1}, {"id": "apple", "name": "Apple", "cat": "Fresh Food", "kind": "food", "single": "1 apple", "w": "apple", "wp": "apples", "rat": 0.125, "water": false, "keep": "d10", "how": "Hardy", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 800, "f": 1}, {"id": "citrus", "name": "Citrus", "cat": "Fresh Food", "kind": "food", "single": "1 fruit", "w": "fruit", "wp": "fruit", "rat": 0.125, "water": false, "keep": "d10", "how": "Hardy", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 800, "f": 1}, {"id": "plantain", "name": "Plantain", "cat": "Fresh Food", "kind": "food", "single": "1 plantain", "w": "plantain", "wp": "plantains", "rat": 0.25, "water": false, "keep": "d6", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 400, "f": 1}, {"id": "bread", "name": "Bread", "cat": "Fresh Food", "kind": "food", "single": "Loaf", "w": "loaf", "wp": "loaves", "rat": 0.5, "water": false, "keep": "d4", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 200, "f": 1}, {"id": "seaweed-bread", "name": "Seaweed bread", "cat": "Fresh Food", "kind": "food", "single": "Loaf", "w": "loaf", "wp": "loaves", "rat": 0.5, "water": false, "keep": "d4", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 200, "f": 1}, {"id": "fresh-cheese", "name": "Fresh cheese", "cat": "Fresh Food", "kind": "food", "single": "1 lb", "w": "pound", "wp": "pounds", "rat": 1.0, "water": false, "keep": "d8", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 300, "f": 1}, {"id": "sea-fennel", "name": "Sea fennel", "cat": "Fresh Food", "kind": "food", "single": "Bundle", "w": "bundle", "wp": "bundles", "rat": 0.25, "water": false, "keep": "d4", "how": "Delicate", "spoil": "Rancid", "cargo": "Bale", "cargoPl": "bales", "per": 600, "f": 1}, {"id": "firecap-peppers", "name": "Firecap peppers", "cat": "Fresh Food", "kind": "food", "single": "Handful", "w": "handful", "wp": "handfuls", "rat": 0.0, "water": false, "keep": "d10", "how": "Hardy", "spoil": "Rancid", "cargo": "Bale", "cargoPl": "bales", "per": 1000, "f": 1}, {"id": "green-beans", "name": "Green beans", "cat": "Fresh Food", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d6", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "garlic", "name": "Garlic", "cat": "Fresh Food", "kind": "food", "single": "1 head", "w": "head", "wp": "heads", "rat": 0.0, "water": false, "keep": "d12", "how": "Hardy", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 500, "f": 1}, {"id": "cucumber", "name": "Cucumber", "cat": "Fresh Food", "kind": "food", "single": "1 cucumber", "w": "cucumber", "wp": "cucumbers", "rat": 0.25, "water": false, "keep": "d6", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 400, "f": 1}, {"id": "watermelon", "name": "Watermelon", "cat": "Fresh Food", "kind": "food", "single": "1 melon", "w": "melon", "wp": "melons", "rat": 1.0, "water": false, "keep": "d8", "how": "Hardy", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 20, "f": 1}, {"id": "ship-s-biscuit", "name": "Ship's biscuit", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "dried-beans-lentils-or-chickpeas", "name": "Dried beans, lentils or chickpeas", "cat": "Stores", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "rice", "name": "Rice", "cat": "Stores", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "wheat-or-barley", "name": "Wheat or barley", "cat": "Stores", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "flour", "name": "Flour", "cat": "Stores", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "salted-beef", "name": "Salted beef", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "salted-ham", "name": "Salted ham", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "smoked-whale-meat", "name": "Smoked whale meat", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "salted-or-smoked-fish", "name": "Salted or smoked fish", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "dried-conch", "name": "Dried conch", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "dried-squid-or-cuttlefish", "name": "Dried squid or cuttlefish", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "smoked-or-salted-shellfish", "name": "Smoked or salted shellfish", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "glassleaf", "name": "Glassleaf", "cat": "Stores", "kind": "food", "single": "1 ration", "w": "ration", "wp": "rations", "rat": 1, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Barrel", "cargoPl": "barrels", "per": 150, "f": 1}, {"id": "dried-kelp", "name": "Dried kelp", "cat": "Stores", "kind": "food", "single": "Bundle", "w": "bundle", "wp": "bundles", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Bale", "cargoPl": "bales", "per": 300, "f": 1}, {"id": "pickled-vegetables", "name": "Pickled vegetables", "cat": "Stores", "kind": "food", "single": "3 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "pickled-cucumber", "name": "Pickled cucumber", "cat": "Stores", "kind": "food", "single": "1 cucumber", "w": "cucumber", "wp": "cucumbers", "rat": 0.25, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 400, "f": 1}, {"id": "pickled-watermelon", "name": "Pickled watermelon", "cat": "Stores", "kind": "food", "single": "1 melon", "w": "melon", "wp": "melons", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 20, "f": 1}, {"id": "pickled-green-beans", "name": "Pickled green beans", "cat": "Stores", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "pickled-eggs", "name": "Pickled eggs", "cat": "Stores", "kind": "food", "single": "Dozen", "w": "dozen", "wp": "dozen", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "pickled-garlic", "name": "Pickled garlic", "cat": "Stores", "kind": "food", "single": "1 head", "w": "head", "wp": "heads", "rat": 0.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 500, "f": 1}, {"id": "dried-fruit", "name": "Dried fruit", "cat": "Stores", "kind": "food", "single": "1 piece", "w": "piece", "wp": "pieces", "rat": 0.125, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 800, "f": 1}, {"id": "dried-apple", "name": "Dried apple", "cat": "Stores", "kind": "food", "single": "1 apple", "w": "apple", "wp": "apples", "rat": 0.125, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 800, "f": 1}, {"id": "dried-citrus", "name": "Dried citrus", "cat": "Stores", "kind": "food", "single": "1 fruit", "w": "fruit", "wp": "fruit", "rat": 0.125, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 800, "f": 1}, {"id": "dried-plantain", "name": "Dried plantain", "cat": "Stores", "kind": "food", "single": "1 plantain", "w": "plantain", "wp": "plantains", "rat": 0.25, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 400, "f": 1}, {"id": "dried-figs-or-raisins", "name": "Dried figs or raisins", "cat": "Delicacies", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "chestnuts", "name": "Chestnuts", "cat": "Delicacies", "kind": "food", "single": "2 lb", "w": "portion", "wp": "portions", "rat": 1.0, "water": false, "keep": "d12", "how": "Hardy", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 150, "f": 1}, {"id": "olives", "name": "Olives", "cat": "Delicacies", "kind": "food", "single": "Jar", "w": "jar", "wp": "jars", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 200, "f": 1}, {"id": "pickles", "name": "Pickles", "cat": "Delicacies", "kind": "food", "single": "Jar", "w": "jar", "wp": "jars", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 200, "f": 1}, {"id": "capers", "name": "Capers", "cat": "Delicacies", "kind": "food", "single": "Jar", "w": "jar", "wp": "jars", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 200, "f": 1}, {"id": "grape-leaves", "name": "Grape leaves", "cat": "Delicacies", "kind": "food", "single": "Jar", "w": "jar", "wp": "jars", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 200, "f": 1}, {"id": "fruit-preserves", "name": "Fruit preserves", "cat": "Delicacies", "kind": "food", "single": "Jar", "w": "jar", "wp": "jars", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 200, "f": 1}, {"id": "candied-peel", "name": "Candied peel", "cat": "Delicacies", "kind": "food", "single": "1 lb", "w": "pound", "wp": "pounds", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 300, "f": 1}, {"id": "cave-aged-cheese", "name": "Cave-aged cheese", "cat": "Delicacies", "kind": "food", "single": "1 lb", "w": "pound", "wp": "pounds", "rat": 1.0, "water": false, "keep": "d8", "how": "Delicate", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 300, "f": 1}, {"id": "wax-sealed-goat-cheese", "name": "Wax-sealed goat cheese", "cat": "Delicacies", "kind": "food", "single": "10 lb wheel", "w": "wheel", "wp": "wheels", "rat": 10.0, "water": false, "keep": "d12", "how": "Hardy", "spoil": "Rancid", "cargo": "Crate", "cargoPl": "crates", "per": 30, "f": 1}, {"id": "dried-mullet-roe", "name": "Dried mullet roe", "cat": "Delicacies", "kind": "food", "single": "1 lb slab", "w": "slab", "wp": "slabs", "rat": 1.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 300, "f": 1}, {"id": "squid-ink", "name": "Squid ink", "cat": "Delicacies", "kind": "food", "single": "Pot", "w": "pot", "wp": "pots", "rat": 0.0, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Fishy", "cargo": "Crate", "cargoPl": "crates", "per": 600, "f": 1}, {"id": "ambergris", "name": "Ambergris", "cat": "Delicacies", "kind": "food", "single": "1 oz", "w": "ounce", "wp": "ounces", "rat": 0.0, "water": false, "keep": "never", "how": null, "spoil": null, "solo": true, "f": 0}, {"id": "honey", "name": "Honey", "cat": "Pantry", "kind": "food", "single": "1 lb", "w": "pound", "wp": "pounds", "rat": 0.5, "water": false, "keep": "never", "how": null, "spoil": null, "cargo": "Cask", "cargoPl": "casks", "per": 300, "f": 1}, {"id": "raw-sugar", "name": "Raw sugar", "cat": "Pantry", "kind": "food", "single": "1 lb", "w": "pound", "wp": "pounds", "rat": 0.5, "water": false, "keep": "never", "how": null, "spoil": null, "cargo": "Sack", "cargoPl": "sacks", "per": 300, "f": 1}, {"id": "molasses", "name": "Molasses", "cat": "Pantry", "kind": "food", "single": "Jar, 1 lb", "w": "jar", "wp": "jars", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Barrel", "cargoPl": "barrels", "per": 400, "f": 1}, {"id": "olive-oil", "name": "Olive oil", "cat": "Pantry", "kind": "food", "single": "Flask", "w": "flask", "wp": "flasks", "rat": 0.5, "water": false, "keep": "d20", "how": "Preserved", "spoil": "Rancid", "cargo": "Barrel", "cargoPl": "barrels", "per": 320, "f": 1}, {"id": "salt", "name": "Salt", "cat": "Pantry", "kind": "food", "single": "1 lb", "w": "pound", "wp": "pounds", "rat": 0.0, "water": false, "keep": "never", "how": null, "spoil": null, "cargo": "Sack", "cargoPl": "sacks", "per": 350, "f": 1}, {"id": "vinegar", "name": "Vinegar", "cat": "Pantry", "kind": "food", "single": "Flask", "w": "flask", "wp": "flasks", "rat": 0.0, "water": false, "keep": "never", "how": null, "spoil": null, "cargo": "Barrel", "cargoPl": "barrels", "per": 320, "f": 1}, {"id": "dried-herbs", "name": "Dried herbs", "cat": "Pantry", "kind": "food", "single": "Bundle", "w": "bundle", "wp": "bundles", "rat": 0.0, "water": false, "keep": "never", "how": null, "spoil": null, "cargo": "Bale", "cargoPl": "bales", "per": 400, "f": 1}, {"id": "pepper", "name": "Pepper", "cat": "Pantry", "kind": "food", "single": "Pinch", "w": "pinch", "wp": "pinches", "rat": 0.0, "water": false, "keep": "never", "how": null, "spoil": null, "cargo": "Sack", "cargoPl": "sacks", "per": 3000, "f": 1}, {"id": "saffron", "name": "Saffron", "cat": "Pantry", "kind": "food", "single": "Pinch", "w": "pinch", "wp": "pinches", "rat": 0.0, "water": false, "keep": "never", "how": null, "spoil": null, "solo": true, "f": 0}, {"id": "water", "name": "Water", "cat": "Drink", "kind": "food", "single": "1 gallon", "w": "gallon", "wp": "gallons", "rat": 1.0, "water": true, "keep": "d10", "how": "Hardy", "spoil": "Stagnant", "cargo": "Barrel", "cargoPl": "barrels", "per": 40, "f": 1}, {"id": "hold-ale", "name": "Hold Ale", "cat": "Drink", "kind": "food", "single": "1 gallon", "w": "gallon", "wp": "gallons", "rat": 1.0, "water": true, "keep": "d20", "how": "Preserved", "spoil": "Sour", "cargo": "Barrel", "cargoPl": "barrels", "per": 40, "f": 1}, {"id": "beer", "name": "Beer", "cat": "Drink", "kind": "food", "single": "1 gallon", "w": "gallon", "wp": "gallons", "rat": 1.0, "water": true, "keep": "d12", "how": "Hardy", "spoil": "Sour", "cargo": "Barrel", "cargoPl": "barrels", "per": 40, "f": 1}, {"id": "dark-beer", "name": "Dark beer", "cat": "Drink", "kind": "food", "single": "1 gallon", "w": "gallon", "wp": "gallons", "rat": 1.0, "water": true, "keep": "d12", "how": "Hardy", "spoil": "Sour", "cargo": "Barrel", "cargoPl": "barrels", "per": 40, "f": 1}, {"id": "common-wine", "name": "Common wine", "cat": "Drink", "kind": "food", "single": "1 gallon", "w": "gallon", "wp": "gallons", "rat": 1.0, "water": true, "keep": "d20", "how": "Preserved", "spoil": "Sour", "cargo": "Barrel", "cargoPl": "barrels", "per": 40, "f": 1}, {"id": "mead", "name": "Mead", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "white-wine", "name": "White wine", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "fine-red-wine", "name": "Fine red wine", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "lotus-wine", "name": "Lotus wine", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "aged-reserve-wine", "name": "Aged reserve wine", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "rum", "name": "Rum", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "pine-needle-liquor", "name": "Pine-needle liquor", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "myrtle-liqueur", "name": "Myrtle liqueur", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "bitter-orange-liqueur", "name": "Bitter-orange liqueur", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "whiskey", "name": "Whiskey", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "brandy", "name": "Brandy", "cat": "Drink", "kind": "food", "single": "Bottle", "w": "bottle", "wp": "bottles", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Crate", "cargoPl": "crates", "per": 100, "f": 1}, {"id": "coffee", "name": "Coffee", "cat": "Drink", "kind": "food", "single": "1 day's brew", "w": "day's brew", "wp": "days' brew", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Sack", "cargoPl": "sacks", "per": 3000, "f": 1}, {"id": "tea", "name": "Tea", "cat": "Drink", "kind": "food", "single": "1 day's brew", "w": "day's brew", "wp": "days' brew", "rat": 0, "water": true, "keep": "never", "how": null, "spoil": null, "cargo": "Chest", "cargoPl": "chests", "per": 3000, "f": 1}, {"id": "live-chicken", "name": "Chicken (live)", "cat": "Livestock", "kind": "live", "single": "Bird", "w": "bird", "wp": "birds", "keep": "never", "meat": 1, "meatOf": "chicken", "f": 1, "cargo": "Coop", "cargoPl": "coops", "per": 40}, {"id": "live-goat", "name": "Goat (live)", "cat": "Livestock", "kind": "live", "single": "Goat", "w": "goat", "wp": "goats", "keep": "never", "meat": 20, "meatOf": "goat", "f": 1, "cargo": "Pair", "cargoPl": "pairs", "per": 2}, {"id": "live-sheep", "name": "Sheep (live)", "cat": "Livestock", "kind": "live", "single": "Sheep", "w": "sheep", "wp": "sheep", "keep": "never", "meat": 25, "meatOf": "mutton", "f": 1, "cargo": "Pair", "cargoPl": "pairs", "per": 2}, {"id": "live-pig", "name": "Pig (live)", "cat": "Livestock", "kind": "live", "single": "Pig", "w": "pig", "wp": "pigs", "keep": "never", "meat": 60, "meatOf": "pork", "f": 1, "cargo": "Pair", "cargoPl": "pairs", "per": 2}, {"id": "live-cow", "name": "Cow (live)", "cat": "Livestock", "kind": "live", "single": "Cow", "w": "cow", "wp": "cows", "keep": "never", "meat": 200, "meatOf": "beef", "f": 3, "solo": true}, {"id": "cannonball", "name": "Cannonball", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Round", "w": "round", "wp": "rounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 25, "f": 1}, {"id": "chain-shot", "name": "Chain shot", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Round", "w": "round", "wp": "rounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 25, "f": 1}, {"id": "grapeshot", "name": "Grapeshot", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Round", "w": "round", "wp": "rounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 25, "f": 1}, {"id": "smoke-bomb", "name": "Smoke bomb", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Round", "w": "round", "wp": "rounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "mortar-shell", "name": "Mortar shell", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Round", "w": "round", "wp": "rounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 10, "f": 1}, {"id": "burst-shell", "name": "Burst shell", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Round", "w": "round", "wp": "rounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 10, "f": 1}, {"id": "swivel-shot", "name": "Swivel shot", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Round", "w": "round", "wp": "rounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 200, "f": 1}, {"id": "swivel-grape", "name": "Swivel grape", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Round", "w": "round", "wp": "rounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 200, "f": 1}, {"id": "ballista-bolt", "name": "Ballista bolt", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Bolt", "w": "bolt", "wp": "bolts", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 40, "f": 1}, {"id": "flaming-bolt", "name": "Flaming bolt", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Bolt", "w": "bolt", "wp": "bolts", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 30, "f": 1}, {"id": "catapult-stone", "name": "Catapult stone", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Stone", "w": "stone", "wp": "stones", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 8, "f": 1}, {"id": "harpoon", "name": "Harpoon", "cat": "Ammunition", "kind": "supply", "ammo": true, "retrieve": true, "single": "Harpoon", "w": "harpoon", "wp": "harpoons", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "grappling-hook-and-chain", "name": "Grappling hook and chain", "cat": "Ammunition", "kind": "supply", "ammo": true, "retrieve": true, "single": "Hook", "w": "hook", "wp": "hooks", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 4, "f": 1}, {"id": "salamander-fuel", "name": "Salamander fuel", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Use", "w": "use", "wp": "uses", "useMult": 3, "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 24, "f": 1}, {"id": "dragon-head-fuel", "name": "Dragon head fuel", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Use", "w": "use", "wp": "uses", "useMult": 3, "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 15, "f": 1}, {"id": "boarding-plank", "name": "Boarding plank", "cat": "Ammunition", "kind": "supply", "single": "Plank", "w": "plank", "wp": "planks", "solo": true, "f": 0, "ammo": true, "retrieve": true}, {"id": "naval-mine", "name": "Naval mine", "cat": "Ammunition", "kind": "supply", "ammo": true, "single": "Mine", "w": "mine", "wp": "mines", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 4, "f": 1}, {"id": "fire-sand", "name": "Fire sand", "cat": "Repair and Upkeep", "kind": "supply", "single": "Bucket", "w": "bucket", "wp": "buckets", "solo": true, "f": 0}, {"id": "repair-stores", "name": "Repair stores", "cat": "Repair and Upkeep", "kind": "supply", "single": "1 unit", "w": "unit", "wp": "units", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 10, "f": 1}, {"id": "emergency-stores", "name": "Emergency stores", "cat": "Repair and Upkeep", "kind": "supply", "single": "1 unit", "w": "unit", "wp": "units", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 5, "f": 1}, {"id": "heavy-cordage", "name": "Heavy cordage", "cat": "Repair and Upkeep", "kind": "supply", "single": "Coil (100 ft)", "w": "coil", "wp": "coils", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 10, "f": 1}, {"id": "spare-anchor", "name": "Spare anchor", "cat": "Repair and Upkeep", "kind": "supply", "single": "Anchor", "w": "anchor", "wp": "anchors", "solo": true, "f": 1}, {"id": "kelp-charcoal", "name": "Kelp charcoal", "cat": "Fuel", "kind": "supply", "single": "Sack (50 lb)", "w": "sack", "wp": "sacks", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 8, "f": 1, "fuel": true}, {"id": "signal-flare", "name": "Signal flare", "cat": "Ammunition", "kind": "supply", "single": "Flare", "w": "flare", "wp": "flares", "solo": true, "f": 0, "ammo": true}, {"id": "pine-timber", "name": "Pine timber", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Plank or spar", "w": "plank", "wp": "planks", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "oak-ship-timber", "name": "Oak ship timber", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Plank or beam", "w": "plank", "wp": "planks", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "full-tree-log", "name": "Full tree log", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Log", "w": "log", "wp": "logs", "solo": true, "f": 5}, {"id": "pine-resin", "name": "Pine resin", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Bucket", "w": "bucket", "wp": "buckets", "cargo": "Barrel", "cargoPl": "barrels", "per": 20, "f": 1}, {"id": "pitch", "name": "Pitch", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Bucket", "w": "bucket", "wp": "buckets", "cargo": "Barrel", "cargoPl": "barrels", "per": 20, "f": 1}, {"id": "tar", "name": "Tar", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Bucket", "w": "bucket", "wp": "buckets", "cargo": "Barrel", "cargoPl": "barrels", "per": 20, "f": 1}, {"id": "varnish", "name": "Varnish", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Jar", "w": "jar", "wp": "jars", "cargo": "Crate", "cargoPl": "crates", "per": 40, "f": 1}, {"id": "oakum", "name": "Oakum", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Bundle", "w": "bundle", "wp": "bundles", "cargo": "Bale", "cargoPl": "bales", "per": 50, "f": 1}, {"id": "raw-hemp", "name": "Raw hemp", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Bale", "cargoPl": "bales", "per": 400, "f": 1}, {"id": "sailcloth", "name": "Sailcloth", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Bolt (10 yards)", "w": "bolt", "wp": "bolts", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 10, "f": 1}, {"id": "nails-and-spikes", "name": "Nails and spikes", "cat": "Timber and Shipbuilding", "kind": "goods", "single": "Keg", "w": "keg", "wp": "kegs", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 10, "f": 1}, {"id": "charcoal", "name": "Charcoal", "cat": "Fuel", "kind": "supply", "single": "Sack (50 lb)", "w": "sack", "wp": "sacks", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 8, "f": 1, "fuel": true}, {"id": "iron-ore", "name": "Iron ore", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "copper-ore", "name": "Copper ore", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "silver-ore", "name": "Silver ore", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "iron-bar", "name": "Iron bar", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "copper-bar", "name": "Copper bar", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "silver-bar", "name": "Silver bar", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "gold-bar", "name": "Gold bar", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "solo": true, "f": 0}, {"id": "building-stone", "name": "Building stone", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "Block (50 lb)", "w": "block", "wp": "blocks", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 8, "f": 1}, {"id": "bricks-and-roof-tiles", "name": "Bricks and roof tiles", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 dozen", "w": "dozen", "wp": "dozen", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "millstone", "name": "Millstone", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "Millstone", "w": "millstone", "wp": "millstones", "solo": true, "f": 1}, {"id": "quicklime", "name": "Quicklime", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "Sack (50 lb)", "w": "sack", "wp": "sacks", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 8, "f": 1}, {"id": "alum", "name": "Alum", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "sulfur", "name": "Sulfur", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "saltpeter", "name": "Saltpeter", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "gunpowder", "name": "Gunpowder", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "Keg (20 lb)", "w": "keg", "wp": "kegs", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "kelp-ash", "name": "Kelp ash", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "Sack (50 lb)", "w": "sack", "wp": "sacks", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 8, "f": 1}, {"id": "glass", "name": "Glass", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "Pane", "w": "pane", "wp": "panes", "cargo": "Crate", "cargoPl": "crates", "per": 40, "f": 1}, {"id": "pottery-and-amphorae", "name": "Pottery and amphorae", "cat": "Metal, Stone and Powder", "kind": "goods", "single": "1 jar", "w": "jar", "wp": "jars", "cargo": "Crate", "cargoPl": "crates", "per": 40, "f": 1}, {"id": "raw-cotton", "name": "Raw cotton", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Bale", "cargoPl": "bales", "per": 400, "f": 1}, {"id": "flax", "name": "Flax", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Bale", "cargoPl": "bales", "per": 400, "f": 1}, {"id": "cotton-cloth", "name": "Cotton cloth", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "Bolt (10 yards)", "w": "bolt", "wp": "bolts", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "wool-cloth", "name": "Wool cloth", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "Bolt (10 yards)", "w": "bolt", "wp": "bolts", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "fine-cloth", "name": "Fine cloth", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "Bolt (10 yards)", "w": "bolt", "wp": "bolts", "solo": true, "f": 0}, {"id": "sea-silk", "name": "Sea silk", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "1 yard", "w": "yard", "wp": "yards", "solo": true, "f": 0}, {"id": "common-dye", "name": "Common dye", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "murex-purple", "name": "Murex purple", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "solo": true, "f": 0}, {"id": "raw-hides", "name": "Raw hides", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "1 hide", "w": "hide", "wp": "hides", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "leather", "name": "Leather", "cat": "Cloth, Dye and Leather", "kind": "goods", "single": "1 hide", "w": "hide", "wp": "hides", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "whale-oil", "name": "Whale oil", "cat": "Sea and Field Goods", "kind": "goods", "single": "Flask", "w": "flask", "wp": "flasks", "cargo": "Barrel", "cargoPl": "barrels", "per": 320, "f": 1}, {"id": "spermaceti", "name": "Spermaceti", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "beeswax", "name": "Beeswax", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "soap", "name": "Soap", "cat": "Sea and Field Goods", "kind": "goods", "single": "Bar", "w": "bar", "wp": "bars", "cargo": "Crate", "cargoPl": "crates", "per": 200, "f": 1}, {"id": "whalebone", "name": "Whalebone", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "ivory", "name": "Ivory", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "tortoiseshell", "name": "Tortoiseshell", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "solo": true, "f": 0}, {"id": "sharkskin", "name": "Sharkskin", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 hide", "w": "hide", "wp": "hides", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 20, "f": 1}, {"id": "isinglass", "name": "Isinglass", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "carving-shell", "name": "Carving shell", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "cork", "name": "Cork", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Cargo unit", "cargoPl": "cargo units", "per": 400, "f": 1}, {"id": "tobacco-leaf", "name": "Tobacco leaf", "cat": "Sea and Field Goods", "kind": "goods", "single": "1 lb", "w": "pound", "wp": "pounds", "cargo": "Bale", "cargoPl": "bales", "per": 400, "f": 1}, {"id": "sea-glass", "name": "Sea glass", "cat": "Sea and Field Goods", "kind": "goods", "single": "Handful", "w": "handful", "wp": "handfuls", "solo": true, "f": 0}];
 const SHIP_TYPES=[{"name": "Battleship", "tons": 1500.0, "size": "Huge", "fuel": true}, {"name": "Brigantine", "tons": 70.0, "size": "Large", "fuel": false}, {"name": "Carrack", "tons": 100.0, "size": "Large", "fuel": false}, {"name": "Catamaran", "tons": 0.6, "size": "Small", "fuel": false}, {"name": "Cutter", "tons": 2.0, "size": "Small", "fuel": false}, {"name": "Fishing Smack", "tons": 4.0, "size": "Small", "fuel": false}, {"name": "Fluyt", "tons": 100.0, "size": "Medium", "fuel": false}, {"name": "Galleon", "tons": 800.0, "size": "Huge", "fuel": false}, {"name": "Galley", "tons": 80.0, "size": "Large", "fuel": false}, {"name": "Gunboat", "tons": 30.0, "size": "Medium", "fuel": false}, {"name": "Lifeboat", "tons": 1.0, "size": "Small", "fuel": false}, {"name": "Longship", "tons": 6.0, "size": "Medium", "fuel": false}, {"name": "Man o' War", "tons": 800.0, "size": "Huge", "fuel": false}, {"name": "Rowboat", "tons": 0.4, "size": "Small", "fuel": false}, {"name": "Sloop", "tons": 50.0, "size": "Medium", "fuel": false}, {"name": "Steam Frigate", "tons": 150.0, "size": "Large", "fuel": true}, {"name": "Steam Launch", "tons": 30.0, "size": "Medium", "fuel": true}, {"name": "Steam Ship", "tons": 1000.0, "size": "Huge", "fuel": true}, {"name": "Warship", "tons": 500.0, "size": "Huge", "fuel": false}, {"name": "Wave Skimmer", "tons": 1.0, "size": "Small", "fuel": false}, {"name": "Whaler", "tons": 150.0, "size": "Large", "fuel": false}];
 
 const DICE=["d20","d12","d10","d8","d6","d4"];
@@ -1070,8 +1115,8 @@ function ask(html,onOk,okText,noCancel){
 }
 function confirmBox(title,text,yes,onYes){ask(`<h2>${esc(title)}</h2><p class="sub">${esc(text)}</p>`,()=>onYes(),yes);}
 function snark(kind,extra){
-  const head={scuttle:"Avast, Sailor!",chest:"Hands Off the Chest!",papers:"Unhand Those Papers!",overload:"She's Full, Sailor!",storeFull:"Those Walls Won't Stretch!",seize:"That's Customs Business!",recover:"That Cargo Is Impounded!",smuggler:"It's a Secret, Not a Warehouse!",close:"Those Doors Stay Open!",deeds:"Hands Off the Deeds!"}[kind];
-  const btn={scuttle:"I unhand the axe",chest:"I back away slowly",papers:"I put the quill down",overload:"I take it back to the dock",storeFull:"I carry it back out",seize:"I leave it to the inspectors",recover:"I let it be",smuggler:"I take it back out",close:"I put the keys down",deeds:"I put the deeds back"}[kind];
+  const head={scuttle:"Avast, Sailor!",chest:"Hands Off the Chest!",papers:"Unhand Those Papers!",overload:"She's Full, Sailor!",storeFull:"Those Walls Won't Stretch!",seize:"That's Customs Business!",recover:"That Cargo Is Impounded!",smuggler:"It's a Secret, Not a Warehouse!",coldFull:"No Room in the Cold!",close:"Those Doors Stay Open!",deeds:"Hands Off the Deeds!"}[kind];
+  const btn={scuttle:"I unhand the axe",chest:"I back away slowly",papers:"I put the quill down",overload:"I take it back to the dock",storeFull:"I carry it back out",seize:"I leave it to the inspectors",recover:"I let it be",smuggler:"I take it back out",coldFull:"I let it sweat",close:"I put the keys down",deeds:"I put the deeds back"}[kind];
   ask(`<h2>${head}</h2><p class="snark">${esc(deal("snark-"+kind,SNARK[kind])).replace(/\*([^*]+)\*/g,"<i>$1</i>")}</p>${extra?`<p class="note">${esc(extra)}</p>`:""}`,()=>{},btn,true);
 }
 
@@ -1090,6 +1135,7 @@ function showHarbor(){
   closeHold();
   $("holdView").hidden=true;$("harborView").hidden=false;
   document.title="The Harbor Register";
+  if(KEEPER)struckTally(true);
   if(!harborUnsub)harborUnsub=DB.on("ships",v=>{SHIPS=v||{};renderShips();});
   if(!migrated&&!DB.local){
     migrated=true;
@@ -1109,12 +1155,14 @@ function shipFacts(s){
     bits.push(typeof s.maxTons==="number"?"holds "+tonsW(s.maxTons*5)+"":"no limit to its space");
     if(s.hearth)bits.push("a hearth");
     if(s.battery)bits.push("a battery");
+    if(s.cellar)bits.push(typeof s.cellarTons==="number"?"a cold cellar of "+tonsW(s.cellarTons*5):"cold throughout");
     const p=toArr(s.production).filter(Boolean);if(p.length)bits.push(p.length+" "+(p.length===1?"thing":"things")+" produced");
     return bits.join(" · ");
   }
   if(typeof s.maxTons==="number")bits.push(tonsW(s.maxTons*5)+"");else bits.push("no Tonnage set");
   if(s.fuel)bits.push("Fuel Powered, "+(s.size||"Medium"));
   if(s.smuggler)bits.push("Smuggler's Hold");
+  if(s.cold)bits.push("Cold Hold");
   return bits.join(" · ");
 }
 function renderShips(){
@@ -1146,6 +1194,7 @@ function shipFields(s,withName){
     <label>Fuel Powered</label><label class="inline"><input type="checkbox" name="fuel" ${s.fuel?"checked":""}> She burns kelp charcoal</label>
     <label>Size</label><select name="size">${["Small","Medium","Large","Huge"].map(z=>`<option ${z===(s.size||"Medium")?"selected":""}>${z}</option>`).join("")}</select>
     <label>Smuggler's Hold</label><label class="inline"><input type="checkbox" name="smug" ${s.smuggler?"checked":""}> Installed, hiding 1/10 of her Tonnage</label>
+    <label>Cold Hold</label><label class="inline"><input type="checkbox" name="cold" ${s.cold?"checked":""}> Installed, keeping 1/5 of her Tonnage cold</label>
   </div>`;
 }
 function wireTypeFill(){
@@ -1157,7 +1206,7 @@ function wireTypeFill(){
 }
 function readShip(fd){
   const tv=String(fd.get("tons")||"").trim();
-  const out={fuel:!!fd.get("fuel"),size:String(fd.get("size")||"Medium"),smuggler:!!fd.get("smug")};
+  const out={fuel:!!fd.get("fuel"),size:String(fd.get("size")||"Medium"),smuggler:!!fd.get("smug"),cold:!!fd.get("cold")};
   if(tv!==""){const n=Math.max(0,Math.round(parseFloat(tv)*5)/5);if(!isNaN(n))out.maxTons=n;}
   return out;
 }
@@ -1180,12 +1229,16 @@ function storeFields(s,withName){
     <label>Capacity</label><input type="number" name="tons" min="0" step="0.2" value="${typeof s.maxTons==="number"?s.maxTons:""}" placeholder="tons, blank for no limit">
     <label>Hearth</label><label class="inline"><input type="checkbox" name="hearth" ${s.hearth?"checked":""}> A fire to cook on</label>
     <label>Battery</label><label class="inline"><input type="checkbox" name="battery" ${s.battery?"checked":""}> Cannons, mortars or other guns</label>
+    <label>Cold cellar</label><label class="inline"><input type="checkbox" name="cellar" ${s.cellar?"checked":""}> Dug deep or cooled by a spring</label>
+    <label>Cellar size</label><input type="number" name="ctons" min="0" step="0.2" value="${typeof s.cellarTons==="number"?s.cellarTons:""}" placeholder="tons, blank for all of it">
   </div>`;
 }
 function readStore(fd){
   const tv=String(fd.get("tons")||"").trim();
-  const out={port:String(fd.get("port")||"").trim(),hearth:!!fd.get("hearth"),battery:!!fd.get("battery")};
+  const out={port:String(fd.get("port")||"").trim(),hearth:!!fd.get("hearth"),battery:!!fd.get("battery"),cellar:!!fd.get("cellar")};
   if(tv!==""){const n=Math.max(0,Math.round(parseFloat(tv)*5)/5);if(!isNaN(n))out.maxTons=n;}
+  const cv=String(fd.get("ctons")||"").trim();
+  if(cv!==""){const n=Math.max(0,Math.round(parseFloat(cv)*5)/5);if(!isNaN(n))out.cellarTons=n;}
   return out;
 }
 async function claimId(name,rec,hold){
@@ -1285,6 +1338,11 @@ async function checkKeeper(user){
 let SHIPID=null, S=fresh(), HIST=[], holdUnsub=null, nameUnsub=null, holdSeen=false, lastCustomKeys="";
 function fresh(){return {day:1,crew:6,shared:false,lots:[],custom:{},log:[],seq:1,eggs:0,inWater:{},seized:[],jour:null};}
 const toArr=x=>Array.isArray(x)?x:(x?Object.values(x):[]);
+/* ---- Freshness: a perishable spends 5 points each dawn in the open, and 1 in the cold ---- */
+const FP=5;
+const keepDays=it=>Math.max(1,Math.round(+((it||{}).keepDays)||2));
+const daysLeft=l=>l.cold?Math.max(0,l.fp||0):Math.ceil(Math.max(0,l.fp||0)/FP);
+const expires=l=>(l.fp||0)<=0?"Spoiled":(daysLeft(l)<=1?"Expires tonight":`Expires in ${daysLeft(l)} days`)+(l.cold?" (cold)":"");
 function normalize(v){
   const s=Object.assign(fresh(),v||{});s.lots=toArr(s.lots).filter(Boolean);s.log=toArr(s.log).filter(Boolean);s.custom=s.custom||{};s.inWater=s.inWater||{};s.eggs=s.eggs||0;
   s.seized=toArr(s.seized).filter(Boolean).map(z=>Object.assign({},z,{lots:toArr(z.lots).filter(Boolean)}));
@@ -1299,6 +1357,11 @@ function normalize(v){
   }
   // Single-only things once stowed as "loose" become singles.
   for(const l of s.lots){const it=CAT[l.item]||s.custom[l.item];if(it&&it.solo&&l.form!=="solo")l.form="solo";if(l.spoiled==null)l.spoiled=0;}
+  // Holds kept before freshness: a perishable's spoil day becomes its freshness, five to a day.
+  const toFresh=(l,day)=>{if(!l||l.die!=="perish"||l.fp!=null)return;l.fp=Math.max(0,((l.spoilsOn!=null?l.spoilsOn:day+2)-day)*FP);delete l.spoilsOn;};
+  for(const l of s.lots)toFresh(l,s.day||1);
+  for(const z of s.seized)for(const l of z.lots)toFresh(l,s.day||1);
+  s.coldMake=s.coldMake||{};
   return s;
 }
 // "live pigs", not "pig (live)", wherever a name is said in passing
@@ -1328,6 +1391,35 @@ const holdF=()=>S.lots.reduce((a,l)=>a+lotF(l),0);
 const hidF=()=>S.lots.filter(l=>l.hid).reduce((a,l)=>a+lotF(l),0);
 // The Smuggler's Hold hides 1/10 of her Tonnage, rounded down to the fifth of a ton.
 const hidMaxF=()=>{const M=maxF();return ship().smuggler&&M!=null?Math.floor(M/10):null;};
+// The cold: a ship's Cold Hold holds 1/5 of her Tonnage; a storehouse's cold cellar holds what its deeds say, or the whole of it.
+const coldOn=s=>{s=s||ship();return isStore(s)?!!s.cellar:!!s.cold;};
+const coldPlace=s=>isStore(s||ship())?"cold cellar":"cold hold";
+function coldMaxOf(s){
+  if(!coldOn(s))return 0;
+  const M=typeof s.maxTons==="number"?Math.round(s.maxTons*5):null;
+  if(isStore(s))return typeof s.cellarTons==="number"?Math.round(s.cellarTons*5):M;
+  return M!=null?Math.floor(M/5):null;
+}
+const coldMaxF=()=>coldMaxOf(ship());
+const coldF=()=>S.lots.filter(l=>l.cold).reduce((a,l)=>a+lotF(l),0);
+function projColdF(){ // the cold's weight once the loose stores are packed at dawn
+  let f=0;const loose={};
+  for(const l of S.lots){
+    if(!l.cold)continue;const it=item(l.item);
+    if(l.form==="loose"&&it.per){const k=lotKey(l);const g=loose[k]||(loose[k]={u:0,s:0,it});g.u+=l.units||0;g.s+=l.spoiled||0;}
+    else f+=lotF(l);
+  }
+  for(const g of Object.values(loose))f+=(Math.floor(g.u/g.it.per)+Math.floor(g.s/g.it.per))*(g.it.f||0);
+  return f;
+}
+// What is made goes to the cold if the box for it is ticked and there is room.
+function toCold(l,key){
+  if(!coldOn()||!S.coldMake||!S.coldMake[key])return;
+  const C=coldMaxF(),f0=projColdF();l.cold=true;
+  if(C!=null&&projColdF()>C&&projColdF()>f0)delete l.cold;
+}
+// When the cold is taken out, everything in it comes out into the open hold.
+function warmAll(){let n=0;for(const l of S.lots)if(l.cold){delete l.cold;n++;}if(n)logLine(say("coldGone",coldPlace()));return n;}
 
 /* ---- Every change to the hold goes through act(), inside a transaction ----
    opts.guard: refuse if it would carry her past her Tonnage.
@@ -1337,25 +1429,31 @@ function act(fn,after,opts){
   opts=opts||{};
   let before=null;
   let over=null;
-  const M=maxF(),H=hidMaxF(),here0=SHIPID;
+  const M=maxF(),H=hidMaxF(),C=coldMaxF(),here0=SHIPID;
   DB.tx(holdPath(),cur=>{
     over=null;
     if(cur===null)return; // the ship is gone
     S=normalize(cur);before=JSON.stringify(S);
-    const f0=holdF(),h0=hidF();
+    const f0=holdF(),h0=hidF(),c0=coldF();
     if(fn()===false)return;
     merge();
-    const f1=holdF(),h1=hidF();
+    const f1=holdF(),h1=hidF(),c1=coldF();
     if(opts.guard&&M!=null&&f1>M&&f1>f0){
       if(!opts.force){over={f0,f1,M};return;}
       if(!here())logLine(say("overload"),true);
     }
     if(opts.guard&&H!=null&&h1>H&&h1>h0&&!opts.forceHid){over={hid:true,h0,h1,H};return;}
+    if(opts.guard&&C!=null&&c1>C&&c1>c0&&!opts.forceCold){over={cold:true,c0,c1,C};return;}
     return clone(S);
   }).then(res=>{
     if(SHIPID!==here0){if(res.committed&&after)after();return;}
     S=normalize(res.val);render();
     if(res.committed){remember(before,res.val);if(after)after();}
+    else if(over&&over.cold){
+      const P=coldPlace(),PT=here()?"Cold Cellar":"Cold Hold";
+      if(KEEPER)confirmBox("Overfill the "+PT+"?","This would put "+tonsText(over.c1)+" of "+tonsW(over.C)+" in the "+P+". Pack it in anyway?","Pack it in",()=>act(fn,after,Object.assign({},opts,{forceCold:true})));
+      else snark("coldFull","Room left in the "+P+": "+tonsW(Math.max(0,over.C-over.c0))+".");
+    }
     else if(over&&over.hid){
       if(KEEPER)confirmBox("Overfill the Smuggler's Hold?","This would put "+tonsText(over.h1)+" of "+tonsW(over.H)+" in the smuggler's hold. Stuff it in anyway?","Stuff it in",()=>act(fn,after,Object.assign({},opts,{forceHid:true})));
       else snark("smuggler","Room left in the smuggler's hold: "+tonsW(Math.max(0,over.H-over.h0))+".");
@@ -1439,9 +1537,9 @@ const tidy=t=>String(t)
 function logLine(text,bad,flour){text=tidy(text);S.log.push({d:S.day,t:text,b:!!bad,f:!!flour});if(S.log.length>400)S.log=S.log.slice(-400);}
 function lotById(id){return S.lots.find(l=>l.id===+id);}
 
-const CARRY=["spoilsOn","wet","dryOn","oil","hid","fate","fateAll","out"]; // what a lot's pieces keep when it is split
+const CARRY=["fp","cold","wet","dryOn","oil","hid","fate","fateAll","out"]; // what a lot's pieces keep when it is split
 /* ---- Combining: like with like at once; loose goods are packed into cargo units at dawn ---- */
-const lotKey=l=>[l.item,l.form,l.die,l.die==="perish"?l.spoilsOn:"",l.wet?1:0,l.wet&&l.dryOn?l.dryOn:"",l.oil?1:0,l.hid?1:0,l.fate||"",l.fateAll?1:0,l.sun?"sun"+l.dryOn:"",l.out||""].join("|"); // a lot under the Keeper's thumb keeps to itself
+const lotKey=l=>[l.item,l.form,l.die,l.die==="perish"?l.fp:"",l.cold?"cold":"",l.wet?1:0,l.wet&&l.dryOn?l.dryOn:"",l.oil?1:0,l.hid?1:0,l.fate||"",l.fateAll?1:0,l.sun?"sun"+l.dryOn:"",l.out||""].join("|"); // a lot under the Keeper's thumb keeps to itself
 function combine(){
   const out=[],map={};
   for(const l of S.lots){
@@ -1520,7 +1618,7 @@ function doStep(l,why){
 /* ---- Feeding the crew: whatever is closest to spoiling goes first ---- */
 const FEED_FOOD_CATS=["Fresh Food","Stores","Galley Fare","Custom"];
 function urgency(l){
-  if(l.die==="perish")return l.spoilsOn||0;
+  if(l.die==="perish")return daysLeft(l)+(l.cold?0.5:0); // the open hold's goes first on a tie
   if(l.die==="turning")return 1e6;
   const i=DICE.indexOf(l.die);if(i>=0)return 2e6+(DICE.length-i);
   return 9e6;
@@ -1581,6 +1679,7 @@ function produce(){
     const f0=projF();
     const l=addLot(p.item,form,qty,die,true);
     if(M!=null&&projF()>M&&projF()>f0){S.lots=S.lots.filter(x=>x!==l);logLine(say("noroom",words,dispName(it)));continue;}
+    toCold(l,"deed:"+p.item);
     logLine(say("produce",words,dispName(it)));jot("add",p.item,lotSingles(l,qty));
   }
 }
@@ -1598,12 +1697,12 @@ function yieldAll(){
     S.bank=S.bank||{};const bank=(S.bank[it.id]||0)+made;const whole=Math.floor(bank/make);S.bank[it.id]=bank%make;
     if(it.id==="live-chicken"&&p.item==="eggs"&&make===12){ // the hens keep their own words
       logLine(say("eggs",made));
-      if(whole>0){addLot("eggs","loose",whole,out.keep==="perish"?"perish":(out.keep||"d8"),true);jot("add","eggs",whole);logLine(say("dozen",amt(out,whole)+" of eggs",S.bank[it.id]));}
+      if(whole>0){toCold(addLot("eggs","loose",whole,out.keep==="perish"?"perish":(out.keep||"d8"),true),it.id);jot("add","eggs",whole);logLine(say("dozen",amt(out,whole)+" of eggs",S.bank[it.id]));}
       continue;
     }
     if(whole<=0)continue;
     const die=out.kind!=="food"?"never":(out.keep==="perish"?"perish":(out.keep||"never"));
-    addLot(p.item,out.solo?"solo":"loose",whole,die,true);jot("add",p.item,whole);
+    toCold(addLot(p.item,out.solo?"solo":"loose",whole,die,true),it.id);jot("add",p.item,whole);
     logLine(say("yields",dispName(it).replace(/^live /,""),amt(out,whole),lc(out.name)));
   }
 }
@@ -1613,6 +1712,7 @@ function dawnHere(seen,burn){
   // Those who went without today feel it.
   const h=hunger();
   if(h.crew&&(h.food||h.water))logLine(say("without",h.food,h.water),true);
+  if(!coldOn())warmAll();
   S.day++;
   S.lastDawn={at:Date.now(),by:DEVICE,day:S.day};
   logLine(say(here()?"storeDawn":"dawn"),false,true);
@@ -1621,7 +1721,8 @@ function dawnHere(seen,burn){
     const it=item(l.item);
     if(it.kind!=="food"||l.units<=0||l.die==="never"||l.sun)continue;
     if(l.die==="perish"){
-      if(S.day>=l.spoilsOn){const n=l.units;l.spoiled+=n;l.units=0;logLine(say("perish",lc(it.name),lotAmt(l,n)),true);}
+      l.fp=(l.fp||0)-(l.cold?1:FP);
+      if(l.fp<=0){l.fp=0;const n=l.units;l.spoiled+=n;l.units=0;logLine(say("perish",lc(it.name),lotAmt(l,n)),true);}
       else quiet++;
       continue;
     }
@@ -1632,6 +1733,7 @@ function dawnHere(seen,burn){
     else if(l.fate==="hold")v=0;
     else if(S.shared){if(!shared[l.die])shared[l.die]=rnd(parseInt(l.die.slice(1)));v=shared[l.die];}
     else v=rnd(parseInt(l.die.slice(1)));
+    if(v===1&&l.cold&&!l.fate)v=rnd(parseInt(l.die.slice(1))); // the cold rolls at advantage: both must come up 1
     if(l.fate&&!l.fateAll){delete l.fate;delete l.fateAll;}
     if(v===1){doStep(l);if(!DICE.includes(l.die)){delete l.fate;delete l.fateAll;}}else quiet++;
   }
@@ -1795,10 +1897,10 @@ function damage(){
 }
 
 /* ---------------- Stowing ---------------- */
-function addLot(id,form,qty,die,silent,spoiled,spoilsOn){
+function addLot(id,form,qty,die,silent,spoiled,fp){
   const it=item(id);
   const l={id:S.seq++,item:id,form,units:qty,spoiled:spoiled||0,die};
-  if(die==="perish")l.spoilsOn=spoilsOn||S.day+2;
+  if(die==="perish")l.fp=fp!=null?fp:keepDays(it)*FP;
   S.lots.push(l);
   if(!silent){logLine(say(here()?"storeStow":"stow",form==="cargo"?camt(it,qty):amt(it,qty),lc(it.name)));jot("add",id,lotSingles(l,qty));}
   return l;
@@ -1852,7 +1954,7 @@ function render(){
 
   // The hold, by section, and the smuggler's hold beneath it
   const smug=!!s.smuggler&&!st;
-  const mainLots=S.lots.filter(l=>!l.hid),hidLots=S.lots.filter(l=>l.hid);
+  const mainLots=S.lots.filter(l=>!l.hid&&!l.cold),hidLots=S.lots.filter(l=>l.hid),coldLots=S.lots.filter(l=>l.cold);
   setHtml("holdBody",mainLots.length?rowsHtml(mainLots,false,smug):`<tr class="empty"><td colspan="7">The hold lies empty and echoing. Not a crumb, not a cask.</td></tr>`);
   const showSmug=smug||hidLots.length||(S.seized.length&&!st);
   $("smugCard").hidden=!showSmug;
@@ -1867,7 +1969,30 @@ function render(){
       const rows=z.lots.map(l=>{if(l.id==null)return "";return `<tr><td class="tag" style="padding-left:16px">${esc(tidy(lotAmt(l,(l.units||0)+(l.spoiled||0))+" of "+lc(item(l.item).name)))}</td><td style="text-align:right"><button class="sm" data-recover-lot="${z.id}:${l.id}">Recover</button></td></tr>`;}).join("");
       return `<tr><td><b>Seized on day ${z.day}</b></td><td style="text-align:right">${z.lots.length>1?`<button class="sm" data-recover="${z.id}">Recover All</button>`:""}</td></tr>${rows||`<tr><td class="tag" colspan="2">nothing at all</td></tr>`}`;}).join("")}</tbody></table>`:"";
   }
-  $("intoWrap").hidden=!smug;
+  const cold=coldOn(s),P=coldPlace(s);
+  const showCold=cold||coldLots.length;
+  $("coldCard").hidden=!showCold;
+  if(showCold){
+    $("coldTitle").textContent=st?"The Cold Cellar":"The Cold Hold";
+    const C=coldMaxF(),c=coldF();
+    $("coldLine").innerHTML=!cold?`<span class="tag">No ${P} is kept here any longer, yet something lingers in it.</span>`
+      :C==null?`<b>Cold:</b> ${tonsW(c)} <span class="tag">(${st?"no limit to its space":"set her Tonnage in the Ship's Papers to size the cold hold"})</span>`
+      :C===0?`<span class="tag">The ${P} has no room worth counting.</span>`
+      :`<b>Cold:</b> ${tonsText(c)} of ${tonsW(C)}`+(c>C?` <span class="over">Overfilled!</span>`:"");
+    setHtml("coldBody",coldLots.length?rowsHtml(coldLots,false,smug):`<tr class="empty"><td colspan="7">Nothing in the cold but the chill.</td></tr>`);
+    // What is made here may go straight into the cold.
+    const makers=[];
+    if(st)for(const p of toArr(s.production).filter(Boolean)){const it=item(p.item);if(it.kind==="food"&&!makers.some(x=>x.k==="deed:"+p.item))makers.push({k:"deed:"+p.item,t:`${cap(lc(it.name))} from the deeds`});}
+    for(const it of CATALOG.concat(Object.values(S.custom))){const p=it.produces;if(!p||!S.lots.some(l=>l.item===it.id))continue;const o=item(p.item);if(o.kind!=="food")continue;makers.push({k:it.id,t:`${cap(lc(o.name))} from the ${dispName(it).replace(/^live /,"")}`});}
+    setHtml("coldMake",cold&&makers.length?`<div class="tag" style="margin-top:8px">Send straight into the cold when made:</div>${makers.map(x=>`<label class="inline" style="margin-right:14px"><input type="checkbox" data-make="${esc(x.k)}" ${S.coldMake&&S.coldMake[x.k]?"checked":""}> ${esc(x.t)}</label>`).join("")}`:"");
+  }
+  // Where new cargo goes: the hold, the smuggler's hold, or the cold.
+  const into=[["hold",st?"Into the storehouse":"Into the hold"]];
+  if(smug)into.push(["hid","Into the smuggler's hold"]);
+  if(cold)into.push(["cold","Into the "+P]);
+  const was=$("intoSel").value,ih=into.map(([v,t])=>`<option value="${v}">${t}</option>`).join("");
+  if($("intoSel").innerHTML!==ih){$("intoSel").innerHTML=ih;if(into.some(x=>x[0]===was))$("intoSel").value=was;}
+  $("intoWrap").hidden=into.length<2;
   renderFire();
   const groups=[];
   for(const e of S.log){if(!groups.length||groups[groups.length-1].d!==e.d)groups.push({d:e.d,es:[]});groups[groups.length-1].es.push(e);}
@@ -1884,9 +2009,11 @@ function pickleable(l){return !!PICKLES[l.item]&&l.units>0&&DICE.includes(l.die)
 function dryable(l){return !!DRIES[l.item]&&l.units>0&&DICE.includes(l.die)&&!l.sun;}
 function preserveHow(l){return saltable(l)?"salt":pickleable(l)?"pickle":dryable(l)?"dry":null;}
 // Fresher pickles keep better: a lot still on the Keep it came with gives a d20, one that has slipped a d12.
-function pickleKeep(l){const it=item(l.item);return DICE.indexOf(l.die)<=DICE.indexOf(it.keep)?"d20":"d12";}
+function pickleKeep(l){const it=item(l.item);if(l.die==="perish")return saltKeep(l,PICKLES);return DICE.indexOf(l.die)<=DICE.indexOf(it.keep)?"d20":"d12";}
+// Salted (or pickled from fresh) with more than a day's freshness left, it takes the best Keep of what it becomes; with less, one lower.
+function saltKeep(l,map){const to=item((map||SALTS)[l.item]);const best=DICE.includes(to.keep)?to.keep:"d20";return (l.fp||0)>FP?best:stepDown(best);}
 const vinPer=it=>it.rat>0?it.rat:1; // a flask of vinegar for every ration, or every unit of things that are not a meal
-function saltable(l){return !!SALTS[l.item]&&l.die==="perish"&&l.units>0&&S.day<l.spoilsOn;}
+function saltable(l){return !!SALTS[l.item]&&l.die==="perish"&&l.units>0&&(l.fp||0)>0;}
 function rowsHtml(list,hidden,smug){
   const sect=it=>it.cat==="Custom"?"Custom Cargo":{food:"Provisions",live:"Livestock",supply:"Ship Supplies",goods:"Trade Goods"}[it.kind]||"Cargo";
   const order=["Provisions","Livestock","Ship Supplies","Trade Goods","Custom Cargo","Cargo"];
@@ -1900,7 +2027,7 @@ function rowsHtml(list,hidden,smug){
     else if(l.wet)keep=`<span class="die turn">${l.dryOn?"Drying":"Wet"}</span>`;
     else if(it.kind!=="food")keep=it.kind==="live"?`<span class="die never">Alive</span>`:(l.oil?`<span class="die never">Oilskin</span>`:"");
     else if(l.die==="never")keep=`<span class="die never">Never</span>`;
-    else if(l.die==="perish")keep=`<span class="die perish">${S.day>=l.spoilsOn?"Spoiled":(l.spoilsOn-1===S.day?"Spoils tonight":"Spoils day "+(l.spoilsOn-1))}</span>`;
+    else if(l.die==="perish")keep=`<span class="die perish">${expires(l)}</span>`;
     else if(l.die==="turning")keep=`<span class="die turn">Turning</span>`;
     else keep=`<span class="die">${l.die}</span>`;
     if(KEEPER&&l.fate)keep+=` <span class="fate" title="The Keeper's thumb: ${l.fate==="down"?"steps down":"holds fast"} at ${l.fateAll?"every dawn":"the next dawn"}">${l.fate==="down"?"▼":"■"}${l.fateAll?"∞":""}</span>`;
@@ -1986,7 +2113,7 @@ function fillItems(keep){
 function fillItem(){
   const id=itemSel.value;
   if(id==="__new"){
-    formSel.innerHTML=`<option>—</option>`;formSel.disabled=true;$("dieWrap").hidden=true;$("outWrap").hidden=true;
+    formSel.innerHTML=`<option>—</option>`;formSel.disabled=true;$("dieWrap").hidden=true;$("outWrap").hidden=true;$("freshWrap").hidden=true;
     $("addBtn").textContent="Write Something New";
     $("itemNote").textContent="Write a cargo of your own: a catch of the day, a recipe's leftovers, monster parts, salvage, or anything the Bazaar never knew.";
     return;
@@ -2002,7 +2129,10 @@ function fillItem(){
     if(it.per&&!it.useMult)formSel.value="cargo";
   }
   const isFood=it.kind==="food";
-  $("dieWrap").hidden=!isFood;
+  const perish=isFood&&it.keep==="perish";
+  $("dieWrap").hidden=!isFood||perish;
+  $("freshWrap").hidden=!perish;
+  if(perish)$("freshIn").value=keepDays(it);
   const dish=it.cat==="Galley Fare";
   if($("outWrap").hidden===dish)$("outSel").value="none";
   $("outWrap").hidden=!dish;
@@ -2029,9 +2159,16 @@ $("addBtn").onclick=()=>{
   const units=form==="loose"&&it.useMult?q*it.useMult:q;
   const hide=ship().smuggler&&!here()&&$("intoSel").value==="hid";
   const out=it.cat==="Galley Fare"?$("outSel").value:null;
+  const fp=die==="perish"?Math.max(1,parseInt($("freshIn").value)||keepDays(it))*FP:undefined;
+  const into=$("intoWrap").hidden?"hold":($("intoSel").value==="cold"&&it.kind!=="food"?"hold":$("intoSel").value);
   act(()=>{
-    if(!hide){const l=addLot(id,form,units,die);if(out)l.out=out;return;}
-    const l=addLot(id,form,units,die,true);l.hid=true;if(out)l.out=out;
+    if(into==="cold"){
+      const l=addLot(id,form,units,die,true,0,fp);l.cold=true;if(out)l.out=out;
+      jot("add",id,lotSingles(l,units));
+      logLine(say("coldIn",form==="cargo"?camt(it,units):amt(it,units),lc(it.name),coldPlace()));return;
+    }
+    if(!hide){const l=addLot(id,form,units,die,false,0,fp);if(out)l.out=out;return;}
+    const l=addLot(id,form,units,die,true,0,fp);l.hid=true;if(out)l.out=out;
     jot("add",id,lotSingles(l,units));
     logLine(say("stash",form==="cargo"?camt(it,units):amt(it,units),lc(it.name)));
   },null,{guard:true});
@@ -2144,7 +2281,7 @@ function lotAction(a,lid){
         const n=Math.min(l.units,wn),s=Math.min(l.spoiled,ws);if(!n&&!s)return false;
         l.units-=n;l.spoiled-=s;
         const nl={id:S.seq++,item:l.item,form:l.form,units:n,spoiled:s,die:l.die};
-        for(const p of CARRY)if(p!=="hid"&&l[p]!==undefined)nl[p]=l[p];
+        for(const p of CARRY)if(p!=="hid"&&!(into&&p==="cold")&&l[p]!==undefined)nl[p]=l[p];
         if(into)nl.hid=true;
         S.lots.push(nl);
         jot(into?"stash":"unstash",l.item,lotSingles(l,n+s));
@@ -2152,15 +2289,34 @@ function lotAction(a,lid){
       },null,{guard:into});
     },into?"Stash It":"Bring It Out");
   }
+  else if(a==="chill"||a==="warm"){
+    const into=a==="chill",P=coldPlace();
+    const unit=l.form==="cargo"?esc(it.cargoPl||"cargo units"):esc(it.useMult?"uses":it.wp);
+    const lead=into?`Carry ${esc(lc(lotName(l)))} down into the ${P}, where the cold keeps it.`:`Bring ${esc(lc(lotName(l)))} up out of the ${P}${l.die==="perish"?`. Out of the cold it keeps only ${daysLeft(Object.assign({},l,{cold:false}))<=1?"until tonight":daysLeft(Object.assign({},l,{cold:false}))+" days"}`:""}.`;
+    ask(`<h2>${into?"Into the Cold":"Out of the Cold"}</h2><p class="sub">${lead}</p><div class="grid">${l.units>0?`<label>Sound ${unit}</label><input type="number" name="n" min="0" max="${l.units}" value="${l.units}">`:""}${l.spoiled>0?`<label>Spoiled ${unit}</label><input type="number" name="s" min="0" max="${l.spoiled}" value="${l.spoiled}">`:""}</div>`,fd=>{
+      const wn=Math.max(0,parseInt(fd.get("n"))||0),ws=Math.max(0,parseInt(fd.get("s"))||0);
+      if(!wn&&!ws)return;
+      act(()=>{
+        const l=lotById(lid);if(!l)return false;
+        const n=Math.min(l.units,wn),s=Math.min(l.spoiled,ws);if(!n&&!s)return false;
+        l.units-=n;l.spoiled-=s;
+        const nl={id:S.seq++,item:l.item,form:l.form,units:n,spoiled:s,die:l.die};
+        for(const p of CARRY)if(p!=="cold"&&l[p]!==undefined)nl[p]=l[p];
+        if(into)nl.cold=true;
+        S.lots.push(nl);
+        logLine(say(into?"coldIn":"coldOut",lotAmt(l,n+s),lc(it.name),P));
+      },null,{guard:into});
+    },into?"Into the Cold":"Bring It Out");
+  }
   else if(a==="edit"){
     const food=it.kind==="food";
     const keepOpts=(!food||it.keep==="never"?["never"]:it.keep==="perish"?["perish"]:DICE.concat(["turning"])).map(d=>`<option value="${d}" ${d===l.die?"selected":""}>${d==="never"?(it.kind==="live"?"Alive":"Never spoils"):d==="perish"?"Perishable":d==="turning"?"Turning":d}</option>`).join("");
     const char=isFuel(l.item);
     const dish=it.cat==="Galley Fare";
-    amendWas={u:l.units,s:l.spoiled,d:l.die,p:l.die==="perish"?l.spoilsOn-1:NaN,c:l.wet?"wet":l.oil?"oil":"dry",o:l.out||"none"};
+    amendWas={u:l.units,s:l.spoiled,d:l.die,p:l.die==="perish"?daysLeft(l):NaN,c:l.wet?"wet":l.oil?"oil":"dry",o:l.out||"none"};
     const outPick=dish?`<label>Turned out</label><select name="o">${Object.entries({none:"Not recorded","1":"Effect 1","2":"Effect 2","3":"Effect 3",short:"Short",bust:"Bust"}).map(([v,t])=>`<option value="${v}" ${v===(l.out||"none")?"selected":""}>${t}</option>`).join("")}</select>`:"";
     const thumb=KEEPER&&food&&DICE.includes(l.die)?`<label>Next dawn</label><select name="fate"><option value="" ${!l.fate?"selected":""}>Roll as normal</option><option value="down" ${l.fate==="down"?"selected":""}>Force it to step down</option><option value="hold" ${l.fate==="hold"?"selected":""}>Let it hold fast</option></select><label></label><label class="inline"><input type="checkbox" name="fateAll" ${l.fateAll?"checked":""}> Every dawn until I change it</label>`:"";
-    ask(`<h2>Amending the Ledger</h2><p class="sub">${esc(lotName(l))}. For the honest corrections every quartermaster must sometimes make.</p><div class="grid"><label>Sound</label><input type="number" name="u" min="0" value="${l.units}">${food?`<label>Spoiled</label><input type="number" name="s" min="0" value="${l.spoiled}">`:""}${food?`<label>Keep</label><select name="d">${keepOpts}</select>`:""}${l.die==="perish"?`<label>Spoils at end of day</label><input type="number" name="p" min="1" value="${l.spoilsOn-1}">`:""}${char?`<label>Charcoal</label><select name="c"><option value="dry" ${!l.wet&&!l.oil?"selected":""}>Dry</option><option value="oil" ${l.oil?"selected":""}>Dry, in oilskin</option><option value="wet" ${l.wet?"selected":""}>Wet</option></select>`:""}${outPick}${thumb}<label>Strike it out</label><label class="inline"><input type="checkbox" name="del"> Remove this lot entirely</label></div>${thumb?`<p class="note">Only the Keeper sees the thumb on the scale. At dawn the lot reads exactly as though the dice fell that way.</p>`:""}`,fd=>{
+    ask(`<h2>Amending the Ledger</h2><p class="sub">${esc(lotName(l))}. For the honest corrections every quartermaster must sometimes make.</p><div class="grid"><label>Sound</label><input type="number" name="u" min="0" value="${l.units}">${food?`<label>Spoiled</label><input type="number" name="s" min="0" value="${l.spoiled}">`:""}${food?`<label>Keep</label><select name="d">${keepOpts}</select>`:""}${l.die==="perish"?`<label>Days fresh${l.cold?" (cold)":""}</label><input type="number" name="p" min="0" value="${daysLeft(l)}">`:""}${char?`<label>Charcoal</label><select name="c"><option value="dry" ${!l.wet&&!l.oil?"selected":""}>Dry</option><option value="oil" ${l.oil?"selected":""}>Dry, in oilskin</option><option value="wet" ${l.wet?"selected":""}>Wet</option></select>`:""}${outPick}${thumb}<label>Strike it out</label><label class="inline"><input type="checkbox" name="del"> Remove this lot entirely</label></div>${thumb?`<p class="note">Only the Keeper sees the thumb on the scale. At dawn the lot reads exactly as though the dice fell that way.</p>`:""}`,fd=>{
       const fate=fd.get("fate"),fateAll=!!fd.get("fateAll"),hasThumb=fd.has("fate");
       const del=!!fd.get("del"),u=Math.max(0,parseFloat(fd.get("u"))||0),sv=Math.max(0,parseFloat(fd.get("s"))||0),d=fd.get("d")||l.die,p=parseInt(fd.get("p")),c=fd.get("c"),o=fd.get("o");
       // Only what was actually changed in the form is written, so a shipmate's meal or a dawn
@@ -2172,7 +2328,7 @@ function lotAction(a,lid){
         if(u!==was.u)l.units=u;
         if(food&&sv!==was.s)l.spoiled=sv;
         if(d!==was.d)l.die=d;
-        if(l.die==="perish"&&(d!==was.d||p!==was.p))l.spoilsOn=(p||S.day)+1;
+        if(l.die==="perish"&&(d!==was.d||p!==was.p))l.fp=Math.max(0,p||0)*(l.cold?1:FP);
         if(c&&c!==was.c){l.wet=c==="wet";l.oil=c==="oil";if(!l.wet)delete l.dryOn;}
         if(o&&o!==was.o)l.out=o;
         if(hasThumb){if(fate&&DICE.includes(l.die)){l.fate=fate;l.fateAll=fateAll;}else{delete l.fate;delete l.fateAll;}}
@@ -2188,6 +2344,8 @@ function moveMenu(lid){
   if(l.units>0)opts.push(["sell","Sell"],["unload",st?"Take It Out":"Unload to the Dock"],["tossGood",st?"Throw It Out":"Toss Overboard"]);
   opts.push(["transfer","Transfer to Another Ship or Storehouse"]);
   if(!st&&ship().smuggler&&!l.hid)opts.push(["stash","Stash in the Smuggler's Hold"]);
+  if(coldOn()&&!l.hid&&!l.cold&&it.kind==="food")opts.push(["chill","Into the "+(st?"Cold Cellar":"Cold Hold")]);
+  if(l.cold)opts.push(["warm","Out of the "+(st?"Cold Cellar":"Cold Hold")]);
   if(l.hid)opts.push(["unstash","Bring Out of the Smuggler's Hold"]);
   ask(`<h2>Move ${esc(lotName(l))}</h2><p class="sub">Where is it bound?</p><div class="choices">${opts.map(([v,t],i)=>`<label class="inline choice"><input type="radio" name="dest" value="${v}" ${i===0?"checked":""}> ${esc(t)}</label>`).join("")}</div>`,fd=>{
     const v=fd.get("dest");if(!v)return;
@@ -2218,12 +2376,12 @@ function transferDialog(lid){
   const l=lotById(lid);if(!l)return;const it=item(l.item);
   const dests=Object.keys(SHIPS).filter(id=>id!==SHIPID).sort((a,b)=>(isStore(SHIPS[a])-isStore(SHIPS[b]))||shipName(a).localeCompare(shipName(b)));
   if(!dests.length){toast("There is nowhere else in the Register to send it.");return;}
-  ask(`<h2>Across to Another</h2><p class="sub">${esc(lotName(l))}. Send it to another ship or storehouse in the Register. Once sent, it cannot be undone from here.</p><div class="grid"><label>Bound for</label><select name="to">${dests.map(id=>`<option value="${esc(id)}">${esc(shipName(id))}${isStore(SHIPS[id])?" (storehouse)":""}</option>`).join("")}</select>${countFields(l,true)}</div>`,async fd=>{
+  ask(`<h2>Across to Another</h2><p class="sub">${esc(lotName(l))}. Send it to another ship or storehouse in the Register. Once sent, it cannot be undone from here.</p><div class="grid"><label>Bound for</label><select name="to">${dests.map(id=>`<option value="${esc(id)}">${esc(shipName(id))}${isStore(SHIPS[id])?" (storehouse)":""}${coldOn(SHIPS[id])?" (cold)":""}</option>`).join("")}</select>${countFields(l,true)}${it.kind==="food"&&dests.some(id=>coldOn(SHIPS[id]))?`<label>The cold</label><label class="inline"><input type="checkbox" name="cold" ${l.cold?"checked":""}> Into their cold hold or cold cellar, if they keep one</label>`:""}</div>`,async fd=>{
     const to=fd.get("to"),wn=Math.max(0,parseInt(fd.get("n"))||0),ws=Math.max(0,parseInt(fd.get("s"))||0);if(!to||(!wn&&!ws))return;
-    sendAcross(lid,to,wn,ws,false);
+    sendAcross(lid,to,wn,ws,false,!!fd.get("cold"));
   },"Send It");
 }
-async function sendAcross(lid,to,wn,ws,force){
+async function sendAcross(lid,to,wn,ws,force,cold){
   const l0=lotById(lid);if(!l0)return;const it=item(l0.item);
   let dh,ds;try{[dh,ds]=await Promise.all([DB.get("holds/"+to),DB.get("ships/"+to)]);}catch(e){toast("The ledger could not be reached.");return;}
   if(!dh||!ds){toast(shipName(to)+" is no longer in the Register.");return;}
@@ -2232,17 +2390,17 @@ async function sendAcross(lid,to,wn,ws,force){
   const sv=S,si=SHIPID;S=normalize(dh);SHIPID=to;const destF=holdF();S=sv;SHIPID=si;
   const DM=typeof ds.maxTons==="number"?Math.round(ds.maxTons*5):null;
   if(!force&&DM!=null&&add>0&&destF+add>DM){
-    if(KEEPER)confirmBox((isStore(ds)?"Overfill ":"Overload ")+shipName(to)+"?","This would bring "+shipName(to)+" to "+tonsText(destF+add)+" of "+tonsW(DM)+". Send it anyway?","Send it anyway",()=>sendAcross(lid,to,wn,ws,true));
+    if(KEEPER)confirmBox((isStore(ds)?"Overfill ":"Overload ")+shipName(to)+"?","This would bring "+shipName(to)+" to "+tonsText(destF+add)+" of "+tonsW(DM)+". Send it anyway?","Send it anyway",()=>sendAcross(lid,to,wn,ws,true,cold));
     else snark(isStore(ds)?"storeFull":"overload","Room left in "+shipName(to)+": "+tonsW(Math.max(0,DM-destF))+".");
     return;
   }
-  let moved=null,srcDay=0,def=null;const from=shipName(SHIPID),toName=shipName(to);
+  let moved=null,srcDay=0,def=null,coldMissed=false;const from=shipName(SHIPID),toName=shipName(to);
   act(()=>{
     const l=lotById(lid);if(!l)return false;
     const n=Math.min(l.units,wn),s=Math.min(l.spoiled,ws);if(!n&&!s)return false;
     l.units-=n;l.spoiled-=s;
     moved={item:l.item,form:l.form,units:n,spoiled:s,die:l.die};
-    for(const p of ["spoilsOn","wet","dryOn","oil","out"])if(l[p]!==undefined)moved[p]=l[p];
+    for(const p of ["fp","wet","dryOn","oil","out"])if(l[p]!==undefined)moved[p]=l[p];
     srcDay=S.day;def=S.custom[l.item]?clone(S.custom[l.item]):null;
     jot("rem",l.item,lotSingles(l,n+s));
     logLine(say("transferOut",lotAmt(l,n+s),lc(it.name),toName));
@@ -2260,10 +2418,12 @@ async function sendAcross(lid,to,wn,ws,force){
           else if(!same(S.custom[a.item],def)){const nid=a.item+"-"+(S.seq++);S.custom[nid]=Object.assign({},def,{id:nid});a=Object.assign({},a,{item:nid});}
         }
         const nl=Object.assign({},a,{id:S.seq++});
-        if(nl.spoilsOn!==undefined)nl.spoilsOn=S.day+(m.spoilsOn-srcDay);
         if(nl.dryOn!==undefined)nl.dryOn=S.day+(m.dryOn-srcDay);
+        delete nl.cold;
         const f0=holdF();S.lots.push(nl);
         if(!force&&DM!=null&&holdF()>DM&&holdF()>f0){full=true;return false;}
+        // Into the cold if asked and there is room; otherwise it waits in the open hold.
+        if(cold&&coldOn()){const C=coldMaxF(),c0=coldF();nl.cold=true;if(C!=null&&coldF()>C&&coldF()>c0){delete nl.cold;coldMissed=true;}}
         jot("add",a.item,lotSingles(nl,m.units+m.spoiled));
         logLine(say("transferIn",lotAmt(nl,m.units+m.spoiled),lc(item(a.item).name),from));
       });
@@ -2271,7 +2431,7 @@ async function sendAcross(lid,to,wn,ws,force){
       // Undo works by putting the hold back as it was, which would conjure a second copy of what was sent.
       // So a transfer is a line drawn under the past: nothing before it can be undone from here.
       HIST.length=0;
-      toast("Sent across to "+toName+".");
+      toast("Sent across to "+toName+"."+(coldMissed?" Their cold was full, so it waits in the open.":""));
     }catch(e){
       console.error(e);
       // It never arrived: put it back where it came from.
@@ -2308,10 +2468,10 @@ function preserveDialog(lid,method){
   const u=useFor(l.item,method),per=usePer(it,u),ui=u&&u.amt?item(u.item):null;
   const have=avail(l,false),stock=ui?itemAvail(u.item):Infinity,max=Math.min(have,per?Math.floor(stock/per+1e-9):have);
   const place=here()?"storehouse":"hold";
-  const keep=method==="salt"?(S.day<=l.spoilsOn-2?"d20":"d12"):method==="pickle"?pickleKeep(l):"d20";
+  const keep=method==="salt"?saltKeep(l):method==="pickle"?pickleKeep(l):"d20";
   const head={salt:"Into the Salt",pickle:"Into the Brine",dry:"Out in the Sun"}[method];
   if(max<=0){ask(`<h2>${ui?`Not Enough ${esc(cap(lc(ui.name)))}`:"Nothing to Do"}</h2><p class="sub">${useWords(it,u)} There is not enough in the ${place}.</p>`,()=>{},"Understood",true);return;}
-  const when=method==="salt"?(S.day<=l.spoilsOn-2?"Salted while it's fresh":"Salted a day late"):method==="pickle"?(keep==="d20"?"Pickled while it's fresh":"Pickled after it has begun to slip"):"Laid out on deck, it dries by the next dawn and";
+  const when=method==="salt"?((l.fp||0)>FP?"Salted while it's fresh":"Salted as it nears its end"):method==="pickle"?(keep==="d20"?"Pickled while it's fresh":"Pickled after it has begun to slip"):"Laid out on deck, it dries by the next dawn and";
   const units=it.rat>0&&method==="salt"?(n=>`ration${n===1?"":"s"}`):(n=>n===1?it.w:it.wp);
   ask(`<h2>${head}</h2><p class="sub">${esc(lotName(l))}: ${fmt(have)} ${esc(units(have))} on hand${ui?`, and ${esc(amt(ui,stock))} of ${esc(lc(ui.name))} to hand`:""}. ${useWords(it,u)}</p><div class="grid"><label>${esc(cap(units(2)))} to ${method==="salt"?"salt":method==="pickle"?"pickle":"dry"}</label><input type="number" name="n" min="1" max="${max}" value="${max}"></div><p class="note">${when} ${method==="dry"?"comes in as":"becomes"} ${esc(lc(to.name))} that keeps on a ${keep}, Preserved.${method==="dry"?" While it dries it cannot be eaten, cooked or spoiled.":""}</p>`,fd=>{
     const want=Math.max(1,parseInt(fd.get("n"))||1);
@@ -2327,8 +2487,8 @@ function preserveDialog(lid,method){
         S.lots.push(nl); // it is still aboard, only laid out
         logLine(say("dryOut",amt(it,n),lc(it.name)));return;
       }
-      const k=method==="salt"?(S.day<=l.spoilsOn-2?"d20":"d12"):pickleKeep(l);
-      const nl=addLot(map[l.item],"loose",n,k,true);if(l.hid)nl.hid=true;jot("add",map[l.item],n);
+      const k=method==="salt"?saltKeep(l):pickleKeep(l);
+      const nl=addLot(map[l.item],"loose",n,k,true);if(l.hid)nl.hid=true;if(l.cold)nl.cold=true;jot("add",map[l.item],n);
       if(method==="salt")logLine(say("salt",units(n)==="ration"||units(n)==="rations"?`${fmt(n)} ${units(n)}`:amt(it,n),lc(it.name),spent));
       else logLine(say("pickle",amt(it,n),lc(it.name),spent));
     });
@@ -2340,6 +2500,11 @@ function dryDialog(lid){return preserveDialog(lid,"dry");}
 
 $("holdBody").onclick=onLotClick;
 $("smugBody").onclick=onLotClick;
+$("coldBody").onclick=onLotClick;
+$("coldMake").onchange=e=>{
+  const c=e.target.closest("input[data-make]");if(!c)return;const k=c.dataset.make,on=c.checked;
+  act(()=>{S.coldMake=S.coldMake||{};if(!!S.coldMake[k]===on)return false;if(on)S.coldMake[k]=true;else delete S.coldMake[k];});
+};
 
 /* ---------------- Seizing and recovering the hidden cargo ---------------- */
 $("seizeBtn").onclick=()=>{
@@ -2460,7 +2625,13 @@ function parseRecipe(name,doc,text){
   const spoil=["Fishy","Rancid","Stagnant","Sour"].find(p=>new RegExp(p,"i").test(props))||"Rancid";
   const diff=((text.match(/Difficulty:\**\s*([A-Za-z]+)/i)||[])[1])||"";
   const brew=!!mugs;
-  return {name,difficulty:diff,servings:brew?+mugs[1]:(mk?+mk[1]:1),brew,drink:brew||spoil==="Stagnant"||spoil==="Sour",spoil,lines:lines.map(x=>clean(x))};
+  // How long it keeps: "Keeps: 3 days" or "Keeps: d12". Without it, 2 days.
+  const kraw=(text.match(/Keeps:\**\s*([^\n*]{0,20})/i)||[])[1];
+  let keep="perish",keepDays=2,keepBad=null;
+  if(kraw!=null){const kk=lc(kraw.trim()),dm=kk.match(/^(d(?:20|12|10|8|6|4))\b/),dd=kk.match(/^(\d+)\s*days?\b/);
+    if(dm)keep=dm[1];else if(dd)keepDays=Math.max(1,+dd[1]);else keepBad=kraw.trim();}
+  const how=keep==="perish"?"Perishable":(["Hardy","Delicate","Preserved"].find(x=>new RegExp(x,"i").test(props))||"Hardy");
+  return {name,keep,keepDays,how,keepBad,difficulty:diff,servings:brew?+mugs[1]:(mk?+mk[1]:1),brew,drink:brew||spoil==="Stagnant"||spoil==="Sour",spoil,lines:lines.map(x=>clean(x))};
 }
 const withIngredients=r=>Object.assign({},r,{ingredients:(r.lines||[]).map(parseIngredient)});
 
@@ -2553,7 +2724,10 @@ function readItemTable(page,t,out,report){
     }else if(def.kind==="food"){
       def.rat=sg.rat;def.water=sg.water||/^drink$/i.test(t.h1);
       const k=lc(ci.keep>=0?cells[ci.keep]:"never spoils"),pr=ci.props>=0?cells[ci.props]:"";
-      if(/^d(20|12|10|8|6|4)$/.test(k))def.keep=k;else if(k==="-"||/perishable/i.test(pr))def.keep="perish";else if(/never/.test(k))def.keep="never";else{problem(`the Keep "${cells[ci.keep]}" could not be read; it was taken to never spoil`);def.keep="never";}
+      const kd=k.match(/^(\d+)\s*days?$/);
+      if(/^d(20|12|10|8|6|4)$/.test(k))def.keep=k;
+      else if(kd){def.keep="perish";def.keepDays=Math.max(1,+kd[1]);}
+      else if(k==="-"||k===""||/perishable/i.test(pr)){def.keep="perish";def.keepDays=2;problem(`no days are written in its Keep, so it keeps 2 days`);}else if(/never/.test(k))def.keep="never";else{problem(`the Keep "${cells[ci.keep]}" could not be read; it was taken to never spoil`);def.keep="never";}
       def.how=def.keep==="perish"?"Perishable":def.keep==="never"?null:(["Hardy","Delicate","Preserved"].find(x=>new RegExp(x,"i").test(pr))||"Hardy");
       def.spoil=def.keep==="never"?null:(["Rancid","Fishy","Stagnant","Sour"].find(x=>new RegExp(x,"i").test(pr))||"Rancid");
     }else def.keep="never";
@@ -2619,7 +2793,8 @@ async function readSite(){
 function applyBazaar(B){
   B=Object.assign({items:{},order:[],cats:[],preserve:[],aliases:[],difficulty:{},recipes:[],report:[],slugs:{}},B||{});
   const report=(B.report||[]).slice(),byId={},order=[];
-  for(const c of BUILTIN){byId[c.id]=clone(c);}
+  const forgot=new Set(toArr(B.forgot).filter(id=>!(B.items||{})[id]));
+  for(const c of BUILTIN){if(!forgot.has(c.id))byId[c.id]=clone(c);}
   const WORDS=["single","w","wp"];
   for(const id of toArr(B.order).concat(Object.keys(B.items))){
     const d=B.items[id];if(!d||order.includes(id))continue;order.push(id);
@@ -2629,7 +2804,7 @@ function applyBazaar(B){
   }
   for(const r of toArr(B.recipes)){
     const id="dish-"+slug(r.name);
-    byId[id]={id,name:r.name,cat:"Galley Fare",kind:"food",dish:true,single:r.brew?"Mug":"Serving",w:r.brew?"mug":"serving",wp:r.brew?"mugs":"servings",rat:r.brew?0:1,water:!!r.drink,keep:"perish",how:"Perishable",spoil:r.spoil||"Rancid",f:0};
+    byId[id]={id,name:r.name,cat:"Galley Fare",kind:"food",dish:true,single:r.brew?"Mug":"Serving",w:r.brew?"mug":"serving",wp:r.brew?"mugs":"servings",rat:r.brew?0:1,water:!!r.drink,keep:r.keep||"perish",keepDays:r.keepDays||2,how:r.how||"Perishable",spoil:r.spoil||"Rancid",f:0};
     if(!order.includes(id))order.push(id);
   }
   // A dish may share its name with what it is made from (Coffee the brew, coffee the beans): goods win.
@@ -2642,7 +2817,7 @@ function applyBazaar(B){
     if(c.kind==="live"&&!c.meatOf){const id=idOf(c.name.replace(/ \(live\)$/,""));if(id&&byId[id]&&byId[id].kind==="food")c.meatOf=id;else report.push({where:c.name,why:"no fresh meat of the same name is sold, so butchering it gives nothing"});}
   }
   // the catalog, in the order the site lists it, then whatever the larder already knew
-  const ids=order.concat(BUILTIN.map(c=>c.id).filter(id=>!order.includes(id)));
+  const ids=order.concat(BUILTIN.map(c=>c.id).filter(id=>!order.includes(id)&&byId[id]));
   CATALOG.length=0;for(const id of ids)CATALOG.push(byId[id]);
   for(const k of Object.keys(CAT))delete CAT[k];for(const c of CATALOG)CAT[c.id]=c;
   const cats=toArr(B.cats).slice();
@@ -2669,8 +2844,10 @@ function applyBazaar(B){
   RECIPES=toArr(B.recipes);
   for(const r of RECIPES){
     for(const g of withIngredients(r).ingredients)if(!g.alts.length||g.alts.every(a=>CAT[a.id]&&CAT[a.id].gone))report.push({where:`Recipe Book: ${r.name}`,why:`the ingredient "${g.text}" matches nothing sold in the Bazaar`});
+    if(r.keepBad)report.push({where:`Recipe Book: ${r.name}`,why:`its Keeps "${r.keepBad}" could not be read, so it keeps 2 days`});
     if(r.difficulty&&!DIFFICULTY[cap(lc(r.difficulty))])report.push({where:`Recipe Book: ${r.name}`,why:`its difficulty "${r.difficulty}" is not in the Difficulty table, so it cooks as Normal`});
   }
+  for(const c of Object.keys(B.newCats||{}))if(toArr(B.cats).includes(c))report.push({where:`Bazaar heading "${c}"`,why:"it is new since an earlier reading. If an old heading was renamed, its rows now sit in this new category, and any cargo of the old rows is listed under Struck Goods"});
   B.fullReport=report;BAZAAR=B;
   // show it
   const keepCat=catSel.value,keepItem=itemSel.value;
@@ -2678,6 +2855,7 @@ function applyBazaar(B){
   if(keepCat&&CATS.includes(keepCat))catSel.value=keepCat;
   fillItems(false);if(keepItem&&[...itemSel.options].some(o=>o.value===keepItem)){itemSel.value=keepItem;fillItem();}
   if(SHIPID)render();
+  if(KEEPER)struckTally(true);
   renderBazaar();
 }
 function last3am(){const d=new Date();d.setHours(3,0,0,0);if(Date.now()<d.getTime())d.setDate(d.getDate()-1);return d.getTime();}
@@ -2691,6 +2869,14 @@ function refreshBazaar(){
       const failed=toArr(B.failed);
       for(const [id,d] of Object.entries((BAZAAR&&BAZAAR.items)||{}))if(!B.items[id]){B.items[id]=failed.includes(d.src)?Object.assign({},d):Object.assign({},d,{gone:true});if(failed.includes(d.src)&&!B.order.includes(id))B.order.push(id);}
       if(failed.includes("recipes")&&!B.recipes.length)B.recipes=toArr(BAZAAR&&BAZAAR.recipes);
+      B.forgot=toArr(BAZAAR&&BAZAAR.forgot).filter(id=>!B.items[id]); // forgotten stays forgotten, unless the Bazaar sells it again
+      // a heading the last reading never saw may be a renamed one
+      if(BAZAAR&&BAZAAR.at&&toArr(BAZAAR.cats).length){
+        const was=new Set(toArr(BAZAAR.cats).concat(Object.keys(BAZAAR.newCats||{}))),week=Date.now()-7*864e5;
+        B.newCats={};
+        for(const [c,at] of Object.entries(BAZAAR.newCats||{}))if(at>week&&B.cats.includes(c))B.newCats[c]=at;
+        for(const c of B.cats)if(!was.has(c))B.newCats[c]=Date.now();
+      }
       applyBazaar(B);try{await DB.set("catalog",JSON.parse(JSON.stringify(Object.assign({},B,{fullReport:null}))));}catch(e){console.error(e);}return true;}
     catch(e){console.error(e);if(BAZAAR)BAZAAR.failed=String(e.message||e);renderBazaar();return false;}
     finally{bazaarBusy=null;}
@@ -2704,7 +2890,7 @@ async function quickSig(){
 }
 async function bazaarStartup(){
   try{const saved=await DB.get("catalog");if(saved&&saved.items)applyBazaar(saved);}catch(e){}
-  try{DB.on("catalog",v=>{if(v&&v.items&&v.at&&v.at!==BAZAAR.at)applyBazaar(v);});}catch(e){}
+  try{DB.on("catalog",v=>{if(v&&v.items&&v.at&&(v.at!==BAZAAR.at||(v.rev||0)!==(BAZAAR.rev||0)))applyBazaar(v);});}catch(e){}
   if(!SITE_BASE)return;
   if(!BAZAAR.at||BAZAAR.at<last3am())return refreshBazaar(); // a fresh reading every day after 3 in the morning
   try{const sig=await quickSig();if(sig&&sig!==BAZAAR.sig)refreshBazaar();}catch(e){} // and whenever a deploy has changed a page
@@ -2726,7 +2912,108 @@ function renderBazaar(){
   $("bazaarInfo").innerHTML=!SITE_BASE?`The larder is not opened from the site, so it uses the catalog it was built with.`
     :B.at?`Last read from the site ${esc(when(B.at))}: ${items} item${items===1?"":"s"} and ${recs} recipe${recs===1?"":"s"}.${B.failed?` <span class="over">The last attempt failed: ${esc(B.failed)}</span>`:""}`
     :`The site has not been read yet.${B.failed?` <span class="over">${esc(B.failed)}</span>`:""}`;
+  renderStruck();
   $("bazaarReport").innerHTML=rep.length?`<p class="note">${rep.length} thing${rep.length===1?"":"s"} the larder could not use:</p><ul class="ings">${rep.map(r=>`<li class="no">${esc(r.where)}: ${esc(r.why)}.</li>`).join("")}</ul>`:(B.at?`<p class="note">Every row and recipe was read without trouble.</p>`:"");
+}
+
+/* ---- Struck goods and custom entries: fold them into another item, or forget them ---- */
+let STRUCK={at:0,holds:null,busy:false};
+function struckTally(force){
+  if(STRUCK.busy||(!force&&STRUCK.holds&&Date.now()-STRUCK.at<5000))return;
+  STRUCK.busy=true;
+  DB.get("holds").then(h=>{STRUCK={at:Date.now(),holds:h||{},busy:false};renderStruck();}).catch(()=>{STRUCK.busy=false;});
+}
+function lotsOf(hold,id){
+  const all=toArr(hold&&hold.lots).filter(Boolean);
+  for(const z of toArr(hold&&hold.seized).filter(Boolean))all.push(...toArr(z.lots).filter(Boolean));
+  return all.filter(l=>l.item===id);
+}
+function struckList(){
+  const out=[],H=STRUCK.holds||{};
+  for(const c of CATALOG.filter(c=>c.gone)){
+    const where=Object.keys(H).filter(id=>lotsOf(H[id],c.id).length);
+    out.push({id:c.id,name:c.name,kind:"gone",where});
+  }
+  for(const [hid,h] of Object.entries(H)){
+    for(const c of Object.values((h&&h.custom)||{})){
+      if(!c||c.dish||CAT[c.id])continue;
+      out.push({id:c.id,name:c.name,kind:"custom",hold:hid,where:lotsOf(h,c.id).length?[hid]:[]});
+    }
+  }
+  return out;
+}
+function renderStruck(){
+  const el=$("bazaarStruck");if(!el)return;
+  if(!KEEPER){el.innerHTML="";return;}
+  if(!STRUCK.holds){el.innerHTML=`<p class="note">Counting the struck goods and custom entries...</p>`;struckTally();return;}
+  struckTally();
+  const list=struckList();
+  const row=x=>{
+    const n=x.where.length,place=x.kind==="custom"?`custom, on ${esc(shipName(x.hold))}`:"struck from the Bazaar";
+    const tail=n?`still aboard ${n===1?esc(shipName(x.where[0])):n+" places"}`:"none left anywhere";
+    return `<tr><td><b>${esc(x.name)}</b><div class="tag">${place} · ${tail}</div></td><td style="text-align:right"><div class="acts" style="justify-content:flex-end">${n?`<button class="sm" data-fold="${esc(x.kind)}|${esc(x.id)}|${esc(x.hold||"")}">Fold Into...</button>`:""}<button class="sm danger" data-forget="${esc(x.kind)}|${esc(x.id)}|${esc(x.hold||"")}" ${n?"disabled":""}>Forget</button></div></td></tr>`;
+  };
+  setHtml("bazaarStruck",list.length?`<h3 class="sub3">Struck Goods and Custom Entries</h3><p class="note">Fold an old entry into another item to carry its cargo over everywhere, or forget it once none is left. Neither can be undone.</p><table><tbody>${list.map(row).join("")}</tbody></table>`:"");
+}
+$("bazaarStruck").onclick=e=>{
+  const b=e.target.closest("button");if(!b||!KEEPER)return;
+  if(b.dataset.fold){const [kind,id,hold]=b.dataset.fold.split("|");foldDialog(kind,id,hold);}
+  if(b.dataset.forget){const [kind,id,hold]=b.dataset.forget.split("|");forgetEntry(kind,id,hold);}
+};
+function foldDialog(kind,id,hold){
+  const old=kind==="custom"?((STRUCK.holds[hold]||{}).custom||{})[id]:CAT[id];if(!old)return;
+  const items=CATALOG.filter(c=>!c.gone&&c.id!==id);
+  const opts=CATS.filter(c=>items.some(i=>i.cat===c)).map(c=>`<optgroup label="${esc(c)}">${items.filter(i=>i.cat===c).map(i=>`<option value="${esc(i.id)}" ${lc(i.name).startsWith(lc(old.name))||lc(old.name).startsWith(lc(i.name))?"selected":""}>${esc(i.name)}</option>`).join("")}</optgroup>`).join("");
+  ask(`<h2>Fold Into Another</h2><p class="sub">Every lot of ${esc(old.name)}${kind==="custom"?` on ${esc(shipName(hold))}`:", on every ship and in every storehouse,"} becomes the item you choose, keeping its amount, its Keep and its freshness. This cannot be undone.</p><div class="grid"><label>Becomes</label><select name="to">${opts}</select></div>`,async fd=>{
+    const to=fd.get("to");if(!to||!CAT[to])return;
+    const ids=kind==="custom"?[hold]:Object.keys(STRUCK.holds).filter(h=>lotsOf(STRUCK.holds[h],id).length);
+    let n=0,bad=0;
+    for(const h of ids){
+      try{const r=await onHold(h,()=>foldHere(id,to,kind==="custom"));if(r&&r.committed)n++;}catch(e){console.error(e);bad++;}
+    }
+    if(ids.includes(SHIPID))HIST.length=0;
+    toast(bad?`Folded in ${n} place${n===1?"":"s"}, but ${bad} could not be reached.`:`${old.name} is now ${CAT[to].name} in ${n} place${n===1?"":"s"}.`);
+    struckTally(true);
+  },"Fold It");
+}
+// Runs inside onHold, standing in that hold.
+function foldHere(from,to,dropCustom){
+  const T=CAT[to],F=item(from);let n=0;
+  const fix=l=>{
+    if(!l||l.item!==from)return;n++;
+    if(T.solo)l.form="solo";
+    else if(l.form==="cargo"&&!T.per){const k=F.per||1;l.units=(l.units||0)*k;l.spoiled=(l.spoiled||0)*k;l.form="loose";}
+    l.item=to;
+    if(T.kind!=="food"){l.die="never";delete l.fp;}
+    else if(T.keep==="perish"){if(l.die!=="perish"){l.die="perish";l.fp=keepDays(T)*FP;}}
+    else if(l.die==="perish"||l.die==="never"){l.die=T.keep||"never";delete l.fp;}
+  };
+  const words=[];
+  for(const l of S.lots){if(l&&l.item===from)words.push(lotAmt(l,(l.units||0)+(l.spoiled||0)));fix(l);}
+  for(const z of S.seized)for(const l of z.lots)fix(l);
+  if(S.bank&&S.bank[from]!=null){S.bank[to]=(S.bank[to]||0)+S.bank[from];delete S.bank[from];}
+  if(S.coldMake&&S.coldMake[from]){S.coldMake[to]=true;delete S.coldMake[from];}
+  if(dropCustom)delete S.custom[from];
+  if(!n&&!dropCustom)return false;
+  for(const w of words)logLine(say("fold",w,lc(F.name),lc(T.name)));
+}
+async function forgetEntry(kind,id,hold){
+  const name=kind==="custom"?(((STRUCK.holds[hold]||{}).custom||{})[id]||{}).name:(CAT[id]||{}).name;
+  confirmBox("Forget "+(name||id),"Strike "+(name||id)+" from the larder's memory for good? None of it is left anywhere.","Forget it",async()=>{
+    try{
+      if(kind==="custom"){
+        const r=await onHold(hold,()=>{if(S.lots.some(l=>l.item===id)||S.seized.some(z=>z.lots.some(l=>l.item===id)))return false;delete S.custom[id];});
+        toast(r&&r.committed?(name||id)+" is forgotten.":"Some of it is still aboard, so it stays.");
+      }else{
+        const all=await DB.get("holds")||{};
+        if(Object.values(all).some(h=>lotsOf(h,id).length)){toast("Some of it is still aboard somewhere, so it stays.");STRUCK={at:Date.now(),holds:all,busy:false};renderStruck();return;}
+        const r=await DB.tx("catalog",cur=>{if(!cur||!cur.items)return;delete cur.items[id];cur.order=toArr(cur.order).filter(x=>x!==id);cur.forgot=toArr(cur.forgot).filter(x=>x!==id).concat([id]);cur.rev=(cur.rev||0)+1;return cur;});
+        if(r.committed&&r.val)applyBazaar(r.val);
+        toast((name||id)+" is forgotten.");
+      }
+    }catch(e){console.error(e);toast("The ledger could not be reached.");}
+    struckTally(true);
+  });
 }
 
 /* ---- Cooking ---- */
@@ -2774,9 +3061,10 @@ $("cookBtn").onclick=async()=>{
     act(()=>{
       for(const g of r.ingredients){const a=bestAlt(g);if(!a)continue;takeUrgent(a.id,a.n);jot("rem",a.id,a.n);}
       const id="dish-"+slug(r.name);
-      if(!CAT[id]&&(!S.custom[id]||!S.custom[id].dish))S.custom[id]={id,name:r.name,cat:"Galley Fare",kind:"food",dish:true,single:r.brew?"Mug":"Serving",w:r.brew?"mug":"serving",wp:r.brew?"mugs":"servings",rat:r.brew?0:1,water:r.drink,keep:"perish",how:"Perishable",spoil:r.spoil,f:0};
+      if(!CAT[id]&&(!S.custom[id]||!S.custom[id].dish))S.custom[id]={id,name:r.name,cat:"Galley Fare",kind:"food",dish:true,single:r.brew?"Mug":"Serving",w:r.brew?"mug":"serving",wp:r.brew?"mugs":"servings",rat:r.brew?0:1,water:r.drink,keep:r.keep||"perish",keepDays:r.keepDays||2,how:r.how||"Perishable",spoil:r.spoil,f:0};
       const n=big?Math.floor(r.servings*1.5):r.servings;
-      const l=addLot(id,"loose",n,"perish",true);l.out=out;jot("add",id,n);
+      const dk=item(id).keep||"perish";
+      const l=addLot(id,"loose",n,dk==="perish"?"perish":dk,true);l.out=out;jot("add",id,n);
       logLine(say("cook",amt(item(id),n),r.name)+(COOK_END[out]?" "+COOK_END[out]:""));
     },()=>toast("Something good is coming off the stove."));
   },"Cook It");
@@ -2871,10 +3159,11 @@ function advancedDeeds(){
     <div class="grid"><label>Add</label><select name="pitem">${opts}</select><label>How much</label><div class="row"><input type="number" name="pqty" min="1" value="1" style="width:80px"><select name="pform"><option value="loose">loose</option><option value="cargo">cargo units</option></select><select name="pevery"><option value="1">daily</option><option value="5">weekly (5 days)</option><option value="25">monthly (25 days)</option></select><button class="sm" type="submit" value="x-addprod">Add It</button></div></div>
     <div class="grid"><label>Test storehouse</label><div class="row"><span class="tag">${s.test?"It is a test storehouse.":"It is a real storehouse."}</span><button class="sm" type="submit" value="x-test">${s.test?"Make It Real":"Make It a Test Storehouse"}</button></div></div>`,async fd=>{
     const v=readStore(fd);const id=SHIPID;
-    const up={[`ships/${id}/port`]:v.port,[`ships/${id}/hearth`]:v.hearth,[`ships/${id}/battery`]:v.battery};
+    const up={[`ships/${id}/port`]:v.port,[`ships/${id}/hearth`]:v.hearth,[`ships/${id}/battery`]:v.battery,[`ships/${id}/cellar`]:v.cellar,[`ships/${id}/cellarTons`]:v.cellarTons!==undefined?v.cellarTons:null};
     if(v.maxTons!==undefined)up[`ships/${id}/maxTons`]=v.maxTons;
     else up[`ships/${id}/maxTons`]=null;
-    try{await DB.update(up);toast("Its deeds are amended.");}catch(e){console.error(e);toast("The Register would not accept those deeds.");}
+    const wasCold=!!s.cellar;
+    try{await DB.update(up);toast("Its deeds are amended.");if(wasCold&&!v.cellar)act(()=>{if(!warmAll())return false;});}catch(e){console.error(e);toast("The Register would not accept those deeds.");}
   },"Save the Deeds");
   // Production is changed against the Register as it stands now, so a shipmate's line is never lost,
   // and only the particulars you actually changed in the form are written with it.
@@ -2884,7 +3173,8 @@ function advancedDeeds(){
     let cur;try{cur=toArr(await DB.get(`ships/${id}/production`)).filter(Boolean);}catch(e){cur=prod;}
     const list=change(cur);
     const up={[`ships/${id}/production`]:list.length?list:null};
-    for(const k of ["port","hearth","battery"])if(v[k]!==v0[k])up[`ships/${id}/${k}`]=v[k];
+    for(const k of ["port","hearth","battery","cellar"])if(v[k]!==v0[k])up[`ships/${id}/${k}`]=v[k];
+    if(v.cellarTons!==v0.cellarTons)up[`ships/${id}/cellarTons`]=v.cellarTons!==undefined?v.cellarTons:null;
     if(v.maxTons!==v0.maxTons)up[`ships/${id}/maxTons`]=v.maxTons!==undefined?v.maxTons:null;
     try{await DB.update(up);dlg.close();advancedDeeds();}catch(e){console.error(e);toast("The Register would not accept that.");}};
   dform.querySelector("button[value=x-addprod]").onclick=ev=>{
@@ -2923,10 +3213,11 @@ function advancedPapers(){
   ask(`<h2>Advanced Options</h2><p class="sub">The particulars of ${esc(shipName(SHIPID))}, as written in the Register.</p>${shipFields(s,false)}
     <div class="grid"><label>Test ship</label><div class="row"><span class="tag">${s.test?"She is a test ship.":"She is a real ship."}</span><button class="sm" type="submit" value="x-test">${s.test?"Make Her a Real Ship":"Make Her a Test Ship"}</button></div></div>`,async fd=>{
     const v=readShip(fd);const id=SHIPID;
-    const up={[`ships/${id}/fuel`]:v.fuel,[`ships/${id}/size`]:v.size,[`ships/${id}/smuggler`]:v.smuggler,[`ships/${id}/kind`]:"ship"};
+    const up={[`ships/${id}/fuel`]:v.fuel,[`ships/${id}/size`]:v.size,[`ships/${id}/smuggler`]:v.smuggler,[`ships/${id}/cold`]:v.cold,[`ships/${id}/kind`]:"ship"};
     if(v.maxTons!==undefined)up[`ships/${id}/maxTons`]=v.maxTons;
     else up[`ships/${id}/maxTons`]=null;
-    try{await DB.update(up);toast("Her papers are amended.");}catch(e){console.error(e);toast("The Register would not accept those papers.");}
+    const wasCold=!!s.cold;
+    try{await DB.update(up);toast("Her papers are amended.");if(wasCold&&!v.cold)act(()=>{if(!warmAll())return false;});}catch(e){console.error(e);toast("The Register would not accept those papers.");}
   },"Save Her Papers");
   wireTypeFill();
   dform.querySelector("button[value=x-test]").onclick=async ev=>{

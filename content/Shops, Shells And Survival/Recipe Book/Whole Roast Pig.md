@@ -13,6 +13,8 @@ A whole pig, roasted all day over the coals, glazed with molasses and citrus. It
 
 **Properties:** Perishable, Fishy
 
+**Keeps:** 2 days
+
 ## Ingredients
 1) 1 pig (60 rations of meat)
 2) 2 jars of molasses

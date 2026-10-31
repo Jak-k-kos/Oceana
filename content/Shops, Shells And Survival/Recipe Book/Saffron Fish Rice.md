@@ -13,6 +13,8 @@ Golden rice, slow-cooked in fish broth with a pinch of saffron worth more than t
 
 **Properties:** Perishable, Fishy
 
+**Keeps:** 1 day
+
 ## Ingredients
 1) 2 rations of fish
 2) 2 rations of rice

@@ -13,6 +13,8 @@ Whole cuttlefish braised slowly in their own black ink with wine and herbs until
 
 **Properties:** Perishable, Fishy
 
+**Keeps:** 2 days
+
 ## Ingredients
 1) 2 rations of dried cuttlefish
 2) 1 pot of squid ink

@@ -13,6 +13,8 @@ Dried leaves steeped in hot water, taken slow by navigators, clerks and anyone w
 
 **Properties:** Perishable, Stagnant
 
+**Keeps:** 1 day
+
 A brew, not a meal. Doesn't count as a water ration. See [[Shops, Shells And Survival/Recipe Book/index#Brews|Brews]].
 
 ## Ingredients
