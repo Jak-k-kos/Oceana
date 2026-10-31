@@ -34,12 +34,27 @@ A ship with the "Sail Powered" property uses the power of the wind to blow throu
 # Installed Weapons
 ***
 ## Bow Weapons
-
+None
 
 ## Stern Weapons
-
+None
 
 ## Port Weapons
-
+None
 
 ## Starboard Weapons
+None
+
+# Purchased Upgrades
+***
+## Railing
+None
+
+## Plating
+None
+
+## Structural
+None
+
+## Light Mods
+None

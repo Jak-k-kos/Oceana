@@ -9,7 +9,6 @@ draft: false
 - The song is a natural gift, not spellcasting, so it sits within the low-magic rules.
 - Tactics: outnumbered, sirens pick sailors off one at a time with Whispered Allure, and only sing once the odds are theirs.
 %%
-![[Siren.png]]
 
 # Siren
 Of all the peoples of the deep, none are so beautiful, and none so feared, as the sirens. Above the waist they seem almost like the folk of the land, pale and slender, with long hair that drifts about them like weed in the current. Below, they are fish, scaled in silver and sea-green, with tails as long again as a man is tall. But look closer, and the beauty fails. Their nails are long and hooked and black as mussel shell, and when they smile they show teeth like a barracuda's, row behind row of needles.
@@ -18,9 +17,9 @@ They are sea folk, sworn to the great empire beneath the waves, and they speak t
 
 Wise crews never stand a watch alone. They keep a bell ringing through the long calms, and they stuff their ears with wax or wool when the singing starts.
 
-| Size | Type | Alignment | CR |
-| --- | --- | --- | --- |
-| Medium | Humanoid (sea folk) | Usually neutral evil | 3 (700 XP) |
+| Size   | Type                | Alignment            | CR  |
+| ------ | ------------------- | -------------------- | --- |
+| Medium | Humanoid (sea folk) | Usually neutral evil | 3   |
 
 | AC | HP | Speed |
 | --- | --- | --- |
@@ -43,8 +42,8 @@ Wise crews never stand a watch alone. They keep a bell ringing through the long 
 - **Multiattack.** The siren makes one bite attack and one claws attack.
 - **Claws.** Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) slashing damage. A Medium or smaller target is grappled (escape DC 14). If the target is at a ship's rail, the siren can pull it overboard into the water. The siren can grapple only one creature at a time.
 - **Bite.** Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 8 (1d10 + 3) piercing damage. The siren has advantage on this attack against a creature it is grappling.
-- **Whispered Allure.** The siren whispers to one humanoid within 30 feet that can see or hear it. The target must succeed on a DC 14 Wisdom saving throw or be charmed for 1 minute. While charmed, it sees the siren as the most beautiful thing in the world, and on each of its turns it moves toward her and climbs over the rail into the water, without crying out. Other creatures notice only if they are within 10 feet of the target, or if they beat the siren's Stealth with a Wisdom (Perception) check. The target repeats the save whenever it takes damage, and the first time it enters the water. A creature that succeeds is immune to this siren's allure and song for 24 hours.
-- **Luring Song.** The siren sings. Each humanoid of its choice that can hear the song must succeed on a DC 14 Wisdom saving throw or be charmed until the song ends. A charmed creature uses its movement to go toward the siren by the most direct route, even over the rail, and it can't take reactions. It repeats the save whenever it takes damage, and at the end of each of its turns. A creature that succeeds is immune for 24 hours. The siren must use a bonus action each turn to keep singing.
+- **Whispered Allure.** The siren whispers to one humanoid within 30 feet that can see or hear it. The target must succeed on a DC 14 Wisdom saving throw or be charmed for 1 minute. While charmed, it sees the siren as the most beautiful thing in the world, and on each of its turns it moves toward her and climbs over the rail into the water, without crying out. Other creatures notice only if they are within 10 feet of the target, or if they beat the siren's Stealth with a Wisdom (Perception) check. The target repeats the save whenever it takes damage, and the first time it enters the water. A creature that succeeds is immune to this siren's allure and song until the end of their next turn
+- **Luring Song.** The siren sings. Each humanoid of its choice that can hear the song must succeed on a DC 14 Wisdom saving throw or be charmed until the song ends. A charmed creature uses its movement to go toward the siren by the most direct route, even over the rail, and it can't take reactions. It repeats the save whenever it takes damage, and at the end of each of its turns. A creature that succeeds is immune until the end of their next turn. The siren must use a bonus action each turn to keep singing.
 
 # Bonus Actions
 - **Drag Under.** The siren swims up to 20 feet straight down, dragging a creature it's grappling with it. A creature that can't breathe water begins to drown.
@@ -56,9 +55,9 @@ Wise crews never stand a watch alone. They keep a bell ringing through the long 
 # Siren Chorus-Mother
 Sirens do not hunt alone. They gather in choirs, and each choir is led by a chorus-mother, old and terrible and lovely, whose voice can bend a whole crew at once. Her nails are long as fish-knives, and it is she who drags the crews she has sung over the side down into the dark.
 
-| Size | Type | Alignment | CR |
-| --- | --- | --- | --- |
-| Medium | Humanoid (sea folk) | Usually neutral evil | 7 (2,900 XP) |
+| Size   | Type                | Alignment            | CR  |
+| ------ | ------------------- | -------------------- | --- |
+| Medium | Humanoid (sea folk) | Usually neutral evil | 7   |
 
 | AC | HP | Speed |
 | --- | --- | --- |
@@ -85,7 +84,7 @@ Sirens do not hunt alone. They gather in choirs, and each choir is led by a chor
 - **Bite.** Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 12 (2d8 + 3) piercing damage. She has advantage on this attack against a creature she is grappling.
 - **Whispered Allure.** As the siren's, but the save is DC 16, and she can target two creatures at once.
 - **Luring Song.** As the siren's, but the save is DC 16.
-- **Wave of Sorrow (Recharge 5-6).** She lets out a single shattering note. Each creature of her choice within 30 feet that can hear it must make a DC 16 Constitution saving throw, taking 31 (7d8) thunder damage on a failure, or half as much on a success. A creature at a ship's rail that fails is knocked overboard.
+- **Wave of Sorrow (Recharge 5-6).** She lets out a single shattering note. Each creature of her choice within 30 feet that can hear it must make a DC 16 Constitution saving throw, taking 31 (7d8) thunder damage on a failure, or half as much on a success.
 
 # Bonus Actions
 - **Drag Under.** She swims up to 20 feet straight down, dragging a creature she's grappling with her. A creature that can't breathe water begins to drown.

@@ -34,12 +34,60 @@ A ship with the "Helmsman Required" property usually have some sort of rudder or
 # Installed Weapons
 ***
 ## Bow Weapons
-
+### Long Gun
+AC: 19
+HP: 50
+DMG Immunities: Poison, Psychic
+Weapon Slots: 1
+Market Price: 120,000 SH
+Desc: Large object. A long, narrow-bored cannon, often mounted as a bow or stern chaser. It fires the same ammunition as a cannon. The longer barrel throws everything farther, but the lighter bore hits with less force. Loading it takes one creature's full action, then another creature can take the Operate Crew Action to fire it.
+#### Ammunition:
+* Cannonball: Ranged Weapon Attack: range 800/3,200 ft., one target. Hit: 33 (6d10) bludgeoning damage.
+* Chain Shot: Ranged Weapon Attack: range 200/300 ft., one target. Hit: 22 (4d10) bludgeoning damage, and one of the target's Sail Stations can't be used until a crew member succeeds on a DC 10 Repair action to fix it. That repair spends a Hull Die but restores no Hull Points.
+* Grapeshot: Choose a point within 120 ft. Each creature in a 10 ft. radius of that point takes 14 (4d6) piercing damage, or half as much on a successful DC 13 Dexterity saving throw.
+* Smoke Bomb: Fire at a point within 1,500 ft. It bursts into a 30 ft. radius cloud that heavily obscures the area for 1 minute. A medium wind clears it in 4 rounds, a heavy wind in 1 round.
 
 ## Stern Weapons
 
 
 ## Port Weapons
-
+### Cannon
+AC: 19
+HP: 55
+DMG Immunities: Poison, Psychic
+Weapon Slots: 1
+Market Price: 140,000 SH
+Desc: Large object. A gunpowder cannon, the backbone of most ships' firepower. Loading it takes one creature's full action, then another creature can take the Operate Crew Action to fire it.
+#### Ammunition:
+* Cannonball: Ranged Weapon Attack: range 600/2,400 ft., one target. Hit: 44 (8d10) bludgeoning damage.
+* Chain Shot: Ranged Weapon Attack: range 100/150 ft., one target. Hit: 22 (4d10) bludgeoning damage, and one of the target's Sail Stations can't be used until a crew member succeeds on a DC 10 Repair action to fix it. That repair spends a Hull Die but restores no Hull Points.
+* Grapeshot: Choose a point within 80 ft. Each creature in a 10 ft. radius of that point takes 14 (4d6) piercing damage, or half as much on a successful DC 13 Dexterity saving throw.
+* Smoke Bomb: Fire at a point within 1,000 ft. It bursts into a 30 ft. radius cloud that heavily obscures the area for 1 minute. A medium wind clears it in 4 rounds, a heavy wind in 1 round.
 
 ## Starboard Weapons
+### Cannon
+AC: 19
+HP: 55
+DMG Immunities: Poison, Psychic
+Weapon Slots: 1
+Market Price: 140,000 SH
+Desc: Large object. A gunpowder cannon, the backbone of most ships' firepower. Loading it takes one creature's full action, then another creature can take the Operate Crew Action to fire it.
+#### Ammunition:
+* Cannonball: Ranged Weapon Attack: range 600/2,400 ft., one target. Hit: 44 (8d10) bludgeoning damage.
+* Chain Shot: Ranged Weapon Attack: range 100/150 ft., one target. Hit: 22 (4d10) bludgeoning damage, and one of the target's Sail Stations can't be used until a crew member succeeds on a DC 10 Repair action to fix it. That repair spends a Hull Die but restores no Hull Points.
+* Grapeshot: Choose a point within 80 ft. Each creature in a 10 ft. radius of that point takes 14 (4d6) piercing damage, or half as much on a successful DC 13 Dexterity saving throw.
+* Smoke Bomb: Fire at a point within 1,000 ft. It bursts into a 30 ft. radius cloud that heavily obscures the area for 1 minute. A medium wind clears it in 4 rounds, a heavy wind in 1 round.
+
+# Purchased Upgrades
+***
+## Railing
+None
+
+## Plating
+None
+
+## Structural
+None
+
+## Light Mods
+None

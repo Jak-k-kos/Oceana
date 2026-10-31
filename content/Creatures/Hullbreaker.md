@@ -9,7 +9,6 @@ draft: false
 - Riders use their own stat blocks (sahuagin, tritons and the like). The beast takes their orders.
 - Its Ram is meant to rival a broadside. One Hullbreaker is a fight for a whole ship, not for one crew member.
 %%
-![[Hullbreaker.png]]
 
 # Hullbreaker
 Sailors of the northern patrols have a saying: if you see sahuagin, fight; if you see a Hullbreaker, pray. Hullbreakers are the war-beasts of the sea folk empire, vast and slow-eyed things, half whale and half armored fish, bred in the deep for nothing but war. The sea folk grow living coral over their backs and brows in great ridged plates, until each one is less a beast than a reef that swims, and they lash coral towers to its spine, from which sahuagin and tritons ride to battle, hurling spears as their mount charges.
@@ -37,6 +36,7 @@ A Hullbreaker breaks a ship the way a hammer breaks a clay pot. It comes up from
 - **Siege Monster.** The Hullbreaker deals double damage to objects and structures, including ships.
 - **War Towers.** Up to eight Medium riders can ride in the coral towers on its back. They have three-quarters cover, and they stay above the water unless the Hullbreaker dives.
 - **Trained Mount.** On its turn, the Hullbreaker obeys the commands of its lead rider.
+- **Hold Breath.** It can stay surfaced for 1 hour
 
 ## Actions
 - **Multiattack.** The Hullbreaker makes one bite attack and one tail slam attack.

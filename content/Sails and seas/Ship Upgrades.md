@@ -103,7 +103,7 @@ Desc: Create a hold capable of hiding 1/10 the maximum tonnage of the vessel. ca
 
 ### Deck Grip
 Market Value: Small 24,000 SH | Medium 48,000 SH | Large 96,000 SH | Huge 192,000 SH *(Small ship compatible)*
-Desc: -2 DC for being knocked prone on your deck. Sail DC increases from weather and environment  ate reduced by 1
+Desc: -2 DC for being knocked prone on your deck. Sail DC increases from weather and environment are reduced by 1
 
 ### Inspiring Figurehead
 Market Value: 480,000 SH

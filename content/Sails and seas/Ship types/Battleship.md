@@ -56,3 +56,18 @@ Ships with the Cumbersome trait are particularly difficult to sail. The base DC 
 
 
 ## Starboard Weapons
+
+
+# Purchased Upgrades
+***
+## Railing
+None
+
+## Plating
+None
+
+## Structural
+None
+
+## Light Mods
+None

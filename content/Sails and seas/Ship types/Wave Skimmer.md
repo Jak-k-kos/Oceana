@@ -34,3 +34,17 @@ A ship with the "Sail Powered" property uses the power of the wind to blow throu
 ### Sheltered Waters
 Built for bays, harbors and the shallows between close islands. It can't make open-sea travel between hexes. In a Heavy Wind or rough seas, its rider must succeed on a DC 13 Dexterity (Water Vehicles) check at the start of each of its turns or the skimmer capsizes, dumping the rider and its cargo into the water.
 
+
+# Purchased Upgrades
+***
+## Railing
+None
+
+## Plating
+None
+
+## Structural
+None
+
+## Light Mods
+None

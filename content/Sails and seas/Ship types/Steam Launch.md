@@ -50,3 +50,18 @@ A ship with the "Helmsman Required" property usually have some sort of rudder or
 
 
 ## Starboard Weapons
+
+
+# Purchased Upgrades
+***
+## Railing
+None
+
+## Plating
+None
+
+## Structural
+None
+
+## Light Mods
+None

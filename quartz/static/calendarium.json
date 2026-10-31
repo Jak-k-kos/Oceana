@@ -206,7 +206,7 @@
             "kind": "Custom",
             "duration": 25,
             "peak": 0,
-            "color": "#000000",
+            "color": "#5bd75d",
             "weatherOffset": 56,
             "weatherPeak": 5,
             "weather": {
@@ -227,7 +227,7 @@
             "kind": "Custom",
             "duration": 20,
             "peak": 0,
-            "color": "#21f22f",
+            "color": "#990f0f",
             "weatherOffset": 56,
             "weatherPeak": 5,
             "weather": {
@@ -248,7 +248,7 @@
             "kind": "Autumn",
             "duration": 25,
             "peak": 0,
-            "color": "#12a3f7",
+            "color": "#d37c03",
             "weatherOffset": 56,
             "weatherPeak": 5
           }

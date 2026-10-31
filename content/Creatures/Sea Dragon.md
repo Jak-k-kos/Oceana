@@ -11,12 +11,11 @@ draft: false
 - Not everyone loves them. The harpoon gun was built for hunting sea monsters and sea dragons both, and on islands far from Delafina a sea dragon caught in the nets is still killed for its hide and venom. Selling sea dragon parts in Delafina, or to anyone who knows a Delafina fisherman, is asking for a knife in the dark.
 - Stat blocks are built off the wyvern (MM, CR 6), traded some venom for a swim speed and a temper.
 %%
-![[Sea Dragon.png]]
 
 # Sea Dragon
 When [[Aquilla|Aquilla's]] Wrath drowned the world, the wyverns of the high crags lost their mountains one by one, until there was nowhere left to roost but the sea itself. Most of them died. Those that lived learned to fold their wings and dive, to hunt the shoals instead of the goats, and to sleep on the rocks with the spray on their scales. Their wings grew broad and webbed, more fin than sail, and their tails grew long and strong for swimming. They have not forgotten the sky, and a sea dragon bursting from a wave and climbing into the wind is a sight no sailor forgets, but the water is their home now, and they glide through it like grey-green ribbons, sleek as eels and twice as quick.
 
-They are not wise, nor cruel, nor kind. They are hungry, and they are patient, and they remember. Some eight hundred years ago the fishermen of [[Locations/Azure Plains Coalition (APC)/Delafina/index|Delafina]] learned that a sea dragon will drive a shoal of mullet straight into a net if it knows it will be paid its share, and so began one of the strangest partnerships in all the [[Locations/Azure Plains Coalition (APC)/index|coalition]]. When the mullet run, the fishermen beat the water with their oars, and the sea dragons come. The old folk of Delafina will tell you, quite seriously, that the dragons were never tamed at all. "They agreed to us," says [[Amparo Delos]], and when she sings from the end of the pier, they come to her.
+They are not wise, nor cruel, nor kind. They are hungry, and they are patient, and they remember. Some eight hundred years ago the fishermen of [[Locations/Azure Plains Coalition (APC)/Delafina/index|Delafina]] learned that a sea dragon will drive a shoal of mullet straight into a net if it knows it will be paid its share, and so began one of the strangest partnerships in all the [[Locations/Azure Plains Coalition (APC)/index|coalition]]. When the mullet run, the fishermen beat the water with their oars, and the sea dragons come. The old folk of Delafina will tell you, quite seriously, that the dragons were never tamed at all.
 
 Fishermen across the coalition now work alongside them, and a crew with a sea dragon of its own is counted lucky. But a sea dragon is still a wild thing with a stinger full of venom, and sailors who forget it do not often get the chance to forget it twice.
 
@@ -78,7 +77,7 @@ Hatchlings are long as a man's arm and all teeth and tail, and their stingers ar
 
 ## Actions
 - **Bite.** Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) piercing damage.
-- **Stinger.** Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 3 (1d4 + 1) piercing damage. The target must make a DC 11 Constitution saving throw, taking 5 (2d4) poison damage on a failed save, or half as much on a successful one.
+- **Stinger.** Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 3 (1d4 + 2) piercing damage. The target must make a DC 11 Constitution saving throw, taking 5 (2d4) poison damage on a failed save, or half as much on a successful one.
 
 # Bonus Actions
 - **Dive.** While in water, the hatchling plunges beneath the surface and swims up to half its swim speed without provoking opportunity attacks.

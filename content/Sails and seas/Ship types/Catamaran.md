@@ -30,3 +30,17 @@ Agile ships are particularly maneuverable and easy to pilot. They are able to tu
 
 ### Mixed Propulsion (Oars)
 A Mixed Propulsion ship is one that can use sails during windy conditions but has an alternate propulsion method (listed in brackets next to the property) in calmer weather. Mixed Propulsion ships act like Sail Powered ships when their sails are unfurled. However, even when their sails are furled or they are in a Dead Wind, they still retain their normal speed unit.
+
+# Purchased Upgrades
+***
+## Railing
+None
+
+## Plating
+None
+
+## Structural
+None
+
+## Light Mods
+None

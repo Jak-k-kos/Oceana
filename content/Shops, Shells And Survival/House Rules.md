@@ -118,6 +118,11 @@ Lost units are spoiled, not gone. They can be thrown overboard, or eaten and dru
 ## Optional Rule: Shared Dice
 If the hold is crowded, the players can roll one of each Keep Die currently in the hold instead of one per lot. Every lot at that die shares the roll, so a 1 steps all of them down together. Loss Dice are still rolled for each lot that steps down. It's faster, but swingier, since lots on the same die spoil together.
 
+## Preserving
+- **Salting:** 1 lb of salt per ration of fresh meat (not sea turtle). Meat salted the day it's fresh starts a new lot at d20, Preserved, Fishy. Meat salted a day later starts at d12.
+- **Pickling:** 1 flask of vinegar per ration (or per head of garlic). It starts a new lot at d20, Preserved, Rancid.
+- **Drying:** fruit left a day in the sun starts a new lot at d20, Preserved, Rancid.
+
 # Eating Spoiled Supplies
 Spoiled food or water still counts as a ration. When you eat or drink it, make the Constitution saving throw for its property. On a failure, you're poisoned for 24 hours and catch the listed disease.
 

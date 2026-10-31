@@ -4,7 +4,6 @@ draft: false
 ---
 # Ship Supplies
 - [[#Ammunition]]
-- [[#Boarding and Defense]]
 - [[#Repair and Upkeep]]
 - [[#Fuel]]
 - [[#Signals]]
@@ -66,6 +65,7 @@ A unit of repair stores is roughly a bucket of pitch, a bundle of oakum, a coupl
 | ------------- | ------------ | ----- | --------------- | ----------- |
 | Kelp charcoal | Sack (50 lb) | 24 SH | 8 sacks         | 173 SH      |
 | Charcoal      | Sack (50 lb) | 95 SH | 8 sacks         | 684 SH      |
+
 **Kelp charcoal.** Dried kelp, pressed into bricks and charred in slow kilns. It burns hot and long, and it's what feeds the furnaces of every fuel-powered ship in Oceana. It never spoils, but wet charcoal won't burn until it's dried out on deck for a day. See [[Basic Ship Rules#Properties|Fuel Powered]] for how much a ship burns.
 
 **Charcoal.** Wood charcoal, made for forges. It burns hotter than kelp charcoal and feeds a ship's furnace just the same, sack for sack, but at four times the price few captains burn it unless it's all they have. Like kelp charcoal, it won't burn wet.

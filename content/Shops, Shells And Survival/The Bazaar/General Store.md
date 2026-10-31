@@ -114,27 +114,28 @@ The General Store sells everyday gear for life aboard ship and ashore. Market pr
 | Fine clothes | 1,450 SH |
 
 # Tools
-| Item | Price |
-| --- | --- |
-| Brewer's supplies | 1,900 SH |
-| Calligrapher's supplies | 950 SH |
-| Carpenter's tools | 750 SH |
-| Cartographer's tools | 1,450 SH |
-| Cobbler's tools | 480 SH |
-| Cook's utensils | 95 SH |
-| Disguise kit | 2,400 SH |
-| Glassblower's tools | 2,800 SH |
-| Jeweler's tools | 2,400 SH |
-| Leatherworker's tools | 480 SH |
-| Mason's tools | 950 SH |
-| Navigator's tools | 2,400 SH |
-| Painter's supplies | 950 SH |
-| Potter's tools | 950 SH |
-| Smith's tools | 1,900 SH |
+| Item                                       | Price    |
+| ------------------------------------------ | -------- |
+| Brewer's supplies                          | 1,900 SH |
+| Calligrapher's supplies                    | 950 SH   |
+| Carpenter's tools                          | 750 SH   |
+| Cartographer's tools                       | 1,450 SH |
+| Cobbler's tools                            | 480 SH   |
+| Cook's utensils                            | 95 SH    |
+| Disguise kit                               | 2,400 SH |
+| Glassblower's tools                        | 2,800 SH |
+| Jeweler's tools                            | 2,400 SH |
+| Leatherworker's tools                      | 480 SH   |
+| Mason's tools                              | 950 SH   |
+| Navigator's tools                          | 2,400 SH |
+| Painter's supplies                         | 950 SH   |
+| Potter's tools                             | 950 SH   |
+| Smith's tools                              | 1,900 SH |
 | Thieves' tools (sold as locksmith's tools) | 2,400 SH |
-| Tinker's tools | 4,800 SH |
-| Weaver's tools | 95 SH |
-| Woodcarver's tools | 95 SH |
+| Tinker's tools                             | 4,800 SH |
+| Weaver's tools                             | 95 SH    |
+| Woodcarver's tools                         | 95 SH    |
+| Skinner's tools                            | 2,400 SH |
 
 # Instruments
 | Item | Price |

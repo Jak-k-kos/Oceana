@@ -57,7 +57,7 @@ A wooden or otherwise flammable ship can catch fire. A ship made of metal or sto
 During the Character Phase, a creature aboard can use its action to fight the fire with buckets, wet sail and sand. Like Repair, this is not a Crew Action, so it happens immediately.
 - **Each creature fighting it** shrinks the fire by 1d6.
 - **With [[Ship Upgrades#Fire Troughs|Fire Troughs]]**, it shrinks by 2d6 instead.
-- **With a bucket of [[Ship Supplies#Boarding and Defense|fire sand]]**, it shrinks by 2d6, or 3d6 with Fire Troughs. The sand is used up.
+- **With a bucket of [[Ship Supplies#Repair and Upkeep|fire sand]]**, it shrinks by 2d6, or 3d6 with Fire Troughs. The sand is used up.
 - **When the fire reaches 0 dice,** it goes out.
 
 Fire damage hurts the ship's Hull Points. It doesn't harm the crew unless an effect says it does.

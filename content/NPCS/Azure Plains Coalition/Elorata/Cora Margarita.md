@@ -7,7 +7,7 @@ lastname: Margarita
 %%
 DM Notes:
 ------------------------------------
-species: Water Genasi
+species: Orc
 Unique Trait: Can hold her breath for a full five minutes
 Motivation: Keep her divers alive, even if it means giving up the best beds
 Occupation: Elder of the diving teams
@@ -18,7 +18,7 @@ Relationships:
 - [[Ilan Ostra]]: the diver who brought back the warning
 %%
 Gender: Female
-Appearance: About fifty. Lean and strong, with blue-green skin, salt-white hair that drifts as if she were always underwater, and a large black pearl on a cord at her throat
+Appearance: About fifty. Lean and powerful, grey-green-skinned, with salt-white hair, small tusks, and a large black pearl on a cord at her throat
 Who: The best diver [[Locations/Azure Plains Coalition (APC)/Elorata/index|Elorata]] has produced in a generation, now its elder.
 known relationships:
 - 

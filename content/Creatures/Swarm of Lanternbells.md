@@ -8,7 +8,6 @@ draft: false
 - The swarm barely moves on its own and drifts with the current. It's a hazard to swimmers, divers, sailors gone overboard and anyone a [[Siren|siren]] drags under, not a monster that gives chase.
 - Netting a bloom from a boat is safe for anyone wearing gloves. A cleared swarm yields about 2d6 rations of [[Provisions|glassleaf]] once dried.
 %%
-![[Swarm of Lanternbells.png]]
 
 # Swarm of Lanternbells
 On warm mornings in the shallows, the sea sometimes blooms like a garden. Thousands upon thousands of lanternbells drift in on the current, jellyfish no bigger than a child's fist, and every one a different color: rose and amber, violet and sea-green, gold and the deep blue of evening. They glow softly from within, so that at night a bloom lights the water like a festival of floating lanterns. Children wade out to the knee to look at them, and their mothers drag them back by the collar, for every one of those pretty bells trails a beard of threads finer than hair, and every thread is a needle full of fire. A bloom of lanternbells can numb a grown man stiff before he reaches the boat.

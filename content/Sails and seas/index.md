@@ -14,14 +14,15 @@ When the waters rose, the road became the sea, and the ship became the cart, the
 - [[Sails and Seas/Ship Upgrades|Ship Upgrades]]: railings, plating, structural work, light mods and paint.
 - [[Shops, Shells And Survival/The Bazaar/Ship Supplies|Ship Supplies]]: shot, powder, repair stores and kelp charcoal.
 - [[Shops, Shells And Survival/The Bazaar/Port of Call#Harbor|The Harbor]]: docking, pilots, dry docks and shipwrights.
-- [[The Ships Larder]]: 
+- [[The Ships Larder]]: holds and hordes, all that lies beneath the deck.
 
 # Ship Combat
 - [[Sails and Seas/Ship Rules/index|Ship Rules]]: how a battle at sea unfolds, round by round.
 - [[Sails and Seas/Ship Rules/Basic Ship Rules|Basic Ship Rules]]: what the numbers on a ship mean.
-- [[Sails and Seas/Ship Rules/Character Phase|Character Phase]]: Crew Actions and what you do each round.
+- [[Sails and Seas/Ship Rules/Character Phase|Character Phase]]: crew Actions and what you do each round.
 - [[Sails and Seas/Ship Rules/Ship Phase|Ship Phase]]: movement, attacks, grappling and ramming.
 - [[Sails and Seas/Ship Rules/Damage and Repair|Damage and Repair]]: hull points, sinking, repairs and fire.
+- [[Environment]]: storms, whirlpools and winds.
 
 # Signals
 - [[Sails and Seas/Flag Code|Flag Code]]: the language of flags, for hailing friends and warning foes.

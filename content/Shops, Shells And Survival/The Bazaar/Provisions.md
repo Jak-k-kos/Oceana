@@ -31,7 +31,10 @@ Market prices in shells (SH). What you actually pay is down to haggling, and pri
 | Sea turtle      | 2 lb (1 ration)         | 40 SH | Crate (150 rations)   | 5,400 SH    | -    | Perishable, Fishy |
 | Eggs            | Dozen (1 ration)        | 10 SH | Crate (100 dozen)     | 900 SH      | d8   | Delicate, Rancid  |
 | Vegetables      | 3 lb (1 ration)         | 3 SH  | Crate (100 rations)   | 270 SH      | d6   | Delicate, Rancid  |
-| Cucumber        | 3 lb (1 ration)         | 3 SH  | Crate (100 rations)   | 270 SH      | d6   | Delicate, Rancid  |
+| Green beans     | 2 lb (1 ration)         | 3 SH  | Crate (150 rations)   | 405 SH      | d6   | Delicate, Rancid  |
+| Garlic          | 1 head (0 rations)      | 1 SH  | Crate (500 heads)     | 450 SH      | d12  | Hardy, Rancid     |
+| Cucumber        | 1 cucumber (1/4 ration) | 1 SH  | Crate (400 cucumbers) | 360 SH      | d6   | Delicate, Rancid  |
+| Watermelon      | 1 melon (1 ration)      | 3 SH  | Crate (20 melons)     | 54 SH       | d8   | Hardy, Rancid     |
 | Fruit           | 1 piece (1/8 ration)    | 1 SH  | Crate (800 pieces)    | 720 SH      | d4   | Delicate, Rancid  |
 | Apple           | 1 apple (1/8 ration)    | 1 SH  | Crate (800 apples)    | 720 SH      | d10  | Hardy, Rancid     |
 | Citrus          | 1 fruit (1/8 ration)    | 2 SH  | Crate (800 fruit)     | 1,440 SH    | d10  | Hardy, Rancid     |
@@ -42,6 +45,7 @@ Market prices in shells (SH). What you actually pay is down to haggling, and pri
 | Sea fennel      | Bundle (1/4 ration)     | 1 SH  | Bale (600 bundles)    | 540 SH      | d4   | Delicate, Rancid  |
 | Firecap peppers | Handful (0 rations)     | 2 SH  | Bale (1,000 handfuls) | 1,800 SH    | d10  | Hardy, Rancid     |
 
+**Preserving at sea.** Fresh meat can be salted at a pound of salt per ration. Vegetables, cucumbers, watermelon, green beans, eggs and garlic can be pickled at a flask of vinegar per ration (or per head of garlic). Fruit, apples, citrus and plantains can be dried in the sun over a day. See [[House Rules#Spoilage|Spoilage]] for how long each keeps.
 # Stores
 | Item                              | Single              | Price | Cargo (1/5 ton)      | Cargo Price | Keep | Properties        |
 | --------------------------------- | ------------------- | ----- | -------------------- | ----------- | ---- | ----------------- |
@@ -62,6 +66,16 @@ Market prices in shells (SH). What you actually pay is down to haggling, and pri
 | Salted chicken                    | 1 ration            | 14 SH | Barrel (150 rations) | 1,890 SH    | d20  | Preserved, Fishy  |
 | Salted goat                       | 1 ration            | 14 SH | Barrel (150 rations) | 1,890 SH    | d20  | Preserved, Fishy  |
 | Salted mutton                     | 1 ration            | 16 SH | Barrel (150 rations) | 2,160 SH    | d20  | Preserved, Fishy  |
+| Pickled vegetables | 3 lb (1 ration) | 5 SH | Crate (100 rations) | 450 SH | d20 | Preserved, Rancid |
+| Pickled cucumber | 1 cucumber (1/4 ration) | 2 SH | Crate (400 cucumbers) | 720 SH | d20 | Preserved, Rancid |
+| Pickled watermelon | 1 melon (1 ration) | 5 SH | Crate (20 melons) | 90 SH | d20 | Preserved, Rancid |
+| Pickled green beans | 2 lb (1 ration) | 5 SH | Crate (150 rations) | 675 SH | d20 | Preserved, Rancid |
+| Pickled eggs | Dozen (1 ration) | 14 SH | Crate (100 dozen) | 1,260 SH | d20 | Preserved, Rancid |
+| Pickled garlic | 1 head (0 rations) | 2 SH | Crate (500 heads) | 900 SH | d20 | Preserved, Rancid |
+| Dried fruit | 1 piece (1/8 ration) | 2 SH | Crate (800 pieces) | 1,440 SH | d20 | Preserved, Rancid |
+| Dried apple | 1 apple (1/8 ration) | 2 SH | Crate (800 apples) | 1,440 SH | d20 | Preserved, Rancid |
+| Dried citrus | 1 fruit (1/8 ration) | 3 SH | Crate (800 fruit) | 2,160 SH | d20 | Preserved, Rancid |
+| Dried plantain | 1 plantain (1/4 ration) | 2 SH | Crate (400 plantains) | 720 SH | d20 | Preserved, Rancid |
 # Delicacies
 | Item                   | Single                   | Price  | Cargo (1/5 ton)     | Cargo Price | Keep         | Properties        |
 | ---------------------- | ------------------------ | ------ | ------------------- | ----------- | ------------ | ----------------- |

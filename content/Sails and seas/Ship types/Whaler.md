@@ -46,3 +46,18 @@ Carries two [[Sails and Seas/Ship types/Rowboat|rowboats]], included in the pric
 
 
 ## Starboard Weapons
+
+
+# Purchased Upgrades
+***
+## Railing
+None
+
+## Plating
+None
+
+## Structural
+None
+
+## Light Mods
+None

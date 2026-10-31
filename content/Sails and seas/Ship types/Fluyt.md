@@ -30,3 +30,17 @@ A ship with the "Sail Powered" property uses the power of the wind to blow throu
 
 ### Helmsman Required
 A ship with the "Helmsman Required" property usually have some sort of rudder or steering system on board that works independently of the ship's main locomotion method. These ships can only move in a straight line, unless a crew member takes the Helm Crew Action that round.
+
+# Purchased Upgrades
+***
+## Railing
+None
+
+## Plating
+None
+
+## Structural
+None
+
+## Light Mods
+None

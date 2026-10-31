@@ -28,3 +28,17 @@ Market Value: 4,800 SH
 ### Agile
 Agile ships are particularly maneuverable and easy to pilot. They are able to turn on the spot, instead of needing to move while turning as most other ships do. Turning does not take up any extra movement speed.
 
+
+# Purchased Upgrades
+***
+## Railing
+None
+
+## Plating
+None
+
+## Structural
+None
+
+## Light Mods
+None

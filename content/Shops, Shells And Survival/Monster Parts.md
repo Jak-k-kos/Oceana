@@ -53,6 +53,7 @@ Books: MM = Monster Manual, MM 2024 = 2024 Monster Manual only, MPMM = Monsters 
 | [[#Hippopotamus\|Hippopotamus]] * | Beast | 4 | Large | MM 2024 | [AideDD](https://www.aidedd.org/monster/hippopotamus) |
 | [[#Huge Giant Crab\|Huge Giant Crab]] * | Beast | 8 | Huge | TftYP | [5e Wiki](https://dnd-5e.fandom.com/wiki/Huge_Giant_Crab) |
 | [[#Hulking Crab\|Hulking Crab]] | Beast | 5 | Huge | SKT | [5e Wiki](https://dnd-5e.fandom.com/wiki/Hulking_Crab) |
+| [[#Hullbreaker\|Hullbreaker]] * | Beast | 12 | Gargantuan | Oceana | [[Hullbreaker]] |
 | [[#Hunter Shark\|Hunter Shark]] * | Beast | 2 | Large | MM | [AideDD](https://www.aidedd.org/monster/hunter-shark) |
 | [[#Killer Whale\|Killer Whale]] * | Beast | 3 | Huge | MM | [AideDD](https://www.aidedd.org/monster/killer-whale) |
 | [[#Octopus\|Octopus]] | Beast | 0 | Small | MM | [AideDD](https://www.aidedd.org/monster/octopus) |
@@ -67,11 +68,13 @@ Books: MM = Monster Manual, MM 2024 = 2024 Monster Manual only, MPMM = Monsters 
 | [[#Seahorse\|Seahorse]] * | Beast | 0 | Tiny | MM 2024 | [AideDD](https://www.aidedd.org/monster/seahorse) |
 | [[#Shell Shark\|Shell Shark]] * | Beast | 2 | Medium | GoS | - |
 | [[#Sperm Whale\|Sperm Whale]] * | Beast | 8 | Gargantuan | IDRotF | - |
+| [[#Swarm of Lanternbells\|Swarm of Lanternbells]] * | Beast | 2 | Large | Oceana | [[Swarm of Lanternbells]] |
 | [[#Swarm of Piranhas\|Swarm of Piranhas]] * | Beast | 1 | Medium | MM 2024 | [AideDD](https://www.aidedd.org/monster/swarm-of-piranhas) |
 | [[#Swarm of Quippers\|Swarm of Quippers]] * | Beast | 1 | Medium | MM | [AideDD](https://www.aidedd.org/dnd/monstres.php?vo=swarm-of-quippers) |
 | [[#Two-Headed Plesiosaurus\|Two-Headed Plesiosaurus]] * | Beast | 4 | Large | TP | - |
 | [[#Venomous Snake\|Venomous Snake]] | Beast | 1/8 | Tiny | MM | [AideDD](https://www.aidedd.org/monster/venomous-snake) |
 | [[#Walrus\|Walrus]] * | Beast | 1/4 | Large | IDRotF | - |
+| [[#Widowfin\|Widowfin]] * | Beast | 7 | Huge | Oceana | [[Widowfin]] |
 | [[#Aboleth\|Aboleth]] | Aberration | 10 | Large | MM | [AideDD](https://www.aidedd.org/monster/aboleth) |
 | [[#Balhannoth\|Balhannoth]] | Aberration | 11 | Large | MPMM | [5e Wiki](https://dnd-5e.fandom.com/wiki/Balhannoth) |
 | [[#Chuul\|Chuul]] | Aberration | 4 | Large | MM | [AideDD](https://www.aidedd.org/monster/chuul) |
@@ -112,6 +115,8 @@ Books: MM = Monster Manual, MM 2024 = 2024 Monster Manual only, MPMM = Monsters 
 | [[#Dragon Turtle\|Dragon Turtle]] * | Dragon | 17 | Gargantuan | MM | [AideDD](https://www.aidedd.org/monster/dragon-turtle) |
 | [[#Ancient Dragon Turtle\|Ancient Dragon Turtle]] * | Dragon | 24 | Gargantuan | FTD | - |
 | [[#Guard Drake\|Guard Drake]] * | Dragon | 2 | Medium | MPMM | [5e Wiki](https://dnd-5e.fandom.com/wiki/Guard_Drake) |
+| [[#Sea Dragon\|Sea Dragon]] * | Dragon | 5 | Large | Oceana | [[Sea Dragon]] |
+| [[#Sea Dragon Hatchling\|Sea Dragon Hatchling]] * | Dragon | 1/2 | Small | Oceana | [[Sea Dragon#Sea Dragon Hatchling\|Sea Dragon]] |
 | [[#Young Sea Serpent\|Young Sea Serpent]] * | Dragon | 8 | Huge | FTD | - |
 | [[#Ancient Sea Serpent\|Ancient Sea Serpent]] * | Dragon | 14 | Gargantuan | FTD | - |
 
@@ -130,15 +135,16 @@ Harvesting takes a Wisdom (Survival) check with skinner's tools. A character pro
 - **Glands, eyes, venom, ink and mucus** need their own check, as listed in the Harvest Index, and a vial or jar to go into. Eyes spoil fast unless kept in a jar of salt water.
 - **Meat** from a sea creature counts as fish: Perishable and Fishy. Every 2 lb is 1 ration. Salting it turns it into salted fish.
 
-| Size | Meat |
-| --- | --- |
-| Tiny | 1d4 lb |
-| Small | 1d6 + 10 lb |
-| Medium | 3d10 + 30 lb |
-| Large | 8d10 + 50 lb |
-| Huge | 12d10 + 100 lb |
+| Size       | Meat           |
+| ---------- | -------------- |
+| Tiny       | 1d4 lb         |
+| Small      | 1d6 + 10 lb    |
+| Medium     | 3d10 + 30 lb   |
+| Large      | 8d10 + 50 lb   |
+| Huge       | 12d10 + 100 lb |
+| Gargantuan | 20d10 + 400 lb |
 
-%%DM: Skinner's tools aren't sold yet. The Index prices them at 25 gp, about 2,400 SH, for the General Store.%%
+
 
 # Beasts
 
@@ -410,6 +416,17 @@ CR 5, Huge beast. SKT. [5e Wiki](https://dnd-5e.fandom.com/wiki/Hulking_Crab). H
 | --- | --- | --- | --- |
 | Huge chitin fragments | 1,100 SH | Trophy, Practical | - |
 
+## Hullbreaker
+CR 12, Gargantuan beast. Oceana. [[Hullbreaker]]. Prices are estimates. Harvest: DC 30, 1 week.
+
+| Part | Price | Use | Crafted Into |
+| --- | --- | --- | --- |
+| Teeth (ivory) | 380 SH | Trophy, Practical | - |
+| Gargantuan hide | 1,400 SH | Trophy, Practical | - |
+| Blubber (about 10 barrels of whale oil) | 8,600 SH | Practical | - |
+| Coral barding (about 1 ton of living coral) | 9,500 SH | Trophy, Practical | - |
+
+%%DM: Most of what a Hullbreaker is worth isn't in its parts. Killed or captured, it's the sort of prize the [[Locations/Azure Plains Coalition (APC)/index|coalition]] council sells itself, and a crew that brings one home may find the navy wants a word about who it belongs to.%%
 ## Hunter Shark
 CR 2, Large beast. MM. [AideDD](https://www.aidedd.org/monster/hunter-shark). Prices are estimates. Harvest: DC 20, 1 hour.
 
@@ -522,6 +539,15 @@ CR 8, Gargantuan beast. IDRotF. -. Prices are estimates. Harvest: DC 30, 1 week.
 | Blubber (about 10 barrels of whale oil) | 8,600 SH | Practical | - |
 | Spermaceti (about 200 lb) | 4,800 SH | Practical | - |
 
+## Swarm of Lanternbells
+CR 2, Large swarm of Tiny beasts. Oceana. [[Swarm of Lanternbells]]. Prices are estimates. Harvest: DC 20, 1 hour, or netted from a boat by anyone in gloves.
+
+| Part                             | Price           | Use       | Crafted Into                                  |
+| -------------------------------- | --------------- | --------- | --------------------------------------------- |
+| Bells (2d6 rations once dried)   | 6 SH per ration | Practical | [[Provisions\|Glassleaf]]                     |
+| Living bells (a jar in seawater) | 48 SH           | Practical | Sheds dim light in a 5 ft radius for 1d4 days |
+| Stinging threads (a jar)         | 190 SH          | Practical | Paralyzing Poison                             |
+
 ## Swarm of Piranhas
 CR 1, Medium beast. MM 2024. [AideDD](https://www.aidedd.org/monster/swarm-of-piranhas). Prices are estimates. Harvest: DC 15, 45 minutes.
 
@@ -561,6 +587,16 @@ CR 1/4, Large beast. IDRotF. -. Prices are estimates. Harvest: DC 20, 1 hour.
 | Tusks | 290 SH | Trophy, Practical | - |
 | Large hide | 190 SH | Trophy, Practical | - |
 | Blubber (about 1 barrel of whale oil) | 860 SH | Practical | - |
+
+## Widowfin
+CR 7, Huge beast. Oceana. [[Widowfin]]. Prices are estimates. Harvest: DC 25, 8 hours.
+
+| Part        | Price    | Use               | Crafted Into                     |
+| ----------- | -------- | ----------------- | -------------------------------- |
+| Tail barb   | 380 SH   | Trophy, Practical | -                                |
+| Huge skin   | 1,100 SH | Trophy, Practical | -                                |
+| Venom       | 9,500 SH | Practical         | -                                |
+| Storm gland | 7,100 SH | Practical         | Elemental Weapon Oil (lightning) |
 
 # Aberrations
 
@@ -928,6 +964,27 @@ CR 2, Medium dragon. MPMM. [5e Wiki](https://dnd-5e.fandom.com/wiki/Guard_Drake)
 | Teeth | 48 SH | Trophy | - |
 | Medium scales | 380 SH | Trophy, Practical | - |
 
+## Sea Dragon
+CR 5, Large dragon. Oceana. [[Sea Dragon]]. Prices are estimates. Harvest: DC 20, 1 hour.
+
+| Part       | Price     | Use               | Crafted Into                    |
+| ---------- | --------- | ----------------- | ------------------------------- |
+| Teeth      | 95 SH     | Trophy            | -                               |
+| Stinger    | 190 SH    | Trophy            | -                               |
+| Large hide | 1,400 SH  | Trophy, Practical | -                               |
+| Venom      | 14,000 SH | Practical         | -                               |
+| Egg        | 2,400 SH  | Practical         | A hatchling raised from the egg |
+
+## Sea Dragon Hatchling
+CR 1/2, Small dragon. Oceana. [[Sea Dragon#Sea Dragon Hatchling|Sea Dragon]]. Prices are estimates. Harvest: DC 10, 15 minutes.
+
+| Part | Price | Use | Crafted Into |
+| --- | --- | --- | --- |
+| Small hide | 190 SH | Trophy, Practical | - |
+| Venom | 950 SH | Practical | - |
+
+%%DM: A living hatchling sold to a fishing crew fetches about twice the price of an egg. Selling sea dragon parts in [[Locations/Azure Plains Coalition (APC)/Delafina/index|Delafina]], or to anyone who knows a Delafina fisherman, is asking for a knife in the dark (see [[Sea Dragon]]). [[Elio Marinas]] trades in eggs and hatchlings.%%
+
 ## Young Sea Serpent
 CR 8, Huge dragon. FTD. -. Prices are estimates. Harvest: DC 25, 8 hours.
 
@@ -958,17 +1015,18 @@ The peoples of the sea aren't hunted for parts, but they carry their wealth with
 
 Few sea folk carry shell coins. Most of what they own is pearls, coral, shell and salvage, sold at [[Raw Goods]].
 
-| People | Members |
-| --- | --- |
-| [[#Sahuagin\|Sahuagin]] | Sahuagin Warrior, Sahuagin Coral Smasher, Sahuagin Priest, Sahuagin Champion, Sahuagin Deep Diver, Sahuagin Baron, Sahuagin High Priestess, Sahuagin Wave Shaper, Sahuagin Blademaster |
-| [[#Merfolk\|Merfolk]] | Merfolk Skirmisher, Merfolk Scout, Merfolk Salvager, Merfolk Wavebender |
-| [[#Kuo-toa\|Kuo-toa]] | Kuo-toa, Kuo-toa Marauder, Kuo-toa Whip, Kuo-toa Monitor, Kuo-toa Archpriest |
-| [[#Locathah\|Locathah]] | Locathah, Locathah Hunter |
-| [[#Tritons\|Tritons]] | Triton Shorestalker, Triton Master of Waves |
-| [[#Sea Elves\|Sea Elves]] | Sea Elf |
-| [[#Kraken Cult\|Kraken Cult]] | Sea Spawn, Deep Scion, Kraken Priest |
-| [[#Merrow Raiders\|Merrow Raiders]] | Merrow |
-| [[#Sea Hags\|Sea Hags]] | Sea Hag |
+| People                              | Members                                                                                                                                                                                |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [[#Sahuagin\|Sahuagin]]             | Sahuagin Warrior, Sahuagin Coral Smasher, Sahuagin Priest, Sahuagin Champion, Sahuagin Deep Diver, Sahuagin Baron, Sahuagin High Priestess, Sahuagin Wave Shaper, Sahuagin Blademaster |
+| [[#Merfolk\|Merfolk]]               | Merfolk Skirmisher, Merfolk Scout, Merfolk Salvager, Merfolk Wavebender                                                                                                                |
+| [[#Kuo-toa\|Kuo-toa]]               | Kuo-toa, Kuo-toa Marauder, Kuo-toa Whip, Kuo-toa Monitor, Kuo-toa Archpriest                                                                                                           |
+| [[#Locathah\|Locathah]]             | Locathah, Locathah Hunter                                                                                                                                                              |
+| [[#Tritons\|Tritons]]               | Triton Shorestalker, Triton Master of Waves                                                                                                                                            |
+| [[#Sea Elves\|Sea Elves]]           | Sea Elf                                                                                                                                                                                |
+| [[#Kraken Cult\|Kraken Cult]]       | Sea Spawn, Deep Scion, Kraken Priest                                                                                                                                                   |
+| [[#Merrow Raiders\|Merrow Raiders]] | Merrow                                                                                                                                                                                 |
+| [[#Sea Hags\|Sea Hags]]             | Sea Hag                                                                                                                                                                                |
+| [[#Sirens\|Sirens]]                 | Siren, Siren Chorus-Mother                                                                                                                                                             |
 
 ## Sahuagin
 Raiders and slavers sworn to the shark god. They take what they want from ships and coasts.
@@ -1135,6 +1193,23 @@ Hags of the drowned places, who trade in curses and bargains.
 
 %%DM: Carried values are close to the DMG's individual treasure, converted to shells (1 gp is about 100 SH). The "Carried As" entries are flavor for whatever value was rolled; a worthless item means that creature carried nothing else of value. Leaders like a sahuagin baron, kuo-toa archpriest, triton master of waves or kraken priest guard a lair hoard on top of this, rolled on the DMG's hoard tables. Lizardfolk and tortles are surface dwellers in Oceana, so they aren't here.%%
 
+## Sirens
+Singers of the empire who empty ships in the dark. They keep what the drowned leave behind, and wear it.
+
+| Member | CR | Book | Stat Block |
+| --- | --- | --- | --- |
+| Siren | 3 | Oceana | [[Siren]] |
+| Siren Chorus-Mother | 7 | Oceana | [[Siren#Siren Chorus-Mother\|Siren]] |
+
+| d6 | Carried As |
+| --- | --- |
+| 1 | Shell coins and rings taken from drowned sailors |
+| 2 | Pearls braided into her hair |
+| 3 | A drowned sailor's keepsake: a locket, a wedding band, a letter sealed in a bottle |
+| 4 | Combs and pins of mother-of-pearl |
+| 5 | Coral jewelry, rose and sea-green |
+| 6 | A carved bone flute or conch, made for the choir |
+
 # Pirate Loot
 Pirates carry their wealth on them too, and in coin far more often than sea folk do. Roll carried value on the [[#Sea Folk Loot|same table]] by CR, then roll a d8 below to see what form it takes.
 
@@ -1176,15 +1251,15 @@ Captains and admirals keep the ship's money close, and the ship's secrets closer
 | Pirate Captain | 6 | MM | [AideDD](https://www.aidedd.org/monster/pirate-captain) |
 | Pirate Admiral | 12 | MM | [AideDD](https://www.aidedd.org/monster/pirate-admiral) |
 
-| d8 | Carried As |
-| --- | --- |
-| 1 | A purse of cowries and abalones |
-| 2 | An engraved pistol or a jeweled cutlass hilt |
-| 3 | Letters of marque, real or forged |
-| 4 | The ship's log, with routes and hidden caches |
-| 5 | A captain's coat with gold buttons |
-| 6 | A gem pried from a prize ship's cargo |
-| 7 | The key to the captain's strongbox |
-| 8 | A treasure map, the DM's choice |
+| d8  | Carried As                                    |
+| --- | --------------------------------------------- |
+| 1   | A purse of cowries and abalones               |
+| 2   | An engraved pistol or a jeweled cutlass hilt  |
+| 3   | Letters of marque, real or forged             |
+| 4   | The ship's log, with routes and hidden caches |
+| 5   | A captain's coat with gold buttons            |
+| 6   | A gem pried from a prize ship's cargo         |
+| 7   | The key to the captain's strongbox            |
+| 8   | A treasure map, the DM's choice               |
 
 %%DM: A captured pirate ship's hold is cargo, priced at [[Raw Goods]] and [[Provisions]], and the captain's strongbox is a hoard, rolled on the DMG's hoard tables by the captain's CR. A share token is worth a crew member's cut of the next prize, which other pirates may honor or may not.%%

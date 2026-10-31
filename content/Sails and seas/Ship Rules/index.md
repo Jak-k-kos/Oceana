@@ -12,6 +12,7 @@ Ship combat in Oceana uses the Captains & Cannons rules. They sit on top of norm
 - [[Character Phase]]: what you do each round, including Crew Actions
 - [[Ship Phase]]: how ships move, attack, grapple and ram
 - [[Damage and Repair]]: hull points, sinking, repairs and crew losses
+- [[Environment]]: storms, whirlpools and winds.
 
 See also: [[Sails and Seas/Ship types/index|Ship Types]], [[Ship Upgrades]], [[Ship Weapons]]
 

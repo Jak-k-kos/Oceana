@@ -40,7 +40,20 @@ Sailors who have skirted the Wrath tell of shapes in the waves: pale figures wat
 %%
 ## Rayskaya
 
-At the heart of the Widow's Wrath lies the island of [[Rayskaya]], hidden deep within its storms and dead calms. It sits in the very eye of the storm, the one place in all of [[Welestia|Welestia's]] domain that lightning never touches. There, the skies are clear, the breezes are gentle and the island is lush and green. It is home to the last temple of [[Welestia]].
+At the heart of the Widow's Wrath lies the island of [[Locations/The Widow's Wrath/Rayskaya/index|Rayskaya]], hidden deep within its storms and dead calms. It sits in the very eye of the storm, the one place in all of [[Welestia|Welestia's]] domain that lightning never touches. There, the skies are clear, the breezes are gentle and the island is lush and green. Upon its southern peak stand the twin temples: [[Locations/The Widow's Wrath/Rayskaya/The Temple of Welestia|the Temple of Welestia]], and [[Locations/The Widow's Wrath/Rayskaya/The Sealed Temple|its sealed sister]].
+
+## Why the Wrath Exists
+
+The Wrath was never only grief. When [[Arkaius]] fell, the first fury of [[Welestia|Welestia's]] mourning broke over the very peak where she had been wed, and it came within a breath of destroying the place she holds dearest in all the world. Heartbroken at what she had nearly done, she wrapped her storm around it, and she has never let go. The Widow's Wrath is a wall, and [[Locations/The Widow's Wrath/Rayskaya/index|Rayskaya]] is what it guards. The island lies in the eye because it is the very thing the storm protects.
+
+Only a ship blessed by [[Shady Bellball]] crosses the Wrath untouched. The blessing lasts until Shady revokes it.
+
+## The Sea Folk of the Wrath
+
+The pale figures and the singing on still nights are real. A small population of sea folk lives in the open waters of the Wrath, cut off from the empire beneath the waves. Most are merfolk and [[Siren|sirens]], with a few sea elves, tritons and sahuagin among them.
+
+They are the only sea folk in the world who belong to no empire, and the only ones the party might ever befriend, for they ride with none of its war parties. They hunt along the edges of the storm and keep clear of the calms, where the [[Widowfin|widowfins]] wait. Yet the Wrath spares them no more than it spares a ship: any sea folk who swim too close to [[Locations/The Widow's Wrath/Rayskaya/index|Rayskaya]] are slain. [[Tyrus]] rows out now and then, as far as he dares, to trade with them.
+
 # [[NPCS/The Widow's Wrath/index|NPCs]]
 
 %%
