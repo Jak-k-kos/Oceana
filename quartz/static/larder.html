@@ -217,6 +217,7 @@ dialog.panel form>:first-child{scroll-margin-top:28px}
       <select id="formSel"></select>
       <label class="inline">Quantity <input type="number" id="qtyIn" min="1" value="1"></label>
       <label class="inline" id="dieWrap">Keep <select id="dieSel"></select></label>
+      <label class="inline" id="outWrap" hidden>Turned out <select id="outSel"><option value="none">Not recorded</option><option value="1">Effect 1</option><option value="2">Effect 2</option><option value="3">Effect 3</option><option value="short">Short</option><option value="bust">Bust</option></select></label>
       <label class="inline" id="intoWrap" hidden><select id="intoSel"><option value="hold">Into the hold</option><option value="hid">Into the smuggler's hold</option></select></label>
       <button id="addBtn">Stow It Below</button>
     </div>
@@ -1985,7 +1986,7 @@ function fillItems(keep){
 function fillItem(){
   const id=itemSel.value;
   if(id==="__new"){
-    formSel.innerHTML=`<option>—</option>`;formSel.disabled=true;$("dieWrap").hidden=true;
+    formSel.innerHTML=`<option>—</option>`;formSel.disabled=true;$("dieWrap").hidden=true;$("outWrap").hidden=true;
     $("addBtn").textContent="Write Something New";
     $("itemNote").textContent="Write a cargo of your own: a catch of the day, a recipe's leftovers, monster parts, salvage, or anything the Bazaar never knew.";
     return;
@@ -2002,6 +2003,9 @@ function fillItem(){
   }
   const isFood=it.kind==="food";
   $("dieWrap").hidden=!isFood;
+  const dish=it.cat==="Galley Fare";
+  if($("outWrap").hidden===dish)$("outSel").value="none";
+  $("outWrap").hidden=!dish;
   const opts=!isFood||it.keep==="never"?[["never","Never spoils"]]:it.keep==="perish"?[["perish","Perishable"]]:DICE.slice(Math.max(0,DICE.indexOf(it.keep))).map(d=>[d,d]).concat([["turning","Turning"]]);
   dieSel.innerHTML=opts.map(([v,t])=>`<option value="${v}">${t}</option>`).join("");
   let note;
@@ -2024,9 +2028,10 @@ $("addBtn").onclick=()=>{
   const q=Math.max(1,parseInt($("qtyIn").value)||1),form=it.solo?"solo":formSel.value,die=it.kind==="food"?dieSel.value:"never";
   const units=form==="loose"&&it.useMult?q*it.useMult:q;
   const hide=ship().smuggler&&!here()&&$("intoSel").value==="hid";
+  const out=it.cat==="Galley Fare"?$("outSel").value:null;
   act(()=>{
-    if(!hide){addLot(id,form,units,die);return;}
-    const l=addLot(id,form,units,die,true);l.hid=true;
+    if(!hide){const l=addLot(id,form,units,die);if(out)l.out=out;return;}
+    const l=addLot(id,form,units,die,true);l.hid=true;if(out)l.out=out;
     jot("add",id,lotSingles(l,units));
     logLine(say("stash",form==="cargo"?camt(it,units):amt(it,units),lc(it.name)));
   },null,{guard:true});
@@ -2151,11 +2156,13 @@ function lotAction(a,lid){
     const food=it.kind==="food";
     const keepOpts=(!food||it.keep==="never"?["never"]:it.keep==="perish"?["perish"]:DICE.concat(["turning"])).map(d=>`<option value="${d}" ${d===l.die?"selected":""}>${d==="never"?(it.kind==="live"?"Alive":"Never spoils"):d==="perish"?"Perishable":d==="turning"?"Turning":d}</option>`).join("");
     const char=isFuel(l.item);
-    amendWas={u:l.units,s:l.spoiled,d:l.die,p:l.die==="perish"?l.spoilsOn-1:NaN,c:l.wet?"wet":l.oil?"oil":"dry"};
+    const dish=it.cat==="Galley Fare";
+    amendWas={u:l.units,s:l.spoiled,d:l.die,p:l.die==="perish"?l.spoilsOn-1:NaN,c:l.wet?"wet":l.oil?"oil":"dry",o:l.out||"none"};
+    const outPick=dish?`<label>Turned out</label><select name="o">${Object.entries({none:"Not recorded","1":"Effect 1","2":"Effect 2","3":"Effect 3",short:"Short",bust:"Bust"}).map(([v,t])=>`<option value="${v}" ${v===(l.out||"none")?"selected":""}>${t}</option>`).join("")}</select>`:"";
     const thumb=KEEPER&&food&&DICE.includes(l.die)?`<label>Next dawn</label><select name="fate"><option value="" ${!l.fate?"selected":""}>Roll as normal</option><option value="down" ${l.fate==="down"?"selected":""}>Force it to step down</option><option value="hold" ${l.fate==="hold"?"selected":""}>Let it hold fast</option></select><label></label><label class="inline"><input type="checkbox" name="fateAll" ${l.fateAll?"checked":""}> Every dawn until I change it</label>`:"";
-    ask(`<h2>Amending the Ledger</h2><p class="sub">${esc(lotName(l))}. For the honest corrections every quartermaster must sometimes make.</p><div class="grid"><label>Sound</label><input type="number" name="u" min="0" value="${l.units}">${food?`<label>Spoiled</label><input type="number" name="s" min="0" value="${l.spoiled}">`:""}${food?`<label>Keep</label><select name="d">${keepOpts}</select>`:""}${l.die==="perish"?`<label>Spoils at end of day</label><input type="number" name="p" min="1" value="${l.spoilsOn-1}">`:""}${char?`<label>Charcoal</label><select name="c"><option value="dry" ${!l.wet&&!l.oil?"selected":""}>Dry</option><option value="oil" ${l.oil?"selected":""}>Dry, in oilskin</option><option value="wet" ${l.wet?"selected":""}>Wet</option></select>`:""}${thumb}<label>Strike it out</label><label class="inline"><input type="checkbox" name="del"> Remove this lot entirely</label></div>${thumb?`<p class="note">Only the Keeper sees the thumb on the scale. At dawn the lot reads exactly as though the dice fell that way.</p>`:""}`,fd=>{
+    ask(`<h2>Amending the Ledger</h2><p class="sub">${esc(lotName(l))}. For the honest corrections every quartermaster must sometimes make.</p><div class="grid"><label>Sound</label><input type="number" name="u" min="0" value="${l.units}">${food?`<label>Spoiled</label><input type="number" name="s" min="0" value="${l.spoiled}">`:""}${food?`<label>Keep</label><select name="d">${keepOpts}</select>`:""}${l.die==="perish"?`<label>Spoils at end of day</label><input type="number" name="p" min="1" value="${l.spoilsOn-1}">`:""}${char?`<label>Charcoal</label><select name="c"><option value="dry" ${!l.wet&&!l.oil?"selected":""}>Dry</option><option value="oil" ${l.oil?"selected":""}>Dry, in oilskin</option><option value="wet" ${l.wet?"selected":""}>Wet</option></select>`:""}${outPick}${thumb}<label>Strike it out</label><label class="inline"><input type="checkbox" name="del"> Remove this lot entirely</label></div>${thumb?`<p class="note">Only the Keeper sees the thumb on the scale. At dawn the lot reads exactly as though the dice fell that way.</p>`:""}`,fd=>{
       const fate=fd.get("fate"),fateAll=!!fd.get("fateAll"),hasThumb=fd.has("fate");
-      const del=!!fd.get("del"),u=Math.max(0,parseFloat(fd.get("u"))||0),sv=Math.max(0,parseFloat(fd.get("s"))||0),d=fd.get("d")||l.die,p=parseInt(fd.get("p")),c=fd.get("c");
+      const del=!!fd.get("del"),u=Math.max(0,parseFloat(fd.get("u"))||0),sv=Math.max(0,parseFloat(fd.get("s"))||0),d=fd.get("d")||l.die,p=parseInt(fd.get("p")),c=fd.get("c"),o=fd.get("o");
       // Only what was actually changed in the form is written, so a shipmate's meal or a dawn
       // that came in while the form was open is never quietly undone.
       const was=amendWas;
@@ -2167,6 +2174,7 @@ function lotAction(a,lid){
         if(d!==was.d)l.die=d;
         if(l.die==="perish"&&(d!==was.d||p!==was.p))l.spoilsOn=(p||S.day)+1;
         if(c&&c!==was.c){l.wet=c==="wet";l.oil=c==="oil";if(!l.wet)delete l.dryOn;}
+        if(o&&o!==was.o)l.out=o;
         if(hasThumb){if(fate&&DICE.includes(l.die)){l.fate=fate;l.fateAll=fateAll;}else{delete l.fate;delete l.fateAll;}}
         logLine(say("amend",lc(lotName(l))));
       },null,{guard:true});
