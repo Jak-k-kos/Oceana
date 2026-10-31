@@ -49,13 +49,17 @@ When you gain proficiency with cook's utensils, choose one technique. You can le
 # Recipes
 ## Easy
 - [[Bosun's Biscuit]]
+
 %%- [[Fisherman's Eggs]]%%
 - [[Fried Fish and Flatbread]]
+
 %%- [[Fried Plantains]]%%
 %%- [[Grilled Sardines]]%%
 - [[Grog]]
+
 %%- [[Mulled Wine]]%%
 - [[Ship's Porridge]]
+
 %%- [[Surgeon's Broth]]%%
 
 ## Normal
@@ -66,6 +70,7 @@ When you gain proficiency with cook's utensils, choose one technique. You can le
 %%- [[Honey Cakes]]%%
 %%- [[Hunter's Goat Stew]]%%
 - [[Lentil and Garlic Soup]]
+
 %%- [[Lobscouse]]%%
 %%- [[Pepperpot]]%%
 %%- [[Smoked Eel and Barley]]%%

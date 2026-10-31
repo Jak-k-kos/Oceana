@@ -5,6 +5,7 @@ draft: false
 # Provisions
 - [[#Fresh Food]]
 - [[#Stores]]
+- [[#Preserving]]
 - [[#Delicacies]]
 - [[#Pantry]]
 - [[#Drink]]
@@ -17,140 +18,173 @@ Market prices in shells (SH). What you actually pay is down to haggling, and pri
 - **Rations:** a ration is one creature's food for a day. Items marked 0 rations add flavor, not food.
 - **Cargo:** goods shipped in the hold are bought by the cargo unit. Every cargo unit takes up 1/5 ton of a ship's Tonnage (5 per ton). Loose supplies don't count toward Tonnage until they add up to a full cargo unit.
 - **Keep and Properties** are explained under [[House Rules#Spoilage|Spoilage]].
+- **Tags** tell the Ship's Larder about anything special. Most rows have none.
 
 # Fresh Food
-| Item            | Single                  | Price | Cargo (1/5 ton)       | Cargo Price | Keep | Properties        |
-| --------------- | ----------------------- | ----- | --------------------- | ----------- | ---- | ----------------- |
-| Fish            | 2 lb (1 ration)         | 4 SH  | Crate (150 rations)   | 540 SH      | -    | Perishable, Fishy |
-| Shellfish       | 2 dozen (1 ration)      | 6 SH  | Crate (150 rations)   | 810 SH      | -    | Perishable, Fishy |
-| Chicken         | 2 lb (1 ration)         | 10 SH | Crate (150 rations)   | 1,350 SH    | -    | Perishable, Fishy |
-| Pork            | 2 lb (1 ration)         | 10 SH | Crate (150 rations)   | 1,350 SH    | -    | Perishable, Fishy |
-| Goat            | 2 lb (1 ration)         | 10 SH | Crate (150 rations)   | 1,350 SH    | -    | Perishable, Fishy |
-| Mutton          | 2 lb (1 ration)         | 12 SH | Crate (150 rations)   | 1,620 SH    | -    | Perishable, Fishy |
-| Beef            | 2 lb (1 ration)         | 16 SH | Crate (150 rations)   | 2,160 SH    | -    | Perishable, Fishy |
-| Sea turtle      | 2 lb (1 ration)         | 40 SH | Crate (150 rations)   | 5,400 SH    | -    | Perishable, Fishy |
-| Eggs            | Dozen (1 ration)        | 10 SH | Crate (100 dozen)     | 900 SH      | d8   | Delicate, Rancid  |
-| Vegetables      | 3 lb (1 ration)         | 3 SH  | Crate (100 rations)   | 270 SH      | d6   | Delicate, Rancid  |
-| Green beans     | 2 lb (1 ration)         | 3 SH  | Crate (150 rations)   | 405 SH      | d6   | Delicate, Rancid  |
-| Garlic          | 1 head (0 rations)      | 1 SH  | Crate (500 heads)     | 450 SH      | d12  | Hardy, Rancid     |
-| Cucumber        | 1 cucumber (1/4 ration) | 1 SH  | Crate (400 cucumbers) | 360 SH      | d6   | Delicate, Rancid  |
-| Watermelon      | 1 melon (1 ration)      | 3 SH  | Crate (20 melons)     | 54 SH       | d8   | Hardy, Rancid     |
-| Fruit           | 1 piece (1/8 ration)    | 1 SH  | Crate (800 pieces)    | 720 SH      | d4   | Delicate, Rancid  |
-| Apple           | 1 apple (1/8 ration)    | 1 SH  | Crate (800 apples)    | 720 SH      | d10  | Hardy, Rancid     |
-| Citrus          | 1 fruit (1/8 ration)    | 2 SH  | Crate (800 fruit)     | 1,440 SH    | d10  | Hardy, Rancid     |
-| Plantain        | 1 plantain (1/4 ration) | 1 SH  | Crate (400 plantains) | 360 SH      | d6   | Delicate, Rancid  |
-| Bread           | Loaf (1/2 ration)       | 2 SH  | Crate (200 loaves)    | 360 SH      | d4   | Delicate, Rancid  |
-| Seaweed bread   | Loaf (1/2 ration)       | 2 SH  | Crate (200 loaves)    | 360 SH      | d4   | Delicate, Rancid  |
-| Fresh cheese    | 1 lb (1 ration)         | 8 SH  | Crate (300 lb)        | 2,160 SH    | d8   | Delicate, Rancid  |
-| Sea fennel      | Bundle (1/4 ration)     | 1 SH  | Bale (600 bundles)    | 540 SH      | d4   | Delicate, Rancid  |
-| Firecap peppers | Handful (0 rations)     | 2 SH  | Bale (1,000 handfuls) | 1,800 SH    | d10  | Hardy, Rancid     |
+| Item | Single | Price | Cargo (1/5 ton) | Cargo Price | Keep | Properties | Tags |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Fish | 2 lb (1 ration) | 4 SH | Crate (150 rations) | 540 SH | - | Perishable, Fishy | |
+| Shellfish | 2 dozen (1 ration) | 6 SH | Crate (150 rations) | 810 SH | - | Perishable, Fishy | |
+| Chicken | 2 lb (1 ration) | 10 SH | Crate (150 rations) | 1,350 SH | - | Perishable, Fishy | |
+| Pork | 2 lb (1 ration) | 10 SH | Crate (150 rations) | 1,350 SH | - | Perishable, Fishy | |
+| Goat | 2 lb (1 ration) | 10 SH | Crate (150 rations) | 1,350 SH | - | Perishable, Fishy | |
+| Mutton | 2 lb (1 ration) | 12 SH | Crate (150 rations) | 1,620 SH | - | Perishable, Fishy | |
+| Beef | 2 lb (1 ration) | 16 SH | Crate (150 rations) | 2,160 SH | - | Perishable, Fishy | |
+| Sea turtle | 2 lb (1 ration) | 40 SH | Crate (150 rations) | 5,400 SH | - | Perishable, Fishy | |
+| Eggs | Dozen (1 ration) | 10 SH | Crate (100 dozen) | 900 SH | d8 | Delicate, Rancid | |
+| Vegetables | 3 lb (1 ration) | 3 SH | Crate (100 rations) | 270 SH | d6 | Delicate, Rancid | |
+| Green beans | 2 lb (1 ration) | 3 SH | Crate (150 rations) | 405 SH | d6 | Delicate, Rancid | |
+| Garlic | 1 head (0 rations) | 1 SH | Crate (500 heads) | 450 SH | d12 | Hardy, Rancid | |
+| Cucumber | 1 cucumber (1/4 ration) | 1 SH | Crate (400 cucumbers) | 360 SH | d6 | Delicate, Rancid | |
+| Watermelon | 1 melon (1 ration) | 3 SH | Crate (20 melons) | 54 SH | d8 | Hardy, Rancid | |
+| Fruit | 1 piece (1/8 ration) | 1 SH | Crate (800 pieces) | 720 SH | d4 | Delicate, Rancid | |
+| Apple | 1 apple (1/8 ration) | 1 SH | Crate (800 apples) | 720 SH | d10 | Hardy, Rancid | |
+| Citrus | 1 fruit (1/8 ration) | 2 SH | Crate (800 fruit) | 1,440 SH | d10 | Hardy, Rancid | |
+| Plantain | 1 plantain (1/4 ration) | 1 SH | Crate (400 plantains) | 360 SH | d6 | Delicate, Rancid | |
+| Bread | Loaf (1/2 ration) | 2 SH | Crate (200 loaves) | 360 SH | d4 | Delicate, Rancid | |
+| Seaweed bread | Loaf (1/2 ration) | 2 SH | Crate (200 loaves) | 360 SH | d4 | Delicate, Rancid | |
+| Fresh cheese | 1 lb (1 ration) | 8 SH | Crate (300 lb) | 2,160 SH | d8 | Delicate, Rancid | |
+| Sea fennel | Bundle (1/4 ration) | 1 SH | Bale (600 bundles) | 540 SH | d4 | Delicate, Rancid | |
+| Firecap peppers | Handful (0 rations) | 2 SH | Bale (1,000 handfuls) | 1,800 SH | d10 | Hardy, Rancid | |
 
-**Preserving at sea.** Fresh meat can be salted at a pound of salt per ration. Vegetables, cucumbers, watermelon, green beans, eggs and garlic can be pickled at a flask of vinegar per ration (or per head of garlic). Fruit, apples, citrus and plantains can be dried in the sun over a day. See [[House Rules#Spoilage|Spoilage]] for how long each keeps.
 # Stores
-| Item                              | Single              | Price | Cargo (1/5 ton)      | Cargo Price | Keep | Properties        |
-| --------------------------------- | ------------------- | ----- | -------------------- | ----------- | ---- | ----------------- |
-| Ship's biscuit                    | 1 ration            | 5 SH  | Barrel (150 rations) | 675 SH      | d20  | Preserved, Rancid |
-| Dried beans, lentils or chickpeas | 2 lb (1 ration)     | 3 SH  | Barrel (150 rations) | 405 SH      | d20  | Preserved, Rancid |
-| Rice                              | 2 lb (1 ration)     | 4 SH  | Barrel (150 rations) | 540 SH      | d20  | Preserved, Rancid |
-| Wheat or barley                   | 2 lb (1 ration)     | 3 SH  | Barrel (150 rations) | 405 SH      | d20  | Preserved, Rancid |
-| Flour                             | 2 lb (1 ration)     | 4 SH  | Barrel (150 rations) | 540 SH      | d20  | Preserved, Rancid |
-| Salted beef                       | 1 ration            | 15 SH | Barrel (150 rations) | 2,025 SH    | d20  | Preserved, Fishy  |
-| Salted ham                        | 1 ration            | 18 SH | Barrel (150 rations) | 2,430 SH    | d20  | Preserved, Fishy  |
-| Smoked whale meat                 | 1 ration            | 10 SH | Barrel (150 rations) | 1,350 SH    | d20  | Preserved, Fishy  |
-| Salted or smoked fish             | 1 ration            | 8 SH  | Barrel (150 rations) | 1,080 SH    | d20  | Preserved, Fishy  |
-| Dried conch                       | 1 ration            | 10 SH | Barrel (150 rations) | 1,350 SH    | d20  | Preserved, Fishy  |
-| Dried squid or cuttlefish         | 1 ration            | 8 SH  | Barrel (150 rations) | 1,080 SH    | d20  | Preserved, Fishy  |
-| Smoked or salted shellfish        | 1 ration            | 10 SH | Barrel (150 rations) | 1,350 SH    | d20  | Preserved, Fishy  |
-| Glassleaf                         | 1 ration            | 6 SH  | Barrel (150 rations) | 810 SH      | d20  | Preserved, Fishy  |
-| Dried kelp                        | Bundle (1/2 ration) | 2 SH  | Bale (300 bundles)   | 540 SH      | d20  | Preserved, Rancid |
-| Salted chicken                    | 1 ration            | 14 SH | Barrel (150 rations) | 1,890 SH    | d20  | Preserved, Fishy  |
-| Salted goat                       | 1 ration            | 14 SH | Barrel (150 rations) | 1,890 SH    | d20  | Preserved, Fishy  |
-| Salted mutton                     | 1 ration            | 16 SH | Barrel (150 rations) | 2,160 SH    | d20  | Preserved, Fishy  |
-| Pickled vegetables | 3 lb (1 ration) | 5 SH | Crate (100 rations) | 450 SH | d20 | Preserved, Rancid |
-| Pickled cucumber | 1 cucumber (1/4 ration) | 2 SH | Crate (400 cucumbers) | 720 SH | d20 | Preserved, Rancid |
-| Pickled watermelon | 1 melon (1 ration) | 5 SH | Crate (20 melons) | 90 SH | d20 | Preserved, Rancid |
-| Pickled green beans | 2 lb (1 ration) | 5 SH | Crate (150 rations) | 675 SH | d20 | Preserved, Rancid |
-| Pickled eggs | Dozen (1 ration) | 14 SH | Crate (100 dozen) | 1,260 SH | d20 | Preserved, Rancid |
-| Pickled garlic | 1 head (0 rations) | 2 SH | Crate (500 heads) | 900 SH | d20 | Preserved, Rancid |
-| Dried fruit | 1 piece (1/8 ration) | 2 SH | Crate (800 pieces) | 1,440 SH | d20 | Preserved, Rancid |
-| Dried apple | 1 apple (1/8 ration) | 2 SH | Crate (800 apples) | 1,440 SH | d20 | Preserved, Rancid |
-| Dried citrus | 1 fruit (1/8 ration) | 3 SH | Crate (800 fruit) | 2,160 SH | d20 | Preserved, Rancid |
-| Dried plantain | 1 plantain (1/4 ration) | 2 SH | Crate (400 plantains) | 720 SH | d20 | Preserved, Rancid |
+| Item | Single | Price | Cargo (1/5 ton) | Cargo Price | Keep | Properties | Tags |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Ship's biscuit | 1 ration | 5 SH | Barrel (150 rations) | 675 SH | d20 | Preserved, Rancid | |
+| Dried beans, lentils or chickpeas | 2 lb (1 ration) | 3 SH | Barrel (150 rations) | 405 SH | d20 | Preserved, Rancid | |
+| Rice | 2 lb (1 ration) | 4 SH | Barrel (150 rations) | 540 SH | d20 | Preserved, Rancid | |
+| Wheat or barley | 2 lb (1 ration) | 3 SH | Barrel (150 rations) | 405 SH | d20 | Preserved, Rancid | |
+| Flour | 2 lb (1 ration) | 4 SH | Barrel (150 rations) | 540 SH | d20 | Preserved, Rancid | |
+| Salted beef | 1 ration | 15 SH | Barrel (150 rations) | 2,025 SH | d20 | Preserved, Fishy | |
+| Salted ham | 1 ration | 18 SH | Barrel (150 rations) | 2,430 SH | d20 | Preserved, Fishy | |
+| Smoked whale meat | 1 ration | 10 SH | Barrel (150 rations) | 1,350 SH | d20 | Preserved, Fishy | |
+| Salted or smoked fish | 1 ration | 8 SH | Barrel (150 rations) | 1,080 SH | d20 | Preserved, Fishy | |
+| Dried conch | 1 ration | 10 SH | Barrel (150 rations) | 1,350 SH | d20 | Preserved, Fishy | |
+| Dried squid or cuttlefish | 1 ration | 8 SH | Barrel (150 rations) | 1,080 SH | d20 | Preserved, Fishy | |
+| Smoked or salted shellfish | 1 ration | 10 SH | Barrel (150 rations) | 1,350 SH | d20 | Preserved, Fishy | |
+| Glassleaf | 1 ration | 6 SH | Barrel (150 rations) | 810 SH | d20 | Preserved, Fishy | |
+| Dried kelp | Bundle (1/2 ration) | 2 SH | Bale (300 bundles) | 540 SH | d20 | Preserved, Rancid | |
+| Salted chicken | 1 ration | 14 SH | Barrel (150 rations) | 1,890 SH | d20 | Preserved, Fishy | |
+| Salted goat | 1 ration | 14 SH | Barrel (150 rations) | 1,890 SH | d20 | Preserved, Fishy | |
+| Salted mutton | 1 ration | 16 SH | Barrel (150 rations) | 2,160 SH | d20 | Preserved, Fishy | |
+| Pickled vegetables | 3 lb (1 ration) | 5 SH | Crate (100 rations) | 450 SH | d20 | Preserved, Rancid | |
+| Pickled cucumber | 1 cucumber (1/4 ration) | 2 SH | Crate (400 cucumbers) | 720 SH | d20 | Preserved, Rancid | |
+| Pickled watermelon | 1 melon (1 ration) | 5 SH | Crate (20 melons) | 90 SH | d20 | Preserved, Rancid | |
+| Pickled green beans | 2 lb (1 ration) | 5 SH | Crate (150 rations) | 675 SH | d20 | Preserved, Rancid | |
+| Pickled eggs | Dozen (1 ration) | 14 SH | Crate (100 dozen) | 1,260 SH | d20 | Preserved, Rancid | |
+| Pickled garlic | 1 head (0 rations) | 2 SH | Crate (500 heads) | 900 SH | d20 | Preserved, Rancid | |
+| Dried fruit | 1 piece (1/8 ration) | 2 SH | Crate (800 pieces) | 1,440 SH | d20 | Preserved, Rancid | |
+| Dried apple | 1 apple (1/8 ration) | 2 SH | Crate (800 apples) | 1,440 SH | d20 | Preserved, Rancid | |
+| Dried citrus | 1 fruit (1/8 ration) | 3 SH | Crate (800 fruit) | 2,160 SH | d20 | Preserved, Rancid | |
+| Dried plantain | 1 plantain (1/4 ration) | 2 SH | Crate (400 plantains) | 720 SH | d20 | Preserved, Rancid | |
+
+# Preserving
+What would spoil may be made to last, if a crew has the means and the patience. Fresh meat is packed in salt, vegetables and their kin are put up in vinegar, and fruit is laid out on deck for the sun and wind to cure. See [[House Rules#Spoilage|Spoilage]] for how long each keeps.
+
+- **Salt:** done the day the meat came aboard, it keeps on a d20. A day late, only a d12.
+- **Pickle:** done while the food still keeps as well as the day it was bought, it keeps on a d20. Once it has begun to slip, only a d12. Food that is already turning cannot be pickled.
+- **Dry:** it costs nothing but a day. Laid out on deck, it comes in dried at the next dawn and keeps on a d20.
+
+| Fresh item | Method | Uses | Becomes |
+| --- | --- | --- | --- |
+| Fish | Salt | 1 lb salt per ration | Salted or smoked fish |
+| Shellfish | Salt | 1 lb salt per ration | Smoked or salted shellfish |
+| Chicken | Salt | 1 lb salt per ration | Salted chicken |
+| Pork | Salt | 1 lb salt per ration | Salted ham |
+| Goat | Salt | 1 lb salt per ration | Salted goat |
+| Mutton | Salt | 1 lb salt per ration | Salted mutton |
+| Beef | Salt | 1 lb salt per ration | Salted beef |
+| Vegetables | Pickle | 1 flask vinegar per ration | Pickled vegetables |
+| Cucumber | Pickle | 1 flask vinegar per ration | Pickled cucumber |
+| Watermelon | Pickle | 1 flask vinegar per ration | Pickled watermelon |
+| Green beans | Pickle | 1 flask vinegar per ration | Pickled green beans |
+| Eggs | Pickle | 1 flask vinegar per ration | Pickled eggs |
+| Garlic | Pickle | 1 flask vinegar per head | Pickled garlic |
+| Fruit | Dry | Nothing | Dried fruit |
+| Apple | Dry | Nothing | Dried apple |
+| Citrus | Dry | Nothing | Dried citrus |
+| Plantain | Dry | Nothing | Dried plantain |
+
+Sea turtle, alas, does not take kindly to the salt barrel.
+
 # Delicacies
-| Item                   | Single                   | Price  | Cargo (1/5 ton)     | Cargo Price | Keep         | Properties        |
-| ---------------------- | ------------------------ | ------ | ------------------- | ----------- | ------------ | ----------------- |
-| Dried figs or raisins  | 2 lb (1 ration)          | 10 SH  | Crate (150 rations) | 1,350 SH    | d20          | Preserved, Rancid |
-| Chestnuts              | 2 lb (1 ration)          | 4 SH   | Crate (150 rations) | 540 SH      | d12          | Hardy, Rancid     |
-| Olives                 | Jar (1/2 ration)         | 6 SH   | Crate (200 jars)    | 1,080 SH    | d20          | Preserved, Rancid |
-| Pickles                | Jar (1/2 ration)         | 3 SH   | Crate (200 jars)    | 540 SH      | d20          | Preserved, Rancid |
-| Capers                 | Jar (1/2 ration)         | 6 SH   | Crate (200 jars)    | 1,080 SH    | d20          | Preserved, Rancid |
-| Grape leaves           | Jar (1/2 ration)         | 5 SH   | Crate (200 jars)    | 900 SH      | d20          | Preserved, Rancid |
-| Fruit preserves        | Jar (1/2 ration)         | 8 SH   | Crate (200 jars)    | 1,440 SH    | d20          | Preserved, Rancid |
-| Candied peel           | 1 lb (1/2 ration)        | 15 SH  | Crate (300 lb)      | 4,050 SH    | d20          | Preserved, Rancid |
-| Cave-aged cheese       | 1 lb (1 ration)          | 30 SH  | Crate (300 lb)      | 8,100 SH    | d8           | Delicate, Rancid  |
-| Wax-sealed goat cheese | 10 lb wheel (10 rations) | 60 SH  | Crate (30 wheels)   | 1,620 SH    | d12          | Hardy, Rancid     |
-| Dried mullet roe       | 1 lb slab (1 ration)     | 60 SH  | Crate (300 slabs)   | 16,200 SH   | d20          | Preserved, Fishy  |
-| Squid ink              | Pot (0 rations)          | 3 SH   | Crate (600 pots)    | 1,620 SH    | d20          | Preserved, Fishy  |
-| Ambergris              | 1 oz (0 rations)         | 500 SH | -                   | -           | Never spoils | -                 |
+| Item | Single | Price | Cargo (1/5 ton) | Cargo Price | Keep | Properties | Tags |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Dried figs or raisins | 2 lb (1 ration) | 10 SH | Crate (150 rations) | 1,350 SH | d20 | Preserved, Rancid | |
+| Chestnuts | 2 lb (1 ration) | 4 SH | Crate (150 rations) | 540 SH | d12 | Hardy, Rancid | |
+| Olives | Jar (1/2 ration) | 6 SH | Crate (200 jars) | 1,080 SH | d20 | Preserved, Rancid | |
+| Pickles | Jar (1/2 ration) | 3 SH | Crate (200 jars) | 540 SH | d20 | Preserved, Rancid | |
+| Capers | Jar (1/2 ration) | 6 SH | Crate (200 jars) | 1,080 SH | d20 | Preserved, Rancid | |
+| Grape leaves | Jar (1/2 ration) | 5 SH | Crate (200 jars) | 900 SH | d20 | Preserved, Rancid | |
+| Fruit preserves | Jar (1/2 ration) | 8 SH | Crate (200 jars) | 1,440 SH | d20 | Preserved, Rancid | |
+| Candied peel | 1 lb (1/2 ration) | 15 SH | Crate (300 lb) | 4,050 SH | d20 | Preserved, Rancid | |
+| Cave-aged cheese | 1 lb (1 ration) | 30 SH | Crate (300 lb) | 8,100 SH | d8 | Delicate, Rancid | |
+| Wax-sealed goat cheese | 10 lb wheel (10 rations) | 60 SH | Crate (30 wheels) | 1,620 SH | d12 | Hardy, Rancid | |
+| Dried mullet roe | 1 lb slab (1 ration) | 60 SH | Crate (300 slabs) | 16,200 SH | d20 | Preserved, Fishy | |
+| Squid ink | Pot (0 rations) | 3 SH | Crate (600 pots) | 1,620 SH | d20 | Preserved, Fishy | |
+| Ambergris | 1 oz (0 rations) | 500 SH | - | - | Never spoils | - | |
 
 # Pantry
-| Item | Single | Price | Cargo (1/5 ton) | Cargo Price | Keep | Properties |
-| --- | --- | --- | --- | --- | --- | --- |
-| Honey | 1 lb (1/2 ration) | 8 SH | Cask (300 lb) | 2,160 SH | Never spoils | - |
-| Raw sugar | 1 lb (1/2 ration) | 10 SH | Sack (300 lb) | 2,700 SH | Never spoils | - |
-| Molasses | Jar, 1 lb (1/2 ration) | 1 SH | Barrel (400 jars) | 360 SH | d20 | Preserved, Rancid |
-| Olive oil | Flask (1/2 ration) | 3 SH | Barrel (320 flasks) | 864 SH | d20 | Preserved, Rancid |
-| Salt | 1 lb (0 rations) | 1 SH | Sack (350 lb) | 315 SH | Never spoils | - |
-| Vinegar | Flask (0 rations) | 1 SH | Barrel (320 flasks) | 288 SH | Never spoils | - |
-| Dried herbs | Bundle (0 rations) | 2 SH | Bale (400 bundles) | 720 SH | Never spoils | - |
-| Pepper | Pinch (0 rations) | 4 SH | Sack (3,000 pinches) | 10,800 SH | Never spoils | - |
-| Saffron | Pinch (0 rations) | 60 SH | - | - | Never spoils | - |
+| Item | Single | Price | Cargo (1/5 ton) | Cargo Price | Keep | Properties | Tags |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Honey | 1 lb (1/2 ration) | 8 SH | Cask (300 lb) | 2,160 SH | Never spoils | - | |
+| Raw sugar | 1 lb (1/2 ration) | 10 SH | Sack (300 lb) | 2,700 SH | Never spoils | - | |
+| Molasses | Jar, 1 lb (1/2 ration) | 1 SH | Barrel (400 jars) | 360 SH | d20 | Preserved, Rancid | |
+| Olive oil | Flask (1/2 ration) | 3 SH | Barrel (320 flasks) | 864 SH | d20 | Preserved, Rancid | |
+| Salt | 1 lb (0 rations) | 1 SH | Sack (350 lb) | 315 SH | Never spoils | - | |
+| Vinegar | Flask (0 rations) | 1 SH | Barrel (320 flasks) | 288 SH | Never spoils | - | |
+| Dried herbs | Bundle (0 rations) | 2 SH | Bale (400 bundles) | 720 SH | Never spoils | - | |
+| Pepper | Pinch (0 rations) | 4 SH | Sack (3,000 pinches) | 10,800 SH | Never spoils | - | |
+| Saffron | Pinch (0 rations) | 60 SH | - | - | Never spoils | - | |
 
 # Drink
 Drinks sold by the gallon count as water rations. Bottles hold about a fifth of a gallon and don't count as a ration.
 
-| Item                  | Single                    | Price  | Cargo (1/5 ton)     | Cargo Price | Keep         | Properties      |
-| --------------------- | ------------------------- | ------ | ------------------- | ----------- | ------------ | --------------- |
-| Water                 | 1 gallon (1 water ration) | 3 SH   | Barrel (40 gallons) | 108 SH      | d10          | Hardy, Stagnant |
-| Hold Ale              | 1 gallon (1 water ration) | 4 SH   | Barrel (40 gallons) | 144 SH      | d20          | Preserved, Sour |
-| Beer                  | 1 gallon (1 water ration) | 6 SH   | Barrel (40 gallons) | 216 SH      | d12          | Hardy, Sour     |
-| Dark beer             | 1 gallon (1 water ration) | 8 SH   | Barrel (40 gallons) | 288 SH      | d12          | Hardy, Sour     |
-| Common wine           | 1 gallon (1 water ration) | 12 SH  | Barrel (40 gallons) | 432 SH      | d20          | Preserved, Sour |
-| Mead                  | Bottle                    | 10 SH  | Crate (100 bottles) | 900 SH      | Never spoils | -               |
-| White wine            | Bottle                    | 15 SH  | Crate (100 bottles) | 1,350 SH    | Never spoils | -               |
-| Fine red wine         | Bottle                    | 30 SH  | Crate (100 bottles) | 2,700 SH    | Never spoils | -               |
-| Lotus wine            | Bottle                    | 300 SH | Crate (100 bottles) | 27,000 SH   | Never spoils | -               |
-| Aged reserve wine     | Bottle                    | 500 SH | Crate (100 bottles) | 45,000 SH   | Never spoils | -               |
-| Rum                   | Bottle                    | 12 SH  | Crate (100 bottles) | 1,080 SH    | Never spoils | -               |
-| Pine-needle liquor    | Bottle                    | 15 SH  | Crate (100 bottles) | 1,350 SH    | Never spoils | -               |
-| Myrtle liqueur        | Bottle                    | 20 SH  | Crate (100 bottles) | 1,800 SH    | Never spoils | -               |
-| Bitter-orange liqueur | Bottle                    | 25 SH  | Crate (100 bottles) | 2,250 SH    | Never spoils | -               |
-| Whiskey               | Bottle                    | 30 SH  | Crate (100 bottles) | 2,700 SH    | Never spoils | -               |
-| Brandy                | Bottle                    | 60 SH  | Crate (100 bottles) | 5,400 SH    | Never spoils | -               |
-| Coffee                | 1 day's brew              | 4 SH   | Sack (3,000 days)   | 10,800 SH   | Never spoils | -               |
-| Tea                   | 1 day's brew              | 4 SH   | Chest (3,000 days)  | 10,800 SH   | Never spoils | -               |
+| Item | Single | Price | Cargo (1/5 ton) | Cargo Price | Keep | Properties | Tags |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Water | 1 gallon (1 water ration) | 3 SH | Barrel (40 gallons) | 108 SH | d10 | Hardy, Stagnant | |
+| Hold Ale | 1 gallon (1 water ration) | 4 SH | Barrel (40 gallons) | 144 SH | d20 | Preserved, Sour | |
+| Beer | 1 gallon (1 water ration) | 6 SH | Barrel (40 gallons) | 216 SH | d12 | Hardy, Sour | |
+| Dark beer | 1 gallon (1 water ration) | 8 SH | Barrel (40 gallons) | 288 SH | d12 | Hardy, Sour | |
+| Common wine | 1 gallon (1 water ration) | 12 SH | Barrel (40 gallons) | 432 SH | d20 | Preserved, Sour | |
+| Mead | Bottle | 10 SH | Crate (100 bottles) | 900 SH | Never spoils | - | |
+| White wine | Bottle | 15 SH | Crate (100 bottles) | 1,350 SH | Never spoils | - | |
+| Fine red wine | Bottle | 30 SH | Crate (100 bottles) | 2,700 SH | Never spoils | - | |
+| Lotus wine | Bottle | 300 SH | Crate (100 bottles) | 27,000 SH | Never spoils | - | |
+| Aged reserve wine | Bottle | 500 SH | Crate (100 bottles) | 45,000 SH | Never spoils | - | |
+| Rum | Bottle | 12 SH | Crate (100 bottles) | 1,080 SH | Never spoils | - | |
+| Pine-needle liquor | Bottle | 15 SH | Crate (100 bottles) | 1,350 SH | Never spoils | - | |
+| Myrtle liqueur | Bottle | 20 SH | Crate (100 bottles) | 1,800 SH | Never spoils | - | |
+| Bitter-orange liqueur | Bottle | 25 SH | Crate (100 bottles) | 2,250 SH | Never spoils | - | |
+| Whiskey | Bottle | 30 SH | Crate (100 bottles) | 2,700 SH | Never spoils | - | |
+| Brandy | Bottle | 60 SH | Crate (100 bottles) | 5,400 SH | Never spoils | - | |
+| Milk | 1 gallon (1 water ration) | 4 SH | Barrel (40 gallons) | 144 SH | - | Perishable, Sour | |
+| Coffee beans | 1 day's brew | 4 SH | Sack (3,000 days) | 10,800 SH | Never spoils | - | |
+| Tea leaves | 1 day's brew | 4 SH | Chest (3,000 days) | 10,800 SH | Never spoils | - | |
 
 **Hold Ale** is a weak, bitter, salted small beer, brewed to last. It's what every long-haul ship carries.
+
+**Milk** must be drunk by the end of the next day, or it sours.
 
 **Coffee and tea** are brewed from the [[Shops, Shells And Survival/Recipe Book/index#Brews|Recipe Book]]. A day's brew makes 1 pot of 4 mugs.
 
 ## Special Wines
 Two rare wines are prized for more than their taste. Their effects last until the end of your next short rest.
 
-| Wine              | Effect                                                                                                                                                                                                      |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Lotus wine        | +2 to Charisma checks, and you can't be frightened. You take -2 to Intelligence checks and Wisdom saving throws. You can only gain this effect once per day. Any more cups that day are just for the taste. |
-| Aged reserve wine | When you finish a bottle, once before the effect ends, you can choose to succeed on a Charisma check you just failed. This works once per bottle.                                                           |
+| Wine | Effect |
+| --- | --- |
+| Lotus wine | +2 to Charisma checks, and you can't be frightened. You take -2 to Intelligence checks and Wisdom saving throws. You can only gain this effect once per day. Any more cups that day are just for the taste. |
+| Aged reserve wine | When you finish a bottle, once before the effect ends, you can choose to succeed on a Charisma check you just failed. This works once per bottle. |
 
 A cup of lotus wine is 1/8 of a bottle.
 
 # Livestock
-A living animal doesn't spoil. Once butchered, its meat counts as fresh meat of that kind. Livestock tonnage counts the space and fodder they need, not just their weight. A live chicken lays 1d4 eggs a day.
+A living animal doesn't spoil. Once butchered, its meat counts as fresh meat of that kind. A milk cow gives 2 gallons a day. Livestock tonnage counts the space and fodder they need, not just their weight. A live chicken lays 1d4 eggs a day.
 
-| Animal  | Single                       | Price    | Bulk                        | Bulk Price | Tonnage |
-| ------- | ---------------------------- | -------- | --------------------------- | ---------- | ------- |
-| Chicken | 1 bird (1 ration of meat)    | 10 SH    | Coop (40 birds)             | 360 SH     | 1/5 ton |
-| Goat    | 1 goat (20 rations of meat)  | 120 SH   | 2 goats                     | 216 SH     | 1/5 ton |
-| Sheep   | 1 sheep (25 rations of meat) | 200 SH   | 2 sheep                     | 360 SH     | 1/5 ton |
-| Pig     | 1 pig (60 rations of meat)   | 300 SH   | 2 pigs                      | 540 SH     | 1/5 ton |
-| Cow     | 1 cow (200 rations of meat)  | 1,200 SH | 1 cows (them bitches heavy) | -          | 3/5 ton |
+| Animal | Single | Price | Bulk | Bulk Price | Tonnage | Tags |
+| --- | --- | --- | --- | --- | --- | --- |
+| Chicken | 1 bird (1 ration of meat) | 10 SH | Coop (40 birds) | 360 SH | 1/5 ton | Produces: 1d4 Eggs a day, 12 make 1 |
+| Goat | 1 goat (20 rations of meat) | 120 SH | 2 goats | 216 SH | 1/5 ton | |
+| Sheep | 1 sheep (25 rations of meat) | 200 SH | 2 sheep | 360 SH | 1/5 ton | Meat: Mutton |
+| Pig | 1 pig (60 rations of meat) | 300 SH | 2 pigs | 540 SH | 1/5 ton | Meat: Pork |
+| Cow | 1 cow (200 rations of meat) | 1,200 SH | 1 cows (them bitches heavy) | - | 3/5 ton | Meat: Beef; Produces: 2 Milk a day |

@@ -157,6 +157,15 @@ dialog.panel form>:first-child{scroll-margin-top:28px}
     <p class="note">A storehouse made for testing is welcome too. Only the Keeper of the Register may close one.</p>
   </div>
 
+  <div class="card" id="bazaarCard" hidden>
+    <div class="row" style="justify-content:space-between">
+      <h2>The Bazaar and Recipe Book</h2>
+      <button class="sm" id="rereadBtn">Reread the Bazaar</button>
+    </div>
+    <p class="sub" id="bazaarInfo"></p>
+    <div id="bazaarReport"></div>
+  </div>
+
   <div class="card" id="trashCard">
     <h2>The Keeper's Chest: Scuttled Ships and Closed Storehouses</h2>
     <p class="sub">Ships sent to the bottom and storehouses shut for good are not lost at once. They rest here, stores and all, until the Keeper raises them again or lets them go forever.</p>
@@ -848,6 +857,11 @@ const LOG={
     (a)=>`The lashings were cut, and ${a} tumbled into the sea.`,
     (a)=>`${cap(a)} left behind, bobbing in the wake.`,
   ],
+  yields:[
+    (s,a,n)=>`The ${s} gave ${a} of ${n} in the night.`,
+    (s,a,n)=>`Morning chores done: ${a} of ${n} from the ${s}.`,
+    (s,a,n)=>`The ${s} earned their keep, with ${a} of ${n} to show for it.`,
+  ],
   storeUnload:[
     (a,n)=>`${cap(a)} of ${n} carried out through the storehouse door.`,
     (a,n)=>`The keeper unbarred the door, and out went ${a} of ${n} on a creaking handcart.`,
@@ -909,16 +923,26 @@ const FUEL_NEED={Small:2,Medium:8,Large:16,Huge:32}; // sacks of kelp charcoal p
   const mk=(id,name)=>({id,name,cat:"Stores",kind:"food",single:"1 ration",w:"ration",wp:"rations",rat:1,water:false,keep:"d20",how:"Preserved",spoil:"Fishy",cargo:"Barrel",cargoPl:"barrels",per:150,f:1});
   CATALOG.splice(at,0,mk("salted-chicken","Salted chicken"),mk("salted-goat","Salted goat"),mk("salted-mutton","Salted mutton"));
 })();
+// What the built-in catalog alone knows of: hens lay, sheep become mutton, the charcoals burn.
+(function(){
+  const t=(id,o)=>{const c=CATALOG.find(x=>x.id===id);if(c)Object.assign(c,o);};
+  t("live-chicken",{produces:{item:"eggs",dice:"1d4",every:1,make:12}});
+  t("kelp-charcoal",{fuel:true});t("charcoal",{fuel:true});
+})();
+const BUILTIN=clone(CATALOG); // the catalog the larder was built with, for when the site cannot be read
 const CAT={};CATALOG.forEach(c=>CAT[c.id]=c);
 // Fresh meat and what it becomes when salted.
 // Vegetables and the like that can be put up in vinegar, and fruit that can be dried in the sun.
-const PICKLES={vegetables:"pickled-vegetables",cucumber:"pickled-cucumber",watermelon:"pickled-watermelon","green-beans":"pickled-green-beans",eggs:"pickled-eggs",garlic:"pickled-garlic"};
-const DRIES={fruit:"dried-fruit",apple:"dried-apple",citrus:"dried-citrus",plantain:"dried-plantain"};
+let PICKLES={vegetables:"pickled-vegetables",cucumber:"pickled-cucumber",watermelon:"pickled-watermelon","green-beans":"pickled-green-beans",eggs:"pickled-eggs",garlic:"pickled-garlic"};
+let DRIES={fruit:"dried-fruit",apple:"dried-apple",citrus:"dried-citrus",plantain:"dried-plantain"};
 // Both charcoals feed the furnaces; kelp charcoal is the cheaper, so it goes first.
-const FUELS=["kelp-charcoal","charcoal"];
+let FUELS=["kelp-charcoal","charcoal"];
 const isFuel=id=>FUELS.includes(id);
-const SALTS={fish:"salted-or-smoked-fish",shellfish:"smoked-or-salted-shellfish",chicken:"salted-chicken",pork:"salted-ham",goat:"salted-goat",mutton:"salted-mutton",beef:"salted-beef"};
-const CATS=["Fresh Food","Stores","Delicacies","Pantry","Drink","Livestock","Ammunition","Repair and Upkeep","Fuel","Signals","Timber and Shipbuilding","Metal, Stone and Powder","Cloth, Dye and Leather","Sea and Field Goods","Custom"];
+let SALTS={fish:"salted-or-smoked-fish",shellfish:"smoked-or-salted-shellfish",chicken:"salted-chicken",pork:"salted-ham",goat:"salted-goat",mutton:"salted-mutton",beef:"salted-beef"};
+let CATS=["Fresh Food","Stores","Delicacies","Pantry","Drink","Livestock","Ammunition","Repair and Upkeep","Fuel","Signals","Timber and Shipbuilding","Metal, Stone and Powder","Cloth, Dye and Leather","Sea and Field Goods","Custom"];
+let PRESERVE_USE={}; // from -> {item, amt, basis:"ration"|"unit"} ; no entry means the method's usual cost
+const METHOD_USE={salt:{item:"salt",amt:1,basis:"ration"},pickle:{item:"vinegar",amt:1,basis:"ration"},dry:null};
+PRESERVE_USE.garlic={item:"vinegar",amt:1,basis:"unit"};
 const slug=s=>s.toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")||"x";
 
 /* ---------------- The two ledgers: this device, or the shared one ---------------- */
@@ -1233,6 +1257,7 @@ function renderKeeper(){
   else{$("keeperBtn").hidden=false;$("keeperBtn").textContent=KEEPER||signedIn?"Leave DM's Access":"DM's Access";
     $("keeperNote").textContent=KEEPER?"The Keeper of the Register is aboard.":(signedIn?"Signed in, but the ledger does not know you as the Keeper.":"");}
   renderShips();
+  if(typeof renderBazaar==="function")renderBazaar();
 }
 $("keeperBtn").onclick=async()=>{
   if(!AUTH)return;
@@ -1276,7 +1301,7 @@ function normalize(v){
   return s;
 }
 // "live pigs", not "pig (live)", wherever a name is said in passing
-function dispName(it){const n=lc(it.name);if(it.kind==="live"&&/ \(live\)$/.test(n)){const b=n.replace(/ \(live\)$/,"");return "live "+(/(sheep|s)$/.test(b)?b:b+"s");}return n;}
+function dispName(it){const n=lc(it.name);if(it.kind==="live"&&/ \(live\)$/.test(n)){const b=n.replace(/ \(live\)$/,"");return "live "+(it.w===b&&it.wp?it.wp:(/(sheep|s)$/.test(b)?b:b+"s"));}return n;}
 function item(id){return CAT[id]||S.custom[id]||{id,name:id,cat:"Custom",kind:"goods",single:"Unit",w:"unit",wp:"units",rat:0,keep:"never",solo:true,f:0};}
 const holdPath=()=>"holds/"+SHIPID;
 
@@ -1404,7 +1429,7 @@ async function onHold(id,fn){
 const tidy=t=>String(t)
   .replace(/\b(\w+?)(e?s)? of \1\b(?! \()/gi,"$1$2")
   .replace(/(\d[\d,.]*) (\w+) of ([a-z][a-z ]*?) \(live\)/gi,(m,n,w,base)=>{
-    const many=x=>/(sheep|s)$/.test(x)?x:x+"s";
+    const c=CATALOG.find(x=>lc(x.name)===lc(base)+" (live)"),many=x=>c&&c.w===x&&c.wp?c.wp:(/(sheep|s)$/.test(x)?x:x+"s");
     if(/^(coops?|pairs?)$/i.test(w))return `${n} ${w} of live ${many(base)}`;
     return `${n} live ${w===base||w.startsWith(base)?w:(n==="1"?base:many(base))}`;})
   .replace(/\bdozen of (spoiled |fresh )?eggs\b/gi,"dozen $1eggs")
@@ -1413,9 +1438,9 @@ const tidy=t=>String(t)
 function logLine(text,bad,flour){text=tidy(text);S.log.push({d:S.day,t:text,b:!!bad,f:!!flour});if(S.log.length>400)S.log=S.log.slice(-400);}
 function lotById(id){return S.lots.find(l=>l.id===+id);}
 
-const CARRY=["spoilsOn","wet","dryOn","oil","hid","fate","fateAll"]; // what a lot's pieces keep when it is split
+const CARRY=["spoilsOn","wet","dryOn","oil","hid","fate","fateAll","out"]; // what a lot's pieces keep when it is split
 /* ---- Combining: like with like at once; loose goods are packed into cargo units at dawn ---- */
-const lotKey=l=>[l.item,l.form,l.die,l.die==="perish"?l.spoilsOn:"",l.wet?1:0,l.wet&&l.dryOn?l.dryOn:"",l.oil?1:0,l.hid?1:0,l.fate||"",l.fateAll?1:0,l.sun?"sun"+l.dryOn:""].join("|"); // a lot under the Keeper's thumb keeps to itself
+const lotKey=l=>[l.item,l.form,l.die,l.die==="perish"?l.spoilsOn:"",l.wet?1:0,l.wet&&l.dryOn?l.dryOn:"",l.oil?1:0,l.hid?1:0,l.fate||"",l.fateAll?1:0,l.sun?"sun"+l.dryOn:"",l.out||""].join("|"); // a lot under the Keeper's thumb keeps to itself
 function combine(){
   const out=[],map={};
   for(const l of S.lots){
@@ -1492,7 +1517,7 @@ function doStep(l,why){
 }
 
 /* ---- Feeding the crew: whatever is closest to spoiling goes first ---- */
-const FEED_FOOD_CATS=["Fresh Food","Stores","Custom"];
+const FEED_FOOD_CATS=["Fresh Food","Stores","Galley Fare","Custom"];
 function urgency(l){
   if(l.die==="perish")return l.spoilsOn||0;
   if(l.die==="turning")return 1e6;
@@ -1559,6 +1584,28 @@ function produce(){
   }
 }
 
+/* ---- What beasts and things produce, each dawn (or each week or month) ---- */
+function rollDice(t){t=String(t||"1").trim();const m=t.match(/^(\d*)d(\d+)(?:\s*([+-])\s*(\d+))?$/i);if(!m)return Math.max(0,parseInt(t)||0);let n=0;for(let i=0;i<(+m[1]||1);i++)n+=rnd(+m[2]);if(m[3])n+=(m[3]==="-"?-1:1)*(+m[4]);return Math.max(0,n);}
+function yieldAll(){
+  if(S.eggs){S.bank=S.bank||{};S.bank["live-chicken"]=(S.bank["live-chicken"]||0)+S.eggs;S.eggs=0;} // holds kept before producing was general
+  for(const it of CATALOG.concat(Object.values(S.custom))){
+    const p=it.produces;if(!p||!item(p.item)||(!CAT[p.item]&&!S.custom[p.item]))continue;
+    const every=+p.every||1;if(every>1&&S.day%every!==0)continue;
+    const count=S.lots.filter(l=>l.item===it.id&&!l.sun).reduce((a,l)=>a+avail(l,false),0);if(count<=0)continue;
+    let made=0;for(let i=0;i<count;i++)made+=rollDice(p.dice);
+    const out=item(p.item),make=Math.max(1,+p.make||1);
+    S.bank=S.bank||{};const bank=(S.bank[it.id]||0)+made;const whole=Math.floor(bank/make);S.bank[it.id]=bank%make;
+    if(it.id==="live-chicken"&&p.item==="eggs"&&make===12){ // the hens keep their own words
+      logLine(say("eggs",made));
+      if(whole>0){addLot("eggs","loose",whole,out.keep==="perish"?"perish":(out.keep||"d8"),true);jot("add","eggs",whole);logLine(say("dozen",amt(out,whole)+" of eggs",S.bank[it.id]));}
+      continue;
+    }
+    if(whole<=0)continue;
+    const die=out.kind!=="food"?"never":(out.keep==="perish"?"perish":(out.keep||"never"));
+    addLot(p.item,out.solo?"solo":"loose",whole,die,true);jot("add",p.item,whole);
+    logLine(say("yields",dispName(it).replace(/^live /,""),amt(out,whole),lc(out.name)));
+  }
+}
 /* ---- One place's dawn. Runs inside onHold or act, standing in that hold. ---- */
 function dawnHere(seen,burn){
   if(S.day!==seen)return false; // a shipmate already greeted this dawn
@@ -1591,23 +1638,17 @@ function dawnHere(seen,burn){
   const told=Object.entries(shared).filter(([d])=>!thumbed.has(d));
   if(S.shared&&told.length)logLine("Shared dice cast: "+told.map(([d,v])=>d+" "+v).join(", ")+".");
   if(quiet)logLine(say("quiet",quiet));
-  // The hens lay.
-  const hens=S.lots.filter(l=>l.item==="live-chicken").reduce((a,l)=>a+avail(l,false),0);
-  if(hens>0){
-    let laid=0;for(let i=0;i<hens;i++)laid+=rnd(4);
-    logLine(say("eggs",laid));
-    S.eggs=(S.eggs||0)+laid;
-    const dz=Math.floor(S.eggs/12);S.eggs%=12;
-    if(dz>0){addLot("eggs","loose",dz,"d8",true);jot("add","eggs",dz);logLine(say("dozen",amt(CAT.eggs,dz)+" of eggs",S.eggs));}
-  }
+  // Hens lay, cows give milk: whatever produces, produces.
+  yieldAll();
   // Fruit laid out in the sun comes in dried.
   for(const l of S.lots){
     if(!l.sun||S.day<l.dryOn)continue;
     const to=DRIES[l.item];delete l.sun;delete l.dryOn;if(!to)continue;
     const n=(l.units||0)+(l.spoiled||0),from=l.item;
+    const words=amt(item(from),n);
     l.item=to;l.die=item(to).keep||"d20";delete l.fate;delete l.fateAll;
     jot("add",to,lotSingles(l,n));
-    logLine(say("dryDone",lotAmt(l,n),lc(item(from).name)));
+    logLine(say("dryDone",words,lc(item(from).name)));
   }
   // Charcoal laid out on deck dries.
   for(const l of S.lots){
@@ -1862,7 +1903,7 @@ function rowsHtml(list,hidden,smug){
     else if(l.die==="turning")keep=`<span class="die turn">Turning</span>`;
     else keep=`<span class="die">${l.die}</span>`;
     if(KEEPER&&l.fate)keep+=` <span class="fate" title="The Keeper's thumb: ${l.fate==="down"?"steps down":"holds fast"} at ${l.fateAll?"every dawn":"the next dawn"}">${l.fate==="down"?"▼":"■"}${l.fateAll?"∞":""}</span>`;
-    const nature=it.kind==="food"?[it.how,it.spoil].filter(Boolean).join(", "):(it.ammo?"Ammunition":"");
+    const nature=it.kind==="food"?[it.how,it.spoil,l.out?OUT_WORD[l.out]:""].filter(Boolean).join(", "):(it.ammo?"Ammunition":"");
     let stowed;
     if(l.form==="cargo")stowed=`${esc(it.cargo||"Cargo unit")} <span class="tag">(${esc(amt(it,it.per))} each, ${tonsText(it.f||0)} ton)</span>`;
     else if(l.form==="solo")stowed=`Single <span class="tag">${it.f?`(${tonsText(it.f)} ton each)`:"(no weight)"}</span>`;
@@ -1935,7 +1976,7 @@ const catSel=$("catSel"),itemSel=$("itemSel"),formSel=$("formSel"),dieSel=$("die
 function fillCats(){if(!catSel.options.length)catSel.innerHTML=CATS.map(c=>`<option>${c}</option>`).join("");}
 function fillItems(keep){
   const c=catSel.value,was=itemSel.value;
-  const list=CATALOG.concat(Object.values(S.custom)).filter(i=>i.cat===c);
+  const list=CATALOG.concat(Object.values(S.custom)).filter(i=>i.cat===c&&!i.gone);
   itemSel.innerHTML=list.map(i=>`<option value="${esc(i.id)}">${esc(i.name)}</option>`).join("")+(c==="Custom"?`<option value="__new">+ Write something new...</option>`:"");
   if(keep&&was&&list.some(i=>i.id===was))itemSel.value=was;
   else if(c==="Custom"&&!list.length)itemSel.value="__new";
@@ -2193,7 +2234,7 @@ async function sendAcross(lid,to,wn,ws,force){
     const n=Math.min(l.units,wn),s=Math.min(l.spoiled,ws);if(!n&&!s)return false;
     l.units-=n;l.spoiled-=s;
     moved={item:l.item,form:l.form,units:n,spoiled:s,die:l.die};
-    for(const p of ["spoilsOn","wet","dryOn","oil"])if(l[p]!==undefined)moved[p]=l[p];
+    for(const p of ["spoilsOn","wet","dryOn","oil","out"])if(l[p]!==undefined)moved[p]=l[p];
     srcDay=S.day;def=S.custom[l.item]?clone(S.custom[l.item]):null;
     jot("rem",l.item,lotSingles(l,n+s));
     logLine(say("transferOut",lotAmt(l,n+s),lc(it.name),toName));
@@ -2248,58 +2289,46 @@ $("rainBtn").onclick=()=>{
 };
 
 /* ---------------- Salting meat ---------------- */
-function saltDialog(lid){
+// What preserving a lot costs: an item from the hold, by the ration or by the single, as the Preserving table says.
+function useFor(from,method){return PRESERVE_USE[from]!==undefined?PRESERVE_USE[from]:METHOD_USE[method];}
+function usePer(it,u){return u&&u.amt?u.amt*(u.basis==="ration"&&it.rat>0?it.rat:1):0;} // of the ingredient, for each single
+function useWords(it,u){if(!u||!u.amt)return "It costs nothing but a day.";const ui=item(u.item);return `Each ${u.basis==="ration"&&it.rat>0?"ration":esc(it.w)} takes ${esc(amt(ui,u.amt))} of ${esc(lc(ui.name))}.`;}
+function preserveDialog(lid,method){
   const l=lotById(lid);if(!l)return;const it=item(l.item);
-  const have=avail(l,false),salt=itemAvail("salt"),max=Math.min(have,salt);
-  const keep=S.day<=l.spoilsOn-2?"d20":"d12";
-  if(salt<=0){ask(`<h2>No Salt Aboard</h2><p class="sub">Salting takes a pound of salt for every ration of meat, and there is none in the ${here()?"storehouse":"hold"}.</p>`,()=>{},"Understood",true);return;}
-  ask(`<h2>Into the Salt</h2><p class="sub">${esc(lotName(l))}: ${fmt(have)} ration${have===1?"":"s"} of fresh meat, and ${fmt(salt)} lb of salt to hand. Each ration takes a pound.</p><div class="grid"><label>Rations to salt</label><input type="number" name="n" min="1" max="${max}" value="${max}"></div><p class="note">Salted ${S.day<=l.spoilsOn-2?"while it's fresh":"a day late"}, it becomes ${esc(item(SALTS[l.item]).name.toLowerCase())} that keeps on a ${keep}, Preserved.</p>`,fd=>{
+  const map=method==="salt"?SALTS:method==="pickle"?PICKLES:DRIES,to=item(map[l.item]);
+  const ok=method==="salt"?saltable:method==="pickle"?pickleable:dryable;
+  const u=useFor(l.item,method),per=usePer(it,u),ui=u&&u.amt?item(u.item):null;
+  const have=avail(l,false),stock=ui?itemAvail(u.item):Infinity,max=Math.min(have,per?Math.floor(stock/per+1e-9):have);
+  const place=here()?"storehouse":"hold";
+  const keep=method==="salt"?(S.day<=l.spoilsOn-2?"d20":"d12"):method==="pickle"?pickleKeep(l):"d20";
+  const head={salt:"Into the Salt",pickle:"Into the Brine",dry:"Out in the Sun"}[method];
+  if(max<=0){ask(`<h2>${ui?`Not Enough ${esc(cap(lc(ui.name)))}`:"Nothing to Do"}</h2><p class="sub">${useWords(it,u)} There is not enough in the ${place}.</p>`,()=>{},"Understood",true);return;}
+  const when=method==="salt"?(S.day<=l.spoilsOn-2?"Salted while it's fresh":"Salted a day late"):method==="pickle"?(keep==="d20"?"Pickled while it's fresh":"Pickled after it has begun to slip"):"Laid out on deck, it dries by the next dawn and";
+  const units=it.rat>0&&method==="salt"?(n=>`ration${n===1?"":"s"}`):(n=>n===1?it.w:it.wp);
+  ask(`<h2>${head}</h2><p class="sub">${esc(lotName(l))}: ${fmt(have)} ${esc(units(have))} on hand${ui?`, and ${esc(amt(ui,stock))} of ${esc(lc(ui.name))} to hand`:""}. ${useWords(it,u)}</p><div class="grid"><label>${esc(cap(units(2)))} to ${method==="salt"?"salt":method==="pickle"?"pickle":"dry"}</label><input type="number" name="n" min="1" max="${max}" value="${max}"></div><p class="note">${when} ${method==="dry"?"comes in as":"becomes"} ${esc(lc(to.name))} that keeps on a ${keep}, Preserved.${method==="dry"?" While it dries it cannot be eaten, cooked or spoiled.":""}</p>`,fd=>{
     const want=Math.max(1,parseInt(fd.get("n"))||1);
     act(()=>{
-      const l=lotById(lid);if(!l||!saltable(l))return false;
-      const n=Math.min(want,avail(l,false),itemAvail("salt"));if(n<=0)return false;
-      const k=S.day<=l.spoilsOn-2?"d20":"d12";
-      take(l,n,false);takeAcross("salt",n);
-      const nl=addLot(SALTS[l.item],"loose",n,k,true);if(l.hid)nl.hid=true;
-      jot("rem",l.item,n);jot("rem","salt",n);jot("add",SALTS[l.item],n);
-      logLine(say("salt",`${fmt(n)} ration${n===1?"":"s"}`,lc(it.name),`${fmt(n)} lb`));
+      const l=lotById(lid);if(!l||!ok(l))return false;
+      const n=Math.min(want,avail(l,false),per?Math.floor(itemAvail(u.item)/per+1e-9):Infinity);if(n<=0)return false;
+      const cost=per?Math.ceil(n*per-1e-9):0;
+      take(l,n,false);if(cost){takeAcross(u.item,cost);jot("rem",u.item,cost);}
+      if(method!=="dry")jot("rem",l.item,n);
+      const spent=ui?amt(ui,cost):"";
+      if(method==="dry"){
+        const nl={id:S.seq++,item:l.item,form:"loose",units:n,spoiled:0,die:l.die,sun:true,dryOn:S.day+1};if(l.hid)nl.hid=true;
+        S.lots.push(nl); // it is still aboard, only laid out
+        logLine(say("dryOut",amt(it,n),lc(it.name)));return;
+      }
+      const k=method==="salt"?(S.day<=l.spoilsOn-2?"d20":"d12"):pickleKeep(l);
+      const nl=addLot(map[l.item],"loose",n,k,true);if(l.hid)nl.hid=true;jot("add",map[l.item],n);
+      if(method==="salt")logLine(say("salt",units(n)==="ration"||units(n)==="rations"?`${fmt(n)} ${units(n)}`:amt(it,n),lc(it.name),spent));
+      else logLine(say("pickle",amt(it,n),lc(it.name),spent));
     });
-  },"Salt It");
+  },{salt:"Salt It",pickle:"Pickle It",dry:"Lay It Out"}[method]);
 }
-
-function pickleDialog(lid){
-  const l=lotById(lid);if(!l)return;const it=item(l.item),to=item(PICKLES[l.item]);
-  const have=avail(l,false),vin=itemAvail("vinegar"),per=vinPer(it),max=Math.min(have,Math.floor(vin/per+1e-9));
-  const keep=pickleKeep(l),place=here()?"storehouse":"hold";
-  if(max<=0){ask(`<h2>No Vinegar to Spare</h2><p class="sub">Pickling takes a flask of vinegar for every ${it.rat>0?"ration":esc(it.w)}, and there is not enough in the ${place}.</p>`,()=>{},"Understood",true);return;}
-  ask(`<h2>Into the Brine</h2><p class="sub">${esc(lotName(l))}: ${fmt(have)} ${esc(have===1?it.w:it.wp)} on hand, and ${fmt(vin)} flask${vin===1?"":"s"} of vinegar. ${it.rat>0?"Each ration takes a flask.":"Each "+esc(it.w)+" takes a flask."}</p><div class="grid"><label>${esc(cap(it.wp))} to pickle</label><input type="number" name="n" min="1" max="${max}" value="${max}"></div><p class="note">Pickled ${keep==="d20"?"while it's fresh":"after it has begun to slip"}, it becomes ${esc(lc(to.name))} that keeps on a ${keep}, Preserved.</p>`,fd=>{
-    const want=Math.max(1,parseInt(fd.get("n"))||1);
-    act(()=>{
-      const l=lotById(lid);if(!l||!pickleable(l))return false;
-      const n=Math.min(want,avail(l,false),Math.floor(itemAvail("vinegar")/per+1e-9));if(n<=0)return false;
-      const k=pickleKeep(l),v=Math.ceil(n*per-1e-9);
-      take(l,n,false);takeAcross("vinegar",v);
-      const nl=addLot(PICKLES[l.item],"loose",n,k,true);if(l.hid)nl.hid=true;
-      jot("rem",l.item,n);jot("rem","vinegar",v);jot("add",PICKLES[l.item],n);
-      logLine(say("pickle",amt(it,n),lc(it.name),`${fmt(v)} flask${v===1?"":"s"}`));
-    });
-  },"Pickle It");
-}
-function dryDialog(lid){
-  const l=lotById(lid);if(!l)return;const it=item(l.item),to=item(DRIES[l.item]);
-  const have=avail(l,false);
-  ask(`<h2>Out in the Sun</h2><p class="sub">${esc(lotName(l))}: ${fmt(have)} ${esc(have===1?it.w:it.wp)} on hand. Laid out on deck, it dries by the next dawn and comes in as ${esc(lc(to.name))} that keeps on a d20, Preserved. It costs nothing but a day.</p><div class="grid"><label>${esc(cap(it.wp))} to dry</label><input type="number" name="n" min="1" max="${have}" value="${have}"></div><p class="note">While it dries it cannot be eaten, cooked or spoiled.</p>`,fd=>{
-    const want=Math.max(1,parseInt(fd.get("n"))||1);
-    act(()=>{
-      const l=lotById(lid);if(!l||!dryable(l))return false;
-      const n=Math.min(want,avail(l,false));if(n<=0)return false;
-      take(l,n,false);
-      const nl={id:S.seq++,item:l.item,form:"loose",units:n,spoiled:0,die:l.die,sun:true,dryOn:S.day+1};if(l.hid)nl.hid=true;
-      S.lots.push(nl);
-      logLine(say("dryOut",amt(it,n),lc(it.name)));
-    });
-  },"Lay It Out");
-}
+function saltDialog(lid){return preserveDialog(lid,"salt");}
+function pickleDialog(lid){return preserveDialog(lid,"pickle");}
+function dryDialog(lid){return preserveDialog(lid,"dry");}
 
 $("holdBody").onclick=onLotClick;
 $("smugBody").onclick=onLotClick;
@@ -2363,27 +2392,35 @@ $("seizedList").onclick=e=>{
 };
 
 /* ---------------- Cooking from the Recipe Book on the site ---------------- */
-// The larder reads the site itself, so a recipe appears here as soon as it is published and linked
-// in the Recipe Book, and disappears again if it is drafted or its link is commented out.
+// The larder reads the site itself: the Bazaar for what can be stowed, and the Recipe Book for what can be cooked.
+// A recipe appears here as soon as it is published and linked in the Recipe Book, and a Bazaar row as soon as it is deployed.
 const SITE_BASE=(()=>{const p=location.pathname,i=p.lastIndexOf("/static/");return location.protocol.startsWith("http")&&i>=0?location.origin+p.slice(0,i+1):null;})();
-const ALIASES={"dried figs":["dried-figs-or-raisins"],"raisins":["dried-figs-or-raisins"],"dried beans":["dried-beans-lentils-or-chickpeas"],"dried lentils":["dried-beans-lentils-or-chickpeas"],"lentils":["dried-beans-lentils-or-chickpeas"],"chickpeas":["dried-beans-lentils-or-chickpeas"],"barley":["wheat-or-barley"],"wheat":["wheat-or-barley"],"dried squid":["dried-squid-or-cuttlefish"],"dried cuttlefish":["dried-squid-or-cuttlefish"],"coffee beans":["coffee"],"tea leaves":["tea"],"salted beef or fish":["salted-beef","salted-or-smoked-fish"],"salted fish":["salted-or-smoked-fish"],"smoked fish":["salted-or-smoked-fish"],"pig":["live-pig"],"pigs":["live-pig"],"water":["water"]};
-const straight=t=>String(t).replace(/[\u2018\u2019\u02BC]/g,"'").replace(/[\u201C\u201D]/g,'"');
+const BUILTIN_ALIASES={"dried figs":["dried-figs-or-raisins"],"raisins":["dried-figs-or-raisins"],"dried beans":["dried-beans-lentils-or-chickpeas"],"dried lentils":["dried-beans-lentils-or-chickpeas"],"lentils":["dried-beans-lentils-or-chickpeas"],"chickpeas":["dried-beans-lentils-or-chickpeas"],"barley":["wheat-or-barley"],"wheat":["wheat-or-barley"],"dried squid":["dried-squid-or-cuttlefish"],"dried cuttlefish":["dried-squid-or-cuttlefish"],"coffee beans":["coffee"],"tea leaves":["tea"],"salted beef or fish":["salted-beef","salted-or-smoked-fish"],"salted fish":["salted-or-smoked-fish"],"smoked fish":["salted-or-smoked-fish"],"pig":["live-pig"],"pigs":["live-pig"],"water":["water"]};
+let ALIASES=clone(BUILTIN_ALIASES);
+const BUILTIN_DIFFICULTY={Easy:[10,15,19],Normal:[12,16,20],Hard:[17,19,21],Master:[18,20,21]};
+let DIFFICULTY=clone(BUILTIN_DIFFICULTY);
+let RECIPES=[]; // {name,difficulty,servings,brew,drink,spoil,lines}
+let BAZAAR={at:0,report:[],sig:"",slugs:{},items:{},recipes:[]};
+const BUILTIN_CATS=CATS.slice();
+const straight=t=>String(t).replace(/[‘’ʼ]/g,"'").replace(/[“”]/g,'"');
+const clean=t=>straight(t).replace(/\s+/g," ").trim();
 function findItems(name){
   name=straight(lc(name)).trim().replace(/\.$/,"");
-  if(ALIASES[name])return ALIASES[name].filter(id=>item(id));
+  if(ALIASES[name])return ALIASES[name].filter(id=>CAT[id]||S.custom[id]);
   const all=CATALOG.concat(Object.values(S.custom));
   const forms=[name,name.replace(/ies$/,"y"),name.replace(/es$/,""),name.replace(/s$/,"")];
-  for(const f of forms){const hit=all.filter(i=>lc(i.name)===f&&i.kind!=="live");if(hit.length)return hit.map(i=>i.id);}
-  for(const f of forms){const hit=all.filter(i=>lc(i.name)===f);if(hit.length)return hit.map(i=>i.id);}
+  for(const f of forms){const hit=all.filter(i=>lc(i.name)===f&&i.kind!=="live"&&!i.dish);if(hit.length)return hit.map(i=>i.id);}
+  for(const f of forms){const hit=all.filter(i=>lc(i.name)===f||lc(i.name)===f+" (live)");if(hit.length)return hit.map(i=>i.id);}
   return [];
 }
 function parseIngredient(raw){
   const s=straight(raw).replace(/\s+/g," ").trim().replace(/^\d+\)\s*/,"").replace(/\.$/,"");
-  let qty,unit="",name,paren="",m;
+  let qty,unit="",name,m;
   if((m=s.match(/^(\d+(?:\.\d+)?)\s+water rations?$/i))){qty=+m[1];unit="rations";name="water";}
+  else if((m=s.match(/^(\d+(?:\.\d+)?)\s+([^()]+?)\s*\(([^)]*)\)$/))&&!/\sof\s/i.test(m[2])){qty=+m[1];name=m[2];}
   else if((m=s.match(/^(\d+(?:\.\d+)?)\s+(.+?)\s+of\s+(.+)$/i))){qty=+m[1];unit=lc(m[2]);name=m[3];}
   else if((m=s.match(/^(\d+(?:\.\d+)?)\s+dozen\s+(.+)$/i))){qty=+m[1];unit="dozen";name=m[2];}
-  else if((m=s.match(/^(\d+(?:\.\d+)?)\s+([^(]+?)\s*(?:\((.*)\))?$/))){qty=+m[1];name=m[2];paren=m[3]||"";}
+  else if((m=s.match(/^(\d+(?:\.\d+)?)\s+([^(]+?)\s*(?:\((.*)\))?$/))){qty=+m[1];name=m[2];}
   else return {text:s,alts:[]};
   const alts=[];
   for(const id of findItems(name)){
@@ -2415,32 +2452,276 @@ function parseRecipe(name,doc,text){
   const spoil=["Fishy","Rancid","Stagnant","Sour"].find(p=>new RegExp(p,"i").test(props))||"Rancid";
   const diff=((text.match(/Difficulty:\**\s*([A-Za-z]+)/i)||[])[1])||"";
   const brew=!!mugs;
-  return {name,difficulty:diff,servings:brew?+mugs[1]:(mk?+mk[1]:1),brew,drink:brew||spoil==="Stagnant"||spoil==="Sour",spoil,ingredients:lines.map(parseIngredient)};
+  return {name,difficulty:diff,servings:brew?+mugs[1]:(mk?+mk[1]:1),brew,drink:brew||spoil==="Stagnant"||spoil==="Sour",spoil,lines:lines.map(x=>clean(x))};
 }
-async function loadRecipes(){
-  if(!SITE_BASE)throw new Error("The Recipe Book can only be read when the larder is opened from the site.");
+const withIngredients=r=>Object.assign({},r,{ingredients:(r.lines||[]).map(parseIngredient)});
+
+/* ---- Reading the Bazaar's tables ---- */
+const PAGES={provisions:/(^|\/)the bazaar\/provisions\.md$/i,supplies:/(^|\/)the bazaar\/ship supplies\.md$/i,goods:/(^|\/)the bazaar\/raw goods\.md$/i,recipes:/(^|\/)recipe book\/index\.md$/i};
+const PAGE_NAME={provisions:"Provisions",supplies:"Ship Supplies",goods:"Raw Goods",recipes:"Recipe Book"};
+const KIND_OF={provisions:"food",supplies:"supply",goods:"goods"};
+const RENAMED={"coffee-beans":"coffee","tea-leaves":"tea"}; // rows renamed on the site, kept as the same goods aboard
+function hashText(t){let h=2166136261;for(let i=0;i<t.length;i++){h^=t.charCodeAt(i);h=Math.imul(h,16777619);}return (h>>>0).toString(36);}
+async function fetchPage(path){
+  for(const u of [SITE_BASE+path+".html",SITE_BASE+path]){
+    try{const r=await fetch(encodeURI(u).replace(/'/g,"%27"),{cache:"no-cache"});if(r.ok){const html=await r.text();return {doc:new DOMParser().parseFromString(html,"text/html"),html};}}catch(x){}
+  }
+  return null;
+}
+function tablesOf(doc){
+  const root=doc.querySelector("article")||doc.body,out=[];let h1="",h2="";
+  root.querySelectorAll("h1,h2,h3,table").forEach(el=>{
+    if(el.tagName==="H1"){h1=clean(el.textContent);h2="";}
+    else if(el.tagName==="H2"||el.tagName==="H3")h2=clean(el.textContent);
+    else{const rows=[...el.querySelectorAll("tr")].map(tr=>[...tr.children].map(td=>clean(td.textContent)));if(rows.length)out.push({h1,h2,head:rows[0].map(lc),rows:rows.slice(1)});}
+  });
+  return out;
+}
+const num=t=>{t=String(t).replace(/,/g,"").trim();let v=0;for(const p of t.split(/\s+/)){const f=p.match(/^(\d+)\/(\d+)$/);if(f)v+=f[1]/f[2];else if(/^\d+(\.\d+)?$/.test(p))v+=+p;else return NaN;}return v;};
+function tonsToFifths(t){const v=num(String(t).replace(/tons?/i,"").trim());return isNaN(v)?NaN:Math.round(v*5);}
+const MEASURE={lb:"pound",lbs:"pound",pound:"pound",pounds:"pound",oz:"ounce",ounce:"ounce",ounces:"ounce",gallon:"gallon",gallons:"gallon"};
+function plural(w){if(/(s|x|ch|sh)$/.test(w))return w+"es";if(/[^aeiou]y$/.test(w))return w.slice(0,-1)+"ies";if(/(loaf|leaf|half|calf|wolf|shelf)$/.test(w))return w.slice(0,-1)+"ves";if(/^(sheep|fish|dozen|fruit|deer|swine)$/.test(w))return w;return w+"s";}
+function readCargo(t){ // "Crate (150 rations)" | "25 rounds" | "8 loads (24 uses)" | "400 lb" | "-"
+  t=clean(t);if(!t||t==="-")return {solo:true};
+  let m=t.match(/^([A-Za-z][A-Za-z ]*?)\s*\(([\d,]+)\s*([^)]*)\)$/);
+  if(m)return {cargo:m[1],per:num(m[2]),noun:lc(m[3]).trim()};
+  m=t.match(/^([\d,]+)\s*([^(]*?)\s*(?:\(([^)]*)\))?$/);
+  if(m){const pm=(m[3]||"").match(/^([\d,]+)\s*(.*)$/); // a count in brackets (24 uses) wins; any other aside is just an aside
+    return pm?{cargo:"Cargo unit",per:num(pm[1]),noun:lc(pm[2]).trim()}:{cargo:"Cargo unit",per:num(m[1]),noun:lc(m[2]).trim()};}
+  return null;
+}
+function readSingle(t){ // "2 lb (1 ration)" | "1 bird (1 ration of meat)" | "Bottle" | "1 load (3 uses)" | "Sack (50 lb)"
+  t=clean(t);let base=t,paren="",m=t.match(/^(.*?)\s*\(([^)]*)\)\s*$/);
+  if(m&&/ration|use|meat/i.test(m[2])){base=m[1];paren=m[2];}
+  let rat=0,water=false,meat=0;
+  const rm=paren.match(/^([\d\/ .]+)\s*(water\s+)?rations?(\s+of\s+meat)?$/i);
+  if(rm){if(rm[3])meat=num(rm[1]);else{rat=num(rm[1]);water=!!rm[2];}}
+  else if(!paren){const bm=base.match(/^([\d\/ .]+)\s+(water\s+)?rations?$/i);if(bm){rat=num(bm[1]);water=!!bm[2];}}
+  let word=lc(base.replace(/^[\d\/ .,]+/,"").replace(/\s*\(.*\)\s*$/,"").split(/[,(]/)[0].trim().split(/\s+or\s+/)[0]);
+  const lead=num((base.match(/^[\d\/ .]+/)||[""])[0].trim()||"1");
+  if(MEASURE[word]){word=lead!==1?"portion":MEASURE[word];} // "2 lb" is a portion, "1 gallon" a gallon
+  if(/^rations?$/.test(word))word="ration";
+  if(/^\d*$/.test(word))word="";
+  return {single:base||t,rat:isNaN(rat)?0:rat,water,meat:isNaN(meat)?0:meat,word};
+}
+function splitTags(t){const out=[];for(const p of String(t||"").split(/[;,]/).map(x=>clean(x)).filter(Boolean)){if(/^\d+\s+make\s+1$/i.test(p)&&out.length)out[out.length-1]+=", "+p;else out.push(p);}return out;}
+function readTags(t,def,problem){
+  for(const raw of splitTags(t)){
+    let m;
+    if((m=raw.match(/^weight\s*:\s*(.+)$/i))){const f=tonsToFifths(m[1]);if(isNaN(f))problem(`the weight "${m[1]}" could not be read`);else def.f=f;}
+    else if(/^retrievable$/i.test(raw))def.retrieve=true;
+    else if((m=raw.match(/^loads\s*:\s*(\d+)$/i)))def.useMult=+m[1];
+    else if(/^fuel$/i.test(raw))def.fuel=true;
+    else if(/^lays eggs$/i.test(raw))def.produces={itemName:"eggs",dice:"1d4",every:1,make:12};
+    else if((m=raw.match(/^produces\s*:\s*(\d+(?:d\d+(?:\s*[+-]\s*\d+)?)?|d\d+)\s+(.+?)\s+(?:a|per|each)\s+(day|week|month)\s*(?:,\s*(\d+)\s+make\s+1)?$/i)))def.produces={itemName:clean(m[2]),dice:m[1],every:{day:1,week:5,month:25}[lc(m[3])],make:m[4]?+m[4]:1};
+    else if((m=raw.match(/^meat\s*:\s*(.+)$/i)))def.meatName=clean(m[1]);
+    else problem(`the tag "${raw}" is not one the larder knows`);
+  }
+}
+const col=(head,re)=>head.findIndex(h=>re.test(h));
+function readItemTable(page,t,out,report){
+  const H=t.head,ci={name:0,single:col(H,/^single$/),cargo:col(H,/^cargo|^bulk$/),keep:col(H,/^keep$/),props:col(H,/^properties$/),tags:col(H,/^tags$/),tons:col(H,/^tonnage$/)};
+  const live=/^livestock$/i.test(t.h1),ammo=/^ammunition$/i.test(t.h1);
+  if(page==="provisions"&&!live&&ci.keep<0&&t.rows.length)report.push({where:`${PAGE_NAME[page]}, ${t.h1}`,why:"the table has no Keep column, so its food was taken never to spoil"});
+  for(const cells of t.rows){
+    const name=cells[0];if(!name)continue;
+    const where=`${PAGE_NAME[page]}, ${t.h1}: ${name}`;let bad=null;const problem=w=>{report.push({where,why:w});};
+    const sg=readSingle(cells[ci.single]||"");
+    const cg=readCargo(ci.cargo>=0?cells[ci.cargo]:"-");
+    if(!cg){report.push({where,why:`the cargo "${cells[ci.cargo]}" could not be read, so the row was skipped`});continue;}
+    if(cg.per!==undefined&&!(cg.per>0)){report.push({where,why:`the cargo count could not be read, so the row was skipped`});continue;}
+    const id=live?"live-"+slug(name):(RENAMED[slug(name)]||slug(name));
+    const def={id,name:live?name+" (live)":name,cat:t.h1,kind:live?"live":KIND_OF[page],single:sg.single};
+    let w=sg.word||lc(name);
+    let tableWp=null;
+    if(cg.per&&cg.per>1&&cg.noun){const n=cg.noun.replace(/\s*\(.*$/,"");if(n&&!/^(ration|rations|lb|pounds?|ounces?|gallons?|uses?|loads?|days?)$/.test(n)){tableWp=n;if(!sg.word)w=n.replace(/ies$/,"y").replace(/s$/,"");}}
+    def.w=w;def.wp=tableWp||plural(w);
+    if(cg.solo){def.solo=true;def.f=0;}else{def.cargo=cg.cargo;def.cargoPl=plural(lc(cg.cargo));def.per=cg.per;def.f=1;}
+    if(live){
+      def.meat=sg.meat||0;def.keep="never";
+      const tf=ci.tons>=0?tonsToFifths(cells[ci.tons]):1;def.f=isNaN(tf)?1:tf;
+      if(def.per===1){delete def.cargo;delete def.cargoPl;delete def.per;def.solo=true;}
+      else if(def.cargo==="Cargo unit"){def.cargo=def.per===2?"Pair":"Pen";def.cargoPl=plural(lc(def.cargo));}
+    }else if(def.kind==="food"){
+      def.rat=sg.rat;def.water=sg.water||/^drink$/i.test(t.h1);
+      const k=lc(ci.keep>=0?cells[ci.keep]:"never spoils"),pr=ci.props>=0?cells[ci.props]:"";
+      if(/^d(20|12|10|8|6|4)$/.test(k))def.keep=k;else if(k==="-"||/perishable/i.test(pr))def.keep="perish";else if(/never/.test(k))def.keep="never";else{problem(`the Keep "${cells[ci.keep]}" could not be read; it was taken to never spoil`);def.keep="never";}
+      def.how=def.keep==="perish"?"Perishable":def.keep==="never"?null:(["Hardy","Delicate","Preserved"].find(x=>new RegExp(x,"i").test(pr))||"Hardy");
+      def.spoil=def.keep==="never"?null:(["Rancid","Fishy","Stagnant","Sour"].find(x=>new RegExp(x,"i").test(pr))||"Rancid");
+    }else def.keep="never";
+    if(ammo)def.ammo=true;
+    if(ci.tags>=0)readTags(cells[ci.tags],def,problem);
+    if(def.useMult&&sg.word==="load")def.w="use",def.wp="uses",def.single="Use";
+    out.push(def);
+  }
+}
+function readPreserving(t,out,report){
+  const H=t.head,c={from:0,method:col(H,/^method$/),uses:col(H,/^uses$/),to:col(H,/^becomes$/)};
+  for(const cells of t.rows){
+    const where=`Provisions, Preserving: ${cells[0]}`,method=lc(cells[c.method]||"");
+    if(!/^(salt|pickle|dry)$/.test(method)){report.push({where,why:`the method "${cells[c.method]}" is not Salt, Pickle or Dry`});continue;}
+    const u=clean(cells[c.uses]||""),m=u.match(/^([\d\/ .]+)\s+(?:(?:lb|lbs|pounds?|flasks?|oz|ounces?|jars?|gallons?|pinch(?:es)?|bundles?|sacks?|handfuls?)\s+)?(?:of\s+)?(.+?)\s+(?:per|a|each)\s+(\w+)$/i);
+    let use=null;
+    if(!/^(nothing|none|-)?$/i.test(u)){if(!m){report.push({where,why:`what it uses, "${u}", could not be read`});continue;}use={itemName:clean(m[2]),amt:num(m[1]),basis:/^rations?$/i.test(m[3])?"ration":"unit"};}
+    out.push({from:cells[0],method,use,to:cells[c.to]});
+  }
+}
+function readDifficulty(t,out){for(const cells of t.rows){const mins=cells.slice(1,4).map(x=>parseInt(String(x).split(/[-–]/)[0]));if(cells[0]&&mins.length===3&&mins.every(n=>n>0))out[cap(lc(cells[0]))]=mins;}}
+function readAliases(t,out){for(const cells of t.rows)if(cells[0]&&cells[1])out.push([lc(straight(cells[0])),cells[1].split(/\s*;\s*/).map(clean).filter(Boolean)]);}
+
+/* ---- The whole reading, from the site's page index down ---- */
+async function readSite(){
   const res=await fetch(SITE_BASE+"static/contentIndex.json",{cache:"no-cache"});
   if(!res.ok)throw new Error("The site's page index could not be read.");
-  const ci=await res.json();
-  const entries=Object.entries(ci);
-  const idx=entries.find(([k,e])=>e&&/(^|\/)recipe book\/index\.md$/i.test(e.filePath||""));
-  if(!idx)throw new Error("The Recipe Book was not found on the site.");
-  const dir=idx[1].filePath.replace(/index\.md$/i,"");
-  const norm=x=>lc(decodeURIComponent(String(x||""))).replace(/^\.?\//,"").replace(/#.*$/,"").replace(/\.html$/,"");
-  const links=(idx[1].links||[]).map(norm);
-  const list=entries.filter(([k,e])=>e&&e.filePath&&e.filePath.startsWith(dir)&&e.filePath!==idx[1].filePath&&(!links.length||links.includes(norm(k))||links.includes(norm(e.slug))));
-  const out=[];
-  for(const [k,e] of list){
-    const name=e.title||e.filePath.split("/").pop().replace(/\.md$/,"");
-    let doc=null;
-    for(const u of [SITE_BASE+k+".html",SITE_BASE+k]){
-      try{const r=await fetch(encodeURI(u).replace(/'/g,"%27"),{cache:"no-cache"});if(r.ok){doc=new DOMParser().parseFromString(await r.text(),"text/html");break;}}catch(x){}
+  const ci=await res.json(),entries=Object.entries(ci),slugs={};
+  for(const k in PAGES){const e=entries.find(([,v])=>v&&PAGES[k].test(v.filePath||""));if(e)slugs[k]=e[0];}
+  const B={at:Date.now(),slugs,items:{},order:[],cats:[],preserve:[],aliases:[],difficulty:{},recipes:[],report:[],pages:{}};
+  const sigs=[];
+  for(const k of ["provisions","supplies","goods","recipes"]){
+    if(!slugs[k]){B.report.push({where:PAGE_NAME[k],why:"the page was not found on the site"});B.failed=(B.failed||[]).concat(k);continue;}
+    const pg=await fetchPage(slugs[k]);if(!pg){B.report.push({where:PAGE_NAME[k],why:"the page could not be fetched"});B.failed=(B.failed||[]).concat(k);continue;}
+    const art=(pg.doc.querySelector("article")||pg.doc.body).textContent;sigs.push(hashText(art));
+    for(const t of tablesOf(pg.doc)){
+      if(k==="recipes"){if(col(t.head,/^effect 1$/)>=0)readDifficulty(t,B.difficulty);else if(col(t.head,/^means$/)>=0)readAliases(t,B.aliases);continue;}
+      if(col(t.head,/^becomes$/)>=0){readPreserving(t,B.preserve,B.report);continue;}
+      if(col(t.head,/^single$/)<0||col(t.head,/^cargo|^bulk$/)<0)continue; // not a table of goods
+      const defs=[];readItemTable(k,t,defs,B.report);
+      if(defs.length&&!B.cats.includes(t.h1))B.cats.push(t.h1);
+      for(const d of defs){d.src=k;if(B.items[d.id])B.report.push({where:`${PAGE_NAME[k]}, ${t.h1}: ${d.name}`,why:"it is listed more than once; the later row was used"});B.items[d.id]=d;if(!B.order.includes(d.id))B.order.push(d.id);}
     }
-    const rec=parseRecipe(name,doc,e.content);
-    if(rec.ingredients.length)out.push(rec);
   }
-  return out.sort((a,b)=>a.name.localeCompare(b.name));
+  B.sig=sigs.join(".");
+  // The recipes themselves: published and linked from the Recipe Book's index.
+  if(slugs.recipes){
+    const idx=ci[slugs.recipes],dir=idx.filePath.replace(/index\.md$/i,"");
+    const norm=x=>lc(decodeURIComponent(String(x||""))).replace(/^\.?\//,"").replace(/#.*$/,"").replace(/\.html$/,"");
+    const links=(idx.links||[]).map(norm);
+    const list=entries.filter(([k,e])=>e&&e.filePath&&e.filePath.startsWith(dir)&&e.filePath!==idx.filePath&&(!links.length||links.includes(norm(k))||links.includes(norm(e.slug))));
+    for(const [k,e] of list){
+      const name=clean(e.title||e.filePath.split("/").pop().replace(/\.md$/,""));
+      const pg=await fetchPage(k);
+      const r=parseRecipe(name,pg&&pg.doc,e.content);
+      if(r.lines.length)B.recipes.push(r);else B.report.push({where:`Recipe Book: ${name}`,why:"no ingredients could be found under an Ingredients heading"});
+    }
+    B.recipes.sort((a,b)=>a.name.localeCompare(b.name));
+  }
+  return B;
 }
+// Lay a reading of the site over the catalog the larder was built with.
+function applyBazaar(B){
+  B=Object.assign({items:{},order:[],cats:[],preserve:[],aliases:[],difficulty:{},recipes:[],report:[],slugs:{}},B||{});
+  const report=(B.report||[]).slice(),byId={},order=[];
+  for(const c of BUILTIN){byId[c.id]=clone(c);}
+  const WORDS=["single","w","wp"];
+  for(const id of toArr(B.order).concat(Object.keys(B.items))){
+    const d=B.items[id];if(!d||order.includes(id))continue;order.push(id);
+    const b=byId[id];
+    if(b){const keep={};for(const k of WORDS)keep[k]=b[k];if(b.meatOf&&!d.meatName)keep.meatOf=b.meatOf;byId[id]=Object.assign({},clone(d),keep);}
+    else byId[id]=clone(d);
+  }
+  for(const r of toArr(B.recipes)){
+    const id="dish-"+slug(r.name);
+    byId[id]={id,name:r.name,cat:"Galley Fare",kind:"food",dish:true,single:r.brew?"Mug":"Serving",w:r.brew?"mug":"serving",wp:r.brew?"mugs":"servings",rat:r.brew?0:1,water:!!r.drink,keep:"perish",how:"Perishable",spoil:r.spoil||"Rancid",f:0};
+    if(!order.includes(id))order.push(id);
+  }
+  // A dish may share its name with what it is made from (Coffee the brew, coffee the beans): goods win.
+  const nameId={};for(const c of Object.values(byId))if(!c.dish&&!c.gone)nameId[lc(c.name)]=c.id;for(const c of Object.values(byId))if(c.dish&&!nameId[lc(c.name)])nameId[lc(c.name)]=c.id;
+  const idOf=n=>nameId[lc(clean(n))]||nameId[lc(clean(n))+" (live)"]||null;
+  for(const c of Object.values(byId)){
+    if(c.gone){if(c.produces&&c.produces.itemName){const id=idOf(c.produces.itemName);if(id)c.produces=Object.assign({},c.produces,{item:id});else delete c.produces;}delete c.meatName;continue;}
+    if(c.produces&&c.produces.itemName){const id=idOf(c.produces.itemName)||(lc(c.produces.itemName)==="eggs"?"eggs":null);if(id&&byId[id])c.produces=Object.assign({},c.produces,{item:id});else{report.push({where:c.name,why:`it produces "${c.produces.itemName}", which no one sells in the Bazaar`});delete c.produces;}}
+    if(c.meatName){const id=idOf(c.meatName);if(id)c.meatOf=id;else report.push({where:c.name,why:`its meat "${c.meatName}" is not sold in the Bazaar`});delete c.meatName;}
+    if(c.kind==="live"&&!c.meatOf){const id=idOf(c.name.replace(/ \(live\)$/,""));if(id&&byId[id]&&byId[id].kind==="food")c.meatOf=id;else report.push({where:c.name,why:"no fresh meat of the same name is sold, so butchering it gives nothing"});}
+  }
+  // the catalog, in the order the site lists it, then whatever the larder already knew
+  const ids=order.concat(BUILTIN.map(c=>c.id).filter(id=>!order.includes(id)));
+  CATALOG.length=0;for(const id of ids)CATALOG.push(byId[id]);
+  for(const k of Object.keys(CAT))delete CAT[k];for(const c of CATALOG)CAT[c.id]=c;
+  const cats=toArr(B.cats).slice();
+  if(toArr(B.recipes).length&&!cats.includes("Galley Fare")){const i=cats.indexOf("Stores");cats.splice(i>=0?i+1:cats.length,0,"Galley Fare");}
+  for(const c of BUILTIN_CATS)if(!cats.includes(c)&&c!=="Custom"&&CATALOG.some(x=>x.cat===c))cats.push(c);
+  for(const c of CATALOG)if(!cats.includes(c.cat)&&c.cat!=="Custom")cats.push(c.cat);
+  cats.push("Custom");CATS=cats;
+  // preserving, from the table when there is one
+  if(toArr(B.preserve).length){
+    SALTS={};PICKLES={};DRIES={};PRESERVE_USE={};
+    for(const p of toArr(B.preserve)){
+      const from=idOf(p.from),to=idOf(p.to),where=`Provisions, Preserving: ${p.from}`;
+      if(!from){report.push({where,why:`"${p.from}" is not sold in the Bazaar`});continue;}
+      if(!to){report.push({where,why:`it becomes "${p.to}", which is not sold in the Bazaar`});continue;}
+      ({salt:SALTS,pickle:PICKLES,dry:DRIES})[p.method][from]=to;
+      if(!p.use)PRESERVE_USE[from]=null;
+      else{const ui=idOf(p.use.itemName);if(!ui){report.push({where,why:`it uses "${p.use.itemName}", which is not sold in the Bazaar`});delete SALTS[from];delete PICKLES[from];delete DRIES[from];continue;}PRESERVE_USE[from]={item:ui,amt:p.use.amt,basis:p.use.basis};}
+    }
+  }
+  FUELS=CATALOG.filter(c=>c.fuel).map(c=>c.id);
+  ALIASES=clone(BUILTIN_ALIASES);
+  for(const [k,names] of toArr(B.aliases)){const got=names.map(idOf);if(got.some(x=>!x))report.push({where:`Recipe Book, shorthand: ${k}`,why:`"${names.filter((n,i)=>!got[i]).join("; ")}" is not sold in the Bazaar`});const ok=got.filter(Boolean);if(ok.length)ALIASES[k]=ok;}
+  DIFFICULTY=Object.assign(clone(BUILTIN_DIFFICULTY),B.difficulty||{});
+  RECIPES=toArr(B.recipes);
+  for(const r of RECIPES){
+    for(const g of withIngredients(r).ingredients)if(!g.alts.length||g.alts.every(a=>CAT[a.id]&&CAT[a.id].gone))report.push({where:`Recipe Book: ${r.name}`,why:`the ingredient "${g.text}" matches nothing sold in the Bazaar`});
+    if(r.difficulty&&!DIFFICULTY[cap(lc(r.difficulty))])report.push({where:`Recipe Book: ${r.name}`,why:`its difficulty "${r.difficulty}" is not in the Difficulty table, so it cooks as Normal`});
+  }
+  B.fullReport=report;BAZAAR=B;
+  // show it
+  const keepCat=catSel.value,keepItem=itemSel.value;
+  catSel.innerHTML="";fillCats();
+  if(keepCat&&CATS.includes(keepCat))catSel.value=keepCat;
+  fillItems(false);if(keepItem&&[...itemSel.options].some(o=>o.value===keepItem)){itemSel.value=keepItem;fillItem();}
+  if(SHIPID)render();
+  renderBazaar();
+}
+function last3am(){const d=new Date();d.setHours(3,0,0,0);if(Date.now()<d.getTime())d.setDate(d.getDate()-1);return d.getTime();}
+let bazaarBusy=null;
+function refreshBazaar(){
+  if(!SITE_BASE)return Promise.resolve(false);
+  if(bazaarBusy)return bazaarBusy;
+  bazaarBusy=(async()=>{
+    try{const B=await readSite();
+      // what the site no longer lists is remembered for cargo aboard; a page that could not be read strikes nothing
+      const failed=toArr(B.failed);
+      for(const [id,d] of Object.entries((BAZAAR&&BAZAAR.items)||{}))if(!B.items[id]){B.items[id]=failed.includes(d.src)?Object.assign({},d):Object.assign({},d,{gone:true});if(failed.includes(d.src)&&!B.order.includes(id))B.order.push(id);}
+      if(failed.includes("recipes")&&!B.recipes.length)B.recipes=toArr(BAZAAR&&BAZAAR.recipes);
+      applyBazaar(B);try{await DB.set("catalog",JSON.parse(JSON.stringify(Object.assign({},B,{fullReport:null}))));}catch(e){console.error(e);}return true;}
+    catch(e){console.error(e);if(BAZAAR)BAZAAR.failed=String(e.message||e);renderBazaar();return false;}
+    finally{bazaarBusy=null;}
+  })();
+  return bazaarBusy;
+}
+async function quickSig(){
+  const sigs=[];
+  for(const k of ["provisions","supplies","goods","recipes"]){const sl=BAZAAR.slugs&&BAZAAR.slugs[k];if(!sl)return "";const pg=await fetchPage(sl);if(!pg)return "";sigs.push(hashText((pg.doc.querySelector("article")||pg.doc.body).textContent));}
+  return sigs.join(".");
+}
+async function bazaarStartup(){
+  try{const saved=await DB.get("catalog");if(saved&&saved.items)applyBazaar(saved);}catch(e){}
+  try{DB.on("catalog",v=>{if(v&&v.items&&v.at&&v.at!==BAZAAR.at)applyBazaar(v);});}catch(e){}
+  if(!SITE_BASE)return;
+  if(!BAZAAR.at||BAZAAR.at<last3am())return refreshBazaar(); // a fresh reading every day after 3 in the morning
+  try{const sig=await quickSig();if(sig&&sig!==BAZAAR.sig)refreshBazaar();}catch(e){} // and whenever a deploy has changed a page
+}
+$("rereadBtn").onclick=async()=>{
+  if(!KEEPER)return;
+  if(!SITE_BASE){toast("The larder is not opened from the site, so there is nothing to reread.");return;}
+  toast("Reading the Bazaar and the Recipe Book...");
+  const ok=await refreshBazaar();
+  toast(ok?"The Bazaar is read afresh.":"The site could not be read just now.");
+};
+setInterval(()=>{if(SITE_BASE&&BAZAAR&&BAZAAR.at&&BAZAAR.at<last3am())refreshBazaar();},15*60*1000);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden&&SITE_BASE&&BAZAAR&&BAZAAR.at&&BAZAAR.at<last3am())refreshBazaar();});
+function renderBazaar(){
+  const card=$("bazaarCard");if(!card)return;
+  card.hidden=!KEEPER;if(!KEEPER)return;
+  const B=BAZAAR||{},rep=B.fullReport||[];
+  const items=Object.values(B.items||{}).filter(d=>!d.gone).length,recs=toArr(B.recipes).length;
+  $("bazaarInfo").innerHTML=!SITE_BASE?`The larder is not opened from the site, so it uses the catalog it was built with.`
+    :B.at?`Last read from the site ${esc(when(B.at))}: ${items} item${items===1?"":"s"} and ${recs} recipe${recs===1?"":"s"}.${B.failed?` <span class="over">The last attempt failed: ${esc(B.failed)}</span>`:""}`
+    :`The site has not been read yet.${B.failed?` <span class="over">${esc(B.failed)}</span>`:""}`;
+  $("bazaarReport").innerHTML=rep.length?`<p class="note">${rep.length} thing${rep.length===1?"":"s"} the larder could not use:</p><ul class="ings">${rep.map(r=>`<li class="no">${esc(r.where)}: ${esc(r.why)}.</li>`).join("")}</ul>`:(B.at?`<p class="note">Every row and recipe was read without trouble.</p>`:"");
+}
+
+/* ---- Cooking ---- */
 function bestAlt(ing){
   for(const a of ing.alts)if(itemAvail(a.id)>=a.n)return a;
   return null;
@@ -2451,40 +2732,62 @@ function takeUrgent(id,n){
   for(const l of lots){if(got>=n)break;const k=Math.min(avail(l,false),n-got);take(l,k,false);got+=k;}
   return got;
 }
+// A cook's total and the dish's difficulty decide how it turned out.
+function outcomeOf(total,difficulty,makedo){
+  if(!(total>0))return null;
+  if(total>21)return "bust";
+  const m=DIFFICULTY[cap(lc(difficulty||""))]||DIFFICULTY.Normal;
+  let o=total>=m[2]?"3":total>=m[1]?"2":total>=m[0]?"1":"short";
+  if(makedo&&o==="3")o="2";
+  return o;
+}
+const OUT_WORD={"1":"Effect 1","2":"Effect 2","3":"Effect 3",short:"Short",bust:"Bust",none:"Not recorded"};
 $("cookBtn").onclick=async()=>{
-  toast("Opening the Recipe Book...");
-  let recs;
-  try{recs=await loadRecipes();}
-  catch(e){if(SITE_BASE)console.error(e);ask(`<h2>The Recipe Book Is Closed</h2><p class="sub">${esc(e.message||"The Recipe Book could not be read.")}</p>`,()=>{},"Understood",true);return;}
+  if(!SITE_BASE&&!RECIPES.length){ask(`<h2>The Recipe Book Is Closed</h2><p class="sub">The Recipe Book can only be read when the larder is opened from the site.</p>`,()=>{},"Understood",true);return;}
+  if(SITE_BASE&&(!RECIPES.length||Date.now()-(BAZAAR.at||0)>10*60*1000)){toast("Opening the Recipe Book...");await refreshBazaar();}
+  const recs=RECIPES.map(withIngredients);
   if(!recs.length){ask(`<h2>No Recipes Yet</h2><p class="sub">No published recipe could be read from the Recipe Book.</p>`,()=>{},"Understood",true);return;}
   ask(`<h2>To the Galley</h2><p class="sub">Choose a recipe from the Recipe Book. Ingredients come from the ${here()?"storehouse":"main hold"}, whatever is closest to spoiling first.</p>
     <div class="grid"><label>Recipe</label><select name="r">${recs.map((r,i)=>`<option value="${i}">${esc(r.name)}${r.difficulty?` (${esc(r.difficulty)})`:""}</option>`).join("")}</select></div>
     <div id="cookInfo"></div>
     <div class="grid"><label>Big Pot</label><label class="inline"><input type="checkbox" name="big"> Half again as many servings</label>
     <label>Make Do</label><label class="inline"><input type="checkbox" name="makedo"> Cook with one ingredient missing (no third effect)</label>
-    <label>How it turned out</label><select name="out"><option value="">Not recorded</option><option value="1">Effect 1</option><option value="2">Effect 2</option><option value="3">Effect 3</option><option value="short">Short</option><option value="bust">Bust</option></select></div>`,fd=>{
+    <label>Your total</label><input type="number" name="total" min="0" max="60" placeholder="the dice, added up">
+    <label>Or how it turned out</label><select name="out"><option value="">Not recorded</option><option value="1">Effect 1</option><option value="2">Effect 2</option><option value="3">Effect 3</option><option value="short">Short</option><option value="bust">Bust</option></select></div>
+    <p class="note" id="cookOut"></p>`,fd=>{
     const r=recs[+fd.get("r")];if(!r)return;
-    const big=!!fd.get("big"),makedo=!!fd.get("makedo"),out=fd.get("out");
+    const big=!!fd.get("big"),makedo=!!fd.get("makedo");
+    let out=outcomeOf(parseInt(fd.get("total")),r.difficulty,makedo)||fd.get("out")||"none";
+    if(makedo&&out==="3")out="2";
     const missing=r.ingredients.filter(g=>!bestAlt(g));
     if(missing.length>(makedo?1:0)){
       ask(`<h2>Not Enough in the Larder</h2><p class="sub">${esc(r.name)} still wants: ${esc(missing.map(g=>g.text).join("; "))}.${missing.length===1&&!makedo?" Tick Make Do to cook without it.":""}</p>`,()=>{},"Understood",true);return;
     }
     act(()=>{
-      const used=[];
-      for(const g of r.ingredients){const a=bestAlt(g);if(!a)continue;takeUrgent(a.id,a.n);jot("rem",a.id,a.n);used.push(a);}
+      for(const g of r.ingredients){const a=bestAlt(g);if(!a)continue;takeUrgent(a.id,a.n);jot("rem",a.id,a.n);}
       const id="dish-"+slug(r.name);
-      if(!S.custom[id]||!S.custom[id].dish)S.custom[id]={id,name:r.name,cat:"Custom",kind:"food",dish:true,single:r.brew?"Mug":"Serving",w:r.brew?"mug":"serving",wp:r.brew?"mugs":"servings",rat:r.brew?0:1,water:r.drink,keep:"perish",how:"Perishable",spoil:r.spoil,f:0};
+      if(!CAT[id]&&(!S.custom[id]||!S.custom[id].dish))S.custom[id]={id,name:r.name,cat:"Galley Fare",kind:"food",dish:true,single:r.brew?"Mug":"Serving",w:r.brew?"mug":"serving",wp:r.brew?"mugs":"servings",rat:r.brew?0:1,water:r.drink,keep:"perish",how:"Perishable",spoil:r.spoil,f:0};
       const n=big?Math.floor(r.servings*1.5):r.servings;
-      addLot(id,"loose",n,"perish",true);jot("add",id,n);
-      logLine(say("cook",amt(S.custom[id],n),r.name)+(out&&COOK_END[out]?" "+COOK_END[out]:""));
+      const l=addLot(id,"loose",n,"perish",true);l.out=out;jot("add",id,n);
+      logLine(say("cook",amt(item(id),n),r.name)+(COOK_END[out]?" "+COOK_END[out]:""));
     },()=>toast("Something good is coming off the stove."));
   },"Cook It");
   const show=()=>{
     const r=recs[+dform.querySelector("select[name=r]").value];if(!r)return;
     $("cookInfo").innerHTML=`<ul class="ings">${r.ingredients.map(g=>{const a=bestAlt(g);const it=a&&item(a.id);return `<li class="${a?"ok":"no"}">${a?"✓":"✗"} ${esc(g.text)}${!g.alts.length?' <span class="tag">(not in the ledger)</span>':a?` <span class="tag">(${esc(lc(it.name))}, ${fmt(itemAvail(a.id))} on hand)</span>`:` <span class="tag">(not enough aboard)</span>`}</li>`;}).join("")}</ul><p class="note">Makes ${r.servings} ${r.brew?"mugs":"servings"}${r.brew?", which don't count as rations":r.drink?", each a water ration":", each a food ration"}. Perishable and ${esc(r.spoil)}.</p>`;
+    showOut();
     if(panelMode())placePanel();
   };
-  dform.querySelector("select[name=r]").onchange=show;show();
+  const showOut=()=>{
+    const r=recs[+dform.querySelector("select[name=r]").value];if(!r)return;
+    const t=parseInt(dform.querySelector("input[name=total]").value),o=outcomeOf(t,r.difficulty,dform.querySelector("input[name=makedo]").checked);
+    const m=DIFFICULTY[cap(lc(r.difficulty||""))]||DIFFICULTY.Normal;
+    $("cookOut").textContent=o?`A total of ${t} on ${/^[aeiou]/i.test(r.difficulty||"Normal")?"an":"a"} ${r.difficulty||"Normal"} recipe: ${OUT_WORD[o]}.`:`${r.difficulty||"Normal"}: Effect 1 from ${m[0]}, Effect 2 from ${m[1]}, Effect 3 from ${m[2]}. Over 21 busts.`;
+  };
+  dform.querySelector("select[name=r]").onchange=show;
+  dform.querySelector("input[name=total]").oninput=showOut;
+  dform.querySelector("input[name=makedo]").onchange=showOut;
+  show();
 };
 
 /* ---------------- Writing something new ---------------- */
@@ -2733,6 +3036,7 @@ window.addEventListener("popstate",route);
   }
   if(!harborUnsub)harborUnsub=DB.on("ships",v=>{SHIPS=v||{};renderShips();if(SHIPID)render();});
   route();
+  bazaarStartup();
   if(bottle&&SHIPID)setTimeout(()=>confirmBox("A Message in a Bottle","A bottle has washed ashore with a hold corked inside. Open it, replacing the hold of "+shipName(SHIPID)+"? The hold as it is now is laid away first.","Uncork it",()=>uncork(bottle)),500);
 })();
 </script>
