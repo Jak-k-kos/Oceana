@@ -12,4 +12,4 @@ draft: false
 # Ledonis
 Ledonis is a great, open island of rolling plains and long ragged peninsulas reaching out into the sea. Its wide fields are golden with barley and maize, and its uplands are grazed by great herds of cattle. Much of the barley and maize goes to the island's distilleries, which turn it into whiskey, aged in oak and drunk across the [[Locations/Azure Plains Coalition (APC)/index|coalition]] and beyond. Ledonis is a rich island, and a confident one. Its cattle-lords and distillers run it like a small kingdom of their own, and its celebration of [[Apiot's Boon]] is one of the loudest in the islands.
 
-%%# [[NPCS/Azure Plains Coalition/Ledonis/index|NPCs]]%%
+# [[NPCS/Azure Plains Coalition/Ledonis/index|NPCs]]

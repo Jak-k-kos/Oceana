@@ -4,7 +4,7 @@ draft: true
 ---
 
 # Leadership
-- [[Pirro Velloso]]
+- [[Pirro Lanudo]]
 
 # Notable Residents
 - [[Ines Cuevas]]

@@ -7,7 +7,7 @@ draft: true
 - [[Kesk'tal]]
 
 # Notable Residents
-- [[Benito Salgado]]
+- [[Benito Anchoa]]
 
 
 # [[Locations/Azure Plains Coalition (APC)/Thellesia/index|Location]]

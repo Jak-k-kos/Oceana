@@ -15,7 +15,7 @@ Belief: The reef feeds the strong
 Accent: Clicking and blunt
 Current Location: [[Locations/Azure Plains Coalition (APC)/Thellesia/index|Thellesia]]
 Relationships: 
-- [[Benito Salgado]]: her anchovy-master
+- [[Benito Anchoa]]: her anchovy-master
 %%
 Gender: Female
 Appearance: About twenty, middle-aged for a thri-kreen. Tall and sandy-green, with four arms, glittering compound eyes, and a harpoon slung across her back

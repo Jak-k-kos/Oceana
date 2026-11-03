@@ -15,13 +15,16 @@ Belief: believes people take life too seriously and don't enjoy enough of what l
 Accent: boston child
 Current Location: [[Locations/Azure Plains Coalition (APC)/Insul/index|Insul]]
 Relationships:
-- younger sister to [[Scubby Wellfleet]],&[[Azria Wellfleet]]
-- partner in crime to [[Scubby Wellfleet]]
-- twin fraternal sister to [[Tamra 'Tam' Wellfleet]]
-- daughter of [[Drekta Wellfleet]]&[[Vhallen Wellfleet]]
+- Younger sister to [[Scubby Wellfleet]] & [[Azria Wellfleet]]
+- Partner in crime to [[Scubby Wellfleet]]
+- Twin fraternal sister to [[Tamra 'Tam' Wellfleet]]
+- Daughter of [[Drekta Wellfleet]] & [[Vhallen Wellfleet]]
 %%
-Gender: F
-Appearance: a 10 year old dirty ginger tabaxi. 
+Gender: Female
+Appearance: A 10 year old dirty ginger tabaxi.
 Who: very much a tomboy, constantly shadowing her older brother [[Scubby Wellfleet]], constantly getting into trouble due to her and her brothers antics. often hangs out with the boys of the village getting into games and mischief at every turn. is very upset about being born 15 minutes later than her twin sister
 known relationships:
-* 
+- Younger sister to [[Scubby Wellfleet]] & [[Azria Wellfleet]]
+- Partner in crime to [[Scubby Wellfleet]]
+- Twin fraternal sister to [[Tamra 'Tam' Wellfleet]]
+- Daughter of [[Drekta Wellfleet]] & [[Vhallen Wellfleet]]

@@ -17,4 +17,4 @@ Odelna is a large, green island group in the heart of the [[Locations/Azure Plai
 - [[Odelna Chica]]
 
 
-%%# [[NPCS/Azure Plains Coalition/Odelna/index|NPCs]]%%
+# [[NPCS/Azure Plains Coalition/Odelna/index|NPCs]]

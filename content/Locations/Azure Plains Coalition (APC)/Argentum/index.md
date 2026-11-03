@@ -12,4 +12,4 @@ draft: false
 # Argentum
 Argentum is a long, hilly island on the [[Locations/Azure Plains Coalition (APC)/index|coalition's]] northern edge, and its hills are full of silver. The mines have been worked for centuries, and the silver comes out as raw ore and as finished work. Argentum's silversmiths make plate, jewelry, mirrors, and fittings for the wealthy of the coalition and beyond. The lowland valleys are farmed in grain and orchards, and the island feeds itself comfortably. Because it faces the [[Sea Folk Waters|sea folk waters]], Argentum is also home to the council army's northern squadron. Its warships anchor in the island's main harbor, and the town of Argentum is half mining town and half navy port, full of soldiers, sailors, smiths, and miners.
 
-%%# [[NPCS/Azure Plains Coalition/Argentum/index|NPCs]]%%
+# [[NPCS/Azure Plains Coalition/Argentum/index|NPCs]]

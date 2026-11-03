@@ -1,7 +1,7 @@
 ---
 tags:
   - NPC
-draft: true
+draft: false
 lastname: Vintaros
 ---
 %%
@@ -18,10 +18,10 @@ Relationships:
 - [[Catalina Vintaros]]: daughter
 - [[Teodora Gallis]]: rival for the chair
 - [[Lydia Kouris]]: the vote he can never count on
-Council Candidate: yes
+Council Member: yes
 %%
 Gender: Male
 Appearance: Late fifties. Velvet coat, heavy rings, a perfectly trimmed silver beard
-Who: Head of the richest vintner family on [[Locations/Azure Plains Coalition (APC)/Dalmora/index|Dalmora]] and chair of the council of five families.
+Who: Head of the richest vintner family on [[Locations/Azure Plains Coalition (APC)/Dalmora/index|Dalmora]] and chair of the council of five families. Sits on the coalition council; his seat comes up for renewal in 3 years.
 known relationships:
 - 

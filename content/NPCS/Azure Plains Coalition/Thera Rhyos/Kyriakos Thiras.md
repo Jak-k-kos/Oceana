@@ -1,7 +1,7 @@
 ---
 tags:
   - NPC
-draft: true
+draft: false
 lastname: Thiras
 ---
 %%
@@ -17,10 +17,10 @@ Current Location: [[Locations/Azure Plains Coalition (APC)/Thera Rhyos/index|The
 Relationships: 
 - [[Dolores Calera]]: the guildmistress he relies on
 - [[Xanthe Petrou]]: the priestess he is avoiding
-Council Candidate: yes
+Council Member: yes
 %%
 Gender: Male
 Appearance: About sixty. Heavy and silver-haired, with a sun-browned face and a fine white coat
-Who: The archon of [[Locations/Azure Plains Coalition (APC)/Thera Rhyos/index|Thera Rhyos]] for three terms, and a former vintner.
+Who: The archon of [[Locations/Azure Plains Coalition (APC)/Thera Rhyos/index|Thera Rhyos]] for three terms, and a former vintner. Sits on the coalition council; his seat comes up for renewal next year.
 known relationships:
 - 

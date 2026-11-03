@@ -1,7 +1,7 @@
 ---
 tags:
   - NPC
-draft: true
+draft: false
 lastname: Fargas
 ---
 %%
@@ -16,10 +16,10 @@ Accent: Firm and plain
 Current Location: [[Locations/Azure Plains Coalition (APC)/Insal Fargo/index|Insal Fargo]]
 Relationships: 
 - [[Ember Ashvale]]: her finest smith
-Council Candidate: yes
+Council Member: yes
 %%
 Gender: Female
 Appearance: About fifty. Broad-shouldered and grey-streaked, with soot in the creases of her face and burn scars on her forearms
-Who: A smelter's daughter who became archon.
+Who: A smelter's daughter who became archon. Sits on the coalition council; her seat comes up for renewal in 3 years.
 known relationships:
 - 

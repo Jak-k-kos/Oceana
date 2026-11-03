@@ -1,14 +1,14 @@
 ---
 title: Kalisanta
-draft: true
+draft: false
 ---
 
 # Leadership
 - [[Evander Castellanos]]
 
-# Notable Residents
-- [[Irini Lampros]]
-- [[Lucio Garrido]]
+%%# Notable Residents%%
+%%- [[Irini Lampros]]%%
+%%- [[Lucio Garrido]]%%
 
 
 # [[Locations/Azure Plains Coalition (APC)/Kalisanta/index|Location]]

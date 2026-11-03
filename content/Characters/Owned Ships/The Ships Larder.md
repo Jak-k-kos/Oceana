@@ -10,7 +10,7 @@ This is the quartermaster's ledger for all of it, and for the storehouses ashore
 
 <iframe src="https://jak-k-kos.github.io/Oceana/static/larder.html" width="100%" height="1400" style="border:none;border-radius:10px;" title="The Ship's Larder"></iframe>
 
-If the ledger will not open here, it waits for you on [its own page](https://jak-k-kos.github.io/Oceana/static/larder.html).
+If the ledger will not open here, it waits for you on <a href="https://jak-k-kos.github.io/Oceana/static/larder.html" data-router-ignore="true">its own page</a>.
 
 # The Harbor Register
 

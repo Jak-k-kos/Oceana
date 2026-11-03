@@ -21,4 +21,4 @@ Las Eridani is famous, too, for its [[Night of Names]], said to be the grandest 
 - [[Heliada]]
 
 
-%%# [[NPCS/Azure Plains Coalition/Las Eridani/index|NPCs]]%%
+# [[NPCS/Azure Plains Coalition/Las Eridani/index|NPCs]]

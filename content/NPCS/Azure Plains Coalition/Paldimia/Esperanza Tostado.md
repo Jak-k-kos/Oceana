@@ -1,7 +1,7 @@
 ---
 tags:
   - NPC
-draft: true
+draft: false
 lastname: Tostado
 ---
 %%
@@ -17,10 +17,10 @@ Current Location: [[Locations/Azure Plains Coalition (APC)/Paldimia/index|Paldim
 Relationships: 
 - [[Amaro Tueste]]: the planter who wants to break the strike
 - [[Mirasol Duran]]: the strike leader she listens to
-Council Candidate: yes
+Council Member: yes
 %%
 Gender: Female
 Appearance: About fifty. Small and brown, with coffee-stained fingers and a wide straw hat
-Who: Head of the oldest planter family and first planter for eight years.
+Who: Head of the oldest planter family and first planter for eight years. Sits on the coalition council; her seat comes up for renewal in 2 years.
 known relationships:
 - 

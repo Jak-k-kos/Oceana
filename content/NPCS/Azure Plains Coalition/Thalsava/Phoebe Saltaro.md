@@ -16,10 +16,10 @@ Accent: Purring and sly
 Current Location: [[Locations/Azure Plains Coalition (APC)/Thalsava/index|Thalsava]]
 Relationships: 
 - [[Damaris Kokkinou]]: master dyer
-Council Candidate: yes
+Council Member: yes
 %%
 Gender: Female
 Appearance: Mid-forties. Sleek, purple-tinged paws and whiskers, fine robes in her own dye
-Who: A dye merchant who became archon and runs the island like a business.
+Who: A dye merchant who became archon and runs the island like a business. Sits on the coalition council; her seat comes up for renewal in 5 years.
 known relationships:
 - 

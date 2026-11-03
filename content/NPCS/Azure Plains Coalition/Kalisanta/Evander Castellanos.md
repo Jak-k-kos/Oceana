@@ -1,7 +1,7 @@
 ---
 tags:
   - NPC
-draft: true
+draft: false
 lastname: Castellanos
 ---
 %%
@@ -16,10 +16,10 @@ Accent: Smooth and educated
 Current Location: [[Locations/Azure Plains Coalition (APC)/Kalisanta/index|Kalisanta]]
 Relationships: 
 - [[Irini Lampros]]: the house head he is watching
-Council Candidate: yes
+Council Member: yes
 %%
 Gender: Male
 Appearance: Mid-sixties. Silver-haired and impeccably dressed, with a gold-capped cane he doesn't need
-Who: The elected head of the Exchange. He is starting to fear House Lampros.
+Who: The elected head of the Exchange. Sits on the coalition council; his seat comes up for renewal in 5 years.
 known relationships:
 - 

@@ -116,11 +116,36 @@ dialog .grid .row input[type=text]{flex:1 1 140px;min-width:0}
 .toast.near{left:12px;right:12px;margin:0 auto;width:max-content;max-width:calc(100% - 24px);transform:none;border-radius:14px;text-align:center}
 dialog.panel form>:first-child{scroll-margin-top:28px}
 .feedall{margin:6px 0 2px;font-weight:600;color:var(--ink)}
+/* ---- Armor. When the Quartz site swaps this page in by a link, its own stylesheet comes along
+   and would recolor our text, restyle our tick boxes and redraw our tables. These rules are a
+   notch more specific than Quartz's, so the larder always looks like itself. ---- */
+html:root{width:auto;overflow-x:visible}
+html body{background:var(--bg);color:var(--ink);font:17px/1.45 "Crimson Pro",Georgia,serif}
+html body p,html body ul,html body ol,html body li,html body tr,html body td,html body a,html body text{color:inherit;fill:currentColor;line-height:inherit;text-wrap:wrap}
+html body h1,html body h2,html body h3,html body h4,html body thead{color:inherit;font-family:"IM Fell English SC","IM Fell English",Georgia,serif;font-weight:400;margin-top:0}
+html body h1{margin-bottom:0} html body h2{margin-bottom:8px} html body h3{margin-bottom:0}
+html body h3.sub3{margin:12px 0 4px}
+html body strong{font-weight:700}
+html body a{font-weight:inherit;text-decoration:underline}
+html body tr{border:0}
+html body th{text-align:left;border-bottom:1px solid var(--line);padding:6px}
+html body td{border-bottom:1px solid var(--line);padding:6px}
+@media (max-width:640px){html body td,html body th{padding:5px 4px}}
+html body #shipList table td,html body #trashList table td,html body #chestList table td{padding:8px 6px}
+html body tr.empty td{padding:18px}
+html body input[type=checkbox]{appearance:auto;-webkit-appearance:checkbox;position:static;transform:none;margin:0 2px 0 0;width:16px;height:16px;flex:none;border:revert;border-radius:revert;background:revert;color:inherit;accent-color:var(--accent);vertical-align:middle}
+html body input[type=checkbox]::after,html body input[type=checkbox]:checked::after{content:none;display:none}
+/* The way back to the site, shown only when the larder is open as a page of its own */
+html body a.backlink{display:inline-block;border:1px solid var(--line);border-radius:7px;padding:2px 8px;font-size:.88rem;color:var(--ink);text-decoration:none;line-height:1.45;background:transparent}
+html body a.backlink:hover{border-color:var(--accent);color:var(--accent)}
+html body a.backlink[hidden]{display:none}
+.backrow{margin-bottom:6px}
 </style>
 </head>
 <body>
 <!-- ======================= THE HARBOR ======================= -->
 <div class="wrap" id="harborView" hidden>
+  <div class="row backrow" hidden><a class="backlink sm" data-router-ignore="true" href="#">&larr; Back to the Larder</a></div>
   <div class="titlerow">
     <h1>The Harbor Register</h1>
     <div class="row">
@@ -177,7 +202,7 @@ dialog.panel form>:first-child{scroll-margin-top:28px}
 <!-- ======================= THE HOLD ======================= -->
 <div class="wrap" id="holdView" hidden>
   <div class="row" style="justify-content:space-between;margin-bottom:6px">
-    <button class="sm" id="harborBtn">&larr; The Harbor</button>
+    <div class="row"><button class="sm" id="harborBtn">&larr; The Harbor</button><a class="backlink sm" data-router-ignore="true" href="#" hidden>&larr; Back to the Larder</a></div>
     <span class="status" id="status">Kept on this device</span>
   </div>
   <div class="kicker" id="kicker">The Ship's Larder</div>
@@ -2895,6 +2920,14 @@ async function bazaarStartup(){
   if(!BAZAAR.at||BAZAAR.at<last3am())return refreshBazaar(); // a fresh reading every day after 3 in the morning
   try{const sig=await quickSig();if(sig&&sig!==BAZAAR.sig)refreshBazaar();}catch(e){} // and whenever a deploy has changed a page
 }
+// The way back to the Ship's Larder note, for when the larder is open as a page of its own.
+(()=>{
+  let top=true;try{top=window.parent===window;}catch(e){top=false;}
+  if(!top)return;
+  const href=SITE_BASE?SITE_BASE+"Characters/Owned-Ships/The-Ships-Larder":"https://jak-k-kos.github.io/Oceana/Characters/Owned-Ships/The-Ships-Larder";
+  document.querySelectorAll("a.backlink").forEach(a=>{a.href=href;a.hidden=false;});
+  document.querySelectorAll(".backrow").forEach(r=>r.hidden=false);
+})();
 $("rereadBtn").onclick=async()=>{
   if(!KEEPER)return;
   if(!SITE_BASE){toast("The larder is not opened from the site, so there is nothing to reread.");return;}

@@ -1,14 +1,14 @@
 ---
 title: Insal Fargo
-draft: true
+draft: false
 ---
 
 # Leadership
 - [[Rosalind Fargas]]
 
-# Notable Residents
-- [[Ember Ashvale]]
-- [[Grom Kettleburn]]
+%%# Notable Residents%%
+%%- [[Ember Ashvale]]%%
+%%- [[Grom Kettleburn]]%%
 
 
 # [[Locations/Azure Plains Coalition (APC)/Insal Fargo/index|Location]]

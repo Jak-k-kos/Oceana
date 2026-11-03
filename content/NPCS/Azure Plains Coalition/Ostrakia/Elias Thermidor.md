@@ -16,10 +16,10 @@ Accent: Precise and nasal
 Current Location: [[Locations/Azure Plains Coalition (APC)/Ostrakia/index|Ostrakia]]
 Relationships: 
 - [[Nikandros Vellis]]: his trusted die-cutter
-Council Candidate: yes
+Council Member: yes
 %%
 Gender: Male
 Appearance: Looks about sixty in human terms; well over two hundred. Small and neat, spectacles on a chain, ink-stained fingers, coat pockets heavy with test weights
-Who: Master of the mint at [[Locations/Azure Plains Coalition (APC)/Ostrakia/index|Ostrakia]], who oversees every licensed shell mint in the [[Locations/Azure Plains Coalition (APC)/index|coalition]] and the [[Locations/Kingdom of Albryn/index|Kingdom]]. Famously suspicious, and right to be.
+Who: Master of the mint at [[Locations/Azure Plains Coalition (APC)/Ostrakia/index|Ostrakia]], who oversees every licensed shell mint in the [[Locations/Azure Plains Coalition (APC)/index|coalition]] and the [[Locations/Kingdom of Albryn/index|Kingdom]]. Famously suspicious. Sits on the coalition council; his seat comes up for renewal in 2 years.
 known relationships:
 - 

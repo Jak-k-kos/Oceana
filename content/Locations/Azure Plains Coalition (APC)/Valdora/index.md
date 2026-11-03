@@ -4,7 +4,7 @@ draft: false
 ---
 %%
 # DM Notes
-- Leader: [[Pirro Velloso]]
+- Leader: [[Pirro Lanudo]]
 - Food: Roast mutton, sheep's and cow's cheese, flatbread, fish
 - Trade: Mutton, salted mutton, live sheep, and cave-aged sheep's and cow's cheese, with wool and a little old beef on the side
 - extra: Map #93. Size: Small. Government: The elder of the shepherd families. Sheep have been vanishing from the eastern pastures, two or three a night. There are no tracks, only long drag marks leading down the cliffs and into the sea.

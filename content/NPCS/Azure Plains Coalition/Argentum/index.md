@@ -1,6 +1,6 @@
 ---
 title: Argentum
-draft: true
+draft: false
 ---
 
 # Leadership
@@ -8,8 +8,8 @@ draft: true
 
 # Notable Residents
 - [[Rhea Kanellos]]
-- [[Telmo Arroyo]]
-- [[Bastiana Argyris]]
+%%- [[Telmo Arroyo]]%%
+%%- [[Bastiana Argyris]]%%
 
 
 # [[Locations/Azure Plains Coalition (APC)/Argentum/index|Location]]

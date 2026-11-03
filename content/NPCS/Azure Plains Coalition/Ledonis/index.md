@@ -1,15 +1,15 @@
 ---
 title: Ledonis
-draft: true
+draft: false
 ---
 
 # Leadership
 - [[Brannoc Dell]]
 
-# Notable Residents
-- [[Cass Meadowbrook]]
-- [[Taron Ashby]]
-- [[Silva Tannery]]
+%%# Notable Residents%%
+%%- [[Cass Meadowbrook]]%%
+%%- [[Taron Ashby]]%%
+%%- [[Silva Tannery]]%%
 
 
 # [[Locations/Azure Plains Coalition (APC)/Ledonis/index|Location]]

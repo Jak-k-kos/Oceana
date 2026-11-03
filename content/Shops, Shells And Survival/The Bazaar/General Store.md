@@ -15,55 +15,55 @@ draft: false
 The General Store sells everyday gear for life aboard ship and ashore. Market prices in shells (SH). What you actually pay is down to haggling, and prices run higher or lower from island to island.
 
 # Adventuring Gear
-| Item | Price | Notes |
+| Item                                   | Price | Notes |
 | --- | --- | --- |
-| Abacus | 190 SH | |
-| Backpack | 190 SH | |
-| Bedroll | 95 SH | |
-| Blanket | 45 SH | |
-| Block and tackle | 95 SH | |
-| Book, blank (logbook) | 2,400 SH | |
-| Candle | 1 SH | Burns for 1 hour |
-| Chain (10 ft) | 480 SH | |
-| Chalk (1 piece) | 1 SH | |
-| Climber's kit | 2,400 SH | |
-| Crowbar | 190 SH | |
-| Grappling hook | 190 SH | |
-| Hammer | 95 SH | |
-| Hourglass | 280 SH | |
-| Hunting trap | 480 SH | |
-| Ink (1 oz bottle) | 950 SH | |
-| Ink pen | 2 SH | |
-| Ladder (10 ft) | 9 SH | |
-| Lamp | 48 SH | |
-| Lamp oil (whale oil, flask) | 3 SH | |
-| Lantern, bullseye | 950 SH | |
-| Lantern, hooded | 480 SH | |
-| Lock | 950 SH | |
-| Magnifying glass | 1,900 SH | |
-| Manacles | 190 SH | |
-| Mirror, steel | 480 SH | |
-| Paper (1 sheet) | 19 SH | |
-| Parchment (1 sheet) | 9 SH | |
-| Piton | 5 SH | |
-| Pole (10 ft) | 5 SH | |
-| Pouch | 48 SH | |
-| Rope, hempen (50 ft) | 95 SH | |
-| Rope, silk (50 ft) | 950 SH | |
-| Sack | 1 SH | |
-| Scale, merchant's | 480 SH | |
-| Sealing wax | 48 SH | |
+| Abacus                                 | 190 SH | |
+| Backpack                               | 190 SH | |
+| Bedroll                                | 95 SH | |
+| Blanket                                | 45 SH | |
+| Block and tackle                       | 95 SH | |
+| Book, blank (logbook)                  | 2,400 SH | |
+| Candle                                 | 1 SH | Burns for 1 hour |
+| Chain (10 ft)                          | 480 SH | |
+| Chalk (1 piece)                        | 1 SH | |
+| Climber's kit                          | 2,400 SH | |
+| Crowbar                                | 190 SH | |
+| Grappling hook                         | 190 SH | |
+| Hammer                                 | 95 SH | |
+| Hourglass                              | 280 SH | |
+| Hunting trap                           | 480 SH | |
+| Ink (1 oz bottle)                      | 950 SH | |
+| Ink pen                                | 2 SH | |
+| Ladder (10 ft)                         | 9 SH | |
+| Lamp                                   | 48 SH | |
+| Lamp oil (whale oil, flask)            | 3 SH | |
+| Lantern, bullseye                      | 950 SH | |
+| Lantern, hooded                        | 480 SH | |
+| Lock                                   | 950 SH | |
+| Magnifying glass                       | 1,900 SH | |
+| Manacles                               | 190 SH | |
+| Mirror                                 | 480 SH | |
+| Paper (1 sheet)                        | 19 SH | |
+| Parchment (1 sheet)                    | 9 SH | |
+| Piton                                  | 5 SH | |
+| Pole (10 ft)                           | 5 SH | |
+| Pouch                                  | 48 SH | |
+| Rope, hempen (50 ft)                   | 95 SH | |
+| Rope, silk (50 ft)                     | 950 SH | |
+| Sack                                   | 1 SH | |
+| Scale, merchant's                      | 480 SH | |
+| Sealing wax                            | 48 SH | |
 | Sewing kit (needle, thread, sail palm) | 9 SH | |
-| Shovel | 190 SH | |
-| Signal whistle | 5 SH | |
-| Soap | 2 SH | |
-| Spice case | 190 SH | A leather pouch fitted with stoppered tins and twists of oiled paper. Holds small portions of up to a dozen spices, herbs or powders. |
-| String (10 ft) | 1 SH | |
-| Tent, two-person | 190 SH | |
-| Tinderbox | 48 SH | |
-| Torch | 1 SH | Burns for 1 hour |
-| Waterskin | 19 SH | Holds 1 gallon (1 water ration) |
-| Whetstone | 1 SH | |
+| Shovel                                 | 190 SH | |
+| Signal whistle                         | 5 SH | |
+| Soap                                   | 2 SH | |
+| Spice case                             | 190 SH | A leather pouch fitted with stoppered tins and twists of oiled paper. Holds small portions of up to a dozen spices, herbs or powders. |
+| String (10 ft)                         | 1 SH | |
+| Tent, two-person                       | 190 SH | |
+| Tinderbox                              | 48 SH | |
+| Torch                                  | 1 SH | Burns for 1 hour |
+| Waterskin                              | 19 SH | Holds 1 gallon (1 water ration) |
+| Whetstone                              | 1 SH | |
 
 # Containers
 | Item | Price | Notes |

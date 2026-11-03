@@ -19,6 +19,6 @@ Relationships:
 %%
 Gender: Male
 Appearance: Nineteen. Lanky, scabbed knuckles, better boots than anyone else on the island
-Who: The best climber on the island, and the one who showed the smugglers the caves.
+Who: The best climber on the island.
 known relationships:
 - 

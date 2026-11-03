@@ -19,6 +19,6 @@ Relationships:
 %%
 Gender: Male
 Appearance: About forty. Wiry and sunburnt, with a shaved head and an old cutlass scar under his beard
-Who: One of the newest slaves on the estates. He gave a false name, and no one on the island knows who he really is.
+Who: One of the newest slaves on the estates.
 known relationships:
 - 

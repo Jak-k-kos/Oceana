@@ -12,4 +12,4 @@ draft: false
 # Paldimia
 Paldimia is a large, steep, green island whose hills are terraced from the shore almost to the summit with coffee and tea. The highland climate suits both, and Paldimia grows most of the coffee and tea drunk in the [[Locations/Azure Plains Coalition (APC)/index|coalition]], with a steady share sold on to the [[Locations/Kingdom of Albryn/index|Kingdom]]. Coffee cherries and tea leaves are picked by hand each season and dried in the sun on the flat little islet to the south. They are then roasted, rolled, and packed in the town's roasting and curing houses, and the smell drifts out over the harbor. A thin sliver of islet to the north holds little but a fishing village. Paldimians are proud of what they grow, and they drink it constantly.
 
-%%# [[NPCS/Azure Plains Coalition/Paldimia/index|NPCs]]%%
+# [[NPCS/Azure Plains Coalition/Paldimia/index|NPCs]]

@@ -5,6 +5,7 @@ title: Insul
 # The Faranz Family
 - [[Elisa Faranz]]
 - [[Emilio Faranz]]
+- [[Edward Faranz]]
 
 # The Du'Pliss Family
 - [[anna Du'pliss]]
@@ -36,9 +37,10 @@ title: Insul
 - [[Lilly Fiore]]
 - [[Orchid Fiore]]
 
-# The GoldenRoar Family
-* [[Gaknin Goldenroar]]
-* [[Tryknin Goldenroar|Tryknin Goldenroar (Torin)]]
+# The Goldenroar Family
+- [[Gaknin Goldenroar]]
+- [[Tryknin Goldenroar|Tryknin Goldenroar (Torin)]]
+
 # Others
 - [[Mr. Ferguson]]
 

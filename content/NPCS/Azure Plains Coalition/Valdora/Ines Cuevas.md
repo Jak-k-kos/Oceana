@@ -15,7 +15,7 @@ Belief: Good things come to those who wait in the dark
 Accent: Dry and low
 Current Location: [[Locations/Azure Plains Coalition (APC)/Valdora/index|Valdora]]
 Relationships: 
-- [[Pirro Velloso]]: her elder
+- [[Pirro Lanudo]]: her elder
 %%
 Gender: Female
 Appearance: About fifty. Stout and pale from the caves, with a lantern on her belt, wax under her nails, and a long cheese-iron
