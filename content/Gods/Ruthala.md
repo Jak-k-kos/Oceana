@@ -12,7 +12,7 @@ Goddess of beasts. Patron of hunters.
 
 ## The Wild Heart
 
-Ruthala shaped the beasts of the world: the wolf and the deer, the bear and the hare, the hawk upon the wind and every creature that walks, creeps or flies across the land. In the shaping, she became the wild itself, and something of every beast she made still lives in her.
+Ruthala shaped the beasts of the world: the wolf and the deer, the bear and the hare, the hawk upon the wind and every creature that walks, creeps or flies across the land. From that same wild clay she shaped the land-born peoples, for mortals, she has always held, are only beasts who learned to speak. In the shaping, she became the wild itself, and something of every beast she made still lives in her.
 
 To look upon her, Ruthala seems calm. She is patient and quiet, still as a hunter in the long grass, and she can wait for days without a flicker of impatience. But it is a predator's calm. Beneath it, the wild is coiled tight, all the speed and hunger and fury of every beast she ever made, waiting for the moment to spring. Those who have seen that moment come do not forget it.
 
@@ -34,7 +34,7 @@ Ruthala did not weather the flood entirely alone. During the long centuries of [
 
 [[Koruk]], who had watched his own children drown, granted her a small claim upon the dragons. They are his and always will be, but a dragon is a beast as surely as any wolf, and so a part of each of them now answers to the Huntress as well.
 
-[[Roktra]] granted her the same over the land-born peoples he shaped. They remain his, but in his slow and steady way, Roktra reminded the heavens of something mortals often forget: that man, for all his cities and his ships, is but a beast too.
+[[Roktra]] gave her ground. Every island he held above the waves became a refuge for her beasts, and in his slow and steady way he guards those refuges still. He has never asked for anything in return.
 
 Neither gift restored what the flood took from her, but both were given freely, and Ruthala has never forgotten it.
 
@@ -82,4 +82,4 @@ Ruthala's champion is hidden, and few rumors ever surround them. Those that do a
 - **[[Caruilla]]**: An endless squabble over who owns the seals, the seabirds and the crabs upon the beach. It has gone on for ages, and neither will ever give an inch.
 - **[[Urset]]**: She helps her rangers steal from his hoard, and he hates her for it. Ruthala does not much care.
 - **[[Koruk]]**: Two gods who help their children steal back what [[Urset]] took. During the flood, he granted her a small claim upon his dragons, and Ruthala respects the dragon god now more than she ever did in the old days.
-- **[[Roktra]]**: Every island he held above the waves is a refuge for her beasts, and he granted her a share in the land-born peoples besides. She owes him more than she has ever said aloud.
+- **[[Roktra]]**: Every island he held above the waves is a refuge for her beasts, and he has loved the peoples she shaped as if they were his own. She owes him more than she has ever said aloud.

@@ -18,7 +18,7 @@ He is a quiet god, and a stubborn one, and he is endlessly steady. When the stor
 ## The Holder of the Islands  
 When the waters began to rise, Roktra could not turn them back. The sea belonged to [[Aquilla]], and by the First Law it lay beyond his reach. But the land was his, and he would not let it go without a fight.
 
-Through all the long centuries of [[Aquilla's Wrath]], Roktra held the line. He heaved great shelves of stone up from below, lifted the mountains ever higher and braced the land against the climbing tide, refusing to let it slip beneath the waves. He could not save it all. The world lost far more than it kept, and some islands would have stood without him. But many would not. A great many of the islands where mortals live today rise above the sea only because Roktra refused, century after century, to let them sink.
+Through all the long centuries of [[Aquilla's Wrath]], Roktra held the line. He fought hardest in the first terrible centuries of the torrent, when the tidal waves tore whole coastlines away in a morning. Through all the slow ages after, he heaved great shelves of stone up from below, lifted the mountains ever higher and braced the land against the climbing tide, refusing to let it slip beneath the waves. He could not save it all. The world lost far more than it kept, and some islands would have stood without him. But many would not. A great many of the islands where mortals live today rise above the sea only because Roktra refused, century after century, to let them sink.
 
 ## Fire From the Deep  
 Even now, Roktra has not surrendered a single inch more than he must. Every so often, far out at sea, the water begins to boil. The sky darkens with ash, the waves glow red from below, and out of fire and smoke a new island rises from the deep. These are Roktra's gifts, new dry land torn back from the sea, and among the land-born, the birth of a new island is a holy thing, spoken of for generations.
@@ -29,7 +29,7 @@ Many believe the flood must have weakened Roktra, that every drowned mile of lan
 The truth is that there is far more earth in the world than there is water upon it, and Roktra may well be one of the mightiest of all the gods. He simply has never felt the need to show it.
 
 ## The Land-Born  
-The land-born races are Roktra's own children in all but blood: the peoples who have always made their homes in stone and soil, and who suffered most when the land drowned. The dwarves above all lost their ancient mountain holds and deep mines to the flood, and many of their clans are now scattered across the islands, digging what little rock remains above the waves.
+The land-born races are Roktra's own children in all but blood. It was [[Ruthala]] who shaped them, but they made their homes in his stone and soil, in his mountains and his deep places, and the old earth god came to love them as his own. They suffered most when the land drowned. The dwarves above all lost their ancient mountain holds and deep mines to the flood, and many of their clans are now scattered across the islands, digging what little rock remains above the waves.
 
 In an island world, stone and ore have become precious things. Metal is scarce, miners are honored, and the boldest of them now dig beneath the sea itself, sinking shafts and lowering diving bells into the drowned mines of old. It is dangerous work in dark water, and the sea folk rarely welcome it.
 
@@ -58,4 +58,4 @@ Roktra's champion is hidden, and few have ever thought to wonder about them. Lik
 - **[[Ostin]]**: [[Ostin|Ostin's]] diving bells and engines reach the drowned mines that Roktra still watches over. The patient god and the restless one get along far better than anyone expected.
 - **[[Arkaius]]**: Roktra stood beside [[Arkaius]] through all the ages of his rule, never wavering, and he mourns him still in his own silent way.
 - **[[Ellehwin]]**: He has given [[Ellehwin|Ellehwin's]] rule the same unshaken loyalty he gave her father. When the halls of the gods are in turmoil, she knows that Roktra, at least, will not move.
-- **[[Ruthala]]**: When the flood stripped the wild from her, Roktra granted her a share in the land-born peoples he shaped. Man, he reminded the heavens, is but a beast too.
+- **[[Ruthala]]**: She shaped the land-born, and he took them in. When the flood stripped the wild from her, Roktra gave her the one thing he had to give: the islands he held above the waves, a refuge for every beast she had left.

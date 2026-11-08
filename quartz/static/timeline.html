@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Ages of the World</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+  :root {
+    --light: #faf8f8; --lightgray: #e5e5e5; --gray: #b8b8b8; --darkgray: #4e4e4e;
+    --dark: #2b2b2b; --secondary: #284b63; --tertiary: #84a59d;
+    --highlight: rgba(143, 159, 169, 0.15);
+    --muted: #66666b;
+    --era0: #7f77dd; --era1: #1d9e75; --era2: #d85a30; --era3: #ba7517;
+    --turn: #d85a30; --today: #284b63; --session: #84a59d;
+    color-scheme: light;
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --light: #161618; --lightgray: #393639; --gray: #646464; --darkgray: #d4d4d4;
+    --dark: #ebebec; --secondary: #9bb6c8; --tertiary: #84a59d;
+    --highlight: rgba(143, 159, 169, 0.15);
+    --muted: #ababb0;
+    --era0: #9a93ea; --era1: #3fbf95; --era2: #ee8a5f; --era3: #e0a24a;
+    --turn: #ee8a5f; --today: #9bb6c8; --session: #84a59d;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--light); color: var(--darkgray);
+    font-family: "Source Sans 3", "Source Sans Pro", system-ui, sans-serif;
+    font-size: 16px; line-height: 1.4;
+  }
+  body.embedded { background: transparent; }
+  .wrap { max-width: 1400px; margin: 0 auto; padding: 4px 2px 12px; }
+  h1 { font-family: "Schibsted Grotesk", system-ui, sans-serif; color: var(--dark); margin: 0; font-size: 1.7rem; line-height: 1.1; }
+  .head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
+  .now { color: var(--secondary); font-size: .95rem; }
+  .label { font-family: "Schibsted Grotesk", sans-serif; font-size: .8rem; letter-spacing: .06em; color: var(--muted); margin: 0 0 4px; }
+
+  /* Overview */
+  .overview { position: relative; border: 1px solid var(--lightgray); border-radius: 8px; padding: 6px 8px 4px; margin-bottom: 12px; cursor: pointer; user-select: none; touch-action: none; }
+  .overview svg { display: block; width: 100%; height: 86px; overflow: visible; }
+  .overview text { font-size: 11px; fill: var(--muted); font-family: "Source Sans 3", system-ui, sans-serif; }
+  .overview .eraName { fill: var(--darkgray); font-size: 11.5px; }
+
+  /* Main line */
+  .main { position: relative; overflow-x: auto; overflow-y: hidden; border: 1px solid var(--lightgray); border-radius: 8px; cursor: grab; scrollbar-width: thin; }
+  .main.dragging { cursor: grabbing; }
+  .track { position: relative; height: 330px; }
+  .band { position: absolute; top: 8px; height: 22px; border-radius: 4px; font-family: "Schibsted Grotesk", sans-serif; font-size: .82rem; color: #fff; padding: 2px 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-decoration: none; }
+  .line { position: absolute; left: 0; height: 2px; background: var(--gray); }
+  .dot { position: absolute; width: 11px; height: 11px; margin: -5.5px 0 0 -5.5px; border-radius: 50%; background: var(--dark); border: 2px solid var(--light); }
+  .bar { position: absolute; height: 10px; margin-top: -5px; border-radius: 5px; opacity: .85; }
+  .stem { position: absolute; width: 1px; background: var(--gray); }
+  .card {
+    position: absolute; width: 150px; padding: 6px 8px; border-radius: 6px;
+    background: var(--light); border: 1px solid var(--lightgray); border-left: 3px solid var(--c, var(--gray));
+    text-decoration: none; color: var(--darkgray); display: block;
+  }
+  a.card:hover, a.card:focus-visible { border-color: var(--gray); border-left-color: var(--c); outline: none; }
+  .card .d { font-size: .78rem; color: var(--muted); }
+  .card .t { font-family: "Schibsted Grotesk", sans-serif; font-weight: 500; color: var(--dark); font-size: .9rem; line-height: 1.2;
+             display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .card.plain { border-left-style: dashed; }
+  .card .s { display: none; font-size: .85rem; margin-top: 3px; }
+  .card { z-index: 2; }
+  .marker { z-index: 1; position: absolute; width: 0; border-left: 2px dashed var(--turn); }
+  .marker.today { border-left: 2px solid var(--today); }
+  .mlabel { position: absolute; font-size: .75rem; color: var(--muted); white-space: nowrap; transform: translateX(-50%); background: var(--light); padding: 0 4px; border-radius: 3px; }
+  .sess { position: absolute; height: 7px; min-width: 7px; margin-top: -3.5px; border-radius: 4px; background: var(--session); cursor: pointer; }
+  .edge { position: absolute; font-size: .8rem; color: var(--muted); white-space: nowrap; font-style: italic; }
+  .tip { position: fixed; z-index: 10; max-width: 280px; padding: 7px 9px; border-radius: 6px; font-size: .88rem;
+         background: var(--light); color: var(--darkgray); border: 1px solid var(--gray); pointer-events: none; display: none; }
+  .tip b { font-family: "Schibsted Grotesk", sans-serif; font-weight: 500; color: var(--dark); display: block; }
+  .msg { color: var(--muted); padding: 12px 4px; }
+  .embedded h1 { display: none; }
+  .embedded .head { justify-content: flex-end; }
+
+  /* Phone: the main line runs down the page */
+  .vertical .main { overflow: visible; border: none; cursor: default; }
+  .vertical .track { height: auto; }
+  .vertical .card { width: auto; }
+  .vertical .card .s { display: block; }
+  .vertical .card .t { -webkit-line-clamp: 3; }
+  .vertical .band { top: auto; left: 0; width: 22px; height: auto; padding: 6px 2px; writing-mode: vertical-rl; transform: rotate(180deg); text-align: center; }
+  .vertical .line { width: 2px; height: auto; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <h1>The Ages of the World</h1>
+    <div class="now" id="now"></div>
+  </div>
+  <div class="label">TO SCALE</div>
+  <div class="overview" id="ov" title="Click or drag to move the timeline below"><svg id="ovsvg"></svg></div>
+  <div class="label" id="mainLabel">THE TALE, EVENT BY EVENT</div>
+  <div class="main" id="main"><div class="track" id="track"></div></div>
+  <div class="msg" id="msg">Gathering the ages…</div>
+</div>
+<div class="tip" id="tip"></div>
+<script>
+// ---- Where the site lives -----------------------------------------------------
+const SITE = (() => {
+  const p = location.pathname; const i = p.indexOf("/static/");
+  if (i >= 0) return location.origin + p.slice(0, i + 1);
+  return "https://jak-k-kos.github.io/Oceana/";
+})();
+const TIMELINE_FILE = "World Events/The Ages of the World.md";
+const TIMELINE_TITLE = "The Ages of the World";
+const SESSION_FOLDER = "Session Notes/";
+
+// ---- Theme: follow the Quartz site's light/dark toggle --------------------------
+const root = document.documentElement;
+function parentTheme() {
+  try { if (window.parent !== window) return window.parent.document.documentElement.getAttribute("saved-theme"); } catch (e) {}
+  return null;
+}
+function applyTheme() {
+  const t = parentTheme() || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  root.setAttribute("data-theme", t);
+}
+applyTheme();
+try {
+  if (window.parent !== window) {
+    document.body.classList.add("embedded");
+    new MutationObserver(applyTheme).observe(window.parent.document.documentElement, { attributes: true, attributeFilter: ["saved-theme"] });
+  }
+} catch (e) {}
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", applyTheme);
+
+// ---- Dates ----------------------------------------------------------------------
+// Time "t" is measured in years: year 1, Desca 1 is t = 0; 1 PAC, Desca 1 is t = -1.
+let MONTHS = ["Desca", "Macis", "Calra", "Osca"], MLEN = [25, 25, 25, 25], YLEN = 100;
+const DATE = String.raw`(?:about\s+)?(\d+)(\s*PAC)?(?:-([A-Za-z]+)-(\d+))?`;
+const RANGE_RE = new RegExp(`^\\s*${DATE}(?:\\s+to\\s+${DATE})?\\s*:\\s*`, "i");
+const ERA_RE = new RegExp(`^(.*?):\\s*(?:(time out of mind)|${DATE})(?:\\s+to\\s+${DATE}|\\s+(onward))?`, "i");
+
+function toT(year, pac, month, day, end) {
+  const y = pac ? -year : year;
+  const base = y < 0 ? y + 1 : y;
+  let frac;
+  if (month != null) {
+    const mi = MONTHS.findIndex(m => m.toLowerCase() === month.toLowerCase());
+    if (mi < 0) frac = end ? 0.99 : 0.5;
+    else { let d = 0; for (let i = 0; i < mi; i++) d += MLEN[i]; frac = (d + (+day - 1)) / YLEN; }
+  } else frac = end ? 0.99 : 0.5;
+  return base - 1 + frac;
+}
+function fmtT(t) {
+  const base = Math.floor(t) + 1, y = base <= 0 ? base - 1 : base;
+  return y < 0 ? `${-y} PAC` : `${y}`;
+}
+function parseDatePair(m, off) {
+  // m: regex match, off: index of first group of the pair
+  const a = m[off], pa = !!m[off + 1], ma = m[off + 2], da = m[off + 3];
+  const b = m[off + 4], pb = m[off + 5], mb = m[off + 6], db = m[off + 7];
+  const t = toT(+a, pa, ma, da, false);
+  let tEnd = null;
+  if (b != null) tEnd = toT(+b, pb ? true : (pa && !mb ? pa : !!pb), mb, db, true);
+  return { t, tEnd };
+}
+
+// ---- Reading the published timeline note ------------------------------------------
+async function getJSON(u) { const r = await fetch(u, { cache: "no-cache" }); if (!r.ok) throw new Error(u); return r.json(); }
+async function getText(u) { const r = await fetch(u, { cache: "no-cache" }); if (!r.ok) throw new Error(u); return r.text(); }
+
+function entries(index) { return Object.entries(index).map(([k, v]) => ({ slug: v.slug || k, ...v })); }
+
+function firstSentence(s) { const m = s.match(/^(.+?[.!?])(\s|$)/); return (m ? m[1] : s).replace(/[.]$/, ""); }
+
+function parsePage(html, pageUrl) {
+  const doc = new DOMParser().parseFromString(html, "text/html");
+  const art = doc.querySelector("article") || doc.body;
+  const eras = [], items = [];
+  let era = null;
+  const abs = h => { try { return new URL(h, pageUrl).href; } catch (e) { return null; } };
+  for (const el of art.querySelectorAll("h2, li")) {
+    if (el.tagName === "H2") {
+      const text = el.textContent.replace(/\s+/g, " ").trim();
+      const m = text.match(ERA_RE);
+      const a = el.querySelector("a.internal, a[href]:not([role='anchor'])");
+      era = { name: m ? m[1].trim() : text, href: a ? abs(a.getAttribute("href")) : null, idx: eras.length, tStart: null, tEnd: null };
+      if (m) {
+        if (!m[2] && m[3] != null) era.tStart = toT(+m[3], !!m[4], m[5], m[6], false);
+        if (m[7] != null) era.tEnd = toT(+m[7], !!m[8], m[9], m[10], true);
+      }
+      eras.push(era);
+      continue;
+    }
+    if (!era || el.closest("li") !== el) continue;
+    if (el.parentElement && el.parentElement.closest("li")) continue; // skip nested lists
+    const text = el.textContent.replace(/\s+/g, " ").trim();
+    if (!text) continue;
+    const m = text.match(RANGE_RE);
+    let t = null, tEnd = null, label = "", rest = text;
+    if (m) {
+      ({ t, tEnd } = parseDatePair(m, 1));
+      label = m[0].replace(/:\s*$/, "").trim();
+      rest = text.slice(m[0].length).trim();
+    }
+    const a = el.querySelector("a.internal, a[href]");
+    const href = a ? abs(a.getAttribute("href")) : null;
+    const linkText = a ? a.textContent.trim() : "";
+    let title, summary;
+    if (linkText && rest.startsWith(linkText)) {
+      title = linkText;
+      summary = rest.slice(linkText.length).replace(/^[\s.:,;-]+/, "").trim();
+    } else {
+      title = firstSentence(rest);
+      summary = rest.slice(rest.indexOf(title) + title.length).replace(/^[\s.:,;-]+/, "").trim();
+    }
+    if (!m && rest.includes(":")) { // undated lines like "[[Note]]: summary"
+      const i = rest.indexOf(":");
+      title = linkText || rest.slice(0, i).trim();
+      summary = rest.slice(i + 1).trim();
+    }
+    items.push({ era: era.idx, t, tEnd, label, title, summary, href, idx: items.length });
+  }
+  return { eras, items };
+}
+
+function parseSessions(index) {
+  const re = /in-?\s?game\s+date\s*:\s*((?:about\s+)?\d+(?:\s*PAC)?(?:-[A-Za-z]+-\d+)?(?:\s+to\s+\d+(?:\s*PAC)?(?:-[A-Za-z]+-\d+)?)?)/i;
+  const out = [];
+  for (const e of entries(index)) {
+    const fp = e.filePath || "";
+    if (!fp.startsWith(SESSION_FOLDER) || /\/index\.md$/i.test(fp)) continue;
+    const m = (e.content || "").match(re);
+    if (!m) continue;
+    const mm = (m[1] + ":").match(RANGE_RE);
+    if (!mm) continue;
+    const { t, tEnd } = parseDatePair(mm, 1);
+    out.push({ t, tEnd, title: e.title || fp, href: SITE + e.slug, label: m[1] });
+  }
+  return out.sort((a, b) => a.t - b.t);
+}
+
+// ---- Layout ---------------------------------------------------------------------------
+let DATA = null, TODAY = null, TODAY_LABEL = "", VERT = false, POS = [], ANCH = [];
+const mainEl = document.getElementById("main"), track = document.getElementById("track");
+const tip = document.getElementById("tip");
+const css = n => getComputedStyle(root).getPropertyValue(n).trim();
+const eraColor = i => `var(--era${Math.min(i, 3)})`;
+
+function layoutPositions() {
+  const it = DATA.items;
+  const card = VERT ? 0 : 160;
+  const base = VERT ? 14 : 34, k = VERT ? 9 : 20;
+  const minStep = VERT ? 0 : 52;
+  const start = VERT ? 10 : 150;
+  POS = [];
+  const heights = VERT ? measureHeights() : null;
+  for (let i = 0; i < it.length; i++) {
+    if (i === 0) { POS.push(start); continue; }
+    const a = it[i - 1], b = it[i];
+    let gap = base;
+    if (a.t != null && b.t != null) gap += k * Math.log(1 + Math.max(0, b.t - a.t));
+    else gap += k * 1.5;
+    let p = POS[i - 1] + gap;
+    if (VERT) p = Math.max(p, POS[i - 1] + heights[i - 1] + 10);
+    else {
+      p = Math.max(p, POS[i - 1] + minStep);
+      if (i >= 2) p = Math.max(p, POS[i - 2] + card + 10);
+    }
+    POS.push(p);
+  }
+  ANCH = it.map((x, i) => x.t != null ? [x.t, POS[i]] : null).filter(Boolean);
+  // ranges also anchor their ends so long ranges keep some length
+}
+function measureHeights() {
+  const probe = document.createElement("div");
+  probe.style.cssText = "position:absolute;visibility:hidden;left:0;top:0;";
+  probe.style.width = Math.max(160, mainEl.clientWidth - 70) + "px";
+  document.body.appendChild(probe);
+  const hs = DATA.items.map(x => {
+    const c = cardEl(x); c.style.position = "static"; probe.appendChild(c);
+    const h = c.offsetHeight; c.remove(); return h;
+  });
+  probe.remove(); return hs;
+}
+function xOf(t) {
+  if (!ANCH.length) return 0;
+  if (t <= ANCH[0][0]) return ANCH[0][1] - Math.min(60, (ANCH[0][0] - t) * 0.5);
+  for (let i = 1; i < ANCH.length; i++) {
+    const [t0, x0] = ANCH[i - 1], [t1, x1] = ANCH[i];
+    if (t <= t1) return t1 === t0 ? x1 : x0 + (x1 - x0) * (t - t0) / (t1 - t0);
+  }
+  const [tl, xl] = ANCH[ANCH.length - 1];
+  return xl + Math.min(80, (t - tl) * 4);
+}
+function tOf(x) {
+  if (!ANCH.length) return 0;
+  if (x <= ANCH[0][1]) return ANCH[0][0];
+  for (let i = 1; i < ANCH.length; i++) {
+    const [t0, x0] = ANCH[i - 1], [t1, x1] = ANCH[i];
+    if (x <= x1) return x1 === x0 ? t1 : t0 + (t1 - t0) * (x - x0) / (x1 - x0);
+  }
+  return ANCH[ANCH.length - 1][0];
+}
+
+function el(tag, cls, style) { const e = document.createElement(tag); if (cls) e.className = cls; if (style) Object.assign(e.style, style); return e; }
+function cardEl(x) {
+  const c = el(x.href ? "a" : "div", "card" + (x.href ? "" : " plain"));
+  if (x.href) { c.href = x.href; c.target = "_top"; }
+  c.style.setProperty("--c", eraColor(x.era));
+  const d = el("div", "d"); d.textContent = x.label || "Time out of mind";
+  const t = el("div", "t"); t.textContent = x.title;
+  const s = el("div", "s"); s.textContent = x.summary;
+  c.append(d, t, s);
+  c.addEventListener("mouseenter", ev => showTip(ev, x));
+  c.addEventListener("mousemove", moveTip);
+  c.addEventListener("mouseleave", hideTip);
+  c.addEventListener("focus", ev => showTip(ev, x));
+  c.addEventListener("blur", hideTip);
+  return c;
+}
+function showTip(ev, x) {
+  if (VERT || !x.summary) return;
+  tip.innerHTML = ""; const b = el("b"); b.textContent = x.title; tip.append(b, document.createTextNode(x.summary));
+  tip.style.display = "block"; moveTip(ev);
+}
+function moveTip(ev) {
+  const r = ev.target.getBoundingClientRect ? ev.target.getBoundingClientRect() : { left: 0, bottom: 0 };
+  const x = ev.clientX || r.left, y = ev.clientY || r.bottom;
+  tip.style.left = Math.min(window.innerWidth - tip.offsetWidth - 8, x + 12) + "px";
+  tip.style.top = Math.min(window.innerHeight - tip.offsetHeight - 8, y + 14) + "px";
+}
+function hideTip() { tip.style.display = "none"; }
+
+function eraRange(e, i) {
+  const items = DATA.items.filter(x => x.era === i);
+  const first = items.length ? POS[items[0].idx] : null, last = items.length ? POS[items[items.length - 1].idx] : null;
+  let a = e.tStart != null ? xOf(e.tStart) : (first != null ? first - 40 : null);
+  let b = e.tEnd != null ? xOf(e.tEnd) : (last != null ? last + 40 : null);
+  return [a, b];
+}
+
+function renderMain() {
+  track.innerHTML = "";
+  const it = DATA.items;
+  if (!it.length) return;
+  const endPad = 170;
+  const total = POS[POS.length - 1] + endPad;
+  if (VERT) renderVertical(total); else renderHorizontal(total);
+}
+
+function renderHorizontal(total) {
+  const W = Math.max(total, xOf(TODAY ?? -Infinity) + 120), H = 330, LY = 186;
+  track.style.width = W + "px"; track.style.height = H + "px";
+  // era bands
+  DATA.eras.forEach((e, i) => {
+    let [a, b] = eraRange(e, i);
+    if (a == null && b == null) return;
+    if (a == null) a = 40; if (b == null) b = W - 40;
+    a = Math.max(40, a); b = Math.min(W - 40, Math.max(b, a + 40));
+    const band = el(e.href ? "a" : "div", "band", { left: a + "px", width: (b - a) + "px", background: eraColor(i) });
+    if (e.href) { band.href = e.href; band.target = "_top"; }
+    band.textContent = e.name; track.append(band);
+  });
+  // line
+  track.append(el("div", "line", { top: LY + "px", width: W + "px" }));
+  // edge arrows
+  const l = el("div", "edge", { left: "8px", top: (LY + 6) + "px" }); l.textContent = "‹ time out of mind"; track.append(l);
+  const r = el("div", "edge", { right: "8px", top: (LY + 6) + "px" }); r.textContent = "the tale goes on ›"; track.append(r);
+  // turning marker
+  addMarker(xOf(0), 34, H - 58, "PAC | Year 1", false, LY);
+  // ranges
+  DATA.items.forEach(x => { if (x.t != null && x.tEnd != null) {
+    const a = xOf(x.t), b = xOf(x.tEnd);
+    track.append(el("div", "bar", { left: a + "px", width: Math.max(10, b - a) + "px", top: LY + 1 + "px", background: eraColor(x.era) }));
+  }});
+  // cards
+  DATA.items.forEach((x, i) => {
+    const p = POS[i];
+    const up = i % 2 === 0;
+    track.append(el("div", "dot", { left: POS[i] + "px", top: LY + 1 + "px" }));
+    const c = cardEl(x); c.style.left = (p - 75) + "px";
+    if (up) { c.style.bottom = (H - LY + 34) + "px"; track.append(el("div", "stem", { left: p + "px", top: (LY - 34) + "px", height: "34px" })); }
+    else { c.style.top = (LY + 40) + "px"; track.append(el("div", "stem", { left: p + "px", top: LY + "px", height: "40px" })); }
+    track.append(c);
+  });
+  // sessions
+  DATA.sessions.forEach(s => {
+    const a = xOf(s.t), b = s.tEnd != null ? xOf(s.tEnd) : a;
+    const m = el("a", "sess", { left: a - 3 + "px", width: Math.max(7, b - a + 6) + "px", top: (LY + 16) + "px" });
+    m.href = s.href; m.target = "_top"; m.title = `${s.title} (${s.label})`;
+    track.append(m);
+  });
+  // today
+  if (TODAY != null) addMarker(xOf(TODAY), 34, H - 58, "Today", true, LY);
+}
+function addMarker(x, top, h, text, today, LY) {
+  track.append(el("div", "marker" + (today ? " today" : ""), { left: x + "px", top: top + "px", height: h + "px" }));
+  const lb = el("div", "mlabel", { left: x + "px", top: (top + h + 2) + "px" }); lb.textContent = text; track.append(lb);
+}
+
+function renderVertical(total) {
+  const H = total, LX = 40;
+  track.style.width = "100%"; track.style.height = H + "px";
+  DATA.eras.forEach((e, i) => {
+    let [a, b] = eraRange(e, i);
+    if (a == null && b == null) return;
+    if (a == null) a = 0; if (b == null) b = H;
+    a = Math.max(0, a); b = Math.min(H, Math.max(b, a + 40));
+    const band = el(e.href ? "a" : "div", "band", { top: a + "px", height: (b - a) + "px", background: eraColor(i) });
+    if (e.href) { band.href = e.href; band.target = "_top"; }
+    band.textContent = e.name; track.append(band);
+  });
+  track.append(el("div", "line", { left: LX + "px", top: "0px", height: H + "px" }));
+  const z = xOf(0);
+  track.append(el("div", "marker", { left: "24px", top: z + "px", height: "0", width: "calc(100% - 24px)", borderLeft: "none", borderTop: "2px dashed var(--turn)" }));
+  const zl = el("div", "mlabel", { left: "50%", top: (z - 10) + "px" }); zl.textContent = "PAC | Year 1"; track.append(zl);
+  DATA.items.forEach(x => { if (x.t != null && x.tEnd != null) {
+    const a = xOf(x.t), b = xOf(x.tEnd);
+    track.append(el("div", "bar", { left: (LX - 4) + "px", width: "10px", top: a + "px", height: Math.max(10, b - a) + "px", marginTop: "0", background: eraColor(x.era) }));
+  }});
+  DATA.items.forEach((x, i) => {
+    track.append(el("div", "dot", { left: (LX + 1) + "px", top: POS[i] + 12 + "px" }));
+    const c = cardEl(x); Object.assign(c.style, { left: (LX + 18) + "px", right: "4px", top: POS[i] + "px" });
+    track.append(c);
+  });
+  DATA.sessions.forEach(s => {
+    const a = xOf(s.t), b = s.tEnd != null ? xOf(s.tEnd) : a;
+    const m = el("a", "sess", { left: (LX + 8) + "px", top: a + "px", height: Math.max(7, b - a) + "px", width: "7px", marginTop: "0" });
+    m.href = s.href; m.target = "_top"; m.title = `${s.title} (${s.label})`; track.append(m);
+  });
+  if (TODAY != null) {
+    const y = xOf(TODAY);
+    track.append(el("div", "marker today", { left: "24px", top: y + "px", height: "0", width: "calc(100% - 24px)", borderLeft: "none", borderTop: "2px solid var(--today)" }));
+  }
+}
+
+// ---- Overview (to scale) ----------------------------------------------------------------
+const ov = document.getElementById("ov"), svg = document.getElementById("ovsvg");
+let OVD = null;
+function renderOverview() {
+  const W = svg.clientWidth || 600, H = 86, LY = 44;
+  const ts = DATA.items.filter(x => x.t != null).flatMap(x => x.tEnd != null ? [x.t, x.tEnd] : [x.t]);
+  if (TODAY != null) ts.push(TODAY);
+  DATA.sessions.forEach(s => ts.push(s.t));
+  let t0 = Math.min(...ts), t1 = Math.max(...ts);
+  const span = Math.max(1, t1 - t0);
+  const lead = span * 0.035, tail = span * 0.02;
+  const L = 18, R = W - 18;
+  const d0 = t0 - lead, d1 = t1 + tail;
+  const X = t => L + (R - L) * (t - d0) / (d1 - d0);
+  OVD = { X, d0, d1, L, R };
+  const ns = "http://www.w3.org/2000/svg";
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`); svg.innerHTML = "";
+  const add = (tag, attrs, text) => { const e = document.createElementNS(ns, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (text != null) e.textContent = text; svg.append(e); return e; };
+  // era segments of the through line
+  DATA.eras.forEach((e, i) => {
+    const a = e.tStart != null ? X(e.tStart) : L, b = e.tEnd != null ? X(e.tEnd) : R;
+    const col = css(`--era${Math.min(i, 3)}`);
+    add("line", { x1: Math.max(L, a), x2: Math.min(R, Math.max(b, a + 3)), y1: LY, y2: LY, stroke: col, "stroke-width": 4, "stroke-dasharray": e.tStart == null ? "4 3" : "" });
+  });
+  // era names
+  DATA.eras.forEach((e, i) => {
+    const a = e.tStart != null ? X(e.tStart) : L, b = e.tEnd != null ? X(e.tEnd) : R;
+    const mid = Math.min(R - 4, Math.max(L + 4, (Math.max(L, a) + Math.min(R, b)) / 2));
+    const anchor = (b - a) < 60 ? (mid > W / 2 ? "end" : "start") : "middle";
+    add("text", { x: anchor === "end" ? R : anchor === "start" ? L : mid, y: 14, "text-anchor": anchor, class: "eraName" }, e.name);
+  });
+  // edge arrows
+  add("text", { x: 2, y: LY + 4, "text-anchor": "start" }, "‹");
+  add("text", { x: W - 2, y: LY + 4, "text-anchor": "end" }, "›");
+  const narrow = W < 520;
+  if (!narrow) {
+    add("text", { x: L, y: 82, "text-anchor": "start" }, "time out of mind");
+    add("text", { x: R, y: 82, "text-anchor": "end" }, "the tale goes on");
+  }
+  const dark = css("--dark");
+  // ticks and range bars
+  DATA.items.forEach(x => {
+    if (x.t == null) return;
+    if (x.tEnd != null) add("rect", { x: X(x.t), y: LY - 4, width: Math.max(3, X(x.tEnd) - X(x.t)), height: 8, rx: 2, fill: dark });
+    else add("line", { x1: X(x.t), x2: X(x.t), y1: LY - 7, y2: LY + 7, stroke: dark, "stroke-width": 1 });
+  });
+  // sessions
+  DATA.sessions.forEach(s => add("rect", { x: X(s.t) - 1.5, y: LY + 10, width: Math.max(3, (s.tEnd != null ? X(s.tEnd) - X(s.t) : 0) + 3), height: 4, rx: 1, fill: css("--session") }));
+  // PAC turning
+  const z = X(0);
+  add("line", { x1: z, x2: z, y1: 22, y2: 64, stroke: css("--turn"), "stroke-width": 1.5, "stroke-dasharray": "3 2" });
+  add("text", { x: z - 4, y: 70, "text-anchor": "end" }, "PAC");
+  add("text", { x: z + 4, y: 70, "text-anchor": "start" }, narrow ? "Year 1" : "Year 1 onward");
+  // today
+  if (TODAY != null) {
+    const x = X(TODAY);
+    add("line", { x1: x, x2: x, y1: 22, y2: 64, stroke: css("--today"), "stroke-width": 2 });
+    add("text", { x: x, y: 70, "text-anchor": "end" }, "today");
+  }
+  // viewport window
+  OVD.win = add("rect", { x: 0, y: 24, width: 10, height: 40, rx: 3, fill: "none", stroke: css("--turn"), "stroke-width": 1.2 });
+  updateWindow();
+}
+function visibleRange() {
+  if (VERT) {
+    const r = mainEl.getBoundingClientRect();
+    const top = Math.max(0, -r.top), bottom = Math.min(r.height, window.innerHeight - r.top);
+    return [tOf(top), tOf(Math.max(top, bottom))];
+  }
+  return [tOf(mainEl.scrollLeft), tOf(mainEl.scrollLeft + mainEl.clientWidth)];
+}
+function updateWindow() {
+  if (!OVD || !OVD.win) return;
+  const [a, b] = visibleRange();
+  const xa = OVD.X(a), xb = OVD.X(b);
+  OVD.win.setAttribute("x", Math.max(OVD.L - 4, xa - 2));
+  OVD.win.setAttribute("width", Math.max(6, xb - xa + 4));
+}
+function jumpTo(clientX) {
+  const r = svg.getBoundingClientRect();
+  const W = svg.clientWidth || r.width;
+  const x = (clientX - r.left) * (W / r.width);
+  const t = OVD.d0 + (OVD.d1 - OVD.d0) * (x - OVD.L) / (OVD.R - OVD.L);
+  const p = xOf(t);
+  if (VERT) {
+    const top = mainEl.getBoundingClientRect().top + window.scrollY + p - window.innerHeight / 3;
+    window.scrollTo({ top, behavior: "auto" });
+  } else mainEl.scrollLeft = p - mainEl.clientWidth / 2;
+  updateWindow();
+}
+let ovDrag = false;
+ov.addEventListener("pointerdown", e => { if (!OVD) return; ovDrag = true; ov.setPointerCapture(e.pointerId); jumpTo(e.clientX); });
+ov.addEventListener("pointermove", e => { if (ovDrag) jumpTo(e.clientX); });
+ov.addEventListener("pointerup", () => { ovDrag = false; });
+mainEl.addEventListener("scroll", updateWindow, { passive: true });
+window.addEventListener("scroll", updateWindow, { passive: true });
+
+// drag the main line sideways with the mouse
+let mDrag = null;
+mainEl.addEventListener("pointerdown", e => {
+  if (VERT || e.pointerType !== "mouse" || e.button !== 0) return;
+  mDrag = { x: e.clientX, s: mainEl.scrollLeft, moved: false };
+});
+window.addEventListener("pointermove", e => {
+  if (!mDrag) return;
+  const dx = e.clientX - mDrag.x;
+  if (Math.abs(dx) > 4) { mDrag.moved = true; mainEl.classList.add("dragging"); }
+  if (mDrag.moved) mainEl.scrollLeft = mDrag.s - dx;
+});
+window.addEventListener("pointerup", () => { if (mDrag) { setTimeout(() => mainEl.classList.remove("dragging"), 0); } });
+mainEl.addEventListener("click", e => { if (mDrag && mDrag.moved) { e.preventDefault(); e.stopPropagation(); } mDrag = null; }, true);
+mainEl.addEventListener("wheel", e => {
+  if (VERT) return;
+  if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) { mainEl.scrollLeft += e.deltaY; e.preventDefault(); }
+}, { passive: false });
+
+// ---- Draw everything ---------------------------------------------------------------------
+function draw(keepCentre) {
+  if (!DATA) return;
+  const centreT = keepCentre && ANCH.length ? tOf(VERT ? 0 : mainEl.scrollLeft + mainEl.clientWidth / 2) : null;
+  VERT = window.innerWidth < 640;
+  document.body.classList.toggle("vertical", VERT);
+  layoutPositions();
+  renderMain();
+  renderOverview();
+  if (!VERT) {
+    const target = centreT != null ? centreT : (TODAY != null ? TODAY : null);
+    mainEl.scrollLeft = target != null ? xOf(target) - mainEl.clientWidth / 2 : 0;
+  }
+  updateWindow();
+  fitFrame();
+}
+// When embedded in a note on the site, grow the iframe to fit (same origin only).
+function fitFrame() {
+  try {
+    const f = window.frameElement;
+    if (f) f.style.height = (document.documentElement.scrollHeight + 4) + "px";
+  } catch (e) {}
+}
+let rt = null;
+window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => draw(true), 150); });
+new MutationObserver(() => { if (DATA) renderOverview(); }).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+
+async function start() {
+  const msg = document.getElementById("msg");
+  try {
+    // Calendar: today's date and month names
+    try {
+      const cal = await getJSON(SITE + "static/calendarium.json");
+      const c = (cal.calendars || []).find(x => x.id === cal.defaultCalendar) || (cal.calendars || [])[0];
+      if (c) {
+        const ms = (c.static && c.static.months) || [];
+        if (ms.length) { MONTHS = ms.map(m => m.name); MLEN = ms.map(m => m.length || 25); YLEN = MLEN.reduce((a, b) => a + b, 0); }
+        const cur = c.current;
+        if (cur && cur.year != null) {
+          const pac = cur.year < 0;
+          TODAY = toT(Math.abs(cur.year), pac, MONTHS[cur.month], cur.day, false);
+          TODAY_LABEL = `${pac ? Math.abs(cur.year) + " PAC" : cur.year}-${MONTHS[cur.month]}-${cur.day}`;
+          document.getElementById("now").textContent = "Today: " + TODAY_LABEL;
+        }
+      }
+    } catch (e) {}
+    const index = await getJSON(SITE + "static/contentIndex.json");
+    const all = entries(index);
+    const page = all.find(e => e.filePath === TIMELINE_FILE) || all.find(e => (e.title || "").trim() === TIMELINE_TITLE);
+    if (!page) throw new Error("The timeline note isn't published yet.");
+    const pageUrl = SITE + page.slug;
+    const html = await getText(pageUrl);
+    const data = parsePage(html, pageUrl);
+    data.sessions = parseSessions(index);
+    if (!data.items.length) throw new Error("The timeline note has no events to show.");
+    DATA = data;
+    msg.style.display = "none";
+    draw(false);
+  } catch (e) {
+    fitFrame();
+    msg.textContent = "The ages could not be gathered right now. " + (e && e.message && !e.message.startsWith("http") ? e.message : "Try again once the site has finished publishing.");
+  }
+}
+start();
+</script>
+</body>
+</html>

@@ -4,7 +4,7 @@ A yearly festival celebrating the end of the flood, held in the name of [[Aquill
 **Honors:** [[Aquilla]] and [[The Tidebreakers]]  
 **First held:** 2574-Calra-12
 ## Overview  
-For more than two thousand years, the seas rose. Then, on approximately 2574-Macis-8, they stopped. Word of the victory won by [[The Tidebreakers]] took more than a month to cross the world, and when it finally reached the islands on 2574-Calra-12, harbors erupted in celebration. That day became the first festival of Aquilla's Mercy, and it celebrates the end of the flood and the new age to come: the [[Aquilla's Mercy Era|Era of Aquilla's Mercy]].
+For more than three thousand years, the seas rose. Then, on approximately 2574-Macis-8, they stopped. Word of the victory won by [[The Tidebreakers]] took more than a month to cross the world, and when it finally reached the islands on 2574-Calra-12, harbors erupted in celebration. That day became the first festival of Aquilla's Mercy, and it celebrates the end of the flood and the new age to come: the [[Aquilla's Mercy Era|Era of Aquilla's Mercy]].
 
 It is the first holiday [[Aquilla]] has ever had, and it is a festival of pure, unbridled joy. The long drowning of the world is over, and the islands celebrate as they never have before.
 
@@ -18,7 +18,7 @@ In every harbor, the townsfolk paint or carve a mark upon their docks and sea wa
 Sailors have long poured a measure of fresh water into the sea before a voyage, as an offering to [[Aquilla]]. On Aquilla's Mercy, the whole town does it together. Young and old gather at the tideline, each with a single cup of fresh water, and pour it into the sea as one, in thanks for the mercy at last shown.
 
 ## Songs of the Tidebreakers  
-Every tavern is full of songs about [[The Tidebreakers]], though no two taverns sing quite the same version. The ballads are brand new, written in the days since the news arrived, and with every telling the deeds grow grander and the sea folk guardians grow more fearsome. Bards dedicate their first song of the night to [[Lyandris]], as always, and their second, more often than not, to the Tidebreakers.
+Every tavern is full of songs about [[The Tidebreakers]], though no two taverns sing quite the same version. The ballads are brand new, written in the days since the news arrived, and with every telling the deeds grow grander, the sea folk guardians grow more fearsome, and the champion of the deep grows more terrible still. Bards dedicate their first song of the night to [[Lyandris]], as always, and their second, more often than not, to the Tidebreakers.
 
 ## The Toast  
 At the height of the celebration, every cup in the harbor is raised at once, and the whole town cries out together:

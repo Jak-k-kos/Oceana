@@ -10,7 +10,7 @@ The new god of magic. Patron of mages and the greedy.
 - The Miser of the Lower Halls
 - Mortimer (used only as an insult, and never where he might hear it)
 ## Pre-Divinity  
-Urset was born Mortimer Greenbe in 107 PAC in Veygard, a nation long since lost to the waves and remembered now only as his birthplace. Mortimer was the eighth prince of the Veygard royal family. Generations of inbreeding among the nobility, and his mother's heavy drug and alcohol use while she carried him, left him horribly deformed. Barely able to walk or complete simple tasks, and shunned by his family and the court, he spent his early life in a hidden wing of the castle under the constant care of servants.
+Urset was born Mortimer Greenbe in 107 PAC in Veygard, the last great nation of the old world. Veygard had stood against the flood for four hundred years by the time he was born, raising walls and wards against the tidal waves, taking in refugees by the thousand and meeting the sea folk on its shores. Mortimer was the eighth prince of the Veygard royal family. Generations of inbreeding among the nobility, and his mother's heavy drug and alcohol use while she carried him, left him horribly deformed. Barely able to walk or complete simple tasks, and shunned by his family and the court, he spent his early life in a hidden wing of the castle under the constant care of servants.
 
 Confined to his rooms, he turned to books as his only escape, and to magic above all else. He spent nearly every waking hour studying arcane texts, and by the age of fifteen he had become self-sufficient, using magic to meet the needs his body could not. His talent was unparalleled: he became an archmage at twenty-three, an unprecedented achievement even in the age before the [[Arcanus Collapse]]. He soon made himself indispensable to the kingdom, and at thirty-six he was named Head Magos of Veygard.
 
@@ -23,11 +23,19 @@ Yet not all of it became his. A sliver of [[Arkaius]] slipped from his grasp and
 ## Divinity  
 His ascension reshaped his body, freeing him at last from the deformities that had chained him since birth. Embracing his newfound power, he took the name Urset and rose to the Halls of Divinity to claim his predecessor's place.
 
-His first act as a god was to draw as much of the world's magic into himself as he could hold, for his greed had no end. Cut off from their source, the magic items and mages that had once been plentiful withered and died away. This was the [[Arcanus Collapse]], and the world has counted its years from it ever since.
+His first act as a god was to draw the magic of the world into himself, as much as he could hold, for his greed had no end. Through the rest of that year, the rivers of magic ran dry. Cut off from their source, the magic items and mages that had once been plentiful withered and died away. This was the [[Arcanus Collapse]], and the world has counted its years from it ever since. Without its mages, Veygard's wards went dark, and in [[The Fall of Veygard|the year 41]] the kingdom that had imprisoned him was swallowed by the sea.
 
 Soon after, Urset attempted to force the newly widowed [[Welestia]] to become his bride, believing her his by right as the god of magic. Enraged by his impudence, [[Welestia]] unleashed her wrath upon him. Even with his divine constitution, he was powerless against the full strength she had held back through all the ages of her marriage. The attack left his body burned and crippled. It was only the first storm of a fury that has never ended.
 
 Crippled and shamed, Urset was driven down into the lower Halls of Divinity. He remains there to this day, hoarding the magic he refuses to allow the world to wield. Many believe he waits there still, plotting a divine coup against the gods who refused to accept him.
+
+## The Cruel Heart  
+Urset is as cruel as he is greedy. The drowning of the world never troubled him. Many believe it delighted him. After the Weaver fell, he was one of only two gods who might have reached the cauldron, and he never lifted a finger. When Veygard fell, it is said he watched every moment of it, and laughed. Some even whisper that it is his stolen magic that kept the cauldron pouring all those years, though no one has ever proven it.
+
+%%
+DM Notes:
+- Urset could have broken [[Caruilla|Caruilla's]] shield and taken the magic sealed within the cauldron at any time. He never did, for the drowning of the world delighted him. See [[The Truth of the Cauldron]].
+%%
 
 ## Worship  
 Urset is the patron of mages and of the greedy: those who want more than they have, and will pay any price to get it.

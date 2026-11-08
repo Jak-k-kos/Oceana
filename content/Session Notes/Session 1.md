@@ -1,5 +1,8 @@
 ---
-date: 10/10/2026
-title: The Start of a Voyage
+date: 11-17-26
+Ingame date: 2574-Calra-12
+title: the story begins
+draft:
 ---
-everyone died
+# everyone dies.
+In-game date: 2574-Calra-12

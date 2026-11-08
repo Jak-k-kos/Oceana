@@ -4,6 +4,7 @@ draft:
 hideFolderContent:
 ---
 # [[Calendar]]
+# [[The Ages of the World]]
 # Holidays
 - [[Apiot's Boon]]
 - [[Apiot's Promise]]
@@ -19,8 +20,27 @@ hideFolderContent:
 - [[The Siblings' Dance]]
 - [[The Empty Sky]]
 
-# World events/Eras
-- [[Aquilla's Mercy Era]]
+# Ages
 - [[Aquilla's Slumber]]
 - [[Aquilla's Wrath]]
+- [[Aquilla's Mercy Era]]
+
+# History
+- [[The Shaping of the World]]
+- [[The Golden Age]]
+- [[The Sinking of the Cauldron]]
+- [[The Drowning of Vhaldrun]]
+- [[The Eviction]]
+- [[The Sealing]]
+- [[The Last of the Fiends]]
+- [[The Fall of the Weaver]]
 - [[Arcanus Collapse]]
+- [[The Long Doubt]]
+- [[The Fall of Veygard]]
+- [[The Founding of the Coalition]]
+- [[The Fall of the Azure Empire]]
+- [[The Dragon Queen's Usurpation]]
+- [[The Founding of the Black Tide]]
+- [[The Coming of Powder]]
+- [[The Southern Reclamation]]
+- [[The Breaking of the Cauldron]]

@@ -5,15 +5,35 @@ draft: false
 ---
 %%
 # DM Notes
-- The sirens of the [[Locations/The Widow's Wrath/index|Widow's Wrath]] are the "pale figures" and the singing on dead-calm nights that sailors whisper about. They are cut off from the empire, and with the merfolk of the Wrath they are the only sea folk the party might ever befriend. [[Tyrus]] rows out to trade with them now and then, and the Wrath kills any sea folk who stray too close to [[Locations/The Widow's Wrath/Rayskaya/index|Rayskaya]].
+- The sirens of the [[Locations/The Widow's Wrath/index|Widow's Wrath]] are the "pale figures" and the singing on dead-calm nights that sailors whisper about. They escaped the Dominion, or descend from those who did. Their daughters were never taken and never taught, and the line that has grown up there carries the same voice without the savagery. With the merfolk of the Wrath, they are the only sea folk the party might ever befriend. Their alignment is their own, not "usually neutral evil." [[Tyrus]] rows out to trade with them now and then, and the Wrath kills any sea folk who stray too close to [[Locations/The Widow's Wrath/Rayskaya/index|Rayskaya]].
+- Dominion sirens have filed, pointed teeth and claws implanted at their coming of age: bone for most, and a metal that never rusts for the strongest voices. In the Widow's Wrath, defectors still carry both, while sirens born free there have ordinary teeth and nails and no Claws or Bite. Treat them as unarmed merfolk if it ever comes to a fight.
 - The song is a natural gift, not spellcasting, so it sits within the low-magic rules.
 - Tactics: outnumbered, sirens pick sailors off one at a time with Whispered Allure, and only sing once the odds are theirs.
 %%
 
 # Siren
-Of all the peoples of the deep, none are so beautiful, and none so feared, as the sirens. Above the waist they seem almost like the folk of the land, pale and slender, with long hair that drifts about them like weed in the current. Below, they are fish, scaled in silver and sea-green, with tails as long again as a man is tall. But look closer, and the beauty fails. Their nails are long and hooked and black as mussel shell, and when they smile they show teeth like a barracuda's, row behind row of needles.
+Of all the peoples of the deep, none are so beautiful, and none so feared, as the sirens. Above the waist they seem almost like the folk of the land, pale and slender, with long hair that drifts about them like weed in the current. Below, they are fish, scaled in silver and sea-green, with tails as long again as a man is tall. Only up close does the beauty falter: their fingers end in long, hooked claws, and when they smile, every tooth is a needle.
 
-They are sea folk, sworn to the great empire beneath the waves, and they speak the common tongue of the land well enough to make it sound like love. A siren does not attack a ship. She empties it. She comes to the hull in the dark, rises at the rail beside a lone sailor on his watch, and whispers to him, sweet and low, until he climbs over the side of his own free will and without a sound. By morning the crew is one man short, and no one heard a thing. Only when the sirens outnumber the crew, or when the sea lies dead and still, do they stop being quiet and sing, and then the whole crew goes to the rail at once.
+## Tales of the Sirens
+No one truly knows where the sirens came from, though every port has its tale. The oldest say they were merfolk once, long ago, until [[Caruilla]] twisted them into something crueler and gave them a voice made for one thing: to sing sailors over the rail and down into the dark. Others say the voice is a curse in their blood, passed down from mother to daughter.
+
+For it is always daughters. No sailor has ever seen a male siren, nor heard of one. With no men of their own, it is said, they steal their mates from the other peoples of the deep, and now and then from the surface, for not every sailor who goes over the rail is eaten. Well, not right away.
+
+Sailors who have killed a siren tell a stranger tale still. Pry at those claws, they say, and some of them are not claws at all, but bone, or a pale metal that shows not a speck of rust, set into the very bones of her fingers. A few old sailors keep one on a cord around their necks. No one can say what it means.
+
+%%In the ports nearest the [[Locations/The Widow's Wrath/index|Widow's Wrath]] there is an odd tale. On the stillest nights, some swear, the sirens out there sing something else entirely, something that made hard men weep at the rail, and no one went over the side.%%
+
+%%
+## Made, Not Born
+The tales are half right. Sirens were merfolk once, until a gift took hold in their blood: a voice that can pierce the most frozen of hearts. It was never meant only for killing. It is a voice for lullabies and laments, for joy and grief and every song between. A siren bears only daughters, and every one of them is a siren.
+
+The [[Sea Folk Waters|Thalassine Dominion]] wastes nothing so useful. Each daughter is taken from her mother at birth and raised apart by the chorus-mothers, for a single purpose. Her teeth are filed into points to tear flesh. When she comes of age, claws are set into her fingertips: bone for most, and for those whose voices are strongest, a metal that never rusts, rarer than anything in the deep. The greater the voice, the longer and crueler the claws. She is taught savagery the way other children are taught to swim, and taught to turn her voice to death: to sing sailors over the rail, to pick a crew apart one by one, and to revel in every moment of it, and to take whatever she wants, her mates included.
+
+The sirens of the [[Locations/The Widow's Wrath/index|Widow's Wrath]] were the ones who fled. Many still carry the Dominion's claws and its filed teeth. Their daughters, born free, carry neither, and their songs are their own.
+%%
+
+## The Empty Ship
+A siren does not attack a ship. She empties it. She speaks the common tongue of the land well enough to make it sound like love. She comes to the hull in the dark, rises at the rail beside a lone sailor on his watch, and whispers to him, sweet and low, until he climbs over the side of his own free will and without a sound. By morning the crew is one man short, and no one heard a thing. Only when the sirens outnumber the crew, or when the sea lies dead and still, do they stop being quiet and sing, and then the whole crew goes to the rail at once.
 
 Wise crews never stand a watch alone. They keep a bell ringing through the long calms, and they stuff their ears with wax or wool when the singing starts.
 
@@ -53,7 +73,9 @@ Wise crews never stand a watch alone. They keep a bell ringing through the long 
 ---
 
 # Siren Chorus-Mother
-Sirens do not hunt alone. They gather in choirs, and each choir is led by a chorus-mother, old and terrible and lovely, whose voice can bend a whole crew at once. Her nails are long as fish-knives, and it is she who drags the crews she has sung over the side down into the dark.
+Sirens do not hunt alone. They gather in choirs, and each choir is led by a chorus-mother, old and terrible and lovely, whose voice can bend a whole crew at once. Her claws are long as fish-knives, and it is she who drags the crews she has sung over the side down into the dark.
+
+%%It is the chorus-mothers who raise the stolen daughters and teach them what they are for. Every siren in a choir was shaped by the one who leads it.%%
 
 | Size   | Type                | Alignment            | CR  |
 | ------ | ------------------- | -------------------- | --- |

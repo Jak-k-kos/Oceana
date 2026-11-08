@@ -18,9 +18,9 @@ His is the orange moon, and it makes its turn across the heavens every forty-two
 He is a methodical god, careful and precise in all he does, measuring twice and building once. Yet beneath that care burns a deep restlessness. Ostin is impatient with the world, impatient with the slow crawl of mortal progress, and impatient most of all with how long it has taken to get where it is.
 
 ## The Long Stillness  
-Before the [[Arcanus Collapse]], the world had no need to invent. Magic lit its lamps, healed its sick and carried its burdens, and what learning existed was built upon it. When [[Urset]] drank the world's magic dry, nearly all of it fell with it.
+In [[The Golden Age]], the world had no need to invent. Magic lit its lamps, healed its sick and carried its burdens, and what learning existed was built upon it. When [[Urset]] drank the world's magic dry, nearly all of it fell with it.
 
-For Ostin, the centuries that followed were a long and bitter wound. Through the dark age of [[Aquilla's Slumber]] and the long drowning of [[Aquilla's Wrath]], he watched mortals forget how to build what they once had, and then crawl, step by painful step, toward what they might build instead. More than two thousand years later, the world has come only a little way, and Ostin has felt every slow inch of it.
+For Ostin, the centuries that followed were a long and bitter wound. Through the dark age after the [[Arcanus Collapse]], deep in the long drowning of [[Aquilla's Wrath]], he watched mortals forget how to build what they once had, and then crawl, step by painful step, toward what they might build instead. Two and a half thousand years later, the world has come only a little way, and Ostin has felt every slow inch of it.
 
 ## The Guiding Hand  
 Ostin cannot simply hand the world its inventions. The First Law binds him as it binds every god, and he can only push so hard. Instead, he guides. A spark of insight in a shipwright's mind, a sudden understanding in a scholar's late-night study, a flaw noticed just in time on a workbench: these are the marks of Ostin's hand.
@@ -51,9 +51,9 @@ On [[The Siblings' Dance]], Ostin and his eldest sister set aside the oldest qua
 [[The Empty Sky]] is the night Ostin's faithful dread most. [[Urset]] hates Ostin above all his siblings, and with every moon dark, his faithful are said to settle old grudges against the workshops that have made magic less needed. On that night the forges are banked, the workshops are locked, and the shipyards keep watch until dawn.
 
 ### Champion  
-Ostin is one of the few gods who has always kept his champions in the open, and every one of them has spent their life pushing to rebuild the lost craft and learning of the world. Some succeeded beyond anyone's hopes, and their work is still in use today. Others aimed too high or too soon, and are remembered more for their failures than their triumphs. One is still honored for the great lenses that light the lighthouses of the islands; another is best remembered for an engine that took half of his workshop with it when it failed. Yet every one of them moved the world a little further forward than they found it.
+Ostin is one of the few gods who has always kept his champions in the open, and every one of them has spent their life pushing to rebuild the lost craft and learning of the world. Some succeeded beyond anyone's hopes, and their work is still in use today. Others aimed too high or too soon, and are remembered more for their failures than their triumphs. One is still honored for the great lenses that light the lighthouses of the islands; another is best remembered for an engine that took half of his workshop with it when it failed. And it was his champion Orrin Blackwell who made the first powder ([[The Coming of Powder]]), and whose name is still carved above the doors of powder magazines across the islands. Yet every one of them moved the world a little further forward than they found it.
 
-His current champion is [[Chief Artificer Lady Beatrix Thorncast]] of the [[Locations/Kingdom of Albryn/index|Kingdom of Albryn]], whose workshops are said to be the finest in the world.
+His current champion is [[Chief Artificer Dame Beatrix Thorncast]] of the [[Locations/Kingdom of Albryn/index|Kingdom of Albryn]], whose workshops are said to be the finest in the world.
 
 ## Relationships
 

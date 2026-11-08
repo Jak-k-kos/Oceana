@@ -23,8 +23,11 @@ Where the other gods took mortal lovers and scattered demigod children across th
 
 [[Welestia]] was never gentle by nature. The hurricanes are older than his death, and many whispered that she was a little mad, and they were not entirely wrong. Arkaius never tried to tame her. He was the eye of her storm, the stillness at its heart, and for love of him she held her fury in check. In those days she sent soft rains to the fields and fair winds to the sails. Since he fell, there has been nothing left to hold her.
 
+## The Silent Weaver  
+For the last five hundred years of his reign, the world drowned beneath him. The cauldron of Magnus poured in the depths, and the tidal waves tore across the lowlands, and of all the gods, Arkaius alone held a domain that could surely have reached it. He did not. When the faithful begged him, he spoke of mortal freedom and mortal courage, of a world that must be left to find its own way. Even in his own day, few agreed on what he meant, and the ages since have only deepened the mystery.
+
 ## The Fall of the Weaver  
-In 1 PAC, Arkaius died. On that same day his champion fell as well, a mortal whose name the ages have since swallowed, and no one knows which of the two fell first. How a god may die at all is a mystery that has never been answered, and the hand that struck him down, if hand it was, has never been found.
+In 1 PAC, Arkaius died. How a god may die at all is a mystery that has never been answered, and the hand that struck him down, if hand it was, has never been found. ([[The Fall of the Weaver]])
 
 As his soul unraveled, a mortal mage named Mortimer Greenbe gathered up its fraying threads and bound them to himself, and rose as the god [[Urset]]. Yet a few threads slipped through his grasping fingers and drifted up to the three moons, so that a little of their father lives on in each of them. Within the year came the [[Arcanus Collapse]], as [[Urset]] drank the magic of the world dry.
 
@@ -36,9 +39,16 @@ The rumors of his murder have never died, though not one has ever been proven.
 - **[[Welestia]]** bears the most blame. Her temper was legend, and her rage after his death was so terrible that many swear no grief alone could have birthed it.
 - **[[Urset]]** gained the most. Some wonder how a mortal mage, locked away in his tower, stood ready at the very moment a god breathed his last.
 - **[[Morvaine]]** is death itself, and some say that no one else could have done it.
-- **[[Koruk]]** was, in those days, as savage and cruel as the chromatic dragons he ruled, and he and Arkaius had clashed more than once. Only in the flood times did the dragon god grow calm, and some wonder whether it was guilt that quieted him.
+- **[[Koruk]]** was, in those days, as savage and cruel as the chromatic dragons he ruled, and he and Arkaius had clashed more than once. Only after the Collapse did the dragon god grow calm, and some wonder whether it was guilt that quieted him.
+- **[[Aquilla]] and [[Caruilla]]**, for the cauldron poured in their waters and filled their seas. Some say one of them, or both together, struck him down to keep it pouring.
 - **[[Tarrakus]]** is named only by the most cynical. The war god is patient and calculating, and the heavens have never been the same since.
 - **Arkaius himself.** A rare few dare to wonder whether the wisest of the gods chose his own ending, and whether he saw something on the horizon that made death the kinder road. No one has ever given a reason why he would.
+
+%%
+DM Notes:
+- His champion was [[Tarek]], who died in the [[Locations/The Widow's Wrath/Rayskaya/The Sealed Temple|Sealed Temple]] on the same day as his god.
+- In his last years, Arkaius had begun to consider ending the flood, despite his long habit of leaving mortals to their own free will. The rumor about the sisters has more truth in its motive than anyone knows. This stands alongside the red herring of [[Welestia|Welestia's]] lightning, and it does not replace it.
+%%
 
 ## The Faithful Few  
 Arkaius is all but forgotten in prayer. Here and there, small mourning cults still light candles in his name and whisper to a god who can no longer hear them. They are few and they are frail, and no blessing has ever answered them, for the dead cannot give what they no longer hold.

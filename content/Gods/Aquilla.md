@@ -10,27 +10,34 @@ Goddess of water. Patron of sailors and fishermen.
 - The Still Sea
 - The Rising Tide
 ## The Still Waters  
-Aquilla shaped the waters of the world: the seas, the rivers and lakes, and the deep, cold places no light has ever reached. In doing so, she took on their aspect, and she has been as changeable as the sea ever since.
+Aquilla shaped the waters of the world: the seas, the rivers and lakes, and the deep, cold places no light has ever reached. In doing so, she took on their aspect, and she has been as cold and unchanging as the deep ever since.
 
 She is known as the coldest of the gods. Aquilla is not cruel. She takes no pleasure in drownings and holds no hatred for mortals. She simply does not feel much for them. If a ship sinks, it sinks. Many find that indifference more frightening than cruelty, for there is no winning the favor of a god who does not care.
 
-She is as temperamental as the tides. She can lie glassy and calm for weeks, then turn violent without warning, and sailors swear they can read her mood in the water. A dead-flat sea, they say, is as much a warning as a storm.
+Sailors know the difference between the sea and its goddess. The waves, the swells and the sudden squalls are [[Welestia|Welestia's]] doing, the storm's wild temper written across the surface. Aquilla is what lies beneath: the dark, still water that was the same a thousand years ago and will be the same a thousand years from now. When the wind dies and the sea goes flat as glass, old sailors say they are looking straight down into Aquilla, and they do not like it.
 
 For ages her domain ended where the land began, hemmed in by the shores of [[Roktra]]. She never forgot that the land was only ever borrowed from her.
 
 ## The Cauldron  
-During the long age after the [[Arcanus Collapse]], now called [[Aquilla's Slumber]] (0-Desca-1 to 257-Osca-25), the mage Magnus the Magnificent set out to end mortal want of water forever. He forged a cauldron that would pour fresh water without end. Something went wrong. Before anyone realized the flooding had even begun, the cauldron had already slipped beneath the waves, pouring endlessly into the sea.
+At the height of [[The Golden Age]], the mage Magnus the Magnificent set out to end mortal want of water forever. He forged a cauldron that would pour fresh water without end. Something went wrong, and in 532 PAC the cauldron broke loose and was flung deep into the sea, still pouring. ([[The Sinking of the Cauldron]])
 
-By the old law of the pantheon, set down when [[Arkaius]] still led the gods and upheld now by [[Ellehwin]], no god may act upon the world beyond their own domain. Only two gods could have reached the cauldron. [[Urset]], whose magic fueled it, would not. Aquilla, whose waters had swallowed it, did not.
+By the First Law, no god may act upon the world beyond their own domain. For five hundred years, the one god who could surely have reached the cauldron was [[Arkaius]], and he did not. After he fell, only two remained. [[Urset]], who held the world's magic, would not. Aquilla, whose waters held the cauldron, did not.
 
 Why she did nothing remains one of the great mysteries of the age. Some say the cauldron was beyond even her reach. Others whisper that she let the seas rise on purpose, or that she had a hand in the flood from the very start, for as the waters climbed, her domain climbed with them, and with every drowned mile of land, Aquilla grew stronger. Aquilla has never answered for it, and no one has ever dared to ask.
 
+%%
+DM Notes:
+- She did not care. [[Caruilla]] was already protecting the cauldron, and Aquilla would not set herself against her little sister for the sake of mortals she does not love. That the flood made her stronger troubled her not at all. See [[The Truth of the Cauldron]].
+%%
+
 ## [[Aquilla's Wrath]]  
-The flood years that followed, from 258-Desca-1 until 2574-Osca-25, are remembered as [[Aquilla's Wrath]]. When the sea folk found the cauldron, they did not destroy it. They guarded it. For centuries they defended it against any who came near, determined to let it pour until every last shore was swallowed and the surface world was drowned for good. The flood came slowly, the tideline creeping a little higher with each generation, so slowly that no one living remembers when it began. Over the centuries, coastlines vanished, islands shrank to nothing, and whole nations sank beneath the waves. The surface races were driven onto the last islands and shallows, while the sea folk claimed the drowned world below.
+The flood years, from 531 PAC-Desca-1 until 2574-Osca-25, are remembered as [[Aquilla's Wrath]]. The sea folk found the cauldron where it fell, and they did not destroy it. They guarded it. For more than three thousand years they defended it against any who came near, determined to let it pour until every last shore was swallowed. It came first as a torrent, with tidal waves taller than towers. After the [[Arcanus Collapse]] it slowed to a creep, the tideline climbing a little higher with every generation. Coastlines vanished, islands shrank to nothing, and whole nations sank beneath the waves. The surface races were driven onto the last islands and shallows, while the sea folk claimed the drowned world below.
+
 ## [[Aquilla's Mercy]]  
-At long last, on approximately 2574-Macis-8, a band of adventurers known as [[The Tidebreakers]] fought their way past the cauldron's guardians on the far side of the world and ended the flooding. The seas have stopped rising. Every harbor knows the Tidebreakers' names, yet many still give their thanks to the goddess, believing it was her mercy that let them succeed. Word took more than a month to reach most of the islands, and so the first festival of [[Aquilla's Mercy]] was celebrated on 2574-Calra-12. The new age that began with the next year bears the same name, the [[Aquilla's Mercy Era]].
+At long last, on approximately 2574-Macis-8, [[The Tidebreakers]] slew the champion of [[Caruilla]] on the far side of the world and destroyed the cauldron ([[The Breaking of the Cauldron]]). The seas have stopped rising. Every harbor knows the Tidebreakers' names, yet many still give their thanks to the goddess, believing it was her mercy that let them succeed. Word took more than a month to reach most of the islands, and so the first festival of [[Aquilla's Mercy]] was celebrated on 2574-Calra-12. The new age that began with the next year bears the same name, the [[Aquilla's Mercy Era]].
+
 ## Worship  
-Aquilla is the patron of sailors and fishermen, and she is respected and feared far more than she is loved. Her worship is not about winning her favor but about keeping her calm, and it is woven into the daily lives of everyone who works the water rather than kept in temples or feast days.
+Aquilla is the patron of sailors and fishermen, and she is respected and feared far more than she is loved. Her worship is not about winning her favor, for she has none to give. It is about respect, and about passing beneath her notice. It is woven into the daily lives of everyone who works the water rather than kept in temples or feast days.
 
 - Sailors pour a measure of fresh water into the sea before setting out. Fresh water is the most precious thing aboard a ship, and giving it up is a true sacrifice.
 - Ships are christened in her name, and many carry her likeness as a figurehead, part prayer and part apology.
@@ -45,6 +52,6 @@ Aquilla's champion, if she has one, has never been revealed. Some sailors swear 
 - **[[Caruilla]]**: Aquilla is fiercely protective of her little sister and utterly tired of her nonsense. She will defend [[Caruilla]] against anyone, then scold her for needing it.
 - **[[Apiot]]**: [[Apiot]] blames her for the drowned forests. Aquilla is unbothered, which only makes it worse.
 - **[[Roktra]]**: Every mile of her sea was once his land. Theirs is among the bitterest rivalries in the pantheon.
-- **[[Welestia]]**: [[Welestia]]'s winds whip up Aquilla's waves. They have become allies without ever meaning to.
+- **[[Welestia]]**: The storm upon the surface and the stillness beneath it. [[Welestia]]'s winds whip up Aquilla's waves, and the two have become allies without ever meaning to.
 - **[[Fennara]]**: Sailors pray to them both, and Aquilla finds [[Fennara]]'s worship of flattery and fortune beneath her.
-- **[[Urset]]**: The only other god who could have stopped the flood. Neither has ever spoken of it.
+- **[[Urset]]**: After the Weaver fell, the only other god who could have stopped the flood. Neither has ever spoken of it.

@@ -115,13 +115,13 @@
             "id": "ID_ab898bea5b3b",
             "isEvent": false,
             "isStartingEra": true,
-            "name": "Pre Arcanus Collapse (PAC)",
+            "name": "Aquilla's Slumber",
             "description": "",
-            "format": "Year {{year}} - {{era_name}}",
+            "format": "{{abs_year}} PAC - {{era_name}}",
             "date": {
-              "year": 2574,
-              "month": 2,
-              "day": 12
+              "year": -532,
+              "month": 3,
+              "day": 25
             },
             "type": "era",
             "category": null
@@ -130,11 +130,11 @@
             "id": "ID_6bc989a99bd9",
             "isEvent": false,
             "isStartingEra": false,
-            "name": "Aquila's Slumber",
+            "name": "Aquilla's Wrath",
             "description": "",
-            "format": "{{era_name}} {{era_year}} {{year}}",
+            "format": "{{abs_year}} PAC - {{era_name}}",
             "date": {
-              "year": 0,
+              "year": -531,
               "month": 0,
               "day": 1
             },
@@ -147,11 +147,11 @@
             "isStartingEra": false,
             "name": "Aquilla's Wrath",
             "description": "",
-            "format": "{{era_name}} {{era_year}} {{year}}",
+            "format": "Year {{year}} - {{era_name}}",
             "date": {
-              "year": 257,
-              "month": 3,
-              "day": 25
+              "year": 1,
+              "month": 0,
+              "day": 1
             },
             "type": "era",
             "category": null
@@ -288,7 +288,7 @@
             ]
           },
           "id": "ID_7a5a4a28d8eb",
-          "note": "World Events/Aquilla's Mercy.md",
+          "note": "World Events/Holidays/Aquilla's Mercy.md",
           "category": "ID_5b58681b7bba",
           "sort": {
             "timestamp": 5e-324,
@@ -308,7 +308,7 @@
             ]
           },
           "id": "ID_5879da397b48",
-          "note": "World Events/HearthFire's Glow.md",
+          "note": "World Events/Holidays/HearthFire's Glow.md",
           "category": "ID_e87b684828eb",
           "sort": {
             "timestamp": 5e-324,
@@ -328,7 +328,7 @@
             ]
           },
           "id": "ID_4a487818bb68",
-          "note": "World Events/HearthFire's Blaze.md",
+          "note": "World Events/Holidays/HearthFire's Blaze.md",
           "category": "ID_e87b684828eb",
           "sort": {
             "timestamp": 5e-324,
@@ -348,7 +348,7 @@
             ]
           },
           "id": "ID_a99a1b393928",
-          "note": "World Events/Apiot's Boon.md",
+          "note": "World Events/Holidays/Apiot's Boon.md",
           "category": "ID_08097b0a985a",
           "sort": {
             "timestamp": 5e-324,
@@ -368,7 +368,7 @@
             ]
           },
           "id": "ID_a98b39394839",
-          "note": "World Events/Apiot's Promise.md",
+          "note": "World Events/Holidays/Apiot's Promise.md",
           "category": "ID_08097b0a985a",
           "sort": {
             "timestamp": 5e-324,
@@ -388,13 +388,300 @@
             ]
           },
           "id": "ID_58885b398b8a",
-          "note": "World Events/Night Of Names.md",
+          "note": "World Events/Holidays/Night Of Names.md",
           "category": "ID_e8f929181a88",
           "sort": {
             "timestamp": 5e-324,
             "order": ""
           },
           "type": "Recurring"
+        },
+        {
+          "name": "The Sinking of the Cauldron",
+          "description": "",
+          "date": {
+            "day": 3,
+            "month": 2,
+            "year": -532
+          },
+          "id": "ID_6706d7e805da",
+          "note": "World Events/History/The Sinking of the Cauldron.md",
+          "category": "ID_30877432d102",
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Date"
+        },
+        {
+          "name": "The Drowning of Vhaldrun",
+          "description": "",
+          "date": {
+            "day": 9,
+            "month": 3,
+            "year": -410
+          },
+          "id": "ID_846a32c3bb81",
+          "note": "World Events/History/The Drowning of Vhaldrun.md",
+          "category": "ID_30877432d102",
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Date"
+        },
+        {
+          "name": "The Eviction",
+          "description": "",
+          "date": {
+            "day": 17,
+            "month": 1,
+            "year": -408
+          },
+          "id": "ID_e3c29b621792",
+          "note": "World Events/History/The Eviction.md",
+          "category": "ID_30877432d102",
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Date"
+        },
+        {
+          "name": "The Sealing",
+          "description": "",
+          "date": {
+            "day": 22,
+            "month": 0,
+            "year": -399
+          },
+          "id": "ID_73c8eb5bb682",
+          "note": "World Events/History/The Sealing.md",
+          "category": "ID_30877432d102",
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Date"
+        },
+        {
+          "name": "The Last of the Fiends",
+          "description": "",
+          "date": {
+            "day": 14,
+            "month": 2,
+            "year": -238
+          },
+          "id": "ID_575ec87a171a",
+          "note": "World Events/History/The Last of the Fiends.md",
+          "category": "ID_30877432d102",
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Date"
+        },
+        {
+          "name": "The Fall of the Weaver",
+          "description": "",
+          "date": {
+            "day": 6,
+            "month": 2,
+            "year": -1
+          },
+          "id": "ID_c826a6fce484",
+          "note": "World Events/History/The Fall of the Weaver.md",
+          "category": "ID_30877432d102",
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Date"
+        },
+        {
+          "name": "Arcanus Collapse",
+          "description": "",
+          "date": {
+            "day": 6,
+            "month": 2,
+            "year": -1
+          },
+          "id": "ID_78dcb74f2134",
+          "note": "World Events/History/Arcanus Collapse.md",
+          "category": "ID_30877432d102",
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Range",
+          "end": {
+            "day": 20,
+            "month": 3,
+            "year": -1
+          }
+        },
+        {
+          "name": "The Long Doubt",
+          "description": "",
+          "date": {
+            "day": 4,
+            "month": 1,
+            "year": 11
+          },
+          "id": "ID_5d2cce8038a3",
+          "note": "World Events/History/The Long Doubt.md",
+          "category": "ID_30877432d102",
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Range",
+          "end": {
+            "day": 20,
+            "month": 3,
+            "year": 31
+          }
+        },
+        {
+          "name": "The Fall of Veygard",
+          "description": "",
+          "date": {
+            "day": 19,
+            "month": 2,
+            "year": 41
+          },
+          "id": "ID_9d5e0853964b",
+          "note": "World Events/History/The Fall of Veygard.md",
+          "category": "ID_30877432d102",
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Date"
+        },
+        {
+          "name": "The Founding of the Coalition",
+          "description": "",
+          "date": {
+            "day": 10,
+            "month": 2,
+            "year": 1052
+          },
+          "id": "ID_50af03b97172",
+          "note": "World Events/History/The Founding of the Coalition.md",
+          "category": "ID_30877432d102",
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Date"
+        },
+        {
+          "name": "The Fall of the Azure Empire",
+          "description": "",
+          "date": {
+            "day": 21,
+            "month": 1,
+            "year": 1325
+          },
+          "id": "ID_2f244f58d669",
+          "note": "World Events/History/The Fall of the Azure Empire.md",
+          "category": "ID_30877432d102",
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Date"
+        },
+        {
+          "name": "The Dragon Queen's Usurpation",
+          "description": "",
+          "date": {
+            "day": 7,
+            "month": 3,
+            "year": 1604
+          },
+          "id": "ID_cbee3772a077",
+          "note": "World Events/History/The Dragon Queen's Usurpation.md",
+          "category": "ID_30877432d102",
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Date"
+        },
+        {
+          "name": "The Founding of the Black Tide",
+          "description": "",
+          "date": {
+            "day": 2,
+            "month": 1,
+            "year": 1875
+          },
+          "id": "ID_021721a278f6",
+          "note": "World Events/History/The Founding of the Black Tide.md",
+          "category": "ID_30877432d102",
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Date"
+        },
+        {
+          "name": "The Coming of Powder",
+          "description": "",
+          "date": {
+            "day": 16,
+            "month": 2,
+            "year": 1975
+          },
+          "id": "ID_4f7fd633dbdd",
+          "note": "World Events/History/The Coming of Powder.md",
+          "category": "ID_30877432d102",
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Date"
+        },
+        {
+          "name": "The Southern Reclamation",
+          "description": "",
+          "date": {
+            "day": 3,
+            "month": 3,
+            "year": 2421
+          },
+          "id": "ID_e131ca3766e4",
+          "note": "World Events/History/The Southern Reclamation.md",
+          "category": "ID_30877432d102",
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Range",
+          "end": {
+            "day": 11,
+            "month": 2,
+            "year": 2567
+          }
+        },
+        {
+          "name": "The Breaking of the Cauldron",
+          "description": "",
+          "date": {
+            "day": 8,
+            "month": 1,
+            "year": 2574
+          },
+          "id": "ID_d58e72e31027",
+          "note": "World Events/History/The Breaking of the Cauldron.md",
+          "category": "ID_30877432d102",
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Date"
         }
       ],
       "categories": [
@@ -417,6 +704,11 @@
           "id": "ID_e8f929181a88",
           "color": "#c9c9c9",
           "name": "Morvaine"
+        },
+        {
+          "id": "ID_30877432d102",
+          "color": "#7a5c3e",
+          "name": "World History"
         }
       ],
       "path": [],

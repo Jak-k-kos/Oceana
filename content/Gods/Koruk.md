@@ -16,13 +16,15 @@ From fire and stone and boundless pride, Koruk shaped the dragons of the world, 
 
 In the elder days, there was no god more feared. Koruk was as savage as the chromatic dragons who basked in his favor, and his children darkened the skies in burning swarms, raiding and plundering wherever they pleased. Again and again he set himself against [[Arkaius]], and more than once he stretched his claws toward the throne of the gods itself.
 
-His scales in those days were black as a burnt-out sky and red as the embers left behind. They are not so now. Through the long centuries of the flood, his fury cooled, and his scales cooled with it, fading slowly to burnished bronze and gold.
+His scales in those days were black as a burnt-out sky and red as the embers left behind. They are not so now. In the long dark after the [[Arcanus Collapse]], his fury cooled, and his scales cooled with it, fading slowly to burnished bronze and gold.
 
 ## The Calming
 
 What gentled the Wyrmfather, no one can truly say, and Koruk has never deigned to tell. The world is left only with its whispers.
 
-Some say it was grief for his children. As the waters climbed, the mountains drowned, and with them went the lairs, the hoards and the proud old dragons who would not abandon them. Others say it was the flood itself, for the long centuries of [[Aquilla's Wrath]] brought a sorrow that seemed to have no end. Wars raged as the sea folk tore the drowning lands from those who dwelt there, and whole civilizations faded into silence as the waters cut them off from the rest of the world. Some believe that even the heart of a dragon god could not stand unmoved before so much death.
+Some say it was grief for his children. The flood had already drowned their mountains, their lairs and their hoards, and the proud old dragons who would not abandon them. Then the Collapse took the rest. Dragons are creatures of magic to their very bones, and when [[Urset]] drank the world dry, their sorcery went with it. It is why Koruk helps them steal it back to this day.
+
+Others say it was the sorrow of the age itself. The floods, the wars and the long dark age after the Collapse brought more death than the world had ever known, and some believe that even the heart of a dragon god could not stand unmoved before it.
 
 And some say it was guilt. Koruk and [[Arkaius]] had clashed for ages, and few have forgotten how often the dragon god reached for the throne that [[Arkaius]] held. When the Weaver fell, many eyes turned to Koruk, and when he grew quiet in the years that followed, many took his silence for a confession. Whether the change was born of guilt or of grief, only Koruk knows. For all their battles, he had loved [[Arkaius]] as a brother. And when a mortal thief named [[Urset]] climbed into the seat where his brother had sat, it was salt pressed into an open wound.
 

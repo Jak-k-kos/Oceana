@@ -25,7 +25,7 @@ She is stern and confident, tough but fair, and she does her best to do what is 
 ## The Law That Binds  
 Ellehwin believes the law exists to protect, and that every law should be an act of justice. That belief was tested as no god's has ever been.
 
-Through all the long centuries of [[Aquilla's Wrath]], Ellehwin watched the world drown and could do nothing. The cauldron lay in [[Aquilla]]'s waters, beyond Ellehwin's domain, and so it was beyond her reach. Neither could she force [[Aquilla]] to act, for the law asks the gods only to keep within their bounds, not to do good within them. The law her father made to protect the world was the very thing that held her back while it sank. It is a wound she carries still.
+From the day she took her father's throne, Ellehwin watched the world drown and could do nothing. The cauldron lay in [[Aquilla]]'s waters, beyond Ellehwin's domain, and so it was beyond her reach. Neither could she force [[Aquilla]] to act, for the law asks the gods only to keep within their bounds, not to do good within them. The law her father made to protect the world was the very thing that held her back while it sank. It is a wound she carries still.
 
 ## Her First Judgment  
 Her first act as head of the pantheon was to pass judgment on [[Urset]]. After [[Welestia]]'s wrath had burned and crippled him, he was too broken to be counted among the upper gods, and Ellehwin sentenced him to the lower Halls of Divinity. [[Urset]] has never forgiven her. To him, the girl who took his throne is the same one who cast him down.

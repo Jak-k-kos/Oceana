@@ -1,5 +1,4 @@
-![[5047a913-3884-47e0-9385-c6cba1cfd1eb.png]]
-
+![[86cf913e-75a9-47f9-a2e4-f6b4623d74da.png]]
 Goddess of sea creatures. Patron of the sea folk.
 
 ## Titles
@@ -26,7 +25,7 @@ Of all she has made, Caruilla loves the sea folk most. She did not bear them, bu
 ## The Rising Tide  
 As the waters climbed through [[Aquilla's Wrath]], Caruilla climbed with them. Every drowned mile became new seas for her creatures and new homes for her sea folk, and over the long centuries her domain swelled until it rivaled the greatest of the gods. Now she wants what she believes she has earned: a seat among the upper gods. The pantheon has not given it to her, and she has not stopped asking.
 
-Whether Caruilla knew that her sea folk guarded Magnus's cauldron through the centuries, or whether she ever cared, no one can say. But when the surface dwellers fought their way through her children to destroy it, and then raised a festival in her sister's name to celebrate, Caruilla was furious. She has sought no vengeance, for she is far too easily distracted for that. But she has not forgiven them either, and her sea folk have noticed.
+Whether Caruilla knew that her sea folk guarded Magnus's cauldron through all those centuries, no one above the waves can say, though few now believe she did not. When [[The Tidebreakers]] slew her champion at the cauldron's side and destroyed it, then raised a festival in her sister's name to celebrate, the surface world braced for her answer. It has not come, at least not yet. No one knows how she has taken it. Some hope she is too easily distracted to hold a grudge for long. Others fear the worst.
 
 ## Worship  
 Among the sea folk, Caruilla's worship is fierce and nearly universal. She is the goddess most of them pray to, and for many the only one.
@@ -34,7 +33,15 @@ Among the sea folk, Caruilla's worship is fierce and nearly universal. She is th
 Above the waves, few worship her at all. Those who do are mostly pearl divers, whalers and coastal villages hoping to stay beneath her notice. At the tideline they leave small offerings of shells, trinkets and brightly colored things that might catch her eye, in hope that the monsters of the deep will pass them by.
 
 ### Champion  
-Caruilla's champion is of the sea folk, for it could hardly be anyone else. Beneath the waves, her champion is known and revered. Above them, they are little more than a sailor's tale.
+Caruilla's champions have always been of the sea folk, for it could hardly be anyone else. Beneath the waves they were known and revered. Above them, they were little more than a sailor's tale, until [[The Breaking of the Cauldron]], when the Tidebreakers found her champion standing guard over the cauldron and slew them. Whether she has chosen another, no one above the waves knows.
+
+%%
+DM Notes:
+- Caruilla knew everything. Her champions guarded the cauldron one after another for more than three thousand years, for every drowned mile of land made her and her sea folk greater.
+- During the [[Arcanus Collapse]], her champion shielded the cauldron with her divine power so [[Urset|Urset's]] draining could not reach the magic within. Some of it was lost before the shield closed, which is why the flood ran slower afterward. See [[The Truth of the Cauldron]].
+- In his last years, [[Arkaius]] had begun to consider ending the flood. That gave her a motive to want him gone. The mystery of his death stays unsolved.
+- Whether she has a new champion is the DM's call.
+%%
 
 ## Relationships
 

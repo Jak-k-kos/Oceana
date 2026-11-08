@@ -16,8 +16,10 @@ The band of adventurers who ended the flood.
 - **Pip Tallowend**: Halfling rogue. The band's scout and lockpick, and by every account the loudest of them in a tavern.
 - **Seren Ashveil**: Half-elf bard. One of the rare bards who can sing true magic loose from [[Urset]]'s hoard, and the first to write a song about their deeds.
 - **Tibbet Gearwhistle**: Gnome artificer. The one who worked out how to break the cauldron, though the ballads rarely give her the credit.
-## The Heroes of the Age  
-On the far side of the world, a band of adventurers did what no one had managed in more than two thousand years. They found the cauldron of Magnus the Magnificent, sunk deep beneath the sea and pouring endlessly into it, fought their way past the sea folk who had guarded it for centuries, and destroyed it. On approximately 2574-Macis-8, the seas stopped rising, and the flood was over.
+## The Heroes of the Age
+For more than three thousand years, the bravest and the most foolish of the surface world went looking for the cauldron of Magnus the Magnificent, and every one of them failed. Then, on the far side of the world, a band of adventurers did what no one else ever could. Each of them was a once-in-a-millennium prodigy of battle, and with Nerith of the Deep to guide them, they found the cauldron, sunk deep beneath the sea and pouring endlessly into it. There they faced its last guardian, the champion of [[Caruilla]] herself, and slew it, and destroyed the cauldron at last. On approximately 2574-Macis-8, the seas stopped rising, and the flood was over. ([[The Breaking of the Cauldron]])
+
+Some whisper that one of the band is the hidden champion of [[Tarrakus]]. If any of them know the truth of it, they have never said.
 
 ## Fame  
 Word of their victory took more than a month to cross the world, but when it arrived, it spread like wildfire. Today, the Tidebreakers' names are known in every harbor, and their deeds are sung in every tavern. They are toasted alongside [[Aquilla]] herself at every festival of [[Aquilla's Mercy]], and children across the islands play at being Tidebreakers on the docks.

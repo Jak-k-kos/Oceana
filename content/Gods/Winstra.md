@@ -43,7 +43,7 @@ Winstra's church is known as the Wayfinders, and it is as much a guild as a fait
 
 Their halls are also a guiding star to the weary. Any traveler who is lost, stranded or far from home may come to a Wayfinder hall and be given a meal, a place to rest, and directions home. Many a sailor who lost their ship has found their way back to their family through a Wayfinder's charts.
 
-Since the end of the flood, the Wayfinders have never been busier. The drowned world is waiting to be rediscovered: new routes, new islands and seas no one has charted in more than two thousand years. If the new age belongs to [[Ostin]] in progress, it belongs just as much to Winstra in exploration.
+Since the end of the flood, the Wayfinders have never been busier. The drowned world is waiting to be rediscovered: new routes, new islands and seas no one has charted in more than three thousand years. If the new age belongs to [[Ostin]] in progress, it belongs just as much to Winstra in exploration.
 
 ## Worship  
 Winstra is the patron of travelers, explorers, mapmakers and dreamers.
