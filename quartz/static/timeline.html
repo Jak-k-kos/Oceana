@@ -569,11 +569,20 @@ function draw(keepCentre) {
 function fitFrame() {
   try {
     const f = window.frameElement;
-    if (f) f.style.height = (document.documentElement.scrollHeight + 4) + "px";
+    if (!f) return;
+    // Measure the content itself, not the page (the page is always at least as tall as the frame).
+    const wrap = document.querySelector(".wrap");
+    const h = Math.ceil(wrap.getBoundingClientRect().bottom + window.scrollY) + 6;
+    if (Math.abs(f.offsetHeight - h) > 2) f.style.height = h + "px";
   } catch (e) {}
 }
-let rt = null;
-window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => draw(true), 150); });
+let rt = null, lastW = window.innerWidth;
+window.addEventListener("resize", () => {
+  // Only a change in width needs a redraw; height changes come from fitting the frame.
+  if (window.innerWidth === lastW) return;
+  lastW = window.innerWidth;
+  clearTimeout(rt); rt = setTimeout(() => draw(true), 150);
+});
 new MutationObserver(() => { if (DATA) renderOverview(); }).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
 
 async function start() {

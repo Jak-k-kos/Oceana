@@ -5,7 +5,7 @@ hideFolderContent:
 ---
 # [[Calendar]]
 # [[The Ages of the World]]
-# Holidays
+# [[World Events/Holidays/index|Holidays]]
 - [[Apiot's Boon]]
 - [[Apiot's Promise]]
 - [[Aquilla's Mercy]]
@@ -13,19 +13,19 @@ hideFolderContent:
 - [[HearthFire's Glow]]
 - [[Night Of Names]]
 
-# Moon Nights
+# [[World Events/Moon Nights/index|Moon Nights]]
 - [[The Oathmoon]]
 - [[The Maker's Moon]]
 - [[The Wayfarer's Moon]]
 - [[The Siblings' Dance]]
 - [[The Empty Sky]]
 
-# Ages
+# [[World Events/Ages/index|Ages]]
 - [[Aquilla's Slumber]]
 - [[Aquilla's Wrath]]
 - [[Aquilla's Mercy Era]]
 
-# History
+# [[World Events/History/index|History]]
 - [[The Shaping of the World]]
 - [[The Golden Age]]
 - [[The Sinking of the Cauldron]]
