@@ -64,8 +64,14 @@
   .card .t { font-family: "Schibsted Grotesk", sans-serif; font-weight: 500; color: var(--dark); font-size: .9rem; line-height: 1.2;
              display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
   .card.plain { border-left-style: dashed; }
+  button.card { font: inherit; text-align: left; cursor: pointer; }
+  .card.group { border-style: double; border-width: 3px 3px 3px 4px; border-color: var(--lightgray); border-left-color: var(--c); }
+  .same { cursor: pointer; }
+  .card.session { border-left-color: var(--session); background: var(--highlight); }
+  .card.session .d::before { content: "Session · "; }
   .card .s { display: none; font-size: .85rem; margin-top: 3px; }
   .card { z-index: 2; }
+  .same { position: absolute; border: 1.5px solid var(--gray); border-radius: 10px; background: var(--highlight); }
   .marker { z-index: 1; position: absolute; width: 0; border-left: 2px dashed var(--turn); }
   .marker.today { border-left: 2px solid var(--today); }
   .mlabel { position: absolute; font-size: .75rem; color: var(--muted); white-space: nowrap; transform: translateX(-50%); background: var(--light); padding: 0 4px; border-radius: 3px; }
@@ -108,6 +114,10 @@ const SITE = (() => {
   if (i >= 0) return location.origin + p.slice(0, i + 1);
   return "https://jak-k-kos.github.io/Oceana/";
 })();
+// A saved copy used when the live site can't be reached (local previews, offline).
+const SNAPSHOT_PAGE = "<html><body><article><p>Every sailor knows the shape of the tale, even if few could tell it straight: the world was dry, then it drowned, and now the drowning has stopped. Here the whole of it is set down in brief, from the shaping of the world to the first bright years of the new age. Each mark along the way opens onto its own tale.</p>\n<h2><a class=\"internal\" href=\"./aquillas-slumber\">Aquilla&#x27;s Slumber</a>: time out of mind to 532 PAC-Osca-25<a role=\"anchor\" aria-hidden=\"true\" href=\"#x\">#</a></h2>\n<ul>\n<li><a class=\"internal\" href=\"./the-shaping-of-the-world\">The Shaping of the World</a>: the gods shape the world, each taking on the aspect of what they made, and crown <a class=\"internal\" href=\"./arkaius\">Arkaius</a> first among them.</li>\n<li><a class=\"internal\" href=\"./the-golden-age\">The Golden Age</a>: the age of magic, when mages were as common as merchants and the seas lay calm within their shores.</li>\n</ul>\n<h2><a class=\"internal\" href=\"./aquillas-wrath\">Aquilla&#x27;s Wrath</a>: 531 PAC-Desca-1 to 2574-Osca-25<a role=\"anchor\" aria-hidden=\"true\" href=\"#x\">#</a></h2>\n<ul>\n<li>532 PAC: <a class=\"internal\" href=\"./the-sinking-of-the-cauldron\">The Sinking of the Cauldron</a>. The cauldron of Magnus the Magnificent breaks loose, and the flooding begins.</li>\n<li>410 PAC: <a class=\"internal\" href=\"./the-drowning-of-vhaldrun\">The Drowning of Vhaldrun</a>. The tidal waves begin to wash through a door into Vhaldrun.</li>\n<li>408 PAC: <a class=\"internal\" href=\"./the-eviction\">The Eviction</a>. The sea rises over the door's threshold, the torrent begins, and the fiends pour out. The Three-Sided War begins.</li>\n<li>403 PAC: <a class=\"internal\" href=\"./the-drowning-of-vhaldrun\">The door to Vhaldrun</a> sinks beneath the waves.</li>\n<li>399 PAC: <a class=\"internal\" href=\"./the-sealing\">The Sealing</a>. The fiends stop coming, no one knows why, and the flood returns at full fury.</li>\n<li>238 PAC: <a class=\"internal\" href=\"./the-last-of-the-fiends\">The Last of the Fiends</a>. The Legions of Vhaldrun are broken to their last remnants.</li>\n<li>107 PAC: Mortimer Greenbe, who will one day be <a class=\"internal\" href=\"./urset\">Urset</a>, is born in Veygard.</li>\n<li>1 PAC: <a class=\"internal\" href=\"./the-fall-of-the-weaver\">The Fall of the Weaver</a>. <a class=\"internal\" href=\"./arkaius\">Arkaius</a> dies.</li>\n<li>1 PAC: <a class=\"internal\" href=\"./arcanus-collapse\">Arcanus Collapse</a>. <a class=\"internal\" href=\"./urset\">Urset</a> drinks the magic of the world dry before the year is out.</li>\n<li>1-Desca-1: By the custom of the record-keepers, the years are counted anew.</li>\n<li>11 to 31: <a class=\"internal\" href=\"./the-long-doubt\">The Long Doubt</a>. The seas are found to be rising still, and the world argues for twenty years before it accepts it.</li>\n<li>41: <a class=\"internal\" href=\"./the-fall-of-veygard\">The Fall of Veygard</a>. The last nation of the old world falls to the sea.</li>\n<li>1052: <a class=\"internal\" href=\"./the-founding-of-the-coalition\">The Founding of the Coalition</a>. A handful of island towns swear to stand together.</li>\n<li>1325: <a class=\"internal\" href=\"./the-fall-of-the-azure-empire\">The Fall of the Azure Empire</a>. Alaric Albryn tears down the Empire and is crowned the first king of Albryn.</li>\n<li>1604: <a class=\"internal\" href=\"./the-dragon-queens-usurpation\">The Dragon Queen&#x27;s Usurpation</a>. Queen Maelis loses her throne to her brother.</li>\n<li>1875: <a class=\"internal\" href=\"./the-founding-of-the-black-tide\">The Founding of the Black Tide</a>. The pirates of the south band together under the first Dread Pirate King.</li>\n<li>1975: <a class=\"internal\" href=\"./the-coming-of-powder\">The Coming of Powder</a>. Orrin Blackwell, champion of <a class=\"internal\" href=\"./ostin\">Ostin</a>, makes the first powder. The sea folk are driven back, and the first raft cities are built.</li>\n<li>2365: The crown of the <a class=\"internal\" href=\"./locations/the-black-tide/index\">Black Tide</a> passes from father to son for the first time.</li>\n<li>2421 to 2567: <a class=\"internal\" href=\"./the-southern-reclamation\">The Southern Reclamation</a>. Under a line of failing kings, the Black Tide is driven back by the Kingdom and the coalition.</li>\n<li>About 2500: <a class=\"internal\" href=\"./locations/smugglers-reach/index\">Smuggler&#x27;s Reach</a>, long cut off, breaks away from the Black Tide.</li>\n<li>2574-Macis-8: <a class=\"internal\" href=\"./the-breaking-of-the-cauldron\">The Breaking of the Cauldron</a>. <a class=\"internal\" href=\"./the-tidebreakers\">The Tidebreakers</a> slay <a class=\"internal\" href=\"./caruilla\">Caruilla&#x27;s</a> champion, destroy the cauldron, and the seas stop rising.</li>\n<li>2574-Calra-12: The first <a class=\"internal\" href=\"./aquillas-mercy\">Aquilla&#x27;s Mercy</a> is held.</li>\n</ul>\n<h2><a class=\"internal\" href=\"./aquillas-mercy-era\">Aquilla&#x27;s Mercy Era</a>: 2575-Desca-1 onward<a role=\"anchor\" aria-hidden=\"true\" href=\"#x\">#</a></h2></article></body></html>";
+const SNAPSHOT_INDEX = {"session-notes/session-1": {"slug": "session-notes/session-1", "filePath": "Session Notes/Session 1.md", "title": "The Start of a Voyage", "content": "In-game date: 2574-Calra-12"}};
+const SNAPSHOT_TODAY = { year: 2574, month: 2, day: 12 };
 const TIMELINE_FILE = "World Events/The Ages of the World.md";
 const TIMELINE_TITLE = "The Ages of the World";
 const SESSION_FOLDER = "Session Notes/";
@@ -238,6 +248,23 @@ function parseSessions(index) {
   return out.sort((a, b) => a.t - b.t);
 }
 
+// Sessions join the main line as their own cards, right after any event on the same date.
+function mergeSessions(data) {
+  const eraOf = t => {
+    let k = 0;
+    data.eras.forEach((e, i) => { if ((e.tStart == null || t >= e.tStart) && (e.tEnd == null || t <= e.tEnd)) k = i; });
+    return k;
+  };
+  const out = data.items.slice();
+  for (const s of data.sessions) {
+    let at = out.length;
+    for (let i = 0; i < out.length; i++) { if (out[i].t != null && out[i].t > s.t) { at = i; break; } }
+    out.splice(at, 0, { era: eraOf(s.t), t: s.t, tEnd: s.tEnd, label: s.label, title: s.title, summary: "", href: s.href, session: true });
+  }
+  out.forEach((x, i) => x.idx = i);
+  data.items = out;
+}
+
 // ---- Layout ---------------------------------------------------------------------------
 let DATA = null, TODAY = null, TODAY_LABEL = "", VERT = false, POS = [], ANCH = [];
 const mainEl = document.getElementById("main"), track = document.getElementById("track");
@@ -246,7 +273,7 @@ const css = n => getComputedStyle(root).getPropertyValue(n).trim();
 const eraColor = i => `var(--era${Math.min(i, 3)})`;
 
 function layoutPositions() {
-  const it = DATA.items;
+  const it = VIEW;
   const card = VERT ? 0 : 160;
   const base = VERT ? 14 : 34, k = VERT ? 9 : 20;
   const minStep = VERT ? 0 : 52;
@@ -275,7 +302,7 @@ function measureHeights() {
   probe.style.cssText = "position:absolute;visibility:hidden;left:0;top:0;";
   probe.style.width = Math.max(160, mainEl.clientWidth - 70) + "px";
   document.body.appendChild(probe);
-  const hs = DATA.items.map(x => {
+  const hs = VIEW.map(x => {
     const c = cardEl(x); c.style.position = "static"; probe.appendChild(c);
     const h = c.offsetHeight; c.remove(); return h;
   });
@@ -301,11 +328,64 @@ function tOf(x) {
   return ANCH[ANCH.length - 1][0];
 }
 
+// Same-day groups: shown as one card until clicked open.
+const OPEN = new Set();
+let VIEW = [];
+const dayKey = t => t.toFixed(3);
+function buildView() {
+  const it = DATA.items, out = [];
+  let i = 0;
+  while (i < it.length) {
+    let j = i;
+    // Fold entries whose dates are written the same (e.g. both "1 PAC", or both "2574-Calra-12").
+    const norm = x => (x.label || "").toLowerCase().replace(/^about\s+/, "").replace(/\s+/g, " ").trim();
+    while (j + 1 < it.length && it[i].t != null && it[j + 1].t != null && norm(it[i]) && norm(it[j + 1]) === norm(it[i])) j++;
+    if (j > i) {
+      const key = dayKey(it[i].t), members = it.slice(i, j + 1);
+      if (OPEN.has(key)) members.forEach(m => out.push({ ...m, groupKey: key }));
+      else out.push({ group: true, key, members, era: members[0].era, t: members[0].t, tEnd: null,
+                      label: members.find(m => !m.session)?.label || members[0].label,
+                      title: `${members.length} notes`, summary: members.map(m => (m.session ? "Session: " : "") + m.title).join(" · ") });
+    } else out.push(it[i]);
+    i = j + 1;
+  }
+  out.forEach((x, k) => x.vi = k);
+  VIEW = out;
+}
+function sameDayRuns() {
+  const runs = [];
+  let i = 0;
+  while (i < VIEW.length) {
+    let j = i;
+    if (VIEW[i].groupKey) while (j + 1 < VIEW.length && VIEW[j + 1].groupKey === VIEW[i].groupKey) j++;
+    if (j > i) runs.push([i, j, VIEW[i].groupKey]);
+    i = j + 1;
+  }
+  return runs;
+}
+function toggleGroup(key) {
+  if (OPEN.has(key)) OPEN.delete(key); else OPEN.add(key);
+  hideTip(); draw(true);
+}
 function el(tag, cls, style) { const e = document.createElement(tag); if (cls) e.className = cls; if (style) Object.assign(e.style, style); return e; }
 function cardEl(x) {
-  const c = el(x.href ? "a" : "div", "card" + (x.href ? "" : " plain"));
+  if (x.group) {
+    const c = el("button", "card group");
+    c.type = "button";
+    c.style.setProperty("--c", eraColor(x.era));
+    const d = el("div", "d"); d.textContent = x.label;
+    const t = el("div", "t"); t.textContent = x.title + " ▸";
+    const s = el("div", "s"); s.textContent = x.summary;
+    c.append(d, t, s);
+    c.addEventListener("click", ev => { ev.preventDefault(); toggleGroup(x.key); });
+    c.addEventListener("mouseenter", ev => showTip(ev, { title: "Same day: click to open", summary: x.summary }));
+    c.addEventListener("mousemove", moveTip);
+    c.addEventListener("mouseleave", hideTip);
+    return c;
+  }
+  const c = el(x.href ? "a" : "div", "card" + (x.session ? " session" : x.href ? "" : " plain"));
   if (x.href) { c.href = x.href; c.target = "_top"; }
-  c.style.setProperty("--c", eraColor(x.era));
+  if (!x.session) c.style.setProperty("--c", eraColor(x.era));
   const d = el("div", "d"); d.textContent = x.label || "Time out of mind";
   const t = el("div", "t"); t.textContent = x.title;
   const s = el("div", "s"); s.textContent = x.summary;
@@ -331,8 +411,8 @@ function moveTip(ev) {
 function hideTip() { tip.style.display = "none"; }
 
 function eraRange(e, i) {
-  const items = DATA.items.filter(x => x.era === i);
-  const first = items.length ? POS[items[0].idx] : null, last = items.length ? POS[items[items.length - 1].idx] : null;
+  const items = VIEW.filter(x => x.era === i);
+  const first = items.length ? POS[items[0].vi] : null, last = items.length ? POS[items[items.length - 1].vi] : null;
   let a = e.tStart != null ? xOf(e.tStart) : (first != null ? first - 40 : null);
   let b = e.tEnd != null ? xOf(e.tEnd) : (last != null ? last + 40 : null);
   return [a, b];
@@ -340,7 +420,7 @@ function eraRange(e, i) {
 
 function renderMain() {
   track.innerHTML = "";
-  const it = DATA.items;
+  const it = VIEW;
   if (!it.length) return;
   const endPad = 170;
   const total = POS[POS.length - 1] + endPad;
@@ -368,12 +448,17 @@ function renderHorizontal(total) {
   // turning marker
   addMarker(xOf(0), 34, H - 58, "PAC | Year 1", false, LY);
   // ranges
-  DATA.items.forEach(x => { if (x.t != null && x.tEnd != null) {
+  VIEW.forEach(x => { if (x.t != null && x.tEnd != null) {
     const a = xOf(x.t), b = xOf(x.tEnd);
     track.append(el("div", "bar", { left: a + "px", width: Math.max(10, b - a) + "px", top: LY + 1 + "px", background: eraColor(x.era) }));
   }});
+  // same-day groups: one pill around their dots
+  sameDayRuns().forEach(([a, b, key]) => {
+    const pill = el("div", "same", { left: (POS[a] - 11) + "px", width: (POS[b] - POS[a] + 22) + "px", top: (LY - 9) + "px", height: "20px" });
+    pill.title = "Same day: click to fold together"; pill.addEventListener("click", () => toggleGroup(key)); track.append(pill);
+  });
   // cards
-  DATA.items.forEach((x, i) => {
+  VIEW.forEach((x, i) => {
     const p = POS[i];
     const up = i % 2 === 0;
     track.append(el("div", "dot", { left: POS[i] + "px", top: LY + 1 + "px" }));
@@ -381,13 +466,6 @@ function renderHorizontal(total) {
     if (up) { c.style.bottom = (H - LY + 34) + "px"; track.append(el("div", "stem", { left: p + "px", top: (LY - 34) + "px", height: "34px" })); }
     else { c.style.top = (LY + 40) + "px"; track.append(el("div", "stem", { left: p + "px", top: LY + "px", height: "40px" })); }
     track.append(c);
-  });
-  // sessions
-  DATA.sessions.forEach(s => {
-    const a = xOf(s.t), b = s.tEnd != null ? xOf(s.tEnd) : a;
-    const m = el("a", "sess", { left: a - 3 + "px", width: Math.max(7, b - a + 6) + "px", top: (LY + 16) + "px" });
-    m.href = s.href; m.target = "_top"; m.title = `${s.title} (${s.label})`;
-    track.append(m);
   });
   // today
   if (TODAY != null) addMarker(xOf(TODAY), 34, H - 58, "Today", true, LY);
@@ -413,19 +491,18 @@ function renderVertical(total) {
   const z = xOf(0);
   track.append(el("div", "marker", { left: "24px", top: z + "px", height: "0", width: "calc(100% - 24px)", borderLeft: "none", borderTop: "2px dashed var(--turn)" }));
   const zl = el("div", "mlabel", { left: "50%", top: (z - 10) + "px" }); zl.textContent = "PAC | Year 1"; track.append(zl);
-  DATA.items.forEach(x => { if (x.t != null && x.tEnd != null) {
+  VIEW.forEach(x => { if (x.t != null && x.tEnd != null) {
     const a = xOf(x.t), b = xOf(x.tEnd);
     track.append(el("div", "bar", { left: (LX - 4) + "px", width: "10px", top: a + "px", height: Math.max(10, b - a) + "px", marginTop: "0", background: eraColor(x.era) }));
   }});
-  DATA.items.forEach((x, i) => {
+  sameDayRuns().forEach(([a, b, key]) => {
+    const pill = el("div", "same", { left: (LX - 9) + "px", width: "20px", top: (POS[a] + 1) + "px", height: (POS[b] - POS[a] + 22) + "px" });
+    pill.title = "Same day: tap to fold together"; pill.addEventListener("click", () => toggleGroup(key)); track.append(pill);
+  });
+  VIEW.forEach((x, i) => {
     track.append(el("div", "dot", { left: (LX + 1) + "px", top: POS[i] + 12 + "px" }));
     const c = cardEl(x); Object.assign(c.style, { left: (LX + 18) + "px", right: "4px", top: POS[i] + "px" });
     track.append(c);
-  });
-  DATA.sessions.forEach(s => {
-    const a = xOf(s.t), b = s.tEnd != null ? xOf(s.tEnd) : a;
-    const m = el("a", "sess", { left: (LX + 8) + "px", top: a + "px", height: Math.max(7, b - a) + "px", width: "7px", marginTop: "0" });
-    m.href = s.href; m.target = "_top"; m.title = `${s.title} (${s.label})`; track.append(m);
   });
   if (TODAY != null) {
     const y = xOf(TODAY);
@@ -555,6 +632,7 @@ function draw(keepCentre) {
   const centreT = keepCentre && ANCH.length ? tOf(VERT ? 0 : mainEl.scrollLeft + mainEl.clientWidth / 2) : null;
   VERT = window.innerWidth < 640;
   document.body.classList.toggle("vertical", VERT);
+  buildView();
   layoutPositions();
   renderMain();
   renderOverview();
@@ -613,10 +691,27 @@ async function start() {
     const data = parsePage(html, pageUrl);
     data.sessions = parseSessions(index);
     if (!data.items.length) throw new Error("The timeline note has no events to show.");
+    mergeSessions(data);
     DATA = data;
     msg.style.display = "none";
     draw(false);
   } catch (e) {
+    // Fall back to the saved copy so the timeline still shows.
+    try {
+      if (TODAY == null) {
+        const c = SNAPSHOT_TODAY;
+        TODAY = toT(c.year, false, MONTHS[c.month], c.day, false);
+        TODAY_LABEL = `${c.year}-${MONTHS[c.month]}-${c.day}`;
+        document.getElementById("now").textContent = "Today: " + TODAY_LABEL;
+      }
+      const data = parsePage(SNAPSHOT_PAGE, SITE + "world-events/the-ages-of-the-world");
+      data.sessions = parseSessions(SNAPSHOT_INDEX);
+      mergeSessions(data);
+      DATA = data;
+      msg.textContent = "Showing a saved copy of the timeline; the live notes could not be reached.";
+      draw(false);
+      return;
+    } catch (e2) {}
     fitFrame();
     msg.textContent = "The ages could not be gathered right now. " + (e && e.message && !e.message.startsWith("http") ? e.message : "Try again once the site has finished publishing.");
   }

@@ -32,7 +32,7 @@ If the timeline will not open here, it waits for you on <a href="https://jak-k-k
 - 1975: [[The Coming of Powder]]. Orrin Blackwell, champion of [[Ostin]], makes the first powder. The sea folk are driven back, and the first raft cities are built.
 - 2365: The crown of the [[Locations/The Black Tide/index|Black Tide]] passes from father to son for the first time.
 - 2421 to 2567: [[The Southern Reclamation]]. Under a line of failing kings, the Black Tide is driven back by the Kingdom and the coalition.
-- About 2500: [[Locations/Smuggler's Reach/index|Smuggler's Reach]], long cut off, breaks away from the Black Tide.
+- 2493: [[Locations/Smuggler's Reach/index|Smuggler's Reach]], long cut off, breaks away from the Black Tide.
 - 2574-Macis-8: [[The Breaking of the Cauldron]]. [[The Tidebreakers]] slay [[Caruilla|Caruilla's]] champion, destroy the cauldron, and the seas stop rising.
 - 2574-Calra-12: The first [[Aquilla's Mercy]] is held.
 
