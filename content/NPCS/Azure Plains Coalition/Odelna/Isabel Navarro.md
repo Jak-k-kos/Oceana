@@ -18,7 +18,7 @@ Relationships:
 - [[Celso Navarro]]: her father
 %%
 Gender: Female
-Appearance: About twenty-two. Small and dark-eyed, in plain clothes she wears to slip out of the house
+Appearance: A human of about twenty-two. Small and dark-eyed, in plain clothes she wears to slip out of the house
 Who: [[Celso Navarro|Celso's]] daughter, who walked out of her own wedding and won't say why.
 known relationships:
 - 

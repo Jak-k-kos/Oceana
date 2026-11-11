@@ -18,7 +18,7 @@ Relationships:
 - [[Gunnar Mecha]]: her master
 %%
 Gender: Female
-Appearance: About twenty-five. Tiny and green, with singed eyebrows, enormous ears, and coils of fuse cord looped over her shoulders
+Appearance: A goblin of about twenty-five. Tiny and green, with singed eyebrows, enormous ears, and coils of fuse cord looped over her shoulders
 Who: The best fuse-maker on [[Locations/Azure Plains Coalition (APC)/Myrrin/index|Myrrin]].
 known relationships:
 - 

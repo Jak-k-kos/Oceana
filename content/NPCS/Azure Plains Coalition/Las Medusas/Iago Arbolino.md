@@ -18,7 +18,7 @@ Relationships:
 - [[Seren Almendro]]: his archon
 %%
 Gender: Male
-Appearance: About fifty. Broad and sun-darkened, with a grey beard and a basket of nuts always on his hip
+Appearance: A human of about fifty. Broad and sun-darkened, with a grey beard and a basket of nuts always on his hip
 Who: The master of [[Gorgona|Gorgona's]] almond groves.
 known relationships:
 - 

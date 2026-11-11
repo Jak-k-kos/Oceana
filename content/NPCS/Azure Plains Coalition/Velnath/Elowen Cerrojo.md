@@ -18,7 +18,7 @@ Relationships:
 - [[Fen Llavero]]: her finest journeyman
 %%
 Gender: Female
-Appearance: Looks about forty. Tall and willowy, with fine scars across her fingertips, spectacles on a chain, and a ring of tiny keys at her belt
+Appearance: A wood elf who looks about forty. Tall and willowy, with fine scars across her fingertips, spectacles on a chain, and a ring of tiny keys at her belt
 Who: The master of the smiths' guild of [[Locations/Azure Plains Coalition (APC)/Velnath/index|Velnath]], and its finest locksmith.
 known relationships:
 - 

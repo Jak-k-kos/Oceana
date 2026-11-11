@@ -18,7 +18,7 @@ Relationships:
 - [[Brannoc Dell]]: her archon
 %%
 Gender: Female
-Appearance: About thirty-five. Small and grey-speckled, with large round eyes and ink-stained talons
+Appearance: An owlin of about thirty-five. Small and grey-speckled, with large round eyes and ink-stained talons
 Who: The archon's record-keeper and clerk.
 known relationships:
 - 

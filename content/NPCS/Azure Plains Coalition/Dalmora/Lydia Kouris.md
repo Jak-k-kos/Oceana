@@ -19,7 +19,7 @@ Relationships:
 Council Candidate: yes
 %%
 Gender: Female
-Appearance: Looks about forty; centuries old. Tall and willowy, gray-green eyes, always in undyed linen
+Appearance: An elf who looks about forty; centuries old. Tall and willowy, gray-green eyes, always in undyed linen
 Who: Head of the oldest family on [[Locations/Azure Plains Coalition (APC)/Dalmora/index|Dalmora]], keeper of vines said to date from before the flood. She casts the deciding vote on almost everything.
 known relationships:
 - 

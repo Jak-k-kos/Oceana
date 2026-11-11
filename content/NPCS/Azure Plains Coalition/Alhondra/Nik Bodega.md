@@ -19,7 +19,7 @@ Relationships:
 - [[Marina Huertas]]: the elder of [[Locations/Azure Plains Coalition (APC)/Belna/index|Belna]], who pays him
 %%
 Gender: Male
-Appearance: About forty. Small and copper-scaled, with soot-blackened claws, a ring of warehouse keys, and a lantern hook at his belt
+Appearance: A kobold of about forty. Small and copper-scaled, with soot-blackened claws, a ring of warehouse keys, and a lantern hook at his belt
 Who: The master of the warehouses of [[Locations/Azure Plains Coalition (APC)/Alhondra/index|Alhondra]], who also keeps its lighthouse.
 known relationships:
 - 

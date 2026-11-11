@@ -18,7 +18,7 @@ Relationships:
 - [[Thalia Esparza]]: the champion he answers to
 %%
 Gender: Male
-Appearance: Mid-forties. Lean and sun-darkened, with calloused hands and a grey-flecked beard
+Appearance: A human in his mid forties. Lean and sun-darkened, with calloused hands and a grey-flecked beard
 Who: He settled on [[Locations/Azure Plains Coalition (APC)/Sparte Torro/index|Sparte Torro]] twenty years ago so his children could be born Spartes, and he rose to run the island's largest estate.
 known relationships:
 - 

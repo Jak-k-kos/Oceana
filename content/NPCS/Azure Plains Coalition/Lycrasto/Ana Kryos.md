@@ -18,7 +18,7 @@ Relationships:
 - [[Nikos Lobo]]: cave-master
 %%
 Gender: Female
-Appearance: Nineteen. Small and wiry, rope burns on her palms, feathers caught in her braid
+Appearance: A human of nineteen. Small and wiry, rope burns on her palms, feathers caught in her braid
 Who: The best rope-miner on the island.
 known relationships:
 - 

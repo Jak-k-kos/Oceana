@@ -18,7 +18,7 @@ Relationships:
 - [[Nerea Krokos]]: the archon who trusts him
 %%
 Gender: Male
-Appearance: Late thirties. Tall and pleasant-faced, with a neatly kept uniform and a new pair of boots
+Appearance: A human in his late thirties. Tall and pleasant-faced, with a neatly kept uniform and a new pair of boots
 Who: The well-liked island constable, in charge of finding the saffron thief.
 known relationships:
 - 

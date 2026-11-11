@@ -18,7 +18,7 @@ Relationships:
 - 
 %%
 Gender: Male
-Appearance: About forty. Wiry and sunburnt, with a shaved head and an old cutlass scar under his beard
+Appearance: A human of about forty. Wiry and sunburnt, with a shaved head and an old cutlass scar under his beard
 Who: One of the newest slaves on the estates.
 known relationships:
 - 

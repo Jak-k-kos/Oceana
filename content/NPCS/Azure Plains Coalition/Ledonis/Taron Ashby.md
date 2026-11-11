@@ -19,7 +19,7 @@ Relationships:
 Council Candidate: yes
 %%
 Gender: Male
-Appearance: About forty-five. Tall and handsome, in a fine waistcoat, with a ready smile and soft hands
+Appearance: A human of about forty-five. Tall and handsome, in a fine waistcoat, with a ready smile and soft hands
 Who: The richest distiller on [[Locations/Azure Plains Coalition (APC)/Ledonis/index|Ledonis]].
 known relationships:
 - 

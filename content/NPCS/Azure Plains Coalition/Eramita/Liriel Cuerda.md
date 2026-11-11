@@ -18,7 +18,7 @@ Relationships:
 - [[Brakka Tambor]]: her drum-maker
 %%
 Gender: Female
-Appearance: Looks about thirty. Slender and bright-eyed, with blossom-pink hair, varnish-stained hands, and a half-carved fiddle neck always in her apron
+Appearance: A spring eladrin who looks about thirty. Slender and bright-eyed, with blossom-pink hair, varnish-stained hands, and a half-carved fiddle neck always in her apron
 Who: The master luthier of [[Locations/Azure Plains Coalition (APC)/Eramita/index|Eramita]].
 known relationships:
 - 

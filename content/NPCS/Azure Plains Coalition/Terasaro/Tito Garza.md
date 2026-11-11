@@ -18,7 +18,7 @@ Relationships:
 - [[Fermina Petras]]: the elder he owes more than he wants to admit
 %%
 Gender: Male
-Appearance: Nineteen. Lanky, scabbed knuckles, better boots than anyone else on the island
+Appearance: A human of nineteen. Lanky, scabbed knuckles, better boots than anyone else on the island
 Who: The best climber on the island.
 known relationships:
 - 

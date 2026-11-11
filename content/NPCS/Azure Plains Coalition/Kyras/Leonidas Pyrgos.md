@@ -19,7 +19,7 @@ Relationships:
 - [[Dimitra Alvarado]]: opponent
 %%
 Gender: Male
-Appearance: Early seventies. Tall and elderly, an immaculate linen suit
+Appearance: A human in his early seventies. Tall and elderly, an immaculate linen suit
 Who: [[Kyras Este|Kyras Este's]] speaker and the richest grove owner on the islands.
 known relationships:
 - 

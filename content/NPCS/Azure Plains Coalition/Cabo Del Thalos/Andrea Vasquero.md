@@ -18,7 +18,7 @@ Relationships:
 - [[Basil Torres]]: her second-in-command
 %%
 Gender: Female
-Appearance: Late thirties. Scarred jaw, sea-green coat, a spyglass that never leaves her hand
+Appearance: A half-orc in her late thirties. Scarred jaw, sea-green coat, a spyglass that never leaves her hand
 Who: Commander of the northern watch. She volunteered for the post, the only commander who ever has.
 known relationships:
 - 

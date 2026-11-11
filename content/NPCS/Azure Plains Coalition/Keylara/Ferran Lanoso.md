@@ -18,7 +18,7 @@ Relationships:
 - [[Benedetta Suberos]]: his archon
 %%
 Gender: Male
-Appearance: About forty-five. Tall and soft-bellied, in a beautifully made wool coat of his own weave
+Appearance: A human of about forty-five. Tall and soft-bellied, in a beautifully made wool coat of his own weave
 Who: The leading weaver on [[Locations/Azure Plains Coalition (APC)/Keylara/index|Keylara]].
 known relationships:
 - 

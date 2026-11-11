@@ -18,7 +18,7 @@ Relationships:
 - [[Brannoc Ironhorn]]: his friend and drinking companion
 %%
 Gender: Male
-Appearance: About thirty-five. Chestnut-coated and broad, with green-stained hands and hemp fibres in his tail
+Appearance: A centaur of about thirty-five. Chestnut-coated and broad, with green-stained hands and hemp fibres in his tail
 Who: The hemp-workers' spokesman, caught between the archon and the brewers.
 known relationships:
 - 

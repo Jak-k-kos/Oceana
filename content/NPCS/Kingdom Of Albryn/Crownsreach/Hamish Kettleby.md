@@ -18,7 +18,7 @@ Relationships:
 - [[Chief Artificer Lady Beatrix Thorncast]]: argues timber against steam with her daily, and respects her more than he will ever say
 %%
 Gender: Male
-Appearance: Looks about sixty. Short and barrel-chested, with a braided rust-red beard full of sawdust and an adze worn smooth by forty years of work
+Appearance: A hill dwarf who looks about sixty. Short and barrel-chested, with a braided rust-red beard full of sawdust and an adze worn smooth by forty years of work
 Who: The master shipwright who has run the royal dockyards for forty years, and who thinks the Chief Artificer's engines are a passing fancy.
 known relationships:
 - 

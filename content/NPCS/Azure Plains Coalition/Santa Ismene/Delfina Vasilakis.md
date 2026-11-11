@@ -20,7 +20,7 @@ Relationships:
 Council Candidate: yes
 %%
 Gender: Female
-Appearance: Looks about forty, though she is much older. Tall and severe, silver-blue robes, bare feet, hair bleached white by years in the salt
+Appearance: A half-elf who looks about forty, though she is much older. Tall and severe, silver-blue robes, bare feet, hair bleached white by years in the salt
 Who: The high priestess of [[Aquilla]], the highest voice of the goddess's faith in the [[Locations/Azure Plains Coalition (APC)/index|coalition]], and ruler of [[Locations/Azure Plains Coalition (APC)/Santa Ismene/index|Santa Ismene]]. Respected rather than loved, much like her goddess.
 known relationships:
 - 

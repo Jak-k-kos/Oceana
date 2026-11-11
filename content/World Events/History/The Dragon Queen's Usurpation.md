@@ -15,5 +15,3 @@ Some three centuries after the founding, Queen Maelis of Albryn found her favor 
 ## The Brother's Crown
 Her brother took the throne from her. It was not the first crown to change hands that way in Albryn's history, nor would it be the last, and the realm went on much as before. Every king and queen of Albryn since has descended from him. The child of the dragon marriage was cut out of the succession, and from that child came House Brassmoor, the only dragonborn house among the nobility of Albryn.
 
-## The Elder Line
-By blood, the Brassmoors descend from the elder queen, which makes theirs the senior royal line. Everyone at court knows it, and no one ever says it aloud.

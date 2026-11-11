@@ -19,7 +19,7 @@ Relationships:
 - [[Nico Bastian]]: youngest
 %%
 Gender: Female
-Appearance: Early fifties. Sturdy and warm-faced, coral beads braided into her hair
+Appearance: A human in her early fifties. Sturdy and warm-faced, coral beads braided into her hair
 Who: The middle elder, and the peacemaker.
 known relationships:
 - 

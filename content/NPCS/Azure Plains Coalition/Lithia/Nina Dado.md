@@ -18,7 +18,7 @@ Relationships:
 - [[Durgin Fornax]]: her kiln-master
 %%
 Gender: Female
-Appearance: About thirty. Small and nimble, with white dust in her dark curls and a set of tiny chisels on her belt
+Appearance: A lightfoot halfling of about thirty. Small and nimble, with white dust in her dark curls and a set of tiny chisels on her belt
 Who: The finest carver of dice and tarrak pieces on [[Locations/Azure Plains Coalition (APC)/Lithia/index|Lithia]].
 known relationships:
 - 

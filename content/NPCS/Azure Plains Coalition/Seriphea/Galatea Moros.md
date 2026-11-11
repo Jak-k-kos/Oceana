@@ -18,7 +18,7 @@ Relationships:
 - [[Remedios Alambique]]: the guild mistress
 %%
 Gender: Female
-Appearance: About forty-five. Tall and dark-haired, in plain, neat clothes
+Appearance: A human of about forty-five. Tall and dark-haired, in plain, neat clothes
 Who: The archon of [[Locations/Azure Plains Coalition (APC)/Seriphea/index|Seriphea]], trying to save the island's pride.
 known relationships:
 - 

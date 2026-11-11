@@ -19,7 +19,7 @@ Relationships:
 Council Member: yes
 %%
 Gender: Female
-Appearance: About fifty. Broad-shouldered and grey-streaked, with soot in the creases of her face and burn scars on her forearms
+Appearance: A human of about fifty. Broad-shouldered and grey-streaked, with soot in the creases of her face and burn scars on her forearms
 Who: A smelter's daughter who became archon. Sits on the coalition council; her seat comes up for renewal in 3 years.
 known relationships:
 - 

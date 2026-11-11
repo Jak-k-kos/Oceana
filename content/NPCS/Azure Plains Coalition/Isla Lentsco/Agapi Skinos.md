@@ -18,7 +18,7 @@ Relationships:
 - [[Dimas Rovira]]: the shipper she doesn't trust
 %%
 Gender: Female
-Appearance: About sixty-five. Burn-scarred hands, a leather apron, a pipe she never lights
+Appearance: A human of about sixty-five. Burn-scarred hands, a leather apron, a pipe she never lights
 Who: She has run her family's kettle-house for forty years.
 known relationships:
 - 

@@ -20,7 +20,7 @@ Relationships:
 Council Candidate: yes
 %%
 Gender: Female
-Appearance: About fifty-five. Tall and grey-haired, with blue-stained arms and an indigo shawl
+Appearance: A human of about fifty-five. Tall and grey-haired, with blue-stained arms and an indigo shawl
 Who: Head of the Anil house for twenty years.
 known relationships:
 - 

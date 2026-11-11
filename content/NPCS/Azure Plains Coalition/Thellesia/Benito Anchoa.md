@@ -18,7 +18,7 @@ Relationships:
 - [[Kesk'tal]]: his leader
 %%
 Gender: Male
-Appearance: About sixty. Short and round, with salt-cracked hands and a fish-scale apron
+Appearance: A human of about sixty. Short and round, with salt-cracked hands and a fish-scale apron
 Who: The master of [[Locations/Azure Plains Coalition (APC)/Thellesia/index|Thellesia's]] anchovy sheds.
 known relationships:
 - 

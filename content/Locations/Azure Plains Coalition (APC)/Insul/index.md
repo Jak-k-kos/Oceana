@@ -14,7 +14,7 @@ Insul is a small, green island in the southeastern [[Locations/Azure Plains Coal
 
 The island's town crowds the shore of Harbour Cove on its western side, its neat grid of streets running back from the docks to the edge of the forest. Market Street runs through its heart, past the town hall and the temples of [[Lyandris]] and [[Roktra]]. The [[Fiore Lumber Company]] and its log yard stand at the town's northern edge, and the Fiore family manor sits in its walled gardens at the town's centre. Down on the waterfront, [[Uncle Johns|Uncle John's]] looks out over the cove, full every night of lumberjacks, oyster farmers and traveling merchants, and the gravesmen's house sits quietly at the water's edge. Beyond the town, fields run east to a deep, sheltered bay where the [[Wellfleet oyster farm|Wellfleet oyster beds]] lie.
 
-Insul is a quiet place, far from the frontier and the sea folk alike, where everyone knows everyone and very little ever happens. Its people like it that way.
+Insul is a quiet place, far from  the frontier and the sea folk alike, where everyone knows everyone and very little ever happens. Its people like it that way.
 
 - [[Fiore Lumber Company]]
 - [[Uncle Johns]]

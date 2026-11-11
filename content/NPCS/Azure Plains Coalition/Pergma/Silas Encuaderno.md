@@ -18,7 +18,7 @@ Relationships:
 - [[Lucia Naipe]]: his card-maker
 %%
 Gender: Male
-Appearance: About fifty. Lean and pale-eyed, with faint green scales along his neck, ink-stained fingers, and a smooth bone tool for creasing folds tucked behind his ear
+Appearance: A yuan-ti of about fifty. Lean and pale-eyed, with faint green scales along his neck, ink-stained fingers, and a smooth bone tool for creasing folds tucked behind his ear
 Who: The master of the binders' guild of [[Locations/Azure Plains Coalition (APC)/Pergma/index|Pergma]].
 known relationships:
 - 

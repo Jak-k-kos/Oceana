@@ -18,7 +18,7 @@ Relationships:
 - [[Orrin Cantero]]: her guild-master
 %%
 Gender: Female
-Appearance: About thirty. Slender and lavender-skinned, with small curled horns, marble dust on her lashes, and a fine rasp behind one ear
+Appearance: A tiefling of about thirty. Slender and lavender-skinned, with small curled horns, marble dust on her lashes, and a fine rasp behind one ear
 Who: The finest young sculptor on [[Locations/Azure Plains Coalition (APC)/Albana/index|Albana]].
 known relationships:
 - 

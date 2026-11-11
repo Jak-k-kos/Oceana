@@ -22,7 +22,7 @@ Relationships:
 Truth: Her frigate engine is nearly ready, and it is not safe. Two apprentices died in the last trial, and the dukes hushed it up, for every one of them wants the engine first.
 %%
 Gender: Female
-Appearance: Looks about fifty. Tall and graceful, with faint bronze scales along her temples and wrists, slit-pupiled amber eyes, dark hair wound up with brass pins, and a scorched leather apron over a gown of fine silk
+Appearance: A yuan-ti who looks about fifty. Tall and graceful, with faint bronze scales along her temples and wrists, slit-pupiled amber eyes, dark hair wound up with brass pins, and a scorched leather apron over a gown of fine silk
 Who: The Chief Artificer of the Crown and the champion of [[Ostin]], whose workshops beside the royal dockyards are said to be the finest in the world. She built the engines and boilers of the [[Locations/Kingdom of Albryn/index|Kingdom's]] rare steam warships, and the lamps of her workshops never go dark.
 Rumors:
 - One of her engines took the roof off a workshop, and she was back at the bench the same afternoon

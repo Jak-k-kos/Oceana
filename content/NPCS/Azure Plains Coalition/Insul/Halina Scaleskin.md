@@ -19,7 +19,7 @@ Relationships:
 - Second hand to [[Elisa Faranz]]
 %%
 Gender: Female
-Appearance: She has light green scales and deep yellow eyes.
+Appearance: A lizardfolk with light green scales and deep yellow eyes.
 Who: She is the mother of Arint, and is the 2nd hand to the head seamstress
 known relationships:
 - [[Arint Scaleskin]] - Son

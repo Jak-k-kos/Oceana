@@ -18,7 +18,7 @@ Relationships:
 - [[Phoebe Saltaro]]: archon
 %%
 Gender: Female
-Appearance: Late seventies. Bent and thin, hands stained purple to the elbow
+Appearance: A human in her late seventies. Bent and thin, hands stained purple to the elbow
 Who: The only person who knows the full recipe for [[Locations/Azure Plains Coalition (APC)/Thalsava/index|Thalsava]] purple.
 known relationships:
 - 

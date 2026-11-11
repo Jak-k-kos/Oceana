@@ -18,7 +18,7 @@ Relationships:
 - [[Tomasa Vigil]]: his captain of the guard
 %%
 Gender: Male
-Appearance: Looks about seventy. Broad and stern, with a braided grey beard, a heavy keyring at his belt, and a jeweler's scale in his pocket
+Appearance: A hill dwarf who looks about seventy. Broad and stern, with a braided grey beard, a heavy keyring at his belt, and a jeweler's scale in his pocket
 Who: The mine-warden for forty years.
 known relationships:
 - 

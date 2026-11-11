@@ -18,7 +18,7 @@ Relationships:
 - [[Tik'ra]]: his master
 %%
 Gender: Male
-Appearance: About forty. Broad and soot-dark, with sparks burned into his sleeves and a whetstone on a cord
+Appearance: A human of about forty. Broad and soot-dark, with sparks burned into his sleeves and a whetstone on a cord
 Who: The master grinder of the mills of [[Locations/Azure Plains Coalition (APC)/Sotven/index|Sotven]].
 known relationships:
 - 

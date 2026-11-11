@@ -19,7 +19,7 @@ Relationships:
 - [[Kostas Ferrero]]: the glassblower whose lenses he buys
 %%
 Gender: Male
-Appearance: Looks about twenty in human terms but is nearly sixty. Tiny, in oversized robes, a homemade spyglass around his neck
+Appearance: A gnome who looks about twenty in human terms but is nearly sixty. Tiny, in oversized robes, a homemade spyglass around his neck
 Who: The monastery's youngest novice.
 known relationships:
 - 

@@ -21,7 +21,7 @@ Relationships:
 Council Member: yes
 %%
 Gender: Female
-Appearance: Twenty-five. Small and wiry, with scars across both forearms. She carries her uncle's trident
+Appearance: A human of twenty-five. Small and wiry, with scars across both forearms. She carries her uncle's trident
 Who: The prodigy who won the island in a duel at fifteen, and the youngest voice on the [[Locations/Azure Plains Coalition (APC)/index|coalition]] council; her seat comes up for renewal in 4 years.
 known relationships:
 - 

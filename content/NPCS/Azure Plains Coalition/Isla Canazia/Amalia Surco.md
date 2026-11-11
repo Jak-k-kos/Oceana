@@ -19,7 +19,7 @@ Relationships:
 - [[Lucrecia Vellano]]: the resort owner buying up her neighbors' land
 %%
 Gender: Female
-Appearance: Mid-thirties. Sturdy and freckled, black soil under her nails, a straw hat she never takes off
+Appearance: A human in her mid thirties. Sturdy and freckled, black soil under her nails, a straw hat she never takes off
 Who: Head of the farmers' guild, whose terraces feed half the island's neighbors.
 known relationships:
 - 

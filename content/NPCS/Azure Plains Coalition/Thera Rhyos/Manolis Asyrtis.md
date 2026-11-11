@@ -18,7 +18,7 @@ Relationships:
 - [[Xanthe Petrou]]: the priestess he believes
 %%
 Gender: Male
-Appearance: About seventy. Small and bent, with brown leathery skin and stained hands
+Appearance: A human of about seventy. Small and bent, with brown leathery skin and stained hands
 Who: The oldest vintner on the island. He says his vines have started tasting of sulfur.
 known relationships:
 - 

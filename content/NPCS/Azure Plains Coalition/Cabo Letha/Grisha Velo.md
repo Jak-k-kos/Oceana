@@ -18,7 +18,7 @@ Relationships:
 - [[Teo Brumal]]: her elder
 %%
 Gender: Female
-Appearance: About thirty. Huge and shaggy, with kelp-stained fur and a long cutting hook
+Appearance: A bugbear of about thirty. Huge and shaggy, with kelp-stained fur and a long cutting hook
 Who: The strongest kelp-cutter on [[Locations/Azure Plains Coalition (APC)/Cabo Letha/index|Cabo Letha]], and one of the crew who came back from the fog.
 known relationships:
 - 

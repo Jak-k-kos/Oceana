@@ -18,7 +18,7 @@ Relationships:
 - [[Marios Kalafatis]]: the archon who pulled him out of the water
 %%
 Gender: Male
-Appearance: Nineteen. Too pale for a diver, with a ring of coral-scrape scars around one wrist
+Appearance: A human of nineteen. Too pale for a diver, with a ring of coral-scrape scars around one wrist
 Who: A young diver who nearly drowned last season and hasn't been quite the same since.
 known relationships:
 - 

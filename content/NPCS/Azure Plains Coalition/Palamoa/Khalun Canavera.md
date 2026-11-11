@@ -18,7 +18,7 @@ Relationships:
 - [[Salma Palmera]]: his basket-mistress
 %%
 Gender: Male
-Appearance: About fifty. Broad and golden-maned, with grey streaks through his mane, frond-weave sandals, and a curved cane-knife
+Appearance: A leonin of about fifty. Broad and golden-maned, with grey streaks through his mane, frond-weave sandals, and a curved cane-knife
 Who: The eldest of the grove families of [[Locations/Azure Plains Coalition (APC)/Palamoa/index|Palamoa]].
 known relationships:
 - 

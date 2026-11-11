@@ -18,7 +18,7 @@ Relationships:
 - [[Andres Kalamos]]: the mill head she suspects
 %%
 Gender: Female
-Appearance: Looks about forty-five. Moss-stained robes, bare feet, leaves in her hair
+Appearance: A half-elf who looks about forty-five. Moss-stained robes, bare feet, leaves in her hair
 Who: Keeper of the forest shrines, who spends more nights in the woods than in town.
 known relationships:
 - 

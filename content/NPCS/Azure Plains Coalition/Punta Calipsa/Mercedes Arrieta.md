@@ -18,7 +18,7 @@ Relationships:
 - [[Andros Velez]]: the captain she keeps
 %%
 Gender: Female
-Appearance: Looks about forty but is much older. Tall, sun-browned, barefoot, flowers and gold in her hair
+Appearance: A half-elf who looks about forty but is much older. Tall, sun-browned, barefoot, flowers and gold in her hair
 Who: The ruler of [[Locations/Azure Plains Coalition (APC)/Punta Calipsa/index|Punta Calipsa]] for as long as anyone remembers.
 known relationships:
 - 

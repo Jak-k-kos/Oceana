@@ -19,7 +19,7 @@ Relationships:
 Council Candidate: yes
 %%
 Gender: Male
-Appearance: About one hundred and fifty. Broad and grey-bearded, with sawdust in his braids and a carpenter's square at his belt
+Appearance: A hill dwarf of about one hundred and fifty. Broad and grey-bearded, with sawdust in his braids and a carpenter's square at his belt
 Who: The chief shipwright of [[Locations/Azure Plains Coalition (APC)/Kallistrata/index|Kallistrata's]] yards.
 known relationships:
 - 

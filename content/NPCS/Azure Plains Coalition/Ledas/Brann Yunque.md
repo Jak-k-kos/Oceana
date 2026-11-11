@@ -18,7 +18,7 @@ Relationships:
 - [[Ignia Fragua]]: his forge-master
 %%
 Gender: Male
-Appearance: About forty. Broad and scarred, with a scorched beard and arms like ship's cables
+Appearance: A human of about forty. Broad and scarred, with a scorched beard and arms like ship's cables
 Who: The best armourer on [[Locations/Azure Plains Coalition (APC)/Ledas/index|Ledas]].
 known relationships:
 - 

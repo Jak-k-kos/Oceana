@@ -19,7 +19,7 @@ Relationships:
 - [[Teodora Gallis]]: his second-best customer
 %%
 Gender: Male
-Appearance: Looks about fifty; nearly two hundred. Short and barrel-chested, a braided beard flecked with sawdust, leather apron over fine clothes
+Appearance: A dwarf who looks about fifty; nearly two hundred. Short and barrel-chested, a braided beard flecked with sawdust, leather apron over fine clothes
 Who: Head of the family that builds [[Locations/Azure Plains Coalition (APC)/Dalmora/index|Dalmora's]] barrels and owns its wine ships, based on [[Dalmora Norte]].
 known relationships:
 - 

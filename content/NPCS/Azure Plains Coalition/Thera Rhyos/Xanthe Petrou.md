@@ -18,7 +18,7 @@ Relationships:
 - [[Kyriakos Thiras]]: the archon who won't listen to her
 %%
 Gender: Female
-Appearance: Looks about fifty. Thin and dark-eyed, barefoot, with ash-grey robes and dirt on her palms
+Appearance: A half-elf who looks about fifty. Thin and dark-eyed, barefoot, with ash-grey robes and dirt on her palms
 Who: Keeper of the temple of [[Roktra]] on the caldera rim.
 known relationships:
 - 

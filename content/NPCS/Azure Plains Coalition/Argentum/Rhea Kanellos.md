@@ -20,7 +20,7 @@ Relationships:
 Fleet Admiral: yes
 %%
 Gender: Female
-Appearance: About fifty. Tall and weathered, with cropped silver hair, faintly gold eyes, an old burn scar along her jaw, and a faded blue coat
+Appearance: An aasimar of about fifty. Tall and weathered, with cropped silver hair, faintly gold eyes, an old burn scar along her jaw, and a faded blue coat
 Who: Commander of the northern squadron, based on [[Locations/Azure Plains Coalition (APC)/Argentum/index|Argentum]], and one of the coalition's three fleet admirals. Across the north she is a hero, the admiral who has held the line against the sea folk for years with too few ships.
 known relationships:
 - 

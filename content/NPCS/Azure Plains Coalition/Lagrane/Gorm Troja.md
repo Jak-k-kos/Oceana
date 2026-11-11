@@ -18,7 +18,7 @@ Relationships:
 - [[Elena Trigo]]: his tally-keeper
 %%
 Gender: Male
-Appearance: About one hundred and sixty. Broad and grey-bearded, with a ledger under his arm, a ring of heavy keys, and chaff in his beard
+Appearance: A hill dwarf of about one hundred and sixty. Broad and grey-bearded, with a ledger under his arm, a ring of heavy keys, and chaff in his beard
 Who: The granary-keeper of [[Locations/Azure Plains Coalition (APC)/Lagrane/index|Lagrane]].
 known relationships:
 - 

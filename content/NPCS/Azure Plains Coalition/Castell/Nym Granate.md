@@ -18,7 +18,7 @@ Relationships:
 - [[Aurelio Almenara]]: his castellan
 %%
 Gender: Male
-Appearance: About ninety. Small, grey-skinned and bald, with a miner's pick and a pouch of rough garnets
+Appearance: A deep gnome of about ninety. Small, grey-skinned and bald, with a miner's pick and a pouch of rough garnets
 Who: The foreman of the old mine beneath the castle of [[Locations/Azure Plains Coalition (APC)/Castell/index|Castell]].
 known relationships:
 - 

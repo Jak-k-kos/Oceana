@@ -19,7 +19,7 @@ Relationships:
 - [[Damiana Verdes]]: the priestess who suspects him
 %%
 Gender: Male
-Appearance: Late thirties. Handsome and restless, burn scars on his hands
+Appearance: A human in his late thirties. Handsome and restless, burn scars on his hands
 Who: The most ambitious of the mill heads. He has been burning the sacred forest at night.
 known relationships:
 - 

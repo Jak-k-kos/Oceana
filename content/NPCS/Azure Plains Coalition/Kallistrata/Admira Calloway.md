@@ -20,7 +20,7 @@ Relationships:
 Council Member: yes
 %%
 Gender: Female
-Appearance: About sixty. Tall and weathered, with a white braid, a shipwright's hands, and a red coat
+Appearance: A human of about sixty. Tall and weathered, with a white braid, a shipwright's hands, and a red coat
 Who: A former master shipwright turned archon. Sits on the coalition council; her seat comes up for renewal in 3 years.
 known relationships:
 - 

@@ -18,7 +18,7 @@ Relationships:
 - [[Bruga Astilla]]: the master of the boatwrights
 %%
 Gender: Female
-Appearance: Looks about forty-five. Tall and grey-skinned, with curled black horns, plain black robes, and ink-stained fingers
+Appearance: A tiefling who looks about forty-five. Tall and grey-skinned, with curled black horns, plain black robes, and ink-stained fingers
 Who: The gravesman of the small temple on [[Locations/Azure Plains Coalition (APC)/Pyras/index|Pyras]].
 known relationships:
 - 

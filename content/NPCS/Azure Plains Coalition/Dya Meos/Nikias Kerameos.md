@@ -20,7 +20,7 @@ Relationships:
 - [[Bartolo Tejeda]]: old friend and opposite
 %%
 Gender: Male
-Appearance: Early eighties. Stooped, clay-spattered, half-blind, with huge, steady hands
+Appearance: A human in his early eighties. Stooped, clay-spattered, half-blind, with huge, steady hands
 Who: The islands' greatest painter of luxury jars.
 known relationships:
 - 

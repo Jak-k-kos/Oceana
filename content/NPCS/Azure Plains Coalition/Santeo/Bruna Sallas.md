@@ -18,7 +18,7 @@ Relationships:
 - [[Anselmo Estrella]]: the abbot who took her in
 %%
 Gender: Female
-Appearance: Late forties. Broad and weathered, faded tattoos across her knuckles, always mud to the knee
+Appearance: A half-orc in her late forties. Broad and weathered, faded tattoos across her knuckles, always mud to the knee
 Who: She came to [[Locations/Azure Plains Coalition (APC)/Santeo/index|Santeo]] seeking sanctuary twelve years ago and now runs the paddies and keeps order in the town.
 known relationships:
 - 

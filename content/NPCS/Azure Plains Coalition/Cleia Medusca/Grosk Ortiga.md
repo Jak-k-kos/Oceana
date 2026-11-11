@@ -18,7 +18,7 @@ Relationships:
 - [[Lula Aguaviva]]: his elder
 %%
 Gender: Male
-Appearance: About thirty-five. Huge and shaggy, with sting scars all over his arms and a net always over one shoulder
+Appearance: A bugbear of about thirty-five. Huge and shaggy, with sting scars all over his arms and a net always over one shoulder
 Who: The strongest netter on the island, who works the edge of the blooms where no one else will go.
 known relationships:
 - 

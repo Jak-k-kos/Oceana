@@ -18,7 +18,7 @@ Relationships:
 - [[Gorvak Dentado]]: the headman
 %%
 Gender: Female
-Appearance: About twenty. Thin and dark-haired, with soot on her hands and her father's coat on her shoulders
+Appearance: A human of about twenty. Thin and dark-haired, with soot on her hands and her father's coat on her shoulders
 Who: The lighthouse keeper's daughter, who has helped tend the lamp since she was a child.
 known relationships:
 - 

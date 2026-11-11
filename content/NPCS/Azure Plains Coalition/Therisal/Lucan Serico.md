@@ -21,7 +21,7 @@ Relationships:
 Council Member: yes
 %%
 Gender: Male
-Appearance: About fifty-five. Tall and gleaming gold-scaled, in a flowing coat of embroidered silk
+Appearance: A gold dragonborn of about fifty-five. Tall and gleaming gold-scaled, in a flowing coat of embroidered silk
 Who: Archon of [[Locations/Azure Plains Coalition (APC)/Therisal/index|Therisal]] and head of the largest silk house. Sits on the coalition council; his seat comes up for renewal in 4 years.
 known relationships:
 - 

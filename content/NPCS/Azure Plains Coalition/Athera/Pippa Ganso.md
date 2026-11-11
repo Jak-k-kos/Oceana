@@ -18,7 +18,7 @@ Relationships:
 - [[Tobias Pluma]]: her feather-master
 %%
 Gender: Female
-Appearance: About one hundred and fifty. Tiny and round, with wild white hair stuck full of down, a willow switch, and muddy boots
+Appearance: A forest gnome of about one hundred and fifty. Tiny and round, with wild white hair stuck full of down, a willow switch, and muddy boots
 Who: The elder of the goose-keeping families of [[Locations/Azure Plains Coalition (APC)/Athera/index|Athera]].
 known relationships:
 - 

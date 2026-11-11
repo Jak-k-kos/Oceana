@@ -18,7 +18,7 @@ Relationships:
 - [[Paco Ventura]]: grandson, mill-keeper
 %%
 Gender: Female
-Appearance: Very old, around ninety. Tiny, wrapped in shawls, quick dark eyes
+Appearance: A very old halfling, around ninety. Tiny, wrapped in shawls, quick dark eyes
 Who: The oldest weaver on the island and everyone's grandmother.
 known relationships:
 - 

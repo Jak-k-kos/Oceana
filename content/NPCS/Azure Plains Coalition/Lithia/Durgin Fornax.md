@@ -18,7 +18,7 @@ Relationships:
 - [[Nina Dado]]: his finest carver
 %%
 Gender: Male
-Appearance: About one hundred and eighty. Grey-skinned and bald, with a white-dusted beard, smoked-glass spectacles, and burn-scarred hands
+Appearance: A duergar of about one hundred and eighty. Grey-skinned and bald, with a white-dusted beard, smoked-glass spectacles, and burn-scarred hands
 Who: The kiln-master of [[Locations/Azure Plains Coalition (APC)/Lithia/index|Lithia]].
 known relationships:
 - 

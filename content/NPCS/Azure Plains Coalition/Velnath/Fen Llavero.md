@@ -18,7 +18,7 @@ Relationships:
 - [[Elowen Cerrojo]]: his guild-master
 %%
 Gender: Male
-Appearance: About thirty-five. A broad, mossy shell, half-moon spectacles, and a roll of tiny picks tucked into his belt
+Appearance: A tortle of about thirty-five. A broad, mossy shell, half-moon spectacles, and a roll of tiny picks tucked into his belt
 Who: The finest journeyman locksmith on [[Locations/Azure Plains Coalition (APC)/Velnath/index|Velnath]].
 known relationships:
 - 

@@ -19,7 +19,7 @@ Relationships:
 Council Candidate: yes
 %%
 Gender: Female
-Appearance: About fifty. Stout and laughing, always sticky to the wrists, gold hoops in her ears
+Appearance: A human of about fifty. Stout and laughing, always sticky to the wrists, gold hoops in her ears
 Who: Head of the Canella mill and the island's elected first miller.
 known relationships:
 - 

@@ -18,7 +18,7 @@ Relationships:
 - [[Celestino Tinta]]: her elder
 %%
 Gender: Female
-Appearance: About thirty-five. Tall and muscular, with a harpoon always in her boat
+Appearance: A human of about thirty-five. Tall and muscular, with a harpoon always in her boat
 Who: The fisher whose boat came back clawed.
 known relationships:
 - 

@@ -18,7 +18,7 @@ Relationships:
 - [[Ines Cuevas]]: mistress of the cheese caves
 %%
 Gender: Male
-Appearance: Looks about sixty. Curling grey horns, shaggy goat legs, a white beard, and a set of reed pipes on a cord around his neck
+Appearance: A satyr who looks about sixty. Curling grey horns, shaggy goat legs, a white beard, and a set of reed pipes on a cord around his neck
 Who: The elder of the shepherd families of [[Locations/Azure Plains Coalition (APC)/Valdora/index|Valdora]].
 known relationships:
 - 

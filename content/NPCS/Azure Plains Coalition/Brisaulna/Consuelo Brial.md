@@ -18,7 +18,7 @@ Relationships:
 - [[Damian Fusar]]: the sulfur shipper she trusts
 %%
 Gender: Female
-Appearance: About sixty-five. Small and wiry, with white hair always tied back and flour on her sleeves
+Appearance: A human of about sixty-five. Small and wiry, with white hair always tied back and flour on her sleeves
 Who: The elder of [[Locations/Azure Plains Coalition (APC)/Brisaulna/index|Brisaulna]]. Since her husband's death she has run the powder mills as well.
 known relationships:
 - 

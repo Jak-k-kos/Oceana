@@ -19,7 +19,7 @@ Relationships:
 - [[Leonidas Pyrgos]]: his oldest ally
 %%
 Gender: Male
-Appearance: Early sixties. Round, wide sunhat, orange-stained hands
+Appearance: A halfling in his early sixties. Round, wide sunhat, orange-stained hands
 Who: The compromise mayor both councils can tolerate, barely.
 known relationships:
 - 

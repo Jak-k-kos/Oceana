@@ -18,7 +18,7 @@ Relationships:
 - [[Brannos Duela]]: her master
 %%
 Gender: Female
-Appearance: About thirty. Curly hair tied up in a scarf, wood shavings stuck to her apron, and strong forearms
+Appearance: A human of about thirty. Curly hair tied up in a scarf, wood shavings stuck to her apron, and strong forearms
 Who: The finest stave-shaver in the guild of [[Locations/Azure Plains Coalition (APC)/Astarta/index|Astarta]], who also runs its plywood presses.
 known relationships:
 - 

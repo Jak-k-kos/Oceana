@@ -18,7 +18,7 @@ Relationships:
 - [[Benedetta Suberos]]: his archon
 %%
 Gender: Male
-Appearance: Looks about thirty. Wiry and goat-legged, with curling horns, a shepherd's crook, and a set of pipes on a cord
+Appearance: A satyr who looks about thirty. Wiry and goat-legged, with curling horns, a shepherd's crook, and a set of pipes on a cord
 Who: The best shepherd on the island, who knows every sheep by name.
 known relationships:
 - 

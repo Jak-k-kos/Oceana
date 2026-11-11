@@ -18,7 +18,7 @@ Relationships:
 - [[Ixtli Sombraluz]]: his overseer
 %%
 Gender: Male
-Appearance: About twenty. Small and rust-scaled, with a too-big straw hat and a basket on his back
+Appearance: A kobold of about twenty. Small and rust-scaled, with a too-big straw hat and a basket on his back
 Who: A young kobold picker on the [[Umbral]] plantations, known for his tall tales.
 known relationships:
 - 

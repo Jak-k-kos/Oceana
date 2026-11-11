@@ -32,7 +32,7 @@ Rumors:
 
 %%
 Full Description:
-Appearance: Looks about fifty. Tall and broad, but nothing like the stories. Close-cropped grey hair and beard, plain dark clothes, no jewelry but a single iron ring.
+Appearance: A human who looks about fifty. Tall and broad, but nothing like the stories. Close-cropped grey hair and beard, plain dark clothes, no jewelry but a single iron ring.
 Who: Vask was once one of Gromon Spritroar's dread pirate lords. Under Gromon, the Black Tide grew soft and divided, and the [[Locations/Kingdom of Albryn/index|Kingdom]] took back land the old kings had held. Vask gathered the other lords, turned them against their king, and took the throne. Gromon slipped away with his young son, and for years Vask never stopped looking. Since then he has rebuilt the Black Tide into something disciplined and dangerous, and he means to win back everything Gromon lost. He lets the rumors about him grow, because a legend wins fights before they start. Whether [[Urset]] truly stands behind him is something even his own lords don't know.
 %%
 known relationships:

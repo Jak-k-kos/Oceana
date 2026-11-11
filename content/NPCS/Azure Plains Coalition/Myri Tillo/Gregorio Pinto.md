@@ -18,7 +18,7 @@ Relationships:
 - [[Sofia Myrtalis]]: archon
 %%
 Gender: Male
-Appearance: Mid-fifties. Tiny and round, bushy brows, smelling permanently of myrtle
+Appearance: A halfling in his mid fifties. Tiny and round, bushy brows, smelling permanently of myrtle
 Who: Master of the island's only distillery, maker of the myrtle liqueur.
 known relationships:
 - 

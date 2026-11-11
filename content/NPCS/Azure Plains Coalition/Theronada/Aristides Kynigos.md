@@ -19,7 +19,7 @@ Relationships:
 - [[Gavril Roble]]: his master timber-cutter
 %%
 Gender: Male
-Appearance: About fifty-five. Tall and greying, in green wool, with a boar spear always nearby
+Appearance: A human of about fifty-five. Tall and greying, in green wool, with a boar spear always nearby
 Who: The warden who decides which trees fall. His son was gored by the Grey Tusk.
 known relationships:
 - 

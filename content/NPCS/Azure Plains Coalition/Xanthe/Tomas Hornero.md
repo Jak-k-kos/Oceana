@@ -18,7 +18,7 @@ Relationships:
 - [[Rusa Trigal]]: his master
 %%
 Gender: Male
-Appearance: About thirty. Thin and flour-dusted, with burn scars on his forearms and a cap pushed back on his head
+Appearance: A human of about thirty. Thin and flour-dusted, with burn scars on his forearms and a cap pushed back on his head
 Who: The head baker of the biscuit ovens of [[Locations/Azure Plains Coalition (APC)/Xanthe/index|Xanthe]].
 known relationships:
 - 

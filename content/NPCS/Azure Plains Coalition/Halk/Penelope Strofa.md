@@ -18,7 +18,7 @@ Relationships:
 - [[Kosmas Ergatis]]: her archon
 %%
 Gender: Female
-Appearance: About sixty-five. Small and sharp-eyed, with spectacles on a cord and thread wound around her fingers
+Appearance: A human of about sixty-five. Small and sharp-eyed, with spectacles on a cord and thread wound around her fingers
 Who: The finest weaver on [[Locations/Azure Plains Coalition (APC)/Halk/index|Halk]]. She was given the council's commission.
 known relationships:
 - 

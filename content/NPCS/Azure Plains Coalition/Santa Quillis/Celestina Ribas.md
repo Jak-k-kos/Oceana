@@ -18,7 +18,7 @@ Relationships:
 - [[Marisa Velamen]]: the master of the lofts
 %%
 Gender: Female
-Appearance: Looks about seventy. Small and stooped, with white hair beneath a pale blue veil and sharp grey eyes
+Appearance: A human who looks about seventy. Small and stooped, with white hair beneath a pale blue veil and sharp grey eyes
 Who: Mother Celestina, the priestess of the shrine of [[Aquilla]] on [[Locations/Azure Plains Coalition (APC)/Santa Quillis/index|Santa Quillis]].
 known relationships:
 - 

@@ -18,7 +18,7 @@ Relationships:
 - [[Khalun Canavera]]: her elder
 %%
 Gender: Female
-Appearance: About thirty-five. Lean and dark-haired, with cane-cut fingers and a half-woven basket always in her lap
+Appearance: A human of about thirty-five. Lean and dark-haired, with cane-cut fingers and a half-woven basket always in her lap
 Who: The best basket-weaver on [[Locations/Azure Plains Coalition (APC)/Palamoa/index|Palamoa]].
 known relationships:
 - 

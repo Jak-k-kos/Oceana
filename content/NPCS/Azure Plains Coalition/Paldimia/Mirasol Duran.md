@@ -19,7 +19,7 @@ Relationships:
 - [[Amaro Tueste]]: the planter who wants her gone
 %%
 Gender: Female
-Appearance: About thirty. Sleek and dark-spotted, with tea-stained fingertips and a red scarf tied around her arm
+Appearance: A tabaxi of about thirty. Sleek and dark-spotted, with tea-stained fingertips and a red scarf tied around her arm
 Who: A picker who organized the strike, now the most popular and most hated person on the island.
 known relationships:
 - 

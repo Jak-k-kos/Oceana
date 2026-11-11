@@ -18,7 +18,7 @@ Relationships:
 - [[Tessaro]]: her teacher
 %%
 Gender: Female
-Appearance: About twenty-five. Small and wiry, with sun-browned skin, salt-stiff black hair, and scraped knees
+Appearance: A human of about twenty-five. Small and wiry, with sun-browned skin, salt-stiff black hair, and scraped knees
 Who: A young sponge diver, and the best caper-picker on the cliffs of [[Locations/Azure Plains Coalition (APC)/Lirona/index|Lirona]].
 known relationships:
 - 

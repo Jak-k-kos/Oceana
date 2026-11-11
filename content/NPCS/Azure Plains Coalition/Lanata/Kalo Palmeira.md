@@ -18,7 +18,7 @@ Relationships:
 - [[Vashki Emberclaw]]: the newcomer he sheltered
 %%
 Gender: Male
-Appearance: About sixty. Small, wiry, and green-brown, with white tufts on his ears, bare feet, and a machete at his hip
+Appearance: A goblin of about sixty. Small, wiry, and green-brown, with white tufts on his ears, bare feet, and a machete at his hip
 Who: Elder of [[Locations/Azure Plains Coalition (APC)/Lanata/index|Lanata]] for twenty years.
 known relationships:
 - 

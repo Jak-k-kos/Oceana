@@ -18,7 +18,7 @@ Relationships:
 - [[Catalina Vintaros]]: childhood friend he'd like to be more than a friend
 %%
 Gender: Male
-Appearance: Twenty-two. Handsome, a little too well dressed, a black mourning band still on his sleeve
+Appearance: A human of twenty-two. Handsome, a little too well dressed, a black mourning band still on his sleeve
 Who: Became head of the smallest vintner family last year when his father died. Everyone on the council is trying to buy his vote.
 known relationships:
 - 

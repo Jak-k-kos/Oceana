@@ -18,7 +18,7 @@ Relationships:
 - [[Tiko Pollero]]: his best breeder
 %%
 Gender: Male
-Appearance: About sixty. Wiry and white-bearded, with feathers on his coat and a basket of eggs always on his arm
+Appearance: A human of about sixty. Wiry and white-bearded, with feathers on his coat and a basket of eggs always on his arm
 Who: The elder of the poultry families of [[Locations/Azure Plains Coalition (APC)/Palsna/index|Palsna]].
 known relationships:
 - 

@@ -19,7 +19,7 @@ Relationships:
 - [[Nestor Arvelo]]: the young family head who might help her, if she flatters him
 %%
 Gender: Female
-Appearance: Mid-twenties. Dark curls, cellar dust on silk, a ring of cellar keys on her belt
+Appearance: A human in her mid twenties. Dark curls, cellar dust on silk, a ring of cellar keys on her belt
 Who: [[Aurelio Vintaros|Aurelio's]] daughter, who runs the family's sea-cave cellars on [[Dalmora Menor]].
 known relationships:
 - 

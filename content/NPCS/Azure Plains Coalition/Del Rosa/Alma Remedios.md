@@ -20,7 +20,7 @@ Relationships:
 Council Member: yes
 %%
 Gender: Female
-Appearance: About twenty-six. Slim and copper-red, with small swept horns, ink-scrawled sleeves, a satchel of instruments, and dark circles beneath her eyes
+Appearance: A tiefling of about twenty-six. Slim and copper-red, with small swept horns, ink-scrawled sleeves, a satchel of instruments, and dark circles beneath her eyes
 Who: The youngest high healer [[Locations/Azure Plains Coalition (APC)/Del Rosa/index|Del Rosa]] has ever had, a prodigy who outpaced her teachers before she was twenty. Sits on the coalition council; her seat comes up for renewal in 5 years.
 known relationships:
 - 

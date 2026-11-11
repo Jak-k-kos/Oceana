@@ -19,7 +19,7 @@ Relationships:
 - [[Calix Noctua]]: the high gravesman who sent him
 %%
 Gender: Male
-Appearance: Looks about forty. Tall and thin, with ash-pale skin, eyes that flicker faintly violet in lamplight, plain black robes worn ragged at the hem, and a ledger always under his arm
+Appearance: An aasimar who looks about forty. Tall and thin, with ash-pale skin, eyes that flicker faintly violet in lamplight, plain black robes worn ragged at the hem, and a ledger always under his arm
 Who: The gravesman of [[Locations/Azure Plains Coalition (APC)/Isla Embra/index|Isla Embra]], sent from [[Heliada]], who lives alone by a cove on the far side of the island.
 known relationships:
 - 

@@ -19,7 +19,7 @@ Relationships:
 - [[Phoebe Saltaro]]: the [[Locations/Azure Plains Coalition (APC)/Thalsava/index|Thalsava]] dye-mistress courting her house
 %%
 Gender: Female
-Appearance: Looks about forty-five. Slender and dark-eyed, with red-stained fingers and a high-collared crimson gown
+Appearance: A yuan-ti who looks about forty-five. Slender and dark-eyed, with red-stained fingers and a high-collared crimson gown
 Who: Head of the Garance house, ambitious and patient.
 known relationships:
 - 

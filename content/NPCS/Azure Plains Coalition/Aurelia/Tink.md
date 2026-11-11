@@ -18,7 +18,7 @@ Relationships:
 - [[Cyrus Aureo]]: his master
 %%
 Gender: Male
-Appearance: About twenty-five. Small and black-feathered, with soot-tipped wings and glittering black eyes
+Appearance: A kenku of about twenty-five. Small and black-feathered, with soot-tipped wings and glittering black eyes
 Who: A young glassblower whose glass is the talk of [[Locations/Azure Plains Coalition (APC)/Aurelia/index|Aurelia]].
 known relationships:
 - 

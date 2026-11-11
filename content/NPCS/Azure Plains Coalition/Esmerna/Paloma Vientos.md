@@ -18,7 +18,7 @@ Relationships:
 - [[Ciro Vientos]]: her son
 %%
 Gender: Female
-Appearance: Looks about fifty-five. Small and round, with feathers caught in her shawl and a falcon on her wrist
+Appearance: A half-elf who looks about fifty-five. Small and round, with feathers caught in her shawl and a falcon on her wrist
 Who: Head of the Vientos family, who gives [[Locations/Azure Plains Coalition (APC)/Esmerna/index|Esmerna's]] birds their gift.
 known relationships:
 - 

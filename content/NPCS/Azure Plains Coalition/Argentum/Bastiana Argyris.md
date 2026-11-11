@@ -18,7 +18,7 @@ Relationships:
 - [[Severo Platero]]: her patron
 %%
 Gender: Female
-Appearance: Looks about sixty. Squat and broad, with long silver-grey braids pinned with her own work, a jeweller's loupe on her brow, and silver dust on her hands
+Appearance: A mountain dwarf who looks about sixty. Squat and broad, with long silver-grey braids pinned with her own work, a jeweller's loupe on her brow, and silver dust on her hands
 Who: The finest silversmith on [[Locations/Azure Plains Coalition (APC)/Argentum/index|Argentum]], whose work sits in archons' halls across the [[Locations/Azure Plains Coalition (APC)/index|coalition]].
 known relationships:
 - 

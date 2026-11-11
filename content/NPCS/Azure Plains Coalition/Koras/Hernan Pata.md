@@ -18,7 +18,7 @@ Relationships:
 - [[Morna Arpona]]: his head harpooner
 %%
 Gender: Male
-Appearance: About seventy. Gaunt and white-bearded, with a peg leg carved from a swordfish bill and a pipe always clenched between his teeth
+Appearance: A human of about seventy. Gaunt and white-bearded, with a peg leg carved from a swordfish bill and a pipe always clenched between his teeth
 Who: The harbormaster of [[Locations/Azure Plains Coalition (APC)/Koras/index|Koras]].
 known relationships:
 - 

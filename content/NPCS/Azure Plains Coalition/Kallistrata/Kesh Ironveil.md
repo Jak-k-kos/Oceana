@@ -19,7 +19,7 @@ Relationships:
 - [[Tybalt Sweetwater]]: the timber merchant who has been courting her
 %%
 Gender: Female
-Appearance: About thirty-five. Short and dark red-skinned, with curling horns, singed hair, and a leather apron full of tools
+Appearance: A tiefling of about thirty-five. Short and dark red-skinned, with curling horns, singed hair, and a leather apron full of tools
 Who: The finest gunsmith in the southern [[Locations/Azure Plains Coalition (APC)/index|coalition]].
 known relationships:
 - 

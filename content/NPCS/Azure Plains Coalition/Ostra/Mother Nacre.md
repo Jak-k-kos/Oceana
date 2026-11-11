@@ -18,7 +18,7 @@ Relationships:
 - [[Dory Lagoa]]: her oyster-keeper
 %%
 Gender: Female
-Appearance: Ancient. Huge and green-shelled, with gentle eyes and a spindle always in her hands
+Appearance: An ancient tortle. Huge and green-shelled, with gentle eyes and a spindle always in her hands
 Who: The last master of [[Locations/Azure Plains Coalition (APC)/Ostra/index|Ostra's]] sea-silk weavers.
 known relationships:
 - 

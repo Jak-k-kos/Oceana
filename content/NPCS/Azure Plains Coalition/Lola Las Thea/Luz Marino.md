@@ -18,7 +18,7 @@ Relationships:
 - [[Bruno Salar]]: her salt-master
 %%
 Gender: Female
-Appearance: About twenty-five. Lean and sun-dark, with salt-white hair cropped short and a musket on her back
+Appearance: A human of about twenty-five. Lean and sun-dark, with salt-white hair cropped short and a musket on her back
 Who: The best salt-raker on [[Locations/Azure Plains Coalition (APC)/Lola Las Thea/index|Lola Las Thea]], and its best shot.
 known relationships:
 - 

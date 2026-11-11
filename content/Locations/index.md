@@ -2,6 +2,7 @@
 title: Locations
 hideFolderContent: true
 ---
+![[map labeled.png]]
 # Locations
 ## Contries
 - [[Locations/Azure Plains Coalition (APC)/index|The Azure Plains Coalition]]

@@ -18,7 +18,7 @@ Relationships:
 - [[Pell Florentin]]: her elder
 %%
 Gender: Female
-Appearance: About forty. Small and round-cheeked, with cherry-stained hands and a basket on her hip
+Appearance: A lightfoot halfling of about forty. Small and round-cheeked, with cherry-stained hands and a basket on her hip
 Who: [[Locations/Azure Plains Coalition (APC)/Kerasia/index|Kerasia's]] chief orchard-keeper.
 known relationships:
 - 

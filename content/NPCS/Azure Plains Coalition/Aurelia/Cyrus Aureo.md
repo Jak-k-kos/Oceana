@@ -18,7 +18,7 @@ Relationships:
 - [[Tink]]: his strangest glassblower
 %%
 Gender: Male
-Appearance: About fifty-five. Broad and red-faced, with singed eyebrows, a long blowpipe over his shoulder, and a sweat-soaked headband
+Appearance: A human of about fifty-five. Broad and red-faced, with singed eyebrows, a long blowpipe over his shoulder, and a sweat-soaked headband
 Who: The master of the glasshouses of [[Locations/Azure Plains Coalition (APC)/Aurelia/index|Aurelia]].
 known relationships:
 - 

@@ -18,7 +18,7 @@ Relationships:
 - [[Brannoc Dell]]: the archon she hopes to replace
 %%
 Gender: Female
-Appearance: About forty. Tall and chestnut-coated below the waist, with long braided hair, a weathered face, and a cattle-whip at her side
+Appearance: A centaur of about forty. Tall and chestnut-coated below the waist, with long braided hair, a weathered face, and a cattle-whip at her side
 Who: The most powerful cattle-lord on [[Locations/Azure Plains Coalition (APC)/Ledonis/index|Ledonis]].
 known relationships:
 - 

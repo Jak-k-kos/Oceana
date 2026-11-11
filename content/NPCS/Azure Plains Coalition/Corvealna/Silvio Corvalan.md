@@ -22,7 +22,7 @@ Relationships:
 - [[Rafa Olmos]]: the lumberjack who keeps warning him
 %%
 Gender: Male
-Appearance: Early fifties. Thin and hawk-faced, sap-stained hands, a crow-feather pin on his collar
+Appearance: A human in his early fifties. Thin and hawk-faced, sap-stained hands, a crow-feather pin on his collar
 Who: Archon of [[Locations/Azure Plains Coalition (APC)/Corvealna/index|Corvealna]] and the [[Fiore Lumber Company|Fiore Lumber Company's]] great rival. Anyone on [[Locations/Azure Plains Coalition (APC)/Insul/index|Insul]] who works lumber knows his name.
 known relationships:
 - 

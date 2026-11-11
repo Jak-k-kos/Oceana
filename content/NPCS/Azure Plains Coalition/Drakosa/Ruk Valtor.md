@@ -19,7 +19,7 @@ Relationships:
 Fleet Admiral: yes
 %%
 Gender: Male
-Appearance: About fifty. Tall and red-grey, with close-cropped hair, a [[Locations/Azure Plains Coalition (APC)/index|coalition]] officer's blue coat, and a heavily notched cane
+Appearance: A hobgoblin of about fifty. Tall and red-grey, with close-cropped hair, a [[Locations/Azure Plains Coalition (APC)/index|coalition]] officer's blue coat, and a heavily notched cane
 Who: The commodore of the coalition army's southern squadron, based on [[Locations/Azure Plains Coalition (APC)/Drakosa/index|Drakosa]], and one of the coalition's three fleet admirals. Along the frontier he is a hero, and every pirate captain in the south knows his name.
 known relationships:
 - 

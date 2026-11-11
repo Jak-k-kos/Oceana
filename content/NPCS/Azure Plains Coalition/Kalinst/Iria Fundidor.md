@@ -18,7 +18,7 @@ Relationships:
 - [[Gorbo Balas]]: her master founder
 %%
 Gender: Female
-Appearance: About forty. Short and soot-grey, with burn-scarred forearms and her hair hacked short
+Appearance: A human of about forty. Short and soot-grey, with burn-scarred forearms and her hair hacked short
 Who: The chief moulder of the foundry on [[Locations/Azure Plains Coalition (APC)/Kalinst/index|Kalinst]].
 known relationships:
 - 

@@ -18,7 +18,7 @@ Relationships:
 - [[Lucio Linaza]]: her oil-presser
 %%
 Gender: Female
-Appearance: About thirty-five. Slim and grey-spotted, with sharp green eyes and a gleaming yellow oilskin coat buttoned to the chin
+Appearance: A tabaxi of about thirty-five. Slim and grey-spotted, with sharp green eyes and a gleaming yellow oilskin coat buttoned to the chin
 Who: The master of the oilsheds of [[Locations/Azure Plains Coalition (APC)/Kymaria/index|Kymaria]].
 known relationships:
 - 

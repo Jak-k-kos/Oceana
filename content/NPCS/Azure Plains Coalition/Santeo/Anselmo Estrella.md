@@ -19,7 +19,7 @@ Relationships:
 - [[Bruna Sallas]]: the town's overseer
 %%
 Gender: Male
-Appearance: Late sixties. Gray-bearded and stooped, gray robes embroidered with silver stars
+Appearance: A human in his late sixties. Gray-bearded and stooped, gray robes embroidered with silver stars
 Who: Abbot of the monastery and guardian of everyone who has sought sanctuary on [[Locations/Azure Plains Coalition (APC)/Santeo/index|Santeo]].
 known relationships:
 - 

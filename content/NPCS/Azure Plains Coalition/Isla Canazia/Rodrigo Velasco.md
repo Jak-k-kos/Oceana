@@ -21,7 +21,7 @@ Relationships:
 Council Member: yes
 %%
 Gender: Male
-Appearance: Early fifties. Big and sunburnt, ash-gray streaks in his black beard, a farmer's hands under a fine coat
+Appearance: A human in his early fifties. Big and sunburnt, ash-gray streaks in his black beard, a farmer's hands under a fine coat
 Who: Archon of [[Locations/Azure Plains Coalition (APC)/Isla Canazia/index|Isla Canazia]], a farmer's son who rose through the growers' guild. One of the most powerful voices in the northwestern [[Locations/Azure Plains Coalition (APC)/index|coalition]]. Sits on the coalition council; his seat comes up for renewal next year.
 known relationships:
 - 

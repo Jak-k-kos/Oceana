@@ -18,7 +18,7 @@ Relationships:
 - [[Silvio Corvalan]]: employer
 %%
 Gender: Female
-Appearance: Mid-twenties. Small, with red scales and brass goggles pushed up on her head
+Appearance: A kobold in her mid twenties. Small, with red scales and brass goggles pushed up on her head
 Who: Built [[Locations/Azure Plains Coalition (APC)/Corvealna/index|Corvealna's]] water-powered sawmill, and is a local hero for it.
 known relationships:
 - 

@@ -18,7 +18,7 @@ Relationships:
 - [[Lysandra Halkia]]: archon
 %%
 Gender: Male
-Appearance: Mid-forties. Huge, a bad cough, a broken nose
+Appearance: A human in his mid forties. Huge, a bad cough, a broken nose
 Who: He runs the miners and the shipping of ore.
 known relationships:
 - 

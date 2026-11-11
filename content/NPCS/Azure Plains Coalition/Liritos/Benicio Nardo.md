@@ -18,7 +18,7 @@ Relationships:
 - [[Florentina Azahar]]: the island's greatest distiller and his pride
 %%
 Gender: Male
-Appearance: About fifty. Plump and well-dressed, with oiled curls and a flower in his buttonhole
+Appearance: A human of about fifty. Plump and well-dressed, with oiled curls and a flower in his buttonhole
 Who: The archon of [[Locations/Azure Plains Coalition (APC)/Liritos/index|Liritos]], a perfume merchant with grand plans.
 known relationships:
 - 

@@ -18,7 +18,7 @@ Relationships:
 - [[Hadrian Auros]]: the warden she serves
 %%
 Gender: Female
-Appearance: About forty. Tall and grey-skinned, in polished armour, with a halberd and a stern stare
+Appearance: A hobgoblin of about forty. Tall and grey-skinned, in polished armour, with a halberd and a stern stare
 Who: The captain of the gold guard, and a former council army sergeant.
 known relationships:
 - 

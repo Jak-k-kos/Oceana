@@ -19,7 +19,7 @@ Relationships:
 - [[Ledger]]: whose market his bank keeps afloat
 %%
 Gender: Male
-Appearance: About fifty. Wine-red skin, swept-back horns capped in gold, a silver-streaked beard, and a black coat so plain it can only be expensive
+Appearance: A tiefling of about fifty. Wine-red skin, swept-back horns capped in gold, a silver-streaked beard, and a black coat so plain it can only be expensive
 Who: The richest commoner in the [[Locations/Kingdom of Albryn/index|Kingdom]]. His family's bank finances half the ships built in the royal dockyards, and their manor is one of the finest in the [[Highwards]].
 known relationships:
 - 

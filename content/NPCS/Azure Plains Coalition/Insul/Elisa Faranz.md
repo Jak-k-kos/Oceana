@@ -21,7 +21,7 @@ Relationships:
 - [[Halina Scaleskin]]: her second hand
 %%
 Gender: Female
-Appearance: older woman with silver hair tied into a messy bun. Fit, and gracefully aged, always wears mismatched blouse and pants
+Appearance: An older half-elf woman with silver hair tied into a messy bun. Fit, and gracefully aged, always wears mismatched blouse and pants
 Who: the head seamstress of [[Locations/Azure Plains Coalition (APC)/Insul/index|Insul]] and wife of [[Emilio Faranz]]. She is known for her endlessly chaotic nature, yet always seems the first to get her head on straight in crisis.
 known relationships:
 - Married to [[Emilio Faranz]]

@@ -19,7 +19,7 @@ Relationships:
 - [[Celia Mavros]]: the vote he needs
 %%
 Gender: Male
-Appearance: Early thirties. Wiry and sunburnt, with a farmer's hands
+Appearance: A human in his early thirties. Wiry and sunburnt, with a farmer's hands
 Who: The youngest elder.
 known relationships:
 - 

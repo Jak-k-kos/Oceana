@@ -18,7 +18,7 @@ Relationships:
 - [[Stavros Lampros]]: the oil merchant offering to pay
 %%
 Gender: Male
-Appearance: Late seventies. Thin and stooped, a cane carved like a bell rope, a bell-shaped pendant
+Appearance: A human in his late seventies. Thin and stooped, a cane carved like a bell rope, a bell-shaped pendant
 Who: The old archon who rings the bells himself.
 known relationships:
 - 

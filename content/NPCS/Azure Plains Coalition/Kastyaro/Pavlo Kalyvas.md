@@ -18,7 +18,7 @@ Relationships:
 - [[Leocadia Kastrinou]]: his aunt
 %%
 Gender: Male
-Appearance: About nineteen. Gangly and soot-stained, with a new streak of white in his hair
+Appearance: A human of about nineteen. Gangly and soot-stained, with a new streak of white in his hair
 Who: [[Leocadia Kastrinou|Leocadia's]] nephew, the only one who went into the chamber.
 known relationships:
 - 

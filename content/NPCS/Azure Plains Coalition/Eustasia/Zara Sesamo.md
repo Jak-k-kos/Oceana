@@ -18,7 +18,7 @@ Relationships:
 - [[Andres Molino]]: her oil-presser
 %%
 Gender: Female
-Appearance: About forty. Tall and wine-red, with swept-back horns, a sesame-stained apron, and a wide straw hat
+Appearance: A tiefling of about forty. Tall and wine-red, with swept-back horns, a sesame-stained apron, and a wide straw hat
 Who: The elder of the sesame families of [[Locations/Azure Plains Coalition (APC)/Eustasia/index|Eustasia]].
 known relationships:
 - 

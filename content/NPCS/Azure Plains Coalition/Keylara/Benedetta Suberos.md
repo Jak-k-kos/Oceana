@@ -19,7 +19,7 @@ Relationships:
 - [[Bryn Thistlecoat]]: her head shepherd
 %%
 Gender: Female
-Appearance: About fifty-five. Small and stout, with rosy cheeks, a grey bun, a wool shawl, and cork-dust on her skirts
+Appearance: A stout halfling of about fifty-five. Small and stout, with rosy cheeks, a grey bun, a wool shawl, and cork-dust on her skirts
 Who: Archon of [[Locations/Azure Plains Coalition (APC)/Keylara/index|Keylara]], from an old cork-cutting family.
 known relationships:
 - 

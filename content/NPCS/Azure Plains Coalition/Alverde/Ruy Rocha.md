@@ -18,7 +18,7 @@ Relationships:
 - [[Nerissa Algavera]]: his elder
 %%
 Gender: Male
-Appearance: About fifty. Broad and grey-bearded, with rope-scarred hands and salt-white trousers
+Appearance: A human of about fifty. Broad and grey-bearded, with rope-scarred hands and salt-white trousers
 Who: The man who strings and mends every seaweed line on [[Locations/Azure Plains Coalition (APC)/Alverde/index|Alverde]].
 known relationships:
 - 

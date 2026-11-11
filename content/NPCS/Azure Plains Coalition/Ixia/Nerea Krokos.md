@@ -18,7 +18,7 @@ Relationships:
 - [[Fotis Marmaras]]: the constable she trusts completely
 %%
 Gender: Female
-Appearance: About fifty-five. Sturdy and grey-braided, with a basket always on her arm
+Appearance: A human of about fifty-five. Sturdy and grey-braided, with a basket always on her arm
 Who: The island's archon for twelve years, and its best picker for longer.
 known relationships:
 - 

@@ -18,7 +18,7 @@ Relationships:
 - [[Marta Plumada]]: his best fletcher
 %%
 Gender: Male
-Appearance: About thirty-five. Lean and long-limbed, with tawny hair, sharp yellow eyes, and a quiver of test arrows always on his back
+Appearance: A swiftstride shifter of about thirty-five. Lean and long-limbed, with tawny hair, sharp yellow eyes, and a quiver of test arrows always on his back
 Who: The master of the bowyers' guild of [[Locations/Azure Plains Coalition (APC)/Sepelia/index|Sepelia]].
 known relationships:
 - 

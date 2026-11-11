@@ -18,7 +18,7 @@ Relationships:
 - [[Grisha Velo]]: his strongest cutter
 %%
 Gender: Male
-Appearance: About fifty. Thin and stooped, with a soot-grey beard, a heavy oilskin coat, and a lantern always in hand
+Appearance: A human of about fifty. Thin and stooped, with a soot-grey beard, a heavy oilskin coat, and a lantern always in hand
 Who: The head of the kelp-burners of [[Locations/Azure Plains Coalition (APC)/Cabo Letha/index|Cabo Letha]].
 known relationships:
 - 

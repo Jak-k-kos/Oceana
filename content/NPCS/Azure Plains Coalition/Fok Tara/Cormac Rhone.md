@@ -18,7 +18,7 @@ Relationships:
 - [[Ssharra]]: his guild-master
 %%
 Gender: Male
-Appearance: About forty. Red-bearded and weathered, with a sealskin coat and a boot-maker's awl tucked behind one ear
+Appearance: A human of about forty. Red-bearded and weathered, with a sealskin coat and a boot-maker's awl tucked behind one ear
 Who: A cobbler, and the best maker of sealskin boots on [[Locations/Azure Plains Coalition (APC)/Fok Tara/index|Fok Tara]].
 known relationships:
 - 

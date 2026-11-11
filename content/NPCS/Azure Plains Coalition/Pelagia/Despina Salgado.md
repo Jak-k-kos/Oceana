@@ -18,7 +18,7 @@ Relationships:
 - [[Marios Kalafatis]]: archon, and a former student
 %%
 Gender: Female
-Appearance: Very old, well past a century. Her shell is scratched with depth marks from a lifetime of dives
+Appearance: A very old tortle, well past a century. Her shell is scratched with depth marks from a lifetime of dives
 Who: Head of the divers' guild and the island's grandmother figure. Half the divers on [[Locations/Azure Plains Coalition (APC)/Pelagia/index|Pelagia]] learned from her.
 known relationships:
 - 

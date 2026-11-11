@@ -18,7 +18,7 @@ Relationships:
 - [[Agapi Skinos]]: the elder who's watching him
 %%
 Gender: Male
-Appearance: Mid-forties. Barrel-chested, red-faced, sticky resin in his beard
+Appearance: A human in his mid forties. Barrel-chested, red-faced, sticky resin in his beard
 Who: The resin shipper the island has used for ten years. He is suddenly richer than he should be.
 known relationships:
 - 

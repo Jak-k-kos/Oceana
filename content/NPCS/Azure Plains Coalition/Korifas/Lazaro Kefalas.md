@@ -18,7 +18,7 @@ Relationships:
 - [[Agni Kefalas]]: granddaughter and heir
 %%
 Gender: Male
-Appearance: Mid-seventies. Elderly but strong, leather vest, a shepherd's crook he uses more as a walking stick
+Appearance: A human in his mid seventies. Elderly but strong, leather vest, a shepherd's crook he uses more as a walking stick
 Who: Lord of a few dozen families and keeper of [[Flaris|Flaris's]] beacon, as his father and grandfather were. He lost his son and daughter-in-law to the sea some years ago.
 known relationships:
 - 

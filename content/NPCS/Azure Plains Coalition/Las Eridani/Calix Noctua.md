@@ -18,7 +18,7 @@ Relationships:
 - [[Ixandra Vallejo]]: the archon of his island
 %%
 Gender: Male
-Appearance: About sixty. Tawny-grey feathers, huge amber eyes, plain black robes, and ink on the tips of his wing-feathers
+Appearance: An owlin of about sixty. Tawny-grey feathers, huge amber eyes, plain black robes, and ink on the tips of his wing-feathers
 Who: The high gravesman of the temple on [[Heliada]], and keeper of its Master Archive.
 known relationships:
 - 

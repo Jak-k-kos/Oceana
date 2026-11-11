@@ -18,7 +18,7 @@ Relationships:
 - [[Zara Sesamo]]: his elder
 %%
 Gender: Male
-Appearance: About sixty. Round and balding, with oil-darkened hands and a sesame seed always caught in his beard
+Appearance: A human of about sixty. Round and balding, with oil-darkened hands and a sesame seed always caught in his beard
 Who: The master of the oil presses of [[Locations/Azure Plains Coalition (APC)/Eustasia/index|Eustasia]].
 known relationships:
 - 

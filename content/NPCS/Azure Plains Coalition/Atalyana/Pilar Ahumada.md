@@ -19,7 +19,7 @@ Relationships:
 - [[Marina Atuna]]: her best supplier
 %%
 Gender: Female
-Appearance: Early fifties. Short and soot-stained, a leather apron, always smelling of smoke
+Appearance: A human in her early fifties. Short and soot-stained, a leather apron, always smelling of smoke
 Who: Owner of the island's largest smokehouse, who buys most of the fleet's catch.
 known relationships:
 - 

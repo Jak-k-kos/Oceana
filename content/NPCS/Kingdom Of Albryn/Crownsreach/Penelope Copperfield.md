@@ -18,7 +18,7 @@ Relationships:
 - [[Elias Thermidor]]: the master of the mint on [[Locations/Azure Plains Coalition (APC)/Ostrakia/index|Ostrakia]], from whom she holds her licence
 %%
 Gender: Female
-Appearance: About forty-five. Small and neat, with greying chestnut curls, ink-stained cuffs, and a jeweller's loupe always pushed up on her brow
+Appearance: A lightfoot halfling of about forty-five. Small and neat, with greying chestnut curls, ink-stained cuffs, and a jeweller's loupe always pushed up on her brow
 Who: The master of the Royal Mint, the largest licensed mint outside the coalition, where the Kingdom's shells are struck under licence from [[Locations/Azure Plains Coalition (APC)/Ostrakia/index|Ostrakia]].
 known relationships:
 - 

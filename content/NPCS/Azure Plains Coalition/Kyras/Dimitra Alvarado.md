@@ -19,7 +19,7 @@ Relationships:
 - [[Leonidas Pyrgos]]: her opponent
 %%
 Gender: Female
-Appearance: Late thirties. Wiry and sun-browned, a scar on her chin from a pruning hook
+Appearance: A human in her late thirties. Wiry and sun-browned, a scar on her chin from a pruning hook
 Who: [[Kyras Oeste|Kyras Oeste's]] firebrand speaker.
 known relationships:
 - 

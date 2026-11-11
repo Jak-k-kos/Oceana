@@ -21,7 +21,7 @@ Relationships:
 Council Member: yes
 %%
 Gender: Female
-Appearance: About fifty. Tall and broad, with weathered bronze scales, a farmer's straw hat, and a ring of granary keys at her belt
+Appearance: A bronze dragonborn of about fifty. Tall and broad, with weathered bronze scales, a farmer's straw hat, and a ring of granary keys at her belt
 Who: Archon of [[Locations/Azure Plains Coalition (APC)/Las Eridani/index|Las Eridani]], and owner of its largest farms. Sits on the coalition council; her seat comes up for renewal in 3 years.
 known relationships:
 - 

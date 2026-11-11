@@ -18,7 +18,7 @@ Relationships:
 - [[Seren Almendro]]: his archon
 %%
 Gender: Male
-Appearance: About forty. Lean and dark-eyed, with faint scales along his neck and arms and a pair of snake-handling tongs on his belt
+Appearance: A yuan-ti of about forty. Lean and dark-eyed, with faint scales along his neck and arms and a pair of snake-handling tongs on his belt
 Who: The head of the snake-catchers on [[La Serpiente]].
 known relationships:
 - 

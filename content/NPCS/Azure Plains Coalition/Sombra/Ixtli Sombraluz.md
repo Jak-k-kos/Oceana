@@ -18,7 +18,7 @@ Relationships:
 - [[Dorotea Cacaval]]: his employer
 %%
 Gender: Male
-Appearance: About thirty-five. Sleek and dark-furred, with gold eyes and a machete on his back
+Appearance: A tabaxi of about thirty-five. Sleek and dark-furred, with gold eyes and a machete on his back
 Who: The plantation overseer, who knows every ravine.
 known relationships:
 - 

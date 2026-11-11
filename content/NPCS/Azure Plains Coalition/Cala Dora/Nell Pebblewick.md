@@ -18,7 +18,7 @@ Relationships:
 - [[Rhovan Strand]]: her guild-master
 %%
 Gender: Female
-Appearance: About thirty-five. Small and soot-smudged, with solder burns on her fingers and a lantern on her belt
+Appearance: A lightfoot halfling of about thirty-five. Small and soot-smudged, with solder burns on her fingers and a lantern on her belt
 Who: The finest young lantern-maker on [[Locations/Azure Plains Coalition (APC)/Cala Dora/index|Cala Dora]], apprenticed to the old master for twenty years.
 known relationships:
 - 

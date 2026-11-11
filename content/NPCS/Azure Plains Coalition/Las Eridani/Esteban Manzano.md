@@ -18,7 +18,7 @@ Relationships:
 - [[Ixandra Vallejo]]: his archon
 %%
 Gender: Male
-Appearance: About fifty-five. Broad and grizzled, with apple-stained hands, a pruning knife in his pocket, and a sprig of blossom in his hat
+Appearance: A human of about fifty-five. Broad and grizzled, with apple-stained hands, a pruning knife in his pocket, and a sprig of blossom in his hat
 Who: The master of the orchards and cider-houses of [[Locations/Azure Plains Coalition (APC)/Las Eridani/index|Las Eridani]].
 known relationships:
 - 

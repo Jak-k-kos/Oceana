@@ -18,7 +18,7 @@ Relationships:
 - [[Theodric Brasswhistle]]: her guild-master
 %%
 Gender: Female
-Appearance: About one hundred and twenty. Broad and dark-braided, with iron filings stuck to her gloves
+Appearance: A mountain dwarf of about one hundred and twenty. Broad and dark-braided, with iron filings stuck to her gloves
 Who: The head of [[Locations/Azure Plains Coalition (APC)/Klymoth/index|Klymoth's]] lodestone mines.
 known relationships:
 - 

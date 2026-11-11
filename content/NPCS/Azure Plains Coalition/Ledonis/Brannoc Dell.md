@@ -21,7 +21,7 @@ Relationships:
 Council Member: yes
 %%
 Gender: Male
-Appearance: About three hundred. Broad and white-bearded, leaning on a cane, with sharp eyes under heavy brows
+Appearance: A hill dwarf of about three hundred. Broad and white-bearded, leaning on a cane, with sharp eyes under heavy brows
 Who: Archon of [[Locations/Azure Plains Coalition (APC)/Ledonis/index|Ledonis]] for forty years. Sits on the coalition council; his seat comes up for renewal in 2 years.
 known relationships:
 - 

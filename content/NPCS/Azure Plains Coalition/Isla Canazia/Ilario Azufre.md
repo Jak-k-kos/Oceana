@@ -18,7 +18,7 @@ Relationships:
 - [[Rodrigo Velasco]]: archon
 %%
 Gender: Male
-Appearance: Looks about sixty but is over two hundred. Squat and yellow-stained, a scarf always over his mouth, eyes red from fumes
+Appearance: A dwarf who looks about sixty but is over two hundred. Squat and yellow-stained, a scarf always over his mouth, eyes red from fumes
 Who: Guildmaster of the sulfur miners, who knows the mountain's vents better than anyone alive.
 known relationships:
 - 

@@ -18,7 +18,7 @@ Relationships:
 - [[Yara Ostrosa]]: his best harpooner
 %%
 Gender: Male
-Appearance: Early sixties. Weathered and broad, a white beard stiff with salt, one hand missing two fingers to a harpoon line
+Appearance: A human in his early sixties. Weathered and broad, a white beard stiff with salt, one hand missing two fingers to a harpoon line
 Who: The oldest whaling captain on [[Locations/Azure Plains Coalition (APC)/Nauvela/index|Nauvela]] and head of the captains' council.
 known relationships:
 - 

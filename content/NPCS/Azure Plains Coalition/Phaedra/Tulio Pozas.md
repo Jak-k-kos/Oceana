@@ -18,7 +18,7 @@ Relationships:
 - [[Lysandra Halkia]]: the archon he argues with
 %%
 Gender: Male
-Appearance: Looks about sixty. Broad and soaked to the knee, a grey braided beard tucked into his belt
+Appearance: A dwarf who looks about sixty. Broad and soaked to the knee, a grey braided beard tucked into his belt
 Who: The engineer who keeps the pumps, wheels, and drainage running.
 known relationships:
 - 

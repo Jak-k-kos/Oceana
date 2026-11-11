@@ -18,7 +18,7 @@ Relationships:
 - [[Grosk Ortiga]]: her strongest netter
 %%
 Gender: Female
-Appearance: About forty. Lean and long-armed, with grey-brown fur bleached at the tips by salt and old welts across her forearms
+Appearance: A hadozee of about forty. Lean and long-armed, with grey-brown fur bleached at the tips by salt and old welts across her forearms
 Who: The best netter on the island, who has led the families for ten years.
 known relationships:
 - 

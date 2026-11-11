@@ -20,7 +20,7 @@ Relationships:
 Council Member: yes
 %%
 Gender: Male
-Appearance: Looks about fifty, though he is nearly three hundred. Tall and silver-haired, with an old-fashioned velvet coat and a heavy signet ring
+Appearance: A high elf who looks about fifty, though he is nearly three hundred. Tall and silver-haired, with an old-fashioned velvet coat and a heavy signet ring
 Who: The castellan of [[Locations/Azure Plains Coalition (APC)/Castell/index|Castell]], of the family who have held its castle since before the flood. Sits on the coalition council; his seat comes up for renewal in 4 years.
 known relationships:
 - 

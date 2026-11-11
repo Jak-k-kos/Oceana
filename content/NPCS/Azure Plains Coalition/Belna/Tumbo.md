@@ -18,7 +18,7 @@ Relationships:
 - [[Marina Huertas]]: his elder
 %%
 Gender: Male
-Appearance: About forty. Huge and grey, with mud-caked feet, a straw hat tied to his head, and a hoe the size of a spar
+Appearance: A loxodon of about forty. Huge and grey, with mud-caked feet, a straw hat tied to his head, and a hoe the size of a spar
 Who: The best farmer on [[Locations/Azure Plains Coalition (APC)/Belna/index|Belna]].
 known relationships:
 - 

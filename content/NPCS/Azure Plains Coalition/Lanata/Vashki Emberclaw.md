@@ -18,7 +18,7 @@ Relationships:
 - [[Kalo Palmeira]]: the elder who sheltered her
 %%
 Gender: Female
-Appearance: About thirty-five. Tall and copper-scaled, with a burn scar along one jaw and plain borrowed clothes
+Appearance: A copper dragonborn of about thirty-five. Tall and copper-scaled, with a burn scar along one jaw and plain borrowed clothes
 Who: A copper dragonborn newcomer to [[Locations/Azure Plains Coalition (APC)/Lanata/index|Lanata]], quiet and watchful.
 known relationships:
 - 

@@ -18,7 +18,7 @@ Relationships:
 - [[Tomas Hornero]]: her head baker
 %%
 Gender: Female
-Appearance: About forty-five. Broad and grey-green, with flour to the elbows, short tusks, and a long oven paddle
+Appearance: A half-orc of about forty-five. Broad and grey-green, with flour to the elbows, short tusks, and a long oven paddle
 Who: The master of the bakehouses of [[Locations/Azure Plains Coalition (APC)/Xanthe/index|Xanthe]].
 known relationships:
 - 

@@ -18,7 +18,7 @@ Relationships:
 - [[Krell Tornillo]]: his best breaker
 %%
 Gender: Male
-Appearance: About fifty-five. Short, broad and grey-skinned, bald, with rust on his clothes and a crowbar always in hand
+Appearance: A duergar of about fifty-five. Short, broad and grey-skinned, bald, with rust on his clothes and a crowbar always in hand
 Who: The head of [[Locations/Azure Plains Coalition (APC)/Marsal/index|Marsal's]] shipbreakers.
 known relationships:
 - 

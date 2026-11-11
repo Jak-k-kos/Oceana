@@ -18,7 +18,7 @@ Relationships:
 - [[Pavlo Kalyvas]]: her nephew
 %%
 Gender: Female
-Appearance: About thirty-five. Thin and severe, with burn scars on her hands and close-cropped hair
+Appearance: A human of about thirty-five. Thin and severe, with burn scars on her hands and close-cropped hair
 Who: She inherited the foundry from her father.
 known relationships:
 - 

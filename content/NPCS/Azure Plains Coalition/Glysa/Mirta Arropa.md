@@ -18,7 +18,7 @@ Relationships:
 - [[Lysander Vidal]]: her archon
 %%
 Gender: Female
-Appearance: About sixty. Round and rosy, with a burn-scarred apron and sticky, sweet-smelling hands
+Appearance: A human of about sixty. Round and rosy, with a burn-scarred apron and sticky, sweet-smelling hands
 Who: The mistress of the syrup houses of [[Locations/Azure Plains Coalition (APC)/Glysa/index|Glysa]].
 known relationships:
 - 

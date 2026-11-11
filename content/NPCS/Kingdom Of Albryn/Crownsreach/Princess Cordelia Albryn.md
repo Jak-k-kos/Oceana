@@ -24,7 +24,7 @@ Relationships:
 Truth: When the king and queen died, the West, the Heartland and the South all backed Edwin. Ambrose and Seraphine did so partly because each means to marry her to a son, and a crowned queen would be beyond their reach. Roderick wanted a king he could fire up to press the war against the [[Locations/The Black Tide/index|Black Tide]], yet he genuinely cares for her, and it was he who pushed for her place at the Hall of the Unbeaten, with Ambrose gathering the favours that won it; Ambrose's own son already studies there. Aveline would have preferred Cordelia, but held her tongue rather than divide the dukes so soon after the murders had shaken the realm.
 %%
 Gender: Female
-Appearance: Seventeen. Tall and restless, with long dark-gold hair worn in a single braid down her back, ink on her fingers, and a plain school coat she refuses to trade for silk
+Appearance: A human of seventeen. Tall and restless, with long dark-gold hair worn in a single braid down her back, ink on her fingers, and a plain school coat she refuses to trade for silk
 Who: The elder sister of [[King Edwin Albryn]], and by right of birth the one who should have worn the crown, had three of the four great dukes not stood behind her brother instead. She is no prodigy, but she works twice as hard as anyone around her, and she is spirited enough to make up for what she does not yet know. She is in her final year at the Kingdom's school for nobles, and when she turns eighteen she sails for the Hall of the Unbeaten on [[Locations/Azure Plains Coalition (APC)/Sparte Torro/index|Sparte Torro]].
 Rumors:
 - She slips out of school at night to learn knots and gunnery from the dockhands

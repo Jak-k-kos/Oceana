@@ -18,7 +18,7 @@ Relationships:
 - [[Perla Nacarino]]: his elder
 %%
 Gender: Male
-Appearance: Middle-aged. Thickset and green-scaled, with a heavy tail and a necklace of conch spines
+Appearance: A middle-aged lizardfolk. Thickset and green-scaled, with a heavy tail and a necklace of conch spines
 Who: Head of the Strombos family, the best diver on the island.
 known relationships:
 - 

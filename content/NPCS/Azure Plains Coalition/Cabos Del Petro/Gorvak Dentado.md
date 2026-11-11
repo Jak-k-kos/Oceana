@@ -18,7 +18,7 @@ Relationships:
 - [[Ana Pedreira]]: the lighthouse keeper's daughter
 %%
 Gender: Male
-Appearance: About forty-five. Broad and scarred, with grey-green skin, a missing finger, and a harpoon never far from his hand
+Appearance: A half-orc of about forty-five. Broad and scarred, with grey-green skin, a missing finger, and a harpoon never far from his hand
 Who: The best shark hunter on the cape, and its headman.
 known relationships:
 - 

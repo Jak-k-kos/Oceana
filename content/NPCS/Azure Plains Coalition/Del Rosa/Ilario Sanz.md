@@ -18,7 +18,7 @@ Relationships:
 - [[Alma Remedios]]: his high healer
 %%
 Gender: Male
-Appearance: About forty-five. Gaunt and grey-eyed, with rolled sleeves, a bloodstained apron, and a case of surgical knives
+Appearance: A human of about forty-five. Gaunt and grey-eyed, with rolled sleeves, a bloodstained apron, and a case of surgical knives
 Who: The chief surgeon of the hospital of [[Apiot]] on [[Locations/Azure Plains Coalition (APC)/Del Rosa/index|Del Rosa]].
 known relationships:
 - 

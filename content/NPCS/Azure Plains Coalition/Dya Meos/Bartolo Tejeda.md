@@ -18,7 +18,7 @@ Relationships:
 - [[Nikias Kerameos]]: old friend and opposite
 %%
 Gender: Male
-Appearance: Mid-fifties. Small and round, soot to the elbows, a wax tablet of orders always in hand
+Appearance: A halfling in his mid fifties. Small and round, soot to the elbows, a wax tablet of orders always in hand
 Who: Runs the great kilns of East Meos and keeps the jars coming by the thousand.
 known relationships:
 - 

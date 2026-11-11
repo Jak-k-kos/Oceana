@@ -18,7 +18,7 @@ Relationships:
 - [[Aristides Kynigos]]: the warden he advises
 %%
 Gender: Male
-Appearance: Looks about seventy. Squat and white-bearded, with sawdust in his beard and an axe at his belt
+Appearance: A dwarf who looks about seventy. Squat and white-bearded, with sawdust in his beard and an axe at his belt
 Who: The head of the timber crews, who knows every tree on the ridge.
 known relationships:
 - 

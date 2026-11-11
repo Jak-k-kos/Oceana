@@ -18,7 +18,7 @@ Relationships:
 - [[Iria Fundidor]]: his chief moulder
 %%
 Gender: Male
-Appearance: About forty. Enormous and hippo-headed, with a soot-stained officer's coat, polished brass buttons, and a pair of pistols at his belt
+Appearance: A giff of about forty. Enormous and hippo-headed, with a soot-stained officer's coat, polished brass buttons, and a pair of pistols at his belt
 Who: The master founder of [[Locations/Azure Plains Coalition (APC)/Kalinst/index|Kalinst]].
 known relationships:
 - 

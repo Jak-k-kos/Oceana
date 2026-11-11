@@ -18,7 +18,7 @@ Relationships:
 - [[Tobin Cana]]: her master distiller
 %%
 Gender: Female
-Appearance: About thirty. Small and green, with cane-cut hands, a machete at her belt, and rope burns on her palms
+Appearance: A goblin of about thirty. Small and green, with cane-cut hands, a machete at her belt, and rope burns on her palms
 Who: The best cane-cutter on [[Locations/Azure Plains Coalition (APC)/Altas/index|Altas]].
 known relationships:
 - 

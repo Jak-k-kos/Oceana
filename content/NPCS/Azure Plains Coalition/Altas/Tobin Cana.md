@@ -18,7 +18,7 @@ Relationships:
 - [[Grix Molina]]: his best cane-cutter
 %%
 Gender: Male
-Appearance: About fifty. Small and round, with molasses-stained fingers, a battered cap, and a ring of still-house keys
+Appearance: A lightfoot halfling of about fifty. Small and round, with molasses-stained fingers, a battered cap, and a ring of still-house keys
 Who: The master distiller of [[Locations/Azure Plains Coalition (APC)/Altas/index|Altas]].
 known relationships:
 - 

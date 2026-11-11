@@ -18,7 +18,7 @@ Relationships:
 - [[Teodoro Carenas]]: his father-in-law
 %%
 Gender: Male
-Appearance: Early thirties. Handsome and well-fed, nicer clothes than a timber buyer should afford
+Appearance: A human in his early thirties. Handsome and well-fed, nicer clothes than a timber buyer should afford
 Who: [[Teodoro Carenas|Teodoro's]] son-in-law, who bought the bad timber.
 known relationships:
 - 

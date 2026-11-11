@@ -44,5 +44,4 @@ title: Insul
 # Others
 - [[Mr. Ferguson]]
 
-
 # [[Locations/Azure Plains Coalition (APC)/Insul/index|Location]]

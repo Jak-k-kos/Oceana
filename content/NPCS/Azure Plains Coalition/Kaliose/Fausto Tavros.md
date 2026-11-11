@@ -18,7 +18,7 @@ Relationships:
 - [[Mirela Sordo]]: the healer who knows
 %%
 Gender: Male
-Appearance: About sixty. Bull-necked, heavy, weathered red face
+Appearance: A human of about sixty. Bull-necked, heavy, weathered red face
 Who: He has led the herders for twenty years and owns the largest herd.
 known relationships:
 - 

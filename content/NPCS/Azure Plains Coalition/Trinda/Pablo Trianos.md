@@ -19,7 +19,7 @@ Relationships:
 - [[Nico Bastian]]: elder of Tercera
 %%
 Gender: Male
-Appearance: Very old, around a hundred and twenty. Ancient, with a barnacled shell and cloudy eyes
+Appearance: A very old tortle, around a hundred and twenty. Ancient, with a barnacled shell and cloudy eyes
 Who: The eldest of [[Locations/Azure Plains Coalition (APC)/Trinda/index|Trinda's]] three elders.
 known relationships:
 - 

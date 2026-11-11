@@ -18,7 +18,7 @@ Relationships:
 - [[Teodoro Carenas]]: the yard master she suspects
 %%
 Gender: Female
-Appearance: Mid-thirties. Thin, dark-eyed, ink on her fingers from going over the yard's records
+Appearance: A human in her mid thirties. Thin, dark-eyed, ink on her fingers from going over the yard's records
 Who: She has been asking questions all over the island, and the yards have started refusing her business.
 known relationships:
 - 

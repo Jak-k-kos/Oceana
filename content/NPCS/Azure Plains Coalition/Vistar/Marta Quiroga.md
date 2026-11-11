@@ -18,7 +18,7 @@ Relationships:
 - [[Odo Brambleton]]: her partner
 %%
 Gender: Female
-Appearance: About thirty-five. Wiry and sunburnt, with sleeves rolled up and a leather apron stiff with glue
+Appearance: A human of about thirty-five. Wiry and sunburnt, with sleeves rolled up and a leather apron stiff with glue
 Who: She runs the boiling sheds and buys from the fleets.
 known relationships:
 - 

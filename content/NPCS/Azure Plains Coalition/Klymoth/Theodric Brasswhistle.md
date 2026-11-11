@@ -18,7 +18,7 @@ Relationships:
 - [[Ilsa Ferrovia]]: his chief miner
 %%
 Gender: Male
-Appearance: About two hundred. Small and white-bearded, with half a dozen lenses on his spectacles and brass shavings on his coat
+Appearance: A rock gnome of about two hundred. Small and white-bearded, with half a dozen lenses on his spectacles and brass shavings on his coat
 Who: The guild-master of [[Locations/Azure Plains Coalition (APC)/Klymoth/index|Klymoth's]] instrument-makers.
 known relationships:
 - 

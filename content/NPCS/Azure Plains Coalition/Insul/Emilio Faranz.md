@@ -20,7 +20,7 @@ Relationships:
 - [[Mr. Ferguson]]: long time friend, currently living in his house.
 %%
 Gender: Male
-Appearance: Salt and pepper hair and bushy bearded. early sixties. always wears his green shirt and brown pants, dirtied from work helping collect lumber
+Appearance: A human in his early sixties, with salt and pepper hair and a bushy beard. always wears his green shirt and brown pants, dirtied from work helping collect lumber
 Who: The mayor of Insul, a kind and tireless old man who spends his mornings feeding the island's birds and the rest of his day holding the village together.
 known relationships:
 - [[Elisa Faranz]] - Wife

@@ -18,7 +18,7 @@ Relationships:
 - [[Marisol Avra]]: the cutter who won't let it go
 %%
 Gender: Male
-Appearance: Looks about sixty but is well over two hundred. Short and immensely broad, a gray beard white with stone dust, a mason's hammer always in his belt
+Appearance: A dwarf who looks about sixty but is well over two hundred. Short and immensely broad, a gray beard white with stone dust, a mason's hammer always in his belt
 Who: The quarry-master, chosen by the cutters, who has run the quarry for longer than most Asperans have been alive.
 known relationships:
 - 

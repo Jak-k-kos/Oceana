@@ -18,7 +18,7 @@ Relationships:
 - [[Henna Salvar]]: the elder she pesters
 %%
 Gender: Female
-Appearance: About twelve. Small and freckled, with salt crusted on her sandals and a bottle in her pocket
+Appearance: A human of about twelve. Small and freckled, with salt crusted on her sandals and a bottle in her pocket
 Who: A salt-raker's daughter on [[Locations/Azure Plains Coalition (APC)/Velmar/index|Velmar]].
 known relationships:
 - 

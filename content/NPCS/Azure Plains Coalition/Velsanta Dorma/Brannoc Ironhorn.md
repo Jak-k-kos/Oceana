@@ -20,7 +20,7 @@ Relationships:
 Council Candidate: yes
 %%
 Gender: Male
-Appearance: About fifty. Huge and brown-furred, with brass rings on his horns and a leather brewer's apron
+Appearance: A minotaur of about fifty. Huge and brown-furred, with brass rings on his horns and a leather brewer's apron
 Who: The most powerful brewer on the island and head of the guild.
 known relationships:
 - 

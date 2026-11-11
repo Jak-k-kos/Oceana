@@ -18,7 +18,7 @@ Relationships:
 - [[Grandmother Shell]]: the tortle pilgrim on her beach
 %%
 Gender: Female
-Appearance: Looks about fifty. Tall and sun-browned, with a tortoiseshell comb in her silver hair
+Appearance: A wood elf who looks about fifty. Tall and sun-browned, with a tortoiseshell comb in her silver hair
 Who: Elder of [[Locations/Azure Plains Coalition (APC)/Erathia/index|Erathia]].
 known relationships:
 - 

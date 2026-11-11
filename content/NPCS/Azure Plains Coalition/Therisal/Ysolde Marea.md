@@ -19,7 +19,7 @@ Relationships:
 - [[Irini Lampros]]: who quietly pays her
 %%
 Gender: Female
-Appearance: About forty. Slim and violet-skinned, with swept-back horns, a harbor-master's chain, and an easy smile
+Appearance: A tiefling of about forty. Slim and violet-skinned, with swept-back horns, a harbor-master's chain, and an easy smile
 Who: Harbor-master of one of [[Locations/Azure Plains Coalition (APC)/Therisal/index|Therisal's]] four bays.
 known relationships:
 - 

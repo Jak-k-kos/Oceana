@@ -19,7 +19,7 @@ Relationships:
 Council Candidate: yes
 %%
 Gender: Female
-Appearance: About fifty-five. Broad and grey-haired, with powerful arms and ash-dusted clothes
+Appearance: A human of about fifty-five. Broad and grey-haired, with powerful arms and ash-dusted clothes
 Who: Head of the cement guild and the richest woman on the island.
 known relationships:
 - 

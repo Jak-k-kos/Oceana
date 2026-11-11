@@ -18,7 +18,7 @@ Relationships:
 - [[Nik Bodega]]: her husband
 %%
 Gender: Female
-Appearance: About forty. Small and wiry, with wind-tangled dark hair and ink on her fingers
+Appearance: A human of about forty. Small and wiry, with wind-tangled dark hair and ink on her fingers
 Who: The wife of the master of the warehouses on [[Locations/Azure Plains Coalition (APC)/Alhondra/index|Alhondra]], who keeps his ledgers.
 known relationships:
 - 

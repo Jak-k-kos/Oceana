@@ -18,7 +18,7 @@ Relationships:
 - [[Ramiro Lithas]]: the quarry-master who closed the ledges
 %%
 Gender: Female
-Appearance: Late twenties. Tall and rangy, stone-cut hands, a black mourning ribbon tied around her wrist
+Appearance: A human in her late twenties. Tall and rangy, stone-cut hands, a black mourning ribbon tied around her wrist
 Who: One of the best cutters on the island. Her brother was one of the two taken from the lower ledges.
 known relationships:
 - 

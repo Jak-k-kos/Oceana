@@ -18,7 +18,7 @@ Relationships:
 - [[Bruno Salar]]: whose island she borrows
 %%
 Gender: Female
-Appearance: About forty. Huge and shaggy, with a [[Locations/Azure Plains Coalition (APC)/index|coalition]] coat stretched across her shoulders and a coiled boatswain's whistle
+Appearance: A bugbear of about forty. Huge and shaggy, with a [[Locations/Azure Plains Coalition (APC)/index|coalition]] coat stretched across her shoulders and a coiled boatswain's whistle
 Who: The drillmaster who trains the southern army's recruits on [[Locations/Azure Plains Coalition (APC)/Lola Las Thea/index|Lola Las Thea]].
 known relationships:
 - 

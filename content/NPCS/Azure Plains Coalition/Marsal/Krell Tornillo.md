@@ -18,7 +18,7 @@ Relationships:
 - [[Brannigan Desguace]]: his breaker-master
 %%
 Gender: Male
-Appearance: About thirty. Huge and grey, with stony skin patterns and rust-streaked forearms
+Appearance: A goliath of about thirty. Huge and grey, with stony skin patterns and rust-streaked forearms
 Who: The strongest breaker on the beach.
 known relationships:
 - 

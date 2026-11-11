@@ -18,7 +18,7 @@ Relationships:
 - [[Old Tobiah]]: the hermit he can't move
 %%
 Gender: Male
-Appearance: About fifty. Broad and grey-green, with stone dust in his beard and calloused hands
+Appearance: A half-orc of about fifty. Broad and grey-green, with stone dust in his beard and calloused hands
 Who: The quarry-master, who runs the slate quarries.
 known relationships:
 - 

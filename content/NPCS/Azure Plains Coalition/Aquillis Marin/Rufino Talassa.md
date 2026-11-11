@@ -18,7 +18,7 @@ Relationships:
 - [[Marisa Algar]]: his elder
 %%
 Gender: Male
-Appearance: About thirty. Lean and brown, permanently wet-haired, with a kelp-knife scar across his palm
+Appearance: A human of about thirty. Lean and brown, permanently wet-haired, with a kelp-knife scar across his palm
 Who: The diver who found the courier wreck.
 known relationships:
 - 

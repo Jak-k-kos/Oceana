@@ -18,7 +18,7 @@ Relationships:
 - [[Agustin Gallardo]]: his elder
 %%
 Gender: Male
-Appearance: About ninety. Tiny and bald, with spectacles, a feathered cap, and a hen tucked under one arm
+Appearance: A rock gnome of about ninety. Tiny and bald, with spectacles, a feathered cap, and a hen tucked under one arm
 Who: The best poultry breeder on [[Locations/Azure Plains Coalition (APC)/Palsna/index|Palsna]].
 known relationships:
 - 

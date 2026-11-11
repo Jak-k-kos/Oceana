@@ -18,7 +18,7 @@ Relationships:
 - [[Gerasimos Harpas]]: her captain
 %%
 Gender: Female
-Appearance: Early thirties. Tall and powerful, whale-tooth earrings, harpoon scars along both forearms
+Appearance: A half-orc in her early thirties. Tall and powerful, whale-tooth earrings, harpoon scars along both forearms
 Who: The finest harpooner on the island.
 known relationships:
 - 

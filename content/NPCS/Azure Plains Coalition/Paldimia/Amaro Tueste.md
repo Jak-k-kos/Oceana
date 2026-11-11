@@ -19,7 +19,7 @@ Relationships:
 - [[Mirasol Duran]]: the strike leader he wants gone
 %%
 Gender: Male
-Appearance: Appears about thirty-five. Tall and handsome, in fine clothes, with a gold watch chain
+Appearance: A human who appears about thirty-five. Tall and handsome, in fine clothes, with a gold watch chain
 Who: A young planter who has grown wealthy fast and wants more.
 known relationships:
 - 

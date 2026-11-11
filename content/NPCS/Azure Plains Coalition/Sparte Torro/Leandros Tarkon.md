@@ -19,7 +19,7 @@ Relationships:
 Council Candidate: yes
 %%
 Gender: Male
-Appearance: Mid-sixties. Tall and spare, with a cropped white beard, an old admiral's coat under his temple robes, and one eye milky from an old wound
+Appearance: A human in his mid sixties. Tall and spare, with a cropped white beard, an old admiral's coat under his temple robes, and one eye milky from an old wound
 Who: A retired Sparte admiral who now runs the Hall of the Unbeaten. He has trained commanders for every power in the region, including pirates.
 known relationships:
 - 

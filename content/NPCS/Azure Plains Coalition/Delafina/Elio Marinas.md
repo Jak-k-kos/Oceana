@@ -18,7 +18,7 @@ Relationships:
 - [[Amparo Delos]]: his great-aunt
 %%
 Gender: Male
-Appearance: Early twenties. Charming, sunburnt, a new silver earring
+Appearance: A human in his early twenties. Charming, sunburnt, a new silver earring
 Who: A talented young fisherman who learned everything from his great-aunt.
 known relationships:
 - 

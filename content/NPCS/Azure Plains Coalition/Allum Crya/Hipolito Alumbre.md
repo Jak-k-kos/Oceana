@@ -18,7 +18,7 @@ Relationships:
 - [[Selene Alumbre]]: his daughter
 %%
 Gender: Male
-Appearance: About fifty-five. Huge and stooped, with blue-grey skin, drooping ears, and white alum dust caked in his beard, wearing a heavy leather apron
+Appearance: A firbolg of about fifty-five. Huge and stooped, with blue-grey skin, drooping ears, and white alum dust caked in his beard, wearing a heavy leather apron
 Who: He runs the alum works, as his father did before him.
 known relationships:
 - 

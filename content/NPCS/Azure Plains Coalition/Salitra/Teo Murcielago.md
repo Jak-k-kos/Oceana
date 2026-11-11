@@ -18,7 +18,7 @@ Relationships:
 - [[Isadora Muralla]]: his captain
 %%
 Gender: Male
-Appearance: About thirty. Small and rust-scaled, with a miner's lamp strapped to his head and white saltpeter dust caked on his claws
+Appearance: A kobold of about thirty. Small and rust-scaled, with a miner's lamp strapped to his head and white saltpeter dust caked on his claws
 Who: The master of the saltpeter caves of [[Locations/Azure Plains Coalition (APC)/Salitra/index|Salitra]].
 known relationships:
 - 

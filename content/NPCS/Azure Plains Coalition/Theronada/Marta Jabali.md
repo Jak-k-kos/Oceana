@@ -18,7 +18,7 @@ Relationships:
 - [[Aristides Kynigos]]: the warden she is defying
 %%
 Gender: Female
-Appearance: About forty-five. Broad and scarred, with short hair and a hunting bow over her shoulder
+Appearance: A human of about forty-five. Broad and scarred, with short hair and a hunting bow over her shoulder
 Who: The best hunter on the island for twenty years and the head of the hunters' lodge.
 known relationships:
 - 

@@ -18,7 +18,7 @@ Relationships:
 - [[Celestina Redera]]: his teacher
 %%
 Gender: Male
-Appearance: About twenty-five. Small and curly-haired, with twine around his wrists and a knotting needle behind his ear
+Appearance: A lightfoot halfling of about twenty-five. Small and curly-haired, with twine around his wrists and a knotting needle behind his ear
 Who: [[Celestina Redera|Celestina's]] apprentice and the island's most inventive net-maker.
 known relationships:
 - 

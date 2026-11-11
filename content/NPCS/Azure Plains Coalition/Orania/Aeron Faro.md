@@ -18,7 +18,7 @@ Relationships:
 - [[Joaquin Arrecife]]: his best pilot
 %%
 Gender: Male
-Appearance: About twenty-five. Tall and slender, with grey-and-white feathers, piercing gold eyes, and a spyglass on a cord around his neck
+Appearance: An aarakocra of about twenty-five. Tall and slender, with grey-and-white feathers, piercing gold eyes, and a spyglass on a cord around his neck
 Who: The beacon-master of [[Locations/Azure Plains Coalition (APC)/Orania/index|Orania]].
 known relationships:
 - 

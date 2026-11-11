@@ -18,7 +18,7 @@ Relationships:
 - [[Esteban Arraez]]: harbormaster, and the man who taught her to sail
 %%
 Gender: Female
-Appearance: Mid-thirties. Tall and powerful, sun-bleached braids, sea-salt tattoos down both arms
+Appearance: A half-orc in her mid thirties. Tall and powerful, sun-bleached braids, sea-salt tattoos down both arms
 Who: Captain of the fastest boat in the fleet, who brings home the biggest catch every season.
 known relationships:
 - 

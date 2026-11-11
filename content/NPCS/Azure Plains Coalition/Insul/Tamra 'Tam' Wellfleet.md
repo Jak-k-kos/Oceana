@@ -21,7 +21,7 @@ Relationships:
 %%
 Gender: Female
 Appearance: A 10 year old tabaxi, white base coat with orange spots. all she wears is  her dark brown robe that is too big for her that she got as a gift from a traveling merchant ship.
-Who: the 15 minute older twin of the Wellfleet twins, she is obsessed with books and reading making homemade seaweed paper and jewelry out of shells to trade for books from traveling merchant ships.  she dreams to one day go to the (grand royal library) at (academia kingdom raft city).
+Who: the 15 minute older twin of the Wellfleet twins, she is obsessed with books and reading making homemade seaweed paper and jewelry out of shells to trade for books from traveling merchant ships.  she dreams to one day go to the (grand royal library) at [[lyceum]].
 known relationships:
 - Younger sister to [[Scubby Wellfleet]] & [[Azria Wellfleet]]
 - Twin fraternal sister to [[Tina 'ty' Wellfleet]]

@@ -18,7 +18,7 @@ Relationships:
 - [[Draga Aguja]]: his guild-master
 %%
 Gender: Male
-Appearance: About thirty. Lean and neat, with a tape measure around his neck and thread wound about his wrist
+Appearance: A human of about thirty. Lean and neat, with a tape measure around his neck and thread wound about his wrist
 Who: The best journeyman tailor on [[Locations/Azure Plains Coalition (APC)/Centros/index|Centros]].
 known relationships:
 - 

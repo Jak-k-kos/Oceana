@@ -18,7 +18,7 @@ Relationships:
 - [[Delfina Vasilakis]]: her teacher
 %%
 Gender: Female
-Appearance: Fifteen. Dark-eyed, slight, always damp to the elbows
+Appearance: A human of fifteen. Dark-eyed, slight, always damp to the elbows
 Who: A young acolyte of the temple, known for spending more time at the pans than at prayers.
 known relationships:
 - 

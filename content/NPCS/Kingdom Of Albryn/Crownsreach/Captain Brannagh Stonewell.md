@@ -19,7 +19,7 @@ Relationships:
 - [[Admiral Tavrek Hollin]]: guards the harbor below her walls
 %%
 Gender: Female
-Appearance: About thirty-five. Towering and grey-skinned, with dark lithoderm markings, close-cropped black hair, and a halberd that never leaves her reach
+Appearance: A goliath of about thirty-five. Towering and grey-skinned, with dark lithoderm markings, close-cropped black hair, and a halberd that never leaves her reach
 Who: A harbor watch sergeant raised to command the palace guard after the murders of the king and queen, when her predecessor was dismissed in disgrace.
 known relationships:
 - 

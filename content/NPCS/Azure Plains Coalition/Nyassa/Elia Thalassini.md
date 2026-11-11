@@ -18,7 +18,7 @@ Relationships:
 - [[Thessaly]]: the siren she shelters
 %%
 Gender: Female
-Appearance: About fifty-five. Small and weathered, with a salt-grey braid and hands scarred by weir stones
+Appearance: A human of about fifty-five. Small and weathered, with a salt-grey braid and hands scarred by weir stones
 Who: Elder of [[Locations/Azure Plains Coalition (APC)/Nyassa/index|Nyassa]] for fifteen years. She was the first to speak to the siren when she arrived.
 known relationships:
 - 

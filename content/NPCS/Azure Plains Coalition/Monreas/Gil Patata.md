@@ -18,7 +18,7 @@ Relationships:
 - [[Bettina Tuberas]]: his elder
 %%
 Gender: Male
-Appearance: About fifty. Stout and red-cheeked, with a soot-blackened apron and a copper ladle at his belt
+Appearance: A human of about fifty. Stout and red-cheeked, with a soot-blackened apron and a copper ladle at his belt
 Who: The stillmaster who distils the potato spirit of [[Locations/Azure Plains Coalition (APC)/Monreas/index|Monreas]].
 known relationships:
 - 

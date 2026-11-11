@@ -18,7 +18,7 @@ Relationships:
 - [[Dario Muela]]: her master grinder
 %%
 Gender: Female
-Appearance: About twenty. Tall and sandy-green, with compound eyes, steel filings on her carapace, and a leather apron with four sleeves
+Appearance: A thri-kreen of about twenty. Tall and sandy-green, with compound eyes, steel filings on her carapace, and a leather apron with four sleeves
 Who: The master of the mills of [[Locations/Azure Plains Coalition (APC)/Sotven/index|Sotven]].
 known relationships:
 - 

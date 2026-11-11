@@ -18,7 +18,7 @@ Relationships:
 - [[Cora Margarita]]: his elder
 %%
 Gender: Male
-Appearance: About twenty. Lean and bronze, with a sea folk spear-point now hanging from a cord around his neck
+Appearance: A half-elf of about twenty. Lean and bronze, with a sea folk spear-point now hanging from a cord around his neck
 Who: The young diver who came back from the outer beds with the warning.
 known relationships:
 - 

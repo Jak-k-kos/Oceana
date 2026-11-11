@@ -21,7 +21,7 @@ Was originally [[Dread Pirate King Gromon Spritroar]] of the Black Tide. After h
 [[De'Soto]] found him in the raid on Insul and carried his head back to Vask.
 %%
 Gender: Male
-Appearance: About fifty. Huge and broad, with a greying golden mane kept short, old scars across his hands that he swears came from the saw, and a woodsman's axe forever over one shoulder.
+Appearance: A leonin of about fifty. Huge and broad, with a greying golden mane kept short, old scars across his hands that he swears came from the saw, and a woodsman's axe forever over one shoulder.
 Who: A big, cheerful leonin lumberjack who came to Insul ten years ago with his young son, Tryknin. He keeps to himself about where he came from, and no one on Insul has ever pressed him.
 known relationships:
 - [[Tryknin Goldenroar]] - Son

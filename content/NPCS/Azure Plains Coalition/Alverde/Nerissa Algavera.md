@@ -18,7 +18,7 @@ Relationships:
 - [[Ruy Rocha]]: her rope-master
 %%
 Gender: Female
-Appearance: About forty. Tall and sun-browned, with green-stained hands and a wide straw hat
+Appearance: A changeling of about forty. Tall and sun-browned, with green-stained hands and a wide straw hat
 Who: Head of [[Locations/Azure Plains Coalition (APC)/Alverde/index|Alverde's]] seaweed families.
 known relationships:
 - 

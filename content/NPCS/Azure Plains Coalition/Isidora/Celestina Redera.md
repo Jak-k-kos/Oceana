@@ -18,7 +18,7 @@ Relationships:
 - [[Pim Knotwell]]: her apprentice
 %%
 Gender: Female
-Appearance: About sixty. Huge and grey-coated, with a ring in her nose, knotted twine braided around one horn, and enormous hands that tie the finest knots on the island
+Appearance: A minotaur of about sixty. Huge and grey-coated, with a ring in her nose, knotted twine braided around one horn, and enormous hands that tie the finest knots on the island
 Who: Elder of [[Locations/Azure Plains Coalition (APC)/Isidora/index|Isidora]] and its best net-maker.
 known relationships:
 - 

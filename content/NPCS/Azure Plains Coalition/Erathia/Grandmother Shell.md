@@ -18,7 +18,7 @@ Relationships:
 - [[Oriana Galapa]]: the elder she is trying to persuade
 %%
 Gender: Female
-Appearance: Ancient. Huge and weathered, with a shell carved with ancient symbols and a gnarled walking staff
+Appearance: An ancient tortle. Huge and weathered, with a shell carved with ancient symbols and a gnarled walking staff
 Who: An old tortle pilgrim staying on [[Locations/Azure Plains Coalition (APC)/Erathia/index|Erathia's]] beach.
 known relationships:
 - 

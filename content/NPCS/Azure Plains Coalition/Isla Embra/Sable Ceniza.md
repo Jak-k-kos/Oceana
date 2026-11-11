@@ -18,7 +18,7 @@ Relationships:
 - [[Malaquias Ferro]]: her warden
 %%
 Gender: Female
-Appearance: About thirty. Lean and dark-furred, with a notched ear, chain scars on her wrists, and a miner's lamp
+Appearance: A tabaxi of about thirty. Lean and dark-furred, with a notched ear, chain scars on her wrists, and a miner's lamp
 Who: A former pirate who runs the richest mine head on [[Locations/Azure Plains Coalition (APC)/Isla Embra/index|Isla Embra]], and decides who digs and who eats there.
 known relationships:
 - 

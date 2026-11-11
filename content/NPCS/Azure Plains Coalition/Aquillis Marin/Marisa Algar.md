@@ -18,7 +18,7 @@ Relationships:
 - [[Rufino Talassa]]: the kelp-cutter who found the wreck
 %%
 Gender: Female
-Appearance: About sixty. Stout and windburned, with grey hair braided with dried kelp
+Appearance: A human of about sixty. Stout and windburned, with grey hair braided with dried kelp
 Who: The elder of [[Locations/Azure Plains Coalition (APC)/Aquillis Marin/index|Aquillis Marin]], who has led the kelp-cutters for twenty years.
 known relationships:
 - 

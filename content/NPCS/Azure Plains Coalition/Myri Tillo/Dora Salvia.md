@@ -18,7 +18,7 @@ Relationships:
 - [[Sofia Myrtalis]]: archon
 %%
 Gender: Female
-Appearance: Late twenties. Wiry, sunburnt, scratches up both arms from the brush, a gathering basket on her back
+Appearance: A human in her late twenties. Wiry, sunburnt, scratches up both arms from the brush, a gathering basket on her back
 Who: The best herb gatherer on the island, who knows every slope by heart. She found the first holes.
 known relationships:
 - 

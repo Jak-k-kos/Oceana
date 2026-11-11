@@ -18,7 +18,7 @@ Relationships:
 - [[Benno Tasa]]: her chief weigher
 %%
 Gender: Female
-Appearance: About forty. Sleek and golden-furred, with gold rings in her ears and a merchant's scale at her belt
+Appearance: A tabaxi of about forty. Sleek and golden-furred, with gold rings in her ears and a merchant's scale at her belt
 Who: The master of the market of [[Locations/Azure Plains Coalition (APC)/Pandea/index|Pandea]].
 known relationships:
 - 

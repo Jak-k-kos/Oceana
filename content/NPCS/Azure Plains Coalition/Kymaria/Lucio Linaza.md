@@ -18,7 +18,7 @@ Relationships:
 - [[Seven Stitches]]: his master
 %%
 Gender: Male
-Appearance: About sixty. Round-shouldered and kindly, with oil-darkened hands and a flax-blue cap
+Appearance: A human of about sixty. Round-shouldered and kindly, with oil-darkened hands and a flax-blue cap
 Who: The head of the linseed presses of [[Locations/Azure Plains Coalition (APC)/Kymaria/index|Kymaria]].
 known relationships:
 - 

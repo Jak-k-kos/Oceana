@@ -18,7 +18,7 @@ Relationships:
 - [[Celestina Ribas]]: the shrine's priestess
 %%
 Gender: Female
-Appearance: About fifty. Tall and rope-strong, with grey hair braided down her back, a sailmaker's palm on her right hand, and needles stuck through her collar
+Appearance: A human of about fifty. Tall and rope-strong, with grey hair braided down her back, a sailmaker's palm on her right hand, and needles stuck through her collar
 Who: The master of the sail-lofts of [[Locations/Azure Plains Coalition (APC)/Santa Quillis/index|Santa Quillis]].
 known relationships:
 - 

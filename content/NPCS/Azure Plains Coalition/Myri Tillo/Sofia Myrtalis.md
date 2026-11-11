@@ -19,7 +19,7 @@ Relationships:
 - [[Dora Salvia]]: her best gatherer
 %%
 Gender: Female
-Appearance: Looks about forty but is nearly a hundred. Slender and sun-browned, a green shawl, laugh lines
+Appearance: A half-elf who looks about forty but is nearly a hundred. Slender and sun-browned, a green shawl, laugh lines
 Who: Archon of [[Locations/Azure Plains Coalition (APC)/Myri Tillo/index|Myri Tillo]], who has been re-elected so many times nobody bothers to run against her.
 known relationships:
 - 

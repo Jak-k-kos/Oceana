@@ -20,7 +20,7 @@ Relationships:
 Council Member: yes
 %%
 Gender: Male
-Appearance: About sixty. Tall and silver-haired, in a white linen suit, with heavy rings
+Appearance: A human of about sixty. Tall and silver-haired, in a white linen suit, with heavy rings
 Who: Governor of [[Locations/Azure Plains Coalition (APC)/Odelna/index|Odelna]] for twelve years, and head of its oldest family. Sits on the coalition council; his seat comes up for renewal next year.
 known relationships:
 - 

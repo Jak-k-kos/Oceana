@@ -19,7 +19,7 @@ Relationships:
 - [[Gaknin Goldenroar]]: The man he was sent to kill
 %%
 Gender: Male
-Appearance: Looks about forty. Handsome, with a quick grin and neatly trimmed beard. A long, well-cut coat hides four pistols in holsters beneath it, and two cutlasses hang at his hip.
+Appearance: A human who looks about forty. Handsome, with a quick grin and neatly trimmed beard. A long, well-cut coat hides four pistols in holsters beneath it, and two cutlasses hang at his hip.
 Who: The [[Locations/The Black Tide/index|Black Tide]] captain who led the attack on [[Locations/Azure Plains Coalition (APC)/Insul/index|Insul]]. Charming, cheerful and utterly ruthless, he's the kind of man who apologizes politely before he shoots you.
 known relationships:
 - 

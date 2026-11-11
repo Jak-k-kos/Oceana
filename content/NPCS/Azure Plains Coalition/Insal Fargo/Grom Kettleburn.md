@@ -18,7 +18,7 @@ Relationships:
 - [[Ember Ashvale]]: the young smith he watches over
 %%
 Gender: Male
-Appearance: About fifty-five. Massive and grey-green, with singed eyebrows and leather gloves that never come off
+Appearance: A half-orc of about fifty-five. Massive and grey-green, with singed eyebrows and leather gloves that never come off
 Who: The oldest furnace-master on the island.
 known relationships:
 - 

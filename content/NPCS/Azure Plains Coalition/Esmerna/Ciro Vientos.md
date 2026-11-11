@@ -18,7 +18,7 @@ Relationships:
 - [[Paloma Vientos]]: his mother
 %%
 Gender: Male
-Appearance: About twenty-two. Thin and bright-eyed, with ink on his fingers and a knife-wing gull usually on his shoulder
+Appearance: A human of about twenty-two. Thin and bright-eyed, with ink on his fingers and a knife-wing gull usually on his shoulder
 Who: [[Paloma Vientos|Paloma's]] son, the best gull trainer on the island, and the one who broke the code.
 known relationships:
 - 

@@ -18,7 +18,7 @@ Relationships:
 - [[Penelope Strofa]]: his master weaver
 %%
 Gender: Male
-Appearance: About fifty-five. Thin and stooped, with ink-stained fingers and a neat grey beard
+Appearance: A human of about fifty-five. Thin and stooped, with ink-stained fingers and a neat grey beard
 Who: The archon of [[Locations/Azure Plains Coalition (APC)/Halk/index|Halk]] and a former flax merchant.
 known relationships:
 - 

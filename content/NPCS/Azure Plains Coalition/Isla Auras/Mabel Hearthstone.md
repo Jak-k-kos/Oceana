@@ -18,7 +18,7 @@ Relationships:
 - [[Gerrit Massa]]: her oven-master
 %%
 Gender: Female
-Appearance: About fifty. Small, round, and floury, with rosy cheeks and a burn-scarred oven paddle
+Appearance: A stout halfling of about fifty. Small, round, and floury, with rosy cheeks and a burn-scarred oven paddle
 Who: The master baker who runs [[Locations/Azure Plains Coalition (APC)/Isla Auras/index|Isla Auras's]] great ovens.
 known relationships:
 - 

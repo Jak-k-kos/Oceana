@@ -18,7 +18,7 @@ Relationships:
 - [[Selene Cincel]]: his finest sculptor
 %%
 Gender: Male
-Appearance: About forty. Towering and grey-skinned, with stone markings, marble dust in his beard, and a heavy chisel at his belt
+Appearance: A goliath of about forty. Towering and grey-skinned, with stone markings, marble dust in his beard, and a heavy chisel at his belt
 Who: The master of the sculptors' guild of [[Locations/Azure Plains Coalition (APC)/Albana/index|Albana]].
 known relationships:
 - 

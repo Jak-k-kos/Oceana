@@ -19,7 +19,7 @@ Relationships:
 - [[Nik Bodega]]: the master of the warehouses on [[Locations/Azure Plains Coalition (APC)/Alhondra/index|Alhondra]]
 %%
 Gender: Female
-Appearance: About fifty-five. Stout and sun-browned, with a wide straw hat, garlic hanging from her belt, and soil on her knees
+Appearance: A human of about fifty-five. Stout and sun-browned, with a wide straw hat, garlic hanging from her belt, and soil on her knees
 Who: The elder of the farming families of [[Locations/Azure Plains Coalition (APC)/Belna/index|Belna]].
 known relationships:
 - 

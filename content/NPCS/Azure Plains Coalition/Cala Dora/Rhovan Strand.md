@@ -18,7 +18,7 @@ Relationships:
 - [[Nell Pebblewick]]: his best lantern-maker
 %%
 Gender: Male
-Appearance: About forty-five. Broad and bay-coated below the waist, with a short beard, solder burns on his hands, and a leather apron
+Appearance: A centaur of about forty-five. Broad and bay-coated below the waist, with a short beard, solder burns on his hands, and a leather apron
 Who: The master of [[Locations/Azure Plains Coalition (APC)/Cala Dora/index|Cala Dora's]] tinsmiths.
 known relationships:
 - 

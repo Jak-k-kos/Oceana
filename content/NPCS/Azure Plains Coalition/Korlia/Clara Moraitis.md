@@ -19,7 +19,7 @@ Relationships:
 - [[Sesk]]: the [[Locations/The Draconic Conclave/index|Conclave]] trader who buys her oil
 %%
 Gender: Female
-Appearance: About forty. Strong and sun-dark, oil-stained hands, a grey streak in her black hair
+Appearance: A human of about forty. Strong and sun-dark, oil-stained hands, a grey streak in her black hair
 Who: Her grandmother sold the family groves to the [[Locations/Azure Plains Coalition (APC)/Kalisanta/index|Kalisanta]] house. Clara has spent her life working them for someone else.
 known relationships:
 - 

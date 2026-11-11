@@ -20,7 +20,7 @@ Relationships:
 Council Candidate: yes
 %%
 Gender: Male
-Appearance: About fifty-five. Tall and broad, with a trimmed grey beard and a fine burgundy coat
+Appearance: A human of about fifty-five. Tall and broad, with a trimmed grey beard and a fine burgundy coat
 Who: Archon of [[Locations/Azure Plains Coalition (APC)/Velsanta Dorma/index|Velsanta Dorma]], a hemp magnate's son with big ambitions.
 known relationships:
 - 

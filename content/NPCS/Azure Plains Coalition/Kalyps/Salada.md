@@ -18,7 +18,7 @@ Relationships:
 - [[Matias Habas]]: the elder who took her in
 %%
 Gender: Female
-Appearance: Looks about thirty. Tall and powerful, with a tawny mane cut short, old scars, and a sailor's tattoo she doesn't recognize
+Appearance: A leonin who looks about thirty. Tall and powerful, with a tawny mane cut short, old scars, and a sailor's tattoo she doesn't recognize
 Who: A stranger the islanders pulled from the surf.
 known relationships:
 - 

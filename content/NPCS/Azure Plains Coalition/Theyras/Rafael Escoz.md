@@ -18,7 +18,7 @@ Relationships:
 - [[Pippa Mellowfoot]]: his elder
 %%
 Gender: Male
-Appearance: About fifty. Stocky and red-faced, with a mask around his neck and flecks of pepper in his beard
+Appearance: A human of about fifty. Stocky and red-faced, with a mask around his neck and flecks of pepper in his beard
 Who: He runs the pepper mills.
 known relationships:
 - 

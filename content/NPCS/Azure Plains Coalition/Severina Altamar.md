@@ -21,7 +21,7 @@ Relationships:
 High Admiral: yes
 %%
 Gender: Female
-Appearance: About fifty-five. Broad and grey-green, with close-cropped iron hair, a net-maker's scarred hands, and a plain azure coat bearing the white ring of the coalition
+Appearance: A half-orc of about fifty-five. Broad and grey-green, with close-cropped iron hair, a net-maker's scarred hands, and a plain azure coat bearing the white ring of the coalition
 Who: The High Admiral of the [[Locations/Azure Plains Coalition (APC)/index|coalition]], a net-maker's daughter from [[Locations/Azure Plains Coalition (APC)/Isidora/index|Isidora]] who rose to captain a council frigate. Ten years ago her ships broke the Siege of [[Locations/Azure Plains Coalition (APC)/Koras/index|Koras]], and the small islands carried her to the High Admiral's chair three years later. She is in the ninth year of her first term, and the islands vote on the High Admiral's seat next year.
 known relationships:
 - 

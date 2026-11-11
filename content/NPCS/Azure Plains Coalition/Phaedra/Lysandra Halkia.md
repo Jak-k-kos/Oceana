@@ -20,7 +20,7 @@ Relationships:
 Council Candidate: yes
 %%
 Gender: Female
-Appearance: About fifty. Grey-streaked, plain clothes, a miner's lamp hanging from her belt
+Appearance: A human of about fifty. Grey-streaked, plain clothes, a miner's lamp hanging from her belt
 Who: A miner's daughter who became archon, and the island's champion in every contract.
 known relationships:
 - 

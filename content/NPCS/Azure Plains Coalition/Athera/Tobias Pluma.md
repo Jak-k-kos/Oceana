@@ -18,7 +18,7 @@ Relationships:
 - [[Pippa Ganso]]: his elder
 %%
 Gender: Male
-Appearance: About forty. Thin and fussy, with ink-stained fingers, spectacles, and a quill tucked behind each ear
+Appearance: A human of about forty. Thin and fussy, with ink-stained fingers, spectacles, and a quill tucked behind each ear
 Who: The master of the feather sheds of [[Locations/Azure Plains Coalition (APC)/Athera/index|Athera]], who sorts the down, feathers and quills.
 known relationships:
 - 

@@ -18,7 +18,7 @@ Relationships:
 - [[Clara Moraitis]]: a friend, who sells him oil
 %%
 Gender: Male
-Appearance: Looks about thirty. Small, rust-red scales, a sailor's coat cut down to size, a gold tooth
+Appearance: A kobold who looks about thirty. Small, rust-red scales, a sailor's coat cut down to size, a gold tooth
 Who: The most regular of the [[Locations/The Draconic Conclave/index|Conclave]] traders, and a familiar sight on [[Locations/Azure Plains Coalition (APC)/Korlia/index|Korlia's]] docks.
 known relationships:
 - 

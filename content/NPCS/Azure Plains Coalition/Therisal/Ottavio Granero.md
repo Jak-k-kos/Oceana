@@ -19,7 +19,7 @@ Relationships:
 Council Candidate: yes
 %%
 Gender: Male
-Appearance: About sixty. Heavy and sun-browned, in a plain good coat, with a wide-brimmed hat and big, work-hardened hands
+Appearance: A human of about sixty. Heavy and sun-browned, in a plain good coat, with a wide-brimmed hat and big, work-hardened hands
 Who: Owner of the largest farms in the south.
 known relationships:
 - 

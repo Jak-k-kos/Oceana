@@ -19,7 +19,7 @@ Relationships:
 Council Candidate: yes
 %%
 Gender: Female
-Appearance: Mid-sixties. Plump, silver hair piled high, purple-stained fingers
+Appearance: A human in her mid sixties. Plump, silver hair piled high, purple-stained fingers
 Who: Head of the second-richest vintner family on [[Locations/Azure Plains Coalition (APC)/Dalmora/index|Dalmora]].
 known relationships:
 - 

@@ -18,7 +18,7 @@ Relationships:
 - [[Oswin Calkin]]: her quarry-master
 %%
 Gender: Female
-Appearance: About twenty-five. Wiry and freckled, with chalk-white hands and a sketchbook tucked into her belt
+Appearance: A human of about twenty-five. Wiry and freckled, with chalk-white hands and a sketchbook tucked into her belt
 Who: The finest cutter in [[Locations/Azure Plains Coalition (APC)/Perla/index|Perla's]] quarries.
 known relationships:
 - 

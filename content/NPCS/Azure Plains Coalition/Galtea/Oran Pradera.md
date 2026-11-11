@@ -20,7 +20,7 @@ Relationships:
 Council Member: yes
 %%
 Gender: Male
-Appearance: About two hundred. Enormous and grey-blue, with a long, drooping nose, a broad straw hat, and a shepherd's crook taller than most men
+Appearance: A firbolg of about two hundred. Enormous and grey-blue, with a long, drooping nose, a broad straw hat, and a shepherd's crook taller than most men
 Who: Archon of [[Locations/Azure Plains Coalition (APC)/Galtea/index|Galtea]], and owner of its largest herds. Sits on the coalition council; his seat comes up for renewal next year.
 known relationships:
 - 

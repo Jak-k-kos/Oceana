@@ -18,7 +18,7 @@ Relationships:
 - [[Ventra Rayo]]: his elder
 %%
 Gender: Male
-Appearance: About eighty. Tiny and spry, with goggles of green sea glass and a basket of glittering shards on his back
+Appearance: A rock gnome of about eighty. Tiny and spry, with goggles of green sea glass and a basket of glittering shards on his back
 Who: The best glass-gatherer on [[Locations/Azure Plains Coalition (APC)/Escal/index|Escal]].
 known relationships:
 - 

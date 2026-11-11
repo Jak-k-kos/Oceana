@@ -18,7 +18,7 @@ Relationships:
 - [[Silvio Corvalan]]: archon
 %%
 Gender: Male
-Appearance: Late forties. Huge, pine-sap stains on his clothes, an axe always on his shoulder
+Appearance: A human in his late forties. Huge, pine-sap stains on his clothes, an axe always on his shoulder
 Who: Head of the lumber crews.
 known relationships:
 - 

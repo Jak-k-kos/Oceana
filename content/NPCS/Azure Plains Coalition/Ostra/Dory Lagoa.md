@@ -18,7 +18,7 @@ Relationships:
 - [[Mother Nacre]]: her elder
 %%
 Gender: Female
-Appearance: About thirty. Sturdy and sun-dark, with a shell knife on her belt and oyster-scarred hands
+Appearance: A human of about thirty. Sturdy and sun-dark, with a shell knife on her belt and oyster-scarred hands
 Who: The head oyster-keeper of [[Locations/Azure Plains Coalition (APC)/Ostra/index|Ostra's]] lagoons.
 known relationships:
 - 

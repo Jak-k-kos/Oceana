@@ -18,7 +18,7 @@ Relationships:
 - [[Kirra Highwind]]: his kiln-master
 %%
 Gender: Male
-Appearance: About forty-five. Thin and sun-browned, with kelp-cut hands and a long cutting knife at his belt
+Appearance: A human of about forty-five. Thin and sun-browned, with kelp-cut hands and a long cutting knife at his belt
 Who: The chief kelp-cutter, who leads the cutting boats.
 known relationships:
 - 

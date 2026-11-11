@@ -18,7 +18,7 @@ Relationships:
 - [[Augustin Velloso]]: the archon she supports
 %%
 Gender: Female
-Appearance: About forty. Tall and speckled brown, with folded wings, spectacles, and ink-stained talons
+Appearance: An owlin of about forty. Tall and speckled brown, with folded wings, spectacles, and ink-stained talons
 Who: The leading papermaker on the island.
 known relationships:
 - 

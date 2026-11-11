@@ -18,7 +18,7 @@ Relationships:
 - [[Mateo Callas]]: the archon he's courting
 %%
 Gender: Male
-Appearance: Early forties. Well dressed, soft hands, a gold ring on every finger
+Appearance: A human in his early forties. Well dressed, soft hands, a gold ring on every finger
 Who: A [[Locations/Azure Plains Coalition (APC)/Kalisanta/index|Kalisanta]] merchant who buys most of [[Locations/Azure Plains Coalition (APC)/Hespernus/index|Hespernus's]] oil.
 known relationships:
 - 

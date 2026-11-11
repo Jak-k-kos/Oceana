@@ -18,7 +18,7 @@ Relationships:
 - [[Clara Moraitis]]: the petitioner who won't let him stay neutral
 %%
 Gender: Male
-Appearance: Mid-fifties. Grey-bearded and tired, in good clothes that have been mended too often
+Appearance: A human in his mid fifties. Grey-bearded and tired, in good clothes that have been mended too often
 Who: A grove owner elected archon. He is trying to keep the island together.
 known relationships:
 - 

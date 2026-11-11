@@ -20,7 +20,7 @@ Relationships:
 Council Candidate: yes
 %%
 Gender: Female
-Appearance: About seventy. Small, white-haired and sharp-eyed, with her hands always folded
+Appearance: A human of about seventy. Small, white-haired and sharp-eyed, with her hands always folded
 Who: The patient, ruthless head of the largest oil house on [[Locations/Azure Plains Coalition (APC)/Kalisanta/index|Kalisanta]].
 known relationships:
 - 

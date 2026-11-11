@@ -19,7 +19,7 @@ Relationships:
 - [[Cobra Salinas]]: her head snake-catcher
 %%
 Gender: Female
-Appearance: About forty-five. Tall and graceful, with golden-brown skin, faintly green eyes, and almond blossom in her dark hair
+Appearance: An aasimar of about forty-five. Tall and graceful, with golden-brown skin, faintly green eyes, and almond blossom in her dark hair
 Who: Archon of [[Locations/Azure Plains Coalition (APC)/Las Medusas/index|Las Medusas]] and owner of the largest almond groves.
 known relationships:
 - 

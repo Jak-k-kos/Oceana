@@ -18,7 +18,7 @@ Relationships:
 - [[Tito Garza]]: a boy she half-raised
 %%
 Gender: Female
-Appearance: About seventy-five. Tiny and wiry, rope-burned hands, a straw hat
+Appearance: A human of about seventy-five. Tiny and wiry, rope-burned hands, a straw hat
 Who: She has run the island for as long as anyone remembers. She lost her son to the north cliff.
 known relationships:
 - 

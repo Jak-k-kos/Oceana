@@ -18,7 +18,7 @@ Relationships:
 - [[Rosalie Ambleberry]]: his chief orchard-keeper
 %%
 Gender: Male
-Appearance: About three hundred. Tall and thin, with long silver hair, bark-brown skin, and a blossom tucked behind one ear
+Appearance: A wood elf of about three hundred. Tall and thin, with long silver hair, bark-brown skin, and a blossom tucked behind one ear
 Who: Elder of [[Locations/Azure Plains Coalition (APC)/Kerasia/index|Kerasia]], who planted half its orchards himself.
 known relationships:
 - 

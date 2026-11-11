@@ -18,7 +18,7 @@ Relationships:
 - [[Elio Marinas]]: her great-nephew
 %%
 Gender: Female
-Appearance: About seventy. Barefoot, brown as leather, faded tattoos of fish along her arms
+Appearance: A human of about seventy. Barefoot, brown as leather, faded tattoos of fish along her arms
 Who: The keeper of [[Locations/Azure Plains Coalition (APC)/Delafina/index|Delafina's]] traditions and the best fisher-singer alive.
 known relationships:
 - 

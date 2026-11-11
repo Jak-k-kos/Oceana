@@ -19,7 +19,7 @@ Relationships:
 Council Member: yes
 %%
 Gender: Male
-Appearance: Mid-sixties. Silver-haired and impeccably dressed, with a gold-capped cane he doesn't need
+Appearance: A human in his mid sixties. Silver-haired and impeccably dressed, with a gold-capped cane he doesn't need
 Who: The elected head of the Exchange. Sits on the coalition council; his seat comes up for renewal in 5 years.
 known relationships:
 - 

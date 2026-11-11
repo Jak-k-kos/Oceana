@@ -18,7 +18,7 @@ Relationships:
 - [[Leonora Vargas]]: her archon
 %%
 Gender: Female
-Appearance: About twenty-five. Slim and sandy-furred, with huge green eyes, a spyglass at her hip, and a squadron coat far too big for her
+Appearance: A tabaxi of about twenty-five. Slim and sandy-furred, with huge green eyes, a spyglass at her hip, and a squadron coat far too big for her
 Who: The chief lookout of the watchtower on [[Escama]].
 known relationships:
 - 

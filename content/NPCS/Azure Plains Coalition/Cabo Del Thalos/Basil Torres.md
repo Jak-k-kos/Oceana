@@ -18,7 +18,7 @@ Relationships:
 - [[Andrea Vasquero]]: commander
 %%
 Gender: Male
-Appearance: Early twenties. Red-nosed from the cold, always bundled in two coats
+Appearance: A human in his early twenties. Red-nosed from the cold, always bundled in two coats
 Who: Second-in-command at the Cape, drafted from a southern island.
 known relationships:
 - 

@@ -19,7 +19,7 @@ Relationships:
 - [[Pilar Ahumada]]: the smokehouse owner
 %%
 Gender: Male
-Appearance: Late fifties. Barrel-chested and weathered, a tuna hook scar across one palm, a battered captain's coat he no longer sails in
+Appearance: A human in his late fifties. Barrel-chested and weathered, a tuna hook scar across one palm, a battered captain's coat he no longer sails in
 Who: Harbormaster of [[Locations/Azure Plains Coalition (APC)/Atalyana/index|Atalyana]] and head of the captains' council, a former fleet captain himself.
 known relationships:
 - 

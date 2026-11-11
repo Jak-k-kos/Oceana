@@ -18,7 +18,7 @@ Relationships:
 - [[Orrin Ballena]]: her headman
 %%
 Gender: Female
-Appearance: About forty. Broad and weathered, with a cropped grey head and a harpoon always to hand
+Appearance: A human of about forty. Broad and weathered, with a cropped grey head and a harpoon always to hand
 Who: Captain of the fastest whaleboat on [[Locations/Azure Plains Coalition (APC)/Doraidas/index|Doraidas]].
 known relationships:
 - 

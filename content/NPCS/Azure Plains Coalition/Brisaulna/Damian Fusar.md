@@ -18,7 +18,7 @@ Relationships:
 - [[Consuelo Brial]]: his best customer
 %%
 Gender: Male
-Appearance: About forty. Handsome and yellow-dusted, in a good coat
+Appearance: A human of about forty. Handsome and yellow-dusted, in a good coat
 Who: The sulfur shipper who has supplied [[Locations/Azure Plains Coalition (APC)/Brisaulna/index|Brisaulna]] for three years.
 known relationships:
 - 

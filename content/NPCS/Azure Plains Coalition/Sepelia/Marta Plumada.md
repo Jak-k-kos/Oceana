@@ -18,7 +18,7 @@ Relationships:
 - [[Kaito Arquero]]: her guild-master
 %%
 Gender: Female
-Appearance: About forty-five. Wiry and grey-streaked, with feather down caught in her hair and glue-stained fingers
+Appearance: A human of about forty-five. Wiry and grey-streaked, with feather down caught in her hair and glue-stained fingers
 Who: The best fletcher on [[Locations/Azure Plains Coalition (APC)/Sepelia/index|Sepelia]].
 known relationships:
 - 

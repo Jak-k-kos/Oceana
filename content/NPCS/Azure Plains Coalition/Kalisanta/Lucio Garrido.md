@@ -18,7 +18,7 @@ Relationships:
 - 
 %%
 Gender: Male
-Appearance: About fifty. Round and cheerful, in a waistcoat with too many pockets
+Appearance: A halfling of about fifty. Round and cheerful, in a waistcoat with too many pockets
 Who: Runs a crowded waterfront shop of antiques and oddities, and fences the Old Pelagia finds.
 known relationships:
 - 

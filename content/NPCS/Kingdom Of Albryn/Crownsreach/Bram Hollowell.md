@@ -18,7 +18,7 @@ Relationships:
 - [[King Edwin Albryn]]: the king whose lands he keeps
 %%
 Gender: Male
-Appearance: Looks about fifty. Huge and gentle, with a broad blue-grey face, a long braided beard, and a shepherd's crook taller than most men
+Appearance: A firbolg who looks about fifty. Huge and gentle, with a broad blue-grey face, a long braided beard, and a shepherd's crook taller than most men
 Who: The Lord Steward who runs the farms, orchards and sheep downs beyond the city walls, the crown's own estates, where no lord holds an acre but the king.
 known relationships:
 - 

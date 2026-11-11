@@ -18,7 +18,7 @@ Relationships:
 - [[Teo Murcielago]]: her cave-master
 %%
 Gender: Female
-Appearance: About one hundred and forty. Broad and grey-braided, with a powder-burned face, a battered breastplate, and a musket she never lets go of
+Appearance: A mountain dwarf of about one hundred and forty. Broad and grey-braided, with a powder-burned face, a battered breastplate, and a musket she never lets go of
 Who: The captain of the walls of [[Locations/Azure Plains Coalition (APC)/Salitra/index|Salitra]], who leads the island in peace and siege alike.
 known relationships:
 - 

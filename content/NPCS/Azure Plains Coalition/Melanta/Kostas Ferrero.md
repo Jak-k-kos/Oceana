@@ -19,7 +19,7 @@ Relationships:
 - [[Teo Ruvalo]]: his best customer on [[Locations/Azure Plains Coalition (APC)/Santeo/index|Santeo]]
 %%
 Gender: Male
-Appearance: Looks about fifty but is over a hundred and fifty. Broad and red-faced, singed beard, thick leather apron, burn-scarred hands
+Appearance: A dwarf who looks about fifty but is over a hundred and fifty. Broad and red-faced, singed beard, thick leather apron, burn-scarred hands
 Who: Master glassblower and archon of [[Locations/Azure Plains Coalition (APC)/Melanta/index|Melanta]].
 known relationships:
 - 

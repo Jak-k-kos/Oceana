@@ -18,7 +18,7 @@ Relationships:
 - [[Teodora Arco]]: his best stave-shaver
 %%
 Gender: Male
-Appearance: About forty. Towering and grey-skinned, with dark, stone-like markings, a shaved head, and a cooper's adze on his belt
+Appearance: A goliath of about forty. Towering and grey-skinned, with dark, stone-like markings, a shaved head, and a cooper's adze on his belt
 Who: The master cooper of [[Locations/Azure Plains Coalition (APC)/Astarta/index|Astarta]], head of its guild.
 known relationships:
 - 

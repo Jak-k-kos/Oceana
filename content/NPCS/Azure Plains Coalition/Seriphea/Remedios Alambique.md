@@ -18,7 +18,7 @@ Relationships:
 - [[Galatea Moros]]: her archon
 %%
 Gender: Female
-Appearance: About sixty. Stout and red-faced, with burn-marked hands and a stained apron
+Appearance: A human of about sixty. Stout and red-faced, with burn-marked hands and a stained apron
 Who: Head of the distillers' guild, whose family tended the great cask for four generations.
 known relationships:
 - 

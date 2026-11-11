@@ -21,7 +21,7 @@ Relationships:
 - [[John Bellball]] - Brother
 %%
 Gender: Wouldn't you like to know.
-Appearance: All we know is what the back of his coat looked like, the tip of his hat poking out from around the collar, as he went out for milk.
+Appearance: A tabaxi, though all we know of him is what the back of his coat looked like, the tip of his hat poking out from around the collar, as he went out for milk.
 Who: The father of Shady and his bastard daughter, Rouge. He abandoned them, along with his now ex wife after coming home with Rouge after a long sailing venture.
 known relationships:
 - [[Rouge Bellball]] - Daughter

@@ -18,7 +18,7 @@ Relationships:
 - [[Durgan Pizarra]]: the quarry-master
 %%
 Gender: Male
-Appearance: Ancient. Thin, bent, and wild-bearded, wrapped in old sailcloth, with eyes like a gull's
+Appearance: An ancient human. Thin, bent, and wild-bearded, wrapped in old sailcloth, with eyes like a gull's
 Who: A hermit living in the old quarry tunnels.
 known relationships:
 - 

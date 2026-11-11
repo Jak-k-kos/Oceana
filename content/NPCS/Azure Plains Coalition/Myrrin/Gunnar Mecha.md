@@ -18,7 +18,7 @@ Relationships:
 - [[Pip Chispa]]: his best fuse-maker
 %%
 Gender: Male
-Appearance: About one hundred and fifty. Broad and soot-grey, with a braided beard tucked into his belt, a leather apron, and a left hand missing two fingers
+Appearance: A mountain dwarf of about one hundred and fifty. Broad and soot-grey, with a braided beard tucked into his belt, a leather apron, and a left hand missing two fingers
 Who: The powder-master of [[Locations/Azure Plains Coalition (APC)/Myrrin/index|Myrrin]].
 known relationships:
 - 

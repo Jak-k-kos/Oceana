@@ -18,7 +18,7 @@ Relationships:
 - [[Delfina Vasilakis]]: high priestess
 %%
 Gender: Male
-Appearance: Late forties. Broad and sunburnt, cracked lips, boots crusted white to the knee
+Appearance: A human in his late forties. Broad and sunburnt, cracked lips, boots crusted white to the knee
 Who: Foreman of the salt pans. The workers trust him completely.
 known relationships:
 - 

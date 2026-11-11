@@ -18,7 +18,7 @@ Relationships:
 - [[Carmen Leukos]]: harbor-mistress
 %%
 Gender: Male
-Appearance: Mid-forties. Stocky and sun-browned, hands calloused hard as leather, a coil of cord always over one shoulder
+Appearance: A human in his mid forties. Stocky and sun-browned, hands calloused hard as leather, a coil of cord always over one shoulder
 Who: Master of the island's rope walks.
 known relationships:
 - 

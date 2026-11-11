@@ -18,7 +18,7 @@ Relationships:
 - [[Gorm Troja]]: her keeper
 %%
 Gender: Female
-Appearance: About thirty-five. Thin and severe, with ink on her fingers, her hair pinned tight, and spectacles on a chain
+Appearance: A human of about thirty-five. Thin and severe, with ink on her fingers, her hair pinned tight, and spectacles on a chain
 Who: The tally-keeper of the granary of [[Locations/Azure Plains Coalition (APC)/Lagrane/index|Lagrane]].
 known relationships:
 - 

@@ -18,7 +18,7 @@ Relationships:
 - [[Tamsin Marrow]]: the child she keeps an eye on
 %%
 Gender: Female
-Appearance: About two hundred. Tall and stooped, with blue-grey skin, drooping ears, and salt-white hands
+Appearance: A firbolg of about two hundred. Tall and stooped, with blue-grey skin, drooping ears, and salt-white hands
 Who: The eldest pan-keeper on [[Locations/Azure Plains Coalition (APC)/Velmar/index|Velmar]].
 known relationships:
 - 

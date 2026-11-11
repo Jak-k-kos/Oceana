@@ -18,7 +18,7 @@ Relationships:
 - [[Alma Remedios]]: her high healer
 %%
 Gender: Female
-Appearance: About forty. Small and freckled, with petals caught in her curls and soil beneath her nails
+Appearance: A ghostwise halfling of about forty. Small and freckled, with petals caught in her curls and soil beneath her nails
 Who: The herbalist of the hospital of [[Apiot]] on [[Locations/Azure Plains Coalition (APC)/Del Rosa/index|Del Rosa]].
 known relationships:
 - 

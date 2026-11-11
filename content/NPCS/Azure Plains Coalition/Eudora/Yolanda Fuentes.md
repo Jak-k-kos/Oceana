@@ -18,7 +18,7 @@ Relationships:
 - [[Spiros Vrysi]]: the rival head she no longer speaks to
 %%
 Gender: Female
-Appearance: About fifty. Thin and weathered, with muddy skirts and a hard face
+Appearance: A human of about fifty. Thin and weathered, with muddy skirts and a hard face
 Who: The head of the upper village, whose family has kept the spring for generations.
 known relationships:
 - 

@@ -20,7 +20,7 @@ Relationships:
 Council Member: yes
 %%
 Gender: Female
-Appearance: About fifty-five. Tall and iron-haired, with a weathered face, a plain riding coat, and a farmer's hands
+Appearance: A human of about fifty-five. Tall and iron-haired, with a weathered face, a plain riding coat, and a farmer's hands
 Who: Archon of [[Locations/Azure Plains Coalition (APC)/Drakosa/index|Drakosa]], and owner of its largest farms. Sits on the coalition council; her seat comes up for renewal in 2 years.
 known relationships:
 - 

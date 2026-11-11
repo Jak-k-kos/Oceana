@@ -18,7 +18,7 @@ Relationships:
 - [[Rocio Pulpera]]: the fisher who brings him the catch
 %%
 Gender: Male
-Appearance: About seventy. Bald and bony, with brown-stained hands and a stained leather apron
+Appearance: A human of about seventy. Bald and bony, with brown-stained hands and a stained leather apron
 Who: The oldest ink-maker on [[Locations/Azure Plains Coalition (APC)/Isla Gravitoa/index|Isla Gravitoa]], and its leader.
 known relationships:
 - 

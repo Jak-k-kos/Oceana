@@ -18,7 +18,7 @@ Relationships:
 - [[Vaszhar Ashkel]]: head of the temple families, and her oldest friend
 %%
 Gender: Female
-Appearance: Late sixties. Short and leathery, a faerie dragon usually perched on her shoulder
+Appearance: A human in her late sixties. Short and leathery, a faerie dragon usually perched on her shoulder
 Who: Elder of [[Locations/Azure Plains Coalition (APC)/Akatano/index|Akatano]], who rules the village alongside the temple families.
 known relationships:
 - 

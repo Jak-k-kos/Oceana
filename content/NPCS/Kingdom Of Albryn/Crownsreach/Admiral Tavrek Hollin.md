@@ -20,7 +20,7 @@ Relationships:
 - [[Duke Roderick Thorne]]: wants the Home Fleet's ships sent south
 %%
 Gender: Male
-Appearance: About sixty. Broad and bronze-scaled, his snout grey with age, in a sea-stained admiral's coat with the gold anchor of the Home Fleet
+Appearance: A bronze dragonborn of about sixty. Broad and bronze-scaled, his snout grey with age, in a sea-stained admiral's coat with the gold anchor of the Home Fleet
 Who: The marquess who commands the Home Fleet, the ships that guard the waters of [[Locations/Kingdom of Albryn/Crownsreach/index|Crownsreach]]. He kept his post after the murders of the king and queen only because the dukes could never agree on who should replace him.
 Rumors:
 - He offered the boy king his sword and his resignation the morning after the murders, and Edwin refused both

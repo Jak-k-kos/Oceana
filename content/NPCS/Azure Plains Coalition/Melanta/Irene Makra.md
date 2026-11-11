@@ -18,7 +18,7 @@ Relationships:
 - [[Kostas Ferrero]]: master
 %%
 Gender: Female
-Appearance: Early twenties. Slight, burn marks on her forearms, black sand in her hair
+Appearance: A human in her early twenties. Slight, burn marks on her forearms, black sand in her hair
 Who: [[Kostas Ferrero|Kostas's]] apprentice, and better than he admits.
 known relationships:
 - 

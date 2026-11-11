@@ -18,7 +18,7 @@ Relationships:
 - [[Rosa Ventura]]: grandmother
 %%
 Gender: Male
-Appearance: Mid-twenties. Small, sunburnt, always holding a wrench
+Appearance: A halfling in his mid twenties. Small, sunburnt, always holding a wrench
 Who: Keeps the island's windmills turning.
 known relationships:
 - 

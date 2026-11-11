@@ -19,7 +19,7 @@ Relationships:
 - [[Nikias Kerameos]]: the master painter she protects
 %%
 Gender: Female
-Appearance: Mid-forties. Tall and composed, identical to her twin, always dressed in blue so petitioners can tell them apart
+Appearance: A human in her mid forties. Tall and composed, identical to her twin, always dressed in blue so petitioners can tell them apart
 Who: One of the twin archons, raised to rule from birth and governing alongside her sister for twenty years.
 known relationships:
 - 

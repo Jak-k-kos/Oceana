@@ -18,7 +18,7 @@ Relationships:
 - [[Hernan Pata]]: the harbormaster
 %%
 Gender: Female
-Appearance: About forty-five. Broad and grey-green, with a swordfish bill hung at her belt, heavy tusks, and a harpoon always in hand
+Appearance: An orc of about forty-five. Broad and grey-green, with a swordfish bill hung at her belt, heavy tusks, and a harpoon always in hand
 Who: The head harpooner of [[Locations/Azure Plains Coalition (APC)/Koras/index|Koras]].
 known relationships:
 - 

@@ -18,7 +18,7 @@ Relationships:
 - [[Pim Cristal]]: her best gatherer
 %%
 Gender: Female
-Appearance: About forty. Tall and sapphire-scaled, with a frill scorched by old lightning and a gathering basket on her back
+Appearance: A blue dragonborn of about forty. Tall and sapphire-scaled, with a frill scorched by old lightning and a gathering basket on her back
 Who: The head of the glass-gatherers of [[Locations/Azure Plains Coalition (APC)/Escal/index|Escal]].
 known relationships:
 - 

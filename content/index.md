@@ -6,9 +6,10 @@ Welcome to the world of Oceana. The waters rose, the sea folk claimed the deep, 
 # Start Here
 - [[Shops, Shells And Survival/The Bazaar/index|The Bazaar]]
 - [[Sails and Seas/Flag Code|Flag Code]]
-- [[Shops, Shells And Survival/Calendar|Calendar]]
+- [[Calendar|Calendar]]
 - [[Sails and Seas/Ship Rules/index|Ship Rules]]
 - [[Locations/Azure Plains Coalition (APC)/index|Azure Plains Coalition]]
+- [[Locations/Azure Plains Coalition (APC)/Insul/index|Insul]]
 - [[Locations/Kingdom of Albryn/index|Kingdom of Albryn]]
 - [[Shops, Shells And Survival/House Rules|House Rules]]
 - [[The Ships Larder]]  (<a href="https://jak-k-kos.github.io/Oceana/static/larder.html" data-router-ignore="true">its own page</a>)

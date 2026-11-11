@@ -18,7 +18,7 @@ Relationships:
 - [[Wren Cotta]]: his best cutter
 %%
 Gender: Male
-Appearance: About one hundred and fifty. Tiny and chalk-white from head to toe, with sharp black eyes and a quarry pick over one shoulder
+Appearance: A rock gnome of about one hundred and fifty. Tiny and chalk-white from head to toe, with sharp black eyes and a quarry pick over one shoulder
 Who: Quarry-master of [[Locations/Azure Plains Coalition (APC)/Perla/index|Perla]] for sixty years.
 known relationships:
 - 

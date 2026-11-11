@@ -18,7 +18,7 @@ Relationships:
 - [[Brann Yunque]]: her best armourer
 %%
 Gender: Female
-Appearance: About forty. Broad and crimson-scaled, with soot-blackened claws, a leather apron, and a hammer on her belt
+Appearance: A red dragonborn of about forty. Broad and crimson-scaled, with soot-blackened claws, a leather apron, and a hammer on her belt
 Who: The forge-master of [[Locations/Azure Plains Coalition (APC)/Ledas/index|Ledas]].
 known relationships:
 - 

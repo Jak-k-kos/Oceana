@@ -18,7 +18,7 @@ Relationships:
 - [[Hilde Calcara]]: his pit-master
 %%
 Gender: Male
-Appearance: About twenty-five. Lanky and cheerful, with white-dusted curls and a long clay pipe forever between his teeth
+Appearance: A human of about twenty-five. Lanky and cheerful, with white-dusted curls and a long clay pipe forever between his teeth
 Who: The most talented pipe-maker on [[Locations/Azure Plains Coalition (APC)/Tiscato/index|Tiscato]].
 known relationships:
 - 

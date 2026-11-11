@@ -19,7 +19,7 @@ Relationships:
 - [[Amalia Surco]]: the grower standing in her way
 %%
 Gender: Female
-Appearance: Mid-forties. Elegant and silver-streaked, always in white linen, rings on every finger, never seen with a hair out of place
+Appearance: A human in her mid forties. Elegant and silver-streaked, always in white linen, rings on every finger, never seen with a hair out of place
 Who: Owner of the Ashwater, the most exclusive retreat in the [[Locations/Azure Plains Coalition (APC)/index|coalition]], and the most gracious host anyone has ever met.
 known relationships:
 - 

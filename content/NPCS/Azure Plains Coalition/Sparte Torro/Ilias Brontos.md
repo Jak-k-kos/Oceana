@@ -18,7 +18,7 @@ Relationships:
 - [[Thalia Esparza]]: his champion and his student
 %%
 Gender: Male
-Appearance: Looks about fifty-five. Huge and grey-tusked, with a scarred bronze trident on his back
+Appearance: A half-orc who looks about fifty-five. Huge and grey-tusked, with a scarred bronze trident on his back
 Who: The man who trained [[Thalia Esparza|Thalia]], and every Sparte officer of the last thirty years.
 known relationships:
 - 

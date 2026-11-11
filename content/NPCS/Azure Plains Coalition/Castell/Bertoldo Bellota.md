@@ -18,7 +18,7 @@ Relationships:
 - [[Aurelio Almenara]]: his castellan
 %%
 Gender: Male
-Appearance: About fifty. Round and rosy, with muddy boots, an oak staff, and acorns in every pocket
+Appearance: A stout halfling of about fifty. Round and rosy, with muddy boots, an oak staff, and acorns in every pocket
 Who: The master swineherd of the oak woods of [[Locations/Azure Plains Coalition (APC)/Castell/index|Castell]].
 known relationships:
 - 

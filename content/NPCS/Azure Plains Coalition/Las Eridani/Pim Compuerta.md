@@ -18,7 +18,7 @@ Relationships:
 - [[Ixandra Vallejo]]: his archon
 %%
 Gender: Male
-Appearance: About one hundred and twenty. Tiny and spry, with a wild grey beard, goggles, and pockets bulging with wooden plugs
+Appearance: A rock gnome of about one hundred and twenty. Tiny and spry, with a wild grey beard, goggles, and pockets bulging with wooden plugs
 Who: The gnome who keeps the sluices, weirs and watermills of [[Locations/Azure Plains Coalition (APC)/Las Eridani/index|Las Eridani]].
 known relationships:
 - 

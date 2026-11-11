@@ -18,7 +18,7 @@ Relationships:
 - [[Kesh Ironveil]]: the gunsmith he has been courting
 %%
 Gender: Male
-Appearance: About forty. Handsome and well-dressed, with a ready smile and soft hands
+Appearance: A half-elf of about forty. Handsome and well-dressed, with a ready smile and soft hands
 Who: A timber merchant who has been on [[Locations/Azure Plains Coalition (APC)/Kallistrata/index|Kallistrata]] for a month.
 known relationships:
 - 

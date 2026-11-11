@@ -18,7 +18,7 @@ Relationships:
 - [[Ofelia Cerero]]: the candlemaker who brought her the boats
 %%
 Gender: Female
-Appearance: Early sixties. Small and round, sun-browned, a veiled straw hat pushed back on her head, bee stings on her hands she no longer notices
+Appearance: A human in her early sixties. Small and round, sun-browned, a veiled straw hat pushed back on her head, bee stings on her hands she no longer notices
 Who: Elder of [[Locations/Azure Plains Coalition (APC)/Santana Rhodia/index|Santana Rhodia]], and keeper of the island's oldest hives.
 known relationships:
 - 

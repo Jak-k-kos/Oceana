@@ -18,7 +18,7 @@ Relationships:
 - [[Pirro Lanudo]]: her elder
 %%
 Gender: Female
-Appearance: About fifty. Stout and pale from the caves, with a lantern on her belt, wax under her nails, and a long cheese-iron
+Appearance: A human of about fifty. Stout and pale from the caves, with a lantern on her belt, wax under her nails, and a long cheese-iron
 Who: The keeper of the sea caves of [[Locations/Azure Plains Coalition (APC)/Valdora/index|Valdora]], who ages its famous cheese.
 known relationships:
 - 

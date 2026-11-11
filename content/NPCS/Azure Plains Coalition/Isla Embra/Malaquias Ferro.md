@@ -20,7 +20,7 @@ Relationships:
 Fleet Admiral: yes
 %%
 Gender: Male
-Appearance: About fifty-five. Gaunt and grey-haired, with a stiff black coat, a ring of iron keys, and a cane he uses more for pointing than walking
+Appearance: A human of about fifty-five. Gaunt and grey-haired, with a stiff black coat, a ring of iron keys, and a cane he uses more for pointing than walking
 Who: The warden of [[Locations/Azure Plains Coalition (APC)/Isla Embra/index|Isla Embra]], and one of the coalition's three fleet admirals. His name is infamous across the islands, and mothers use it to frighten unruly children.
 known relationships:
 - 

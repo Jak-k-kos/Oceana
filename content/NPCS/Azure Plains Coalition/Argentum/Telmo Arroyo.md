@@ -18,7 +18,7 @@ Relationships:
 - [[Rhea Kanellos]]: his admiral
 %%
 Gender: Male
-Appearance: Young. Small and black-feathered, with ink-stained claws, tiny spectacles, and a too-big uniform
+Appearance: A young kenku. Small and black-feathered, with ink-stained claws, tiny spectacles, and a too-big uniform
 Who: The young purser who found the missing silver.
 known relationships:
 - 

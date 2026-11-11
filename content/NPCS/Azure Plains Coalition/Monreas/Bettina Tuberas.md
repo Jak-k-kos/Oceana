@@ -18,7 +18,7 @@ Relationships:
 - [[Gil Patata]]: her stillmaster
 %%
 Gender: Female
-Appearance: About forty. Small and quick, with long brown ears, dirt-stained paws, and a straw hat with holes cut for her ears
+Appearance: A harengon of about forty. Small and quick, with long brown ears, dirt-stained paws, and a straw hat with holes cut for her ears
 Who: The elder of the farming families of [[Locations/Azure Plains Coalition (APC)/Monreas/index|Monreas]].
 known relationships:
 - 

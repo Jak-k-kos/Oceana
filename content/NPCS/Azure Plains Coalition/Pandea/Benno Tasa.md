@@ -18,7 +18,7 @@ Relationships:
 - [[Nima Mercado]]: his master
 %%
 Gender: Male
-Appearance: About fifty. Round and rosy, with spectacles, an ink-stained waistcoat, and brass weights in his pockets
+Appearance: A stout halfling of about fifty. Round and rosy, with spectacles, an ink-stained waistcoat, and brass weights in his pockets
 Who: The chief weigher of the market of [[Locations/Azure Plains Coalition (APC)/Pandea/index|Pandea]].
 known relationships:
 - 

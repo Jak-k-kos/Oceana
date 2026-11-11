@@ -18,7 +18,7 @@ Relationships:
 - [[Elias Thermidor]]: his employer
 %%
 Gender: Male
-Appearance: Mid-forties. Thin and nervous, fine engraving tools always in his belt
+Appearance: A human in his mid forties. Thin and nervous, fine engraving tools always in his belt
 Who: One of the mint's master die-cutters, trusted for twenty years.
 known relationships:
 - 

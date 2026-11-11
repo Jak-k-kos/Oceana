@@ -18,7 +18,7 @@ Relationships:
 - [[Teodosia Barro]]: elder, and the one person he hasn't told about the dragon yet
 %%
 Gender: Male
-Appearance: Mid-sixties. Tall and stooped, dull bronze scales faded almost to gold, temple robes stitched with scales shed by visiting dragons
+Appearance: A bronze dragonborn in his mid sixties. Tall and stooped, dull bronze scales faded almost to gold, temple robes stitched with scales shed by visiting dragons
 Who: High priest of [[Locations/Azure Plains Coalition (APC)/Akatano/index|Akatano's]] temple of [[Koruk]] and head of the dragonborn and kobold families who tend it. His grandparents were among those who left the [[Locations/The Draconic Conclave/index|Conclave]].
 known relationships:
 - 

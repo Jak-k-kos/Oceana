@@ -18,7 +18,7 @@ Relationships:
 - [[Liriel Cuerda]]: his master luthier
 %%
 Gender: Male
-Appearance: About forty. Broad and grey-green, with heavy tusks, goatskin scraps on his apron, and drumsticks thrust through his belt
+Appearance: An orc of about forty. Broad and grey-green, with heavy tusks, goatskin scraps on his apron, and drumsticks thrust through his belt
 Who: The best drum-maker on [[Locations/Azure Plains Coalition (APC)/Eramita/index|Eramita]].
 known relationships:
 - 

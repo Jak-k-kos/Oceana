@@ -18,7 +18,7 @@ Relationships:
 - [[Mabel Hearthstone]]: his employer
 %%
 Gender: Male
-Appearance: About thirty-five. Huge and brown-furred, with flour in every tuft and a scorched leather apron
+Appearance: A bugbear of about thirty-five. Huge and brown-furred, with flour in every tuft and a scorched leather apron
 Who: The oven-master who keeps the island's fires burning.
 known relationships:
 - 

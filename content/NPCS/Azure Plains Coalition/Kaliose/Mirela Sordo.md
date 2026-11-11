@@ -18,7 +18,7 @@ Relationships:
 - [[Fausto Tavros]]: the elder she's afraid to confront
 %%
 Gender: Female
-Appearance: About forty. Short-haired and practical, sleeves always rolled up
+Appearance: A human of about forty. Short-haired and practical, sleeves always rolled up
 Who: The island's cattle doctor, who has noticed the eastern herds are dying.
 known relationships:
 - 

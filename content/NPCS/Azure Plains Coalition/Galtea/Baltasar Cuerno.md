@@ -18,7 +18,7 @@ Relationships:
 - [[Oran Pradera]]: his archon
 %%
 Gender: Male
-Appearance: About thirty-five. Towering and grey-skinned, with dark stone markings, a cattle whip, and a broad-brimmed hat
+Appearance: A goliath of about thirty-five. Towering and grey-skinned, with dark stone markings, a cattle whip, and a broad-brimmed hat
 Who: The chief drover of the herds of [[Locations/Azure Plains Coalition (APC)/Galtea/index|Galtea]].
 known relationships:
 - 

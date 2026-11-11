@@ -20,7 +20,7 @@ Relationships:
 Council Candidate: yes
 %%
 Gender: Male
-Appearance: Late fifties. Broad, sawdust in his grey beard, one finger missing
+Appearance: A human in his late fifties. Broad, sawdust in his grey beard, one finger missing
 Who: The most powerful shipwright on the island. He built half the boats in the harbor.
 known relationships:
 - 

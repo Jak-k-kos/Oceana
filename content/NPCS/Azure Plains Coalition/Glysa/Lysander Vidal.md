@@ -19,7 +19,7 @@ Relationships:
 Council Candidate: yes
 %%
 Gender: Male
-Appearance: Looks about forty. Slender and sun-browned, with pointed ears, purple-stained fingers, and a neat, grey-streaked beard
+Appearance: A half-elf who looks about forty. Slender and sun-browned, with pointed ears, purple-stained fingers, and a neat, grey-streaked beard
 Who: Archon of [[Locations/Azure Plains Coalition (APC)/Glysa/index|Glysa]] and master of its largest vineyards.
 known relationships:
 - 

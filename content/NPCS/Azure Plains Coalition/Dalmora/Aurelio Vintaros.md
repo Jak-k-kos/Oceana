@@ -21,7 +21,7 @@ Relationships:
 Council Member: yes
 %%
 Gender: Male
-Appearance: Late fifties. Velvet coat, heavy rings, a perfectly trimmed silver beard
+Appearance: A human in his late fifties. Velvet coat, heavy rings, a perfectly trimmed silver beard
 Who: Head of the richest vintner family on [[Locations/Azure Plains Coalition (APC)/Dalmora/index|Dalmora]] and chair of the council of five families. Sits on the coalition council; his seat comes up for renewal in 3 years.
 known relationships:
 - 

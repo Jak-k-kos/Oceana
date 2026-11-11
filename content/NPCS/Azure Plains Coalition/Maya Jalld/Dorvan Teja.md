@@ -18,7 +18,7 @@ Relationships:
 - [[Fennick Arcilla]]: the apprentice who found the mosaic
 %%
 Gender: Male
-Appearance: About fifty. Tall and red-skinned, with clay dust in every crease, a neat leather apron, and a ledger always under his arm
+Appearance: A hobgoblin of about fifty. Tall and red-skinned, with clay dust in every crease, a neat leather apron, and a ledger always under his arm
 Who: The tile-master, who runs the kilns like a military operation.
 known relationships:
 - 

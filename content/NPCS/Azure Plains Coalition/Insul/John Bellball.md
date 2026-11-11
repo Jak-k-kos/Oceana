@@ -21,7 +21,7 @@ Relationships:
 - [[Tabatha Bellball]] - ex-sister in law
 %%
 Gender: Male
-Appearance: He has a large beer gut, dirty grey fur, a growing bald spot on the top of his head, and a deformed left paw.
+Appearance: A tabaxi with a large beer gut, dirty grey fur, a growing bald spot on the top of his head, and a deformed left paw.
 Who: He is the drunk, abusive, uncle to [[Shady Bellball|Shady]] and [[Rouge Bellball|Rouge]]. He owns _Uncle Johns_, a popular pub on the island, where he employs [[Tabatha Bellball|Tabatha]], the mother of the two Bellball children and ex-wife to his brother.
 known relationships:
 - [[Charles Bellball]] - Brother

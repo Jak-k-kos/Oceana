@@ -18,7 +18,7 @@ Relationships:
 - [[Mercedes Arrieta]]: the Lady of the Point, who he lives with
 %%
 Gender: Male
-Appearance: About fifty. Grey-bearded, softened by three years of good living
+Appearance: A human of about fifty. Grey-bearded, softened by three years of good living
 Who: A famous captain from another island who walked away from his old life.
 known relationships:
 - 

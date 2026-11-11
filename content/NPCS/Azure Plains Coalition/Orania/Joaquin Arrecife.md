@@ -18,7 +18,7 @@ Relationships:
 - [[Aeron Faro]]: his beacon-master
 %%
 Gender: Male
-Appearance: About fifty. Wiry and weathered, with a salt-grey beard, a battered hat, and a sounding line coiled at his belt
+Appearance: A human of about fifty. Wiry and weathered, with a salt-grey beard, a battered hat, and a sounding line coiled at his belt
 Who: The best pilot on [[Locations/Azure Plains Coalition (APC)/Orania/index|Orania]], who guides ships through the frontier reefs.
 known relationships:
 - 

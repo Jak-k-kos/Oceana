@@ -18,7 +18,7 @@ Relationships:
 - [[Hipolito Alumbre]]: her father
 %%
 Gender: Female
-Appearance: About thirty. Tall and soft-spoken, with blue-grey skin, white dust in her braided hair, and burn marks on her forearms
+Appearance: A firbolg of about thirty. Tall and soft-spoken, with blue-grey skin, white dust in her braided hair, and burn marks on her forearms
 Who: [[Hipolito Alumbre|Hipolito's]] daughter, who works the boiling vats.
 known relationships:
 - 

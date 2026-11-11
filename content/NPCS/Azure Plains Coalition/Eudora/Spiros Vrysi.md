@@ -18,7 +18,7 @@ Relationships:
 - [[Yolanda Fuentes]]: the rival head he no longer speaks to
 %%
 Gender: Male
-Appearance: About sixty. Heavy and red-faced, with a white moustache and a walking stick
+Appearance: A human of about sixty. Heavy and red-faced, with a white moustache and a walking stick
 Who: The head of the lower village, which has the most farms and the least water.
 known relationships:
 - 

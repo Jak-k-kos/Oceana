@@ -19,7 +19,7 @@ Relationships:
 - [[Grom Kettleburn]]: her furnace-master
 %%
 Gender: Female
-Appearance: About thirty. Small and red-scaled, with a soot-black snout, goggles pushed up on her horns, and a leather apron covered in burns
+Appearance: A kobold of about thirty. Small and red-scaled, with a soot-black snout, goggles pushed up on her horns, and a leather apron covered in burns
 Who: The finest smith on the island, obsessed with the slab that won't melt.
 known relationships:
 - 

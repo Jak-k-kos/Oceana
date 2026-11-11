@@ -18,7 +18,7 @@ Relationships:
 - [[Ines Anil]]: his house head
 %%
 Gender: Male
-Appearance: About thirty. Small and green, though usually blue, with an apron and a long stirring pole
+Appearance: A goblin of about thirty. Small and green, though usually blue, with an apron and a long stirring pole
 Who: The best vat-master on [[Locations/Azure Plains Coalition (APC)/Vas Damas/index|Vas Damas]], loyal to Ines.
 known relationships:
 - 

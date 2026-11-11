@@ -3,7 +3,7 @@ title: The Kingdom Of Albryn
 ---
 # The Kingdom Of Albryn
 ### Large Settlements
-- [[Locations/Kingdom of Albryn/Capital/index|Capital]]
+- [[Locations/Kingdom of Albryn/Crownsreach/index|Crownsreach]]
 
 
 ### Small Settlements

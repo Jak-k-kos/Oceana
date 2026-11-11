@@ -18,7 +18,7 @@ Relationships:
 - [[Oran Pradera]]: her archon
 %%
 Gender: Female
-Appearance: About forty-five. Broad and rosy, with flour on her apron and her sleeves always rolled up
+Appearance: A human of about forty-five. Broad and rosy, with flour on her apron and her sleeves always rolled up
 Who: The mistress of the dairies of [[Locations/Azure Plains Coalition (APC)/Galtea/index|Galtea]].
 known relationships:
 - 

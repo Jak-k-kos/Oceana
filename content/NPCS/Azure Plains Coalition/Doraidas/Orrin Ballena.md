@@ -18,7 +18,7 @@ Relationships:
 - [[Sable Harrow]]: the captain with the best claim
 %%
 Gender: Male
-Appearance: About forty. Tall and dark green-scaled, with harpoon scars and a necklace of whale teeth
+Appearance: A lizardfolk of about forty. Tall and dark green-scaled, with harpoon scars and a necklace of whale teeth
 Who: Headman of [[Locations/Azure Plains Coalition (APC)/Doraidas/index|Doraidas]] and its most famous whaler.
 known relationships:
 - 

@@ -20,7 +20,7 @@ Relationships:
 Council Candidate: yes
 %%
 Gender: Female
-Appearance: About fifty. Plump and brown, with cacao-stained fingers and a green silk headscarf
+Appearance: A human of about fifty. Plump and brown, with cacao-stained fingers and a green silk headscarf
 Who: Head of the oldest planter family.
 known relationships:
 - 

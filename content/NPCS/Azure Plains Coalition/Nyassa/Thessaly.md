@@ -18,7 +18,7 @@ Relationships:
 - [[Elia Thalassini]]: the elder she trusts
 %%
 Gender: Female
-Appearance: Ageless. Pale and silver-scaled from the waist down, with dark green hair and old scars across her back
+Appearance: An ageless siren. Pale and silver-scaled from the waist down, with dark green hair and old scars across her back
 Who: A siren who came to [[Locations/Azure Plains Coalition (APC)/Nyassa/index|Nyassa]] decades ago and never left. She has never said why.
 known relationships:
 - 

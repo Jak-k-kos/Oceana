@@ -18,7 +18,7 @@ Relationships:
 - [[Benicio Nardo]]: her archon
 %%
 Gender: Female
-Appearance: Looks about forty but is much older. Slender and elegant, with dark hair streaked silver and long, careful fingers
+Appearance: A half-elf who looks about forty but is much older. Slender and elegant, with dark hair streaked silver and long, careful fingers
 Who: The greatest distiller on [[Locations/Azure Plains Coalition (APC)/Liritos/index|Liritos]].
 known relationships:
 - 

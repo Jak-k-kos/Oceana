@@ -18,7 +18,7 @@ Relationships:
 - [[Salada]]: the stranger he took in
 %%
 Gender: Male
-Appearance: About seventy. Huge and grey, with a chipped tusk and a straw hat tied to his head
+Appearance: A loxodon of about seventy. Huge and grey, with a chipped tusk and a straw hat tied to his head
 Who: The elder of [[Locations/Azure Plains Coalition (APC)/Kalyps/index|Kalyps]], who took [[Salada]] in.
 known relationships:
 - 

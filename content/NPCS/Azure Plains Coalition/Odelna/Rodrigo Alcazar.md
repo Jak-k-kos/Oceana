@@ -19,7 +19,7 @@ Relationships:
 Council Candidate: yes
 %%
 Gender: Male
-Appearance: About fifty-five. Lean and black-bearded, in dark, expensive clothes, with a duelling sword at his hip
+Appearance: A human of about fifty-five. Lean and black-bearded, in dark, expensive clothes, with a duelling sword at his hip
 Who: Head of the second-greatest family on [[Locations/Azure Plains Coalition (APC)/Odelna/index|Odelna]], whose son was left at the altar.
 known relationships:
 - 

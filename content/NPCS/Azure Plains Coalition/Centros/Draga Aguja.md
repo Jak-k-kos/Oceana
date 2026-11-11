@@ -18,7 +18,7 @@ Relationships:
 - [[Tomas Dedal]]: her best journeyman
 %%
 Gender: Female
-Appearance: About forty-five. Broad and grey-green, with short tusks, a thimble on every finger of her right hand, and pins stuck in her collar
+Appearance: A half-orc of about forty-five. Broad and grey-green, with short tusks, a thimble on every finger of her right hand, and pins stuck in her collar
 Who: The master of the tailors' guild of [[Locations/Azure Plains Coalition (APC)/Centros/index|Centros]].
 known relationships:
 - 
