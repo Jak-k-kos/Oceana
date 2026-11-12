@@ -18,7 +18,7 @@ draft: false
 
 
 # Inspiration
-You earn Inspiration for good roleplay. You can only hold one Inspiration at a time.
+You earn Inspiration for good roleplay. You can only hold up to five Inspiration at a time. gives advantage on a roll of your choice
 
 # Rations
 Food and water are tracked. Each creature needs 1 food ration and 1 water ration per day.
