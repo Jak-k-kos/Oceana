@@ -8,7 +8,7 @@ lastname: Alvarado
 DM Notes:
 ------------------------------------
 species: Human
-Unique Trait: Brings lemons to meetings to throw
+Unique Trait: Brings a lump of kelp charcoal to meetings to slam on the table
 Motivation: Take [[Kyras Oeste]] out of the union and make it a city-state in its own right
 Occupation: Speaker of the [[Kyras Oeste|Oeste]] council
 Belief: [[Kyras Este|Este]] takes the profits while [[Kyras Oeste|Oeste]] does the work
@@ -19,7 +19,7 @@ Relationships:
 - [[Leonidas Pyrgos]]: her opponent
 %%
 Gender: Female
-Appearance: A human in her late thirties. Wiry and sun-browned, a scar on her chin from a pruning hook
+Appearance: A human in her late thirties. Wiry and sun-browned, a scar on her chin from a kelp knife
 Who: [[Kyras Oeste|Kyras Oeste's]] firebrand speaker.
 known relationships:
 - 

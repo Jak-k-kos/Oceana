@@ -19,6 +19,6 @@ Relationships:
 %%
 Gender: Female
 Appearance: An aarakocra of about thirty. Tall and slim, with grey-and-white feathers smudged with soot, and sharp gold eyes
-Who: The kiln-master of [[Locations/Azure Plains Coalition (APC)/Mirada/index|Mirada]], who runs the kelp kilns.
+Who: The kiln-master of [[Locations/Azure Plains Coalition (APC)/Mirada/index|Mirada]], who runs the barilla kilns.
 known relationships:
 - 

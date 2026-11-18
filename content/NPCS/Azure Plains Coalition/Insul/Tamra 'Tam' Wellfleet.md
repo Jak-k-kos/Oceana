@@ -9,7 +9,7 @@ DM Notes:
 ------------------------------------
 species: Tabaxi
 Unique Trait: great at arts and crafts, makes jewelry out of shells and other odds and ends with little commercial success outside of her family
-Motivation: She wants nothing more than to read all the books. even going as far as making her own books. she tries to barter her jewelry and homemade seaweed paper in exchange for books. wants nothing more than to one day barter her way to (academia kingdom raft city) to see the (grand royal library).
+Motivation: She wants nothing more than to read all the books. even going as far as making her own books. she tries to barter her jewelry and homemade seaweed paper in exchange for books. wants nothing more than to one day barter her way to [[Locations/Kingdom of Albryn/Duchy of Soulea/County of Wyndham/Lyceum/index|Lyceum]] to see [[Locations/Kingdom of Albryn/Duchy of Soulea/County of Wyndham/Lyceum/Alaric's Athenaeum|Alaric's Athenaeum]].
 Occupation: oyster farmer
 Belief: all the worlds knowledge can be found in books
 Accent: Boston child
@@ -21,7 +21,7 @@ Relationships:
 %%
 Gender: Female
 Appearance: A 10 year old tabaxi, white base coat with orange spots. all she wears is  her dark brown robe that is too big for her that she got as a gift from a traveling merchant ship.
-Who: the 15 minute older twin of the Wellfleet twins, she is obsessed with books and reading making homemade seaweed paper and jewelry out of shells to trade for books from traveling merchant ships.  she dreams to one day go to the (grand royal library) at [[lyceum]].
+Who: the 15 minute older twin of the Wellfleet twins, she is obsessed with books and reading making homemade seaweed paper and jewelry out of shells to trade for books from traveling merchant ships.  she dreams to one day go to the [[Locations/Kingdom of Albryn/Duchy of Soulea/County of Wyndham/Lyceum/Alaric's Athenaeum|Athenaeum]] at [[Locations/Kingdom of Albryn/Duchy of Soulea/County of Wyndham/Lyceum/index|Lyceum]].
 known relationships:
 - Younger sister to [[Scubby Wellfleet]] & [[Azria Wellfleet]]
 - Twin fraternal sister to [[Tina 'ty' Wellfleet]]

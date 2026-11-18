@@ -16,7 +16,7 @@ Welcome to the world of Oceana. The waters rose, the sea folk claimed the deep, 
 - [[It Which Remembers]] ([Full Page](https://jak-k-kos.github.io/Oceana/static/oracle.html))
 
 # The Crew
-- [[Silk|Silk (Austin)]]
+- [[Silk Faranz|Silk (Austin)]]
 - [[Characters/Rouge Bellball|Rouge Bellball (Zadia)]]
 - [[Characters/Scubby Wellfleet|Scubby Wellfleet (Aster)]]
 - [[Characters/Shady Bellball|Shady Bellball (Henry)]]

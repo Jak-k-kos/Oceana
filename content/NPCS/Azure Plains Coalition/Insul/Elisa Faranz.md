@@ -17,14 +17,16 @@ Current Location: [[Locations/Azure Plains Coalition (APC)/Insul/index|Insul]]
 Relationships:
 - Married to [[Emilio Faranz]]
 - Mother of [[Edward Faranz]]
+- Adoptive mother of [[Silk Faranz]]: she loved him from the moment he arrived, small and half-starved and far too quiet. True to her belief, she has always seen the most important things in him. Her workshop is the one place in the village where his pilfering goes entirely unnoticed, for nothing in it is ever where it should be, and she has a sneaking suspicion he likes it there for exactly that reason.
 - Teaching [[Azria Wellfleet]] her seamstress craft
 - [[Halina Scaleskin]]: her second hand
 %%
 Gender: Female
 Appearance: An older half-elf woman with silver hair tied into a messy bun. Fit, and gracefully aged, always wears mismatched blouse and pants
-Who: the head seamstress of [[Locations/Azure Plains Coalition (APC)/Insul/index|Insul]] and wife of [[Emilio Faranz]]. She is known for her endlessly chaotic nature, yet always seems the first to get her head on straight in crisis.
+Who: the head seamstress of [[Locations/Azure Plains Coalition (APC)/Insul/index|Insul]] and wife of [[Emilio Faranz]]. She is known for her endlessly chaotic nature, yet always seems the first to get her head on straight in crisis. She is mother to Edward, and adoptive mother to the Tabaxi orphan Silk.
 known relationships:
 - Married to [[Emilio Faranz]]
 - Mother of [[Edward Faranz]]
+- Adoptive mother of [[Silk Faranz]], who she loves as dearly as her own
 - Teaching [[Azria Wellfleet]] her seamstress craft
 - [[Halina Scaleskin]] - Her second hand

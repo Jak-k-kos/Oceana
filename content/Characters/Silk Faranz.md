@@ -1,0 +1,22 @@
+---
+tags:
+  - character
+player: Austin
+---
+how does this look? : Once, in the deep dark beneath the black hills of Isla Embra, where the lamps of the miners glitter like fallen stars and no child is ever meant to be born, a small Tabaxi kitten came into the world. His mother, Velvet, had hidden him from the very beginning, for the fortress above the harbor carries away every babe born upon the Ember, and she could not bear to lose him. So she kept her secret close, and she named him Silk, and for a little while there were three of them in their burrow in the warren: a mother, a father, and a kitten curled warm between them.
+
+But the Ember is a hungry island, and it is never satisfied for long. One day the mountain groaned and shifted, as it so often does, and Silk’s father went down into the shafts and never came up again.
+
+After that, there was no one left to dig for tallies, and so Velvet did what so many on that island must, and took work in one of the warren’s brothels. The nights grew long and the gruel grew thin, and Silk was often alone. Yet he soon discovered that a kitten who is small and young and light of step can slip through places no one else can. He crept among the stalls of the warren and between the crates stacked high along the quay, and he took what he needed. At first it was only food. Then it was tallies, and then anything at all that a fixer might trade for more. He grew quick, and clever, and very hard to catch.
+
+Then one morning, in his eighth year, Velvet did not come home.
+
+Silk searched for her all that day. He searched the burrows and the tunnels and the crooked paths between them, until the miners’ lamps came winking to life across the hillsides, but no one had seen her go and no one knew where she had gone. It was as though the island had simply opened its mouth and swallowed her whole.
+
+At last, with nowhere else to turn, he crept toward the edge of the town, where the fixers keep their dens in the shadow of the fortress walls. If anyone on the Ember knew where a soul had gone, it would be one of them. Silk went from den to den and asked every fixer who would listen, but not one of them had seen her, and not one had heard so much as a whisper. Most did not even look up from their tallies. People vanished on the Ember every day, they told him. She was down a shaft somewhere, or at the bottom of the harbor, and either way she would not be coming back.
+
+So Silk turned to go, heavy-hearted and weary to his bones, and for once his light step failed him. As he slipped back toward the warren, a hand shot out of the dusk and caught him by the arm. It was a guard from the quay. Silk struggled and spat, but the guard only turned him this way and that in the lamplight, searching him for the branded number that every convict on Isla Embra carries, and found none.
+
+Children do not belong on the Ember. Before the hour was out, Silk was behind the fortress walls, and when the next black ship sailed from the harbor, he sailed with it. So it was that he was spared the mines and carried far away across the water to [[Locations/Azure Plains Coalition (APC)/Insul/index|Insul]], where [[NPCS/Azure Plains Coalition/Insul/index#The Faranz Family|the Faranz family]] took him in. They were not Tabaxi, but they were kind, and their home was warm, and the bowls there were never empty. Before long Silk had found other kits his own age, and he delighted in showing them all the sly and secret tricks the Ember had taught him. All in good fun, of course! And though he never could quite bring himself to stop pilfering, he came to love his new family dearly: old [[Emilio Faranz]], the mayor, who rises with the sun to feed the island's birds; [[Elisa Faranz]], the head seamstress, whose workshop is such a glorious tangle that only she can find anything in it; and their son, [[Edward Faranz]], the island's quiet doctor, who became something very like an older brother to him.
+
+Now the years have turned, and Silk has grown, and the sea has begun to call to him. Perhaps it is Tarrakus, the god whose cold, clever ways have lately caught his curiosity. Or perhaps it is the question he has carried with him ever since that long, dark day: what truly became of his mother? He cannot say which it is. But of one thing he is quite certain. Wherever the sea may carry him, there will be plenty of opportunity for mischief and pilfering.

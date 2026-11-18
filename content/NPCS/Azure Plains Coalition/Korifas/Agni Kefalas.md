@@ -19,6 +19,6 @@ Relationships:
 %%
 Gender: Female
 Appearance: A human of seventeen. Wiry, soot on her hands, a goat-hair cloak
-Who: The don's granddaughter and heir, who carries wood up to the beacon every evening. Her parents were lost at sea when she was small.
+Who: The don's granddaughter and heir, who carries charcoal up to the beacon every evening. Her parents were lost at sea when she was small.
 known relationships:
 - 

@@ -108,4 +108,4 @@ Some summers the sea begins to bleed. A rust-red bloom spreads for miles, the ai
 When the sea dragons move, they move together: thousands of them in a single river of scales and spray, thundering through the open water. The fishermen of [[Locations/Azure Plains Coalition (APC)/Delafina/index|Delafina]] ride its edges as their grandparents taught them. To anyone else caught in its path, it is a stampede that stops for nothing.
 
 ## Beneath the Keel
-It begins with the sea going quiet. A shadow larger than any island slides beneath the hull, so long that it takes whole minutes to pass. Most of the great beasts of the deep are only passing through. A wise crew keeps its guns quiet and lets it go by. A foolish one gives it a reason to look up.
+It begins with the sea going quiet. Out over the dark basins between the islands, something rises from the deep, and a shadow longer than the ship slides beneath the hull, so vast that it takes whole minutes to pass. Most of the great beasts of the deep are only passing through. A wise crew keeps its guns quiet and lets it go by. A foolish one gives it a reason to look up.

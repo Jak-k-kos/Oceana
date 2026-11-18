@@ -20,6 +20,6 @@ Relationships:
 %%
 Gender: Male
 Appearance: A human in his early seventies. Tall and elderly, an immaculate linen suit
-Who: [[Kyras Este|Kyras Este's]] speaker and the richest grove owner on the islands.
+Who: [[Kyras Este|Kyras Este's]] speaker and the richest kiln owner on the islands.
 known relationships:
 - 

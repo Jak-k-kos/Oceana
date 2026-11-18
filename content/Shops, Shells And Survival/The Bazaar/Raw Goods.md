@@ -49,11 +49,11 @@ A full tree log takes up 1 ton of a ship's Tonnage on its own. Pine resin is boi
 | Sulfur | 1 lb | 9 SH | 400 lb | 3,240 SH | |
 | Saltpeter | 1 lb | 12 SH | 400 lb | 4,320 SH | |
 | Gunpowder | Keg (20 lb) | 280 SH | 20 kegs | 5,040 SH | |
-| Kelp ash | Sack (50 lb) | 9 SH | 8 sacks | 65 SH | |
+| Barilla ash | Sack (50 lb) | 9 SH | 8 sacks | 65 SH | |
 | Glass | Pane | 95 SH | Crate (40 panes) | 3,420 SH | |
 | Pottery and amphorae | 1 jar | 5 SH | Crate (40 jars) | 180 SH | |
 
-A millstone takes up 1/5 ton on its own. Gold is rarely shipped by the cargo unit, since few buyers can afford it. Kelp ash and black sand are what glass is made from.
+A millstone takes up 1/5 ton on its own. Gold is rarely shipped by the cargo unit, since few buyers can afford it. Barilla ash and black sand are what glass is made from.
 
 %%DM: Shell coins are worth far more than the metal in them. A cowrie holds about 10 SH of silver, and an abalone about 96 SH of gold. The difference is the mint's promise, which is why counterfeiting underweight shells pays so well.%%
 
