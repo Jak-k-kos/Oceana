@@ -5,6 +5,7 @@ draft: false
 # House Rules
 - [[#Inspiration]]
 - [[#Rations]]
+- [[#Short Rations]]
 - [[#Healing]]
 - [[#Resting]]
 - [[#Spell Recovery]]
@@ -22,6 +23,15 @@ You earn Inspiration for good roleplay. You can only hold up to five Inspiration
 
 # Rations
 Food and water are tracked. Each creature needs 1 food ration and 1 water ration per day.
+
+## Short Rations
+When stores run low, a crew can stretch them by eating and drinking half rations. At the end of a day on short rations, make one Constitution saving throw. On a failure, you gain 1 level of exhaustion.
+- **Half food, full water:** DC 10
+- **Full food, half water:** DC 12
+- **Half food and half water:** DC 15
+- Going without food or water entirely costs 1 level of exhaustion as usual, with no saving throw.
+- Hunger and thirst together can still cost you at most 1 level of exhaustion in a day.
+- A day on short rations doesn't count as having eaten and drunk that day for the short rest rule under [[#Exhaustion]], so exhaustion from hunger and thirst won't wear off until you're back on full rations.
 
 ## Water
 - A water ration is 1 gallon.
@@ -141,7 +151,7 @@ Caught from Rancid supplies. Vomiting and fever, and nothing stays down.
 - While sick, food rations you eat don't count. Each day counts as a day without food.
 - You can't spend Hit Dice to heal.
 - At the end of each short rest, make a DC 12 Constitution saving throw.
-  - On a success, you recover.
+  - On a success, you recover if you have eaten .
   - On a failure, you gain 1 level of exhaustion.
 
 ## Fish Fever
@@ -150,7 +160,6 @@ Caught from Fishy supplies. Tingling, numb hands, and hot things feel cold.
 - At the end of each short rest, make a DC 14 Constitution saving throw.
   - On a failure by 5 or more, you gain 1 level of exhaustion.
   - After two successes, you recover.
-
 
 # Armor in the Water
 - In medium armor, you have disadvantage on Strength (Athletics) checks to swim.

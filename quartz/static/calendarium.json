@@ -85,7 +85,7 @@
           {
             "name": "Ellehwin",
             "cycle": 92,
-            "offset": 89,
+            "offset": 93,
             "faceColor": "#02d12a",
             "shadowColor": "#292b4a",
             "id": "ID_7ae8e83b7afb"
@@ -93,7 +93,7 @@
           {
             "name": "Ostin",
             "cycle": 42,
-            "offset": 19,
+            "offset": 23,
             "faceColor": "#e28a33",
             "shadowColor": "#292b4a",
             "id": "ID_1be97ab98aaa"
@@ -101,7 +101,7 @@
           {
             "name": "Winstra",
             "cycle": 18,
-            "offset": 13,
+            "offset": 17,
             "faceColor": "#a450eb",
             "shadowColor": "#292b4a",
             "id": "ID_997be829c8f9"
@@ -271,7 +271,7 @@
         "defaultLocation": ""
       },
       "current": {
-        "day": 12,
+        "day": 13,
         "month": 2,
         "year": 2574
       },

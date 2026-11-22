@@ -3,7 +3,7 @@ tags:
   - character
 player: Austin
 ---
-how does this look? : Once, in the deep dark beneath the black hills of Isla Embra, where the lamps of the miners glitter like fallen stars and no child is ever meant to be born, a small Tabaxi kitten came into the world. His mother, Velvet, had hidden him from the very beginning, for the fortress above the harbor carries away every babe born upon the Ember, and she could not bear to lose him. So she kept her secret close, and she named him Silk, and for a little while there were three of them in their burrow in the warren: a mother, a father, and a kitten curled warm between them.
+how does this look? : Once, in the deep dark beneath the black hills of [[Locations/Azure Plains Coalition (APC)/Isla Embra/index|Isla Embra]], where the lamps of the miners glitter like fallen stars and no child is ever meant to be born, a small Tabaxi kitten came into the world. His mother, Velvet, had hidden him from the very beginning, for the fortress above the harbor carries away every babe born upon the Ember, and she could not bear to lose him. So she kept her secret close, and she named him Silk, and for a little while there were three of them in their burrow in the warren: a mother, a father, and a kitten curled warm between them.
 
 But the Ember is a hungry island, and it is never satisfied for long. One day the mountain groaned and shifted, as it so often does, and Silk’s father went down into the shafts and never came up again.
 

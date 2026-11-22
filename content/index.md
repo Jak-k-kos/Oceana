@@ -18,7 +18,7 @@ Welcome to the world of Oceana. The waters rose, the sea folk claimed the deep, 
 # The Crew
 - [[Silk Faranz|Silk (Austin)]]
 - [[Characters/Rouge Bellball|Rouge Bellball (Zadia)]]
-- [[Characters/Scubby Wellfleet|Scubby Wellfleet (Aster)]]
+- [[Scubby Wellfleet|Scubby Wellfleet (Aster)]]
 - [[Characters/Shady Bellball|Shady Bellball (Henry)]]
 - [[Characters/Tryknin Goldenroar|Tryknin Goldenroar (Torin)]]
 - [[Characters/Owned Ships/index|Our Ships]]

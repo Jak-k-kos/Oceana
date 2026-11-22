@@ -140,6 +140,65 @@ html body a.backlink{display:inline-block;border:1px solid var(--line);border-ra
 html body a.backlink:hover{border-color:var(--accent);color:var(--accent)}
 html body a.backlink[hidden]{display:none}
 .backrow{margin-bottom:6px}
+
+/* ---- Tabs: the hold, the cold, the hidden, the bunks and the guns ---- */
+.tabs{display:flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid var(--line);margin:-4px 0 12px}
+.tabs button{border:1px solid transparent;border-bottom:0;border-radius:8px 8px 0 0;padding:4px 14px;color:var(--muted);font-family:"IM Fell English SC",serif;font-size:1.02rem;background:transparent;margin-bottom:-1px}
+.tabs button:hover{color:var(--accent);border-color:transparent}
+.tabs button.on{border-color:var(--line);background:var(--card);color:var(--ink)}
+.pane.off{display:none}
+.stat .three{display:flex;flex-wrap:wrap;gap:2px 12px;font-family:"Crimson Pro",Georgia,serif;font-size:.88rem;color:var(--muted)}
+.stat .three em{font-style:normal;color:var(--ink);font-family:"IM Fell English",serif;font-size:1.3rem}
+.stat .three .cur em{color:var(--accent)}
+/* ---- The bunks ---- */
+.bunkbar{margin-bottom:10px}
+.bunks{display:flex;flex-direction:column;gap:8px}
+.bunk{border:1px solid var(--line);border-radius:8px;padding:6px 10px}
+.bunk.sick{border-left:3px solid var(--warn)}
+.bmain{display:grid;grid-template-columns:auto minmax(120px,1fr) auto auto auto auto;grid-template-areas:"o n f w x m";gap:6px 12px;align-items:center}
+.bmain .ord{grid-area:o}.bmain .who{grid-area:n}.bmain .f{grid-area:f}.bmain .w{grid-area:w}.bmain .x{grid-area:x}.bmain .menu{grid-area:m}
+.ord{display:flex;flex-direction:column;gap:2px}
+button.ar{padding:0 6px;font-size:.78rem;line-height:1.3}
+button.ar:disabled{opacity:.35;cursor:default}
+.who{font-size:1.05rem;min-width:0;overflow-wrap:anywhere}
+.who .cnt{color:var(--muted);font-size:.92rem}
+.bunk .lbl{color:var(--muted);font-size:.85rem;margin-right:3px}
+.bunk label.f,.bunk label.w,.bunk label.x{display:flex;align-items:center;gap:2px;color:var(--muted)}
+.bunk select{padding:2px 4px}
+.bunk input[type=number]{width:52px;padding:2px 4px}
+.chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
+.chip{font-size:.8rem;border:1px solid var(--line);border-radius:999px;padding:0 8px;color:var(--muted);white-space:nowrap}
+.chip.dis{border-color:var(--warn);color:var(--warn)}
+.chip.pois{border-color:var(--gold);color:var(--gold)}
+.chip.ash{border-color:var(--good);color:var(--good)}
+.ticks{display:flex;flex-wrap:wrap;gap:4px 14px;margin:6px 0 2px 34px;font-size:.9rem;color:var(--muted)}
+.ticks label{display:flex;align-items:center;gap:4px;white-space:nowrap}
+.mixed{color:var(--gold);font-style:italic;font-size:.9rem}
+.tkbtn{display:none}
+button.linkish{border:0;padding:0 2px;color:var(--accent);font-size:.9rem;background:transparent}
+.heads{margin:8px 0 2px 34px;border-top:1px dashed var(--line);padding-top:6px;display:flex;flex-direction:column;gap:6px}
+.head{display:grid;grid-template-columns:minmax(110px,1fr) auto auto auto auto;gap:4px 10px;align-items:center;font-size:.95rem}
+.head.sick .hn{color:var(--warn)}
+.head .hticks{grid-column:1/-1}
+.head .hticks .ticks{margin:0 0 4px 18px;font-size:.85rem}
+.bunk button.menu{justify-self:end}
+.bunkrep{margin-top:6px;border-top:1px dashed var(--line);padding-top:4px}
+.bunkrep p,.saveline{margin:4px 0;font-size:.93rem}
+.saveline{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+button.mk{padding:1px 8px;font-size:.88rem;border-radius:999px}
+button.mk.mk-p{border-color:var(--good);color:var(--good)}
+button.mk.mk-f,button.mk.mk-f5{border-color:var(--warn);color:var(--warn);font-weight:600}
+@media (max-width:640px){
+  .bmain{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center}
+  .bmain .ord{order:1}.bmain .who{order:2;flex:1 1 60%}.bmain .menu{order:3}.bmain .f{order:4}.bmain .w{order:5}.bmain .x{order:6}
+  .ord{flex-direction:row}
+  .bunk.one:not(.tk)>.ticks{display:none}
+  .bunk.one .tkbtn{display:inline}
+  .ticks,.heads{margin-left:0}
+  .head{grid-template-columns:auto auto 1fr auto}
+  .head .hn{grid-column:1/-1}
+  .tabs button{padding:4px 10px}
+}
 </style>
 </head>
 <body>
@@ -216,7 +275,7 @@ html body a.backlink[hidden]{display:none}
     <div class="row" style="justify-content:space-between">
       <div class="row">
         <button class="primary" id="dawnBtn" title="Roll every lot's Keep Die and advance the day">Dawn Breaks</button>
-        <button id="feedBtn" title="Give every mouth a food and a water ration">Feed the Crew</button>
+        <button id="feedBtn" title="Give everyone in the bunks their share of food and water">Feed the Crew</button>
         <button id="cookBtn" title="Cook a recipe from the Recipe Book">Cook</button>
         <button id="rainBtn" title="Set out the canvases and catch the rain">Catch Rain</button>
         <button class="danger" id="dmgBtn" title="Hold flooded or ship badly damaged">The Hold Is Struck</button>
@@ -224,7 +283,6 @@ html body a.backlink[hidden]{display:none}
       </div>
       <div class="row">
         <label class="inline"><span id="dayLbl">Day of the voyage</span> <input type="number" id="dayIn" min="1"></label>
-        <label class="inline"><span id="crewLbl">Mouths aboard</span> <input type="number" id="crewIn" min="0"></label>
         <label class="inline" title="Optional rule: one roll per Keep Die size, shared by every lot on that die"><input type="checkbox" id="sharedIn"> Shared dice</label>
       </div>
     </div>
@@ -251,47 +309,55 @@ html body a.backlink[hidden]{display:none}
     <p class="note" id="itemNote"></p>
   </div>
 
-  <div class="card" id="fireCard" hidden>
-    <h2>Fire the Weapons</h2>
-    <div id="fireList"></div>
-    <div id="waterList"></div>
-  </div>
-
-  <div class="card">
-    <h2>The Hold</h2>
-    <div class="tablewrap">
-      <table>
-        <thead><tr><th>Cargo</th><th>Stowed</th><th>Sound</th><th>Spoiled</th><th>Keep</th><th>Nature</th><th></th></tr></thead>
-        <tbody id="holdBody"></tbody>
-      </table>
+  <div class="card" id="tabCard">
+    <div class="tabs" id="tabs" role="tablist">
+      <button type="button" data-tab="hold">Hold</button>
+      <button type="button" data-tab="cold" id="tabCold">Cold Hold</button>
+      <button type="button" data-tab="smug">Smuggler's Hold</button>
+      <button type="button" data-tab="bunks">Bunks</button>
+      <button type="button" data-tab="fire">Weapons</button>
     </div>
-  </div>
-
-  <div class="card" id="smugCard" hidden>
-    <div class="row" style="justify-content:space-between">
-      <h2>The Smuggler's Hold</h2>
-      <button class="sm danger" id="seizeBtn">Seize the Hidden Cargo</button>
+    <div class="pane" id="holdPane" data-tab="hold">
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Cargo</th><th>Stowed</th><th>Sound</th><th>Spoiled</th><th>Keep</th><th>Nature</th><th></th></tr></thead>
+          <tbody id="holdBody"></tbody>
+        </table>
+      </div>
     </div>
-    <div class="tonline" id="smugLine"></div>
-    <div class="tablewrap">
-      <table>
-        <thead><tr><th>Cargo</th><th>Stowed</th><th>Sound</th><th>Spoiled</th><th>Keep</th><th>Nature</th><th></th></tr></thead>
-        <tbody id="smugBody"></tbody>
-      </table>
+    <div class="pane" id="coldCard" data-tab="cold" hidden>
+      <h2 id="coldTitle">The Cold Hold</h2>
+      <div class="tonline" id="coldLine"></div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Cargo</th><th>Stowed</th><th>Sound</th><th>Spoiled</th><th>Keep</th><th>Nature</th><th></th></tr></thead>
+          <tbody id="coldBody"></tbody>
+        </table>
+      </div>
+      <div id="coldMake"></div>
     </div>
-    <div id="seizedList"></div>
-  </div>
-
-  <div class="card" id="coldCard" hidden>
-    <h2 id="coldTitle">The Cold Hold</h2>
-    <div class="tonline" id="coldLine"></div>
-    <div class="tablewrap">
-      <table>
-        <thead><tr><th>Cargo</th><th>Stowed</th><th>Sound</th><th>Spoiled</th><th>Keep</th><th>Nature</th><th></th></tr></thead>
-        <tbody id="coldBody"></tbody>
-      </table>
+    <div class="pane" id="smugCard" data-tab="smug" hidden>
+      <div class="row" style="justify-content:space-between">
+        <h2>The Smuggler's Hold</h2>
+        <button class="sm danger" id="seizeBtn">Seize the Hidden Cargo</button>
+      </div>
+      <div class="tonline" id="smugLine"></div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Cargo</th><th>Stowed</th><th>Sound</th><th>Spoiled</th><th>Keep</th><th>Nature</th><th></th></tr></thead>
+          <tbody id="smugBody"></tbody>
+        </table>
+      </div>
+      <div id="seizedList"></div>
     </div>
-    <div id="coldMake"></div>
+    <div class="pane" id="bunkPane" data-tab="bunks">
+      <div id="bunkList"></div>
+    </div>
+    <div class="pane" id="fireCard" data-tab="fire" hidden>
+      <h2>Fire the Weapons</h2>
+      <div id="fireList"></div>
+      <div id="waterList"></div>
+    </div>
   </div>
 
   <div class="card">
@@ -311,11 +377,12 @@ html body a.backlink[hidden]{display:none}
     <div class="row" style="justify-content:space-between">
       <h2>The Keeper's Chest: Saved Holds</h2>
       <div class="row">
+        <button class="sm" id="layBtn">Lay Away Now</button>
         <button class="sm" id="chestBtn">Open the Chest</button>
         <button class="sm danger" id="pruneBtn">Keep Only the Newest 30</button>
       </div>
     </div>
-    <p class="sub">Before every dawn, every emptying and every uncorked bottle, the hold is copied and laid away here, so that no single misfortune need be the last word.</p>
+    <p class="sub">Before every dawn, every emptying and every uncorked bottle, the hold is copied and laid away here, so that no single misfortune need be the last word. The Keeper may lay one away by hand at any hour, and those are never thinned.</p>
     <div id="chestList"></div>
   </div>
 </div>
@@ -810,11 +877,52 @@ const LOG={
     (f,w,full)=>`${f&&w?`The cook ladled out ${f} and the cask gave up ${w}.`:`The galley gave up ${both(f,w)}.`} ${full?"No one went to their hammock hungry.":"It was not quite enough to go round."}`,
     (f,w)=>`Mess was piped, and ${both(f,w)} went round the table.`,
   ],
+  bunkAdd:[
+    (w,n,p)=>`${cap(w)} signed on aboard the ${p}, and ${n>1?"hammocks were":"a hammock was"} strung for them.`,
+    (w,n,p)=>`${n>1?"New faces":"A new face"} at the mess table: ${w} joined the ${p}.`,
+    (w,n,p)=>`${cap(w)} came up the gangplank with ${n>1?"sea bags":"a sea bag"} and an appetite, and the ${p} made room.`,
+  ],
+  bunkLeave:[
+    (w,n,p)=>`${cap(w)} took their leave of the ${p}, and ${n>1?"their hammocks were":"their hammock was"} rolled and stowed.`,
+    (w,n,p,st)=>st?`${cap(w)} took their leave of the ${p}, and ${n>1?"their hammocks were":"their hammock was"} rolled and stowed.`:`${cap(w)} went ashore from the ${p} and did not come back aboard.`,
+    (w,n,p)=>`The ${p} is short ${w} now, gone down the gangplank with a wave.`,
+  ],
+  bunkMove:[
+    (w,n,p,q)=>`${cap(w)} packed up their things and left the ${p} for the ${q}.`,
+    (w,n,p,q)=>`${cap(w)} traded the ${p} for the ${q}, ${n>1?"sea bags over their shoulders":"sea bag over one shoulder"}.`,
+  ],
+  bunkSplit:[
+    (w,p)=>`${cap(w)} took a bunk of their own aboard the ${p}.`,
+  ],
+  bunkCombine:[
+    (a,b,p)=>`${cap(a)} and ${b} now share a mess aboard the ${p}, and are reckoned together.`,
+  ],
+  shortFeed:[
+    (w,p)=>`Half rations went round the ${p}: ${w} tightened their belts and said nothing.`,
+    (w,p)=>`The cook's ladle came up half empty for ${w}, by the quartermaster's order.`,
+    (w,p)=>`Thin bowls and short cups for ${w}. The stores must stretch.`,
+  ],
+  ateSpoiled:[
+    (w,p,i,dr)=>`With nothing better left, ${w} ${dr?"drank":"ate"} what had gone bad aboard the ${p}.`,
+    (w,p,i,dr)=>`${cap(w)} held their noses and ${dr?"drank":"ate"} the spoiled ${i}.`,
+  ],
+  disCaught:[
+    (w,d,p,i)=>`${cap(w)} took ill with ${d} aboard the ${p}.`,
+    (w,d,p,i)=>`The spoiled ${i} had its revenge: ${w} came down with ${d}.`,
+  ],
+  disRecover:[
+    (w,d)=>`${cap(w)} shook off the ${d}, pale but mending.`,
+    (w,d,n)=>`The ${d} has run its course, and ${w} ${n>1?"are":"is"} on the mend.`,
+  ],
+  disWorsen:[
+    (w,d)=>`The ${d} tightened its grip on ${w} in the night.`,
+    (w,d)=>`${cap(w)} woke weaker, the ${d} still in them.`,
+  ],
   without:[
-    (h,t)=>`${[h&&`${h} went to their hammocks hungry`,t&&`${t} ${h?"":"went to their hammocks "}parched`].filter(Boolean).join(" and ")}. Each gains a level of exhaustion.`,
+    (h,t)=>`${cap([h&&`${h} went to their hammocks hungry`,t&&`${t} ${h?"":"went to their hammocks "}parched`].filter(Boolean).join(" and "))}. Each gains a level of exhaustion.`,
     (h,t)=>`There was not enough to go round: ${[h&&`${h} without food`,t&&`${t} without water`].filter(Boolean).join(", ")}, and a level of exhaustion for each.`,
     (h,t)=>`Empty bellies and dry throats: ${[h&&`${h} hungry`,t&&`${t} thirsty`].filter(Boolean).join(", ")}. The sea is a hard master.`,
-    (h,t)=>`The rations ran short. ${[h&&`${h} went without food`,t&&`${t} ${h?"":"went "}without water`].filter(Boolean).join(" and ")}, and they feel it in their bones.`,
+    (h,t)=>`The rations ran short. ${cap([h&&`${h} went without food`,t&&`${t} ${h?"":"went "}without water`].filter(Boolean).join(" and "))}, and they feel it in their bones.`,
   ],
   rain:[
     (s,a)=>`The canvases filled with ${s} rain: ${a} of fresh water caught.`,
@@ -1361,7 +1469,7 @@ async function checkKeeper(user){
    THE HOLD
    ===================================================================== */
 let SHIPID=null, S=fresh(), HIST=[], holdUnsub=null, nameUnsub=null, holdSeen=false, lastCustomKeys="";
-function fresh(){return {day:1,crew:6,shared:false,lots:[],custom:{},log:[],seq:1,eggs:0,inWater:{},seized:[],jour:null};}
+function fresh(){return {day:1,crew:0,bunks:[],pseq:1,shared:false,lots:[],custom:{},log:[],seq:1,eggs:0,inWater:{},seized:[],jour:null};}
 const toArr=x=>Array.isArray(x)?x:(x?Object.values(x):[]);
 /* ---- Freshness: a perishable spends 5 points each dawn in the open, and 1 in the cold ---- */
 const FP=5;
@@ -1371,7 +1479,7 @@ const expires=l=>(l.fp||0)<=0?"Spoiled":(daysLeft(l)<=1?"Expires tonight":`Expir
 function normalize(v){
   const s=Object.assign(fresh(),v||{});s.lots=toArr(s.lots).filter(Boolean);s.log=toArr(s.log).filter(Boolean);s.custom=s.custom||{};s.inWater=s.inWater||{};s.eggs=s.eggs||0;
   s.seized=toArr(s.seized).filter(Boolean).map(z=>Object.assign({},z,{lots:toArr(z.lots).filter(Boolean)}));
-  if(s.jour){for(const k of ["add","rem","stash","unstash"])s.jour[k]=s.jour[k]||{};s.jour.food=s.jour.food||0;s.jour.water=s.jour.water||0;}
+  if(s.jour){for(const k of ["add","rem","stash","unstash","fed"])s.jour[k]=s.jour[k]||{};s.jour.food=s.jour.food||0;s.jour.water=s.jour.water||0;}
   // Holds kept by earlier versions of the larder: give old custom cargo the fields it now needs.
   for(const c of Object.values(s.custom)){
     if(!c||c.kind)continue;
@@ -1387,6 +1495,7 @@ function normalize(v){
   for(const l of s.lots)toFresh(l,s.day||1);
   for(const z of s.seized)for(const l of z.lots)toFresh(l,s.day||1);
   s.coldMake=s.coldMake||{};
+  normBunks(s);
   return s;
 }
 // "live pigs", not "pig (live)", wherever a name is said in passing
@@ -1521,7 +1630,7 @@ function backup(reason){
 }
 /* ---- The day's own ledger: what came aboard, what went, what was hidden, and what was eaten ---- */
 function jour(){
-  if(!S.jour||S.jour.d!==S.day)S.jour={d:S.day,add:{},rem:{},stash:{},unstash:{},food:0,water:0};
+  if(!S.jour||S.jour.d!==S.day)S.jour={d:S.day,add:{},rem:{},stash:{},unstash:{},fed:{},food:0,water:0};
   return S.jour;
 }
 function jot(kind,id,n){if(!n)return;const j=jour();j[kind][id]=(j[kind][id]||0)+n;}
@@ -1648,34 +1757,543 @@ function urgency(l){
   const i=DICE.indexOf(l.die);if(i>=0)return 2e6+(DICE.length-i);
   return 9e6;
 }
-function feedable(l,drink){
+/* =====================================================================
+   THE BUNKS
+   Every soul aboard has a bunk. A row on the Bunks tab holds one soul
+   or a whole crowd, and every soul in it keeps their own share of food
+   and water, their own ills, and their own tally of exhaustion.
+   ===================================================================== */
+const RATION_LEVEL={full:1,half:0.5,none:0};
+const DIS={flux:{name:"Bilge Flux",dc:13},rot:{name:"Rot Gut",dc:12},fever:{name:"Fish Fever",dc:14}};
+const DIS_OF={"Bilge Flux":"flux","Rot Gut":"rot","Fish Fever":"fever"};
+const SHORT_DC=(f,w)=>f==="half"&&w==="half"?15:w==="half"?12:10;
+const singular=n=>{n=String(n||"").trim();return /ies$/i.test(n)?n.slice(0,-3)+"y":(/[^s]s$/i.test(n)?n.slice(0,-1):n);};
+function normBunks(s){
+  s.bunks=toArr(s.bunks).filter(Boolean).map(r=>Object.assign({},r,{people:toArr(r.people).filter(Boolean)})).filter(r=>r.people.length);
+  for(const r of s.bunks)for(const p of r.people){if(!RATION_LEVEL.hasOwnProperty(p.f))p.f="full";if(!RATION_LEVEL.hasOwnProperty(p.w))p.w="full";p.ex=Math.max(0,Math.min(6,+p.ex||0));}
+  // Holds kept before bunks: the old count of mouths becomes one crowd row on full rations.
+  if(!s.bunks.length&&!s.bunksSet&&(s.crew|0)>0){
+    const r={id:"b0",name:"Crew",people:[]};
+    for(let i=1;i<=(s.crew|0);i++)r.people.push({id:"p"+i,no:i,f:"full",w:"full"});
+    s.bunks=[r];s.bunksSet=true;s.pseq=(s.crew|0)+1;
+  }
+  s.pseq=Math.max(+s.pseq||1,1);
+  if(s.jour&&s.jour.fed)for(const k of Object.keys(s.jour.fed)){const r=s.jour.fed[k]||{};s.jour.fed[k]={f:+r.f||0,w:+r.w||0,sp:r.sp||{}};}
+}
+const newPid=()=>"p"+(S.pseq++);
+const newRid=()=>"b"+(S.pseq++);
+// Keep the count of souls where the rest of the larder looks for it.
+function fixRows(){
+  S.bunks=S.bunks.filter(r=>r.people.length);
+  for(const r of S.bunks){
+    if(r.people.length===1){const p=r.people[0];if(p.name){r.name=p.name;delete p.name;}}
+  }
+  S.crew=S.bunks.reduce((a,r)=>a+r.people.length,0);S.bunksSet=true;
+}
+function people(){const out=[];for(const row of S.bunks)row.people.forEach((p,i)=>out.push({p,row,i}));return out;}
+function pname(p,row){if(row.people.length===1)return row.name||"Someone";return p.name||`${singular(row.name)} ${p.no||row.people.indexOf(p)+1}`;}
+function findP(pid){for(const row of S.bunks){const p=row.people.find(x=>x.id===pid);if(p)return {p,row};}return null;}
+const rowById=rid=>S.bunks.find(r=>r.id===rid);
+const wantF=p=>RATION_LEVEL[p.f];
+const waterNeed=p=>p.flux&&!p.ease?2:1;
+const wantW=p=>RATION_LEVEL[p.w]*waterNeed(p);
+function fedRec(pid){const j=jour();j.fed=j.fed||{};return j.fed[pid]||(j.fed[pid]={f:0,w:0,sp:{}});}
+const fedNow=pid=>{const j=jour();return (j.fed&&j.fed[pid])||{f:0,w:0,sp:{}};};
+const sick=p=>!!(p.flux||p.rot||p.fever);
+
+// A list of names for the log, short enough for a big ship: whole groups by name, five at most, then a count.
+function whoList(xs){
+  const parts=[],byRow=new Map();
+  for(const x of xs){if(!byRow.has(x.row))byRow.set(x.row,[]);byRow.get(x.row).push(x);}
+  for(const [row,ys] of byRow){
+    if(row.people.length>1&&ys.length===row.people.length)parts.push({t:`the ${lc(row.name)} (${ys.length})`,n:ys.length});
+    else for(const y of ys)parts.push({t:pname(y.p,row),n:1});
+  }
+  let shown=parts.slice(0,parts.length>5?4:5).map(x=>x.t);
+  const rest=parts.slice(shown.length).reduce((a,x)=>a+x.n,0);
+  if(rest)shown.push(`${rest} other${rest===1?"":"s"}`);
+  return shown.length<2?shown.join(""):shown.slice(0,-1).join(", ")+" and "+shown[shown.length-1];
+}
+
+/* ---- Feeding: down the list, top first, each soul to their own share ---- */
+function feedableAny(l,drink){
   const it=item(l.item);
-  if(l.hid||l.sun||l.units<=0||it.kind!=="food"||!(it.rat>0))return false;
+  if(l.hid||l.sun||it.kind!=="food"||!(it.rat>0))return false;
   if(drink)return !!it.water;
   return !it.water&&FEED_FOOD_CATS.includes(it.cat);
 }
-function hunger(){ // how many go without, by what has been eaten today
-  const crew=Math.max(0,S.crew|0),j=jour();
-  return {crew,food:Math.max(0,crew-Math.floor(j.food+1e-9)),water:Math.max(0,crew-Math.floor(j.water+1e-9))};
+function feedable(l,drink){return l.units>0&&feedableAny(l,drink);}
+// Ladles out rations from the stores, opening a unit only when the last is used up.
+function dispenser(drink){
+  const pool={false:0,true:0},poolProps=new Set(),spItems=new Set();let total=0;
+  const d={
+    last:new Set(),spItems,
+    give(want,sp){
+      let got=0;d.last=new Set();
+      while(got<want-1e-9){
+        if(pool[sp]>1e-9){const t=Math.min(pool[sp],want-got);pool[sp]-=t;got+=t;if(sp)poolProps.forEach(x=>d.last.add(x));continue;}
+        const lots=S.lots.filter(l=>feedableAny(l,drink)&&avail(l,sp)>0).sort((a,b)=>urgency(a)-urgency(b)||(a.form==="cargo")-(b.form==="cargo"));
+        const l=lots[0];if(!l)break;
+        const it=item(l.item);
+        let n=Math.ceil(((want-got)/it.rat)*2-1e-9)/2;n=Math.min(n,avail(l,sp));if(n<=0)break;
+        take(l,n,sp);jot("rem",l.item,n);ateRations(it,n);total+=n*it.rat;
+        if(sp){poolProps.clear();if(it.spoil)poolProps.add(it.spoil);spItems.add(lc(it.name));}
+        pool[sp]+=n*it.rat;
+      }
+      if(sp)poolProps.forEach(x=>d.last.add(x));
+      return got;
+    },
+  };
+  return d;
 }
+// Feed every soul who has not yet had their share today. Returns false if nothing was given.
 function feedNow(){
-  const h=hunger();if(!h.crew)return false;
-  let gotF=0,gotW=0;
+  if(!S.bunks.length)return false;
+  let gotF=0,gotW=0,water=false;const halfBy=[],shortOf=[],spoiled=[],spItems=new Set();
   for(const drink of [false,true]){
-    const j0=jour();let need=Math.max(0,h.crew-(drink?j0.water:j0.food));
-    const lots=S.lots.filter(l=>feedable(l,drink)).sort((a,b)=>urgency(a)-urgency(b)||(a.form==="cargo")-(b.form==="cargo"));
-    for(const l of lots){
-      if(need<=1e-9)break;
-      const it=item(l.item);
-      const n=Math.min(avail(l,false),Math.ceil(need/it.rat-1e-9));if(n<=0)continue;
-      take(l,n,false);
-      const r=n*it.rat;need-=r;if(drink)gotW+=r;else gotF+=r;
-      ateRations(it,n);jot("rem",l.item,n);
+    const d=dispenser(drink);
+    for(const x of people()){
+      const p=x.p;if(p.ash)continue;
+      const r=fedRec(p.id),want=(drink?wantW(p):wantF(p))-(drink?r.w:r.f);
+      if(want<=1e-9)continue;
+      let got=d.give(want,false);
+      if(got<want-1e-9&&!p.nsp){
+        const g2=d.give(want-got,true);
+        if(g2>0){got+=g2;for(const pr of d.last)r.sp[pr]=1;if(!spoiled.includes(x))spoiled.push(x);if(drink)water=true;}
+      }
+      if(drink){r.w+=got;gotW+=got;}else{r.f+=got;gotF+=got;}
+      if(got<want-1e-9){if(!shortOf.includes(x))shortOf.push(x);}
+    }
+    d.spItems.forEach(x=>spItems.add(x));
+  }
+  for(const x of people()){if(!x.p.ash&&(x.p.f==="half"||x.p.w==="half")&&!shortOf.includes(x))halfBy.push(x);}
+  if(!gotF&&!gotW)return false;
+  logLine(say("feed",gotF?`${fmt(gotF)} food ration${gotF===1?"":"s"}`:"",gotW?`${fmt(gotW)} water ration${gotW===1?"":"s"}`:"",!shortOf.length));
+  if(halfBy.length)logLine(say("shortFeed",whoList(halfBy),shipName(SHIPID)));
+  if(spoiled.length)logLine(say("ateSpoiled",whoList(spoiled),shipName(SHIPID),[...spItems].join(" and ")||"stores",water),true);
+  if(shortOf.length)logLine(`The stores ran short: ${whoList(shortOf)} got less than their share.`,true);
+}
+// What is still owed today, counted in souls.
+function hunger(){
+  let food=0,water=0,crew=0;
+  for(const {p} of people()){crew++;if(p.ash)continue;const r=fedNow(p.id);if(r.f<wantF(p)-1e-9)food++;if(r.w<wantW(p)-1e-9)water++;}
+  return {crew,food,water};
+}
+// Rations eaten by hand: given to one soul, or shared down the list to those still owed.
+function shareRations(drink,amount,pid,sp,prop){
+  if(!S.bunks.length||amount<=0)return;
+  const give=(p,a)=>{const r=fedRec(p.id);if(drink)r.w+=a;else r.f+=a;if(sp&&prop)r.sp[prop]=1;};
+  if(pid){const x=findP(pid);if(x)give(x.p,amount);return;}
+  let left=amount;
+  for(const {p} of people()){
+    if(left<=1e-9)break;if(p.ash)continue;
+    const r=fedNow(p.id),want=(drink?wantW(p):wantF(p))-(drink?r.w:r.f);if(want<=1e-9)continue;
+    const a=Math.min(want,left);give(p,a);left-=a;
+  }
+}
+
+/* ---- The day's reckoning for one soul ---- */
+function dayOf(p){
+  const r=fedNow(p.id),need=waterNeed(p);
+  if(p.ash)return {fl:"full",wl:"full",ate:true,props:[]};
+  const F=p.rot&&!p.ease?0:r.f,W=r.w;
+  const fl=F>=1-1e-9?"full":F>=0.5-1e-9?"half":"none";
+  const wl=W>=need-1e-9?"full":W>=need/2-1e-9?"half":"none";
+  return {fl,wl,ate:r.f>0,props:Object.keys(r.sp||{}).filter(k=>SPOIL[k])};
+}
+// Every save owed at the coming sunrise, without rolling any of them.
+function savesOwed(){
+  const out=[];
+  for(const x of people()){
+    const p=x.p,d=dayOf(p);
+    for(const k of ["flux","rot","fever"])if(p[k]){
+      if(p.ther){out.push({x,k,kind:"dis",dc:DIS[k].dc,ther:true});continue;}
+      out.push({x,k,kind:"dis",dc:DIS[k].dc,adv:!!(p.adv||p.tend),auto:!!p.rd,five:k==="fever"});
+    }
+    if(d.fl!=="none"&&d.wl!=="none"&&(d.fl==="half"||d.wl==="half"))out.push({x,k:"r",kind:"short",dc:SHORT_DC(d.fl,d.wl),why:d.fl==="half"&&d.wl==="half"?"half food and half water":d.fl==="half"?"half food":"half water",adv:!!p.adv,auto:!!p.re});
+    for(const pr of d.props)out.push({x,k:"s_"+pr,kind:"spoil",prop:pr,dc:SPOIL[pr].dc,adv:!!p.adv,auto:!!p.rd});
+  }
+  return out;
+}
+function rollSave(p,dc,adv){
+  const a=rnd(20),b=adv?rnd(20):0,die=Math.max(a,b),tot=die+(+p.con||0);
+  return {die,tot,pass:tot>=dc,by5:tot<=dc-5};
+}
+// At sunrise: the reckoning is made, exhaustion is laid on, ills take hold or let go.
+function reckonBunks(marks){
+  if(!S.bunks.length)return;
+  marks=marks||{};
+  const without={food:[],water:[]},failed=[],rolledFail=[],worse={},better={},caught={},poisoned=[],dead=[];
+  const add=(x,n)=>{const p=x.p,was=p.ex||0;p.ex=Math.min(6,was+n);if(p.ex>=6&&was<6)dead.push(x);};
+  const owed=savesOwed(),DAY=new Map(people().map(x=>[x.p,dayOf(x.p)]));
+  const result=(o)=>{
+    const p=o.x.p;
+    if(o.ther)return {pass:true};
+    if(o.auto){const r=rollSave(p,o.dc,o.adv);if(!r.pass)rolledFail.push(`${pname(p,o.x.row)} ${r.tot} vs DC ${o.dc}`);return r;}
+    const m=(marks[p.id]||{})[o.k];
+    return {pass:m!=="f"&&m!=="f5",by5:m==="f5"};
+  };
+  // The ills first: the night's short rest is when a sickness is fought.
+  for(const o of owed.filter(o=>o.kind==="dis")){
+    const p=o.x.p,k=o.k,r=result(o);
+    if(o.ther)delete p.ther;
+    if(k==="flux"){
+      if(r.pass){if((p.fluxLv||0)>0){p.fluxLv--;p.ex=Math.max(0,(p.ex||0)-1);}else{delete p.flux;delete p.fluxLv;(better.flux=better.flux||[]).push(o.x);}}
+      else{p.fluxLv=(p.fluxLv||0)+1;add(o.x,1);(worse.flux=worse.flux||[]).push(o.x);if(!o.auto)failed.push(o.x);}
+    }else if(k==="rot"){
+      if(r.pass&&DAY.get(p).ate){delete p.rot;(better.rot=better.rot||[]).push(o.x);}
+      else if(!r.pass){add(o.x,1);(worse.rot=worse.rot||[]).push(o.x);if(!o.auto)failed.push(o.x);}
+    }else if(k==="fever"){
+      if(r.pass){p.feverP=(p.feverP||0)+1;if(p.feverP>=2){delete p.fever;delete p.feverP;(better.fever=better.fever||[]).push(o.x);}}
+      else if(r.by5){add(o.x,1);(worse.fever=worse.fever||[]).push(o.x);if(!o.auto)failed.push(o.x);}
     }
   }
-  if(!gotF&&!gotW)return false;
-  const left=hunger();
-  logLine(say("feed",gotF?`${fmt(gotF)} food ration${gotF===1?"":"s"}`:"",gotW?`${fmt(gotW)} water ration${gotW===1?"":"s"}`:"",!left.food&&!left.water));
+  // Hunger and thirst: one level at most in a day, whether gone without or failed on short rations.
+  for(const x of people()){
+    const d=DAY.get(x.p)||dayOf(x.p);
+    if(d.fl==="none")without.food.push(x);
+    if(d.wl==="none")without.water.push(x);
+    if(d.fl==="none"||d.wl==="none")add(x,1);
+  }
+  for(const o of owed.filter(o=>o.kind==="short")){const r=result(o);if(!r.pass){add(o.x,1);if(!o.auto)failed.push(o.x);}}
+  // Spoiled stores: poisoned until the next sunrise, and the sickness they carry.
+  for(const o of owed.filter(o=>o.kind==="spoil")){
+    const p=o.x.p,r=result(o);if(r.pass)continue;
+    p.pois=S.day+1;if(!poisoned.includes(o.x))poisoned.push(o.x);
+    const dn=SPOIL[o.prop].dis,k=DIS_OF[dn];
+    if(k&&!p[k]){p[k]=true;if(k==="fever")p.feverP=0;(caught[k]=caught[k]||[]).push(o.x);}
+    if(!o.auto&&!failed.includes(o.x))failed.push(o.x);
+  }
+  // Remedies last only until this sunrise.
+  for(const {p} of people()){delete p.ease;delete p.tend;}
+  // The log, one line to a kind.
+  if(without.food.length||without.water.length)logLine(say("without",without.food.length?whoList(without.food):"",without.water.length?whoList(without.water):""),true);
+  if(rolledFail.length)logLine(`Saves the larder rolled and lost: ${rolledFail.slice(0,5).join("; ")}${rolledFail.length>5?`; and ${rolledFail.length-5} more`:""}.`,true);
+  if(failed.length)logLine(`Saves failed at the table: ${whoList(failed)}.`,true);
+  for(const k of Object.keys(DIS)){
+    if(worse[k])logLine(say("disWorsen",whoList(worse[k]),DIS[k].name),true);
+    if(better[k])logLine(say("disRecover",whoList(better[k]),DIS[k].name,better[k].length));
+    if(caught[k])logLine(say("disCaught",whoList(caught[k]),DIS[k].name,shipName(SHIPID),Object.keys(SPOIL).filter(pr=>SPOIL[pr].dis===DIS[k].name).map(pr=>({Stagnant:"water",Rancid:"stores",Fishy:"fish"}[pr]||"stores"))[0]),true);
+  }
+  if(poisoned.length&&!Object.keys(caught).length)logLine(`Poisoned by spoiled stores until the next sunrise: ${whoList(poisoned)}.`,true);
+  for(const x of dead)logLine(`${pname(x.p,x.row)} has reached six levels of exhaustion.`,true);
+}
+
+/* ---- Supplies, counted by the bunks ---- */
+function rationNeeds(){
+  let F=0,W=0,cf=0,cw=0;
+  for(const {p} of people()){if(p.ash)continue;F++;W+=waterNeed(p);cf+=wantF(p);cw+=wantW(p);}
+  return {full:{f:F,w:W},cur:{f:cf,w:cw},half:{f:F/2,w:W/2}};
+}
+
+/* ---- The Bunks tab ---- */
+const OPEN_ROWS=new Set(),OPEN_P=new Set();
+const sel=(b,v,id,mixed)=>`<select data-b="${b}" ${id}>${mixed?`<option value="" selected>Mixed</option>`:""}${["full","half","none"].map(o=>`<option value="${o}" ${!mixed&&v===o?"selected":""}>${cap(o)}</option>`).join("")}</select>`;
+function chipsOf(p,inGroup){
+  const c=[];
+  if(p.flux)c.push(`<span class="chip dis">Bilge Flux${p.fluxLv?`, ${p.fluxLv} from it`:""}</span>`);
+  if(p.rot)c.push(`<span class="chip dis">Rot Gut</span>`);
+  if(p.fever)c.push(`<span class="chip dis">Fish Fever${p.feverP?`, ${p.feverP} pass`:""}</span>`);
+  if(p.pois&&p.pois>=S.day)c.push(`<span class="chip pois">Poisoned till dawn</span>`);
+  if(p.ash)c.push(`<span class="chip ash">Fed ashore</span>`);
+  if(+p.con||p.adv)c.push(`<span class="chip">Con ${(+p.con||0)>=0?"+":""}${+p.con||0}${p.adv?", adv":""}</span>`);
+  if(p.nsp&&!inGroup)c.push(`<span class="chip">Won't eat spoiled</span>`);
+  if((p.re||p.rd)&&!inGroup)c.push(`<span class="chip">Larder rolls ${p.re&&p.rd?"all saves":p.re?"exhaustion":"disease"}</span>`);
+  if((p.ex||0)>=6)c.push(`<span class="chip dis">Six levels</span>`);
+  return c.length?`<div class="chips">${c.join("")}</div>`:"";
+}
+function ticksOf(p,id){
+  const t=(k,lab,on)=>`<label><input type="checkbox" data-b="${k}" ${id} ${on?"checked":""}>${lab}</label>`;
+  let h=`<div class="ticks">${t("ash","Fed ashore",p.ash)}${t("sp","Will eat spoiled",!p.nsp)}${t("re","Roll for exhaustion",p.re)}${t("rd","Roll for disease",p.rd)}${t("flux","Bilge Flux",p.flux)}${t("rot","Rot Gut",p.rot)}${t("fever","Fish Fever",p.fever)}</div>`;
+  if(sick(p))h+=`<div class="ticks"><span>Remedies till dawn:</span>${t("ease","Eased",p.ease)}${t("tend","Tended",p.tend)}${t("ther","Theriac",p.ther)}${p.flux?`<span>Water need: ${fmt(wantW(p))} gallon${wantW(p)===1?"":"s"}</span>`:""}</div>`;
+  return h;
+}
+function renderBunks(){
+  const st=here(),rows=S.bunks;
+  const allAsh=people().length&&people().every(x=>x.p.ash);
+  let h=`<div class="row bunkbar"><button class="sm primary-sm" data-bk="add">Take Aboard</button>${rows.length?`<button class="sm" data-bk="ashore">${allAsh?"All Back Aboard":st?"All Fed Outside":"Whole Crew Ashore"}</button>`:""}<span class="note" style="margin-left:auto">Top of the list eats first.</span></div>`;
+  if(!rows.length)h+=`<p class="note">No one is ${st?"kept here":"aboard"}. Take someone aboard to give them a bunk.</p>`;
+  h+=`<div class="bunks">`;
+  rows.forEach((row,ri)=>{
+    const ps=row.people,one=ps.length===1,p0=ps[0];
+    const same=k=>ps.every(p=>p[k]===p0[k]);
+    const anyAll=k=>{const n=ps.filter(p=>!!p[k]).length;return n===ps.length?1:n?0.5:0;};
+    const rid=`data-rid="${esc(row.id)}"`;
+    const exs=ps.map(p=>p.ex||0),lo=Math.min(...exs),hi=Math.max(...exs);
+    const sickN=k=>ps.filter(p=>p[k]).length;
+    const gchips=one?chipsOf(p0):(()=>{const c=[];for(const k of Object.keys(DIS)){const n=sickN(k);if(n)c.push(`<span class="chip dis">${n} with ${DIS[k].name}</span>`);}const a=ps.filter(p=>p.ash).length;if(a)c.push(`<span class="chip ash">${a===ps.length?"Fed ashore":a+" fed ashore"}</span>`);return c.length?`<div class="chips">${c.join("")}</div>`:"";})();
+    const id1=one?`data-pid="${esc(p0.id)}"`:rid;
+    h+=`<div class="bunk${ps.some(sick)?" sick":""}${one?" one":""}${one&&OPEN_P.has(p0.id)?" tk":""}" ${rid}><div class="bmain">
+      <div class="ord"><button class="ar" data-bk="up" ${rid} ${ri?"":"disabled"} aria-label="Up">&#9650;</button><button class="ar" data-bk="down" ${rid} ${ri<rows.length-1?"":"disabled"} aria-label="Down">&#9660;</button></div>
+      <div class="who">${esc(row.name)}${one?` <button class="linkish tkbtn" data-bk="popen" data-pid="${esc(p0.id)}">${OPEN_P.has(p0.id)?"&#9662; ticks":"&#9656; ticks"}</button>`:` <span class="cnt">&times; ${ps.length}</span>`}${gchips}</div>
+      <label class="f"><span class="lbl">Food</span>${sel("f",p0.f,id1,!one&&!same("f"))}</label>
+      <label class="w"><span class="lbl">Water</span>${sel("w",p0.w,id1,!one&&!same("w"))}</label>
+      <label class="x"><span class="lbl">Exh</span>${one?`<input type="number" data-b="ex" ${id1} min="0" max="6" value="${p0.ex||0}">`:`<span class="mixed">${lo===hi?lo:lo+" to "+hi}</span>`}</label>
+      <button class="sm menu" data-bk="menu" ${rid} aria-label="More">&#8943;</button></div>`;
+    if(one)h+=ticksOf(p0,id1);
+    else{
+      const g=(k,lab)=>{const v=anyAll(k);return `<label><input type="checkbox" data-b="${k}" ${rid} ${v===1?"checked":""} ${v===0.5?'data-ind="1"':""}>${lab}</label>`;};
+      const nsp=ps.filter(p=>!p.nsp).length;
+      const open=OPEN_ROWS.has(row.id);
+      h+=`<div class="ticks">${g("ash","Fed ashore")}<label><input type="checkbox" data-b="sp" ${rid} ${nsp===ps.length?"checked":""} ${nsp&&nsp<ps.length?'data-ind="1"':""}>Will eat spoiled</label>${g("re","Roll for exhaustion")}${g("rd","Roll for disease")}<button class="linkish" data-bk="open" ${rid}>${open?"&#9662; hide the "+ps.length:"&#9656; show the "+ps.length}</button></div>`;
+      if(open){
+        h+=`<div class="heads">`;
+        for(const p of ps){
+          const pid=`data-pid="${esc(p.id)}"`,po=OPEN_P.has(p.id);
+          h+=`<div class="head${sick(p)?" sick":""}"><div class="hn"><button class="linkish" data-bk="popen" ${pid} aria-label="Ticks">${po?"&#9662;":"&#9656;"}</button> ${esc(pname(p,row))}${chipsOf(p,true)}</div>
+            ${sel("f",p.f,pid)}${sel("w",p.w,pid)}<label class="x"><span class="lbl">Exh</span><input type="number" data-b="ex" ${pid} min="0" max="6" value="${p.ex||0}"></label>
+            <button class="sm menu" data-bk="pmenu" ${pid} aria-label="More">&#8943;</button>${po?`<div class="hticks">${ticksOf(p,pid)}</div>`:""}</div>`;
+        }
+        h+=`</div>`;
+      }
+    }
+    h+=`</div>`;
+  });
+  h+=`</div>`;
+  setHtml("bunkList",h);
+  $("bunkList").querySelectorAll("input[data-ind]").forEach(x=>x.indeterminate=true);
+}
+// A setting changed: one soul, or every soul in a row.
+function setBunk(pid,rid,k,v){
+  act(()=>{
+    const targets=pid?[findP(pid)].filter(Boolean).map(x=>x.p):((rowById(rid)||{}).people||[]);
+    if(!targets.length)return false;
+    for(const p of targets){
+      if(k==="f"||k==="w"){if(!v)return false;p[k]=v;}
+      else if(k==="ex")p.ex=Math.max(0,Math.min(6,parseInt(v)||0));
+      else if(k==="sp"){if(v)delete p.nsp;else p.nsp=true;}
+      else if(k==="flux"){if(v)p.flux=true;else{delete p.flux;delete p.fluxLv;}}
+      else if(k==="fever"){if(v){p.fever=true;p.feverP=p.feverP||0;}else{delete p.fever;delete p.feverP;}}
+      else{if(v)p[k]=true;else delete p[k];}
+      if(!sick(p)){delete p.ease;delete p.tend;}
+    }
+  });
+}
+function bunkPlace(){return shipName(SHIPID);}
+function takeAboard(){
+  const st=here();
+  ask(`<h2>Take Aboard</h2><p class="sub">${st?"Give someone a place at the storehouse table.":"Give someone a hammock and a place at the mess table."} One soul by name, or a crowd by count.</p><div class="grid"><label>Name</label><input type="text" name="name" placeholder="Dahlia, or Hired hands"><label>How many</label><input type="number" name="n" min="1" value="1"></div><p class="note">They start on full food and full water, willing to eat spoiled stores if it comes to that.</p>`,fd=>{
+    const name=String(fd.get("name")||"").trim(),n=Math.max(1,Math.min(500,parseInt(fd.get("n"))||1));
+    if(!name){toast("Every bunk needs a name, even a crowd's.");return;}
+    act(()=>{
+      const row={id:newRid(),name,people:[]};
+      for(let i=1;i<=n;i++)row.people.push({id:newPid(),no:i,f:"full",w:"full"});
+      S.bunks.push(row);fixRows();
+      logLine(say("bunkAdd",n>1?`${fmt(n)} ${lc(name)}`:name,n,bunkPlace()));
+    });
+  },"Take Them Aboard");
+}
+// Who goes when a number leaves: unnamed souls first, bottom to top, then the named.
+function pickLeavers(row,n){
+  const ps=row.people.slice().reverse();
+  return ps.filter(p=>!p.name).concat(ps.filter(p=>p.name)).slice(0,n);
+}
+function leaveDialog(rid,pid){
+  const row=rowById(rid);if(!row)return;
+  const one=pid||row.people.length===1;
+  const nm=pid?pname(findP(pid).p,row):row.name;
+  ask(`<h2>${here()?"Leaving the Storehouse":"Going Ashore"}</h2><p class="sub">${one?`${esc(nm)} leaves ${esc(bunkPlace())} for good.`:`How many of the ${esc(lc(row.name))} leave? Those without names go first, from the bottom up.`}</p>${one?"":`<div class="grid"><label>How many</label><input type="number" name="n" min="1" max="${row.people.length}" value="1"></div>`}`,fd=>{
+    const n=one?1:Math.max(1,parseInt(fd.get("n"))||1);
+    act(()=>{
+      const r=rowById(rid);if(!r)return false;
+      const go=pid?r.people.filter(p=>p.id===pid):pickLeavers(r,n);if(!go.length)return false;
+      const xs=go.map(p=>({p,row:r}));
+      const words=go.length===r.people.length&&r.people.length>1?`the ${lc(r.name)} (${go.length})`:whoList(xs);
+      r.people=r.people.filter(p=>!go.includes(p));fixRows();
+      logLine(say("bunkLeave",words,go.length,bunkPlace(),here()));
+    });
+  },"Let Them Go");
+}
+function moveDialog(rid,pid){
+  const row=rowById(rid);if(!row)return;
+  const dests=Object.keys(SHIPS).filter(id=>id!==SHIPID).sort((a,b)=>(isStore(SHIPS[a])-isStore(SHIPS[b]))||shipName(a).localeCompare(shipName(b)));
+  if(!dests.length){toast("There is nowhere else in the Register to send them.");return;}
+  const one=pid||row.people.length===1;
+  const nm=pid?pname(findP(pid).p,row):row.name;
+  ask(`<h2>Across to Another</h2><p class="sub">${one?esc(nm):"Some of the "+esc(lc(row.name))} to another ship or storehouse in the Register. They keep their settings, their ills and today's meals.</p><div class="grid"><label>Bound for</label><select name="to">${dests.map(id=>`<option value="${esc(id)}">${esc(shipName(id))}${isStore(SHIPS[id])?" (storehouse)":""}</option>`).join("")}</select>${one?"":`<label>How many</label><input type="number" name="n" min="1" max="${row.people.length}" value="${row.people.length}">`}</div>`,fd=>{
+    const to=fd.get("to"),n=one?1:Math.max(1,parseInt(fd.get("n"))||1);if(!to)return;
+    sendSouls(rid,pid,n,to);
+  },"Send Them");
+}
+async function sendSouls(rid,pid,n,to){
+  let moved=null;const from=bunkPlace(),toName=shipName(to);
+  act(()=>{
+    const r=rowById(rid);if(!r)return false;
+    const go=pid?r.people.filter(p=>p.id===pid):(n>=r.people.length?r.people.slice():pickLeavers(r,n).reverse());
+    if(!go.length)return false;
+    const whole=go.length===r.people.length;
+    const fed={};for(const p of go){const f=(jour().fed||{})[p.id];if(f)fed[p.id]=clone(f);}
+    moved={name:whole||go.length>1?r.name:pname(go[0],r),people:clone(go).map(p=>{if(!whole&&go.length===1){delete p.name;}return p;}),fed};
+    const words=whole&&r.people.length>1?`the ${lc(r.name)} (${go.length})`:whoList(go.map(p=>({p,row:r})));
+    moved.words=words;
+    r.people=r.people.filter(p=>!go.includes(p));fixRows();
+    logLine(say("bunkMove",words,go.length,from,toName));
+  },async()=>{
+    if(!moved)return;
+    HIST.length=0;const m=moved;
+    try{
+      const res=await onHold(to,()=>{
+        const row={id:newRid(),name:m.name,people:[]};
+        for(const p0 of m.people){const p=clone(p0);p.id=newPid();row.people.push(p);if(m.fed[p0.id]){const j=jour();j.fed=j.fed||{};j.fed[p.id]=clone(m.fed[p0.id]);}}
+        S.bunks.push(row);fixRows();
+        logLine(say("bunkMove",m.words,m.people.length,from,toName));
+      });
+      if(!res||!res.committed)throw new Error("not committed");
+      HIST.length=0;toast(`Sent across to ${toName}.`);
+    }catch(e){
+      console.error(e);
+      act(()=>{const row={id:newRid(),name:m.name,people:m.people.map(p=>Object.assign({},p,{id:newPid()}))};S.bunks.push(row);fixRows();logLine(`${cap(m.words)} could not reach ${toName}, and came back aboard.`);},()=>{HIST.length=0;});
+      toast(`They could not reach ${toName}, so they came back.`);
+    }
+  });
+}
+function renameDialog(rid,pid){
+  const row=rowById(rid);if(!row)return;
+  const p=pid?findP(pid).p:null;
+  ask(`<h2>A Name for the Roll</h2><div class="grid"><label>Name</label><input type="text" name="name" value="${esc(p?(p.name||""):row.name)}" placeholder="${esc(p?pname(p,row):"")}"></div>${p?`<p class="note">Leave it empty to go back to being ${esc(singular(row.name))} ${p.no||""}.</p>`:""}`,fd=>{
+    const name=String(fd.get("name")||"").trim();if(!name&&!p)return;
+    act(()=>{const r=rowById(rid);if(!r)return false;if(p){const q=r.people.find(x=>x.id===pid);if(!q)return false;if(name)q.name=name;else delete q.name;}else r.name=name;fixRows();});
+  },"Write It Down");
+}
+function conDialog(pid){
+  const x=findP(pid);if(!x)return;const p=x.p;
+  ask(`<h2>Constitution</h2><p class="sub">${esc(pname(p,x.row))}. Used when the larder rolls a save for them.</p><div class="grid"><label>Con save bonus</label><input type="number" name="c" value="${+p.con||0}" min="-5" max="20"><label>Advantage</label><label class="inline"><input type="checkbox" name="a" ${p.adv?"checked":""}> On every Constitution save</label></div>`,fd=>{
+    const c=parseInt(fd.get("c"))||0,a=!!fd.get("a");
+    act(()=>{const y=findP(pid);if(!y)return false;if(c)y.p.con=c;else delete y.p.con;if(a)y.p.adv=true;else delete y.p.adv;});
+  },"Set It");
+}
+function splitOff(pid){
+  act(()=>{
+    const x=findP(pid);if(!x||x.row.people.length<2)return false;
+    const nm=pname(x.p,x.row);
+    x.row.people=x.row.people.filter(p=>p!==x.p);delete x.p.name;
+    S.bunks.splice(S.bunks.indexOf(x.row)+1,0,{id:newRid(),name:nm,people:[x.p]});fixRows();
+    logLine(say("bunkSplit",nm,bunkPlace()));
+  });
+}
+function combineDialog(rid){
+  const row=rowById(rid);if(!row)return;
+  const others=S.bunks.filter(r=>r!==row);
+  if(!others.length){toast("There is no one else here to share a mess with.");return;}
+  ask(`<h2>Share a Mess</h2><p class="sub">${esc(row.name)} and another row become one group. Everyone keeps their own settings.</p><div class="grid"><label>Together with</label><select name="o">${others.map(r=>`<option value="${esc(r.id)}">${esc(r.name)}${r.people.length>1?` (${r.people.length})`:""}</option>`).join("")}</select><label>The group's name</label><input type="text" name="name" value="${esc(row.people.length>1?row.name:"")}" placeholder="Deck hands"></div>`,fd=>{
+    const oid=fd.get("o"),name=String(fd.get("name")||"").trim();
+    if(!name){toast("A group needs a name.");return;}
+    act(()=>{
+      const a=rowById(rid),b=rowById(oid);if(!a||!b)return false;
+      const aw=a.name,bw=b.name;
+      for(const r of [a,b])if(r.people.length===1&&!r.people[0].name)r.people[0].name=r.name;
+      a.people=a.people.concat(b.people);a.name=name;
+      let no=1;for(const p of a.people)if(!p.name)p.no=no++;
+      S.bunks=S.bunks.filter(r=>r!==b);fixRows();
+      logLine(say("bunkCombine",aw,bw,bunkPlace()));
+    });
+  },"Combine Them");
+}
+function bunkMenu(rid,pid){
+  const row=rowById(rid);if(!row)return;
+  const one=row.people.length===1;
+  const p=pid?findP(pid).p:(one?row.people[0]:null);
+  const opts=[];
+  if(pid){opts.push(["name","Name"],["con","Con save and advantage"],["split","Split off"],["move","Move to another"],["leave","Leave"]);}
+  else if(one){opts.push(["rename","Rename"],["con","Con save and advantage"],["move","Move to another"],["combine","Combine with another row"],["leave","Leave"]);}
+  else{opts.push(["rename","Rename the group"],["more","Take more aboard"],["move","Move how many"],["combine","Combine with another row"],["leave","Leave how many"]);}
+  const title=pid?pname(p,row):row.name;
+  ask(`<h2>${esc(title)}</h2><div class="choices">${opts.map(([v,t])=>`<button type="submit" class="choice" value="x-${v}">${esc(t)}</button>`).join("")}</div>`,()=>{},"Close",true);
+  dform.querySelectorAll(".choices button").forEach(b=>b.onclick=ev=>{
+    ev.preventDefault();const v=b.value.slice(2);
+    onDlgOk=null;dlg.close();
+    if(v==="name"||v==="rename")renameDialog(rid,pid);
+    else if(v==="con")conDialog(p.id);
+    else if(v==="split")splitOff(pid);
+    else if(v==="move")moveDialog(rid,pid);
+    else if(v==="leave")leaveDialog(rid,pid);
+    else if(v==="combine")combineDialog(rid);
+    else if(v==="more")moreDialog(rid);
+  });
+}
+function moreDialog(rid){
+  const row=rowById(rid);if(!row)return;
+  ask(`<h2>More ${esc(row.name)}</h2><div class="grid"><label>How many more</label><input type="number" name="n" min="1" value="1"></div><p class="note">They join on the group's food and water if the whole group agrees on them, and on full otherwise.</p>`,fd=>{
+    const n=Math.max(1,Math.min(500,parseInt(fd.get("n"))||1));
+    act(()=>{
+      const r=rowById(rid);if(!r)return false;
+      const same=k=>r.people.every(p=>p[k]===r.people[0][k])?r.people[0][k]:"full";
+      const f=same("f"),w=same("w");let no=Math.max(0,...r.people.map(p=>p.no||0));
+      for(let i=0;i<n;i++)r.people.push({id:newPid(),no:++no,f,w});
+      fixRows();
+      logLine(say("bunkAdd",`${fmt(n)} more ${lc(r.name)}`,n,bunkPlace()));
+    });
+  },"Take Them Aboard");
+}
+function onBunkClick(e){
+  const b=e.target.closest("[data-bk]");if(!b)return;
+  const rid=b.dataset.rid,pid=b.dataset.pid,k=b.dataset.bk;
+  if(k==="add")return takeAboard();
+  if(k==="ashore"){const all=people().every(x=>x.p.ash);act(()=>{if(!S.bunks.length)return false;for(const {p} of people()){if(all)delete p.ash;else p.ash=true;}});return;}
+  if(k==="up"||k==="down"){act(()=>{const i=S.bunks.findIndex(r=>r.id===rid),j=i+(k==="up"?-1:1);if(i<0||j<0||j>=S.bunks.length)return false;[S.bunks[i],S.bunks[j]]=[S.bunks[j],S.bunks[i]];});return;}
+  if(k==="open"){if(OPEN_ROWS.has(rid))OPEN_ROWS.delete(rid);else OPEN_ROWS.add(rid);renderBunks();return;}
+  if(k==="popen"){if(OPEN_P.has(pid))OPEN_P.delete(pid);else OPEN_P.add(pid);renderBunks();return;}
+  if(k==="menu")return bunkMenu(rid);
+  if(k==="pmenu"){const x=findP(pid);if(x)bunkMenu(x.row.id,pid);return;}
+}
+function onBunkChange(e){
+  const t=e.target,k=t.dataset.b;if(!k)return;
+  const v=t.type==="checkbox"?t.checked:t.value;
+  setBunk(t.dataset.pid||null,t.dataset.pid?null:t.dataset.rid,k,v);
+}
+
+/* ---- The dawn report for one place's bunks. Marks are the table's passes and failures. ---- */
+let DMARKS={};
+function bunkReport(id,feedAll){
+  if(!S.bunks.length)return "";
+  if(feedAll)feedNow();
+  const ps=people(),bits=[];
+  const by=f=>ps.filter(f);
+  const full=by(x=>!x.p.ash&&dayOf(x.p).fl==="full"&&dayOf(x.p).wl==="full");
+  const hf=by(x=>!x.p.ash&&dayOf(x.p).fl==="half"),hw=by(x=>!x.p.ash&&dayOf(x.p).wl==="half");
+  const ash=by(x=>x.p.ash),wf=by(x=>dayOf(x.p).fl==="none"),ww=by(x=>dayOf(x.p).wl==="none");
+  const list=xs=>esc(whoList(xs));
+  const fed=[];
+  if(full.length)fed.push(`${full.length} full`);
+  if(hf.length)fed.push(`half food: ${list(hf)}`);
+  if(hw.length)fed.push(`half water: ${list(hw)}`);
+  if(ash.length)fed.push(`fed ashore: ${list(ash)}`);
+  bits.push(`<p><b>Fed${feedAll?", once the stores are shared out":" so far"}:</b> ${fed.join("; ")||"no one yet"}.</p>`);
+  if(wf.length||ww.length)bits.push(`<p class="warn"><b>Going without:</b> ${[wf.length&&"no food for "+list(wf),ww.length&&"no water for "+list(ww)].filter(Boolean).join("; ")}. A level of exhaustion each at sunrise.</p>`);
+  const owed=savesOwed(),table=owed.filter(o=>!o.auto&&!o.ther),auto=owed.filter(o=>o.auto);
+  const lines=new Map();
+  for(const o of table){
+    const key=o.kind==="short"?`r|${o.dc}|${o.why}`:o.kind==="dis"?`d|${o.k}`:`s|${o.prop}`;
+    const head=o.kind==="short"?`Short rations, ${o.why} (DC ${o.dc})`:o.kind==="dis"?`${DIS[o.k].name} (DC ${o.dc}${o.k==="fever"?", fails by 5 or more for a level":""})`:`Ate spoiled stores, ${o.prop} (DC ${o.dc}, or poisoned${SPOIL[o.prop].dis?" and "+SPOIL[o.prop].dis:""})`;
+    if(!lines.has(key))lines.set(key,{head,os:[]});lines.get(key).os.push(o);
+  }
+  const marks=DMARKS[id]||{};
+  let li=0;
+  for(const [,L] of lines){
+    const lid=`${id}-${li++}`;
+    bits.push(`<div class="saveline" data-line="${esc(lid)}"><b>${esc(L.head)}:</b> ${L.os.map(o=>{const m=(marks[o.x.p.id]||{})[o.k]||"";return `<button type="button" class="mk${m?" mk-"+m:""}" data-place="${esc(id)}" data-pid="${esc(o.x.p.id)}" data-k="${esc(o.k)}" ${o.five?'data-five="1"':""}>${esc(pname(o.x.p,o.x.row))}${o.adv?" (adv)":""}${m==="p"?" &#10003;":m==="f"?" &#10007;":m==="f5"?" &#10007; 5+":""}</button>`;}).join(" ")} <button type="button" class="sm" data-all="p">All passed</button> <button type="button" class="sm" data-all="f">All failed</button></div>`);
+  }
+  if(auto.length)bits.push(`<p><b>The larder rolls at sunrise for:</b> ${list([...new Set(auto.map(o=>o.x))])}.</p>`);
+  const ther=owed.filter(o=>o.ther);if(ther.length)bits.push(`<p class="tag">Theriac carries ${list(ther.map(o=>o.x))} through their next save.</p>`);
+  const shortN=ps.filter(x=>{const d=dayOf(x.p);return !x.p.ash&&(d.fl==="half"||d.wl==="half");});
+  if(shortN.length)bits.push(`<p class="note">On short rations today: hunger and thirst exhaustion won't clear on a short rest for ${list(shortN)}.</p>`);
+  const flux=ps.filter(x=>x.p.flux);if(flux.length)bits.push(`<p class="note">Bilge Flux: ${list(flux)} ${flux.length===1?"needs":"need"} double water, and ${flux.length===1?"saves":"save"} DC 13 at each short rest.</p>`);
+  if(ash.length)bits.push(`<p class="note">Still eating ashore: ${list(ash)}. Untick them once you sail.</p>`);
+  const edge=ps.filter(x=>(x.p.ex||0)>=5);if(edge.length)bits.push(`<p class="warn">${edge.map(x=>`${esc(pname(x.p,x.row))} has ${x.p.ex} level${x.p.ex===1?"":"s"} of exhaustion${x.p.ex>=6?"":": one more is death"}.`).join(" ")}</p>`);
+  return `<div class="bunkrep">${bits.join("")}</div>`;
+}
+// Saves still unmarked among the places that wake.
+function unmarked(ids){let n=0;dform.querySelectorAll(".mk").forEach(b=>{if(ids.includes(b.dataset.place)&&!((DMARKS[b.dataset.place]||{})[b.dataset.pid]||{})[b.dataset.k])n++;});return n;}
+function wireMarks(){
+  const paint=b=>{const m=((DMARKS[b.dataset.place]||{})[b.dataset.pid]||{})[b.dataset.k]||"";b.className="mk"+(m?" mk-"+m:"");const base=b.textContent.replace(/ [✓✗].*$/,"");b.textContent=base+(m==="p"?" ✓":m==="f"?" ✗":m==="f5"?" ✗ 5+":"");};
+  const set=(b,m)=>{const pl=DMARKS[b.dataset.place]=DMARKS[b.dataset.place]||{},pm=pl[b.dataset.pid]=pl[b.dataset.pid]||{};if(m)pm[b.dataset.k]=m;else delete pm[b.dataset.k];paint(b);};
+  dform.querySelectorAll(".mk").forEach(b=>b.onclick=ev=>{
+    ev.preventDefault();
+    const m=((DMARKS[b.dataset.place]||{})[b.dataset.pid]||{})[b.dataset.k]||"";
+    const order=b.dataset.five?["","p","f","f5"]:["","p","f"];
+    set(b,order[(order.indexOf(m)+1)%order.length]);
+  });
+  dform.querySelectorAll(".saveline button[data-all]").forEach(a=>a.onclick=ev=>{ev.preventDefault();a.closest(".saveline").querySelectorAll(".mk").forEach(b=>set(b,a.dataset.all));});
 }
 
 /* ---- What arrives at a storehouse on its own ---- */
@@ -1732,11 +2350,10 @@ function yieldAll(){
   }
 }
 /* ---- One place's dawn. Runs inside onHold or act, standing in that hold. ---- */
-function dawnHere(seen,burn){
+function dawnHere(seen,burn,marks){
   if(S.day!==seen)return false; // a shipmate already greeted this dawn
-  // Those who went without today feel it.
-  const h=hunger();
-  if(h.crew&&(h.food||h.water))logLine(say("without",h.food,h.water),true);
+  // The bunks are reckoned: who ate, who went short, who rolls, who sickens and who mends.
+  reckonBunks(marks);
   if(!coldOn())warmAll();
   S.day++;
   S.lastDawn={at:Date.now(),by:DEVICE,day:S.day};
@@ -1810,7 +2427,7 @@ function burnFuel(){
 
 /* ---- The dawn list: every ship and storehouse, wake the ones you choose ---- */
 const PICK_KEY="oceana-larder-dawn-pick";
-function summaryHtml(id,hold){
+function summaryHtml(id,hold,feedAll){
   const s=SHIPS[id]||{};
   const sv=S,si=SHIPID;S=normalize(hold);SHIPID=id; // read it as though standing in it
   try{
@@ -1825,23 +2442,19 @@ function summaryHtml(id,hold){
     if(Object.keys(j.stash).length)bits.push(`<b>Stashed:</b> ${list(j.stash)}`);
     if(Object.keys(j.unstash).length)bits.push(`<b>Brought out:</b> ${list(j.unstash)}`);
     if(!bits.length)bits.push(`<span class="tag">Nothing came or went today.</span>`);
-    const h=hunger();
-    let crew="";
-    if(h.crew){
-      const fedF=Math.floor(j.food+1e-9),fedW=Math.floor(j.water+1e-9);
-      const lvl=Math.max(h.food,h.water);
-      crew=`<p class="crewchk${lvl?" short":""}">${h.crew} mouth${h.crew===1?"":"s"}. Today they ate ${fmt(j.food)} food ration${j.food===1?"":"s"} and drank ${fmt(j.water)} water ration${j.water===1?"":"s"}. `+
-        (lvl?`${h.food?`${h.food} go${h.food===1?"es":""} without food`:""}${h.food&&h.water?" and ":""}${h.water?`${h.water}${h.food?"":` go${h.water===1?"es":""}`} without water`:""}: <b>${lvl} gain${lvl===1?"s":""} a level of exhaustion</b> if dawn breaks now.`:"Every mouth has been fed and watered.")+
-        (lvl?` <button class="sm" type="submit" value="x-feed-${esc(id)}">Feed the Crew</button>`:"")+`</p>`;
-    }
+    const crew=bunkReport(id,feedAll);
+    const hh=hunger();
+    const feedB=!feedAll&&(hh.food||hh.water)?`<p><button class="sm" type="submit" value="x-feed-${esc(id)}">Feed the Crew</button></p>`:"";
     let fuel="";
     if(s.fuel&&!isStore(s)){const f=fuelInfo(s,S);fuel=f.dry>0?`<label class="inline"><input type="checkbox" name="fuel-${esc(id)}" checked> Burn fuel (${f.days} day${f.days===1?"":"s"} left${f.dry<f.need?", not enough for a full day":""})</label>`:`<p class="tag">The furnaces are cold: no dry charcoal aboard.</p>`;}
-    return `<div class="dsum">${bits.map(x=>`<p>${x}</p>`).join("")}${crew}${fuel}</div>`;
+    return `<div class="dsum">${bits.map(x=>`<p>${x}</p>`).join("")}${crew}${feedB}${fuel}</div>`;
   }finally{S=sv;SHIPID=si;}
 }
 async function openDawn(keep,boxes0){
   let token=null;
-  if(!keep){ // a fresh open shows the panel straight away, and fills it once the ledgers arrive
+  if(!Array.isArray(keep))DMARKS={};
+  const feedAll0=!boxes0||boxes0.feedall!==false;
+  if(!Array.isArray(keep)){ // a fresh open shows the panel straight away, and fills it once the ledgers arrive
     ask(`<h2>Before the Sun Rises</h2><p class="sub" id="dawnWait">The quartermaster gathers the ledgers...</p>`,()=>{},"Never mind",true);
     token=dform.querySelector("#dawnWait");
   }
@@ -1849,24 +2462,35 @@ async function openDawn(keep,boxes0){
   if(token&&!(dlg.open&&dform.contains(token)))return; // closed while the ledgers were on their way
   const ids=Object.keys(SHIPS).filter(id=>holds[id]).sort((a,b)=>(isStore(SHIPS[a])-isStore(SHIPS[b]))||((SHIPS[a].created||0)-(SHIPS[b].created||0)));
   let pick;
-  if(keep)pick=keep;
+  if(Array.isArray(keep))pick=keep;
   else{try{pick=JSON.parse(localStorage.getItem(PICK_KEY)||"null");}catch(e){pick=null;}if(!Array.isArray(pick)||!pick.length)pick=SHIPID?[SHIPID]:[];}
   const rows=ids.map(id=>{
     const h=normalize(holds[id]),ld=h.lastDawn;
     const recent=!DB.local&&ld&&ld.by!==DEVICE&&Date.now()-ld.at<120000&&ld.day===h.day;
     const on=pick.includes(id)&&!recent;
-    return `<div class="drow${id===SHIPID?" here":""}"><label class="inline dhead"><input type="checkbox" name="pick" value="${esc(id)}" ${on?"checked":""}> <b>${esc(shipName(id))}</b> <span class="tag">${isStore(SHIPS[id])?"storehouse":"ship"} · day ${h.day}</span></label>${recent?`<p class="tag warn">A shipmate greeted this dawn only moments ago.</p>`:""}${summaryHtml(id,h)}</div>`;
+    return `<div class="drow${id===SHIPID?" here":""}"><label class="inline dhead"><input type="checkbox" name="pick" value="${esc(id)}" ${on?"checked":""}> <b>${esc(shipName(id))}</b> <span class="tag">${isStore(SHIPS[id])?"storehouse":"ship"} · day ${h.day}</span></label>${recent?`<p class="tag warn">A shipmate greeted this dawn only moments ago.</p>`:""}${summaryHtml(id,h,feedAll0)}</div>`;
   }).join("");
   ask(`<h2>Before the Sun Rises</h2><p class="sub">Choose which ships and storehouses wake to a new day. Each rolls its own dice and keeps its own count of days.</p>
-    <label class="inline feedall"><input type="checkbox" name="feedall" checked> Feed every place that wakes from its own stores first</label>
-    <p class="note">Hunger below is counted as things stand now. With the box ticked, only those whose stores truly run out go without.</p>
+    <label class="inline feedall"><input type="checkbox" name="feedall" ${feedAll0?"checked":""}> Feed every place that wakes from its own stores first</label>
+    <p class="note">${feedAll0?"The bunks below are counted as though the stores were shared out first, so only those whose stores truly run out go without.":"The bunks below are counted as things stand now."} Tap a name to mark a save passed or failed. Anyone left unmarked passes.</p>
     <div class="row"><button class="sm" type="submit" value="x-only">This One Only</button><button class="sm" type="submit" value="x-all">Everything</button><button class="sm" type="submit" value="x-none">Nothing</button></div>
     <div class="dlist">${rows||'<p class="note">There is nothing in the Register to wake.</p>'}</div>`,fd=>{
     const chosen=fd.getAll("pick");
     try{localStorage.setItem(PICK_KEY,JSON.stringify(chosen));}catch(e){}
     if(!chosen.length){toast("No dawn breaks anywhere.");return;}
-    breakDawn(chosen,holds,id=>!!fd.get("fuel-"+id),!!fd.get("feedall"));
+    const fuel={};for(const id of chosen)fuel[id]=!!fd.get("fuel-"+id);
+    const go=()=>breakDawn(chosen,holds,id=>fuel[id],!!fd.get("feedall"),clone(DMARKS)||{});
+    if(!unmarkedNow)return go();
+    const ticks={};for(const [k,v] of fd.entries())if(k!=="pick")ticks[k]=true;ticks.feedall=!!fd.get("feedall");
+    ask(`<h2>Saves Not Marked</h2><p class="sub">${unmarkedNow} save${unmarkedNow===1?" is":"s are"} not marked. Count ${unmarkedNow===1?"it":"them"} as passed?</p><div class="row"><button class="sm" type="submit" value="x-back">Go back and mark them</button></div>`,go,"Count them as passed",true);
+    dform.querySelector("button[value=x-back]").onclick=ev=>{ev.preventDefault();openDawn(chosen,ticks);};
   },"Let Dawn Break");
+  let unmarkedNow=0;
+  wireMarks();
+  const lastBtn=dform.querySelector("button.primary");
+  if(lastBtn)lastBtn.addEventListener("click",()=>{unmarkedNow=unmarked([...dform.querySelectorAll("input[name=pick]")].filter(x=>x.checked).map(x=>x.value));},true);
+  const fa=dform.querySelector("input[name=feedall]");
+  if(fa)fa.onchange=()=>{const now=boxes().filter(x=>x.checked).map(x=>x.value),ticks={};dform.querySelectorAll("input[name=feedall],input[name^=fuel-]").forEach(x=>ticks[x.name]=x.checked);openDawn(now.length?now:[],ticks);};
   const boxes=()=>[...dform.querySelectorAll("input[name=pick]")];
   if(boxes0)for(const [k,v] of Object.entries(boxes0)){const x=dform.querySelector(`input[name="${k}"]`);if(x)x.checked=v;}
   dform.querySelector("button[value=x-only]").onclick=ev=>{ev.preventDefault();boxes().forEach(b=>b.checked=b.value===SHIPID);};
@@ -1883,13 +2507,14 @@ async function openDawn(keep,boxes0){
     if(!r||!r.committed)toast("There is nothing there the crew can eat or drink.");
   });
 }
-async function breakDawn(ids,holds,burnFor,feedAll){
+async function breakDawn(ids,holds,burnFor,feedAll,marks){
+  marks=marks||{};
   let n=0,changedHere=false;
   for(const id of ids){
     const h=holds[id];if(!h)continue;
     const seen=normalize(h).day;let pre=null;
     try{
-      const r=await onHold(id,()=>{if(S.day!==seen)return false;pre=clone(S);if(feedAll)feedNow();return dawnHere(seen,burnFor(id));});
+      const r=await onHold(id,()=>{if(S.day!==seen)return false;pre=clone(S);if(feedAll)feedNow();return dawnHere(seen,burnFor(id),marks[id]||{});});
       if(r&&r.committed){
         n++;if(id===SHIPID)changedHere=true;
         try{await DB.set(`backups/${id}/${Date.now()+n}`,{at:Date.now(),reason:"Before dawn on day "+(seen+1),day:seen,hold:pre});}catch(e){console.error(e);}
@@ -1903,10 +2528,10 @@ async function breakDawn(ids,holds,burnFor,feedAll){
 function dawn(){openDawn();}
 $("feedBtn").onclick=()=>{
   const h=hunger();
-  if(!h.crew){toast("There are no mouths to feed here.");return;}
-  if(!h.food&&!h.water){toast("Every mouth has already been fed and watered today.");return;}
-  if(!S.lots.some(l=>(h.food&&feedable(l,false))||(h.water&&feedable(l,true)))){toast("There is nothing here the crew can eat or drink.");return;}
-  act(()=>feedNow(),()=>{const x=hunger();if(x.food||x.water)toast(`The stores ran short: ${[x.food&&`${x.food} still without food`,x.water&&`${x.water} still without water`].filter(Boolean).join(", ")}.`);});
+  if(!h.crew){toast("There is no one in the bunks to feed. Take someone aboard on the Bunks tab.");return;}
+  if(!h.food&&!h.water){toast("Everyone has already had their share today.");return;}
+  if(!S.lots.some(l=>(h.food&&feedableAny(l,false)&&(l.units>0||l.spoiled>0))||(h.water&&feedableAny(l,true)&&(l.units>0||l.spoiled>0)))){toast("There is nothing here the crew can eat or drink.");return;}
+  act(()=>feedNow(),()=>{const x=hunger();if(x.food||x.water)toast(`The stores ran short: ${[x.food&&`${x.food} still short of food`,x.water&&`${x.water} still short of water`].filter(Boolean).join(", ")}.`);});
 };
 function damage(){
   confirmBox("The Hold Is Struck","Has the hold flooded, or the ship been badly hurt? Every lot of provisions steps down one die, and charcoal not wrapped in oilskin is soaked.","Alas, it has",()=>act(()=>{
@@ -1939,7 +2564,6 @@ function setHtml(id,html){if(DRAWN.get(id)===html&&$(id).innerHTML!=="")return;D
 function render(){
   if(!SHIPID)return;
   setIfIdle($("dayIn"),S.day);
-  setIfIdle($("crewIn"),S.crew);
   $("sharedIn").checked=!!S.shared;
   const ck=Object.keys(S.custom).sort().join("|");
   if(ck!==lastCustomKeys){lastCustomKeys=ck;fillItems(true);}
@@ -1951,15 +2575,15 @@ function render(){
     const g=rationsOf(l,l.units),b=rationsOf(l,l.spoiled);
     if(it.water){water+=g;swater+=b;}else{food+=g;sfood+=b;}
   }
-  const crew=Math.max(0,S.crew|0);
-  const days=v=>crew?Math.floor(v/crew):"-";
+  const crew=people().length,need=rationNeeds();
+  const days=(v,n)=>n>0?fmt(Math.floor(v/n+1e-9)):"-";
+  const three=(v,k)=>`<span class="three"><span>at half <em>${days(v,need.half[k])}</em></span><span class="cur">at current <em>${days(v,need.cur[k])}</em></span><span>at full <em>${days(v,need.full[k])}</em></span></span>`;
   // The place itself: a ship or a storehouse
   const F=holdF(),M=maxF(),s=ship(),st=isStore(s);
   $("kicker").textContent=st?"The Storehouse Ledger":"The Ship's Larder";
   $("holdSub").textContent=st?"Wherein every barrel, crate and bale ashore is counted, and the slow, patient hunger of time is reckoned each morning.":"Wherein every barrel, crate and bale is counted, and the slow, patient hunger of the sea is reckoned each morning.";
   $("papersBtn").textContent=st?"Storehouse Deeds":"Ship's Papers";
   $("dayLbl").textContent=st?"Day":"Day of the voyage";
-  $("crewLbl").textContent=st?"Mouths to feed":"Mouths aboard";
   $("dmgBtn").hidden=st;$("rainBtn").hidden=st;$("cookBtn").hidden=st&&!s.hearth;
   $("addBtn").textContent=itemSel.value==="__new"?"Write Something New":(st?"Store It":"Stow It Below");
   let tl;
@@ -1972,8 +2596,9 @@ function render(){
   setHtml("stats",[
     [fmt(food),"food ration"+(food===1?"":"s")+", sound"+(sfood?` <span class="spoiled">(+${fmt(sfood)} spoiled)</span>`:"")],
     [fmt(water),"water ration"+(water===1?"":"s")+", sound"+(swater?` <span class="spoiled">(+${fmt(swater)} spoiled)</span>`:"")],
-    [days(food),`day${days(food)===1?"":"s"} of food for ${crew} mouth${crew===1?"":"s"}`],
-    [days(water),`day${days(water)===1?"":"s"} of water for ${crew} mouth${crew===1?"":"s"}`],
+    [three(food,"f"),"days of food"],
+    [three(water,"w"),"days of water"],
+    [fmt(crew),`soul${crew===1?"":"s"} ${st?"kept here":"aboard"}${people().some(x=>x.p.ash)?`, ${people().filter(x=>x.p.ash).length} fed ashore`:""}`],
     ...(live?[[live,live===1?"living beast aboard":"living beasts aboard"]]:[]),
   ].map(([b,t])=>`<div class="stat"><b>${b}</b><span>${t}</span></div>`).join(""));
 
@@ -2019,6 +2644,8 @@ function render(){
   if($("intoSel").innerHTML!==ih){$("intoSel").innerHTML=ih;if(into.some(x=>x[0]===was))$("intoSel").value=was;}
   $("intoWrap").hidden=into.length<2;
   renderFire();
+  renderBunks();
+  syncTabs();
   const groups=[];
   for(const e of S.log){if(!groups.length||groups[groups.length-1].d!==e.d)groups.push({d:e.d,es:[]});groups[groups.length-1].es.push(e);}
   let lh="";
@@ -2209,7 +2836,7 @@ function portionDialog(lid,mode){ // mode: eat | use | spoil | sell
   const unitMax=sellCargo?l.units:(byRation?max*it.rat:max);
   const one=unitMax===1;
   const unitName=sellCargo?(one?lc(it.cargo||"cargo unit"):(it.cargoPl||"cargo units")):byRation?(it.water?(one?"water ration":"water rations"):(one?"ration":"rations")):(it.useMult?(one?"use":"uses"):(one?it.w:it.wp));
-  const def=sp||mode==="sell"?unitMax:Math.min(unitMax,byRation?Math.max(1,S.crew||1):1);
+  const def=sp||mode==="sell"?unitMax:Math.min(unitMax,byRation?Math.max(1,people().filter(x=>!x.p.ash).length||1):1);
   const s=it.spoil&&SPOIL[it.spoil];
   const risk=sp&&s?`<p>Whoever eats or drinks it must make a <b>DC ${s.dc} Constitution save</b>, or be poisoned for 24 hours${s.dis?" and catch <b>"+s.dis+"</b>":""}.</p>`:"";
   const heads={eat:it.water?"Drawing from the Cask":"To the Galley",use:"Put to Use",spoil:"The Spoiled Portion",sell:"Down the Gangplank"};
@@ -2217,7 +2844,9 @@ function portionDialog(lid,mode){ // mode: eat | use | spoil | sell
     :`${esc(lotName(l))}: ${fmt(unitMax)} ${esc(unitName)} on hand.`;
   const each=byRation?`Each ${esc(it.w)} is ${fmt(it.rat)} ${it.water?"water ":""}ration${it.rat===1?"":"s"}; a part-eaten one is used up whole. `:"";
   const opening=l.form==="cargo"&&!sellCargo?`${esc(cap(it.cargoPl||"cargo units"))} are opened only as needed, and the rest join the loose stores.`:"";
-  ask(`<h2>${heads[mode]}</h2><p class="sub">${lead}</p>${risk}<div class="grid"><label>${esc(cap(unitName))}</label><input type="number" name="n" min="0" step="${byRation&&it.rat<1?it.rat:1}" max="${unitMax}" value="${def}">${sp?`<label>Fate</label><select name="how"><option value="toss">Cast overboard</option><option value="eat">${it.water?"Drink":"Eat"} it anyway</option></select>`:""}</div><p class="note">${each}${opening}</p>`,fd=>{
+  const whoPick=byRation&&S.bunks.length?`<label>${it.water?"Drunk by":"Eaten by"}</label><select name="who"><option value="">The crew, down the list</option>${people().map(x=>`<option value="${esc(x.p.id)}">${esc(pname(x.p,x.row))}</option>`).join("")}</select>`:"";
+  ask(`<h2>${heads[mode]}</h2><p class="sub">${lead}</p>${risk}<div class="grid"><label>${esc(cap(unitName))}</label><input type="number" name="n" min="0" step="${byRation?0.5:1}" max="${unitMax}" value="${def}">${sp?`<label>Fate</label><select name="how"><option value="toss">Cast overboard</option><option value="eat">${it.water?"Drink":"Eat"} it anyway</option></select>`:""}${whoPick}</div><p class="note">${each}${opening}${whoPick?" Rations given to the crew go to those still owed their share, top of the list first. Choose one soul to give them more than their share.":""}</p>`,fd=>{
+    const who=fd.get("who")||null;
     const a=Math.max(0,parseFloat(fd.get("n"))||0);if(!a)return;
     const how=sp?fd.get("how"):mode;
     let flavor=null;
@@ -2225,7 +2854,7 @@ function portionDialog(lid,mode){ // mode: eat | use | spoil | sell
       const l=lotById(lid);if(!l)return false;
       if(sellCargo){const k=Math.min(l.units,Math.ceil(a));if(!k)return false;l.units-=k;jot("rem",l.item,lotSingles(l,k));flavor=deal("sell",SELL_LINES);logLine(`Sold ${camt(it,k)} of ${lc(it.name)}. ${flavor}`);return;}
       const have=avail(l,sp);if(have<=0)return false;
-      const n=Math.min(have,byRation?Math.ceil(a/it.rat-1e-9):Math.ceil(a));
+      const n=Math.min(have,byRation?Math.ceil((a/it.rat)*2-1e-9)/2:Math.ceil(a));
       const opened=take(l,n,sp);
       if(opened)logLine(say("open",camt(it,opened),lc(it.name)));
       const A=amt(it,n),N=lc(it.name),R=rationWords(it,n);
@@ -2233,8 +2862,8 @@ function portionDialog(lid,mode){ // mode: eat | use | spoil | sell
       if(how==="sell"){flavor=deal("sell",SELL_LINES);logLine(`Sold ${A} of ${N}. ${flavor}`);}
       else if(how==="use")logLine(say("use",A,N));
       else if(how==="toss")logLine(say("toss",A,N));
-      else if(sp){ateRations(it,n);logLine(say("eatSpoiled",A,N,R,s?`DC ${s.dc} Con${s.dis?", or "+s.dis:", or poisoned"}`:"none needed"),true);}
-      else if(it.rat){ateRations(it,n);logLine(say(it.water?"drink":"eat",A,N,R));}
+      else if(sp){ateRations(it,n);shareRations(!!it.water,Math.min(a,n*it.rat),who,true,it.spoil);logLine(say("eatSpoiled",A,N,R,s?`DC ${s.dc} Con${s.dis?", or "+s.dis:", or poisoned"}`:"none needed"),true);}
+      else if(it.rat){ateRations(it,n);shareRations(!!it.water,Math.min(a,n*it.rat),who,false);logLine(say(it.water?"drink":"eat",A,N,R));}
       else logLine(say("use",A,N));
     },()=>{if(flavor)toast(flavor);});
   },{eat:it.water?"Drink":(it.rat?"Eat":"Use"),use:"Use",spoil:"Done",sell:"Sell"}[mode]);
@@ -3279,7 +3908,7 @@ $("loadBtn").onclick=()=>{
   },"Uncork");
 };
 $("clearLogBtn").onclick=()=>confirmBox("Clear the Log","Tear every page from the Quartermaster's Log? The hold itself is untouched.","Tear them out",()=>act(()=>{S.log=[];}));
-$("wipeBtn").onclick=()=>confirmBox("Empty the Hold","Empty the hold entirely and begin anew at day 1? Custom cargo is kept in the catalog, and the hold as it is now is laid away in the Keeper's Chest.","Empty it",()=>backup("Before the hold was emptied").then(()=>act(()=>{const c=S.custom,seq=S.seq;S=fresh();S.custom=c;S.seq=seq;})));
+$("wipeBtn").onclick=()=>confirmBox("Empty the Hold","Empty the hold entirely and begin anew at day 1? Custom cargo is kept in the catalog, and the hold as it is now is laid away in the Keeper's Chest.","Empty it",()=>backup("Before the hold was emptied").then(()=>act(()=>{const c=S.custom,seq=S.seq,b=S.bunks,ps=S.pseq;S=fresh();S.custom=c;S.seq=seq;S.bunks=b;S.pseq=ps;fixRows();})));
 
 /* ---------------- The Keeper's Chest of saved holds ---------------- */
 let CHEST={};
@@ -3303,8 +3932,16 @@ $("chestList").onclick=e=>{
   const k=b.dataset.restore,bk=CHEST[k];if(!bk)return;
   confirmBox("Restore a Saved Hold","Return this ship's hold to how it stood on "+when(bk.at)+" (day "+bk.day+")? The hold as it is now is laid away first, so this too can be undone.","Restore it",()=>backup("Before restoring a saved hold").then(()=>act(()=>{const seq=S.seq;S=normalize(clone(bk.hold));S.seq=Math.max(S.seq||1,seq||1);},()=>{toast("The hold is restored.");loadChest();})));
 };
-$("pruneBtn").onclick=()=>!canKeep()?snark("chest"):confirmBox("Thin the Chest","Keep only the newest 30 saved holds of this ship, and let the older ones go?","Thin it",async()=>{
-  try{const v=(await DB.get("backups/"+SHIPID))||{};const ks=Object.keys(v).sort((a,b)=>b-a).slice(30);if(!ks.length){toast("There are 30 or fewer already.");return;}const up={};ks.forEach(k=>up[`backups/${SHIPID}/${k}`]=null);await DB.update(up);toast(ks.length+" old copies let go.");loadChest();}
+$("layBtn").onclick=()=>{
+  if(!canKeep()){snark("chest");return;}
+  ask(`<h2>Lay Away Now</h2><p class="sub">Copy the hold as it stands into the Keeper's Chest, to come back to whenever you like. Copies laid away by hand are never thinned.</p><div class="grid"><label>A label</label><input type="text" name="label" placeholder="Before the kraken"></div>`,async fd=>{
+    const label=String(fd.get("label")||"").trim();
+    try{await DB.set(`backups/${SHIPID}/${Date.now()}`,{at:Date.now(),reason:"Laid away by hand"+(label?": "+label:""),day:S.day,hold:clone(S),hand:true});toast("Laid away in the chest.");if($("chestBtn").dataset.open)loadChest();}
+    catch(e){console.error(e);toast("Only the Keeper may do this.");}
+  },"Lay It Away");
+};
+$("pruneBtn").onclick=()=>!canKeep()?snark("chest"):confirmBox("Thin the Chest","Keep only the newest 30 saved holds of this ship, and let the older ones go? Holds laid away by hand are kept.","Thin it",async()=>{
+  try{const v=(await DB.get("backups/"+SHIPID))||{};const ks=Object.keys(v).filter(k=>!(v[k]&&v[k].hand)).sort((a,b)=>b-a).slice(30);if(!ks.length){toast("There are 30 or fewer already.");return;}const up={};ks.forEach(k=>up[`backups/${SHIPID}/${k}`]=null);await DB.update(up);toast(ks.length+" old copies let go.");loadChest();}
   catch(e){toast("Only the Keeper may do this.");}
 });
 
@@ -3339,7 +3976,21 @@ $("dmgBtn").onclick=damage;
 $("undoBtn").onclick=undo;
 $("harborBtn").onclick=()=>go(null);
 $("dayIn").onchange=e=>{const v=Math.max(1,parseInt(e.target.value)||1);act(()=>{S.day=v;});};
-$("crewIn").onchange=e=>{const v=Math.max(0,parseInt(e.target.value)||0);act(()=>{S.crew=v;});};
+$("bunkList").addEventListener("click",onBunkClick);
+$("bunkList").addEventListener("change",onBunkChange);
+/* ---- Tabs: each device remembers the last one opened ---- */
+const TAB_KEY="oceana-larder-tab";
+let TAB="hold";try{TAB=localStorage.getItem(TAB_KEY)||"hold";}catch(e){}
+function syncTabs(){
+  const st=here();
+  $("tabCold").textContent=st?"Cold Cellar":"Cold Hold";
+  const panes=[...document.querySelectorAll("#tabCard .pane")];
+  const ok=t=>panes.some(p=>p.dataset.tab===t&&!p.hidden);
+  const cur=ok(TAB)?TAB:"hold";
+  for(const p of panes)p.classList.toggle("off",p.dataset.tab!==cur);
+  document.querySelectorAll("#tabs button").forEach(b=>{b.hidden=!ok(b.dataset.tab);b.classList.toggle("on",b.dataset.tab===cur);b.setAttribute("aria-selected",b.dataset.tab===cur?"true":"false");});
+}
+$("tabs").onclick=e=>{const b=e.target.closest("button[data-tab]");if(!b)return;TAB=b.dataset.tab;try{localStorage.setItem(TAB_KEY,TAB);}catch(x){}syncTabs();fitFrame();};
 $("sharedIn").onchange=e=>{const v=e.target.checked;act(()=>{S.shared=v;});};
 
 const shipParam=()=>{try{const v=new URLSearchParams(location.search).get("ship");return v?slug(v):null;}catch(e){return null;}};
