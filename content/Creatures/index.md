@@ -27,6 +27,7 @@ When the waters rose, the world's creatures had to choose: cling to the shrinkin
 - [[Duskwing]]
 - [[Gnatwing]]
 - [[Blightmoth]]
+- [[Goldmantle Eagle]]
 
 # The Living World
 - [[Ecology of Oceana]]

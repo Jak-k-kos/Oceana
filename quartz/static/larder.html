@@ -2845,7 +2845,7 @@ function portionDialog(lid,mode){ // mode: eat | use | spoil | sell
   const each=byRation?`Each ${esc(it.w)} is ${fmt(it.rat)} ${it.water?"water ":""}ration${it.rat===1?"":"s"}; a part-eaten one is used up whole. `:"";
   const opening=l.form==="cargo"&&!sellCargo?`${esc(cap(it.cargoPl||"cargo units"))} are opened only as needed, and the rest join the loose stores.`:"";
   const whoPick=byRation&&S.bunks.length?`<label>${it.water?"Drunk by":"Eaten by"}</label><select name="who"><option value="">The crew, down the list</option>${people().map(x=>`<option value="${esc(x.p.id)}">${esc(pname(x.p,x.row))}</option>`).join("")}</select>`:"";
-  ask(`<h2>${heads[mode]}</h2><p class="sub">${lead}</p>${risk}<div class="grid"><label>${esc(cap(unitName))}</label><input type="number" name="n" min="0" step="${byRation?0.5:1}" max="${unitMax}" value="${def}">${sp?`<label>Fate</label><select name="how"><option value="toss">Cast overboard</option><option value="eat">${it.water?"Drink":"Eat"} it anyway</option></select>`:""}${whoPick}</div><p class="note">${each}${opening}${whoPick?" Rations given to the crew go to those still owed their share, top of the list first. Choose one soul to give them more than their share.":""}</p>`,fd=>{
+  ask(`<h2>${heads[mode]}</h2><p class="sub">${lead}</p>${risk}<div class="grid"><label>${esc(cap(unitName))}</label><input type="number" name="n" min="0" step="${byRation?0.5:sellCargo?1:stepOf(l)}" max="${unitMax}" value="${def}">${sp?`<label>Fate</label><select name="how"><option value="toss">Cast overboard</option><option value="eat">${it.water?"Drink":"Eat"} it anyway</option></select>`:""}${whoPick}</div><p class="note">${each}${opening}${whoPick?" Rations given to the crew go to those still owed their share, top of the list first. Choose one soul to give them more than their share.":""}</p>`,fd=>{
     const who=fd.get("who")||null;
     const a=Math.max(0,parseFloat(fd.get("n"))||0);if(!a)return;
     const how=sp?fd.get("how"):mode;
@@ -2854,7 +2854,7 @@ function portionDialog(lid,mode){ // mode: eat | use | spoil | sell
       const l=lotById(lid);if(!l)return false;
       if(sellCargo){const k=Math.min(l.units,Math.ceil(a));if(!k)return false;l.units-=k;jot("rem",l.item,lotSingles(l,k));flavor=deal("sell",SELL_LINES);logLine(`Sold ${camt(it,k)} of ${lc(it.name)}. ${flavor}`);return;}
       const have=avail(l,sp);if(have<=0)return false;
-      const n=Math.min(have,byRation?Math.ceil((a/it.rat)*2-1e-9)/2:Math.ceil(a));
+      const n=Math.min(have,byRation?Math.ceil((a/it.rat)*2-1e-9)/2:(halfOK(l)?Math.ceil(a*2-1e-9)/2:Math.ceil(a)));
       const opened=take(l,n,sp);
       if(opened)logLine(say("open",camt(it,opened),lc(it.name)));
       const A=amt(it,n),N=lc(it.name),R=rationWords(it,n);
@@ -2904,8 +2904,8 @@ function lotAction(a,lid){
   }
   else if(a==="open"){
     const cw=esc(lc(it.cargo||"cargo unit")),cwp=esc(it.cargoPl||"cargo units");
-    ask(`<h2>Breaking the Seal</h2><p class="sub">Pry open ${cwp} of ${esc(lc(it.name))}, and their contents spill into the loose stores at the same Keep, until the next dawn packs them away again. Spoiled ${cwp} stay spoiled once opened.</p><div class="grid">${l.units>0?`<label>Sound ${cwp}</label><input type="number" name="n" min="0" max="${l.units}" value="1">`:""}${l.spoiled>0?`<label>Spoiled ${cwp}</label><input type="number" name="s" min="0" max="${l.spoiled}" value="${l.units>0?0:1}">`:""}</div>`,fd=>{
-      const wn=Math.max(0,parseInt(fd.get("n"))||0),ws=Math.max(0,parseInt(fd.get("s"))||0);
+    ask(`<h2>Breaking the Seal</h2><p class="sub">Pry open ${cwp} of ${esc(lc(it.name))}, and their contents spill into the loose stores at the same Keep, until the next dawn packs them away again. Spoiled ${cwp} stay spoiled once opened.</p><div class="grid">${l.units>0?`<label>Sound ${cwp}</label><input type="number" name="n" min="0" step="${stepOf(l)}" max="${l.units}" value="1">`:""}${l.spoiled>0?`<label>Spoiled ${cwp}</label><input type="number" name="s" min="0" step="${stepOf(l)}" max="${l.spoiled}" value="${l.units>0?0:1}">`:""}</div>`,fd=>{
+      const wn=cnt(l,fd.get("n")),ws=cnt(l,fd.get("s"));
       if(!wn&&!ws)return;
       act(()=>{
         const l=lotById(lid);if(!l)return false;
@@ -2927,8 +2927,8 @@ function lotAction(a,lid){
   else if(a==="stash"||a==="unstash"){
     const into=a==="stash";
     const unit=l.form==="cargo"?esc(it.cargoPl||"cargo units"):esc(it.useMult?"uses":it.wp);
-    ask(`<h2>${into?"Into Hiding":"Out of Hiding"}</h2><p class="sub">${into?`Slip ${esc(lc(lotName(l)))} into the smuggler's hold, where only a sharp-eyed inspector will ever find it.`:`Bring ${esc(lc(lotName(l)))} out of the smuggler's hold and back among the honest cargo.`}</p><div class="grid">${l.units>0?`<label>Sound ${unit}</label><input type="number" name="n" min="0" max="${l.units}" value="${l.units}">`:""}${l.spoiled>0?`<label>Spoiled ${unit}</label><input type="number" name="s" min="0" max="${l.spoiled}" value="${l.spoiled}">`:""}</div>`,fd=>{
-      const wn=Math.max(0,parseInt(fd.get("n"))||0),ws=Math.max(0,parseInt(fd.get("s"))||0);
+    ask(`<h2>${into?"Into Hiding":"Out of Hiding"}</h2><p class="sub">${into?`Slip ${esc(lc(lotName(l)))} into the smuggler's hold, where only a sharp-eyed inspector will ever find it.`:`Bring ${esc(lc(lotName(l)))} out of the smuggler's hold and back among the honest cargo.`}</p><div class="grid">${l.units>0?`<label>Sound ${unit}</label><input type="number" name="n" min="0" step="${stepOf(l)}" max="${l.units}" value="${l.units}">`:""}${l.spoiled>0?`<label>Spoiled ${unit}</label><input type="number" name="s" min="0" step="${stepOf(l)}" max="${l.spoiled}" value="${l.spoiled}">`:""}</div>`,fd=>{
+      const wn=cnt(l,fd.get("n")),ws=cnt(l,fd.get("s"));
       if(!wn&&!ws)return;
       act(()=>{
         const l=lotById(lid);if(!l)return false;
@@ -2947,8 +2947,8 @@ function lotAction(a,lid){
     const into=a==="chill",P=coldPlace();
     const unit=l.form==="cargo"?esc(it.cargoPl||"cargo units"):esc(it.useMult?"uses":it.wp);
     const lead=into?`Carry ${esc(lc(lotName(l)))} down into the ${P}, where the cold keeps it.`:`Bring ${esc(lc(lotName(l)))} up out of the ${P}${l.die==="perish"?`. Out of the cold it keeps only ${daysLeft(Object.assign({},l,{cold:false}))<=1?"until tonight":daysLeft(Object.assign({},l,{cold:false}))+" days"}`:""}.`;
-    ask(`<h2>${into?"Into the Cold":"Out of the Cold"}</h2><p class="sub">${lead}</p><div class="grid">${l.units>0?`<label>Sound ${unit}</label><input type="number" name="n" min="0" max="${l.units}" value="${l.units}">`:""}${l.spoiled>0?`<label>Spoiled ${unit}</label><input type="number" name="s" min="0" max="${l.spoiled}" value="${l.spoiled}">`:""}</div>`,fd=>{
-      const wn=Math.max(0,parseInt(fd.get("n"))||0),ws=Math.max(0,parseInt(fd.get("s"))||0);
+    ask(`<h2>${into?"Into the Cold":"Out of the Cold"}</h2><p class="sub">${lead}</p><div class="grid">${l.units>0?`<label>Sound ${unit}</label><input type="number" name="n" min="0" step="${stepOf(l)}" max="${l.units}" value="${l.units}">`:""}${l.spoiled>0?`<label>Spoiled ${unit}</label><input type="number" name="s" min="0" step="${stepOf(l)}" max="${l.spoiled}" value="${l.spoiled}">`:""}</div>`,fd=>{
+      const wn=cnt(l,fd.get("n")),ws=cnt(l,fd.get("s"));
       if(!wn&&!ws)return;
       act(()=>{
         const l=lotById(lid);if(!l)return false;
@@ -2970,9 +2970,9 @@ function lotAction(a,lid){
     amendWas={u:l.units,s:l.spoiled,d:l.die,p:l.die==="perish"?daysLeft(l):NaN,c:l.wet?"wet":l.oil?"oil":"dry",o:l.out||"none"};
     const outPick=dish?`<label>Turned out</label><select name="o">${Object.entries({none:"Not recorded","1":"Effect 1","2":"Effect 2","3":"Effect 3",short:"Short",bust:"Bust"}).map(([v,t])=>`<option value="${v}" ${v===(l.out||"none")?"selected":""}>${t}</option>`).join("")}</select>`:"";
     const thumb=KEEPER&&food&&DICE.includes(l.die)?`<label>Next dawn</label><select name="fate"><option value="" ${!l.fate?"selected":""}>Roll as normal</option><option value="down" ${l.fate==="down"?"selected":""}>Force it to step down</option><option value="hold" ${l.fate==="hold"?"selected":""}>Let it hold fast</option></select><label></label><label class="inline"><input type="checkbox" name="fateAll" ${l.fateAll?"checked":""}> Every dawn until I change it</label>`:"";
-    ask(`<h2>Amending the Ledger</h2><p class="sub">${esc(lotName(l))}. For the honest corrections every quartermaster must sometimes make.</p><div class="grid"><label>Sound</label><input type="number" name="u" min="0" value="${l.units}">${food?`<label>Spoiled</label><input type="number" name="s" min="0" value="${l.spoiled}">`:""}${food?`<label>Keep</label><select name="d">${keepOpts}</select>`:""}${l.die==="perish"?`<label>Days fresh${l.cold?" (cold)":""}</label><input type="number" name="p" min="0" value="${daysLeft(l)}">`:""}${char?`<label>Charcoal</label><select name="c"><option value="dry" ${!l.wet&&!l.oil?"selected":""}>Dry</option><option value="oil" ${l.oil?"selected":""}>Dry, in oilskin</option><option value="wet" ${l.wet?"selected":""}>Wet</option></select>`:""}${outPick}${thumb}<label>Strike it out</label><label class="inline"><input type="checkbox" name="del"> Remove this lot entirely</label></div>${thumb?`<p class="note">Only the Keeper sees the thumb on the scale. At dawn the lot reads exactly as though the dice fell that way.</p>`:""}`,fd=>{
+    ask(`<h2>Amending the Ledger</h2><p class="sub">${esc(lotName(l))}. For the honest corrections every quartermaster must sometimes make.</p><div class="grid"><label>Sound</label><input type="number" name="u" min="0" step="${stepOf(l)}" value="${l.units}">${food?`<label>Spoiled</label><input type="number" name="s" min="0" step="${stepOf(l)}" value="${l.spoiled}">`:""}${food?`<label>Keep</label><select name="d">${keepOpts}</select>`:""}${l.die==="perish"?`<label>Days fresh${l.cold?" (cold)":""}</label><input type="number" name="p" min="0" value="${daysLeft(l)}">`:""}${char?`<label>Charcoal</label><select name="c"><option value="dry" ${!l.wet&&!l.oil?"selected":""}>Dry</option><option value="oil" ${l.oil?"selected":""}>Dry, in oilskin</option><option value="wet" ${l.wet?"selected":""}>Wet</option></select>`:""}${outPick}${thumb}<label>Strike it out</label><label class="inline"><input type="checkbox" name="del"> Remove this lot entirely</label></div>${thumb?`<p class="note">Only the Keeper sees the thumb on the scale. At dawn the lot reads exactly as though the dice fell that way.</p>`:""}`,fd=>{
       const fate=fd.get("fate"),fateAll=!!fd.get("fateAll"),hasThumb=fd.has("fate");
-      const del=!!fd.get("del"),u=Math.max(0,parseFloat(fd.get("u"))||0),sv=Math.max(0,parseFloat(fd.get("s"))||0),d=fd.get("d")||l.die,p=parseInt(fd.get("p")),c=fd.get("c"),o=fd.get("o");
+      const del=!!fd.get("del"),u=cnt(l,fd.get("u")),sv=cnt(l,fd.get("s")),d=fd.get("d")||l.die,p=parseInt(fd.get("p")),c=fd.get("c"),o=fd.get("o");
       // Only what was actually changed in the form is written, so a shipmate's meal or a dawn
       // that came in while the form was open is never quietly undone.
       const was=amendWas;
@@ -3007,16 +3007,21 @@ function moveMenu(lid){
     lotAction(v,lid);
   },"Onward");
 }
+// Feeding can leave half a ration in a loose lot of food or water. Those lots, and only those,
+// may be counted in halves anywhere a number is asked for; everything else stays whole.
+function halfOK(l){const it=item(l.item);return !!l&&l.form==="loose"&&it.kind==="food"&&it.rat>0;}
+const stepOf=l=>halfOK(l)?"0.5":"1";
+function cnt(l,v){const x=parseFloat(v);if(!(x>0))return 0;return halfOK(l)?Math.floor(x*2+1e-9)/2:Math.floor(x+1e-9);}
 function countFields(l,defAll){
   const it=item(l.item);const unit=l.form==="cargo"?esc(it.cargoPl||"cargo units"):esc(it.useMult?"uses":it.wp);
-  return `${l.units>0?`<label>Sound ${unit}</label><input type="number" name="n" min="0" max="${l.units}" value="${defAll?l.units:Math.min(1,l.units)}">`:""}${l.spoiled>0?`<label>Spoiled ${unit}</label><input type="number" name="s" min="0" max="${l.spoiled}" value="${defAll||!l.units?l.spoiled:0}">`:""}`;
+  return `${l.units>0?`<label>Sound ${unit}</label><input type="number" name="n" min="0" step="${stepOf(l)}" max="${l.units}" value="${defAll?l.units:Math.min(1,l.units)}">`:""}${l.spoiled>0?`<label>Spoiled ${unit}</label><input type="number" name="s" min="0" step="${stepOf(l)}" max="${l.spoiled}" value="${defAll||!l.units?l.spoiled:0}">`:""}`;
 }
 function dropDialog(lid,mode){
   const l=lotById(lid);if(!l)return;const it=item(l.item);const st=here();
   const head=mode==="unload"?(st?"Taking It Out":"Down the Gangplank"):(st?"Out It Goes":"Over the Side");
   const lead=mode==="unload"?(st?"Carry it out of the storehouse, with no shells changing hands.":"Set it ashore on the dock, with no shells changing hands."):(st?"Throw it out for good.":"Give it to the sea for good.");
   ask(`<h2>${head}</h2><p class="sub">${esc(lotName(l))}. ${lead}</p><div class="grid">${countFields(l,true)}</div>`,fd=>{
-    const wn=Math.max(0,parseInt(fd.get("n"))||0),ws=Math.max(0,parseInt(fd.get("s"))||0);if(!wn&&!ws)return;
+    const wn=cnt(l,fd.get("n")),ws=cnt(l,fd.get("s"));if(!wn&&!ws)return;
     act(()=>{
       const l=lotById(lid);if(!l)return false;
       const n=Math.min(l.units,wn),s=Math.min(l.spoiled,ws);if(!n&&!s)return false;
@@ -3031,7 +3036,7 @@ function transferDialog(lid){
   const dests=Object.keys(SHIPS).filter(id=>id!==SHIPID).sort((a,b)=>(isStore(SHIPS[a])-isStore(SHIPS[b]))||shipName(a).localeCompare(shipName(b)));
   if(!dests.length){toast("There is nowhere else in the Register to send it.");return;}
   ask(`<h2>Across to Another</h2><p class="sub">${esc(lotName(l))}. Send it to another ship or storehouse in the Register. Once sent, it cannot be undone from here.</p><div class="grid"><label>Bound for</label><select name="to">${dests.map(id=>`<option value="${esc(id)}">${esc(shipName(id))}${isStore(SHIPS[id])?" (storehouse)":""}${coldOn(SHIPS[id])?" (cold)":""}</option>`).join("")}</select>${countFields(l,true)}${it.kind==="food"&&dests.some(id=>coldOn(SHIPS[id]))?`<label>The cold</label><label class="inline"><input type="checkbox" name="cold" ${l.cold?"checked":""}> Into their cold hold or cold cellar, if they keep one</label>`:""}</div>`,async fd=>{
-    const to=fd.get("to"),wn=Math.max(0,parseInt(fd.get("n"))||0),ws=Math.max(0,parseInt(fd.get("s"))||0);if(!to||(!wn&&!ws))return;
+    const to=fd.get("to"),wn=cnt(l,fd.get("n")),ws=cnt(l,fd.get("s"));if(!to||(!wn&&!ws))return;
     sendAcross(lid,to,wn,ws,false,!!fd.get("cold"));
   },"Send It");
 }
@@ -3127,8 +3132,8 @@ function preserveDialog(lid,method){
   if(max<=0){ask(`<h2>${ui?`Not Enough ${esc(cap(lc(ui.name)))}`:"Nothing to Do"}</h2><p class="sub">${useWords(it,u)} There is not enough in the ${place}.</p>`,()=>{},"Understood",true);return;}
   const when=method==="salt"?((l.fp||0)>FP?"Salted while it's fresh":"Salted as it nears its end"):method==="pickle"?(keep==="d20"?"Pickled while it's fresh":"Pickled after it has begun to slip"):"Laid out on deck, it dries by the next dawn and";
   const units=it.rat>0&&method==="salt"?(n=>`ration${n===1?"":"s"}`):(n=>n===1?it.w:it.wp);
-  ask(`<h2>${head}</h2><p class="sub">${esc(lotName(l))}: ${fmt(have)} ${esc(units(have))} on hand${ui?`, and ${esc(amt(ui,stock))} of ${esc(lc(ui.name))} to hand`:""}. ${useWords(it,u)}</p><div class="grid"><label>${esc(cap(units(2)))} to ${method==="salt"?"salt":method==="pickle"?"pickle":"dry"}</label><input type="number" name="n" min="1" max="${max}" value="${max}"></div><p class="note">${when} ${method==="dry"?"comes in as":"becomes"} ${esc(lc(to.name))} that keeps on a ${keep}, Preserved.${method==="dry"?" While it dries it cannot be eaten, cooked or spoiled.":""}</p>`,fd=>{
-    const want=Math.max(1,parseInt(fd.get("n"))||1);
+  ask(`<h2>${head}</h2><p class="sub">${esc(lotName(l))}: ${fmt(have)} ${esc(units(have))} on hand${ui?`, and ${esc(amt(ui,stock))} of ${esc(lc(ui.name))} to hand`:""}. ${useWords(it,u)}</p><div class="grid"><label>${esc(cap(units(2)))} to ${method==="salt"?"salt":method==="pickle"?"pickle":"dry"}</label><input type="number" name="n" min="${halfOK(l)?0.5:1}" step="${stepOf(l)}" max="${max}" value="${max}"></div><p class="note">${when} ${method==="dry"?"comes in as":"becomes"} ${esc(lc(to.name))} that keeps on a ${keep}, Preserved.${method==="dry"?" While it dries it cannot be eaten, cooked or spoiled.":""}</p>`,fd=>{
+    const want=Math.max(halfOK(l)?0.5:1,cnt(l,fd.get("n")));
     act(()=>{
       const l=lotById(lid);if(!l||!ok(l))return false;
       const n=Math.min(want,avail(l,false),per?Math.floor(itemAvail(u.item)/per+1e-9):Infinity);if(n<=0)return false;
@@ -3177,7 +3182,7 @@ function seizeOne(lid){
   if(!canKeep()){snark("seize");return;}
   const l=lotById(lid);if(!l||!l.hid)return;
   ask(`<h2>Seize It</h2><p class="sub">${esc(lotName(l))}. The inspector's hand falls on this and this alone. It is set aside, not lost, and can be recovered.</p><div class="grid">${countFields(l,true)}</div>`,fd=>{
-    const wn=Math.max(0,parseInt(fd.get("n"))||0),ws=Math.max(0,parseInt(fd.get("s"))||0);if(!wn&&!ws)return;
+    const wn=cnt(l,fd.get("n")),ws=cnt(l,fd.get("s"));if(!wn&&!ws)return;
     act(()=>{
       const l=lotById(lid);if(!l||!l.hid)return false;
       const n=Math.min(l.units,wn),s=Math.min(l.spoiled,ws);if(!n&&!s)return false;

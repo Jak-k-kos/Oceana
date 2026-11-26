@@ -1,6 +1,6 @@
 ---
 title: The Widows Wrath
-draft: true
+draft: false
 ---
 A stretch of open sea ruled by [[Welestia|Welestia's]] fury, where no captain will willingly sail.
 
