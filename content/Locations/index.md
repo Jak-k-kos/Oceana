@@ -2,7 +2,7 @@
 title: Locations
 hideFolderContent: true
 ---
-![[map labeled.png]]
+![[Oceana Labeled nwr.png]]
 # Locations
 ## Contries
 - [[Locations/Azure Plains Coalition (APC)/index|The Azure Plains Coalition]]
