@@ -15,10 +15,10 @@ Belief: Change is a mercy. Nothing rotten survives a storm.
 Accent: Slow and formal. He speaks an old form of Common and slips into the pre-Collapse tongue when moved.
 Current Location: [[Locations/The Widow's Wrath/Rayskaya/index|Rayskaya]]
 Relationships: 
-- [[Welestia]]: the goddess he serves, and the only mortal she has spoken to through all the ages since [[Arkaius]] fell, until [[Shady Bellball|Shady]]
+- [[Welestia]]: the goddess he serves, and the only mortal she has spoken to through all the ages since [[Arkaius]] fell, until [[Varek Herrera|Varek]]
 - [[Arkaius]]: gave him his long life
 - [[Tarek]]: his twin brother, champion of [[Arkaius]], now dead
-- [[Shady Bellball]]: [[Welestia|Welestia's]] new champion
+- [[Varek Herrera]]: [[Welestia|Welestia's]] new champion
 - The sea folk of the [[Locations/The Widow's Wrath/index|Widow's Wrath]]: he rows out now and then to trade with them
 
 %%
@@ -60,7 +60,7 @@ On the day [[Arkaius]] died, [[Welestia|Welestia's]] grief broke over the peak l
 
 %%
 # The Voice in the Stone
-Now and then, in the hush of the Temple of [[Welestia]], the goddess comes to speak with her keeper, and Tyrus kneels before her to listen. In all the long ages since [[Arkaius]] fell, he has been the only mortal she will speak to. Kings have begged her for mercy and sailors have screamed her name into the gale, and she has answered none of them. She answers only the keeper who would not leave her side. That changed when [[Shady Bellball]] came before her. Now there are two.
+Now and then, in the hush of the Temple of [[Welestia]], the goddess comes to speak with her keeper, and Tyrus kneels before her to listen. In all the long ages since [[Arkaius]] fell, he has been the only mortal she will speak to. Kings have begged her for mercy and sailors have screamed her name into the gale, and she has answered none of them. She answers only the keeper who would not leave her side. That changed when [[Varek Herrera]] came before her. Now there are two.
 %%
 
 %%

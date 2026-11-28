@@ -9,6 +9,8 @@ draft: false
 - [[De'Soto]] keeps one. It is large and majestic, and malevolent with it. In the days before the raid on [[Locations/Azure Plains Coalition (APC)/Insul/index|Insul]] it killed the island's [[Knife-Wing Gull|knife-wing gulls]] and left their bodies in a makeshift nest on a high point near town. That is no habit of its kind. The party left a poisoned fish in that nest. The eagle survived.
 - [[Gaknin Goldenroar]] once knew someone who kept an eagle like it.
 %%
+
+![[Golden Eagle’s Coastal Strike.png]]
 # Goldmantle Eagle
 The goldmantle is the great eagle of the eastern [[Locations/Kingdom of Albryn/index|Kingdom]], a broad-winged hunter in brown and burnished gold, named for the bright feathers that lie across its shoulders and catch the sun like a new coin. Its wings spread wider than a tall man can reach, and its talons are long enough to lift a fat fish clean out of the swell. It nests on the high crags where no ladder goes, and comes down to hunt the water and the fields below, taking fish above all, and after them the rats, lizards and snakes of the terraces. Nothing else in the sky of Oceana hunts it, and it flies as though it knows.
 

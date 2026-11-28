@@ -3,7 +3,7 @@ tags:
   - creature
 draft: false
 ---
-
+![[Proud Monkey on the Harbor Dock.png]]
 # Red-Throated Barrel Monkey
 In the warm islands of the south, the dawn begins with booming. It comes from the red-throated barrel monkeys, who greet each sunrise by swelling the bright red pouches at their throats and filling the hills with a deep, hollow drumming. They are small, round and sturdy, their stout little bodies shaped like barrels, with long clever hands and longer tails. A troop on the move looks like a spilled cargo of kegs rolling through the trees.
 

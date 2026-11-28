@@ -46,7 +46,7 @@ At the heart of the Widow's Wrath lies the island of [[Locations/The Widow's Wra
 
 The Wrath was never only grief. When [[Arkaius]] fell, the first fury of [[Welestia|Welestia's]] mourning broke over the very peak where she had been wed, and it came within a breath of destroying the place she holds dearest in all the world. Heartbroken at what she had nearly done, she wrapped her storm around it, and she has never let go. The Widow's Wrath is a wall, and [[Locations/The Widow's Wrath/Rayskaya/index|Rayskaya]] is what it guards. The island lies in the eye because it is the very thing the storm protects.
 
-Only a ship blessed by [[Shady Bellball]] crosses the Wrath untouched. The blessing lasts until Shady revokes it.
+Only a ship blessed by [[Varek Herrera]] crosses the Wrath untouched. The blessing lasts until Varek revokes it.
 
 ## The Sea Folk of the Wrath
 

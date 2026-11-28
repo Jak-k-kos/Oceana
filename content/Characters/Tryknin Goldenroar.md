@@ -2,7 +2,7 @@
 tags:
   - character
 player: Torin
-furry?: true
+furry?: false
 ---
 # Tryknin Goldenroar 
 # Leonin Barbarian 

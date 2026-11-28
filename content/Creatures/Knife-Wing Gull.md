@@ -3,7 +3,7 @@ tags:
   - creature
 draft: false
 ---
-1
+![[Seabird Messenger Over Stormy Seas.png]]
 # Knife-Wing Gull
 The knife-wing gull is built for the open sky. It is long and lean, white below and storm-grey above, with narrow, swept-back wings that cut the wind like a blade. Where other gulls drift, a knife-wing flies straight and fast, ranging out over the water each day from island to island and shoal to shoal, often crossing several in a single day in search of food. Few birds in Oceana can fly so far, so fast, for so long.
 

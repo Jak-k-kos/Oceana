@@ -10,7 +10,7 @@ draft: true
 - Food: Reef fish, crabs and shellfish from the shallows
 - Trade: None
 - extra: In the hollow of [[Locations/The Widow's Wrath/Rayskaya/index|Rayskaya's]] crescent, between the long northern arm and the southern lobe, opening to the east.
-  - The dock: [[Tyrus]] built the jetty on the southern shore, right below the peak, in preparation for [[Shady Bellball|Shady]] and companions. [[Welestia]] told him they would come. It holds a single Medium or smaller ship. Large and Huge ships have to drop anchor in the cove.
+  - The dock: [[Tyrus]] built the jetty on the southern shore, right below the peak, in preparation for [[Varek Herrera|Varek]] and companions. [[Welestia]] told him they would come. It holds a single Medium or smaller ship. Large and Huge ships have to drop anchor in the cove.
   - No harbor services: There are no docking fees, no harbor watch and no storage. [[Tyrus]] does not keep watch over the ships.
   - Fresh water: A spring runs down the peak and spills into the cove beside the jetty. The party can refill their water here for free.
   - Anchoring: Anchors dropped in the cove often catch on the drowned rooftops below. Flavor only, with no extra rules.

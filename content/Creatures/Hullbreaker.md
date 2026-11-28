@@ -9,7 +9,7 @@ draft: false
 - Riders use their own stat blocks (sahuagin, tritons and the like). The beast takes their orders.
 - Its Ram is meant to rival a broadside. One Hullbreaker is a fight for a whole ship, not for one crew member.
 %%
-
+![[Colossal Coral Sea Beast.png]]
 # Hullbreaker
 Sailors of the northern patrols have a saying: if you see sahuagin, fight; if you see a Hullbreaker, pray. Hullbreakers are the war-beasts of the sea folk empire, vast and slow-eyed things, half whale and half armored fish, bred in the deep for nothing but war. The sea folk grow living coral over their backs and brows in great ridged plates, until each one is less a beast than a reef that swims, and they lash coral towers to its spine, from which sahuagin and tritons ride to battle, hurling spears as their mount charges.
 

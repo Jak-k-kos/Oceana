@@ -14,6 +14,14 @@ title: The Kingdom Of Albryn
 - [[Duchess Aveline Caldwell]]: Duchess of the North
 - [[Duke Roderick Thorne]]: Duke of the South
 
+# The Duchies
+- [[NPCS/Kingdom Of Albryn/Silvater/index|Silvater]], the West
+- [[NPCS/Kingdom Of Albryn/Soulea/index|Soulea]], the Heartland
+- [[NPCS/Kingdom Of Albryn/Tidegate/index|Tidegate]], the North
+- [[NPCS/Kingdom Of Albryn/Spearholt/index|Spearholt]], the South
+
+# [[NPCS/Kingdom Of Albryn/Noble register/Noble Register|Noble Register]]
+
 ### Large Settlements
 - [[NPCS/Kingdom Of Albryn/Crownsreach/index|Crownsreach]]
 

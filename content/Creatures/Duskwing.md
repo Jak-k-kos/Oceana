@@ -3,7 +3,7 @@ tags:
   - creature
 draft: false
 ---
-
+![[Gemini_Generated_Image_3qpubn3qpubn3qpu.jpg]]
 # Duskwing
 At every sunset, the sea caves of the southern islands breathe out bats, led out through the dark by the clicking of the [[Gnatwing|gnatwings]]. Duskwings are fruit bats with fox-like faces and wings as wide as a man's outstretched arms, and they pour from their roosts in great dark streams to cross the water from island to island. They feed on fig and mango, on blossom and nectar.
 

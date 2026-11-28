@@ -71,7 +71,7 @@ No one knows whether Welestia has a champion, and no one would dare to ask her. 
 
 %%
 ## The Champion  
-Welestia chose no champion in all the long ages since the death of [[Arkaius]]. That has changed. Her champion is now Shady Bellball, who came before her statue on Rayskaya and gave up their soul in exchange for the power to save someone they loved. Shady is her sword of change upon the mortal plane, the first champion the goddess of storms has chosen in more than two and a half thousand years.  
+Welestia chose no champion in all the long ages since the death of [[Arkaius]]. That has changed. Her champion is now [[Varek Herrera]], who came before her statue on Rayskaya and gave up his soul in exchange for the power to save someone he loved. Varek is her sword of change upon the mortal plane, the first champion the goddess of storms has chosen in more than two and a half thousand years.  
 %%
 ## Relationships
 

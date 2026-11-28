@@ -10,7 +10,7 @@ draft: false
 - The song is a natural gift, not spellcasting, so it sits within the low-magic rules.
 - Tactics: outnumbered, sirens pick sailors off one at a time with Whispered Allure, and only sing once the odds are theirs.
 %%
-
+![[Siren and Sailor in Open Water.png]]
 # Siren
 Of all the peoples of the deep, none are so beautiful, and none so feared, as the sirens. Above the waist they seem almost like the folk of the land, pale and slender, with long hair that drifts about them like weed in the current. Below, they are fish, scaled in silver and sea-green, with tails as long again as a man is tall. Only up close does the beauty falter: their fingers end in long, hooked claws, and when they smile, every tooth is a needle.
 
@@ -71,6 +71,8 @@ Wise crews never stand a watch alone. They keep a bell ringing through the long 
 - **Dive.** While in water, the siren swims up to half its swim speed without provoking opportunity attacks.
 
 ---
+
+![[Moonlit Siren Queen’s Chorus.png]]
 
 # Siren Chorus-Mother
 Sirens do not hunt alone. They gather in choirs, and each choir is led by a chorus-mother, old and terrible and lovely, whose voice can bend a whole crew at once. Her claws are long as fish-knives, and it is she who drags the crews she has sung over the side down into the dark.

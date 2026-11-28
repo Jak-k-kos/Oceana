@@ -10,10 +10,10 @@ draft: true
 - Food: Figs, citrus and grapes gone wild on the old terraces; reef fish from the cove
 - Trade: None
 - extra: In the eye of the [[Locations/The Widow's Wrath/index|Widow's Wrath]]. Size: About 30 miles north to south and 25 east to west, a hooked crescent opening to the east, with two small lagoons tucked into its western spine. Government: None.
-  - The blessing: Any ship blessed by [[Shady Bellball]] crosses the Wrath untouched, for good, until Shady revokes the blessing. Every other ship meets the Wrath as normal.
+  - The blessing: Any ship blessed by [[Varek Herrera]] crosses the Wrath untouched, for good, until Varek revokes the blessing. Every other ship meets the Wrath as normal.
   - The Wrath's secret: The [[Locations/The Widow's Wrath/index|Widow's Wrath]] exists to protect this island. Rayskaya sits in the eye because it is what the storm is guarding.
   - The sea folk: The sea folk of the Wrath don't come here. The Wrath kills any of them who come too close.
-  - The dock: [[Tyrus]] built the island's only dock, a jetty big enough for a single Medium ship, in preparation for [[Shady Bellball|Shady]] and companions. See [[Locations/The Widow's Wrath/Rayskaya/The Cove|The Cove]].
+  - The dock: [[Tyrus]] built the island's only dock, a jetty big enough for a single Medium ship, in preparation for [[Varek Herrera|Varek]] and companions. See [[Locations/The Widow's Wrath/Rayskaya/The Cove|The Cove]].
 
 %%
 # Rayskaya

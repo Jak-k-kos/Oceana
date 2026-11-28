@@ -29,7 +29,7 @@ title: Insul
 - [[Charles Bellball]]
 - [[John Bellball]]
 - [[Tabatha Bellball]]
-- [[Shady Bellball| Shady Bellball(Henry)]]
+- [[Shady Bellball]]
 - [[Rouge Bellball|Rouge Bellball(Z)]]
 
 # The Fiore Family
@@ -40,6 +40,11 @@ title: Insul
 # The Goldenroar Family
 - [[Gaknin Goldenroar]]
 - [[Tryknin Goldenroar|Tryknin Goldenroar (Torin)]]
+
+# The Herrera Family
+- [[Garrick Herrera]]
+- [[Mara Herrera]]
+- [[Varek Herrera|Varek Herrera (Matti)]]
 
 # Others
 - [[Mr. Ferguson]]
