@@ -3,7 +3,7 @@ title: Locations
 hideFolderContent: true
 ---
 
-![[Oceana Labeled nwr.png]]
+![[Oceana Labeled nwr 1.png]]
 
 # Locations
 ## Contries
