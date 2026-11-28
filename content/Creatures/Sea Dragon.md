@@ -11,7 +11,7 @@ draft: false
 - Not everyone loves them. The harpoon gun was built for hunting sea monsters and sea dragons both, and on islands far from Delafina a sea dragon caught in the nets is still killed for its hide and venom. Selling sea dragon parts in Delafina, or to anyone who knows a Delafina fisherman, is asking for a knife in the dark.
 - Stat blocks are built off the wyvern (MM, CR 6), traded some venom for a swim speed and a temper.
 %%
-
+![[Gemini_Generated_Image_4xzh304xzh304xzh.jpg]]
 # Sea Dragon
 When [[Aquilla|Aquilla's]] Wrath drowned the world, the wyverns of the high crags lost their mountains one by one, until there was nowhere left to roost but the sea itself. Most of them died. Those that lived learned to fold their wings and dive, to hunt the shoals instead of the goats, and to sleep on the rocks with the spray on their scales. Their wings grew broad and webbed, more fin than sail, and their tails grew long and strong for swimming. They have not forgotten the sky, and a sea dragon bursting from a wave and climbing into the wind is a sight no sailor forgets, but the water is their home now, and they glide through it like grey-green ribbons, sleek as eels and twice as quick.
 

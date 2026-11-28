@@ -3,7 +3,7 @@ tags:
   - creature
 draft: false
 ---
-
+![[Golden-Eyed Caracal on the Coastal Wall.png]]
 # Malkin Ratter
 No one owns a malkin ratter, and no malkin ratter has ever agreed to be owned. They are lean, quiet cats, a little larger than any hearth cat, with brindled coats the color of weathered stone and ears tipped with dark tufts. They live wherever there is stone and mice: in the dry-stone walls of the terraces, in the rafters of granaries, and among the barrels in the holds of ships. Nearly every island in Oceana has its malkins, though few islanders could say how many.
 

@@ -8,7 +8,7 @@ draft: false
 - Widowfins are why the Wrath's sea folk hunt the edges of the storm and keep clear of the calms. The sirens and merfolk of the Wrath know their ways, and could teach them to a crew they've befriended.
 - Flight works only while a storm blows; that's the creature's whole hook. Give it a free fly speed instead if you'd rather.
 %%
-
+![[Gemini_Generated_Image_zfp855zfp855zfp8.jpg]]
 # Widowfin
 The [[Locations/The Widow's Wrath/index|Widow's Wrath]] knows only two moods, and the widowfin has learned to live in both. It is a great ray, wide as a ship is long, smoke-grey above and pale as a drowned face below, with a long tail that ends in a barb like a boarding pike.
 
